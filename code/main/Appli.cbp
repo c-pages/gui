@@ -51,14 +51,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add option="-DSFML_STATIC" />
-			<Add directory="L:/programes/SFML-2.1/include" />
+			<Add directory="F:/Bibliotheques CPP/SFML-2.1/include" />
 			<Add directory="../gui/include" />
 			<Add directory="../gui" />
 			<Add directory="include" />
 			<Add directory="../main" />
 		</Compiler>
 		<Linker>
-			<Add directory="L:/programes/SFML-2.1/lib" />
+			<Add directory="F:/Bibliotheques CPP/SFML-2.1/lib" />
 			<Add directory="../gui/src" />
 			<Add directory="src" />
 		</Linker>

@@ -1,42 +1,42 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <Composite.h>
+#include <Interaction.h>
 
 
 
 namespace gui {
 
 /////////////////////////////////////////////////
-void Composite::ajouter (ptr enfant)
+void Interaction::lier  (Evenement evenement, FctnAction fonction)
 {
     
 }
 
 
 /////////////////////////////////////////////////
-void Composite::retirer (ptr enfant)
+void Interaction::lier ( sf::Keyboard  touche, FctnAction fonction)
 {
     
 }
 
 
 /////////////////////////////////////////////////
-void Composite::demander_aEtre_supprimer ()
+void Interaction::delier (Evenement evenement)
 {
     
 }
 
 
 /////////////////////////////////////////////////
-void Composite::demander_aEtre_auDessus () const
+void Interaction::delier ( sf::Keyboard  touche)
 {
     
 }
 
 
 /////////////////////////////////////////////////
-void Composite::mettre_auDessus (ptr gadget)
+void Interaction::declencher (Evenement evenement)
 {
     
 }

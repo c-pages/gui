@@ -1,1 +1,14 @@
 # depslib dependency file v1.0
+1450008906 source:r:\06 - c++\110 - gui\code\gui\src\composite.cpp
+	<Composite.h>
+
+1450008905 r:\06 - c++\110 - gui\code\gui\include\composite.h
+	<memory>
+	<vector>
+
+1450010395 source:r:\06 - c++\110 - gui\code\gui\src\fabriquegadget.cpp
+	<FabriqueGadget.h>
+
+1450010403 r:\06 - c++\110 - gui\code\gui\include\fabriquegadget.h
+	<memory>
+

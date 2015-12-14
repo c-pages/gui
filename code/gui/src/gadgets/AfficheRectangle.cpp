@@ -1,21 +1,29 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <Gadget.h>
+#include <AfficheRectangle.h>
 
 
 
 namespace gui {
 
 /////////////////////////////////////////////////
-void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
+AfficheRectangle::AfficheRectangle (ptr parent)
+: m_rectangle (  )
 {
     
 }
 
 
 /////////////////////////////////////////////////
-void Gadget::traiter_events (const sf::Event& evenement)
+AfficheRectangle::initialiser_composants ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+AfficheRectangle::draw ()
 {
     
 }

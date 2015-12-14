@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "SFML/Graphics.hpp"
+
 
 
 namespace gui {
@@ -36,8 +36,8 @@ protected:
     /////////////////////////////////////////////////
     /// \brief Dessiner le gadget => dessiner ses enfants.
     ///
-    /// \param target
-    /// \param states
+    /// \param target		 
+    /// \param states		 
     /////////////////////////////////////////////////
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
@@ -76,7 +76,7 @@ public:
     /////////////////////////////////////////////////
     /// \brief Surcharge de l'operateur =.
     ///
-    /// \param original
+    /// \param original		 
     /////////////////////////////////////////////////
     Gadget& operator= (Gadget & original);
 
@@ -99,8 +99,8 @@ public:
 // Membres
 /////////////////////////////////////////////////
 private:
-    bool m_visible;    ///< est il visible ? ( si non visible : inactif ?) (#G#S)
-    bool m_actif;    ///< le gadget est il actif ? (#G#S)
+    bool m_visible;    ///< est il visible ? ( si non visible : inactif ?) (#G#S)    
+    bool m_actif;    ///< le gadget est il actif ? (#G#S)    
 
 }; // fin class Gadget
 

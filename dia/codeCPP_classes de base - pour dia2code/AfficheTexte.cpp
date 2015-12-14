@@ -1,21 +1,21 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <Gadget.h>
+#include <AfficheTexte.h>
 
 
 
 namespace gui {
 
 /////////////////////////////////////////////////
-void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
+AfficheTexte::initialiser_composants ()
 {
     
 }
 
 
 /////////////////////////////////////////////////
-void Gadget::traiter_events (const sf::Event& evenement)
+AfficheTexte::draw ()
 {
     
 }

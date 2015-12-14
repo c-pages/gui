@@ -1,21 +1,15 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <Gadget.h>
+#include <Skin.h>
 
+#include <Style.h>
 
 
 namespace gui {
 
 /////////////////////////////////////////////////
-void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
-{
-    
-}
-
-
-/////////////////////////////////////////////////
-void Gadget::traiter_events (const sf::Event& evenement)
+Skin::Skin ()
 {
     
 }

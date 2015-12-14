@@ -1,21 +1,21 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <Gadget.h>
+#include <AfficheImage.h>
 
 
 
 namespace gui {
 
 /////////////////////////////////////////////////
-void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
+AfficheImage::initialiser_composants ()
 {
     
 }
 
 
 /////////////////////////////////////////////////
-void Gadget::traiter_events (const sf::Event& evenement)
+AfficheImage::draw ()
 {
     
 }

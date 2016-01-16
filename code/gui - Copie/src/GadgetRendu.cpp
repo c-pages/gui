@@ -1,0 +1,34 @@
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include <GadgetRendu.h>
+
+#include <Gadget.h>
+
+
+namespace gui {
+
+/////////////////////////////////////////////////
+GadgetRendu::GadgetRendu (Gadget::ptr gadgetSource)
+: m_gadget (  )
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void GadgetRendu::draw (sf::RenderTarget& target, sf::RenderStates states) const
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void GadgetRendu::actualiser (sf::Time tempsEcoule)
+{
+    
+}
+
+
+} // fin namespace gui
+

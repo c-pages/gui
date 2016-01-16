@@ -1,0 +1,26 @@
+#ifndef CONTENEURGUI__H
+#define CONTENEURGUI__H
+
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include "Conteneur.h"
+
+
+
+namespace gui {
+
+
+
+/////////////////////////////////////////////////
+/// \brief Conteneur global, contient toute l'interface avec l'intermediaire du Gui.
+///
+/////////////////////////////////////////////////
+class ConteneurGui : public gui::Conteneur {
+
+
+}; // fin class ConteneurGui
+
+} // fin namespace gui
+
+#endif

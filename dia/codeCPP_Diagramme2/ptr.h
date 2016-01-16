@@ -1,0 +1,17 @@
+#ifndef PTR__H
+#define PTR__H
+
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include <memory>
+#include "Theme.h"
+
+
+
+class Theme;
+
+
+typedef std::shared_ptr<Theme> ptr;
+
+#endif

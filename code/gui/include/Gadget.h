@@ -4,15 +4,33 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "SFML/Graphics.hpp"
+#include "Cliquable.h"
+#include "Transformable.h"
+#include "Interaction.h"
+#include <memory>
+#include <SFML/Graphics.hpp>
 
 
 namespace gui {
 
+class Theme;
+class InfoBulle;
+class MenuContextuel;
+class Conteneur;
+class GadgetRendu;
+
+/////////////////////////////////////////////////
+/// \brief Classe de base de tout les gadgets.
+///
+/////////////////////////////////////////////////
+class Gadget : public gui::Cliquable, public std::enable_shared_from_this<Gadget>, public sf::Drawable, public gui::Transformable, public gui::Interaction {
 
 
-class Gadget {
-
+/////////////////////////////////////////////////
+// Enums & typedefs
+/////////////////////////////////////////////////
+public:
+    typedef std::shared_ptr<Gadget> ptr;    ///< Pointeur vers un gadget.
 
 
 /////////////////////////////////////////////////
@@ -20,6 +38,12 @@ class Gadget {
 /////////////////////////////////////////////////
 
 public:
+    ///< Definir m_focused
+    void setFocused( bool val ){ m_focused = val; };
+
+    ///< Acceder à m_focused
+    bool getFocused () const { return m_focused; };
+
     ///< Definir m_visible
     void setVisible( bool val ){ m_visible = val; };
 
@@ -32,75 +56,130 @@ public:
     ///< Acceder à m_actif
     bool getActif () const { return m_actif; };
 
-protected:
-    /////////////////////////////////////////////////
-    /// \brief Dessiner le gadget => dessiner ses enfants.
-    ///
-    /// \param target
-    /// \param states
-    /////////////////////////////////////////////////
-    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
+    ///< Definir m_draggable
+    void setDraggable( bool val ){ m_draggable = val; };
 
-    /////////////////////////////////////////////////
-    /// \brief  Traitement des évènements  du gadget.
-    ///
-    /// \param evenement		 L'evenemnt SFML à traiter.
-    /////////////////////////////////////////////////
-    virtual void traiter_events (const sf::Event& evenement);
+    ///< Acceder à m_draggable
+    bool getDraggable () const { return m_draggable; };
 
-    /////////////////////////////////////////////////
-    /// \brief Actualiser les géométrie du gadgets avec skin, et donc ses bounds.
-    ///
-    /////////////////////////////////////////////////
-    virtual void actualiser () = 0;
+    ///< Definir m_survol
+    void setSurvol( bool val ){ m_survol = val; };
 
-    /////////////////////////////////////////////////
-    /// \brief Initialise les interactions des composant du gadgets.
-    ///
-    /////////////////////////////////////////////////
-    virtual void initialiser_interactions () = 0;
+    ///< Acceder à m_survol
+    bool getSurvol () const { return m_survol; };
 
-    /////////////////////////////////////////////////
-    /// \brief Initialise les composant du gadgets.
-    ///
-    /////////////////////////////////////////////////
-    virtual void initialiser_composants () = 0;
+    ///< Definir m_presse
+    void setPresse( bool val ){ m_presse = val; };
 
-    /////////////////////////////////////////////////
-    /// \brief Initialiser les composants, les interactions (GOF4 : Patron de méthode).
-    ///
-    /////////////////////////////////////////////////
-    void initialiser ();
+    ///< Acceder à m_presse
+    bool getPresse () const { return m_presse; };
+
+    ///< Definir m_theme
+    void setTheme( std::shared_ptr<Theme> val ){ m_theme = val; };
+
+    ///< Acceder à m_theme
+    std::shared_ptr<Theme> getTheme () const { return m_theme; };
+
+    ///< Definir m_infoBulle
+    void setInfoBulle( std::shared_ptr<InfoBulle> val ){ m_infoBulle = val; };
+
+    ///< Acceder à m_infoBulle
+    std::shared_ptr<InfoBulle> getInfoBulle () const { return m_infoBulle; };
+
+    ///< Definir m_menuContextuel
+    void setMenuContextuel( std::shared_ptr<MenuContextuel> val ){ m_menuContextuel = val; };
+
+    ///< Acceder à m_menuContextuel
+    std::shared_ptr<MenuContextuel> getMenuContextuel () const { return m_menuContextuel; };
+
+    ///< Definir m_parent
+    void setParent( std::shared_ptr<Conteneur> val ){ m_parent = val; };
+
+    ///< Acceder à m_parent
+    std::shared_ptr<Conteneur> getParent () const { return m_parent; };
+
+    ///< Definir m_gadgetRendu
+    void setGadgetRendu( std::shared_ptr<GadgetRendu> val ){ m_gadgetRendu = val; };
+
+    ///< Acceder à m_gadgetRendu
+    std::shared_ptr<GadgetRendu> getGadgetRendu () const { return m_gadgetRendu; };
 
 public:
-    /////////////////////////////////////////////////
-    /// \brief Surcharge de l'operateur =.
-    ///
-    /// \param original
-    /////////////////////////////////////////////////
-    Gadget& operator= (Gadget & original);
-
-    /////////////////////////////////////////////////
-    /// \brief Constructeur de recopie (pour gerer les pointeurs).
-    ///
-    /// \param original		 Le gadget a recopier.
-    /////////////////////////////////////////////////
-    Gadget (Gadget & original);
-
     /////////////////////////////////////////////////
     /// \brief Constructeur par défaut.
     ///
     /////////////////////////////////////////////////
     Gadget ();
 
+    /////////////////////////////////////////////////
+    /// \brief Constructeur par copie.
+    ///
+    /// \param copy		 le gadget à copier.
+    /////////////////////////////////////////////////
+    Gadget (const Gadget& copy);
+
+    /////////////////////////////////////////////////
+    /// \brief Surcharge de l'operation d'égalité.
+    ///
+    /// \param gadgetACopier		 Le gadget à copier.
+    /////////////////////////////////////////////////
+    Gadget& operator= (const Gadget& gadgetACopier);
+
+    /////////////////////////////////////////////////
+    /// \brief Demande au parent à être supprimer.
+    ///
+    /////////////////////////////////////////////////
+    void supprimer ();
+
+    /////////////////////////////////////////////////
+    /// \brief Demande au conteneur parent à placer le gadget qu dessus de ses frêres.
+    ///
+    /////////////////////////////////////////////////
+    void mettreAuDessus ();
+
+    /////////////////////////////////////////////////
+    /// \brief Demander l'affichage de l'infobulle du gadget (s'il en a).
+    ///
+    /////////////////////////////////////////////////
+    void demander_infoBulle ();
+
+    /////////////////////////////////////////////////
+    /// \brief Demander l'affichage du menu contextuel (s'il en a).
+    ///
+    /////////////////////////////////////////////////
+    void demander_menuContextuel ();
+
+    /////////////////////////////////////////////////
+    /// \brief Actualise le gadget (pour animation).
+    ///
+    /// \param tempsEcoule
+    /////////////////////////////////////////////////
+    void actualiser (sf::Time tempsEcoule);
+
+    /////////////////////////////////////////////////
+    /// \brief Definir le texte de l'info-bulle à afficher.
+    ///
+    /// \param texte		 Le texte de  l'info bulle.
+    /////////////////////////////////////////////////
+    void setTexteInfoBulle (std::string texte);
+
 
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
-private:
-    bool m_visible;    ///< est il visible ? ( si non visible : inactif ?) (#G#S)
-    bool m_actif;    ///< le gadget est il actif ? (#G#S)
+protected:
+    bool m_focused;    ///< Si le gadget à le focus.
+    bool m_visible;    ///< Si le gadget est visible ( false: invisible et inactif).
+    bool m_actif;    ///< Si le gadget est actif.
+    bool m_draggable;    ///< Si le gadget est déplacable par la souris.
+    bool m_survol;    ///< Si la souris survol le gadget.
+    bool m_presse;    ///< Si la souris à été pressée au dessus du gadget.
+    std::shared_ptr<Theme> m_theme;    ///< Le thème qui servira de model au gadget.
+    std::shared_ptr<InfoBulle> m_infoBulle;    ///< L'info bulle à afficher en cas de survol prolongé de la souris.
+    std::shared_ptr<MenuContextuel> m_menuContextuel;    ///< Le menu contextuel à afficher en cas de clique droit sur le gadget.
+    std::shared_ptr<Conteneur> m_parent;    ///< Le conteneur dans lequel afficher le gadget.
+    std::shared_ptr<GadgetRendu> m_gadgetRendu;    ///< La classe d'affichage du gadget.
 
 }; // fin class Gadget
 

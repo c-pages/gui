@@ -5,21 +5,19 @@
 // Headers
 /////////////////////////////////////////////////
 #include "Gadget.h"
-#include <vector>
 #include <memory>
-#include "AfficheRectangle.h"
 
 
 
 namespace gui {
 
-class Bouton;
-class Bouton;
-class Bouton;
+class Label;
+class Image;
+class ptr;
 
 
 /////////////////////////////////////////////////
-/// \brief Classe des boutons ( éléments interactifs de l'interface). ( Dérivé du GOf4 décoration ).
+/// \brief Un bouton
 ///
 /////////////////////////////////////////////////
 class Bouton : public gui::Gadget {
@@ -28,15 +26,7 @@ class Bouton : public gui::Gadget {
 /////////////////////////////////////////////////
 // Enums & typedefs
 /////////////////////////////////////////////////
-    /////////////////////////////////////////////////
-    /// \brief (Pattern: Etat)
-    /////////////////////////////////////////////////
-    enum Etat {
-        Repos,
-        Survol,
-        Presse
-    };
-
+    typedef std::shared_ptr<Bouton> ptr;    ///< Pointeur vers un bouton.
 
 
 /////////////////////////////////////////////////
@@ -44,41 +34,53 @@ class Bouton : public gui::Gadget {
 /////////////////////////////////////////////////
 
 public:
-    ///< Acceder à m_etat
-    Etat getEtat () const { return m_etat; };
+    ///< Definir m_label
+    void setLabel( std::shared_ptr<Label> val ){ m_label = val; };
+
+    ///< Acceder à m_label
+    std::shared_ptr<Label> getLabel () const { return m_label; };
+
+    ///< Definir m_icone
+    void setIcone( std::shared_ptr<Image> val ){ m_icone = val; };
+
+    ///< Acceder à m_icone
+    std::shared_ptr<Image> getIcone () const { return m_icone; };
 
 public:
     /////////////////////////////////////////////////
-    /// \brief  Fonction static pour gerer globalement les événements de l'interface.
+    /// \brief Constructeur par défaut.
     ///
+    /// \param parent		 Le parent du gadget.
     /////////////////////////////////////////////////
-    static s_traiterEvents ();
+    Bouton (Gadget::ptr parent);
 
     /////////////////////////////////////////////////
-    /// \brief Redéfinie ajouter par une fonction vide( GOF4 : composite -> Feuilles)
+    /// \brief A déclencher quand le bouton gauche de la souris est pressé sur le gadget.
     ///
     /////////////////////////////////////////////////
-    ajouter ();
+    virtual void presserBoutonGauche ();
 
     /////////////////////////////////////////////////
-    /// \brief Redéfinie retirer par une fonction vide( GOF4 : composite -> Feuilles)
+    /// \brief A déclencher quand le bouton gauche de la souris est relaché sur le gadget.
     ///
     /////////////////////////////////////////////////
-    retirer ();
-
-    testerSurvol ();
+    virtual void relacherBoutonGauche ();
 
     /////////////////////////////////////////////////
-    /// \brief Actualise le style du gadget (après une modification, de son état par exemple).
+    /// \brief A déclencher quand la souris entre sur le gadget.
     ///
     /////////////////////////////////////////////////
-    actualiser ();
+    virtual void sourisEntre ();
 
     /////////////////////////////////////////////////
-    /// \brief Définie un nouvel état pour le bouton, puis actualise le style.
+    /// \brief A déclencher quand la souris sort du gadget.
     ///
     /////////////////////////////////////////////////
-    void setEtat ();
+    virtual void sourisSort ();
+
+    virtual void setTexte (std::string texte);
+
+    virtual void setTaille (Vec2 taille) = 0;
 
 
 
@@ -86,11 +88,9 @@ public:
 // Membres
 /////////////////////////////////////////////////
 private:
-    static std::vector<Bouton> ms_Boutons;    ///< La liste static totale des boutons.    
-    static std::shared_ptr<Bouton> ms_btnSurvole;    ///< Pointeur static vers le bouton qui à le focus du survol.    
-    static std::shared_ptr<Bouton> ms_btnPresse;    ///< Pointeur static vers le bouton de l'interface qui est en train d'être pressé.    
-    Etat m_etat;    ///<  L'état du bouton. (#G)    
-    std::shared_ptr<gui::AfficheRectangle> m_zoneClique;
+    std::shared_ptr<Label> m_label;    ///< Le texte du bouton.
+    std::shared_ptr<Image> m_icone;    ///< L'icone du bouton.
+    friend class BoutonRendu;
 
 }; // fin class Bouton
 

@@ -1088,3 +1088,9 @@
 1445609738 source:c:\users\kris\documents\06 - c++\110 - gui\code\main\src\gestion_ecrans.cpp
 	"Gestion_ecrans.h"
 
+1452951859 c:\users\kris\documents\06 - c++\110 - gui\code\gui\include\resourcemgr.h
+	<SFML/Audio.hpp>
+	<SFML/Graphics.hpp>
+	<memory>
+	<unordered_map>
+

@@ -5,29 +5,28 @@
 // Headers
 /////////////////////////////////////////////////
 #include <SFML/Graphics.hpp>
-#include <memory>
-#include "Gadget.h"
 
+#include "Theme.h"
+#include "Gadget.h"
+#include "Conteneur.h"
+#include "ConteneurGui.h"
+#include "FabriqueGadgetBase.h"
 
 
 namespace gui {
 
-class GUI;
-class Skin;
-class FabriqueGadget;
+//class Gadget;
+////class Theme;
+//class Conteneur;
+//class Gadget;
 
 
 /////////////////////////////////////////////////
-/// \brief Le gestionnaire d'interface (unique : GOF4 : singleton. Attention! : cette version du singleton peut poser probleme avec une utilisation des threads)).
+/// \brief La classe gérant la globalité de l'interface.
 ///
 /////////////////////////////////////////////////
-class GUI {
+class Gui {
 
-
-/////////////////////////////////////////////////
-// Enums & typedefs
-/////////////////////////////////////////////////
-    typedef std::shared_ptr<Gadget> ptr;    ///< Pointeur vers un gadget.
 
 
 /////////////////////////////////////////////////
@@ -35,64 +34,81 @@ class GUI {
 /////////////////////////////////////////////////
 
 public:
+    ///< Definir m_theme
+    void setTheme( Theme::ptr val ){ m_theme = val; };
+
+    ///< Acceder à m_theme
+    Theme::ptr getTheme () const { return m_theme; };
+
+    ///< Definir m_fenetre
+    void setFenetre( sf::RenderTarget* val ){ m_fenetre = val; };
+
+    ///< Acceder à m_fenetre
+    sf::RenderTarget* getFenetre () const { return m_fenetre; };
+
+    ///< Definir m_infoBulleVisible
+    void setInfoBulleVisible( Gadget::ptr val ){ m_infoBulleVisible = val; };
+
+    ///< Acceder à m_infoBulleVisible
+    Gadget::ptr getInfoBulleVisible () const { return m_infoBulleVisible; };
+
 public:
     /////////////////////////////////////////////////
-    /// \brief Initialisation du gestionnaire d'interface (skin, polices, icones...)
+    /// \brief Constructeur par défaut.
+    ///
+    /// \param fenetre		 La fentre SFML dans laquelle afficher l'interface.
+    /////////////////////////////////////////////////
+    Gui (sf::RenderTarget* fenetre);
+
+    /////////////////////////////////////////////////
+    /// \brief Actualiser les gadgets. (à integrer dans la boucle principale.)
     ///
     /////////////////////////////////////////////////
-    void init ();
+    void actualiser ();
 
-    void traiter_events (const sf::Event&  evenement);
-
+    /////////////////////////////////////////////////
+    /// \brief Dessiner toute  l'interface. (à integrer dans la boucle principale.)
+    ///
+    /// \param target
+    /// \param states
+    /////////////////////////////////////////////////
     void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
     /////////////////////////////////////////////////
-    /// \brief Si m_instance == null_ptr alors on créer m_instance. Puis on renvois. Permet la création à la demande! m_instance
+    /// \brief Ajouter un gadget à la racine de l'interface.
     ///
+    /// \param enfant		 Le gadget à ajouter à la racine de l'interface.
     /////////////////////////////////////////////////
-    std::shared_ptr<GUI> instance ();
-
-private:
-    /////////////////////////////////////////////////
-    /// \brief Constructeur par défaut en privé (Singleton).
-    ///
-    /// \param fenetreSFML		 la fenetre SFML dans laquelle on va utiliser l'interface
-    /////////////////////////////////////////////////
-    GUI (sf::RenderWindow fenetreSFML);
+    void ajouter (Gadget::ptr enfant);
 
     /////////////////////////////////////////////////
-    /// \brief Constructeur par copie  en privé (Singleton).
+    /// \brief Retirer un gadget de la racine de l'interface.
     ///
-    /// \param original
+    /// \param enfant		 Le gadget enfant à retirer de l'interface.
     /////////////////////////////////////////////////
-    GUI (const GUI& original);
+    void retirer (Gadget::ptr enfant);
 
     /////////////////////////////////////////////////
-    /// \brief Destructeur par défaut privé (Singleton).
+    /// \brief Vider le Gui de tout ses gadgets.
     ///
     /////////////////////////////////////////////////
-    ~GUI ();
-
-    /////////////////////////////////////////////////
-    /// \brief Cherche quel gadget est sruvolé, nullptr si rien n'est survolé.
-    ///
-    /////////////////////////////////////////////////
-    ptr chercherSurvol ();
+    void vider ();
 
 
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
-public:
-    static GUI m_instance;    ///< L'instance static unique vers le GUI. (GOF4 : singleton.)
-     m_gestRessources;    ///< Le gestionnaire des resources propres aux interfaces.
 private:
-    sf::renderWindow m_fenetreSFML;    ///< La fenêtre SFML dans laquelle on intègre l'interface.
-    Skin m_skin;                ///< Le skin global à appliqué aux gadgets de l'interface.
-    std::shared_ptr<gui::FabriqueGadget> ;     ///< Fonctions de creation des gadgets.
+    FabriqueGadgetBase creer;    ///< Pour creer les gadgets.
+    Theme::ptr m_theme;    ///< Le thème gobal de l'interface.
+    sf::RenderTarget* m_fenetre;    ///< La fenetre SFML oÃ¹ s'affiche l'interface.
+    ConteneurGui::ptr m_conteneur;    ///< Le conteneur de tout les gadgets de l'interface.
+    sf::Time m_tempsPourAfficherInfoBulle;    ///< Le temps avant de de mander l'infobule du gadget survolé.
+    sf::Time m_tempsDoubleClique;    ///< Le temps de l'interval entre deux clique pour demander le double clique.
+    Gadget::ptr m_infoBulleVisible;    ///< L'info bulle à afficher.
 
-}; // fin class GUI
+}; // fin class Gui
 
 } // fin namespace gui
 

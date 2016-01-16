@@ -5,34 +5,40 @@
 // Headers
 /////////////////////////////////////////////////
 #include <SFML/Graphics.hpp>
+#include <memory>
 
 
 
 namespace gui {
 
-class Style;
+class ptr;
 
 
 /////////////////////////////////////////////////
-/// \brief Un style regroupe un ensemble de caractéristiques de base des gadgets.
+/// \brief Un style regroupe les charactéristiques graphique d'un état d'un gadget.
 ///
 /////////////////////////////////////////////////
 class Style {
 
+
+/////////////////////////////////////////////////
+// Enums & typedefs
+/////////////////////////////////////////////////
+public:
+    typedef std::shared_ptr<Style> ptr;    ///< Pointeur vers un Theme.
 
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
 public:
-    sf::Font txt_police;    ///< Police du texte.    
-    sf::Text::Style txt_style;    ///< Style SFML du texte (Regular, Italic, ... ).    
-    float txt_taille;    ///< Taille du texte.    
-    sf::Color txt_couleur;    ///< Couleur du texte.    
-    float lgn_epaisseur;    ///< Epaisseur des lignes.    
-    sf::Color lgn_couleur;    ///< Couleur des lignes.    
-    sf::Color fnd_couleur;    ///< Couleur du fond.    
-    sf::Texture fnd_texture;    ///< Texture du fond au repos.    
+    sf::Color m_texteCouleur;    ///<
+    sf::Color m_fondCouleur;    ///<
+    std::shared_ptr<sf::Texture> m_texture;    ///<
+    std::shared_ptr<sf::Font> m_police;    ///<
+    float m_taillePolice;    ///<
+    sf::Color m_cadreCouleur;    ///<
+    float m_cadreTaille;    ///<
 
 }; // fin class Style
 

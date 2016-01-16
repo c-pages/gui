@@ -1,0 +1,76 @@
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include <Conteneur.h>
+
+#include <Gadget.h>
+#include <Repartiteur.h>
+
+
+namespace gui {
+
+/////////////////////////////////////////////////
+void Conteneur::supprimerEnfant (Gadget::ptr enfant)
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void Conteneur::mettreAuDessusEnfant (Gadget::ptr enfant)
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void Conteneur::focus (const Gadget::ptr& enfant)
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void Conteneur::focus_EnfantSuivant ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void Conteneur::focus_enfantPrecedant ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void Conteneur::focus_aucunEnfant ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void Conteneur::decocherBoutonsRadio ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void Conteneur::draw_enfants (sf::RenderTarget& target, sf::RenderStates states) const
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void Conteneur::draw (sf::RenderTarget& target, sf::RenderStates states) const
+{
+    
+}
+
+
+} // fin namespace gui
+

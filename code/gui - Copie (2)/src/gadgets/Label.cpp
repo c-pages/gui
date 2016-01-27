@@ -1,0 +1,32 @@
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include <Label.h>
+#include <LabelRendu.h>
+
+
+
+namespace gui {
+/////////////////////////////////////////////////
+Label::Label ( )
+{
+   m_gadgetRendu = std::shared_ptr<GadgetRendu> ( new LabelRendu( getThisPtr() ) );
+}
+
+
+/////////////////////////////////////////////////
+Label::Label (Gadget* parent)
+//: LabelRendu (  )
+{
+
+}
+
+/////////////////////////////////////////////////
+void Label::draw (sf::RenderTarget& target, sf::RenderStates states) const
+{
+
+}
+
+
+} // fin namespace gui
+

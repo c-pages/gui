@@ -12,8 +12,8 @@ namespace app
 /////////////////////////////////////////////////
 ResourceMgr<sf::Font,int>                                   Config::m_polices;
 sf::Time                                                    Config::m_dureeImage  ;
-/*std::map < Config::Skins  , std::shared_ptr<gui::Skin >>    Config::m_skins = {};
-std::map < Config::Styles , std::shared_ptr<gui::Style>>    Config::m_styles = {};*/
+std::map < Config::Skins  , std::shared_ptr<gui::Skin >>    Config::m_skins = {};
+std::map < Config::Styles , std::shared_ptr<gui::Style>>    Config::m_styles = {};
 
 
 
@@ -71,14 +71,14 @@ void Config::initTextures()
 /////////////////////////////////////////////////
 void Config::initSkins()
 {
-
+/*
     /////////////////////////////////////////////////
     // Skin1
     /////////////////////////////////////////////////
 
     // Enregistrement du skin dans la pile de skin.
-/*    m_skins.insert ( { Config::Skins::Skin1 , std::make_shared<gui::Skin> () } ) ;
-    auto skin1 = m_skins[ Config::Skins::Skin1 ];*/
+    m_skins.insert ( { Config::Skins::Skin1 , std::make_shared<gui::Skin> () } ) ;
+    auto skin1 = m_skins[ Config::Skins::Skin1 ];
 
     //// quleques variables pour simplifier l'ecriture
     sf::Font    police              = m_polices.get( Polices::police_2 );
@@ -87,7 +87,7 @@ void Config::initSkins()
     sf::Color   couleurTexte        = sf::Color ( 175,175,190 );
     float       taille_Btn_Text     = 12;
     float       epaisseurLignes     = 1;
-/*
+
     //// DESACTIVE ///////////////////////////////////
     skin1->desactive->txt_police       = police;
     skin1->desactive->txt_style        = sf::Text::Style::Regular ;

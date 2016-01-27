@@ -18,7 +18,7 @@
 					<Add directory="utilitaires/include" />
 				</Compiler>
 				<Linker>
-					<Add library="..\gui\bin\Release\libgui.a" />
+					<Add library="..\gui\bin\Debug\libGui.a" />
 					<Add library="sfml-audio-s-d" />
 					<Add library="sfml-graphics-s-d" />
 					<Add library="sfml-window-s-d" />
@@ -38,7 +38,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="..\gui\bin\Release\libgui.a" />
+					<Add library="..\gui\bin\Release\libGui.a" />
 					<Add library="sfml-audio-s" />
 					<Add library="sfml-graphics-s" />
 					<Add library="sfml-window-s" />
@@ -51,14 +51,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add option="-DSFML_STATIC" />
-			<Add directory="F:/Bibliotheques CPP/SFML-2.1/include" />
+			<Add directory="C:/SFML-2.1/include" />
 			<Add directory="../gui/include" />
-			<Add directory="../gui" />
 			<Add directory="include" />
 			<Add directory="../main" />
 		</Compiler>
 		<Linker>
-			<Add directory="F:/Bibliotheques CPP/SFML-2.1/lib" />
+			<Add directory="C:/SFML-2.1/lib" />
 			<Add directory="../gui/src" />
 			<Add directory="src" />
 		</Linker>

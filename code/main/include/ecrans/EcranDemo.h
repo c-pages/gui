@@ -7,7 +7,8 @@
 #include    <SFML/Graphics.hpp>
 #include    <Ecran.h>
 #include    <Application.h>
-//#include    <GUI.h>
+#include    <GUI.h>
+#include    <Interface.h>
 
 namespace app {
 
@@ -89,12 +90,12 @@ private:
 
     sf::RectangleShape                  m_fond;     ///< Le shape SFML du fond de l'écran.
 
-/*    std::shared_ptr<gui::Groupe>        m_gui;      ///< Le groupe de GUI du menu principal.
-    std::shared_ptr<gui::Label >        labelTest;
+    std::shared_ptr<gui::Interface>     m_interface;      ///< Le groupe de GUI du menu principal.
+    /*std::shared_ptr<gui::Label >        labelTest;
     std::shared_ptr<gui::Bouton >       bouton1;
-    std::shared_ptr<gui::Bouton >       bouton2;
+    std::shared_ptr<gui::Bouton >       bouton2;*/
 
-std::shared_ptr<gui::ChampTexte>  m_champ ;*/
+//std::shared_ptr<gui::ChampTexte>  m_champ ;
     //std::shared_ptr<Gadget>
 
 }; // fin EcranDemo

@@ -55,6 +55,7 @@
 			<Add directory="../gui/include" />
 			<Add directory="include" />
 			<Add directory="../main" />
+			<Add directory="../gui" />
 		</Compiler>
 		<Linker>
 			<Add directory="C:/SFML-2.1/lib" />

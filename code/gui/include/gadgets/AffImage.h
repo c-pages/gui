@@ -19,7 +19,7 @@ namespace gui {
 /// \brief Classe concrète d'affichage d'une simple image.
 ///
 /////////////////////////////////////////////////
-class AffImage : public gui::Affiche {
+class AffImage : public Affiche {
 
 
 
@@ -46,8 +46,8 @@ public:
 // Membres
 /////////////////////////////////////////////////
 public:
-    std::shared_ptr<sf::RectangleShape> m_rectangle;
-    std::shared_ptr<sf::Texture> m_texture;
+    std::shared_ptr<sf::RectangleShape>     m_rectangle;
+    std::shared_ptr<sf::Texture>            m_texture;
 
 }; // fin class AffImage
 

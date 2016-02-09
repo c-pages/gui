@@ -25,6 +25,8 @@ public:
 
     virtual void actualiser (sf::Time delta);
 
+    virtual void traiter_evenements( const sf::Event evenement );
+
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states ) const;
 
 

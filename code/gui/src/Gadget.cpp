@@ -118,10 +118,12 @@ void Gadget::mettre_auDessus (std::shared_ptr<Gadget> gadget)
 void Gadget::setParent( ptr  val )
 {
 
-    std::cout <<"Set parent\n";
-
+    std::cout <<"Set parent!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
+//
     m_parent = val;
-    m_parent->ajouterAEnfants ( getThisPtr() );
+
+    m_parent->ajouterAEnfants ( thisPtr() );
+
     std::cout <<"   Set parent Fin\n";
 
 }
@@ -129,7 +131,6 @@ void Gadget::setParent( ptr  val )
 
 void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
-    std::cout << "Gadget draw\n";
 
     // On applique la transformation du gadget.
     states.transform *= getTransform();
@@ -148,7 +149,7 @@ void Gadget::dessinerComposants (sf::RenderTarget& target, sf::RenderStates stat
 {
 
     // On dessine chaques composants
-    for (auto composant : m_composants )
+    for ( auto composant : m_composants )
         composant->draw ( target , states );
 
 }

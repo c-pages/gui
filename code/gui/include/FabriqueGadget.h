@@ -28,8 +28,12 @@ class FabriqueGadget {
 // Méthodes
 /////////////////////////////////////////////////
 public:
-    FabriqueGadget ( std::shared_ptr<Interface> gui );
+    FabriqueGadget ( Interface* gui );
     FabriqueGadget (  );
+
+    void setInterface ( Interface* interface ){
+        m_interface = interface;
+    };
 
     Gadget::ptr texte ();
 
@@ -38,7 +42,7 @@ public:
     Gadget::ptr bouton ( std::string texte = "Bouton" );
 
 private:
-    std::shared_ptr<Interface>   m_interface;
+    Interface*   m_interface;
 }; // fin class FabriqueGadget
 
 } // fin namespace gui

@@ -1,34 +1,69 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
+	<File name="src\FabriqueGadget.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="963" topLine="42" />
+		</Cursor>
+	</File>
+	<File name="src\gadgets\Bouton.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2474" topLine="87" />
+		</Cursor>
+	</File>
+	<File name="src\Gadget.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3134" topLine="132" />
+		</Cursor>
+	</File>
+	<File name="src\Interaction.cpp" open="1" top="0" tabpos="27" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="768" topLine="22" />
+		</Cursor>
+	</File>
+	<File name="src\Composite.cpp" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="705" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\gadgets\AffRectangle.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1091" topLine="23" />
+		</Cursor>
+	</File>
+	<File name="src\Interface.cpp" open="1" top="0" tabpos="24" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2546" topLine="82" />
+		</Cursor>
+	</File>
+	<File name="include\gadgets\AffImage.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="452" topLine="27" />
+		</Cursor>
+	</File>
+	<File name="src\Affiche.cpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="src\Skin.cpp" open="1" top="0" tabpos="25" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\gadgets\AffRectangle.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\gadgets\AffImage.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="276" topLine="0" />
+			<Cursor1 position="639" topLine="31" />
 		</Cursor>
 	</File>
-	<File name="src\gadgets\Bouton.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\gadgets\AffLabel.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="879" topLine="12" />
-		</Cursor>
-	</File>
-	<File name="include\gadgets\AffImage.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="832" topLine="0" />
+			<Cursor1 position="1576" topLine="50" />
 		</Cursor>
 	</File>
 	<File name="src\ConteneurGui.cpp" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="517" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="GUI.h" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="69" topLine="0" />
+			<Cursor1 position="897" topLine="24" />
 		</Cursor>
 	</File>
 	<File name="src\Geometrie.cpp" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -36,14 +71,19 @@
 			<Cursor1 position="352" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\gadgets\AffRectangle.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+	<File name="GUI.h" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="603" topLine="0" />
+			<Cursor1 position="69" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include\gadgets\AffLabel.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="868" topLine="0" />
+			<Cursor1 position="1299" topLine="36" />
+		</Cursor>
+	</File>
+	<File name="src\gadgets\AffRectangle.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1339" topLine="36" />
 		</Cursor>
 	</File>
 	<File name="include\Affiche.h" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -53,52 +93,27 @@
 	</File>
 	<File name="include\Gadget.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1880" topLine="52" />
-		</Cursor>
-	</File>
-	<File name="include\Interface BACK.h" open="1" top="0" tabpos="37" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="40" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\gadgets\AffLabel.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1056" topLine="0" />
+			<Cursor1 position="3355" topLine="6" />
 		</Cursor>
 	</File>
 	<File name="include\Interface.h" open="1" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2783" topLine="86" />
+			<Cursor1 position="3355" topLine="98" />
+		</Cursor>
+	</File>
+	<File name="include\Cliquable.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="626" topLine="4" />
 		</Cursor>
 	</File>
 	<File name="include\gadgets\Bouton.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1379" topLine="9" />
+			<Cursor1 position="2217" topLine="9" />
 		</Cursor>
 	</File>
-	<File name="src\gadgets\AffImage.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\Interaction.h" open="1" top="0" tabpos="26" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="639" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\FabriqueGadget.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="366" topLine="3" />
-		</Cursor>
-	</File>
-	<File name="include\ConteneurGui.h" open="1" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="473" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\Affiche.cpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="include\FabriqueGadget.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="170" topLine="0" />
+			<Cursor1 position="4422" topLine="88" />
 		</Cursor>
 	</File>
 	<File name="src\Cliquable.cpp" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -106,39 +121,19 @@
 			<Cursor1 position="549" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\Interface BACK.cpp" open="1" top="0" tabpos="38" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\FabriqueGadget.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\Composite.cpp" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="705" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="src\Interface.cpp" open="1" top="1" tabpos="24" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1332" topLine="43" />
-		</Cursor>
-	</File>
-	<File name="include\Cliquable.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="626" topLine="25" />
+			<Cursor1 position="814" topLine="22" />
 		</Cursor>
 	</File>
 	<File name="include\Geometrie.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1089" topLine="36" />
+			<Cursor1 position="2813" topLine="70" />
 		</Cursor>
 	</File>
-	<File name="src\Gadget.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\ConteneurGui.h" open="1" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2565" topLine="118" />
-		</Cursor>
-	</File>
-	<File name="include\Popo.h" open="1" top="0" tabpos="26" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="473" topLine="10" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

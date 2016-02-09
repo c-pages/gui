@@ -13,7 +13,7 @@ namespace app
 ResourceMgr<sf::Font,int>                                   Config::m_polices;
 sf::Time                                                    Config::m_dureeImage  ;
 std::map < Config::Skins  , std::shared_ptr<gui::Skin >>    Config::m_skins = {};
-std::map < Config::Styles , std::shared_ptr<gui::Style>>    Config::m_styles = {};
+//std::map < Config::Styles , std::shared_ptr<gui::Style>>    Config::m_styles = {};
 
 
 

@@ -10,12 +10,13 @@ namespace gui {
 /////////////////////////////////////////////////
 AffRectangle::AffRectangle ()
 : Affiche()
-, m_rectangle   ( std::shared_ptr<sf::RectangleShape> (new sf::RectangleShape ( )) )
+, m_rectangle   (  std::make_shared<sf::RectangleShape>  ( ) )
 , m_couleur     ( sf::Color ( 200 , 100 , 100 , 150 ) )
 , m_cadreTaille ( 1 )
 , m_cadreCouleur( sf::Color ( 255 , 255 , 255 , 200 ) )
 {
 
+    std::cout << "AffRectangle::AffRectangle ()\n";
     // Actualiser
     actualiser( sf::seconds(0));
 

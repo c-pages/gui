@@ -56,10 +56,11 @@ void Interface::draw (sf::RenderTarget& target, sf::RenderStates states) const
 Interface::Interface (  )
 : m_fenetreSFML ( 0 )
 , m_skin        ( 0 )
-, creer         ( FabriqueGadget ( /*shared_from_this() */ ) )
-//, m_conteneur   ( std::shared_ptr<Gadget> ( new ConteneurInterface () ) )
+, creer         ( FabriqueGadget ( this ) )
+//, m_conteneur (  Gadget::ptr ( new ConteneurGui () ) )
 {
     std::cout << "Creation Interface ()\n";
+    m_conteneur =  Gadget::ptr ( new ConteneurGui () ) ;
 
 }
 
@@ -67,11 +68,14 @@ Interface::Interface (  )
 Interface::Interface ( sf::RenderWindow* fenetreSFML )
 : m_fenetreSFML ( fenetreSFML )
 , m_skin ( 0 )
-, creer ( FabriqueGadget ( shared_from_this() ) )
-//, m_conteneur (  Gadget::ptr ( new ConteneurInterface () ) )
+, creer ( FabriqueGadget ( this ) )
+, m_conteneur (  std::shared_ptr<Gadget> ( new ConteneurGui () ) )
 {
     std::cout << "Creation Interface ( sf::RenderWindow* fenetreSFML )\n";
 //    m_conteneur =  Gadget::ptr ( new ConteneurInterface () );
+//
+//    creer = FabriqueGadget (  ) ;
+//    creer.setInterface (this);
 
 }
 
@@ -87,7 +91,13 @@ Interface::Interface (const Interface& original)
 /////////////////////////////////////////////////
 void Interface::traiter_evenements ( const sf::Event&  evenement )
 {
-    std::cout << "Interface : traiter evenemnts\n";
+//    std::cout << "Interface : traiter evenemnts\n";
+    // les evenements souris des gadgets
+    m_conteneur->traiter_evenements ( evenement );
+//
+//    for ( Gadget::ptr gadget : m_conteneur->getEnfants() )
+//        gadget->popo();
+
 }
 
 /////////////////////////////////////////////////
@@ -115,10 +125,10 @@ void Interface::dessiner ( ) const
 /////////////////////////////////////////////////
 void Interface::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
-    std::cout << " Interface::draw\n";
+//   std::cout << " Interface::draw\n";
 
     // On dessine chaques composants
-    //m_conteneur->draw ( target , states );
+    m_conteneur->draw ( target , states );
 
 }
 

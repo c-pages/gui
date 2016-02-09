@@ -89,10 +89,10 @@ public:
 // Membres
 /////////////////////////////////////////////////
 protected:
-    //sf::Vector2f    m_position;         ///< La position relative (parent) du gadget.#G#S
-    sf::Vector2f    m_taille;           ///< la taille permet d'organiser la disposition des éléments graphiques du gadget. #S#G
-    sf::FloatRect   m_localBounds;      ///< la rectangle anglobant du gadget en coordonnés locales. #G
-    sf::FloatRect   m_globalBounds;     ///< la rectangle anglobant du gadget en coordonnés globales. #G
+    //sf::Vector2f    m_position;         ///< La position relative (parent) du gadget.
+    sf::Vector2f    m_taille;           ///< la taille permet d'organiser la disposition des éléments graphiques du gadget.
+    sf::FloatRect   m_localBounds;      ///< la rectangle anglobant du gadget en coordonnés locales.
+    sf::FloatRect   m_globalBounds;     ///< la rectangle anglobant du gadget en coordonnés globales.
 
 
 }; // fin class Geometrie

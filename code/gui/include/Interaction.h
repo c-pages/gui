@@ -73,7 +73,7 @@ public:
     /// \param touche		 la touche du clavier.
     /// \param fonction		 Le fonction à déclencher.
     /////////////////////////////////////////////////
-    void lier ( sf::Keyboard  touche, FctnAction fonction);
+    void lier ( sf::Keyboard::Key touche, FctnAction fonction);
 
     /////////////////////////////////////////////////
     /// \brief Supprime une liaison entre un evenement souris  et une fonction lambda.
@@ -85,14 +85,14 @@ public:
     /////////////////////////////////////////////////
     /// \brief Supprime une liaison entre un evenement clavier  et une fonction lambda.
     ///
-    /// \param touche		 
+    /// \param touche
     /////////////////////////////////////////////////
-    void delier ( sf::Keyboard  touche);
+    void delier ( sf::Keyboard::Key  touche);
 
     /////////////////////////////////////////////////
     /// \brief Déclencher un évenement souris (les évenement claviers sont gérer.
     ///
-    /// \param evenement		 
+    /// \param evenement
     /////////////////////////////////////////////////
     void declencher (Evenement evenement);
 
@@ -102,8 +102,8 @@ public:
 // Membres
 /////////////////////////////////////////////////
 private:
-    std::map < Evenement , FctnAction > m_evenementsSouris;    ///< la liste des evenements souris enregistrés.    
-    std::map < sf::Keyboard  , FctnAction > m_evenementsClavier;    ///<  la liste des evenements claviers enregistrés.    
+    std::map < Evenement , FctnAction >             m_evenementsSouris;     ///< la liste des evenements souris enregistrés.
+    std::map < sf::Keyboard::Key  , FctnAction >    m_evenementsClavier;    ///< la liste des evenements claviers enregistrés.
 
 }; // fin class Interaction
 

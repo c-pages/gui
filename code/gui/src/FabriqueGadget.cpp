@@ -13,7 +13,7 @@
 namespace gui {
 
 /////////////////////////////////////////////////
-FabriqueGadget::FabriqueGadget ( std::shared_ptr<Interface> gui )
+FabriqueGadget::FabriqueGadget ( Interface* gui )
 : m_interface ( gui )
 {
 
@@ -43,15 +43,15 @@ Gadget::ptr FabriqueGadget::image ()
 /////////////////////////////////////////////////
 Gadget::ptr FabriqueGadget::bouton ( std::string texte  )
 {
-    std::cout << "Fabriquer un bouton :debut\n";
+    std::cout << "Fabriquer un bouton.\n";
 
     // Creation du bouton
-    Gadget::ptr bouton = std::shared_ptr<Bouton>( new Bouton( ) );
+    Gadget::ptr bouton = std::make_shared<Bouton>(  );
 
-    std::cout << "Fabriquer un bouton :1\n";
 
+//m_interface->m_conteneur->popo();
     // Assignation du parent, le conteneur du gui ici.
-//    bouton->setParent(  m_interface->m_conteneur );
+    bouton->setParent(  m_interface->m_conteneur );
 
     std::cout << "Fabriquer un bouton :2\n";
 

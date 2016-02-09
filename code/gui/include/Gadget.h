@@ -62,7 +62,7 @@ public:
     /// \brief Initialise les interactions des composant du gadgets.
     ///
     /////////////////////////////////////////////////
-    std::shared_ptr<Gadget> getThisPtr (){ return  shared_from_this(); };
+    std::shared_ptr<Gadget> thisPtr (){ return  shared_from_this(); };
 
 
 public:
@@ -118,7 +118,6 @@ public:
     //////////////////////////////
     // Composite    //////////////
     //////////////////////////////
-
     ///< Ajouter un élement dans m_enfants
     void ajouterAEnfants (  ptr nouvelElement ){
         std::cout << "AJOUTER ENFANT\n";
@@ -133,6 +132,9 @@ public:
 
     ///< Accesseur à l'élément de m_enfants désigné par un id.
     ptr getEnfants ( int id ) const { if ( id>=0 || id<m_enfants.size() )  return m_enfants.at( id ); else return 0; };
+
+    std::vector<ptr>    getEnfants () { return m_enfants; } ;
+
 
     ///< Definir m_parent
     void setParent( ptr  val );
@@ -225,18 +227,18 @@ public:
 // Membres
 /////////////////////////////////////////////////
 protected:
-    bool m_actif;       ///< le gadget est il actif ? (#G#S)
-    bool m_visible;     ///< est il visible ? ( si non visible : inactif ?) (#G#S)
-    bool m_focus;       ///< Si le gadget à le focus. #G#S
-    bool m_survol;      ///< Si on survol le gadget.#G#S
-    bool m_presse;      ///< Si le gadget à été pressé.#G#S
-    bool m_deplacable;  ///< Si le gadget est déplacable (clique and drag)#G#S
+    bool m_actif;       ///< le gadget est il actif ?
+    bool m_visible;     ///< est il visible ? ( si non visible : inactif ?)
+    bool m_focus;       ///< Si le gadget à le focus.
+    bool m_survol;      ///< Si on survol le gadget.
+    bool m_presse;      ///< Si le gadget à été pressé.
+    bool m_deplacable;  ///< Si le gadget est déplacable (clique and drag)
 
-    std::string m_texte;
+    std::string         m_texte;
 
-    std::vector<ptr>    m_composants;   ///< les differents gadgets qui composent ce gadget. (#A#R#V#G)
-    std::vector<ptr>    m_enfants;      ///< Les enfants du gadget.#A#R#V#G
-    ptr                 m_parent;       ///< #G#S
+    std::vector<ptr>    m_composants;   ///< les differents gadgets qui composent ce gadget.
+    std::vector<ptr>    m_enfants;      ///< Les enfants du gadget.
+    ptr                 m_parent;       ///<
 
     friend class Gui ;
     friend class Geometrie ;

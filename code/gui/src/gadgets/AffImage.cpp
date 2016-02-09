@@ -11,8 +11,8 @@ namespace gui {
 /////////////////////////////////////////////////
 AffImage::AffImage ()
 : Affiche()
-, m_rectangle   ( std::shared_ptr<sf::RectangleShape> ( new sf::RectangleShape ( )) )
-, m_texture     ( nullptr )
+//, m_rectangle   ( std::make_shared<sf::RectangleShape> ( new sf::RectangleShape ( {0,0 }) ))
+//, m_texture     ( std::make_shared<sf::Texture> ( new sf::Texture () ) )
 {
 
     // Actualiser
@@ -26,7 +26,7 @@ void AffImage::actualiser( sf::Time delta )
 {
     std::cout << "AffImage::actualiser()\n";
 
-    m_rectangle->setSize (  m_taille );
+//    m_rectangle->setSize (  m_taille );
 }
 
 

@@ -42,17 +42,25 @@ public:
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
+    /////////////////////////////////////////////////
+    /// \brief Surcharge du l'acceur de la taille pour tenir compte du texte SFML
+    ///
+    /// \return la taille du texte en pixels.
+    ///
+    /////////////////////////////////////////////////
+    virtual sf::Vector2f    getTaille() const;
+
 
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
 public:
-    std::shared_ptr<sf::Text>   m_texte;
+    std::shared_ptr<sf::Text>   m_label;
 
-    sf::Font                    m_police;
-    sf::Color                   m_couleur;
-    float                       m_taille;
+    sf::Font                    m_labelPolice;
+    sf::Color                   m_labelCouleur;
+    float                       m_labelTaille;
 
 }; // fin class AffLabel
 

@@ -70,9 +70,7 @@
 		<Unit filename="include/Gadget.h" />
 		<Unit filename="include/Geometrie.h" />
 		<Unit filename="include/Interaction.h" />
-		<Unit filename="include/Interface BACK.h" />
 		<Unit filename="include/Interface.h" />
-		<Unit filename="include/Popo.h" />
 		<Unit filename="include/Skin.h" />
 		<Unit filename="include/Style.h" />
 		<Unit filename="include/gadgets/AffImage.h" />
@@ -96,9 +94,7 @@
 		<Unit filename="src/Gadget.cpp" />
 		<Unit filename="src/Geometrie.cpp" />
 		<Unit filename="src/Interaction.cpp" />
-		<Unit filename="src/Interface BACK.cpp" />
 		<Unit filename="src/Interface.cpp" />
-		<Unit filename="src/Popo.cpp" />
 		<Unit filename="src/Skin.cpp" />
 		<Unit filename="src/gadgets/AffImage.cpp" />
 		<Unit filename="src/gadgets/AffLabel.cpp" />

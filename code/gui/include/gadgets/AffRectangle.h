@@ -5,6 +5,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include "Affiche.h"
+
 #include <memory>
 #include <SFML/Graphics.hpp>
 
@@ -18,7 +19,7 @@ namespace gui {
 /// \brief Classe concrète d'affichage d'un simple rectangle.
 ///
 /////////////////////////////////////////////////
-class AffRectangle : public gui::Affiche {
+class AffRectangle : public Affiche {
 
 
 

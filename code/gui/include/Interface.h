@@ -101,18 +101,18 @@ public:
 public:
 //    static Gui  m_instance;                             ///< L'instance static unique vers le GUI. (GOF4 : singleton.)
 
-    FabriqueGadget              creer;         ///< Fonctions de creation des gadgets.
+    FabriqueGadget              creer;          ///< Fonctions de creation des gadgets.
 
 private:
-    sf::RenderWindow*           m_fenetreSFML;  ///< La fenêtre SFML dans laquelle on intègre l'interface.#G#S
-    std::shared_ptr<Skin>       m_skin;         ///< Le skin global à appliqué aux gadgets de l'interface.#G#S
+    sf::RenderWindow*           m_fenetreSFML;  ///< La fenêtre SFML dans laquelle on intègre l'interface.
+    std::shared_ptr<Skin>       m_skin;         ///< Le skin global à appliqué aux gadgets de l'interface.
 
-//    Gadget::ptr                 m_conteneur;    ///< Le conteneur de tout les gadgets de l'interface.
+    std::shared_ptr<Gadget>     m_conteneur;    ///< Le conteneur de tout les gadgets de l'interface.
 
 private:
-    std::vector<Gadget::ptr>    m_Boutons;         ///< La liste totale des boutons.
-    Gadget::ptr                 m_btnSurvole;      ///< Pointeur vers le bouton qui à le focus du survol.
-    Gadget::ptr                 m_btnPresse;       ///< Pointeur vers le bouton de l'interface qui est en train d'être pressé.
+//    std::vector<Gadget::ptr>    m_Boutons;      ///< La liste totale des boutons.
+    Gadget::ptr                 m_btnSurvole;   ///< Pointeur vers le bouton qui à le focus du survol.
+    Gadget::ptr                 m_btnPresse;    ///< Pointeur vers le bouton de l'interface qui est en train d'être pressé.
 
 
     friend class FabriqueGadget;

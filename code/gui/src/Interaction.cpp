@@ -10,35 +10,35 @@ namespace gui {
 /////////////////////////////////////////////////
 void Interaction::lier  (Evenement evenement, FctnAction fonction)
 {
-    
+
 }
 
 
 /////////////////////////////////////////////////
-void Interaction::lier ( sf::Keyboard  touche, FctnAction fonction)
+void Interaction::lier ( sf::Keyboard::Key  touche, FctnAction fonction)
 {
-    
+
 }
 
 
 /////////////////////////////////////////////////
 void Interaction::delier (Evenement evenement)
 {
-    
+
 }
 
 
 /////////////////////////////////////////////////
-void Interaction::delier ( sf::Keyboard  touche)
+void Interaction::delier ( sf::Keyboard::Key  touche)
 {
-    
+
 }
 
 
 /////////////////////////////////////////////////
 void Interaction::declencher (Evenement evenement)
 {
-    
+
 }
 
 

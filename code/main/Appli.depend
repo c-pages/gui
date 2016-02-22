@@ -6,7 +6,7 @@
 1446830935 c:\users\kris\documents\06 - c++\110 - gui\code\utilitaires\include\utilitaires.h
 	<sstream>
 
-1446568013 source:c:\users\kris\documents\06 - c++\110 - gui\code\main\main.cpp
+1455489688 source:c:\users\kris\documents\06 - c++\110 - gui\code\main\main.cpp
 	<Application.h>
 
 1453990735 c:\users\kris\documents\06 - c++\110 - gui\code\main\include\application.h
@@ -355,7 +355,7 @@
 1445716992 c:\users\kris\documents\06 - c++\110 - gui\code\main\include\gestion_ecrans.h
 	<Ecran.h>
 
-1453990735 source:c:\users\kris\documents\06 - c++\110 - gui\code\main\src\application.cpp
+1455473836 source:c:\users\kris\documents\06 - c++\110 - gui\code\main\src\application.cpp
 	"Application.h"
 	"Config.h"
 	"ecrans/EcranDemo.h"
@@ -455,28 +455,28 @@
 	"Interface.h"
 	"Gadget.h"
 
-1455046832 c:\users\kris\documents\06 - c++\110 - gui\code\gui\include\interface.h
+1455489899 c:\users\kris\documents\06 - c++\110 - gui\code\gui\include\interface.h
 	"Gadget.h"
+	"Interaction.h"
 	"FabriqueGadget.h"
 	"Skin.h"
 	"ConteneurGui.h"
 	<SFML/Graphics.hpp>
 	<memory>
 
-1455048672 c:\users\kris\documents\06 - c++\110 - gui\code\gui\include\gadget.h
+1455556010 c:\users\kris\documents\06 - c++\110 - gui\code\gui\include\gadget.h
 	"Interaction.h"
-	"Geometrie.h"
 	<SFML/Graphics.hpp>
 	<memory>
 	<vector>
 	<iostream>
 
-1455049375 c:\users\kris\documents\06 - c++\110 - gui\code\gui\include\interaction.h
+1455108153 c:\users\kris\documents\06 - c++\110 - gui\code\gui\include\interaction.h
 	<map>
 	<SFML/Graphics.hpp>
 	<functional>
 
-1455046832 c:\users\kris\documents\06 - c++\110 - gui\code\gui\include\geometrie.h
+1455309794 c:\users\kris\documents\06 - c++\110 - gui\code\gui\include\geometrie.h
 	<SFML/Graphics.hpp>
 	<vector>
 	<memory>
@@ -495,7 +495,7 @@
 1445609738 source:c:\users\kris\documents\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1455049160 source:c:\users\kris\documents\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1455392637 source:c:\users\kris\documents\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>

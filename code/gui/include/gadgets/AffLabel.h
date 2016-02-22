@@ -50,17 +50,32 @@ public:
     /////////////////////////////////////////////////
     virtual sf::Vector2f    getTaille() const;
 
+    void getProp() {
+        std::cout << "\n--------------------------------------\n";
+        std::cout << "      m_label : " << std::string ( m_label.getString() ) << "\n";
+        std::cout << "      m_labelCouleur : " << int ( m_label.getColor().r )
+                                        << " " << int ( m_label.getColor().g )
+                                        << " " << int ( m_label.getColor().b )
+                                        << "\n";
+        std::cout << "      m_labelTaille : " << int ( m_label.getCharacterSize() ) << "\n";
+        std::cout << "      Bounds : "  << int ( m_label.getGlobalBounds( ).width )
+                                        << " " << int ( m_label.getGlobalBounds( ).height )
+                                        << "\n";
+        std::cout << "      m_labelPolice : " << float ( m_labelPolice.getLineSpacing( 1 ) ) << "\n";
 
+        std::cout << "--------------------------------------\n\n";
+
+    }
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
 public:
-    std::shared_ptr<sf::Text>   m_label;
+    sf::Text    m_label;
 
-    sf::Font                    m_labelPolice;
-    sf::Color                   m_labelCouleur;
-    float                       m_labelTaille;
+    sf::Font    m_labelPolice;
+    sf::Color   m_labelCouleur;
+    float       m_labelTaille;
 
 }; // fin class AffLabel
 

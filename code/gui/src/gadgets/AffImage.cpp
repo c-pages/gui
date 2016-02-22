@@ -15,6 +15,7 @@ AffImage::AffImage ()
 //, m_texture     ( std::make_shared<sf::Texture> ( new sf::Texture () ) )
 {
 
+    std::cout << "Creation AffImage ( )\n";
     // Actualiser
     actualiser( sf::seconds(0));
 

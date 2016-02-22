@@ -12,7 +12,7 @@ namespace app {
 /////////////////////////////////////////////////
 EcranDemo::EcranDemo( Application*  appli )
 : Ecran             ( appli )
-, m_interface       ( new gui::Interface( ) )
+, m_interface       ( new gui::Interface( &appli->getFenetre() ) )
 {
 
     // Initialisation de l'interface graphique.
@@ -108,13 +108,21 @@ EcranDemo::initGUI  ()
 {
     using namespace gui;
 
-    // Creation d'un bouton
-    std::shared_ptr<Gadget> bouton = m_interface->creer.bouton( "Bouton Test" );
-    bouton->setPosition ( 50,50 );
-    bouton->lier ( sf::Keyboard::Escape , [this](){
-                   m_appli->getFenetre().close();
-       // gui::Log::print (  "Texte : " + m_champ->getTexte() );
+    // evenement clavier pour fermer la fenetre SFML
+    m_interface->lier ( sf::Keyboard::Escape , [this](){
+                std::cout << "Fermeture de la fenetre SFML\n";
+                m_appli->getFenetre().close();
     } );
+
+    // evenement clavier test
+    m_interface->lier ( sf::Keyboard::T , [this](){
+                       test();
+    } );
+
+    // Creation d'un bouton
+    auto bouton = m_interface->creer.bouton( "Bouton Test" );
+    bouton->setPosition ( 50,50 );
+
 
 }   // fin init GUI
 

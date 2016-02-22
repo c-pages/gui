@@ -25,7 +25,7 @@ class Cliquable : public Gadget {
 /////////////////////////////////////////////////
 // Enums & typedefs
 /////////////////////////////////////////////////
-    typedef std::shared_ptr<Cliquable> clickPtr;    ///< Pointeur vers un gadget.
+//    typedef std::shared_ptr<Cliquable> clickPtr;    ///< Pointeur vers un gadget.
 
 
 /////////////////////////////////////////////////
@@ -40,6 +40,8 @@ public:
     /////////////////////////////////////////////////
     void static s_traiterEvents ();
     */
+//    Cliquable(){};
+//    ~Cliquable()    {};
 
     /////////////////////////////////////////////////
     /// \brief Redéfinie ajouter par une fonction vide( GOF4 : composite -> Feuilles)
@@ -53,13 +55,13 @@ public:
     /////////////////////////////////////////////////
     virtual void retirer (){};
 
-    virtual void testerSurvol ();
+    virtual bool testerSurvol ( sf::Vector2i position );
 
     /////////////////////////////////////////////////
     /// \brief Actualise le style du gadget (après une modification, de son état par exemple).
     ///
     /////////////////////////////////////////////////
-    void actualiser ();
+   // void actualiser ();
 
     /////////////////////////////////////////////////
     /// \brief Définie un nouvel état pour le bouton, puis actualise le style.
@@ -67,13 +69,6 @@ public:
     /////////////////////////////////////////////////
     void setEtat ();
 
-    /////////////////////////////////////////////////
-    /// \brief Dessiner le gadget => dessiner ses enfants.
-    ///
-    /// \param target
-    /// \param states
-    /////////////////////////////////////////////////
-    //virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const {};
 
 
 /////////////////////////////////////////////////

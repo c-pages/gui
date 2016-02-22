@@ -54,29 +54,26 @@ void Interface::draw (sf::RenderTarget& target, sf::RenderStates states) const
 
 /////////////////////////////////////////////////
 Interface::Interface (  )
-: m_fenetreSFML ( 0 )
-, m_skin        ( 0 )
+: m_fenetreSFML ( nullptr )
+, m_skin        ( nullptr )
 , creer         ( FabriqueGadget ( this ) )
-//, m_conteneur (  Gadget::ptr ( new ConteneurGui () ) )
+//, m_conteneur   ( std::make_shared<ConteneurGui> ( ) )
+, m_gdgtSurvole ( nullptr )
+, m_gdgtPresse  ( nullptr )
 {
     std::cout << "Creation Interface ()\n";
-    m_conteneur =  Gadget::ptr ( new ConteneurGui () ) ;
-
 }
 
 /////////////////////////////////////////////////
 Interface::Interface ( sf::RenderWindow* fenetreSFML )
 : m_fenetreSFML ( fenetreSFML )
-, m_skin ( 0 )
-, creer ( FabriqueGadget ( this ) )
-, m_conteneur (  std::shared_ptr<Gadget> ( new ConteneurGui () ) )
+, m_skin        ( nullptr )
+, creer         ( FabriqueGadget ( this ) )
+//, m_conteneur   ( std::make_shared<ConteneurGui> ( ) )
+, m_gdgtSurvole ( nullptr )
+, m_gdgtPresse  ( nullptr )
 {
     std::cout << "Creation Interface ( sf::RenderWindow* fenetreSFML )\n";
-//    m_conteneur =  Gadget::ptr ( new ConteneurInterface () );
-//
-//    creer = FabriqueGadget (  ) ;
-//    creer.setInterface (this);
-
 }
 
 /*
@@ -91,12 +88,28 @@ Interface::Interface (const Interface& original)
 /////////////////////////////////////////////////
 void Interface::traiter_evenements ( const sf::Event&  evenement )
 {
-//    std::cout << "Interface : traiter evenemnts\n";
-    // les evenements souris des gadgets
-    m_conteneur->traiter_evenements ( evenement );
-//
-//    for ( Gadget::ptr gadget : m_conteneur->getEnfants() )
-//        gadget->popo();
+    std::cout << "...EVT...\n";
+    //////// les evenements claviers de l'interface ////////
+    traiter_evenements_clavier( evenement );
+
+    //////// les evenements souris des gadgets ////////
+    // On cherche un gadget survolé
+    Gadget::ptr     gdgtSurvole     = chercherSurvol();
+
+
+    if ( gdgtSurvole != nullptr  ) {
+//        std::cout << "SURVOL!!!!!\n";
+        gdgtSurvole->setSurvol ( true );
+        if ( m_gdgtSurvole != gdgtSurvole &&  m_gdgtSurvole != nullptr )
+            m_gdgtSurvole->setSurvol ( false );
+    } else {
+//        std::cout << "RIEN\n";
+        if ( m_gdgtSurvole != nullptr )
+            m_gdgtSurvole->setSurvol ( false );
+    }
+
+    // On actualise le ptr vers le bouton survolé
+    m_gdgtSurvole = gdgtSurvole;
 
 }
 
@@ -110,7 +123,16 @@ Interface::~Interface ()
 /////////////////////////////////////////////////
 Gadget::ptr Interface::chercherSurvol ()
 {
-//    for
+
+    sf::Vector2i    positionSouris  = sf::Mouse::getPosition( *getFenetreSFML () );
+    Gadget::ptr     result          = nullptr;
+
+    for ( auto gadget : m_conteneur->getEnfants () )
+        if ( gadget->testerSurvol ( positionSouris ) )
+            result = gadget;
+
+    return result;
+
 }
 
 /*

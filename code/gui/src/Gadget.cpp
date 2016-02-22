@@ -3,8 +3,6 @@
 /////////////////////////////////////////////////
 #include <Gadget.h>
 
-
-#include <Geometrie.h>
 #include <iostream>
 
 
@@ -19,25 +17,28 @@ Gadget::Gadget ()
 , m_presse      ( false )
 , m_deplacable  ( false )
 
-, m_enfants     ( std::vector<ptr> () )
 , m_composants  ( std::vector<ptr> () )
+, m_enfants     ( std::vector<ptr> () )
+, m_parent      ( )
+
 
 {
-    std::cout << "Creation du Gadget ()\n";
+//    std::cout << "Creation du Gadget ()\n";
 
     // parametre par défaut.
-    //m_taille = { 25 , 25 };
+    m_taille = { 43 , 52 };
    // actualiser( sf::seconds(0));
 //    setPosition ( { 0 , 0 }) ;
 
 }
 
 
-void Gadget::setTaille( sf::Vector2f val )
-{
-    m_taille = val;
-    actualiser( sf::seconds( 0));
-}
+//void Gadget::setTaille( sf::Vector2f val )
+//{
+//    m_taille = val;
+//    actualiser_bounds ();
+//    actualiser( sf::seconds( 0 ));
+//}
 
 /////////////////////////////////////////////////
 Gadget::Gadget (Gadget & original)
@@ -114,6 +115,7 @@ void Gadget::mettre_auDessus (std::shared_ptr<Gadget> gadget)
 
 }
 
+/*
 /////////////////////////////////////////////////
 void Gadget::setParent( ptr  val )
 {
@@ -122,11 +124,11 @@ void Gadget::setParent( ptr  val )
 //
     m_parent = val;
 
-    m_parent->ajouterAEnfants ( thisPtr() );
+    //m_parent->ajouterAEnfants ( thisPtr() );
 
     std::cout <<"   Set parent Fin\n";
 
-}
+}*/
 
 
 void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
@@ -143,6 +145,36 @@ void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
 
 }
 
+/////////////////////////////////////////////////
+sf::Vector2f Gadget::getPosAbs () const
+{
+
+    sf::Vector2f position;
+
+    if ( getParent() != nullptr ) {
+        position = getPosition() + getParent()->getPosAbs();
+//        std::cout << " Il a un parent -> " ;
+    } else {
+        position = getPosition();
+//        std::cout << " Il a PAAAAAS de parent\n";
+    }
+
+//    std::cout << " position : " << position.x << " , " << position.y << "\n";
+
+    return position;
+
+}
+
+void Gadget::traiter_evenements ( const sf::Event& evenement )
+{
+    // on gère les evenements claviers du gadget
+    traiter_evenements_clavier ( evenement );
+
+    // On diffuse le traitement des evenements aux enfants
+    for ( auto enfant : m_enfants )
+        enfant->traiter_evenements ( evenement );
+
+}
 
 /////////////////////////////////////////////////
 void Gadget::dessinerComposants (sf::RenderTarget& target, sf::RenderStates states) const
@@ -154,6 +186,42 @@ void Gadget::dessinerComposants (sf::RenderTarget& target, sf::RenderStates stat
 
 }
 
+/////////////////////////////////////////////////
+void Gadget::Aligner (std::shared_ptr<Gadget> cible)
+{
+
+}
+
+
+/////////////////////////////////////////////////
+bool Gadget::testerSurvol (float x, float y) const
+{
+
+}
+
+
+/////////////////////////////////////////////////
+void Gadget::actualiser_bounds ()
+{
+
+    std::cout << "Gadget::actualiser_bounds() : ... \n";
+
+    // les bounds en local
+    m_localBounds.width     = m_taille.x;
+    m_localBounds.height    = m_taille.y;
+    m_localBounds.left      = getPosition().x;
+    m_localBounds.top       = getPosition().y;
+
+    // les bounds en Global
+    m_globalBounds.width    = m_taille.x;
+    m_globalBounds.height   = m_taille.y;
+    m_globalBounds.left     = getPosAbs().x;
+    m_globalBounds.top      = getPosAbs().y;
+
+    std::cout << " Bounds  OK\n";
+  //  std::cout << "m_globalBounds : " << m_globalBounds.width << " , " << m_globalBounds.height << " / " << m_globalBounds.left << " , " << m_globalBounds.top << "\n" ;
+
+}
 
 } // fin namespace gui
 

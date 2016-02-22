@@ -14,6 +14,7 @@ ConteneurGui::ConteneurGui()
 : Gadget()
 {
     std::cout << "Creation ConteneurGui\n";
+    setParent( nullptr );
 
 }
 

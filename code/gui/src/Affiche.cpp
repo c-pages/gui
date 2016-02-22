@@ -8,11 +8,11 @@
 namespace gui {
 
 
-Affiche::Affiche()
-: Gadget()
-{
-
-}
+//Affiche::Affiche()
+//: Gadget()
+//{
+//
+//}
 
 } // fin namespace gui
 

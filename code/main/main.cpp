@@ -18,6 +18,7 @@ int main()
     //  execution de l'application
     appli.executer();
 
+    // fin de l'pplication
     return 0;
 }
 

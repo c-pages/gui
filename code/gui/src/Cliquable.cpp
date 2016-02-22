@@ -24,17 +24,26 @@ namespace gui {
 
 
 /////////////////////////////////////////////////
-void Cliquable::testerSurvol ()
+bool Cliquable::testerSurvol ( sf::Vector2i position )
 {
+//    std::cout << "pos souris : " << position.x << " , " << position.y << "\n";
+//    std::cout << "pos gadget : " << getPosition().x << " , " << getPosition().y << "\n";
+//    std::cout << "taille gadget : " << m_taille.x << " , " << m_taille.y << "\n";
+
+    if ( m_globalBounds.contains( position.x , position.y ) )
+        return true;
+    else
+        return false;
+
 
 }
 
 
-/////////////////////////////////////////////////
-void Cliquable::actualiser ()
-{
-    std::cout << "Cliquable::actualiser()\n";
-}
+///////////////////////////////////////////////////
+//void Cliquable::actualiser ()
+//{
+//    std::cout << "Cliquable::actualiser()\n";
+//}
 
 
 /////////////////////////////////////////////////

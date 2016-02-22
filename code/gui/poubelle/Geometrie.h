@@ -42,24 +42,24 @@ public:
     sf::Vector2f getPosition () const { return m_position; };*/
 
     ///< Definir m_taille
-    virtual void setTaille( sf::Vector2f val ){ m_taille = val; };
+    virtual void setTaille( sf::Vector2f val ){ m_taille = val; actualiser_bounds(); };
 
     ///< Acceder à m_taille
-    sf::Vector2f getTaille () const { return m_taille; };
+    virtual sf::Vector2f getTaille () const { return m_taille; };
 
     ///< Acceder à m_localBounds
-    sf::FloatRect getLocalBounds () const { return m_localBounds; };
+    virtual sf::FloatRect getLocalBounds () const { return m_localBounds; };
 
     ///< Acceder à m_globalBounds
-    sf::FloatRect getGlobalBounds () const { return m_globalBounds; };
+    virtual sf::FloatRect getGlobalBounds () const { return m_globalBounds; };
 
 
 public:
-    /////////////////////////////////////////////////
-    /// \brief Acceder à la position absolue du gadget.
-    ///
-    /////////////////////////////////////////////////
-    sf::Vector2f getPosAbs () const;
+//    /////////////////////////////////////////////////
+//    /// \brief Acceder à la position absolue du gadget.
+//    ///
+//    /////////////////////////////////////////////////
+//    sf::Vector2f getPosAbs () const;
 
     /////////////////////////////////////////////////
     /// \brief S'aligner sur un autre gadget.
@@ -91,8 +91,8 @@ public:
 protected:
     //sf::Vector2f    m_position;         ///< La position relative (parent) du gadget.
     sf::Vector2f    m_taille;           ///< la taille permet d'organiser la disposition des éléments graphiques du gadget.
-    sf::FloatRect   m_localBounds;      ///< la rectangle anglobant du gadget en coordonnés locales.
-    sf::FloatRect   m_globalBounds;     ///< la rectangle anglobant du gadget en coordonnés globales.
+    sf::FloatRect   m_localBounds;      ///< la rectangle englobant du gadget en coordonnés locales.
+    sf::FloatRect   m_globalBounds;     ///< la rectangle englobant du gadget en coordonnés globales.
 
 
 }; // fin class Geometrie

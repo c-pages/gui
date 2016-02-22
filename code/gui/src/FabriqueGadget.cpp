@@ -2,11 +2,12 @@
 // Headers
 /////////////////////////////////////////////////
 #include <Interface.h>
+#include <iostream>
+
 #include <Gadget.h>
 #include <Bouton.h>
 #include <FabriqueGadget.h>
 
-#include <iostream>
 
 
 
@@ -43,24 +44,26 @@ Gadget::ptr FabriqueGadget::image ()
 /////////////////////////////////////////////////
 Gadget::ptr FabriqueGadget::bouton ( std::string texte  )
 {
-    std::cout << "Fabriquer un bouton.\n";
+
+    std::cout << "###########################################\n";
+    std::cout << "Fabriquer un bouton...    \n";
 
     // Creation du bouton
-    Gadget::ptr bouton = std::make_shared<Bouton>(  );
+    Gadget::ptr bouton = std::make_shared<Bouton> (  );
 
+    // On ajoute le bouton à la racine de l'interface
+    m_interface->ajouter ( bouton );
 
-//m_interface->m_conteneur->popo();
-    // Assignation du parent, le conteneur du gui ici.
-    bouton->setParent(  m_interface->m_conteneur );
-
-    std::cout << "Fabriquer un bouton :2\n";
-
+//    bouton->setSurvol ( false );
     // Si texte définie, on l'applique au bouton.
-    if ( texte != "" )
-        bouton->setTexte(  texte );
+    if ( texte != "" ) {
+        bouton->setTexte ( texte );
+        bouton->ajusterAuTexte ();
+    }
 
-    std::cout << "Fabriquer un bouton :fin\n";
+    std::cout << "... Bouton fabrique : OK\n";
 
+    std::cout << "###########################################\n\n";
     // Renvois du bouton créé.
     return bouton;
 

@@ -25,6 +25,9 @@ Application::Application()
                                                 0); //  minor
     m_fenetre.create(sf::VideoMode(800, 600), "Appli de base" , sf::Style::Default , contextFenetre );
 
+    // La synchronisation verticale pour des histoire de bugs de chqrgement de police bidule truc
+    m_fenetre.setVerticalSyncEnabled(true);
+
     //   Ajout du premier écran.
     m_ecrans.ajouter( new EcranDemo( this ) );
 
@@ -115,6 +118,7 @@ void Application::dessiner ( )
     /// > Afficher la fenêtre.
     m_fenetre.display();
 
-
 }
+
+
 } // namespace app

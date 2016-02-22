@@ -20,13 +20,14 @@ class Affiche : public Gadget {
 /////////////////////////////////////////////////
 public:
 
-    Affiche();
-
+//    Affiche();
+//
+//    ~Affiche () = default;
     /////////////////////////////////////////////////
     /// \brief Renvois false car les élément d'affiche ne sont pas interactifs.
     ///
     /////////////////////////////////////////////////
-    bool testerSurvol (){return false;};
+    bool testerSurvol (){ return false; };
 
     /////////////////////////////////////////////////
     /// \brief  Redéfinie retirer par une fonction vide( GOF4 : composite -> Feuilles)

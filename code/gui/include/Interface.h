@@ -7,6 +7,8 @@
 // Headers
 /////////////////////////////////////////////////
 #include "Gadget.h"
+#include "Interaction.h"
+
 #include "FabriqueGadget.h"
 #include "Skin.h"
 #include "ConteneurGui.h"
@@ -23,7 +25,7 @@ namespace gui {
 /// \brief Le gestionnaire d'interface
 ///
 /////////////////////////////////////////////////
-class Interface : public sf::Drawable, public std::enable_shared_from_this<Interface> {
+class Interface : public Interaction, public sf::Drawable, public std::enable_shared_from_this<Interface> {
 
 
 
@@ -64,7 +66,7 @@ public:
     ///
     /// \param fenetreSFML		 la fenetre SFML dans laquelle on va utiliser l'interface
     /////////////////////////////////////////////////
-    Interface (sf::RenderWindow* fenetreSFML);
+    Interface ( sf::RenderWindow* fenetreSFML );
 
     /////////////////////////////////////////////////
     /// \brief Constructeur par copie  en privé (Singleton).
@@ -95,6 +97,10 @@ public:
 
 
 
+    void ajouter ( gui::Gadget::ptr gadget ) { m_conteneur->ajouterAEnfants ( gadget ); };
+
+
+
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
@@ -102,17 +108,16 @@ public:
 //    static Gui  m_instance;                             ///< L'instance static unique vers le GUI. (GOF4 : singleton.)
 
     FabriqueGadget              creer;          ///< Fonctions de creation des gadgets.
-
 private:
     sf::RenderWindow*           m_fenetreSFML;  ///< La fenêtre SFML dans laquelle on intègre l'interface.
     std::shared_ptr<Skin>       m_skin;         ///< Le skin global à appliqué aux gadgets de l'interface.
 
-    std::shared_ptr<Gadget>     m_conteneur;    ///< Le conteneur de tout les gadgets de l'interface.
+    std::shared_ptr<ConteneurGui>     m_conteneur = std::make_shared<ConteneurGui>();    ///< Le conteneur de tout les gadgets de l'interface.
 
 private:
 //    std::vector<Gadget::ptr>    m_Boutons;      ///< La liste totale des boutons.
-    Gadget::ptr                 m_btnSurvole;   ///< Pointeur vers le bouton qui à le focus du survol.
-    Gadget::ptr                 m_btnPresse;    ///< Pointeur vers le bouton de l'interface qui est en train d'être pressé.
+    Gadget::ptr                 m_gdgtSurvole;   ///< Pointeur vers le bouton qui à le focus du survol.
+    Gadget::ptr                 m_gdgtPresse;    ///< Pointeur vers le bouton de l'interface qui est en train d'être pressé.
 
 
     friend class FabriqueGadget;

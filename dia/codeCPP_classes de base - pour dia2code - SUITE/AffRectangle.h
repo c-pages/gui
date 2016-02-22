@@ -1,0 +1,56 @@
+#ifndef AFFRECTANGLE__H
+#define AFFRECTANGLE__H
+
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include "Affiche.h"
+#include <SFML/Graphics.hpp>
+
+
+
+namespace gui {
+
+
+
+/////////////////////////////////////////////////
+/// \brief Classe concrète d'affichage d'un simple rectangle.
+///
+/////////////////////////////////////////////////
+class AffRectangle : public gui::Affiche {
+
+
+
+/////////////////////////////////////////////////
+// Méthodes
+/////////////////////////////////////////////////
+
+public:
+public:
+    /////////////////////////////////////////////////
+    /// \brief Constructeur par défaut.
+    ///
+    /////////////////////////////////////////////////
+    AffRectangle ();
+
+    void setCouleurFond (sf::Color couleur);
+
+    void setCouleurBord (sf::Color couleur);
+
+    void setEpaisseurBord (float epaisseur);
+
+    void draw (sf::RenderTarget& target, sf::RenderStates states) const;
+
+
+
+/////////////////////////////////////////////////
+// Membres
+/////////////////////////////////////////////////
+private:
+    sf::RectangleShape m_rectangle;    ///< Le rectangle sfml.    
+
+}; // fin class AffRectangle
+
+} // fin namespace gui
+
+#endif

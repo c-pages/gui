@@ -97,6 +97,11 @@ public:
     void declencher (Evenement evenement);
 
 
+    /////////////////////////////////////////////////
+    void traiter_evenements_clavier   (const sf::Event& event);
+
+
+
 
 /////////////////////////////////////////////////
 // Membres

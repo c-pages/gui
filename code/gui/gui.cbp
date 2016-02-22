@@ -68,7 +68,6 @@
 		<Unit filename="include/ConteneurGui.h" />
 		<Unit filename="include/FabriqueGadget.h" />
 		<Unit filename="include/Gadget.h" />
-		<Unit filename="include/Geometrie.h" />
 		<Unit filename="include/Interaction.h" />
 		<Unit filename="include/Interface.h" />
 		<Unit filename="include/Skin.h" />
@@ -88,11 +87,9 @@
 		<Unit filename="media/polices/wingding.ttf" />
 		<Unit filename="src/Affiche.cpp" />
 		<Unit filename="src/Cliquable.cpp" />
-		<Unit filename="src/Composite.cpp" />
 		<Unit filename="src/ConteneurGui.cpp" />
 		<Unit filename="src/FabriqueGadget.cpp" />
 		<Unit filename="src/Gadget.cpp" />
-		<Unit filename="src/Geometrie.cpp" />
 		<Unit filename="src/Interaction.cpp" />
 		<Unit filename="src/Interface.cpp" />
 		<Unit filename="src/Skin.cpp" />

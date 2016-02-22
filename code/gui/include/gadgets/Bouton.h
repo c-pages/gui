@@ -5,15 +5,19 @@
 // Headers
 /////////////////////////////////////////////////
 #include "Cliquable.h"
+#include <AffLabel.h>
+#include <AffImage.h>
+#include <AffRectangle.h>
+
 #include <memory>
 
 
 
 namespace gui {
 
-class AffLabel;
-class AffImage;
-class AffRectangle;
+//class AffLabel;
+//class AffImage;
+//class AffRectangle;
 
 
 /////////////////////////////////////////////////
@@ -30,7 +34,7 @@ class Bouton : public Cliquable {
 
 public:
     ///< Definir m_texte
-    virtual void setTexte( std::string val ) ;
+    virtual void setTexte ( std::string val ) ;
 
 
 public:
@@ -40,14 +44,14 @@ public:
     /////////////////////////////////////////////////
     Bouton (  );
 
-    /////////////////////////////////////////////////
-    /// \brief Constructeur par défaut.
-    ///
-    /// \param parent
-    /////////////////////////////////////////////////
-    Bouton (ptr parent);
+//    /////////////////////////////////////////////////
+//    /// \brief Constructeur par défaut.
+//    ///
+//    /// \param parent
+//    /////////////////////////////////////////////////
+//    Bouton (ptr parent);
 
-    ~Bouton()=default;
+//    ~Bouton()=default;
 
     void initialiser_composants ();
 
@@ -70,7 +74,7 @@ public:
     /// \brief Pour ajuster la taille du rectangle au texte.
     ///
     /////////////////////////////////////////////////
-    void ajusterRectangleAuTexte ();
+    void ajusterAuTexte ();
 
 
 
@@ -79,11 +83,15 @@ public:
 /////////////////////////////////////////////////
 private:
 
-    std::shared_ptr<AffLabel>       m_label;        ///< Le label qui affiche le texte du bouton.
-    std::shared_ptr<AffImage>       m_icone;        ///< L'icone du bouton.
-    std::shared_ptr<AffRectangle>   m_rectangle;    ///< Le rectangle du bouton.
+//    std::shared_ptr<AffLabel>           m_label = std::make_shared<AffLabel>();         ///< Le label qui affiche le texte du bouton.
+//    AffImage*       m_icone;        ///< L'icone du bouton.
+    std::shared_ptr<AffRectangle>       m_rectangle/* = std::make_shared<AffRectangle>()*/;    ///< Le rectangle du bouton.
 
-    sf::Vector2f                    m_marge;        ///< La marge entre le texte et le bord du rectangle.
+    sf::Vector2f    m_marge;            ///< La marge entre le texte et le bord du rectangle.
+
+    sf::Color       m_couleurRepos;     ///<
+    sf::Color       m_couleurSurvol;    ///<
+    sf::Color       m_couleurFocus;     ///<
 
 }; // fin class Bouton
 

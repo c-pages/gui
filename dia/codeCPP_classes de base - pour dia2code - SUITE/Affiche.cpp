@@ -1,40 +1,31 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <Geometrie.h>
-//#inc
+#include <Affiche.h>
+
 
 
 namespace gui {
 
 /////////////////////////////////////////////////
-sf::Vector2f Geometrie::getPosAbs () const
+void Affiche::ajouter (std::shared_ptr<Gadget> gadget)
 {
-
+    
 }
 
 
 /////////////////////////////////////////////////
-void Geometrie::Aligner (std::shared_ptr<Gadget> cible)
+void Affiche::retirer (std::shared_ptr<Gadget> enfant)
 {
-
+    
 }
 
 
 /////////////////////////////////////////////////
-bool Geometrie::testerSurvol (float x, float y) const
+bool Affiche::testerSurvol (sf::Vector2i position)
 {
-
+    
 }
-
-
-/////////////////////////////////////////////////
-void Geometrie::actualiser_bounds ()
-{
-
-}
-
-
 
 
 } // fin namespace gui

@@ -6,6 +6,7 @@
 /////////////////////////////////////////////////
 #include "Composite.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 
 
@@ -46,7 +47,7 @@ class Geometrie : public sf::Transformable, public gui::Composite {
 
 public:
     ///< Definir m_taille
-    virtual void setTaille( sf::Vector2i val ){ m_taille = val; actualiser(); };
+    virtual void setTaille( sf::Vector2i val ){ m_taille = val; actualiser_bounds(); actualiser(); };
 
     ///< Acceder à m_taille
     sf::Vector2i getTaille () const { return m_taille; };
@@ -63,6 +64,11 @@ public:
     ///< Acceder à m_taille
     double getOpacite () const { return m_opacite; };
 
+    ///< reDefinir setPosition
+    virtual     void setPosition( float x , float y ){ sf::Transformable::setPosition( x , y ); actualiser_bounds(); };
+
+//    ///< Acceder à m_taille
+//    double getOpacite () const { return m_opacite; };
 protected:
     /////////////////////////////////////////////////
     /// \brief Calculer la position absolue du gadget.
@@ -83,7 +89,7 @@ protected:
     /// \brief Actualiser .
     ///
     /////////////////////////////////////////////////
-    virtual void actualiser (){};
+    virtual void actualiser (){std::cout << "ACTUALISER GEOMETRIE_H\n";};
 
 
     /////////////////////////////////////////////////
@@ -98,14 +104,14 @@ protected:
     /// \param x		 La position sur l'axe horizontal de la souris.
     /// \param y		 La position sur l'axe vertical de la souris.
     /////////////////////////////////////////////////
-    bool testerSurvol (int x, int y) const;
+    virtual bool testerSurvol (int x, int y) const;
 
     /////////////////////////////////////////////////
     /// \brief Test si la souris survole le gadget.
     ///
     /// \param position		 Le vecteur position de la souris.
     /////////////////////////////////////////////////
-    bool testerSurvol (sf::Vector2i position) const;
+    virtual bool testerSurvol (sf::Vector2i position) const;
 
 
 
@@ -117,6 +123,8 @@ protected:
     sf::FloatRect   m_localBounds;      ///< la rectangle anglobant du gadget en coordonnés locales.
     sf::FloatRect   m_globalBounds;     ///< la rectangle anglobant du gadget en coordonnés globales.
     double          m_opacite = 1;      ///< L'opacité du gadget ( entre 0 et 1 )
+
+friend class Interface;
 
 }; // fin class Geometrie
 

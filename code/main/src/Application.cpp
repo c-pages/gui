@@ -12,6 +12,7 @@ namespace app
 {
 /////////////////////////////////////////////////
 Application::Application()
+: m_fenetre ( new sf::RenderWindow() )
 {
 
     //   Initialisation de la Configuration ( ensembles des ressources ...)
@@ -23,10 +24,10 @@ Application::Application()
                                                 0,  //  antialiasing
                                                 2,  //  major
                                                 0); //  minor
-    m_fenetre.create(sf::VideoMode(800, 600), "Appli de base" , sf::Style::Default , contextFenetre );
+    m_fenetre->create(sf::VideoMode(800, 600), "Appli de base" , sf::Style::Default , contextFenetre );
 
     // La synchronisation verticale pour des histoire de bugs de chqrgement de police bidule truc
-    m_fenetre.setVerticalSyncEnabled(true);
+    m_fenetre->setVerticalSyncEnabled(true);
 
     //   Ajout du premier écran.
     m_ecrans.ajouter( new EcranDemo( this ) );
@@ -51,7 +52,7 @@ void    Application::executer()
 
 //sf::sleep( sf::seconds(0.005f)) ;
 
-    while ( m_fenetre.isOpen() )
+    while ( m_fenetre->isOpen() )
     {
         traiter_evenements();
         tempsDepuisMAJ += horloge.restart();
@@ -67,7 +68,7 @@ void    Application::executer()
 
             // si la pile d'écrans est vide, on ferme.
             if ( m_ecrans.estVide() )
-                m_fenetre.close();
+                m_fenetre->close();
         }
 
         // Dessiner les écrans actifs.
@@ -77,7 +78,7 @@ void    Application::executer()
 
 
 /////////////////////////////////////////////////
-sf::RenderWindow&    Application::getFenetre()
+sf::RenderWindow*    Application::getFenetre()
 {
     return m_fenetre;
 }
@@ -88,7 +89,7 @@ sf::RenderWindow&    Application::getFenetre()
 void Application::traiter_evenements()
 {
     sf::Event event;
-    while (m_fenetre.pollEvent(event)){
+    while (m_fenetre->pollEvent(event)){
 
         m_ecrans.traiter_evenements ( event );
 
@@ -110,13 +111,13 @@ void Application::dessiner ( )
 {
 
     /// > Vider la fenetre.
-    m_fenetre.clear(sf::Color::Black);
+    m_fenetre->clear(sf::Color::Black);
 
     /// > Rendu des ecrans courants.
     m_ecrans.dessiner();
 
     /// > Afficher la fenêtre.
-    m_fenetre.display();
+    m_fenetre->display();
 
 }
 

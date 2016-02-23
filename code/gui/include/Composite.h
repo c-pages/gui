@@ -13,7 +13,6 @@
 namespace gui {
 
 class Gadget;
-class Gadget;
 
 
 /////////////////////////////////////////////////
@@ -90,8 +89,8 @@ protected:
 // Membres
 /////////////////////////////////////////////////
 protected:
-    std::vector<std::shared_ptr<Gadget>> m_enfants;    ///< Les enfants du gadget.
-    Gadget* m_parent;    ///< Le gadget parent.
+    std::vector<std::shared_ptr<Gadget>>    m_enfants;          ///< Les enfants du gadget.
+    Gadget*                                 m_parent = nullptr; ///< Le gadget parent.
 
 }; // fin class Composite
 

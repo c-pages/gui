@@ -20,6 +20,8 @@ AffRectangle::AffRectangle ( sf::Vector2i taille )
 /////////////////////////////////////////////////
 void AffRectangle::actualiser ()
 {
+//    std::cout << "ACTUALISER AFFRECTANGLE_H\n";
+
     m_rectangle.setSize ( {m_taille.x, m_taille.y} );
 
     if ( m_skin == nullptr ) {

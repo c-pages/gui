@@ -3,28 +3,30 @@
 /////////////////////////////////////////////////
 #include <Affiche.h>
 
-
+#include <iostream>
 
 namespace gui {
 
 /////////////////////////////////////////////////
 void Affiche::ajouter (std::shared_ptr<Gadget> gadget)
 {
-    
+    // Ne fait rien.
 }
 
 
 /////////////////////////////////////////////////
 void Affiche::retirer (std::shared_ptr<Gadget> enfant)
 {
-    
+    // Ne fait rien.
 }
 
 
 /////////////////////////////////////////////////
-bool Affiche::testerSurvol (sf::Vector2i position)
+bool Affiche::testerSurvol ( sf::Vector2i position ) const
 {
-    
+//    std::cout << "Affiche::testerSurvol ()\n";
+    // N'interagie pas avec la souris donc renvois toujours false.
+    return false;
 }
 
 

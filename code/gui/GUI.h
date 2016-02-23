@@ -1,7 +1,7 @@
 #ifndef __GUI_H__
 #define __GUI_H__
 
-
+#include "SFML/Graphics.hpp"
 #include "Gadget.h"
 #include "FabriqueBase.h"
 
@@ -13,11 +13,16 @@ namespace gui {
 ///
 /////////////////////////////////////////////////
 class Interface : public Gadget{
+
 public:
-    Interface();
+    Interface( sf::RenderWindow* fenetre );
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
+    virtual void traiterEvenements( sf::Event evenement );
+
+private:
+    std::shared_ptr<Gadget> chercherGadgetSurvole ();
 
 public:
 /////////////////////////////////////////////////
@@ -25,6 +30,10 @@ public:
 /////////////////////////////////////////////////
     FabriqueBase    creer;      ///< La fabrique de gadget de base (GOF: Fabrique)
 
+private:
+    std::shared_ptr<Gadget>     m_boutonSurvole;    ///< Le bouton survolé actuelement par la souris.
+    std::shared_ptr<Gadget>     m_boutonPresse;     ///< Le bouton pressé actuelement par la souris.
+    sf::RenderWindow*           m_fenetre;          ///< La fenetyre SFML;
 
 }; // fin class gui
 

@@ -85,6 +85,10 @@ private:
     /////////////////////////////////////////////////
     virtual     void initGUI ();
 
+    void initGUI_test_Affichages ();
+    void initGUI_test_Boutons ();
+
+
 private:
 
     /////////////////////////////////////////////////
@@ -99,12 +103,17 @@ private:
     // un skin permettant de gérer le rendu
     std::shared_ptr<gui::Skin>          m_skin;         ///< Un skin.
 
-    // les gadgets
+    // les gadgets AFFICHAGE
     std::shared_ptr<gui::AffRectangle>  m_rectangle;    ///< Un simple rectangle.
-
     std::shared_ptr<gui::AffLabel>      m_label;        ///< Un simple label.
-
+    std::shared_ptr<gui::AffLabel>      m_label_2;      ///< Un autre label.
+    std::shared_ptr<gui::AffLabel>      m_label_3;      ///< Un autre label.
+    std::shared_ptr<gui::AffLabel>      m_label_4;      ///< Un autre label.
+    std::shared_ptr<gui::AffLabel>      m_label_5;      ///< Un autre label.
     std::shared_ptr<gui::AffImage>      m_image;        ///< Une simple image.
+
+    // les gadgets BOUTON
+    std::shared_ptr<gui::BoutonRect>    m_boutonRect;    ///< Un simple bouton rectangulaire.
 
 
 }; // fin EcranDemo

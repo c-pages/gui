@@ -27,23 +27,23 @@ protected:
     /////////////////////////////////////////////////
     /// \brief Redéfinie ajouter par une fonction vide( GOF4 : composite -> Feuilles)
     ///
-    /// \param gadget		 
+    /// \param gadget
     /////////////////////////////////////////////////
     virtual void ajouter (std::shared_ptr<Gadget> gadget);
 
     /////////////////////////////////////////////////
     /// \brief  Redéfinie retirer par une fonction vide( GOF4 : composite -> Feuilles)
     ///
-    /// \param enfant		 
+    /// \param enfant
     /////////////////////////////////////////////////
     virtual void retirer (std::shared_ptr<Gadget> enfant);
 
     /////////////////////////////////////////////////
     /// \brief Renvois false.
     ///
-    /// \param position		 
+    /// \param position
     /////////////////////////////////////////////////
-    virtual bool testerSurvol (sf::Vector2i position);
+    virtual bool testerSurvol (sf::Vector2i position) const;
 
 
 }; // fin class Affiche

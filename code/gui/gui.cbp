@@ -66,6 +66,9 @@
 		<Unit filename="include/Affiche.h" />
 		<Unit filename="include/Bouton.h" />
 		<Unit filename="include/Composite.h" />
+		<Unit filename="include/Enums.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="include/FabriqueBase.h" />
 		<Unit filename="include/Gadget.h" />
 		<Unit filename="include/Geometrie.h" />

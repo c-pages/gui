@@ -89,7 +89,7 @@ class Application
         /// \return la fenetre sfml de l'application
         ///
         /////////////////////////////////////////////////
-        sf::RenderWindow&    getFenetre();
+        sf::RenderWindow*    getFenetre();
 
     private:
 
@@ -97,7 +97,7 @@ class Application
         // Les membres
         /////////////////////////////////////////////////
         Gestion_ecrans      m_ecrans;    ///< Le gestionnaire des écrans.
-        sf::RenderWindow    m_fenetre;   ///< La fenêtre SFML
+        sf::RenderWindow*   m_fenetre;   ///< La fenêtre SFML
 
 };
 }; // fin namespace app

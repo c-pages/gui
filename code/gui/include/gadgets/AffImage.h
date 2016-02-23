@@ -45,7 +45,7 @@ public:
         if ( m_ajustement )
             m_taille = val;
         else
-            m_taille = {m_texture->getSize().x , m_texture->getSize().y };
+            m_taille = sf::Vector2i(m_texture->getSize().x , m_texture->getSize().y );
 
         actualiser();
     };

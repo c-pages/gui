@@ -10,14 +10,14 @@ namespace gui {
 /////////////////////////////////////////////////
 Bouton::Bouton ()
 {
-    
+
 }
 
 
 /////////////////////////////////////////////////
-bool Bouton::testerSurvol (sf::Vector2i position)
+bool Bouton::testerSurvol ( sf::Vector2i position ) const
 {
-    
+    Geometrie::testerSurvol ( position );
 }
 
 

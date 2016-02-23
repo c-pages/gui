@@ -6,6 +6,7 @@
 /////////////////////////////////////////////////
 #include "Bouton.h"
 #include "gadgets\AffRectangle.h"
+#include "gadgets\AffLabel.h"
 #include <SFML/Graphics.hpp>
 
 
@@ -33,16 +34,19 @@ public:
     /////////////////////////////////////////////////
     BoutonRect ();
 
+    virtual void actualiser ( );
+
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
-
+    void setTexte( std::string val ){ m_texte = val; actualiser(); };
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
 public:
-    AffRectangle     m_rectangle;
-    sf::Text    m_label;
+    std::string     m_texte;            ///< Le texte à afficher par le label.
+    AffRectangle    m_rectangle;
+    AffLabel        m_label;
 
 }; // fin class BoutonRect
 

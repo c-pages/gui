@@ -17,7 +17,7 @@ namespace gui {
 /// \brief Un simple bouton
 ///
 /////////////////////////////////////////////////
-class Bouton : public gui::ActionSouris, public gui::Gadget {
+class Bouton : /* public gui::Gadget,*/ public gui::ActionSouris {
 
 
 
@@ -31,8 +31,16 @@ public:
     /////////////////////////////////////////////////
     Bouton ();
 
-    virtual bool testerSurvol (sf::Vector2i position);
+    virtual bool testerSurvol ( sf::Vector2i position ) const;
+    virtual void actualiser ( ){};
 
+    void setTexte( std::string val ){ m_texte = val; actualiser(); };
+
+
+/////////////////////////////////////////////////
+// Membres
+/////////////////////////////////////////////////
+    std::string                 m_texte;            ///< Le texte du bouton
 
 }; // fin class Bouton
 

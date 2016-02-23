@@ -36,13 +36,13 @@ public:
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
-    void setCouleurFond (sf::Color couleur)
+    void setFillColor (sf::Color couleur)
         { m_rectangle.setFillColor( couleur ); };
 
-    void setCouleurBord (sf::Color couleur)
+    void setOutlineColor (sf::Color couleur)
         { m_rectangle.setOutlineColor( couleur ); };
 
-    void setEpaisseurBord (float epaisseur)
+    void setOutlineThickness (float epaisseur)
         { m_rectangle.setOutlineThickness( epaisseur ); };
 
 

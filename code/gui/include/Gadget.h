@@ -9,11 +9,12 @@
 #include <Geometrie.h>
 #include <Skin.h>
 #include <ActionClavier.h>
-
+#include <Enums.h>
+/*
+#include <ActionSouris.h>*/
 
 
 namespace gui {
-
 
 
 /////////////////////////////////////////////////
@@ -32,31 +33,39 @@ class Gadget : public std::enable_shared_from_this<Gadget>, public sf::Drawable,
 /////////////////////////////////////////////////
 // Méthodes
 /////////////////////////////////////////////////
-
 public:
     ///< Definir m_visible
-    void setVisible( bool val ){ m_visible = val; };
+    void setVisible( bool val )
+        { m_visible = val; };
 
     ///< Definir m_actif
-    void setActif( bool val ){ m_actif = val; };
+    void setActif( bool val )
+        { m_actif = val; };
 
     ///< Definir m_focus
-    void setFocus( bool val ){ m_focus = val; };
+    void setFocus( bool val )
+        { m_focus = val; actualiser(); };
 
     ///< Definir m_survol
-    void setSurvol( bool val ){ m_survol = val; };
+    void setSurvol( bool val )
+        { m_survol = val; actualiser(); };
 
     ///< Definir m_presse
-    void setPresse( bool val ){ m_presse = val; };
+    void setPresse( bool val )
+        { m_presse = val; actualiser(); };
 
     ///< Definir m_deplacable
-    void setDeplacable( bool val ){ m_deplacable = val; };
+    void setDeplacable( bool val )
+        { m_deplacable = val; };
 
     ///< Definir m_skin
-    void setSkin( std::shared_ptr<Skin> val ){ m_skin = val; actualiser ();};
+    void setSkin( std::shared_ptr<Skin> val )
+        { m_skin = val; actualiser ();};
 
     ///< Acceder à m_skin
-    std::shared_ptr<Skin> getSkin () const { return m_skin; };
+    std::shared_ptr<Skin> getSkin () const
+        { return m_skin; };
+
 
 public:
     /////////////////////////////////////////////////
@@ -109,6 +118,12 @@ public:
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const{};
 
 
+    /////////////////////////////////////////////////
+    /// \brief Déclencher un évenement souris (les évenement claviers sont gérer.
+    ///
+    /// \param evenement
+    /////////////////////////////////////////////////
+    virtual void declencher ( Evenement evenement ){};
 
 protected:
     /////////////////////////////////////////////////

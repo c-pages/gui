@@ -19,7 +19,8 @@ Gadget::Gadget ()
 , m_deplacable  ( false )
 , m_skin        ( nullptr )
 {
-//    std::cout << "Creation d'un gadget\n    ";
+//    std::cout << "Creation d'un gadget\n";
+//    m_parent = nullptr;
 }
 
 

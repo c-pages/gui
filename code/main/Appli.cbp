@@ -75,6 +75,7 @@
 		<Unit filename="include/ResourceMgr.inl" />
 		<Unit filename="include/ecrans/EcranDemo.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="media/img/IconeVide.png" />
 		<Unit filename="media/img/nuage.jpg" />
 		<Unit filename="media/polices/arial.ttf" />
 		<Unit filename="media/polices/bgothl.ttf" />

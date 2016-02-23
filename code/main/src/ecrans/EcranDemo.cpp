@@ -7,12 +7,14 @@
 #include <iostream>
 #include <Config.h>
 
+
+
 namespace app {
 
 /////////////////////////////////////////////////
 EcranDemo::EcranDemo( Application*  appli )
 : Ecran             ( appli )
-, m_interface       ( new gui::Interface( &appli->getFenetre() ) )
+, m_interface       ( nullptr )
 {
 
     // Initialisation de l'interface graphique.
@@ -37,7 +39,7 @@ void EcranDemo::traiter_evenements  ( const sf::Event& event )
 
 
     // Evenements de l'interface
-    m_interface->traiter_evenements    ( event );
+    m_interface->traiterEvenements    ( event );
 
 
     // fermeture de la fenetre SFML
@@ -65,7 +67,7 @@ void EcranDemo::actualiser  ( float deltaT )
     // actualiser la fenetre du jeu ...
 
     // actualiser l'interface
-//    m_interface->actualiser    ( deltaT );
+    m_interface->actualiser    (  );
 }
 
 
@@ -108,20 +110,82 @@ EcranDemo::initGUI  ()
 {
     using namespace gui;
 
-    // evenement clavier pour fermer la fenetre SFML
-    m_interface->lier ( sf::Keyboard::Escape , [this](){
-                std::cout << "Fermeture de la fenetre SFML\n";
-                m_appli->getFenetre().close();
-    } );
 
-    // evenement clavier test
-    m_interface->lier ( sf::Keyboard::T , [this](){
-                       test();
-    } );
+    /////// Interface globale ///////
 
-    // Creation d'un bouton
-    auto bouton = m_interface->creer.bouton( "Bouton Test" );
-    bouton->setPosition ( 50,50 );
+    // Creation de l'interface qui gère un ensemble de gadget.
+    m_interface = std::make_shared<Interface>();
+    m_skin      = std::make_shared<Skin>();
+
+
+
+    /////// Simple rectangle ///////
+    m_rectangle = m_interface->creer.rectangle( {20,20} );
+    m_rectangle->setPosition    ( 20 , 20 );
+    m_rectangle->setOpacite     ( 0.2 );
+    m_rectangle->setSkin ( m_skin );
+
+
+
+    /////// Une image ///////
+    m_image = m_interface->creer.image( "media/img/IconeVide.png" );
+    m_image->setTaille      ( { 200 , 400 } );
+    m_image->setPosition    ( 220 , 20 );
+
+
+    /////// Un Label ///////
+    m_label = m_interface->creer.label( "Un label de base." );
+    m_label->setPosition( 200 , 200 );
+
+
+
+    /////// Interactions clavier "globales" ///////
+
+    // On ajoute une liaison à la touche Escape à l'interface global
+    m_interface->lier ( sf::Keyboard::Escape , [this]() {
+            std::cout << " touche : Escape  Fermer.\n";
+            m_appli->getFenetre().close();
+        } );
+
+    // On ajoute une liaison à la touche Espace pour changer le style du rectangle
+    m_interface->lier ( sf::Keyboard::Space , [this]() {
+            std::cout << " touche : Espace ";
+            if ( m_rectangle->getSkin () != nullptr)
+            {
+                std::cout << "( on retire le skin => rendu par defaut. ) \n";
+                m_rectangle->setSkin    ( nullptr );
+                m_label->setSkin        ( m_skin );
+            }
+            else
+            {
+                std::cout << "( on associe le skin (m_skin) => rendu par le skin. ) \n";
+                m_rectangle->setSkin    ( m_skin );
+                m_label->setSkin        ( nullptr );
+            }
+        } );
+
+    // On associe des fonctions aux fleches pour faire bouger le label
+    m_interface->lier ( sf::Keyboard::Left , [this]() {
+            std::cout << " touche : Left\n";
+            m_label->move ( -3,0);
+        } );
+    m_interface->lier ( sf::Keyboard::Right , [this]() {
+            std::cout << " touche : Right\n";
+            m_label->move ( 3,0);
+        } );
+    m_interface->lier ( sf::Keyboard::Up , [this]() {
+            std::cout << " touche : Up\n";
+            m_label->move ( 0,-3);
+        } );
+    m_interface->lier ( sf::Keyboard::Down , [this]() {
+            std::cout << " touche : Down\n";
+            m_label->move ( 0,3);
+        } );
+
+
+
+
+
 
 
 }   // fin init GUI

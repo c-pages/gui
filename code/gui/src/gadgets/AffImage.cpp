@@ -5,50 +5,57 @@
 
 #include <iostream>
 
-
 namespace gui {
 
 /////////////////////////////////////////////////
 AffImage::AffImage ()
-: Affiche()
-//, m_rectangle   ( std::make_shared<sf::RectangleShape> ( new sf::RectangleShape ( {0,0 }) ))
-//, m_texture     ( std::make_shared<sf::Texture> ( new sf::Texture () ) )
+: m_sprite   ( )
+, m_texture     ( )
+//: m_rectangle   ( std::make_shared<sf::RectangleShape> )
+//, m_texture     ( std::make_shared<sf::Texture> )
+{
+    m_texture.setRepeated( true );
+}
+
+/////////////////////////////////////////////////
+void AffImage::chargerDepuisFichier ( std::string fichier )
 {
 
-    std::cout << "Creation AffImage ( )\n";
-    // Actualiser
-    actualiser( sf::seconds(0));
+    if ( ! m_texture.loadFromFile ( fichier ) )
+        std::cout << "\n ! ATTENTION ! - Image: Impossible de charger '" << fichier << "' - ! ATTENTION !\n\n";
 
 }
 
-
 /////////////////////////////////////////////////
-void AffImage::actualiser( sf::Time delta )
-{
-    std::cout << "AffImage::actualiser()\n";
-
-//    m_rectangle->setSize (  m_taille );
-}
-
-
-/////////////////////////////////////////////////
-void AffImage::initialiser_composants ()
+void AffImage::actualiser ()
 {
 
+    m_texture.setRepeated( true );
+    m_sprite.setTexture( m_texture );
+//    auto texture = m_sprite.getTexture();
+//    m_sprite.
+    //texture->setRepeated( true );
+
+     if ( m_skin == nullptr ) {
+        m_sprite.setColor        ( sf::Color ( 255, 255, 255, 255 * m_opacite ) );
+    } else {
+        auto style = m_skin->imgRepos;
+        m_sprite.setColor   ( sf::Color ( style->fnd_couleur.r
+                                        , style->fnd_couleur.g
+                                        , style->fnd_couleur.b
+                                        , style->fnd_couleur.a * m_opacite ) ) ;
+    }
 }
 
 
 /////////////////////////////////////////////////
 void AffImage::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
-
-    // On applique la transformation du gadget.
+    //On applique la transformation
     states.transform *= getTransform();
 
-    // Ondessine le rectangle s'il à une texture
-    if ( m_texture!=nullptr )
-        target.draw( *m_rectangle , states );
-
+    // On dessine l'image
+    target.draw( m_sprite, states);
 }
 
 

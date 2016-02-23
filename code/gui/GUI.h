@@ -1,7 +1,33 @@
-#ifndef GUI_H_INCLUDED
-#define GUI_H_INCLUDED
+#ifndef __GUI_H__
+#define __GUI_H__
 
-#include "Interface.h"
+
 #include "Gadget.h"
+#include "FabriqueBase.h"
 
-#endif // GUI_H_INCLUDED
+
+namespace gui {
+
+/////////////////////////////////////////////////
+/// \brief Classe communes à tout les gadgets, gère affichage actualisation, etc...
+///
+/////////////////////////////////////////////////
+class Interface : public Gadget{
+public:
+    Interface();
+
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
+
+public:
+/////////////////////////////////////////////////
+// membres
+/////////////////////////////////////////////////
+    FabriqueBase    creer;      ///< La fabrique de gadget de base (GOF: Fabrique)
+
+
+}; // fin class gui
+
+}; // fin namespace gui
+
+#endif // __GUI_H__

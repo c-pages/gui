@@ -30,12 +30,7 @@ void Composite::mettre_auDessus (std::shared_ptr<Gadget> gadget)
 
 }
 
-/////////////////////////////////////////////////
-void Composite::setParent( std::shared_ptr<Gadget>  val ){
 
-    m_parent = val;
-
-}
 
 
 } // fin namespace gui

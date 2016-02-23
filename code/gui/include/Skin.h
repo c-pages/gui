@@ -8,9 +8,7 @@
 #include "Style.h"
 
 
-
-namespace gui {
-
+namespace gui{
 
 
 /////////////////////////////////////////////////
@@ -38,19 +36,24 @@ public:
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
-    std::shared_ptr<gui::Style> invisible;
-    std::shared_ptr<gui::Style> cadre;
-    std::shared_ptr<gui::Style> txtLog;
-    std::shared_ptr<gui::Style> txtCourant;
-    std::shared_ptr<gui::Style> txtTitre;
-    std::shared_ptr<gui::Style> btnPress;
-    std::shared_ptr<gui::Style> btnSurvol;
-    std::shared_ptr<gui::Style> btnRepos;
-    std::shared_ptr<gui::Style> fenetre;
-    std::shared_ptr<gui::Style> desactive;
+    std::shared_ptr<Style> invisible;
+    std::shared_ptr<Style> cadre;
+
+    std::shared_ptr<Style> txtLog;
+    std::shared_ptr<Style> txtCourant;
+    std::shared_ptr<Style> txtTitre;
+
+    std::shared_ptr<Style> fondPress;
+    std::shared_ptr<Style> fondSurvol;
+    std::shared_ptr<Style> fondRepos;
+
+    std::shared_ptr<Style> imgRepos;
+
+    std::shared_ptr<Style> fenetre;
+    std::shared_ptr<Style> desactive;
 
 }; // fin class Skin
 
-} // fin namespace gui
+}; // fin namespace gui
 
 #endif

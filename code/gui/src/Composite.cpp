@@ -1,0 +1,27 @@
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include <Composite.h>
+
+#include <Gadget.h>
+#include <Gadget.h>
+
+
+namespace gui {
+
+/////////////////////////////////////////////////
+void Composite::ajouter (std::shared_ptr<Gadget> enfant)
+{
+    m_enfants.push_back( enfant );
+}
+
+
+/////////////////////////////////////////////////
+void Composite::retirer (std::shared_ptr<Gadget> enfant)
+{
+
+}
+
+
+} // fin namespace gui
+

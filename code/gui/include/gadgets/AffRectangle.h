@@ -5,8 +5,6 @@
 // Headers
 /////////////////////////////////////////////////
 #include "Affiche.h"
-
-#include <memory>
 #include <SFML/Graphics.hpp>
 
 
@@ -19,56 +17,42 @@ namespace gui {
 /// \brief Classe concrète d'affichage d'un simple rectangle.
 ///
 /////////////////////////////////////////////////
-class AffRectangle : public Affiche {
+class AffRectangle : public Affiche/*, public sf::RectangleShape*/ {
 
 
 
 /////////////////////////////////////////////////
 // Méthodes
 /////////////////////////////////////////////////
+
 public:
     /////////////////////////////////////////////////
     /// \brief Constructeur par défaut.
     ///
     /////////////////////////////////////////////////
-    AffRectangle ();
+    AffRectangle ( sf::Vector2i taille = {100,100} );
 
-    void initialiser_composants ();
+    virtual void actualiser ();
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
-    virtual void actualiser ( sf::Time delta );
+    void setCouleurFond (sf::Color couleur)
+        { m_rectangle.setFillColor( couleur ); };
 
-    void    setFillColor    ( sf::Color  val ) {
-        m_couleur = val;
-//        m_rectangle->setFillColor ( val );
-//        std::cout << "\n--------------------------------------\n";
-//        std::cout << "      m_labelCouleur : " << int ( m_rectangle->getFillColor().r )
-//                                        << " " << int ( m_rectangle->getFillColor().g )
-//                                        << " " << int ( m_rectangle->getFillColor().b )
-//                                        << "\n";
-//
-//        std::cout << "--------------------------------------\n\n";
-    };
+    void setCouleurBord (sf::Color couleur)
+        { m_rectangle.setOutlineColor( couleur ); };
 
-    void  setOutlineColor ( sf::Color val ) {
-        m_cadreCouleur = val;
-//        m_rectangle->setOutlineColor ( val );
-    };
+    void setEpaisseurBord (float epaisseur)
+        { m_rectangle.setOutlineThickness( epaisseur ); };
 
-    void setOutlineThickness ( float val) {
-        m_cadreEpaisseur = val;
-//        m_rectangle->setOutlineThickness( val );
-    };
+
+protected:
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
 private:
-    std::shared_ptr<sf::RectangleShape>     m_rectangle = std::make_shared<sf::RectangleShape>  ( );    ///< Le rectangle sfml.
-    sf::Color               m_couleur;
-    float                   m_cadreEpaisseur;
-    sf::Color               m_cadreCouleur;
+    sf::RectangleShape      m_rectangle;    ///< Le rectangle sfml.
 
 }; // fin class AffRectangle
 

@@ -5,10 +5,12 @@
 //  Headers
 /////////////////////////////////////////////////
 #include    <SFML/Graphics.hpp>
+#include    <memory>
 #include    <Ecran.h>
 #include    <Application.h>
-#include    <GUI.h>
-//#include    <Interface.h>
+
+#include    <gui.h>
+
 
 namespace app {
 
@@ -19,6 +21,7 @@ namespace app {
 /////////////////////////////////////////////////
 class EcranDemo : public Ecran
 {
+
 public:
     /////////////////////////////////////////////////
     /// \brief Constructeur
@@ -90,9 +93,18 @@ private:
 
     sf::RectangleShape                  m_fond;         ///< Le shape SFML du fond de l'écran.
 
+    // l'interface gérant le tout
     std::shared_ptr<gui::Interface>     m_interface;    ///< Le groupe de GUI du menu principal.
 
+    // un skin permettant de gérer le rendu
+    std::shared_ptr<gui::Skin>          m_skin;         ///< Un skin.
 
+    // les gadgets
+    std::shared_ptr<gui::AffRectangle>  m_rectangle;    ///< Un simple rectangle.
+
+    std::shared_ptr<gui::AffLabel>      m_label;        ///< Un simple label.
+
+    std::shared_ptr<gui::AffImage>      m_image;        ///< Une simple image.
 
 
 }; // fin EcranDemo

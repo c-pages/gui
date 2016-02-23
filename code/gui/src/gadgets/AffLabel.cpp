@@ -3,89 +3,61 @@
 /////////////////////////////////////////////////
 #include <AffLabel.h>
 
-#include <iostream>
+
 
 namespace gui {
 
 /////////////////////////////////////////////////
-AffLabel::AffLabel  ( )
-: Affiche           ( )
-, m_label           ( )
-//, m_label           ( new sf::Text())
-, m_labelPolice     ( )
-, m_labelCouleur    ( sf::Color ( 255 , 255 , 255 , 255 ) )
-, m_labelTaille     ( 12 )
+AffLabel::AffLabel ()
+: m_texte       ( "Label" )
+, m_texteSFML   ( std::make_shared<sf::Text> () )
+, m_texteTaille ( 10 )
+, m_police      ( )
 {
-    std::cout << "Creation AffLabel\n";
-    // Police par défaut
+    actualiser ();
+}
 
-//    m_labelPolice.loadFromFile( "media/polices/arial.ttf" ) ;
+/////////////////////////////////////////////////
+void AffLabel::actualiser ()
+{
 
-    if (!m_labelPolice.loadFromFile( "media/polices/arial.ttf"))
-    {
-        std::cout << " ### Probleme de chargement de police. ###" << std::endl;
-        std::exit(-1);
+    if ( m_skin == nullptr ) {
+
+        m_police.loadFromFile           ( "media/polices/arial.ttf" );
+        m_texteSFML->setColor           ( sf::Color ( 250 , 250 , 250 , 150 ) );
+        m_texteSFML->setCharacterSize   ( 20 );
+
+
     } else {
-        std::cout << " ### Chargement de police : OK. ###" << std::endl;
+
+        auto style = m_skin->txtCourant;
+        m_police = style->txt_police ;
+        m_texteSFML->setColor           ( style->txt_couleur );
+        m_texteSFML->setCharacterSize   ( style->txt_taille );
 
     }
 
-    // Actualiser
-    actualiser( sf::seconds(0));
-
-}
-
-void AffLabel::setTexte( std::string val )
-{
-    std::cout << "Labele : setTexte ... : ''" << val << "''\n";
-
-    m_texte = val;
-
-    m_label.setString( val );
-
-    getProp();
-}
-
-/////////////////////////////////////////////////
-void AffLabel::initialiser_composants ()
-{
-
-}
-
-
-/////////////////////////////////////////////////
-void AffLabel::actualiser ( sf::Time delta )
-{
-
-    m_label.setFont ( m_labelPolice );
-    m_label.setColor ( m_labelCouleur );
-    m_label.setCharacterSize  ( m_labelTaille );
-
+    m_texteSFML->setFont    ( m_police );
+    m_texteSFML->setString  ( m_texte );
 }
 
 
 /////////////////////////////////////////////////
 void AffLabel::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
-
-    // On applique la transformation du gadget.
+    //On applique la transformation
     states.transform *= getTransform();
 
     // On dessine le texte
-    target.draw ( m_label , states );
-
+    target.draw( *m_texteSFML, states);
 }
 
 
 /////////////////////////////////////////////////
-sf::Vector2f    AffLabel::getTaille() const
+void AffLabel::setPoliceFichier (sf::Font police)
 {
-//    sf::Text popo;
-    sf::FloatRect taille = m_label.getGlobalBounds( );
 
-    return { taille.width , taille.height };
 }
-
 
 
 } // fin namespace gui

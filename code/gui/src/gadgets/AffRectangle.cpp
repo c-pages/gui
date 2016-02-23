@@ -2,65 +2,63 @@
 // Headers
 /////////////////////////////////////////////////
 #include <AffRectangle.h>
+#include <Skin.h>
 
-#include <iostream>
+
 
 namespace gui {
 
 /////////////////////////////////////////////////
-AffRectangle::AffRectangle ()
-: Affiche()
-//, m_rectangle   ( )
-, m_couleur     (  )
-, m_cadreEpaisseur ( 1. )
-, m_cadreCouleur( sf::Color ( 255 , 255 , 255 , 200 ) )
+AffRectangle::AffRectangle ( sf::Vector2i taille )
+: m_rectangle()
 {
-
-    std::cout << "Creation AffRectangle ( )\n";
-//    m_rectangle = new sf::RectangleShape  ( );
-    m_cadreEpaisseur = 1;
-    // Actualiser
-    actualiser( sf::seconds(0));
-    std::cout << " Rectangle cree OK.\n";
-
+    m_taille = taille;
+    actualiser ();
 }
 
 
 /////////////////////////////////////////////////
-void AffRectangle::actualiser( sf::Time delta )
+void AffRectangle::actualiser ()
 {
-//    m_cadreEpaisseur = 1;
+    m_rectangle.setSize ( {m_taille.x, m_taille.y} );
 
-    std::cout << "AffRectangle::m_cadreEpaisseur : " << m_cadreEpaisseur << "\n";
-  //  std::cout << "  Rectangle  NOM : " << getNom() << "\n";
-//
-//    m_rectangle->setSize (  m_taille );
-//    m_rectangle->setFillColor ( m_couleur );
-//    m_rectangle->setOutlineColor ( m_cadreCouleur );
-//    m_rectangle->setOutlineThickness ( 1 );
+    if ( m_skin == nullptr ) {
+        m_rectangle.setFillColor        ( sf::Color (   0,   0, 255, 150 * m_opacite ) );
+        m_rectangle.setOutlineColor     ( sf::Color ( 255, 255, 255, 255 * m_opacite ) );
+        m_rectangle.setOutlineThickness ( 1 );
+    } else {
+
+        auto style = m_skin->fondRepos;
+
+        m_rectangle.setFillColor        ( sf::Color (
+                                          style->fnd_couleur.r
+                                        , style->fnd_couleur.g
+                                        , style->fnd_couleur.b
+                                        , style->fnd_couleur.a * m_opacite ) ) ;
+
+        m_rectangle.setOutlineColor     ( sf::Color (
+                                          style->lgn_couleur.r
+                                        , style->lgn_couleur.g
+                                        , style->lgn_couleur.b
+                                        , style->lgn_couleur.a * m_opacite ) ) ;
+
+        m_rectangle.setOutlineThickness ( style->lgn_epaisseur ) ;
+
+    }
 
 }
-
-
-/////////////////////////////////////////////////
-void AffRectangle::initialiser_composants ()
-{
-
-}
-
 
 /////////////////////////////////////////////////
 void AffRectangle::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
-//    std::cout << "Rectangle : dessiner\n";
-
-    // On applique la transformation du gadget.
+    //On applique la transformation
     states.transform *= getTransform();
 
     // On dessine le rectangle
-//    target.draw( *m_rectangle , states );
-
+    target.draw(m_rectangle, states);
 }
+
+
 
 
 } // fin namespace gui

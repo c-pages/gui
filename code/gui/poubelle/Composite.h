@@ -49,10 +49,10 @@ public:
     std::shared_ptr<Gadget> getEnfants ( int id ) const { if ( id>=0 || id<m_enfants.size() )  return m_enfants.at( id ); else return 0; };
 
     ///< Definir m_parent
-    void setParent( std::shared_ptr<Gadget>  val );
+    void setParent( Gadget*  val );
 
     ///< Acceder à m_parent
-    std::shared_ptr<Gadget>  getParent () const { return m_parent; };
+    Gadget*  getParent () const { return m_parent; };
 
 public:
     void dessinerEnfants (sf::RenderTarget& target, sf::RenderStates states) const;
@@ -84,7 +84,7 @@ protected:
 /////////////////////////////////////////////////
 public:
     std::vector<std::shared_ptr<Gadget>>    m_enfants;      ///< Les enfants du gadget.#A#R#V#G
-    std::shared_ptr<Gadget>                 m_parent;       ///< #G#S
+    Gadget                                  m_parent;       ///< #G#S
 
 }; // fin class Composite
 

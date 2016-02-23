@@ -3,6 +3,7 @@
 /////////////////////////////////////////////////
 #include <Geometrie.h>
 #include <iostream>
+#include <memory>
 
 
 
@@ -26,7 +27,7 @@ void Geometrie::Aligner (std::shared_ptr<Gadget> cible)
 
 
 /////////////////////////////////////////////////
-bool Geometrie::testerSurvol (float x, float y) const
+bool Geometrie::testerSurvol (int x, int y) const
 {
 
 }

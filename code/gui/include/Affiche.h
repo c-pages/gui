@@ -7,39 +7,43 @@
 #include "Gadget.h"
 
 
+
 namespace gui {
 
 
 
-class Affiche : public Gadget {
+/////////////////////////////////////////////////
+/// \brief Classe abstraire des élément d'affichage simple sans interactivité.
+///
+/////////////////////////////////////////////////
+class Affiche : public gui::Gadget {
 
 
 
 /////////////////////////////////////////////////
 // Méthodes
 /////////////////////////////////////////////////
-public:
-
-//    Affiche();
-//
-//    ~Affiche () = default;
+protected:
     /////////////////////////////////////////////////
-    /// \brief Renvois false car les élément d'affiche ne sont pas interactifs.
+    /// \brief Redéfinie ajouter par une fonction vide( GOF4 : composite -> Feuilles)
     ///
+    /// \param gadget		 
     /////////////////////////////////////////////////
-    bool testerSurvol (){ return false; };
+    virtual void ajouter (std::shared_ptr<Gadget> gadget);
 
     /////////////////////////////////////////////////
     /// \brief  Redéfinie retirer par une fonction vide( GOF4 : composite -> Feuilles)
     ///
+    /// \param enfant		 
     /////////////////////////////////////////////////
-    void retirer (){};
+    virtual void retirer (std::shared_ptr<Gadget> enfant);
 
     /////////////////////////////////////////////////
-    /// \brief Redéfinie ajouter par une fonction vide( GOF4 : composite -> Feuilles)
+    /// \brief Renvois false.
     ///
+    /// \param position		 
     /////////////////////////////////////////////////
-    void ajouter (){};
+    virtual bool testerSurvol (sf::Vector2i position);
 
 
 }; // fin class Affiche

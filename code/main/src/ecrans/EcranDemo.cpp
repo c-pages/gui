@@ -127,15 +127,17 @@ EcranDemo::initGUI  ()
 
 
 
-    /////// Une image ///////
-    m_image = m_interface->creer.image( "media/img/IconeVide.png" );
-    m_image->setTaille      ( { 200 , 400 } );
-    m_image->setPosition    ( 220 , 20 );
 
 
     /////// Un Label ///////
     m_label = m_interface->creer.label( "Un label de base." );
     m_label->setPosition( 200 , 200 );
+
+
+    /////// Une image ///////
+    m_image = m_interface->creer.image( "media/img/IconeVide.png" );
+    m_image->setTaille      ( { 500 , 500 } );
+    m_image->setPosition    ( 220 , 20 );
 
 
 

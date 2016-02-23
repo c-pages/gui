@@ -38,16 +38,25 @@ public:
 
     void chargerDepuisFichier ( std::string fichier );
 
+    void setAjustement ( bool val ) { m_ajustement = val; };
+
+    virtual void setTaille( sf::Vector2i val ){
+
+        if ( m_ajustement )
+            m_taille = val;
+        else
+            m_taille = {m_texture->getSize().x , m_texture->getSize().y };
+
+        actualiser();
+    };
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
-public:
-//    std::shared_ptr<sf::RectangleShape>   m_rectangle;
-//    std::shared_ptr<sf::Texture>          m_texture;
-
-    sf::Sprite      m_sprite;
-    sf::Texture     m_texture;
+private:
+    sf::RectangleShape  m_rectangle;
+    sf::Texture*        m_texture;
+    bool                m_ajustement;       ///< true: l'image est ajusté au rectangle, false: le rectangle s'ajuste à limge (facon sprite).
 }; // fin class AffImage
 
 } // fin namespace gui

@@ -438,14 +438,14 @@
 1445711805 r:\06 - c++\110 - gui\code\main\include\resourcemgr.inl
 	"ResourceMgr.h"
 
-1456229420 r:\06 - c++\110 - gui\code\gui\include\skin.h
+1456198522 r:\06 - c++\110 - gui\code\gui\include\skin.h
 	<memory>
 	"Style.h"
 
-1456169015 r:\06 - c++\110 - gui\code\gui\include\style.h
+1456198522 r:\06 - c++\110 - gui\code\gui\include\style.h
 	<SFML/Graphics.hpp>
 
-1456226759 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
+1456231808 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
 	<SFML/Graphics.hpp>
 	<memory>
 	<Ecran.h>
@@ -456,28 +456,28 @@
 	"Gadget.h"
 	"FabriqueBase.h"
 
-1456186466 r:\06 - c++\110 - gui\code\gui\include\gadget.h
+1456198522 r:\06 - c++\110 - gui\code\gui\include\gadget.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<Geometrie.h>
 	<Skin.h>
 	<ActionClavier.h>
 
-1456228736 r:\06 - c++\110 - gui\code\gui\include\geometrie.h
+1456235754 r:\06 - c++\110 - gui\code\gui\include\geometrie.h
 	"Composite.h"
 	<SFML/Graphics.hpp>
 
-1456185928 r:\06 - c++\110 - gui\code\gui\include\composite.h
+1456198522 r:\06 - c++\110 - gui\code\gui\include\composite.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<vector>
 
-1456179524 r:\06 - c++\110 - gui\code\gui\include\actionclavier.h
+1456198522 r:\06 - c++\110 - gui\code\gui\include\actionclavier.h
 	<map>
 	<SFML/Graphics.hpp>
 	<functional>
 
-1456225708 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
+1456198522 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
 	"SFML/Graphics.hpp"
 	"memory"
 	"Gadget.h"
@@ -485,11 +485,11 @@
 	"gadgets\AffLabel.h"
 	"gadgets\AffImage.h"
 
-1456178175 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
+1456198522 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
 	"Affiche.h"
 	<SFML/Graphics.hpp>
 
-1456164899 r:\06 - c++\110 - gui\code\gui\include\affiche.h
+1456198522 r:\06 - c++\110 - gui\code\gui\include\affiche.h
 	"Gadget.h"
 
 1456161808 source:r:\06 - c++\110 - gui\code\main\src\config.cpp
@@ -499,7 +499,7 @@
 1445606138 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1456230753 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1456235527 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -507,12 +507,12 @@
 1445606138 source:r:\06 - c++\110 - gui\code\main\src\gestion_ecrans.cpp
 	"Gestion_ecrans.h"
 
-1456225246 r:\06 - c++\110 - gui\code\gui\include\gadgets\afflabel.h
+1456198522 r:\06 - c++\110 - gui\code\gui\include\gadgets\afflabel.h
 	"Affiche.h"
 	<memory>
 	<SFML/Graphics.hpp>
 
-1456230285 r:\06 - c++\110 - gui\code\gui\include\gadgets\affimage.h
+1456236410 r:\06 - c++\110 - gui\code\gui\include\gadgets\affimage.h
 	"Affiche.h"
 	<memory>
 	<SFML/Graphics.hpp>

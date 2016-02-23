@@ -93,7 +93,7 @@ private:
 
     sf::RectangleShape                  m_fond;         ///< Le shape SFML du fond de l'écran.
 
-    // l'interface gérant le tout
+    // l'Interface gérant l'interface ^^
     std::shared_ptr<gui::Interface>     m_interface;    ///< Le groupe de GUI du menu principal.
 
     // un skin permettant de gérer le rendu

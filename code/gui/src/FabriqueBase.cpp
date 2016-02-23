@@ -49,9 +49,8 @@ std::shared_ptr<AffImage>    FabriqueBase::image( std::string fichier )
     Gadget::ms_racineCourante->ajouter ( nouveauGadget );
     nouveauGadget->setParent ( Gadget::ms_racineCourante );
 
-    // Définition du fichier de l'image
-    if ( fichier != "" )
-        nouveauGadget->chargerDepuisFichier ( fichier );
+    // Chargement du fichier de l'image
+    nouveauGadget->chargerDepuisFichier ( fichier );
 
     // renvois du nouveau gadget créé.
     return nouveauGadget;

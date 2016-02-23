@@ -22,31 +22,51 @@ void AffRectangle::actualiser ()
 {
 //    std::cout << "ACTUALISER AFFRECTANGLE_H\n";
 
-    m_rectangle.setSize ( {m_taille.x, m_taille.y} );
+    m_rectangle.setSize ( { m_taille.x, m_taille.y } );
 
-    if ( m_skin == nullptr ) {
-        m_rectangle.setFillColor        ( sf::Color (   0,   0, 255, 150 * m_opacite ) );
-        m_rectangle.setOutlineColor     ( sf::Color ( 255, 255, 255, 255 * m_opacite ) );
-        m_rectangle.setOutlineThickness ( 1 );
-    } else {
+    // On choisi le style adéquate ...
 
-        auto style = m_skin->fondRepos;
+    std::shared_ptr<Style> style = nullptr;
 
-        m_rectangle.setFillColor        ( sf::Color (
-                                          style->fnd_couleur.r
-                                        , style->fnd_couleur.g
-                                        , style->fnd_couleur.b
-                                        , style->fnd_couleur.a * m_opacite ) ) ;
-
-        m_rectangle.setOutlineColor     ( sf::Color (
-                                          style->lgn_couleur.r
-                                        , style->lgn_couleur.g
-                                        , style->lgn_couleur.b
-                                        , style->lgn_couleur.a * m_opacite ) ) ;
-
-        m_rectangle.setOutlineThickness ( style->lgn_epaisseur ) ;
+    if ( m_style != nullptr )
+    {
+//        std::cout << " ->Style 1\n";
+        style = m_style;
+    }
+    else
+    {
+//        std::cout << " ->Style 2\n";
+        style = m_skin->fond;
 
     }
+   /* else {
+//        std::cout << " ->Style 3\n";
+        // rectangle par defaut
+        style = std::make_shared<Style>();
+
+        style->fnd_couleur = sf::Color ( 255, 255,   0, 150 );
+        style->lgn_couleur = sf::Color ( 255, 255, 255, 255 );
+        style->lgn_epaisseur = 1;
+//        std::cout << " -> " << int ( style->fnd_couleur.r ) << " " << int ( style->fnd_couleur.g) << " " << int ( style->fnd_couleur.b) << "\n" ;
+    }*/
+
+
+    // ... et on l'applique
+    m_rectangle.setFillColor        ( sf::Color (
+                                      style->fnd_couleur.r
+                                    , style->fnd_couleur.g
+                                    , style->fnd_couleur.b
+                                    , style->fnd_couleur.a * m_opacite ) ) ;
+
+    m_rectangle.setOutlineColor     ( sf::Color (
+                                      style->lgn_couleur.r
+                                    , style->lgn_couleur.g
+                                    , style->lgn_couleur.b
+                                    , style->lgn_couleur.a * m_opacite ) ) ;
+
+    m_rectangle.setOutlineThickness ( style->lgn_epaisseur ) ;
+
+
 
 }
 

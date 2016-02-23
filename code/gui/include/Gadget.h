@@ -59,7 +59,7 @@ public:
         { m_deplacable = val; };
 
     ///< Definir m_skin
-    void setSkin( std::shared_ptr<Skin> val )
+    virtual void setSkin( std::shared_ptr<Skin> val )
         { m_skin = val; actualiser ();};
 
     ///< Acceder à m_skin
@@ -125,7 +125,7 @@ public:
     /////////////////////////////////////////////////
     virtual void declencher ( Evenement evenement ){};
 
-protected:
+public:
     /////////////////////////////////////////////////
     /// \brief Le gadget est-il actif (m_actif)?
     ///
@@ -165,6 +165,11 @@ protected:
 
     static Gadget*     getRacineCourante() { return ms_racineCourante; };
 
+    void setStyle ( std::shared_ptr<Style> style ){ m_style = style; actualiser();};
+
+    std::shared_ptr<Style> getStyle ( )const { return m_style; };
+
+
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
@@ -180,6 +185,7 @@ private:
     bool m_deplacable;  ///< Si le gadget est déplacable (clique and drag)
 protected:
     std::shared_ptr<Skin>   m_skin;    ///< Le skin, model pour les paramètres de rendu.
+    std::shared_ptr<Style>  m_style;
 
     friend class FabriqueBase;
 

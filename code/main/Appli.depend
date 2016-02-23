@@ -438,7 +438,7 @@
 1445711805 r:\06 - c++\110 - gui\code\main\include\resourcemgr.inl
 	"ResourceMgr.h"
 
-1456198522 r:\06 - c++\110 - gui\code\gui\include\skin.h
+1456258673 r:\06 - c++\110 - gui\code\gui\include\skin.h
 	<memory>
 	"Style.h"
 
@@ -457,7 +457,7 @@
 	"Gadget.h"
 	"FabriqueBase.h"
 
-1456252695 r:\06 - c++\110 - gui\code\gui\include\gadget.h
+1456259736 r:\06 - c++\110 - gui\code\gui\include\gadget.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<Geometrie.h>
@@ -466,7 +466,7 @@
 	<Enums.h>
 	<ActionSouris.h>
 
-1456244457 r:\06 - c++\110 - gui\code\gui\include\geometrie.h
+1456260685 r:\06 - c++\110 - gui\code\gui\include\geometrie.h
 	"Composite.h"
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -490,7 +490,7 @@
 	"gadgets\AffImage.h"
 	"gadgets\BoutonRect.h"
 
-1456239192 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
+1456259720 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
 	"Affiche.h"
 	<SFML/Graphics.hpp>
 
@@ -504,7 +504,7 @@
 1445606138 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1456253340 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1456262627 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -512,8 +512,9 @@
 1445606138 source:r:\06 - c++\110 - gui\code\main\src\gestion_ecrans.cpp
 	"Gestion_ecrans.h"
 
-1456237864 r:\06 - c++\110 - gui\code\gui\include\gadgets\afflabel.h
+1456261377 r:\06 - c++\110 - gui\code\gui\include\gadgets\afflabel.h
 	"Affiche.h"
+	"Style.h"
 	<memory>
 	<SFML/Graphics.hpp>
 
@@ -522,13 +523,13 @@
 	<memory>
 	<SFML/Graphics.hpp>
 
-1456253147 r:\06 - c++\110 - gui\code\gui\include\gadgets\boutonrect.h
+1456255793 r:\06 - c++\110 - gui\code\gui\include\gadgets\boutonrect.h
 	"Bouton.h"
 	"gadgets\AffRectangle.h"
 	"gadgets\AffLabel.h"
 	<SFML/Graphics.hpp>
 
-1456251831 r:\06 - c++\110 - gui\code\gui\include\bouton.h
+1456255287 r:\06 - c++\110 - gui\code\gui\include\bouton.h
 	"ActionSouris.h"
 	"Gadget.h"
 

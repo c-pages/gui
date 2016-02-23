@@ -17,7 +17,8 @@ Gadget::Gadget ()
 , m_survol      ( false )
 , m_presse      ( false )
 , m_deplacable  ( false )
-, m_skin        ( nullptr )
+, m_skin        ( std::make_shared<Skin>() )
+, m_style       ( nullptr )
 {
 //    std::cout << "Creation d'un gadget\n";
 //    m_parent = nullptr;

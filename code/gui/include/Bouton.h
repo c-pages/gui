@@ -36,11 +36,14 @@ public:
 
     void setTexte( std::string val ){ m_texte = val; actualiser(); };
 
+    void setAutoAjuster (bool val ){ m_autoAjust = val; actualiser ();};
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
     std::string                 m_texte;            ///< Le texte du bouton
+    bool                        m_autoAjust;        ///< Ajuste automatiquement la taille du bouton au texte (en tenant compte de la marge).
+    sf::Vector2f                m_marge;            ///< La marge à laissé lors l'ajustement automatique du rectangle sur le texte.
 
 }; // fin class Bouton
 

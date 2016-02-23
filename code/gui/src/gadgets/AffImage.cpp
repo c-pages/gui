@@ -55,7 +55,7 @@ void AffImage::actualiser ()
 
     } else {
 
-        auto style = m_skin->fondRepos;
+        auto style = m_skin->imgRepos;
 
         m_rectangle.setFillColor        ( sf::Color (
                                           style->fnd_couleur.r

@@ -14,6 +14,7 @@ AffLabel::AffLabel ()
 , m_texteTaille ( 10 )
 , m_police      ( )
 {
+
     actualiser ();
 }
 
@@ -21,25 +22,47 @@ AffLabel::AffLabel ()
 void AffLabel::actualiser ()
 {
 
-    if ( m_skin == nullptr ) {
+    //m_texteTaille
 
-        m_police.loadFromFile           ( "media/polices/arial.ttf" );
-        m_texteSFML->setColor           ( sf::Color ( 250 , 250 , 250 , 150 ) );
-        m_texteSFML->setCharacterSize   ( 20 );
+    // On choisi le style
+    std::shared_ptr<Style> style = nullptr;
 
-
-    } else {
-
-        auto style = m_skin->txtCourant;
-        m_police = style->txt_police ;
-        m_texteSFML->setColor           ( style->txt_couleur );
-        m_texteSFML->setCharacterSize   ( style->txt_taille );
-
+    if ( m_style != nullptr )
+    {
+//        std::cout << " ->Style 1\n";
+        style = m_style;
     }
+    else if ( m_skin != nullptr )
+    {
+//        std::cout << " ->Style 2\n";
+        style = m_skin->txtCourant;
+    }
+    else {
+        // par defaut
+        style = std::make_shared<Style>();
+        style->txt_police.loadFromFile           ( "media/polices/consola.ttf" );
+        style->txt_couleur =  sf::Color ( 250 , 250 , 250 , 150 ) ;
+    }
+
+    style->txt_taille  = m_texteTaille;
+
+    // on l'applique
+    m_police = style->txt_police ;
+    m_texteSFML->setColor           ( style->txt_couleur );
+    m_texteSFML->setCharacterSize   ( m_texteTaille );
+
 
     m_texteSFML->setFont    ( m_police );
     m_texteSFML->setString  ( m_texte );
 }
+
+/////////////////////////////////////////////////
+sf::Vector2i  AffLabel::getTaille() const
+{
+    return { m_texteSFML->getGlobalBounds().width , m_texteSFML->getGlobalBounds().height};
+}
+
+
 
 
 /////////////////////////////////////////////////

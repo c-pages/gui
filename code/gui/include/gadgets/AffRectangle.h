@@ -36,6 +36,7 @@ public:
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
+
     void setFillColor (sf::Color couleur)
         { m_rectangle.setFillColor( couleur ); };
 

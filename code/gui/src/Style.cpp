@@ -14,7 +14,6 @@ Style::Style()
 , fnd_couleur   ( sf::Color(255, 255, 255))
 , fnd_texture   ( )
 {
-
     txt_police.loadFromFile ( "media/polices/consola.ttf" );
 
 }

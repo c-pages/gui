@@ -5,6 +5,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include "Affiche.h"
+#include "Style.h"
 #include <memory>
 #include <SFML/Graphics.hpp>
 
@@ -27,6 +28,10 @@ class AffLabel : public gui::Affiche {
 /////////////////////////////////////////////////
 
 public:
+
+    sf::Vector2i  getTaille() const;
+
+
     ///< Definir m_texte
     void setTexte( std::string val ){ m_texte = val; actualiser(); };
 
@@ -34,13 +39,13 @@ public:
     std::string getTexte () const { return m_texte; };
 
     ///< Definir m_texteTaille
-    void setTexteTaille( float val ){ m_texteTaille = val; };
+    void setTexteTaille( float val ){ m_texteTaille = val; actualiser(); };
 
     ///< Acceder à m_texteTaille
     float getTexteTaille () const { return m_texteTaille; };
 
     ///< Definir m_police
-    void setPolice( sf::Font val ){ m_police = val; };
+    void setPolice( sf::Font val ){ m_police = val; actualiser(); };
 
     ///< Acceder à m_police
     sf::Font getPolice () const { return m_police; };
@@ -62,7 +67,8 @@ public:
     /// \param police
     /////////////////////////////////////////////////
     void setPoliceFichier (sf::Font police);
-
+//
+//    virtual void setStyle (){};
 
 
 /////////////////////////////////////////////////
@@ -73,7 +79,7 @@ private:
     std::shared_ptr<sf::Text>   m_texteSFML;        ///< Le shape SFML qui affiche le texte.
     float                       m_texteTaille;      ///< La taille du texte à afficher par le label.#S#G
     sf::Font                    m_police;           ///< La police du texte à afficher par le label.#S#G
-
+//    Style*                      m_style;
 }; // fin class AffLabel
 
 } // fin namespace gui

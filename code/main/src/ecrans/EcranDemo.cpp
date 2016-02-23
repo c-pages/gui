@@ -135,30 +135,29 @@ EcranDemo::initGUI ()
 void
 EcranDemo::initGUI_test_Boutons  ()
 {
-    using namespace gui;
 
     std::cout << "\n---------------------------------------\n";
     std::cout << "      Test des gadgets : BOUTONS";
     std::cout << "\n---------------------------------------\n\n";
 
+    using namespace gui;
 
     /////// Simple bouton rectangulaire ///////
     m_boutonRect = m_interface->creer.bouton( sf::Vector2i (20,20) );
+    m_boutonRect->setTexte ( "Bouton" );
+    m_boutonRect->setAutoAjuster ( true );
+    m_boutonRect->setSkin        ( m_skin );
+
     m_boutonRect->setPosition    ( 20 , 190 );
     m_boutonRect->lierSouris ( gui::Evenement::onBtnG_relacher , [this](){
-                        std::cout << "ACTION RELACHER Declenchee par le bouton.\n";
-                        });
-    m_boutonRect->lierSouris ( gui::Evenement::on_sortir , [this](){
-                        std::cout << "ACTION SORTIR Declenchee par le bouton.\n";
-                        });
-    m_boutonRect->lierSouris ( gui::Evenement::on_entrer , [this](){
-                        std::cout << "ACTION ENTRER Declenchee par le bouton.\n";
+                        std::cout << "ACTION RELACHER le bouton\n";
                         });
 
     /////// autre Label ///////
     m_label_5 = m_interface->creer.label( "<---  simple bouton rectangulaire." );
-    m_label_5->setPosition    ( 50 , 195 );
-    m_label_5->setSkin        ( m_skin );
+    m_label_5->setPosition    ( 100 , 193 );
+//    m_label_5->setSkin        ( m_skin );
+    m_label_5->setStyle       ( m_skin->txtLog );
 
 
 }   // fin init GUI
@@ -169,49 +168,45 @@ EcranDemo::initGUI_test_Boutons  ()
 void
 EcranDemo::initGUI_test_Affichages  ()
 {
-    using namespace gui;
-
     std::cout << "\n---------------------------------------\n";
     std::cout << "      Test des gadgets : AFFICHAGES";
     std::cout << "\n---------------------------------------\n\n";
 
+    using namespace gui;
+
     /////// Simple rectangle ///////
     m_rectangle = m_interface->creer.rectangle( {20,20} );
     m_rectangle->setPosition    ( 20 , 20 );
-    m_rectangle->setOpacite     ( 0.2 );
-    m_rectangle->setSkin        ( m_skin );
-
-
-
 
 
     /////// Un Label ///////
-    m_label = m_interface->creer.label( "<---  simple rectangle. ('espace': bascule entre skin interface/rendu par defaut )" );
-    m_label->setPosition    ( 50 , 20 );
-    m_label->setSkin        ( m_skin );
+    m_label = m_interface->creer.label( "<---  simple rectangle. ('espace': bascule entre style defini (desactive) et skin par defaut )" );
+    m_label->setPosition    ( 50 , 25 );
+    m_label->setStyle       ( m_skin->txtLog );
 
 
     /////// Une image ///////
     m_image = m_interface->creer.image( "media/img/IconeVide.png" );
     m_image->setTaille      ( { 500 , 500 } );
-    m_image->setPosition    ( 20 , 40 );
+    m_image->setPosition    ( 20 , 60 );
 
 
     /////// autre Label ///////
     m_label_2 = m_interface->creer.label( "<---  simple image. ('media/img/IconeVide.png')" );
-    m_label_2->setPosition    ( 150 , 100 );
-    m_label_2->setSkin        ( m_skin );
+    m_label_2->setPosition    ( 150 , 90 );
+    m_label_2->setStyle       ( m_skin->txtLog );
 
 
 
     /////// Un Label ///////
     m_label_3 = m_interface->creer.label( "LABEL" );
     m_label_3->setPosition    ( 20 , 150 );
+    m_label_3->setTexteTaille ( 20 );
 
     /////// autre Label ///////
     m_label_4 = m_interface->creer.label( "<---  simple label. (comme ça ici là)" );
-    m_label_4->setPosition    ( 90 , 155 );
-    m_label_4->setSkin        ( m_skin );
+    m_label_4->setPosition    ( 90 , 157 );
+    m_label_4->setStyle       ( m_skin->txtLog );
 
 
 
@@ -220,17 +215,15 @@ EcranDemo::initGUI_test_Affichages  ()
     // On ajoute une liaison à la touche Espace pour changer le style du rectangle
     m_interface->lier ( sf::Keyboard::Space , [this]() {
             std::cout << " touche : Espace ";
-            if ( m_rectangle->getSkin () != nullptr)
+            if ( m_rectangle->getStyle () != nullptr)
             {
                 std::cout << "( on retire le skin => rendu par defaut. ) \n";
-                m_rectangle->setSkin    ( nullptr );
-//                m_label->setSkin        ( m_skin );
+                m_rectangle->setStyle    ( nullptr );
             }
             else
             {
                 std::cout << "( on associe le skin (m_skin) => rendu par le skin. ) \n";
-                m_rectangle->setSkin    ( m_skin );
-//                m_label->setSkin        ( nullptr );
+                m_rectangle->setStyle    ( m_skin->desactive );
             }
         } );
 

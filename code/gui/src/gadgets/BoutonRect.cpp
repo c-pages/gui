@@ -9,6 +9,7 @@ namespace gui {
 
 /////////////////////////////////////////////////
 BoutonRect::BoutonRect ()
+: m_texte ( "" )
 {
 
 }
@@ -16,16 +17,27 @@ BoutonRect::BoutonRect ()
 /////////////////////////////////////////////////
 void BoutonRect::actualiser ()
 {
-    //std::cout << "ACTUALISER AFFRECTANGLE : opacité = "<< m_opacite << ". ";
+//    std::cout << "ACTUALISER BoutonRect \n";
+
+    m_label.setSkin ( m_skin );
+    m_rectangle.setSkin ( m_skin );
+
+    m_label.setTexte( m_texte );
+
+    if ( m_autoAjust )
+        m_taille = { m_label.getTaille().x + m_marge.x*2 , m_label.getTaille().y + m_marge.y*2 } ;
 
     m_rectangle.setTaille ( {m_taille.x, m_taille.y} );
-
+    m_label.setPosition( m_marge.x  , m_marge.y/2   );
+/*
+    // Si on a pas de skin on applique un style par defaut.
     if ( m_skin == nullptr ) {
         if ( !estSurvole () && !estPresse() )        {
             //std::cout << "Repos\n";
             m_rectangle.setFillColor        ( sf::Color ( 255, 255, 255, 100 * m_opacite ) );
             m_rectangle.setOutlineColor     ( sf::Color ( 255, 255, 255, 150 * m_opacite ) );
             m_rectangle.setOutlineThickness ( 1 );
+            m_label.setSkin ( m_skin );
         } else if ( estPresse () ) {
             //std::cout << "Press\n";
             m_rectangle.setFillColor        ( sf::Color ( 255, 255, 255, 200 * m_opacite ) );
@@ -38,16 +50,17 @@ void BoutonRect::actualiser ()
             m_rectangle.setOutlineThickness ( 1 );
         }
 
+    // Si on a un skin alors...
     } else {
-
-        // On choisie le styla a appliquer en fonction de l'etat du bouton
+*/
+        // On choisie le style a appliquer en fonction de l'etat du bouton
         std::shared_ptr<Style> style = nullptr;
         if ( !estSurvole () && !estPresse() )
-            style = m_skin->fondRepos;
-        else if ( estSurvole () )
-            style = m_skin->fondSurvol;
+            style = m_skin->btnRepos;
         else if ( estPresse () )
-            style = m_skin->fondPress;
+            style = m_skin->btnPress;
+        else if ( estSurvole () )
+            style = m_skin->btnSurvol;
 
         // Puis on l'applique au bouton.
         m_rectangle.setFillColor        ( sf::Color (
@@ -64,7 +77,7 @@ void BoutonRect::actualiser ()
 
         m_rectangle.setOutlineThickness ( style->lgn_epaisseur ) ;
 
-    }
+
 
 }
 
@@ -74,8 +87,9 @@ void BoutonRect::draw (sf::RenderTarget& target, sf::RenderStates states) const
     //On applique la transformation
     states.transform *= getTransform();
 
-    // On dessine le rectangle
+    // On dessine les éléments
     target.draw(m_rectangle, states);
+    target.draw(m_label, states);
 
 }
 

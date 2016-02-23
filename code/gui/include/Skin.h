@@ -22,8 +22,6 @@ class Skin {
 /////////////////////////////////////////////////
 // Méthodes
 /////////////////////////////////////////////////
-
-public:
 public:
     /////////////////////////////////////////////////
     /// \brief Createur par défaut
@@ -43,9 +41,11 @@ public:
     std::shared_ptr<Style> txtCourant;
     std::shared_ptr<Style> txtTitre;
 
-    std::shared_ptr<Style> fondPress;
-    std::shared_ptr<Style> fondSurvol;
-    std::shared_ptr<Style> fondRepos;
+    std::shared_ptr<Style> fond;
+
+    std::shared_ptr<Style> btnPress;
+    std::shared_ptr<Style> btnSurvol;
+    std::shared_ptr<Style> btnRepos;
 
     std::shared_ptr<Style> imgRepos;
 

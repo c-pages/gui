@@ -59,7 +59,7 @@ public:
     sf::FloatRect getGlobalBounds () const { return m_globalBounds; };
 
     ///< Definir m_opacite
-    void setOpacite( double val ){ m_opacite = val; };
+    void setOpacite( double val ){ m_opacite = val; actualiser();  };
 
     ///< Acceder à m_taille
     double getOpacite () const { return m_opacite; };

@@ -105,15 +105,20 @@ private:
 
     // les gadgets AFFICHAGE
     std::shared_ptr<gui::AffRectangle>  m_rectangle;    ///< Un simple rectangle.
+
+    std::shared_ptr<gui::AffLabel>      m_labelRetour;        ///< Un simple label.
+
     std::shared_ptr<gui::AffLabel>      m_label;        ///< Un simple label.
     std::shared_ptr<gui::AffLabel>      m_label_2;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_3;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_4;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_5;      ///< Un autre label.
+    std::shared_ptr<gui::AffLabel>      m_label_6;      ///< Un autre label.
     std::shared_ptr<gui::AffImage>      m_image;        ///< Une simple image.
 
     // les gadgets BOUTON
-    std::shared_ptr<gui::BoutonRect>    m_boutonRect;    ///< Un simple bouton rectangulaire.
+    std::shared_ptr<gui::BtnRectangle>    m_boutonRect;    ///< Un simple bouton rectangulaire.
+    std::shared_ptr<gui::BtnMenu>         m_boutonMenu;    ///< Un bouton Menu.
 
 
 }; // fin EcranDemo

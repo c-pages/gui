@@ -13,7 +13,8 @@
 #include "gadgets\AffImage.h"
 
 // BOUTONS
-#include "gadgets\BoutonRect.h"
+#include "gadgets\BtnRectangle.h"
+#include "gadgets\BtnMenu.h"
 
 namespace gui{
 
@@ -61,15 +62,21 @@ public:
     ///
     /// \param ...
     /////////////////////////////////////////////////
-    std::shared_ptr<BoutonRect>    bouton( std::string texte = "" );
+    std::shared_ptr<BtnRectangle>    bouton( std::string texte = "" );
 
     /////////////////////////////////////////////////
     /// \brief  Création d'un simple bouton rectangulaire
     ///
     /// \param ...
     /////////////////////////////////////////////////
-    std::shared_ptr<BoutonRect>    bouton( sf::Vector2i taille );
+    std::shared_ptr<BtnRectangle>    bouton( sf::Vector2i taille );
 
+    /////////////////////////////////////////////////
+    /// \brief  Création d'un simple bouton rectangulaire
+    ///
+    /// \param ...
+    /////////////////////////////////////////////////
+    std::shared_ptr<BtnMenu>        menu( );
 };
 
 }; // fin namespace gui

@@ -29,9 +29,9 @@ public:
 // membres
 /////////////////////////////////////////////////
     FabriqueBase    creer;      ///< La fabrique de gadget de base (GOF: Fabrique)
-
-private:
+public:
     std::shared_ptr<Gadget>     m_boutonSurvole;    ///< Le bouton survolé actuelement par la souris.
+private:
     std::shared_ptr<Gadget>     m_boutonPresse;     ///< Le bouton pressé actuelement par la souris.
     sf::RenderWindow*           m_fenetre;          ///< La fenetyre SFML;
 

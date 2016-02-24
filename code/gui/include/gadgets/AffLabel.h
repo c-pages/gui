@@ -7,6 +7,7 @@
 #include "Affiche.h"
 #include "Style.h"
 #include <memory>
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 

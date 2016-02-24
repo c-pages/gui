@@ -13,7 +13,6 @@
 
 namespace gui {
 
-//class Gadget;
 
 /////////////////////////////////////////////////
 /// \brief Classe abstraite qui gère les évenements claviers et souris
@@ -21,11 +20,12 @@ namespace gui {
 /////////////////////////////////////////////////
 class ActionSouris : public Gadget {
 
+
+
 /////////////////////////////////////////////////
 // Enums & typedefs
 /////////////////////////////////////////////////
 public:
-
     using FctnAction = std::function<void()>;    ///< le type de fonction associé aux declenchements des evenements.
 
 
@@ -39,7 +39,7 @@ public:
     /// \param evenement		 evenement souris
     /// \param fonction		 Le fonction à déclencher.
     /////////////////////////////////////////////////
-    void lierSouris  (Evenement evenement, FctnAction fonction);
+    void lier  (Evenement evenement, FctnAction fonction);
 
     /////////////////////////////////////////////////
     /// \brief Supprime une liaison entre un evenement souris  et une fonction lambda.

@@ -17,9 +17,10 @@ Bouton::Bouton ()
 
 
 /////////////////////////////////////////////////
-bool Bouton::testerSurvol ( sf::Vector2i position ) const
+std::shared_ptr<Gadget>  Bouton::testerSurvol ( sf::Vector2i position )
 {
-    Geometrie::testerSurvol ( position );
+//    std::cout << "Bouton : Tester survol\n";
+    return Gadget::testerSurvol ( position );
 }
 
 

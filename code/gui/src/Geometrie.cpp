@@ -47,21 +47,25 @@ void Geometrie::actualiser_bounds ()
 }
 
 
+/*
 /////////////////////////////////////////////////
-bool Geometrie::testerSurvol (int x, int y) const
+std::shared_ptr<Gadget> Geometrie::testerSurvol (int x, int y)
 {
-    testerSurvol (sf::Vector2i ( x , y));
+    return testerSurvol (sf::Vector2i ( x , y));
 }
 
-
 /////////////////////////////////////////////////
-bool Geometrie::testerSurvol (sf::Vector2i position) const
+std::shared_ptr<Gadget> Geometrie::testerSurvol (sf::Vector2i position)
 {
 //    if ( m_globalBounds.contains( position.x, position.y ) )
 //        std::cout << "CONTIENTPOPO";
 
-    return m_globalBounds.contains( position.x, position.y );
-}
+//    return m_globalBounds.contains( position.x, position.y );
+   if ( m_globalBounds.contains( position.x, position.y ) )
+        return thisPtr();
+    else
+        return nullptr;
+}*/
 
 
 } // fin namespace gui

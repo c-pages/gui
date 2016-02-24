@@ -2,12 +2,20 @@
 // Headers
 /////////////////////////////////////////////////
 #include <iostream>
+#include <sstream>
 
 #include <Gadget.h>
 #include <Skin.h>
 
 
 namespace gui {
+
+/////////////////////////////////////////////////
+// Initialisation des membre static
+/////////////////////////////////////////////////
+Gadget *    Gadget::ms_racineCourante   = nullptr;
+int         Gadget::ms_CompteurGadgets  = 0;
+
 
 /////////////////////////////////////////////////
 Gadget::Gadget ()
@@ -20,15 +28,21 @@ Gadget::Gadget ()
 , m_skin        ( std::make_shared<Skin>() )
 , m_style       ( nullptr )
 {
-//    std::cout << "Creation d'un gadget\n";
-//    m_parent = nullptr;
+    // Mise a jour du nombre de gadget
+    ms_CompteurGadgets++;
+
+    // Creation du nom unique du gadget
+    std::stringstream ss;
+    ss << getNombreGadgets();
+    m_nom = "Gadget_" + ss.str();
+
 }
 
 
 /////////////////////////////////////////////////
 Gadget::~Gadget ()
 {
-
+    ms_CompteurGadgets--;
 }
 
 
@@ -95,5 +109,15 @@ bool Gadget::estDeplacable () const
 }
 
 
+/////////////////////////////////////////////////
+std::shared_ptr<Gadget>  Gadget::testerSurvol ( sf::Vector2i position ) {
+
+//    std::cout << "Gadget : Tester survol\n";
+    if ( m_globalBounds.contains( position.x, position.y ) )
+        return thisPtr();
+    else
+        return nullptr;
+
+};
 } // fin namespace gui
 

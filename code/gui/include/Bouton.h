@@ -31,10 +31,12 @@ public:
     /////////////////////////////////////////////////
     Bouton ();
 
-    virtual bool testerSurvol ( sf::Vector2i position ) const;
+    virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
+
     virtual void actualiser ( ){};
 
-    void setTexte( std::string val ){ m_texte = val; actualiser(); };
+    virtual void setTexte( std::string val ){ m_texte = val; actualiser(); };
+    std::string getTexte( ) const { return m_texte; };
 
     void setAutoAjuster (bool val ){ m_autoAjust = val; actualiser ();};
 

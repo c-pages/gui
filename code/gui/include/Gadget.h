@@ -34,6 +34,14 @@ class Gadget : public std::enable_shared_from_this<Gadget>, public sf::Drawable,
 // Méthodes
 /////////////////////////////////////////////////
 public:
+
+    std::shared_ptr<Gadget> thisPtr()  {
+//        std::cout << "DEMANDE DE THISPTR\n";
+        return shared_from_this();
+    };
+
+
+
     ///< Definir m_visible
     void setVisible( bool val )
         { m_visible = val; };
@@ -169,14 +177,25 @@ public:
 
     std::shared_ptr<Style> getStyle ( )const { return m_style; };
 
+    bool aDesEnfants () { return ( m_enfants.size() > 0 ); };
+
+    virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
+
+    std::string     getNom() const { return m_nom; };
+
+    int getNombreGadgets () const { return ms_CompteurGadgets; };
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
-protected:
-    static  Gadget*      ms_racineCourante;    ///< L'interface courante dans laquelle on créé les gadgets.
-
+public:
+    static  Gadget*     ms_racineCourante;    ///< L'interface courante dans laquelle on créé les gadgets.
 private:
+    static  int         ms_CompteurGadgets;   ///< L'interface courante dans laquelle on créé les gadgets.
+
+protected:
+    std::string         m_nom;      ///< Nom unique automatique pour le gadget.
+
     bool m_visible;     ///< La visibilité du gadget ( true: visible, false: invisible )
     bool m_actif;       ///< L'activité du gadget ( true: actif, false: inactif )
     bool m_focus;       ///< Le focus du gadget ( true: à le focus, false: sans le focus )

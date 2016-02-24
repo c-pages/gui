@@ -55,21 +55,21 @@ void AffImage::actualiser ()
 
     } else {
 
-        auto style = m_skin->imgRepos;
+        auto style = m_skin->img;
 
         m_rectangle.setFillColor        ( sf::Color (
-                                          style->fnd_couleur.r
-                                        , style->fnd_couleur.g
-                                        , style->fnd_couleur.b
-                                        , style->fnd_couleur.a * m_opacite ) );
+                                          style->fnd_couleur.repos.r
+                                        , style->fnd_couleur.repos.g
+                                        , style->fnd_couleur.repos.b
+                                        , style->fnd_couleur.repos.a * m_opacite ) );
 
         m_rectangle.setOutlineColor     ( sf::Color (
-                                          style->lgn_couleur.r
-                                        , style->lgn_couleur.g
-                                        , style->lgn_couleur.b
-                                        , style->lgn_couleur.a * m_opacite ) );
+                                          style->lgn_couleur.repos.r
+                                        , style->lgn_couleur.repos.g
+                                        , style->lgn_couleur.repos.b
+                                        , style->lgn_couleur.repos.a * m_opacite ) );
 
-        m_rectangle.setOutlineThickness ( style->lgn_epaisseur ) ;
+        m_rectangle.setOutlineThickness ( style->lgn_epaisseur.repos ) ;
 
     }
 

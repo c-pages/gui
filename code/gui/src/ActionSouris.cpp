@@ -8,7 +8,7 @@
 namespace gui {
 
 /////////////////////////////////////////////////
-void ActionSouris::lierSouris  (Evenement evenement, FctnAction fonction)
+void ActionSouris::lier  (Evenement evenement, FctnAction fonction)
 {
     m_evenementsSouris.insert( { evenement , fonction } );
 }

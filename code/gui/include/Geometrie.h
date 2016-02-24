@@ -97,22 +97,22 @@ protected:
     ///
     /////////////////////////////////////////////////
     virtual void actualiser_bounds ();
-
+/*
     /////////////////////////////////////////////////
     /// \brief Test si la souris survole le gadget.
     ///
     /// \param x		 La position sur l'axe horizontal de la souris.
     /// \param y		 La position sur l'axe vertical de la souris.
     /////////////////////////////////////////////////
-    virtual bool testerSurvol (int x, int y) const;
+    virtual std::shared_ptr<Gadget> testerSurvol (int x, int y);
 
     /////////////////////////////////////////////////
     /// \brief Test si la souris survole le gadget.
     ///
     /// \param position		 Le vecteur position de la souris.
     /////////////////////////////////////////////////
-    virtual bool testerSurvol (sf::Vector2i position) const;
-
+    virtual std::shared_ptr<Gadget> testerSurvol (sf::Vector2i position);
+*/
 
 
 /////////////////////////////////////////////////

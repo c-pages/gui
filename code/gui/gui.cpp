@@ -6,11 +6,6 @@
 
 namespace gui {
 
-/////////////////////////////////////////////////
-// Initialisation des membre static
-/////////////////////////////////////////////////
-Gadget * Gadget::ms_racineCourante = nullptr;
-
 
 /////////////////////////////////////////////////
 Interface::Interface( sf::RenderWindow* fenetre )
@@ -27,16 +22,16 @@ Interface::Interface( sf::RenderWindow* fenetre )
 std::shared_ptr<Gadget> Interface::chercherGadgetSurvole ()
 {
 //    std::cout << "Interface : chercher Gadget Survole\n";
-    std::shared_ptr<Gadget> resultat = nullptr;
-    for (auto enfant : m_enfants )
-    {
-        if ( enfant->testerSurvol ( sf::Mouse::getPosition( *m_fenetre ) ))
-            resultat = enfant;
+
+    sf::Vector2i posSouris = sf::Mouse::getPosition( *m_fenetre );
+
+    for (auto gadget : m_enfants )    {
+        std::shared_ptr<Gadget> result = gadget->testerSurvol ( posSouris );
+        if ( result != nullptr )
+            return result;
     }
 
-
-    return resultat;
-
+    return nullptr;
 }
 
 /////////////////////////////////////////////////
@@ -49,6 +44,8 @@ void Interface::traiterEvenements( sf::Event evenement )
 
     // les evenements 'souris' de l'interface
     auto boutonSurvoleBack = m_boutonSurvole;
+//    std::shared_ptr<Gadget>    boutonSurvoleTMP = chercherGadgetSurvole ();
+
     m_boutonSurvole = chercherGadgetSurvole ();
 
 //    if ( m_boutonSurvole != nullptr )
@@ -65,8 +62,7 @@ void Interface::traiterEvenements( sf::Event evenement )
             if ( m_boutonSurvole ==  boutonSurvoleBack )
                 return;
 
-            //
-            if (m_boutonSurvole!=nullptr) {
+            if (m_boutonSurvole != nullptr) {
                 m_boutonSurvole->setSurvol( true );
                 m_boutonSurvole->declencher ( Evenement::on_entrer );
             }
@@ -74,6 +70,7 @@ void Interface::traiterEvenements( sf::Event evenement )
                 boutonSurvoleBack->setSurvol( false );
                 boutonSurvoleBack->declencher ( Evenement::on_sortir );
             }
+
         break;
 
         ///////// Presser bouton souris /////////////////////////////////////////
@@ -106,6 +103,8 @@ void Interface::traiterEvenements( sf::Event evenement )
             if ( m_boutonPresse != m_boutonSurvole ){
                 // on declenche l'action
                 m_boutonPresse->declencher ( Evenement::onBtnG_relacherDehors );
+                m_boutonPresse->setPresse( false );
+                m_boutonPresse = nullptr;
                 // et on sort
                 return;
             }

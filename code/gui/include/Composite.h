@@ -83,7 +83,7 @@ protected:
     /////////////////////////////////////////////////
     void dessinerEnfants (sf::RenderTarget& target, sf::RenderStates states) const {};
 
-
+//    std::shared_ptr<Gadget> chercherEnfantSurvole ( sf::Vector2i pos );
 
 /////////////////////////////////////////////////
 // Membres

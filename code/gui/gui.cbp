@@ -77,7 +77,8 @@
 		<Unit filename="include/gadgets/AffImage.h" />
 		<Unit filename="include/gadgets/AffLabel.h" />
 		<Unit filename="include/gadgets/AffRectangle.h" />
-		<Unit filename="include/gadgets/BoutonRect.h" />
+		<Unit filename="include/gadgets/BtnMenu.h" />
+		<Unit filename="include/gadgets/BtnRectangle.h" />
 		<Unit filename="media/img/nuage.jpg" />
 		<Unit filename="media/polices/arial.ttf" />
 		<Unit filename="media/polices/bgothl.ttf" />
@@ -100,7 +101,8 @@
 		<Unit filename="src/gadgets/AffImage.cpp" />
 		<Unit filename="src/gadgets/AffLabel.cpp" />
 		<Unit filename="src/gadgets/AffRectangle.cpp" />
-		<Unit filename="src/gadgets/BoutonRect.cpp" />
+		<Unit filename="src/gadgets/BtnMenu.cpp" />
+		<Unit filename="src/gadgets/BtnRectangle.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -43,7 +43,7 @@ protected:
     ///
     /// \param position
     /////////////////////////////////////////////////
-    virtual bool testerSurvol (sf::Vector2i position) const;
+    virtual std::shared_ptr<Gadget> testerSurvol (sf::Vector2i position);
 
 
 }; // fin class Affiche

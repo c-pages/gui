@@ -35,22 +35,23 @@ public:
 // Membres
 /////////////////////////////////////////////////
     std::shared_ptr<Style> invisible;
+    std::shared_ptr<Style> desactive;
+
     std::shared_ptr<Style> cadre;
 
-    std::shared_ptr<Style> txtLog;
     std::shared_ptr<Style> txtCourant;
+    std::shared_ptr<Style> txtLog;
     std::shared_ptr<Style> txtTitre;
 
     std::shared_ptr<Style> fond;
 
-    std::shared_ptr<Style> btnPress;
-    std::shared_ptr<Style> btnSurvol;
-    std::shared_ptr<Style> btnRepos;
+    std::shared_ptr<Style> bouton;
 
-    std::shared_ptr<Style> imgRepos;
+    std::shared_ptr<Style> img;
+
+    std::shared_ptr<Style> menu;
 
     std::shared_ptr<Style> fenetre;
-    std::shared_ptr<Style> desactive;
 
 }; // fin class Skin
 

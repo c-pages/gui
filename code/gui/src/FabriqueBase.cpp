@@ -59,11 +59,11 @@ std::shared_ptr<AffImage>    FabriqueBase::image( std::string fichier )
 }
 
 /////////////////////////////////////////////////
-std::shared_ptr<BoutonRect>    FabriqueBase::bouton( std::string texte )
+std::shared_ptr<BtnRectangle>    FabriqueBase::bouton( std::string texte )
 {
 
     // Creation du nouveau gadget
-    std::shared_ptr<BoutonRect> nouveauGadget = std::make_shared<BoutonRect>();
+    std::shared_ptr<BtnRectangle> nouveauGadget = std::make_shared<BtnRectangle>();
 
     // Affiliation au gadget racine courant
     Gadget::ms_racineCourante->ajouter ( nouveauGadget );
@@ -77,11 +77,11 @@ std::shared_ptr<BoutonRect>    FabriqueBase::bouton( std::string texte )
 }
 
 /////////////////////////////////////////////////
-std::shared_ptr<BoutonRect>    FabriqueBase::bouton( sf::Vector2i taille )
+std::shared_ptr<BtnRectangle>    FabriqueBase::bouton( sf::Vector2i taille )
 {
 
     // Creation du nouveau gadget
-    std::shared_ptr<BoutonRect> nouveauGadget = std::make_shared<BoutonRect>();
+    std::shared_ptr<BtnRectangle> nouveauGadget = std::make_shared<BtnRectangle>();
 
     // Affiliation au gadget racine courant
     Gadget::ms_racineCourante->ajouter ( nouveauGadget );
@@ -94,6 +94,19 @@ std::shared_ptr<BoutonRect>    FabriqueBase::bouton( sf::Vector2i taille )
     return nouveauGadget;
 }
 
+/////////////////////////////////////////////////
+std::shared_ptr<BtnMenu>   FabriqueBase::menu( )
+{
 
+    // Creation du nouveau gadget
+    std::shared_ptr<BtnMenu> nouveauGadget = std::make_shared<BtnMenu>();
+
+    // Affiliation au gadget racine courant
+    Gadget::ms_racineCourante->ajouter ( nouveauGadget );
+    nouveauGadget->setParent ( Gadget::ms_racineCourante );
+
+    // renvois du nouveau gadget créé.
+    return nouveauGadget;
+}
 
 }; // fin namespace gui

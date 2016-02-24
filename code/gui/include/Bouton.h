@@ -35,17 +35,20 @@ public:
 
     virtual void actualiser ( ){};
 
-    virtual void setTexte( std::string val ){ m_texte = val; actualiser(); };
-    std::string getTexte( ) const { return m_texte; };
+//    virtual void setTexte( std::string val ){ m_texte = val; actualiser(); };
+//    std::string getTexte( ) const { return m_texte; };
 
     void setAutoAjuster (bool val ){ m_autoAjust = val; actualiser ();};
+
+//    void setMarge ( sf::Vector2f marge ){ m_marge = marge;};
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
-    std::string                 m_texte;            ///< Le texte du bouton
+protected:
+//    sf::Vector2f                m_marge;            ///< La marge à laissé lors l'ajustement automatique du rectangle sur le texte.
+//    std::string                 m_texte;            ///< Le texte du bouton
     bool                        m_autoAjust;        ///< Ajuste automatiquement la taille du bouton au texte (en tenant compte de la marge).
-    sf::Vector2f                m_marge;            ///< La marge à laissé lors l'ajustement automatique du rectangle sur le texte.
 
 }; // fin class Bouton
 

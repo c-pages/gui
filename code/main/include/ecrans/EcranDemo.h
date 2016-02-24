@@ -103,7 +103,7 @@ private:
     // un skin permettant de gérer le rendu
     std::shared_ptr<gui::Skin>          m_skin;         ///< Un skin.
 
-    // les gadgets AFFICHAGE
+    // AFFICHAGE
     std::shared_ptr<gui::AffRectangle>  m_rectangle;    ///< Un simple rectangle.
 
     std::shared_ptr<gui::AffLabel>      m_labelRetour;        ///< Un simple label.
@@ -114,11 +114,15 @@ private:
     std::shared_ptr<gui::AffLabel>      m_label_4;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_5;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_6;      ///< Un autre label.
+    std::shared_ptr<gui::AffLabel>      m_label_7;      ///< Un autre label.
     std::shared_ptr<gui::AffImage>      m_image;        ///< Une simple image.
 
-    // les gadgets BOUTON
+    // BOUTON
     std::shared_ptr<gui::BtnRectangle>    m_boutonRect;    ///< Un simple bouton rectangulaire.
     std::shared_ptr<gui::BtnMenu>         m_boutonMenu;    ///< Un bouton Menu.
+
+    // DONNEE
+    std::shared_ptr<gui::DnCaseACocher>  m_boutonCoche;    ///< Un bouton Menu.
 
 
 }; // fin EcranDemo

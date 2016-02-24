@@ -12,8 +12,10 @@ Interface::Interface( sf::RenderWindow* fenetre )
 :Gadget ()
 , m_boutonSurvole   ( nullptr )
 , m_boutonPresse    ( nullptr )
+
 {
-    std::cout << "Interface : creation AVEC fenetre en param.\n";
+
+    std::cout << "Interface : creation.\n";
     m_fenetre = fenetre;
     Gadget::ms_racineCourante = this;
 }
@@ -79,9 +81,16 @@ void Interface::traiterEvenements( sf::Event evenement )
             if ( m_boutonSurvole ==  nullptr )
                 return;
 
-            //
             m_boutonPresse = m_boutonSurvole;
-            m_boutonPresse->setPresse( true );
+            //
+            if ( evenement.mouseButton.button == sf::Mouse::Left ) {
+                m_boutonPresse->declencher ( Evenement::onBtnG_presser );
+                m_boutonPresse->setPresse ( true );
+            } else if ( evenement.mouseButton.button == sf::Mouse::Right ) {
+                m_boutonSurvole->declencher ( Evenement::onBtnD_presser );
+            } else if ( evenement.mouseButton.button == sf::Mouse::Middle ) {
+                m_boutonSurvole->declencher ( Evenement::onBtnM_presser );
+            }
         break;
 
         ///////// Relacher bouton souris /////////////////////////////////////////
@@ -91,31 +100,48 @@ void Interface::traiterEvenements( sf::Event evenement )
                 return;
 
             // On sort si on a pas de bouton survolé
-            if ( m_boutonSurvole ==  nullptr ){
-                if ( m_boutonPresse != nullptr ) {
-                    m_boutonPresse->setPresse ( false );
-                    m_boutonPresse = nullptr;
-                }
-                return;
-            }
+            // ou si on est plus sur le bouton cliqué
+            if ( m_boutonSurvole ==  nullptr || m_boutonPresse != m_boutonSurvole ){
 
-            // Si on est plus sur le bouton cliqué
-            if ( m_boutonPresse != m_boutonSurvole ){
                 // on declenche l'action
-                m_boutonPresse->declencher ( Evenement::onBtnG_relacherDehors );
+                if ( evenement.mouseButton.button == sf::Mouse::Left )
+                    m_boutonPresse->declencher ( Evenement::onBtnG_relacherDehors );
+                else if ( evenement.mouseButton.button == sf::Mouse::Right )
+                    m_boutonPresse->declencher ( Evenement::onBtnD_relacherDehors );
+                else if ( evenement.mouseButton.button == sf::Mouse::Middle )
+                    m_boutonPresse->declencher ( Evenement::onBtnM_relacherDehors );
+
+
                 m_boutonPresse->setPresse( false );
                 m_boutonPresse = nullptr;
                 // et on sort
                 return;
             }
-//
-//            std::cout << "Interface : declencher\n";
+
             //On déclenche l'action
-            m_boutonPresse->declencher ( Evenement::onBtnG_relacher );
+            if ( evenement.mouseButton.button == sf::Mouse::Left )
+                m_boutonPresse->declencher ( Evenement::onBtnG_relacher );
+            else if ( evenement.mouseButton.button == sf::Mouse::Right )
+                m_boutonPresse->declencher ( Evenement::onBtnD_relacher );
+            else if ( evenement.mouseButton.button == sf::Mouse::Middle )
+                m_boutonPresse->declencher ( Evenement::onBtnM_relacher );
+
+            // on reset m_boutonPressé
             m_boutonPresse->setPresse( false );
             m_boutonPresse = nullptr;
+
         break;
 
+        ///////// Presser roulette souris /////////////////////////////////////////
+        case sf::Event::MouseWheelMoved :
+            if ( m_boutonSurvole != nullptr ){
+                if ( evenement.mouseWheel.delta > 0 )
+                    m_boutonSurvole->declencher ( Evenement::onBtnM_roulerHaut );
+                else
+                    m_boutonSurvole->declencher ( Evenement::onBtnM_roulerBas );
+            }
+
+        break;
         ///////// on ne traite pas les autres types d'évènements /////////////////////////////////////////
         default: break;
 

@@ -10,9 +10,8 @@ namespace gui {
 /////////////////////////////////////////////////
 Bouton::Bouton ()
 : m_autoAjust   ( false )
-, m_marge       ( { 5 , 5 })
 {
-
+    m_marge       = { 5 , 5 } ;
 }
 
 

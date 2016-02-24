@@ -10,23 +10,18 @@ namespace gui {
 /////////////////////////////////////////////////
 BtnMenu::BtnMenu ()
 : m_elements    ( 0 )
-, m_tailleMenu  ( { 150 , 17 } )
+, m_tailleMenu  ( { 180 , 15 } )
 , m_ecart       ( 0 )
 {
-    m_marge.x = 2;
-    m_marge.y = 2;
-
-//    m_taille.x = 150;
-//    m_taille.y = 20;
-//    m_taille.x = 150;
-//    m_taille.y = m_marge*2 + m_elements;
+    m_marge.x = 0;
+    m_marge.y = 0;
 }
 
 
 /////////////////////////////////////////////////
 void BtnMenu::ajouter (std::string nom, FctnAction fonction)
 {
-    std::cout << "Menu: Ajouter '" << nom << "'\n";
+//    std::cout << "Menu: Ajouter '" << nom << "'\n";
 
     ElementMenu *    nouvelElement = new ElementMenu ();
 
@@ -34,6 +29,7 @@ void BtnMenu::ajouter (std::string nom, FctnAction fonction)
     nouvelElement->fonction = fonction;
 
     std::shared_ptr<Bouton>     bouton = std::make_shared<BtnRectangle>( );
+    bouton->setMarge            ( { 5 , 2 } );
     bouton->setTexte            ( nom );
     bouton->setAutoAjuster      ( false );
     bouton->setTaille           ( m_tailleMenu );
@@ -69,14 +65,10 @@ void BtnMenu::actualiser ()
 {
     int index = 0;
     for ( auto element : m_elements ) {
-//        std::cout << "Menu: actualiser bouton '" << index +1 << "'\n";
 
         element->bouton->setPosition    ( m_marge.x , index * ( m_tailleMenu.y + m_ecart ) + m_marge.y );
         element->bouton->setTexte       ( element->nom );
         element->bouton->setStyle       ( m_skin->menu );
-//        element->bouton->setSkin        ( m_skin );
-
-//        std::cout << "    getTexte '" << element->bouton->getTexte() << "'\n";
 
         index++;
     }

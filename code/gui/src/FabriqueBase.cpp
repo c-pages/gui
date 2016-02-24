@@ -109,4 +109,20 @@ std::shared_ptr<BtnMenu>   FabriqueBase::menu( )
     return nouveauGadget;
 }
 
+
+/////////////////////////////////////////////////
+std::shared_ptr<DnCaseACocher>        FabriqueBase::btnACocher( bool val )
+{
+    // Creation du nouveau gadget
+    std::shared_ptr<DnCaseACocher> nouveauGadget = std::make_shared<DnCaseACocher>();
+
+    // Affiliation au gadget racine courant
+    Gadget::ms_racineCourante->ajouter ( nouveauGadget );
+    nouveauGadget->setParent ( Gadget::ms_racineCourante );
+
+    // renvois du nouveau gadget créé.
+    return nouveauGadget;
+}
+
+
 }; // fin namespace gui

@@ -31,22 +31,40 @@ class AffLabel : public gui::Affiche {
 public:
 
     sf::Vector2i  getTaille() const;
+//sf::Text::setColor()
+
+    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::repos );
 
 
     ///< Definir m_texte
-    void setTexte( std::string val ){ m_texte = val; actualiser(); };
+    void setTexte( std::string val ){
+        m_texte = val;
+
+//        m_texteSFML->setFont   ( m_police );
+//        m_texteSFML->setString (m_texte);
+        actualiser();
+    };
 
     ///< Acceder à m_texte
     std::string getTexte () const { return m_texte; };
 
     ///< Definir m_texteTaille
-    void setTexteTaille( float val ){ m_texteTaille = val; actualiser(); };
+    void setTexteTaille( float val ){ /*m_texteTaille = val;*/ m_texteSFML->setCharacterSize ( val ) ;  };
 
-    ///< Acceder à m_texteTaille
-    float getTexteTaille () const { return m_texteTaille; };
+    /*///< Acceder à m_texteTaille
+    float getTexteTaille () const { return m_texteTaille; };*/
 
     ///< Definir m_police
-    void setPolice( sf::Font val ){ m_police = val; actualiser(); };
+    void setTexteCouleur( sf::Color couleur ){ m_texteSFML->setColor ( couleur );/* actualiser();*/ };
+
+    ///< Definir m_police
+    void setPolice( sf::Font val ){ m_police = val;
+    m_texteSFML->setFont    ( m_police );/* actualiser();*/ };
+/*
+    void loadPolice ( std::string fichier ){
+        if ( m_police.loadFromFile( fichier) )
+            m_texteSFML->setFont    ( m_police );
+    };*/
 
     ///< Acceder à m_police
     sf::Font getPolice () const { return m_police; };
@@ -78,7 +96,7 @@ public:
 private:
     std::string                 m_texte;            ///< Le texte à afficher par le label.#S#G
     std::shared_ptr<sf::Text>   m_texteSFML;        ///< Le shape SFML qui affiche le texte.
-    float                       m_texteTaille;      ///< La taille du texte à afficher par le label.#S#G
+//    float                       m_texteTaille;      ///< La taille du texte à afficher par le label.#S#G
     sf::Font                    m_police;           ///< La police du texte à afficher par le label.#S#G
 //    Style*                      m_style;
 }; // fin class AffLabel

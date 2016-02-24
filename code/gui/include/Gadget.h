@@ -48,7 +48,7 @@ public:
 
     ///< Definir m_actif
     void setActif( bool val )
-        { m_actif = val; };
+        { m_actif = val;  actualiser();};
 
     ///< Definir m_focus
     void setFocus( bool val )
@@ -173,7 +173,7 @@ public:
 
     static Gadget*     getRacineCourante() { return ms_racineCourante; };
 
-    void setStyle ( std::shared_ptr<Style> style ){ m_style = style; actualiser();};
+    virtual     void setStyle ( std::shared_ptr<Style> style ){ m_style = style; actualiser();};
 
     std::shared_ptr<Style> getStyle ( )const { return m_style; };
 
@@ -185,6 +185,14 @@ public:
 
     int getNombreGadgets () const { return ms_CompteurGadgets; };
 
+    virtual void setTexte( std::string val ){ m_texte = val; actualiser(); };
+
+    std::string getTexte( ) const { return m_texte; };
+
+    void setMarge ( sf::Vector2f marge ){ m_marge = marge;};
+
+protected:
+    sf::Vector2f                m_marge;            ///< La marge à laissé
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
@@ -193,6 +201,8 @@ public:
 private:
     static  int         ms_CompteurGadgets;   ///< L'interface courante dans laquelle on créé les gadgets.
 
+protected:
+    std::string         m_texte;            ///< Le texte du gadget.
 protected:
     std::string         m_nom;      ///< Nom unique automatique pour le gadget.
 

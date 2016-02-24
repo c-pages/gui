@@ -36,7 +36,10 @@ public:
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
-    virtual void setTexte( std::string val ){ m_texte = val; m_label.setTexte(m_texte); actualiser(); };
+    virtual void setTexte( std::string val ){
+        m_texte = val;
+        m_label.setTexte(m_texte);
+    };
 
 ////////////////////////////////// ///////////////
 // Membres

@@ -20,13 +20,18 @@ enum class Evenement {
     onBtnM_presser,         ///< Presse le bouton du milieu de la souris.
     onBtnM_roulerHaut,      ///< Roule vers le haut le bouton du milieu de la souris.
     onBtnM_roulerBas,       ///< Roule vers le bas le bouton du milieu de la souris.
+
+    onBtn_changerEtat,      ///< quand BoutonACocher change d'état
+
+    onBool_changerValeur,   ///< Quand on change la valeur d'un champ de saisie de texte.
+    onBool_allume,          ///< Quand on change la valeur d'un champ de saisie de texte.
+    onBool_eteind,          ///< Quand on valide la valeur d'un champ de saisie de texte.
+
     on_entrer,              ///< Survol
     on_sortir,              ///< Quitte le survol.
-    onBtn_changerEtat,      ///< quand BoutonACocher change d'état
+
     onFen_fermer,           ///< Quand on ferme une fenetre.
     onFen_ouvrir,           ///< Quand on ferme une fenetre.
-    onBool_changerValeur,   ///< Quand on change la valeur d'un champ de saisie de texte.
-    onBool_validerValeur    ///< Quand on valide la valeur d'un champ de saisie de texte.
 };
 
 

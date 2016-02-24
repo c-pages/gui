@@ -19,15 +19,23 @@ int         Gadget::ms_CompteurGadgets  = 0;
 
 /////////////////////////////////////////////////
 Gadget::Gadget ()
-: m_visible     ( true )
+: m_texte       ( "" )
+, m_visible     ( true )
 , m_actif       ( true )
 , m_focus       ( false )
 , m_survol      ( false )
 , m_presse      ( false )
 , m_deplacable  ( false )
-, m_skin        ( std::make_shared<Skin>() )
+//, m_skin        ( std::make_shared<Skin>() )
+, m_skin        ( nullptr )
 , m_style       ( nullptr )
 {
+
+    if ( ms_racineCourante != nullptr )
+        m_skin = ms_racineCourante->getSkin();
+    else
+        m_skin = std::make_shared<Skin>() ;
+
     // Mise a jour du nombre de gadget
     ms_CompteurGadgets++;
 
@@ -113,7 +121,7 @@ bool Gadget::estDeplacable () const
 std::shared_ptr<Gadget>  Gadget::testerSurvol ( sf::Vector2i position ) {
 
 //    std::cout << "Gadget : Tester survol\n";
-    if ( m_globalBounds.contains( position.x, position.y ) )
+    if ( m_globalBounds.contains( position.x, position.y ) && estActif() )
         return thisPtr();
     else
         return nullptr;

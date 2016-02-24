@@ -13,7 +13,8 @@ namespace gui{
 enum class Etat {
     repos,
     survol,
-    press
+    press,
+    desactive
 };
 /////////////////////////////////////////////////
 /// \brief Un style regroupe un ensemble de caractéristiques de base des gadgets.
@@ -22,7 +23,7 @@ enum class Etat {
 template <typename T>
 struct Valeurs {
     void set ( T val )    {
-        repos = survol = press = val;
+        repos = survol = press = desactive = val;
     };
     T get ( Etat etat ){
          switch ( etat ){
@@ -32,11 +33,14 @@ struct Valeurs {
                 return survol; break;
             case Etat::press :
                 return press; break;
+            case Etat::desactive :
+                return desactive; break;
         }
     };
     T repos;
     T survol;
     T press;
+    T desactive;
 };
 
 

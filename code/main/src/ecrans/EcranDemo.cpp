@@ -135,7 +135,7 @@ EcranDemo::initGUI ()
     using namespace gui;
 
     // Creation de l'interface qui gère un ensemble de gadget.
-    m_interface = std::make_shared<Interface>( m_appli->getFenetre()  );
+    m_interface = std::make_shared<Interface>( m_appli->getFenetre() );
     m_skin      = std::make_shared<Skin>();
 
 
@@ -169,23 +169,71 @@ EcranDemo::initGUI_test_Boutons  ()
     std::cout << "      Test des gadgets : BOUTONS";
     std::cout << "\n---------------------------------------\n\n";
 
-    sf::Vector2f posRoot = { 320 , 30 };
+    sf::Vector2f posRoot = { 340 , 30 };
     using namespace gui;
 
     /////// Simple bouton rectangulaire ///////
     m_boutonRect = m_interface->creer.bouton( sf::Vector2i (20,20) );
-    m_boutonRect->setTexte ( "Bouton" );
+    m_boutonRect->setTexte ( "Machiner" );
     m_boutonRect->setAutoAjuster ( true );
     m_boutonRect->setSkin        ( m_skin );
 
     m_boutonRect->setPosition    ( posRoot.x , posRoot.y );
     m_boutonRect->lier ( gui::Evenement::onBtnG_relacher , [this](){
-                        std::cout << "ACTION RELACHER le bouton\n";
+                        std::cout << "ACTION souris gauche relache : Faire un machin...\n";
+                        });
+    m_boutonRect->lier ( gui::Evenement::onBtnG_presser , [this](){
+                        std::cout << "ACTION souris gauche presse\n";
+                        });
+    m_boutonRect->lier ( gui::Evenement::onBtnD_presser , [this](){
+                        std::cout << "ACTION souris droite presse\n";
+                        });
+    m_boutonRect->lier ( gui::Evenement::onBtnM_presser , [this](){
+                        std::cout << "ACTION souris milieu presse\n";
                         });
 
+    m_boutonRect->lier ( gui::Evenement::onBtnG_relacherDehors  , [this](){
+                        std::cout << "ACTION souris gauche relacherDehors\n";
+                        });
+    m_boutonRect->lier ( gui::Evenement::onBtnG_relacher , [this](){
+                        std::cout << "ACTION souris gauche relacher\n";
+                        });
+    m_boutonRect->lier ( gui::Evenement::onBtnD_relacherDehors  , [this](){
+                        std::cout << "ACTION souris droite relacherDehors\n";
+                        });
+    m_boutonRect->lier ( gui::Evenement::onBtnD_relacher , [this](){
+                        std::cout << "ACTION souris droite relacher\n";
+                        });
+    m_boutonRect->lier ( gui::Evenement::onBtnM_relacherDehors  , [this](){
+                        std::cout << "ACTION souris milieu relacherDehors\n";
+                        });
+    m_boutonRect->lier ( gui::Evenement::onBtnM_relacher , [this](){
+                        std::cout << "ACTION souris milieu relacher\n";
+                        });
+
+    m_boutonRect->lier ( gui::Evenement::onBtnM_roulerHaut  , [this](){
+                        std::cout << "ACTION souris milieu ROULETTE PLUS\n";
+                        });
+    m_boutonRect->lier ( gui::Evenement::onBtnM_roulerBas , [this](){
+                        std::cout << "ACTION souris milieu ROULETTE MOINS\n";
+                        });
+
+    /////// Interactions clavier ///////
+    // On ajoute une liaison à la touche Espace pour changer le style du rectangle
+    m_interface->lier ( sf::Keyboard::Tab , [this]() {
+            std::cout << "Interface - Action : touche 'Tab'\n";
+            std::cout << "      -> toggle l'activite du bouton\n";
+            if (  m_boutonRect->estActif() )
+                m_boutonRect->setActif( false );
+            else
+                m_boutonRect->setActif( true );
+            m_boutonCoche->setValeur ( m_boutonRect->estActif() );
+        } );
+
+
     /////// autre Label ///////
-    m_label_5 = m_interface->creer.label( "<---  Simple bouton rectangulaire (ayant néanmoins du gui::Style)." );
-    m_label_5->setPosition    ( 80 + posRoot.x , posRoot.y + 3 );
+    m_label_5 = m_interface->creer.label( "<---  Simple bouton rectangulaire.\n       (avec toute les interr-ACTIONs souris en sortie.)" );
+    m_label_5->setPosition    ( 190 + posRoot.x , posRoot.y + 3 );
 //    m_label_5->setSkin        ( m_skin );
     m_label_5->setStyle       ( m_skin->txtLog );
 
@@ -199,23 +247,56 @@ EcranDemo::initGUI_test_Boutons  ()
 //    m_boutonMenu->setSkin        ( m_skin );
 
     m_boutonMenu->setPosition    ( posRoot.x , posRoot.y  + 40 );
-    m_boutonMenu->ajouter ( "Action 1" , [this](){
-                        std::cout << "ACTION 1\n";
+    m_boutonMenu->ajouter ( "Faire un truc" , [this](){
+                        std::cout << "ACTION fait un truc.\n";
                         });
-    m_boutonMenu->ajouter ( "Action 2" , [this](){
-                        std::cout << "ACTION 2\n";
-                        });
-
-    m_boutonMenu->ajouter ( "Action 3" , [this](){
-                        std::cout << "ACTION 3\n";
+    m_boutonMenu->ajouter ( "Bidouiller" , [this](){
+                        std::cout << "ACTION bidouille.\n";
                         });
 
+    m_boutonMenu->ajouter ( "Faire autre chose" , [this](){
+                        std::cout << "ACTION fait autre chose.\n";
+                        });
+
+    m_boutonMenu->ajouter ( "Buller" , [this](){
+                        std::cout << "ACTION ne fait rien.\n";
+                        });
 
     /////// autre Label ///////
     m_label_6 = m_interface->creer.label( "<---  Menu (menu déroulant, menu contextuel, ...)" );
-    m_label_6->setPosition    ( 170 + posRoot.x , posRoot.y  +  65 );
+    m_label_6->setPosition    ( 190 + posRoot.x , posRoot.y  +  65 );
     m_label_6->setStyle       ( m_skin->txtLog );
 
+
+
+
+
+
+
+
+    m_boutonCoche = m_interface->creer.btnACocher( );
+    m_boutonCoche->setPosition    ( posRoot.x , posRoot.y  +  120 );
+    m_boutonCoche->setStyle       ( m_skin->txtLog );
+    m_boutonCoche->setTexte       ( "Activer / Désactiver 'Machiner'" );
+
+    m_boutonCoche->lier ( gui::Evenement::onBool_changerValeur , [this](){
+                        std::cout << "ACTION Bool : changer Valeur\n";
+                        if (  m_boutonRect->estActif() )
+                            m_boutonRect->setActif( false );
+                        else
+                            m_boutonRect->setActif( true );
+                        });
+    m_boutonCoche->lier ( gui::Evenement::onBool_allume , [this](){
+                        std::cout << "ACTION Bool : allume\n";
+                        });
+    m_boutonCoche->lier ( gui::Evenement::onBool_eteind , [this](){
+                        std::cout << "ACTION Bool : eteind\n";
+                        });
+
+    /////// autre Label ///////
+    m_label_7 = m_interface->creer.label( "<---  Bouton Booleén, interupteur ... ('Tab')" );
+    m_label_7->setPosition    ( 190 + posRoot.x , posRoot.y  +  122 );
+    m_label_7->setStyle       ( m_skin->txtLog );
 
 }   // fin init GUI
 
@@ -240,7 +321,7 @@ EcranDemo::initGUI_test_Affichages  ()
 
     /////// Un Label ///////
     m_label = m_interface->creer.label( "<---  simple rectangle." );
-    m_label->setPosition    ( 30 + posRoot.x , posRoot.y + 5 );
+    m_label->setPosition    ( 70 + posRoot.x , posRoot.y + 5 );
     m_label->setStyle       ( m_skin->txtLog );
 
 
@@ -252,7 +333,7 @@ EcranDemo::initGUI_test_Affichages  ()
 
     /////// autre Label ///////
     m_label_2 = m_interface->creer.label( "<---  simple image. ('media/img/IconeVide.png')" );
-    m_label_2->setPosition    (55 + posRoot.x , posRoot.y + 35 );
+    m_label_2->setPosition    (70 + posRoot.x , posRoot.y + 35 );
     m_label_2->setStyle       ( m_skin->txtLog );
 
 

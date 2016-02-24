@@ -14,9 +14,10 @@ Style::Style()
 , fnd_couleur   ( sf::Color(255, 255, 255))
 , fnd_texture   ( )*/
 {
-    /*txt_police.press.loadFromFile ( "media/polices/consola.ttf" );
+    txt_police.press.loadFromFile ( "media/polices/consola.ttf" );
     txt_police.repos.loadFromFile ( "media/polices/consola.ttf" );
-    txt_police.survol.loadFromFile( "media/polices/consola.ttf" );*/
+    txt_police.survol.loadFromFile( "media/polices/consola.ttf" );
+    txt_police.desactive.loadFromFile( "media/polices/consola.ttf" );
 
     txt_style.set(sf::Text::Style::Regular ) ;
     txt_taille.set( 10 ) ;
@@ -24,6 +25,8 @@ Style::Style()
     lgn_epaisseur.set( 1 ) ;
     lgn_couleur.set( sf::Color(255, 255, 0, 150) ) ;
     fnd_couleur.set( sf::Color(255, 0, 255, 100) ) ;
+
+
 //    fnd_texture;
 }
 

@@ -10,7 +10,7 @@ namespace gui {
 /////////////////////////////////////////////////
 BtnMenu::BtnMenu ()
 : m_elements    ( 0 )
-, m_tailleMenu  ( { 180 , 15 } )
+, m_tailleMenu  ( { 150 , 15 } )
 , m_ecart       ( 0 )
 {
     m_marge.x = 0;

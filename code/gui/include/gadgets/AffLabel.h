@@ -47,6 +47,8 @@ public:
 
     ///< Acceder à m_texte
     std::string getTexte () const { return m_texte; };
+    ///< Acceder à m_texte
+    std::shared_ptr<sf::Text> getSFTexte () const { return m_texteSFML; };
 
     ///< Definir m_texteTaille
     void setTexteTaille( float val ){ /*m_texteTaille = val;*/ m_texteSFML->setCharacterSize ( val ) ;  };

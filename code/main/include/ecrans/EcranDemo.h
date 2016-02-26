@@ -87,7 +87,10 @@ private:
 
     void initGUI_test_Affichages ();
     void initGUI_test_Boutons ();
+    void initGUI_test_Donnees ();
 
+    void lierMachiner ();
+    void delierMachiner ();
 
 private:
 
@@ -97,7 +100,7 @@ private:
 
     sf::RectangleShape                  m_fond;         ///< Le shape SFML du fond de l'écran.
 
-    // l'Interface gérant l'interface ^^
+    // l'Interface
     std::shared_ptr<gui::Interface>     m_interface;    ///< Le groupe de GUI du menu principal.
 
     // un skin permettant de gérer le rendu
@@ -108,6 +111,10 @@ private:
 
     std::shared_ptr<gui::AffLabel>      m_labelRetour;        ///< Un simple label.
 
+    std::shared_ptr<gui::AffLabel>      m_labelTitre_0;        ///< Un simple label.
+    std::shared_ptr<gui::AffLabel>      m_labelTitre_1;        ///< Un simple label.
+    std::shared_ptr<gui::AffLabel>      m_labelTitre_2;        ///< Un simple label.
+
     std::shared_ptr<gui::AffLabel>      m_label;        ///< Un simple label.
     std::shared_ptr<gui::AffLabel>      m_label_2;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_3;      ///< Un autre label.
@@ -115,6 +122,8 @@ private:
     std::shared_ptr<gui::AffLabel>      m_label_5;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_6;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_7;      ///< Un autre label.
+    std::shared_ptr<gui::AffLabel>      m_label_8;      ///< Un autre label.
+    std::shared_ptr<gui::AffLabel>      m_label_9;      ///< Un autre label.
     std::shared_ptr<gui::AffImage>      m_image;        ///< Une simple image.
 
     // BOUTON
@@ -123,7 +132,8 @@ private:
 
     // DONNEE
     std::shared_ptr<gui::DnCaseACocher>  m_boutonCoche;    ///< Un bouton Menu.
-
+    std::shared_ptr<gui::DnZoneTexte>    m_zoneTexte;    ///< Un champ de texte.
+    std::shared_ptr<gui::DnSlider>    m_slider;      ///< Un slider.
 
 }; // fin EcranDemo
 }; // fin app

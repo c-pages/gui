@@ -45,7 +45,7 @@ public:
 // Membres
 /////////////////////////////////////////////////
 public:
-    std::string     m_texte;            ///< Le texte à afficher par le label.
+//    std::string     m_texte;            ///< Le texte à afficher par le label.
     AffRectangle    m_rectangle;
     AffLabel        m_label;
 

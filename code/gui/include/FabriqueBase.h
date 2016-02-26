@@ -18,6 +18,8 @@
 
 // DONNEES
 #include "gadgets\DnCaseACocher.h"
+#include "gadgets\DnZoneTexte.h"
+#include "gadgets\DnSlider.h"
 
 
 namespace gui{
@@ -39,21 +41,24 @@ public:
     /////////////////////////////////////////////////
     /// \brief  Création d'un simple rectangle
     ///
-    /// \param ...
+    /// \param taille
+    /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<AffRectangle>    rectangle( sf::Vector2i taille = {100,100} );
 
     /////////////////////////////////////////////////
     /// \brief  Création d'un simple label
     ///
-    /// \param ...
+    /// \param text
+    /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<AffLabel>    label( std::string text = "Label" );
 
     /////////////////////////////////////////////////
     /// \brief  Création d'une simple image
     ///
-    /// \param ...
+    /// \param fichier
+    /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<AffImage>    image( std::string fichier = "" );
 
@@ -64,33 +69,53 @@ public:
     /////////////////////////////////////////////////
     /// \brief  Création d'un simple bouton texte
     ///
-    /// \param ...
+    /// \param texte
+    /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<BtnRectangle>    bouton( std::string texte = "" );
 
     /////////////////////////////////////////////////
     /// \brief  Création d'un simple bouton rectangulaire
     ///
-    /// \param ...
+    /// \param taille
+    /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<BtnRectangle>    bouton( sf::Vector2i taille );
 
     /////////////////////////////////////////////////
-    /// \brief  Création d'un simple bouton rectangulaire
+    /// \brief  Création d'un Menu
     ///
-    /// \param ...
+    /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<BtnMenu>        menu( );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // DONNEES
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     /////////////////////////////////////////////////
     /// \brief  Création d'un bouton interrupteur ( bool )
     ///
-    /// \param ...
+    /// \param val
+    /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<DnCaseACocher>        btnACocher( bool val = true );
+
+    /////////////////////////////////////////////////
+    /// \brief  Création d'une zone de texte
+    ///
+    /// \param texte
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<DnZoneTexte>        zoneTexte( std::string texte = "zone de texte" );
+
+    /////////////////////////////////////////////////
+    /// \brief  Création d'un slider
+    ///
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<DnSlider>        slider( );
+
 
 };
 

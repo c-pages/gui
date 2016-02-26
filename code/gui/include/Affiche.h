@@ -36,7 +36,7 @@ protected:
     ///
     /// \param enfant
     /////////////////////////////////////////////////
-    virtual void retirer (std::shared_ptr<Gadget> enfant);
+    virtual std::shared_ptr<Gadget> retirer (std::shared_ptr<Gadget> enfant);
 
     /////////////////////////////////////////////////
     /// \brief Renvois false.

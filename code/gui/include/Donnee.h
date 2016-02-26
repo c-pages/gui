@@ -4,14 +4,19 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "ActionSouris.h"
+#include "ActionEvenement.h"
 
 
 namespace gui {
 
 
+/////////////////////////////////////////////////
+/// \brief Classe Modèle permetant de gérer une valeur (bool, int, float, string)
+///  abstraite pour gadgets de type btnACocher, spinner, ...
+///
+/////////////////////////////////////////////////
 template<typename T>
-class Donnee : public gui::ActionSouris {
+class Donnee : public gui::ActionEvenement {
 
 
 
@@ -19,21 +24,16 @@ class Donnee : public gui::ActionSouris {
 // Méthodes
 /////////////////////////////////////////////////
 public:
-   /* /////////////////////////////////////////////////
-    /// \brief Constructeur par défaut.
-    ///
-    /////////////////////////////////////////////////
-    Donnee<T> ();*/
 
     /////////////////////////////////////////////////
-    /// \brief Constructeur par défaut.
+    /// \brief Acceder à la valeur
     ///
     /////////////////////////////////////////////////
-    T getValeur()
+    virtual T getValeur()
         {return m_valeur;};
 
     /////////////////////////////////////////////////
-    /// \brief Constructeur par défaut.
+    /// \brief Définir la valeur
     ///
     /////////////////////////////////////////////////
     void setValeur( T val )

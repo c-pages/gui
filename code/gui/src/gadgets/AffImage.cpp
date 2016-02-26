@@ -25,7 +25,7 @@ void AffImage::chargerDepuisFichier ( std::string fichier )
 
     if ( ! m_texture->loadFromFile ( fichier ) )
             std::cout << "\n ! ATTENTION ! - Image: Impossible de charger '" << fichier << "' !\n\n";
-    else    std::cout << "Image: Chargement de '" << fichier << "' reussi.\n";
+//    else    std::cout << "Image: Chargement de '" << fichier << "' reussi.\n";
 
     m_rectangle.setTexture( m_texture );
 //    m_taille = { m_texture->getSize().x , m_texture->getSize().y };
@@ -40,7 +40,7 @@ void AffImage::chargerDepuisFichier ( std::string fichier )
 /////////////////////////////////////////////////
 void AffImage::actualiser ()
 {
-    std::cout << "Tmage: Texture -> " << m_rectangle.getTextureRect().width << "\n";
+//    std::cout << "Tmage: Texture -> " << m_rectangle.getTextureRect().width << "\n";
 //
 //    m_texture->setRepeated( true );
 //m_rectangle.getTextureRect()

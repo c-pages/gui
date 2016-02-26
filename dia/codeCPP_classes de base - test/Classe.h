@@ -1,0 +1,21 @@
+#ifndef CLASSE__H
+#define CLASSE__H
+
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+
+
+
+namespace toto {
+
+
+
+class Classe {
+
+
+}; // fin class Classe
+
+} // fin namespace toto
+
+#endif

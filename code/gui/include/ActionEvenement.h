@@ -1,5 +1,5 @@
-#ifndef ACTIONSOURIS__H
-#define ACTIONSOURIS__H
+#ifndef ACTIONEVENEMENT__H
+#define ACTIONEVENEMENT__H
 
 /////////////////////////////////////////////////
 // Headers
@@ -18,7 +18,7 @@ namespace gui {
 /// \brief Classe abstraite qui gère les évenements claviers et souris
 ///
 /////////////////////////////////////////////////
-class ActionSouris : public Gadget {
+class ActionEvenement : public Gadget {
 
 
 
@@ -33,6 +33,11 @@ public:
 // Méthodes
 /////////////////////////////////////////////////
 public:
+
+
+    ActionEvenement();
+
+
     /////////////////////////////////////////////////
     /// \brief Créer une nouvelle liaison entre un evenement souris  et une fonction lambda.
     ///
@@ -64,7 +69,7 @@ protected:
 private:
     std::map < Evenement , FctnAction > m_evenementsSouris;    ///< la liste des evenements souris enregistrés.
 
-}; // fin class ActionSouris
+}; // fin class ActionEvenement
 
 } // fin namespace gui
 

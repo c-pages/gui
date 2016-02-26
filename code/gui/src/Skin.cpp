@@ -19,6 +19,7 @@ Skin::Skin ()
 , img           ( std::make_shared<Style> () )
 , menu          ( std::make_shared<Style> () )
 , fenetre       ( std::make_shared<Style> () )
+, zoneTexte     ( std::make_shared<Style> () )
 {
     //Un skin par défaut
 
@@ -56,7 +57,7 @@ Skin::Skin ()
     txtCourant->txt_police.desactive.loadFromFile( "media/polices/arial.ttf" );
 
     txtCourant->txt_style.set       (sf::Text::Style::Regular ) ;
-    txtCourant->txt_taille.set      ( 12 ) ;
+    txtCourant->txt_taille.set      ( 5 ) ;
     txtCourant->txt_couleur.set     ( sf::Color(255, 255, 255 , 255 ) ) ;
     txtCourant->lgn_epaisseur.set   ( 0 ) ;
     txtCourant->lgn_couleur.set     ( sf::Color(255, 255, 255, 0) ) ;
@@ -70,7 +71,7 @@ Skin::Skin ()
 
     txtLog->txt_style.set(sf::Text::Style::Regular ) ;
     txtLog->txt_taille.set( 10 ) ;
-    txtLog->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
+    txtLog->txt_couleur.set( sf::Color(255, 255, 255 , 150 ) ) ;
     txtLog->lgn_epaisseur.set( 0 ) ;
     txtLog->lgn_couleur.set( sf::Color(255, 255, 255, 255) ) ;
     txtLog->fnd_couleur.set( sf::Color(255, 255, 255, 0) ) ;
@@ -81,9 +82,9 @@ Skin::Skin ()
     txtTitre->txt_police.survol.loadFromFile( "media/polices/arial.ttf" );
     txtTitre->txt_police.desactive.loadFromFile( "media/polices/arial.ttf" );
 
-    txtTitre->txt_style.set(sf::Text::Style::Italic ) ;
-    txtTitre->txt_taille.set( 14 ) ;
-    txtTitre->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
+    txtTitre->txt_style.set(sf::Text::Style::Bold ) ;
+    txtTitre->txt_taille.set( 21 ) ;
+    txtTitre->txt_couleur.set( sf::Color(255, 255, 255 , 200 ) ) ;
     txtTitre->lgn_epaisseur.set( 0 ) ;
     txtTitre->lgn_couleur.set( sf::Color(255, 255, 255, 255) ) ;
     txtTitre->fnd_couleur.set( sf::Color(255, 255, 255, 0) ) ;
@@ -168,6 +169,16 @@ Skin::Skin ()
     fenetre->lgn_couleur.set( sf::Color(255, 255, 255, 255) ) ;
     fenetre->fnd_couleur.set( sf::Color(255, 255, 255, 0) ) ;
 
+    zoneTexte->txt_police.repos.loadFromFile ( "media/polices/arial.ttf" );
+    zoneTexte->txt_police.press.loadFromFile ( "media/polices/consola.ttf" );
+    zoneTexte->txt_police.survol.loadFromFile( "media/polices/arial.ttf" );
+    zoneTexte->txt_police.desactive.loadFromFile( "media/polices/consola.ttf" );
+    zoneTexte->txt_style.set(sf::Text::Style::Italic ) ;
+    zoneTexte->txt_taille.set( 12 ) ;
+    zoneTexte->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
+    zoneTexte->lgn_epaisseur.set( 1 ) ;
+    zoneTexte->lgn_couleur.set( sf::Color(255, 255, 255, 255) ) ;
+    zoneTexte->fnd_couleur.set( sf::Color(155, 155, 155, 255) ) ;
 };
 
 }; // fin namespace gui

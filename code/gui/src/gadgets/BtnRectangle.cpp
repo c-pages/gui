@@ -9,19 +9,16 @@ namespace gui {
 
 /////////////////////////////////////////////////
 BtnRectangle::BtnRectangle ()
-: m_texte ( "" )
 {
-
+    setTexte("");
 }
 
 /////////////////////////////////////////////////
 void BtnRectangle::actualiser ()
 {
-    //    std::cout << "ACTUALISER BtnRectangle \n";
 
-    // On choisie le style a appliquer en fonction de l'etat du bouton
+    // On choisie le style a appliquer (du style s'il en a un sinon du skin)
     std::shared_ptr<Style> style;
-
     if ( m_style == nullptr )
         style = m_skin->bouton;
     else

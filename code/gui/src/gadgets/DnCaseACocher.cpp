@@ -13,15 +13,18 @@ DnCaseACocher::DnCaseACocher ()
 , m_coche  ( std::make_shared<AffRectangle>() )
 , m_label  ( std::make_shared<AffLabel>() )
 {
+    // initialiser quelques valeurs
     m_marge.x = m_marge.y = 3;
     m_taille.x = 15;
     m_taille.y = 15;
+
+    // le bouton
     m_bouton->setTexte ("");
     m_bouton->setParent  (this);
+
+    // Action du bouton
     m_bouton->lier ( Evenement::onBtnG_relacher , [this](){
-
         m_valeur = !m_valeur;
-
         // Déclechements
         declencher(Evenement::onBool_changerValeur);
         if (m_valeur)
@@ -29,21 +32,11 @@ DnCaseACocher::DnCaseACocher ()
         else
             declencher(Evenement::onBool_eteind);
     });
-    /*
-    this->lier ( Evenement::onBtnG_relacher , [this](){
-       std::cout << "BOOL CHANGE\n";
-       m_valeur = !m_valeur;
-    });
-*/
+
     actualiser ();
 }
 
 
-/////////////////////////////////////////////////
-bool DnCaseACocher::getValeur () const
-{
-    return m_valeur;
-}
 
 /////////////////////////////////////////////////
 void DnCaseACocher::actualiser_bounds() {
@@ -69,15 +62,12 @@ void DnCaseACocher::actualiser ()
     m_coche->setStyle    ( m_skin->btnCoche );
 
     actualiser_bounds();
-    // Si texte
 }
 
 
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  DnCaseACocher::testerSurvol ( sf::Vector2i position )
 {
-//    auto result = Gadget::testerSurvol ( position );
-//    auto result = m_bouton;
     if ( m_globalBounds.contains( { position.x , position.y} ) )
         return m_bouton;
 

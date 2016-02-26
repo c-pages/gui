@@ -1,0 +1,17 @@
+#ifndef ACTIONSOURIS__H
+#define ACTIONSOURIS__H
+
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+
+
+
+
+
+class ActionSouris {
+
+
+}; // fin class ActionSouris
+
+#endif

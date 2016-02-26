@@ -15,31 +15,41 @@ void Composite::ajouter (std::shared_ptr<Gadget> enfant)
     m_enfants.push_back( enfant );
 }
 
-/*
+
+
 /////////////////////////////////////////////////
-std::shared_ptr<Gadget> Composite::chercherEnfantSurvole ( sf::Vector2i pos )
+std::shared_ptr<Gadget> Composite::retirer ( std::shared_ptr<Gadget> gadget )
 {
-    for (auto enfant : m_enfants )
-        if ( enfant->testerSurvol ( pos ) ) {
-            if ( enfant->aDesEnfants() ) {
-                std::shared_ptr<Gadget> result;
-                result = enfant->chercherEnfantSurvole( pos );
-                if ( result != nullptr )
-                     return result;
-                else return enfant;
-            } else return enfant;
+    int i = 0;
+    for ( auto enfant : m_enfants ){
+        if ( enfant == gadget ) {
+            m_enfants.erase( m_enfants.begin()+i );
+            return enfant;
         }
-    return nullptr;
+        i++;
+    }
 }
-*/
+
+/////////////////////////////////////////////////
+void Composite::demander_aEtre_supprimer (){
+    m_parent->supprimer ( thisPtr() );
+}
+
 
 
 /////////////////////////////////////////////////
-void Composite::retirer (std::shared_ptr<Gadget> enfant)
-{
+void Composite::supprimer (std::shared_ptr<Gadget> gadget ){
+
+    int i = 0;
+    for ( auto enfant : m_enfants ){
+        if ( enfant == gadget ) {
+            m_enfants.erase( m_enfants.begin()+i );
+            return;
+        }
+        i++;
+    }
 
 }
-
 
 } // fin namespace gui
 

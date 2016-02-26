@@ -6,6 +6,7 @@
 
 #include <Gadget.h>
 #include <Skin.h>
+#include <Interface.h>
 
 
 namespace gui {
@@ -30,13 +31,13 @@ Gadget::Gadget ()
 , m_skin        ( nullptr )
 , m_style       ( nullptr )
 {
-
+    // Si on a une racine active, on utilise son skin
     if ( ms_racineCourante != nullptr )
         m_skin = ms_racineCourante->getSkin();
     else
         m_skin = std::make_shared<Skin>() ;
 
-    // Mise a jour du nombre de gadget
+    // Mise a jour du nombre de gadgets.
     ms_CompteurGadgets++;
 
     // Creation du nom unique du gadget
@@ -50,6 +51,7 @@ Gadget::Gadget ()
 /////////////////////////////////////////////////
 Gadget::~Gadget ()
 {
+    // Mise a jour du nombre de gadgets.
     ms_CompteurGadgets--;
 }
 
@@ -71,7 +73,12 @@ void Gadget::actualiser (sf::Time deltaTemps)
 /////////////////////////////////////////////////
 void Gadget::traiterEvenements (const sf::Event& evenement)
 {
+    // les evenement claviers
     ActionClavier::traiterEvenementsClavier( evenement );
+
+    // les evenements des enfants
+    for (auto enfant : m_enfants)
+        enfant->traiterEvenements ( evenement );
 }
 
 
@@ -118,14 +125,26 @@ bool Gadget::estDeplacable () const
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<Gadget>  Gadget::testerSurvol ( sf::Vector2i position ) {
-
-//    std::cout << "Gadget : Tester survol\n";
+std::shared_ptr<Gadget>  Gadget::testerSurvol ( sf::Vector2i position )
+{
     if ( m_globalBounds.contains( position.x, position.y ) && estActif() )
         return thisPtr();
     else
         return nullptr;
 
+}
+
+/////////////////////////////////////////////////
+sf::Vector2i Gadget::getPosSouris ( ) {
+    return Interface::getPosSouris();
 };
+sf::Vector2i Gadget::getLocalPosSouris ( ) {
+    sf::Vector2i result = Interface::getPosSouris();
+    result.x -= getPosAbs().x;
+    result.y -= getPosAbs().y;
+    return result;
+};
+
+
 } // fin namespace gui
 

@@ -7,6 +7,7 @@
 #include "SFML/Graphics.hpp"
 #include <memory>
 #include <vector>
+#include <iostream>
 
 
 
@@ -34,6 +35,10 @@ public:
     ///< Acceder à m_parent
     Gadget* getParent () const { return m_parent; };
 
+    virtual std::shared_ptr<Gadget> thisPtr(){
+        std::cout << "DEMANDE DE thisPtr PROBLEMATIQUE\n";
+    };
+
 protected:
     /////////////////////////////////////////////////
     /// \brief Ajouter un gadget à la liste de gadgets enfant.
@@ -46,21 +51,22 @@ protected:
     /// \brief Retirer un enfant de la liste des enfants de ce gadget sans le supprimer.
     ///
     /// \param enfant		 L'enfant à retirer de la liste des enfants.
+    /// \return L'enfant supprimer des enfants.
     /////////////////////////////////////////////////
-    virtual void retirer (std::shared_ptr<Gadget> enfant);
+    virtual std::shared_ptr<Gadget> retirer (std::shared_ptr<Gadget> enfant);
 
     /////////////////////////////////////////////////
     /// \brief Demander au parent de nous supprimer.
     ///
     /////////////////////////////////////////////////
-    virtual void demander_aEtre_supprimer (){};
+    virtual void demander_aEtre_supprimer ();
 
     /////////////////////////////////////////////////
     /// \brief Supprimer un gadget.
     ///
     /// \param enfant		 L'enfant à supprimer.
     /////////////////////////////////////////////////
-    virtual void supprimer (std::shared_ptr<Gadget> enfant){};
+    virtual void supprimer (std::shared_ptr<Gadget> enfant);
 
     /////////////////////////////////////////////////
     /// \brief Demander au parent d'être mis au dessus des autres gadgets ( mouvements de la liste des enfants).
@@ -83,7 +89,6 @@ protected:
     /////////////////////////////////////////////////
     void dessinerEnfants (sf::RenderTarget& target, sf::RenderStates states) const {};
 
-//    std::shared_ptr<Gadget> chercherEnfantSurvole ( sf::Vector2i pos );
 
 /////////////////////////////////////////////////
 // Membres

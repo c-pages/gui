@@ -65,6 +65,9 @@ std::shared_ptr<BtnRectangle>    FabriqueBase::bouton( std::string texte )
     // Creation du nouveau gadget
     std::shared_ptr<BtnRectangle> nouveauGadget = std::make_shared<BtnRectangle>();
 
+//    // on l'ajoute à la liste static des boutons
+//    Bouton::ms_boutons.push_back( nouveauGadget );
+
     // Affiliation au gadget racine courant
     Gadget::ms_racineCourante->ajouter ( nouveauGadget );
     nouveauGadget->setParent ( Gadget::ms_racineCourante );
@@ -82,6 +85,9 @@ std::shared_ptr<BtnRectangle>    FabriqueBase::bouton( sf::Vector2i taille )
 
     // Creation du nouveau gadget
     std::shared_ptr<BtnRectangle> nouveauGadget = std::make_shared<BtnRectangle>();
+
+//    // on l'ajoute à la liste static des boutons
+//    Bouton::ms_boutons.push_back( nouveauGadget );
 
     // Affiliation au gadget racine courant
     Gadget::ms_racineCourante->ajouter ( nouveauGadget );
@@ -101,6 +107,9 @@ std::shared_ptr<BtnMenu>   FabriqueBase::menu( )
     // Creation du nouveau gadget
     std::shared_ptr<BtnMenu> nouveauGadget = std::make_shared<BtnMenu>();
 
+//    // on l'ajoute à la liste static des boutons
+//    Bouton::ms_boutons.push_back( nouveauGadget );
+
     // Affiliation au gadget racine courant
     Gadget::ms_racineCourante->ajouter ( nouveauGadget );
     nouveauGadget->setParent ( Gadget::ms_racineCourante );
@@ -116,6 +125,9 @@ std::shared_ptr<DnCaseACocher>        FabriqueBase::btnACocher( bool val )
     // Creation du nouveau gadget
     std::shared_ptr<DnCaseACocher> nouveauGadget = std::make_shared<DnCaseACocher>();
 
+//    // on l'ajoute à la liste static des boutons
+//    Bouton::ms_boutons.push_back( nouveauGadget );
+
     // Affiliation au gadget racine courant
     Gadget::ms_racineCourante->ajouter ( nouveauGadget );
     nouveauGadget->setParent ( Gadget::ms_racineCourante );
@@ -123,6 +135,44 @@ std::shared_ptr<DnCaseACocher>        FabriqueBase::btnACocher( bool val )
     // renvois du nouveau gadget créé.
     return nouveauGadget;
 }
+
+
+/////////////////////////////////////////////////
+std::shared_ptr<DnZoneTexte>        FabriqueBase::zoneTexte( std::string texte )
+{
+    // Creation du nouveau gadget
+    std::shared_ptr<DnZoneTexte> nouveauGadget = std::make_shared<DnZoneTexte>();
+
+//    // on l'ajoute à la liste static des boutons
+//    Bouton::ms_boutons.push_back( nouveauGadget );
+
+    // Affiliation au gadget racine courant
+    Gadget::ms_racineCourante->ajouter ( nouveauGadget );
+    nouveauGadget->setParent ( Gadget::ms_racineCourante );
+
+    // Définition du texte du bouton
+    nouveauGadget->setTexte ( texte );
+
+    // renvois du nouveau gadget créé.
+    return nouveauGadget;
+}
+
+/////////////////////////////////////////////////
+std::shared_ptr<DnSlider>        FabriqueBase::slider( )
+{
+    // Creation du nouveau gadget
+    std::shared_ptr<DnSlider> nouveauGadget = std::make_shared<DnSlider>();
+
+
+    // Affiliation au gadget racine courant
+    Gadget::ms_racineCourante->ajouter ( nouveauGadget );
+    nouveauGadget->setParent ( Gadget::ms_racineCourante );
+
+    // renvois du nouveau gadget créé.
+    return nouveauGadget;
+}
+
+
 
 
 }; // fin namespace gui

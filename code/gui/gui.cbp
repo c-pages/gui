@@ -62,7 +62,7 @@
 		<Unit filename="gui.cpp" />
 		<Unit filename="gui.h" />
 		<Unit filename="include/ActionClavier.h" />
-		<Unit filename="include/ActionSouris.h" />
+		<Unit filename="include/ActionEvenement.h" />
 		<Unit filename="include/Affiche.h" />
 		<Unit filename="include/Bouton.h" />
 		<Unit filename="include/Composite.h" />
@@ -71,6 +71,7 @@
 		<Unit filename="include/FabriqueBase.h" />
 		<Unit filename="include/Gadget.h" />
 		<Unit filename="include/Geometrie.h" />
+		<Unit filename="include/Interface.h" />
 		<Unit filename="include/Skin.h" />
 		<Unit filename="include/Style.h" />
 		<Unit filename="include/gadgets/AffImage.h" />
@@ -79,6 +80,8 @@
 		<Unit filename="include/gadgets/BtnMenu.h" />
 		<Unit filename="include/gadgets/BtnRectangle.h" />
 		<Unit filename="include/gadgets/DnCaseACocher.h" />
+		<Unit filename="include/gadgets/DnSlider.h" />
+		<Unit filename="include/gadgets/DnZoneTexte.h" />
 		<Unit filename="media/img/nuage.jpg" />
 		<Unit filename="media/polices/arial.ttf" />
 		<Unit filename="media/polices/bgothl.ttf" />
@@ -89,7 +92,7 @@
 		<Unit filename="media/polices/webdings.ttf" />
 		<Unit filename="media/polices/wingding.ttf" />
 		<Unit filename="src/ActionClavier.cpp" />
-		<Unit filename="src/ActionSouris.cpp" />
+		<Unit filename="src/ActionEvenement.cpp" />
 		<Unit filename="src/Affiche.cpp" />
 		<Unit filename="src/Bouton.cpp" />
 		<Unit filename="src/Composite.cpp" />
@@ -97,6 +100,7 @@
 		<Unit filename="src/FabriqueBase.cpp" />
 		<Unit filename="src/Gadget.cpp" />
 		<Unit filename="src/Geometrie.cpp" />
+		<Unit filename="src/Interface.cpp" />
 		<Unit filename="src/Skin.cpp" />
 		<Unit filename="src/Style.cpp" />
 		<Unit filename="src/gadgets/AffImage.cpp" />
@@ -105,6 +109,8 @@
 		<Unit filename="src/gadgets/BtnMenu.cpp" />
 		<Unit filename="src/gadgets/BtnRectangle.cpp" />
 		<Unit filename="src/gadgets/DnCaseACocher.cpp" />
+		<Unit filename="src/gadgets/DnSlider.cpp" />
+		<Unit filename="src/gadgets/DnZoneTexte.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

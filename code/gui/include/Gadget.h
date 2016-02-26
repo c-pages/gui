@@ -10,12 +10,14 @@
 #include <Skin.h>
 #include <ActionClavier.h>
 #include <Enums.h>
+//#include <Interface.h>
 /*
-#include <ActionSouris.h>*/
+#include <ActionEvenement.h>*/
 
 
 namespace gui {
 
+class Interface;
 
 /////////////////////////////////////////////////
 /// \brief Classe communes à tout les gadgets, gère affichage actualisation, etc...
@@ -35,7 +37,7 @@ class Gadget : public std::enable_shared_from_this<Gadget>, public sf::Drawable,
 /////////////////////////////////////////////////
 public:
 
-    std::shared_ptr<Gadget> thisPtr()  {
+    virtual std::shared_ptr<Gadget> thisPtr()  {
 //        std::cout << "DEMANDE DE THISPTR\n";
         return shared_from_this();
     };
@@ -60,7 +62,8 @@ public:
 
     ///< Definir m_presse
     void setPresse( bool val )
-        { m_presse = val; actualiser(); };
+        { m_presse = val;
+        actualiser(); };
 
     ///< Definir m_deplacable
     void setDeplacable( bool val )
@@ -170,6 +173,8 @@ public:
     /////////////////////////////////////////////////
     bool estDeplacable () const;
 
+    sf::Vector2i getPosSouris ( );
+    sf::Vector2i getLocalPosSouris ( );
 
     static Gadget*     getRacineCourante() { return ms_racineCourante; };
 

@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "ActionSouris.h"
+#include "ActionEvenement.h"
 #include "Gadget.h"
 
 
@@ -17,7 +17,7 @@ namespace gui {
 /// \brief Un simple bouton
 ///
 /////////////////////////////////////////////////
-class Bouton : /* public gui::Gadget,*/ public gui::ActionSouris {
+class Bouton : /* public gui::Gadget,*/ public gui::ActionEvenement {
 
 
 
@@ -30,6 +30,7 @@ public:
     ///
     /////////////////////////////////////////////////
     Bouton ();
+    ~Bouton ();
 
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
@@ -42,13 +43,20 @@ public:
 
 //    void setMarge ( sf::Vector2f marge ){ m_marge = marge;};
 
+//    static  std::vector<std::shared_ptr<Gadget>>  sGetBoutons(){ return ms_boutons ; };
+    static  std::vector<Gadget*>  GetBoutons(){ return ms_boutons ; };
+
+
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
+private:
+    friend class Interface;
+    friend class FabriqueBase;
+    static  std::vector<Gadget*>      ms_boutons;
+
 protected:
-//    sf::Vector2f                m_marge;            ///< La marge à laissé lors l'ajustement automatique du rectangle sur le texte.
-//    std::string                 m_texte;            ///< Le texte du bouton
-    bool                        m_autoAjust;        ///< Ajuste automatiquement la taille du bouton au texte (en tenant compte de la marge).
+    bool                    m_autoAjust;        ///< Ajuste automatiquement la taille du bouton au texte (en tenant compte de la marge).
 
 }; // fin class Bouton
 

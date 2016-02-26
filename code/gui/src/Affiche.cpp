@@ -15,7 +15,7 @@ void Affiche::ajouter (std::shared_ptr<Gadget> gadget)
 
 
 /////////////////////////////////////////////////
-void Affiche::retirer (std::shared_ptr<Gadget> enfant)
+std::shared_ptr<Gadget> Affiche::retirer (std::shared_ptr<Gadget> enfant)
 {
     // Ne fait rien.
 }

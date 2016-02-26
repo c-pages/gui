@@ -26,7 +26,7 @@ DnCaseACocher::DnCaseACocher ()
     m_bouton->lier ( Evenement::onBtnG_relacher , [this](){
         m_valeur = !m_valeur;
         // Déclechements
-        declencher(Evenement::onBool_changerValeur);
+        declencher(Evenement::on_changerValeur);
         if (m_valeur)
             declencher(Evenement::onBool_allume);
         else

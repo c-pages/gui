@@ -185,16 +185,14 @@ EcranDemo::initGUI_test_Donnees  ()
     m_boutonCoche->setTexte       ( "Activer / Désactiver 'Machiner'" );
     m_boutonCoche->setValeur      ( true );
 
-    m_boutonCoche->lier ( gui::Evenement::onBool_changerValeur , [this](){
+    m_boutonCoche->lier ( gui::Evenement::on_changerValeur , [this](){
                         std::cout << "ACTION Bool : changer Valeur\n";
                         if (  m_boutonRect->estActif() ){
                             delierMachiner ();
-                            m_boutonRect->setActif( false );
-                        }
-                        else{
+                            m_boutonRect->setActif( false ); }
+                        else {
                             lierMachiner ();
-                            m_boutonRect->setActif( true );
-                        }
+                            m_boutonRect->setActif( true ); }
                         });
     m_boutonCoche->lier ( gui::Evenement::onBool_allume , [this](){
                         std::cout << "ACTION Bool : allume\n";
@@ -227,8 +225,11 @@ EcranDemo::initGUI_test_Donnees  ()
     ///////slider ///////
     m_slider = m_interface->creer.slider( );
     m_slider->setPosition    ( posRoot.x , posRoot.y  +  68 );
-//    m_slider->setPosition    ( 0, 0 );
     m_slider->setStyle       ( m_skin->txtLog );
+
+    m_slider->lier ( gui::Evenement::on_changerValeur , [this](){
+            std::cout << "ACTION - Valeur : " << m_slider->getValeur() << "\n";
+            });
 
 
     /////// autre Label ///////

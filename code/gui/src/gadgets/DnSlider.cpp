@@ -87,6 +87,8 @@ DnSlider::DnSlider ()
 /////////////////////////////////////////////////
 void DnSlider::incrementer()
 {
+    declencher ( Evenement::on_changerValeur );
+
     m_slider->setPosition ( m_slider->getPosition ( ).x + m_inc , m_slider->getPosition ( ).y );
     if ( m_slider->getPosition ( ).x > m_taille.x - m_marge.x - m_slider->getTaille().x )
         m_slider->setPosition ( m_taille.x - m_marge.x - m_slider->getTaille().x, m_slider->getPosition ( ).y );
@@ -95,6 +97,8 @@ void DnSlider::incrementer()
 /////////////////////////////////////////////////
 void DnSlider::decrementer()
 {
+    declencher ( Evenement::on_changerValeur );
+
     m_slider->setPosition ( m_slider->getPosition ( ).x - m_inc , m_slider->getPosition ( ).y );
     if ( m_slider->getPosition ( ).x < m_marge.x )
             m_slider->setPosition ( m_marge.x, m_slider->getPosition ( ).y );
@@ -125,8 +129,10 @@ void DnSlider::positionnerCurseurSurSouris ()
     if ( m_slider->getPosition ( ).x > m_taille.x - m_marge.x - m_slider->getTaille().x )
         m_slider->setPosition ( m_taille.x - m_marge.x - m_slider->getTaille().x, m_slider->getPosition ( ).y );
 
+    declencher ( Evenement::on_changerValeur );
+
     actualiser ();
-    }
+}
 
 
 

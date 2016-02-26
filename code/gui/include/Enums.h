@@ -30,7 +30,7 @@ enum class Evenement {
     onBtnM_roulerHaut,      ///< Roule vers le haut le bouton du milieu de la souris.
     onBtnM_roulerBas,       ///< Roule vers le bas le bouton du milieu de la souris.
 
-    onBool_changerValeur,   ///< Quand on change la valeur d'un champ de saisie de texte.
+    on_changerValeur,       ///< Quand on change la valeur d'un champ de saisie de texte.
     onBool_allume,          ///< Quand on change la valeur d'un champ de saisie de texte.
     onBool_eteind,          ///< Quand on valide la valeur d'un champ de saisie de texte.
 

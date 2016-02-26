@@ -20,6 +20,7 @@ Skin::Skin ()
 , menu          ( std::make_shared<Style> () )
 , fenetre       ( std::make_shared<Style> () )
 , zoneTexte     ( std::make_shared<Style> () )
+, Slider        ( std::make_shared<Style> () )
 {
     //Un skin par défaut
 
@@ -179,6 +180,21 @@ Skin::Skin ()
     zoneTexte->lgn_epaisseur.set( 1 ) ;
     zoneTexte->lgn_couleur.set( sf::Color(255, 255, 255, 255) ) ;
     zoneTexte->fnd_couleur.set( sf::Color(155, 155, 155, 255) ) ;
+
+
+//    Slider->txt_police.repos.loadFromFile ( "media/polices/arial.ttf" );
+//    Slider->txt_police.press.loadFromFile ( "media/polices/consola.ttf" );
+//    Slider->txt_police.survol.loadFromFile( "media/polices/arial.ttf" );
+//    Slider->txt_police.desactive.loadFromFile( "media/polices/consola.ttf" );
+    Slider->txt_style.set(sf::Text::Style::Italic ) ;
+    Slider->txt_taille.set( 12 ) ;
+    Slider->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
+    Slider->lgn_epaisseur.set( 1 ) ;
+    Slider->lgn_couleur.set( sf::Color(150, 150, 150, 255) ) ;
+    Slider->fnd_couleur.repos = sf::Color(255, 255, 255, 100) ;
+    Slider->fnd_couleur.survol= sf::Color(255, 255, 255, 150) ;
+    Slider->fnd_couleur.press = sf::Color(255, 255, 255, 200) ;
+    Slider->fnd_couleur.desactive = sf::Color(255, 255, 255, 10 ) ;
 };
 
 }; // fin namespace gui

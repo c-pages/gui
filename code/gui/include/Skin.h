@@ -46,6 +46,7 @@ public:
     std::shared_ptr<Style> menu;
     std::shared_ptr<Style> fenetre;
     std::shared_ptr<Style> zoneTexte;
+    std::shared_ptr<Style> Slider;
 
 }; // fin class Skin
 

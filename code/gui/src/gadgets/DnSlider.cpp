@@ -53,6 +53,7 @@ DnSlider::DnSlider ()
     m_slider->setParent  ( this );
     m_slider->setTaille ( { 25 , m_taille.y - 2*m_marge.y });
     m_slider->setPosition ( m_marge.x, m_marge.y );
+    m_slider->setStyle ( m_skin->Slider );
 
     // Action du slider
     m_slider->lier ( Evenement::onBtnG_presser , [this](){

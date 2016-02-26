@@ -228,8 +228,8 @@ EcranDemo::initGUI_test_Donnees  ()
     m_slider->setStyle       ( m_skin->txtLog );
 
     m_slider->lier ( gui::Evenement::on_changerValeur , [this](){
-            std::cout << "ACTION - Valeur : " << m_slider->getValeur() << "\n";
-            });
+        std::cout << "ACTION - Valeur : " << m_slider->getValeur() << "\n";
+    });
 
 
     /////// autre Label ///////

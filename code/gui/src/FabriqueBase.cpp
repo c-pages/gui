@@ -6,17 +6,27 @@ namespace gui{
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<AffRectangle>    FabriqueBase::rectangle( sf::Vector2i taille )
-{
+template<typename T>
+std::shared_ptr<T>  FabriqueBase::creerGadget (){
     // Creation du nouveau gadget
-    std::shared_ptr<AffRectangle> nouveauGadget = std::make_shared<AffRectangle>( taille );
+    std::shared_ptr<T> nouveauGadget = std::make_shared<T>( );
 
     // Affiliation au gadget racine courant
     Gadget::ms_racineCourante->ajouter ( nouveauGadget );
     nouveauGadget->setParent ( Gadget::ms_racineCourante );
 
-    nouveauGadget->setTaille ( taille );
     // renvois du nouveau gadget créé.
+    return nouveauGadget;
+
+}
+
+
+
+/////////////////////////////////////////////////
+std::shared_ptr<AffRectangle>    FabriqueBase::rectangle( sf::Vector2i taille )
+{
+    auto nouveauGadget = creerGadget<AffRectangle>( );
+    nouveauGadget->setTaille ( taille );
     return nouveauGadget;
 }
 
@@ -25,114 +35,47 @@ std::shared_ptr<AffRectangle>    FabriqueBase::rectangle( sf::Vector2i taille )
 /////////////////////////////////////////////////
 std::shared_ptr<AffLabel>    FabriqueBase::label( std::string text )
 {
-    // Creation du nouveau gadget
-    std::shared_ptr<AffLabel> nouveauGadget = std::make_shared<AffLabel>();
-
-    // Affiliation au gadget racine courant
-    Gadget::ms_racineCourante->ajouter ( nouveauGadget );
-    nouveauGadget->setParent ( Gadget::ms_racineCourante );
-
-    // Définition du texte du label
+    auto nouveauGadget = creerGadget<AffLabel>( );
     nouveauGadget->setTexte ( text );
-
-    // renvois du nouveau gadget créé.
     return nouveauGadget;
-
 }
 
 /////////////////////////////////////////////////
 std::shared_ptr<AffImage>    FabriqueBase::image( std::string fichier )
 {
-
-    // Creation du nouveau gadget
-    std::shared_ptr<AffImage> nouveauGadget = std::make_shared<AffImage>();
-
-    // Affiliation au gadget racine courant
-    Gadget::ms_racineCourante->ajouter ( nouveauGadget );
-    nouveauGadget->setParent ( Gadget::ms_racineCourante );
-
-    // Chargement du fichier de l'image
+    auto nouveauGadget = creerGadget<AffImage>( );
     nouveauGadget->chargerDepuisFichier ( fichier );
-
-    // renvois du nouveau gadget créé.
     return nouveauGadget;
 }
 
 /////////////////////////////////////////////////
 std::shared_ptr<BtnRectangle>    FabriqueBase::bouton( std::string texte )
 {
-
-    // Creation du nouveau gadget
-    std::shared_ptr<BtnRectangle> nouveauGadget = std::make_shared<BtnRectangle>();
-
-//    // on l'ajoute à la liste static des boutons
-//    Bouton::ms_boutons.push_back( nouveauGadget );
-
-    // Affiliation au gadget racine courant
-    Gadget::ms_racineCourante->ajouter ( nouveauGadget );
-    nouveauGadget->setParent ( Gadget::ms_racineCourante );
-
-    // Définition du texte du bouton
+    auto nouveauGadget = creerGadget<BtnRectangle>( );
     nouveauGadget->setTexte ( texte );
-
-    // renvois du nouveau gadget créé.
     return nouveauGadget;
 }
 
 /////////////////////////////////////////////////
 std::shared_ptr<BtnRectangle>    FabriqueBase::bouton( sf::Vector2i taille )
 {
-
-    // Creation du nouveau gadget
-    std::shared_ptr<BtnRectangle> nouveauGadget = std::make_shared<BtnRectangle>();
-
-//    // on l'ajoute à la liste static des boutons
-//    Bouton::ms_boutons.push_back( nouveauGadget );
-
-    // Affiliation au gadget racine courant
-    Gadget::ms_racineCourante->ajouter ( nouveauGadget );
-    nouveauGadget->setParent ( Gadget::ms_racineCourante );
-
-    // Définition du texte du bouton
+    auto nouveauGadget = creerGadget<BtnRectangle>( );
     nouveauGadget->setTaille ( taille );
-
-    // renvois du nouveau gadget créé.
     return nouveauGadget;
 }
 
 /////////////////////////////////////////////////
 std::shared_ptr<BtnMenu>   FabriqueBase::menu( )
 {
-
-    // Creation du nouveau gadget
-    std::shared_ptr<BtnMenu> nouveauGadget = std::make_shared<BtnMenu>();
-
-//    // on l'ajoute à la liste static des boutons
-//    Bouton::ms_boutons.push_back( nouveauGadget );
-
-    // Affiliation au gadget racine courant
-    Gadget::ms_racineCourante->ajouter ( nouveauGadget );
-    nouveauGadget->setParent ( Gadget::ms_racineCourante );
-
-    // renvois du nouveau gadget créé.
-    return nouveauGadget;
+    return creerGadget<BtnMenu>( );
 }
 
 
 /////////////////////////////////////////////////
 std::shared_ptr<DnCaseACocher>        FabriqueBase::btnACocher( bool val )
 {
-    // Creation du nouveau gadget
-    std::shared_ptr<DnCaseACocher> nouveauGadget = std::make_shared<DnCaseACocher>();
-
-//    // on l'ajoute à la liste static des boutons
-//    Bouton::ms_boutons.push_back( nouveauGadget );
-
-    // Affiliation au gadget racine courant
-    Gadget::ms_racineCourante->ajouter ( nouveauGadget );
-    nouveauGadget->setParent ( Gadget::ms_racineCourante );
-
-    // renvois du nouveau gadget créé.
+    auto nouveauGadget = creerGadget<DnCaseACocher>( );
+    nouveauGadget->setValeur ( val );
     return nouveauGadget;
 }
 
@@ -140,38 +83,25 @@ std::shared_ptr<DnCaseACocher>        FabriqueBase::btnACocher( bool val )
 /////////////////////////////////////////////////
 std::shared_ptr<DnZoneTexte>        FabriqueBase::zoneTexte( std::string texte )
 {
-    // Creation du nouveau gadget
-    std::shared_ptr<DnZoneTexte> nouveauGadget = std::make_shared<DnZoneTexte>();
-
-//    // on l'ajoute à la liste static des boutons
-//    Bouton::ms_boutons.push_back( nouveauGadget );
-
-    // Affiliation au gadget racine courant
-    Gadget::ms_racineCourante->ajouter ( nouveauGadget );
-    nouveauGadget->setParent ( Gadget::ms_racineCourante );
-
-    // Définition du texte du bouton
+    auto nouveauGadget = creerGadget<DnZoneTexte>( );
     nouveauGadget->setTexte ( texte );
-
-    // renvois du nouveau gadget créé.
     return nouveauGadget;
 }
 
 /////////////////////////////////////////////////
 std::shared_ptr<DnSlider>        FabriqueBase::slider( )
 {
-    // Creation du nouveau gadget
-    std::shared_ptr<DnSlider> nouveauGadget = std::make_shared<DnSlider>();
-
-
-    // Affiliation au gadget racine courant
-    Gadget::ms_racineCourante->ajouter ( nouveauGadget );
-    nouveauGadget->setParent ( Gadget::ms_racineCourante );
-
-    // renvois du nouveau gadget créé.
+    auto nouveauGadget = creerGadget<DnSlider>( );
     return nouveauGadget;
 }
 
+
+/////////////////////////////////////////////////
+std::shared_ptr<DnBarreDefilement>        FabriqueBase::barreDefilement( )
+{
+    auto nouveauGadget = creerGadget<DnBarreDefilement>( );
+    return nouveauGadget;
+}
 
 
 

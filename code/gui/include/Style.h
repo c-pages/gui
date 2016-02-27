@@ -14,7 +14,8 @@ enum class Etat {
     repos,
     survol,
     press,
-    desactive
+    desactive,
+    tous
 };
 /////////////////////////////////////////////////
 /// \brief Un style regroupe un ensemble de caractéristiques de base des gadgets.
@@ -22,8 +23,20 @@ enum class Etat {
 /////////////////////////////////////////////////
 template <typename T>
 struct Valeurs {
-    void set ( T val )    {
-        repos = survol = press = desactive = val;
+    void set ( T val , Etat etat = Etat::tous )    {
+        if ( etat == Etat::tous)
+            repos = survol = press = desactive = val;
+        else
+        switch ( etat ){
+            case Etat::repos :
+                repos = val; break;
+            case Etat::survol :
+                survol = val; break;
+            case Etat::press :
+                press = val; break;
+            case Etat::desactive :
+                desactive = val; break;
+        }
     };
     T get ( Etat etat ){
          switch ( etat ){
@@ -52,10 +65,56 @@ struct Valeurs {
 class Style {
 
 
+public:
+enum class Proprietes{
+
+    txt_police,
+    txt_style,
+    txt_taille,
+    txt_couleur,
+    lgn_epaisseur,
+    lgn_couleur,
+    fnd_couleur,
+    fnd_texture,
+
+    tous
+};
 /////////////////////////////////////////////////
 // Méthodes
 /////////////////////////////////////////////////
 public:
+    /////////////////////////////////////////////////
+    /// \brief Definir une police
+    ///
+    /// \param valeur la valeur à appliquer
+    /// \param style Le style à redefinir (par defaut tous)
+    /// \param etat L'etat à redefinir (par defaut tous)
+    /////////////////////////////////////////////////
+    template<typename T>
+    void set (  T                   valeur
+              , Style::Proprietes   propriete
+              , Etat                etat        = Etat::tous )
+    {
+         switch ( propriete ){
+            case Proprietes::txt_police :
+                txt_police.set( valeur, etat ) ; break;
+            case Proprietes::txt_style :
+                txt_style.set( valeur, etat ) ; break;
+            case Proprietes::txt_taille :
+                txt_taille.set( valeur, etat ) ; break;
+            case Proprietes::txt_couleur :
+                txt_couleur.set( valeur, etat ) ; break;
+            case Proprietes::lgn_epaisseur :
+                lgn_epaisseur.set( valeur, etat ) ; break;
+            case Proprietes::lgn_couleur :
+                lgn_couleur.set( valeur, etat ) ; break;
+            case Proprietes::fnd_couleur :
+                fnd_couleur.set( valeur, etat ) ; break;
+            case Proprietes::fnd_texture :
+                fnd_texture.set( valeur, etat ) ; break;
+        }
+
+    };
     /////////////////////////////////////////////////
     /// \brief Constructeur par défaut.
     ///
@@ -65,7 +124,7 @@ public:
     sf::Font        getTxt_police       ( Etat etat ){ return txt_police.get    (etat); };
 
     sf::Text::Style getTxt_style        ( Etat etat ){ return txt_style.get     (etat); };
-    float           getTxtTaille        ( Etat etat ){ return txt_taille.get    (etat); };
+    float           getTxt_taille       ( Etat etat ){ return txt_taille.get    (etat); };
     sf::Color       getTxt_couleur      ( Etat etat ){ return txt_couleur.get   (etat); };
 
     float           getLgn_epaisseur    ( Etat etat ){ return lgn_epaisseur.get  (etat); };
@@ -73,7 +132,6 @@ public:
 
     sf::Color       getFnd_couleur      ( Etat etat ){ return fnd_couleur.get    (etat); };
     sf::Texture     getFnd_texture      ( Etat etat ){ return fnd_texture.get    (etat); };
-
 
 
 /////////////////////////////////////////////////

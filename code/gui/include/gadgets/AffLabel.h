@@ -39,9 +39,6 @@ public:
     ///< Definir m_texte
     void setTexte( std::string val ){
         m_texte = val;
-
-//        m_texteSFML->setFont   ( m_police );
-//        m_texteSFML->setString (m_texte);
         actualiser();
     };
 
@@ -60,8 +57,10 @@ public:
     void setTexteCouleur( sf::Color couleur ){ m_texteSFML->setColor ( couleur );/* actualiser();*/ };
 
     ///< Definir m_police
-    void setPolice( sf::Font val ){ m_police = val;
-    m_texteSFML->setFont    ( m_police );/* actualiser();*/ };
+    void setPolice( sf::Font val ){
+        m_police = val;
+        m_texteSFML->setFont    ( m_police );/* actualiser();*/
+    };
 /*
     void loadPolice ( std::string fichier ){
         if ( m_police.loadFromFile( fichier) )
@@ -99,7 +98,8 @@ private:
     std::string                 m_texte;            ///< Le texte à afficher par le label.#S#G
     std::shared_ptr<sf::Text>   m_texteSFML;        ///< Le shape SFML qui affiche le texte.
 //    float                       m_texteTaille;      ///< La taille du texte à afficher par le label.#S#G
-    sf::Font                    m_police;           ///< La police du texte à afficher par le label.#S#G
+//    std::shared_ptr<sf::Font>   m_police;           ///< La police du texte à afficher par le label.#S#G
+    sf::Font   m_police;           ///< La police du texte à afficher par le label.#S#G
 //    Style*                      m_style;
 }; // fin class AffLabel
 

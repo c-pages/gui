@@ -355,7 +355,7 @@
 1445713392 r:\06 - c++\110 - gui\code\main\include\gestion_ecrans.h
 	<Ecran.h>
 
-1456506841 source:r:\06 - c++\110 - gui\code\main\src\application.cpp
+1456509208 source:r:\06 - c++\110 - gui\code\main\src\application.cpp
 	"Application.h"
 	"Config.h"
 	"ecrans/EcranDemo.h"
@@ -367,7 +367,7 @@
 	<ResourceMgr.h>
 	<Skin.h>
 
-1445711977 r:\06 - c++\110 - gui\code\main\include\resourcemgr.h
+1456583841 r:\06 - c++\110 - gui\code\main\include\resourcemgr.h
 	<unordered_map>
 	<memory>
 	<stdexcept>
@@ -438,14 +438,14 @@
 1445711805 r:\06 - c++\110 - gui\code\main\include\resourcemgr.inl
 	"ResourceMgr.h"
 
-1456506508 r:\06 - c++\110 - gui\code\gui\include\skin.h
+1456593441 r:\06 - c++\110 - gui\code\gui\include\skin.h
 	<memory>
 	"Style.h"
 
-1456333612 r:\06 - c++\110 - gui\code\gui\include\style.h
+1456593666 r:\06 - c++\110 - gui\code\gui\include\style.h
 	<SFML/Graphics.hpp>
 
-1456505171 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
+1456605563 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
 	<SFML/Graphics.hpp>
 	<memory>
 	<Ecran.h>
@@ -455,10 +455,11 @@
 1456500157 r:\06 - c++\110 - gui\code\gui\gui.h
 	"Interface.h"
 
-1456500958 r:\06 - c++\110 - gui\code\gui\include\gadget.h
+1456611603 r:\06 - c++\110 - gui\code\gui\include\gadget.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<Geometrie.h>
+	<Composant.h>
 	<Skin.h>
 	<ActionClavier.h>
 	<Enums.h>
@@ -480,7 +481,7 @@
 	<SFML/Graphics.hpp>
 	<functional>
 
-1456496814 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
+1456605468 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
 	"SFML/Graphics.hpp"
 	"memory"
 	"Gadget.h"
@@ -492,6 +493,7 @@
 	"gadgets\DnCaseACocher.h"
 	"gadgets\DnZoneTexte.h"
 	"gadgets\DnSlider.h"
+	"gadgets\DnBarreDefilement.h"
 
 1456409305 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
 	"Affiche.h"
@@ -507,7 +509,7 @@
 1445606138 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1456506407 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1456611919 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -515,7 +517,7 @@
 1445606138 source:r:\06 - c++\110 - gui\code\main\src\gestion_ecrans.cpp
 	"Gestion_ecrans.h"
 
-1456484608 r:\06 - c++\110 - gui\code\gui\include\gadgets\afflabel.h
+1456593734 r:\06 - c++\110 - gui\code\gui\include\gadgets\afflabel.h
 	"Affiche.h"
 	"Style.h"
 	<memory>
@@ -545,7 +547,7 @@
 
 1456505987 r:\06 - c++\110 - gui\code\gui\include\enums.h
 
-1456403873 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnrectangle.h
+1456609539 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnrectangle.h
 	"Bouton.h"
 	"gadgets\AffRectangle.h"
 	"gadgets\AffLabel.h"
@@ -566,7 +568,7 @@
 1456502608 r:\06 - c++\110 - gui\code\gui\include\donnee.h
 	"ActionEvenement.h"
 
-1456498352 r:\06 - c++\110 - gui\code\gui\include\gadgets\dncaseacocher.h
+1456610885 r:\06 - c++\110 - gui\code\gui\include\gadgets\dncaseacocher.h
 	"Donnee.h"
 	"BtnRectangle.h"
 	"AffRectangle.h"
@@ -583,7 +585,7 @@
 	"AffLabel.h"
 	<memory>
 
-1456504859 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnslider.h
+1456611840 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnslider.h
 	"Donnee.h"
 	"BtnRectangle.h"
 
@@ -591,4 +593,15 @@
 	"SFML/Graphics.hpp"
 	"Gadget.h"
 	"FabriqueBase.h"
+
+1456612779 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnbarredefilement.h
+	"Donnee.h"
+	"DnSlider.h"
+	"BtnRectangle.h"
+	<memory>
+
+1456611578 r:\06 - c++\110 - gui\code\gui\include\composant.h
+	<memory>
+	<vector>
+	<SFML/Graphics.hpp>
 

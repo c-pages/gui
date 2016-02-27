@@ -124,6 +124,7 @@ private:
     std::shared_ptr<gui::AffLabel>      m_label_7;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_8;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_9;      ///< Un autre label.
+    std::shared_ptr<gui::AffLabel>      m_label_10;      ///< Un autre label.
     std::shared_ptr<gui::AffImage>      m_image;        ///< Une simple image.
 
     // BOUTON
@@ -133,7 +134,8 @@ private:
     // DONNEE
     std::shared_ptr<gui::DnCaseACocher>  m_boutonCoche;    ///< Un bouton Menu.
     std::shared_ptr<gui::DnZoneTexte>    m_zoneTexte;    ///< Un champ de texte.
-    std::shared_ptr<gui::DnSlider>    m_slider;      ///< Un slider.
+    std::shared_ptr<gui::DnSlider>          m_slider;           ///< Un slider.
+    std::shared_ptr<gui::DnBarreDefilement> m_barreDefil;    ///< Un slider.
 
 }; // fin EcranDemo
 }; // fin app

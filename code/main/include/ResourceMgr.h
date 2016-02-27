@@ -25,7 +25,7 @@ class ResourceMgr
 {
     public:
         /////////////////////////////////////////////////
-        /// \brief constructeur
+        /// \brief constructeur par copie
         ///
         ///  "= delete" c'est une manière de dire non copyable si j'ai bien compris, cf le bouquin SFML ...
         ///

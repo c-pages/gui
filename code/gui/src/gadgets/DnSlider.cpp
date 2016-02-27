@@ -15,16 +15,16 @@ DnSlider::DnSlider ()
 , m_valeurMin ( 0 )
 , m_horizontal ( true )
 , m_drag ( false )
+, m_longueur ( 180 )
+, m_largeur ( 20 )
 , m_inc ( 5 )
 {
-    m_taille.x = 180;
-    m_taille.y = 20;
+    m_marge.x = 3;
+    m_marge.y = 3;
 
-    m_marge.x = 0;
-    m_marge.y = 0;
-
-    m_boutonFond->setParent  ( this );
-    m_boutonFond->setTaille ( m_taille );
+//    m_boutonFond->setParent  ( this );
+    ajouterComposant( m_boutonFond );
+    ajouterComposant( m_slider );
 
     // Action du bouton
     m_boutonFond->lier ( Evenement::onBtnG_presser , [this](){
@@ -50,10 +50,8 @@ DnSlider::DnSlider ()
     });
 
 
-    m_slider->setParent  ( this );
-    m_slider->setTaille ( { 25 , m_taille.y - 2*m_marge.y });
     m_slider->setPosition ( m_marge.x, m_marge.y );
-    m_slider->setStyle ( m_skin->Slider );
+    m_slider->setStyle ( m_skin->getStyle( Skin::Styles::slider ) );
 
     // Action du slider
     m_slider->lier ( Evenement::onBtnG_presser , [this](){
@@ -89,21 +87,25 @@ DnSlider::DnSlider ()
 void DnSlider::incrementer()
 {
     declencher ( Evenement::on_changerValeur );
+    if ( m_horizontal )
+        m_slider->setPosition ( m_slider->getPosition ( ).x + m_inc , m_slider->getPosition ( ).y );
+    else
+        m_slider->setPosition ( m_slider->getPosition ( ).x  , m_slider->getPosition ( ).y + m_inc);
 
-    m_slider->setPosition ( m_slider->getPosition ( ).x + m_inc , m_slider->getPosition ( ).y );
-    if ( m_slider->getPosition ( ).x > m_taille.x - m_marge.x - m_slider->getTaille().x )
-        m_slider->setPosition ( m_taille.x - m_marge.x - m_slider->getTaille().x, m_slider->getPosition ( ).y );
+    corrigerPositionCurseur();
+
 }
 
 /////////////////////////////////////////////////
 void DnSlider::decrementer()
 {
     declencher ( Evenement::on_changerValeur );
+    if ( m_horizontal )
+        m_slider->setPosition ( m_slider->getPosition ( ).x - m_inc , m_slider->getPosition ( ).y );
+    else
+        m_slider->setPosition ( m_slider->getPosition ( ).x , m_slider->getPosition ( ).y - m_inc );
 
-    m_slider->setPosition ( m_slider->getPosition ( ).x - m_inc , m_slider->getPosition ( ).y );
-    if ( m_slider->getPosition ( ).x < m_marge.x )
-            m_slider->setPosition ( m_marge.x, m_slider->getPosition ( ).y );
-
+    corrigerPositionCurseur();
 }
 
 
@@ -113,37 +115,63 @@ void DnSlider::traiterEvenements (const sf::Event& evenement)
 {
     if ( dragEnCours() )
         positionnerCurseurSurSouris ();
-
 }
+
 
 
 
 /////////////////////////////////////////////////
 void DnSlider::positionnerCurseurSurSouris ()
 {
-    // Definir la nouvelle position avec les coords souris
-    m_slider->setPosition ( getLocalPosSouris().x - m_marge.x - m_slider->getTaille().x/2, m_marge.y );
-
-    // Corriger la position pour la garder dans ses limites
-    if ( m_slider->getPosition ( ).x < m_marge.x )
-        m_slider->setPosition ( m_marge.x, m_slider->getPosition ( ).y );
-    if ( m_slider->getPosition ( ).x > m_taille.x - m_marge.x - m_slider->getTaille().x )
-        m_slider->setPosition ( m_taille.x - m_marge.x - m_slider->getTaille().x, m_slider->getPosition ( ).y );
 
     declencher ( Evenement::on_changerValeur );
+
+    // Definir la nouvelle position avec les coords souris
+    if ( m_horizontal )
+        m_slider->setPosition ( getLocalPosSouris().x - m_marge.x - m_slider->getTaille().x/2, m_marge.y );
+    else
+        m_slider->setPosition (  m_marge.x , getLocalPosSouris().y - m_marge.y - m_slider->getTaille().y/2);
+
+    // Corriger la position pour la garder dans ses limites
+    corrigerPositionCurseur();
 
     actualiser ();
 }
 
 
 
+/////////////////////////////////////////////////
+void DnSlider::setLongCurseur( float pourcentage )
+{
 
+}
 
+/////////////////////////////////////////////////
+void DnSlider::setLong( float pourcentage )
+{
+
+}
 
 /////////////////////////////////////////////////
 void DnSlider::actualiser ()
 {
 
+    if ( m_horizontal ) {
+        m_taille.x = m_longueur;
+        m_taille.y = m_largeur;
+    } else {
+        m_taille.x = m_largeur;
+        m_taille.y = m_longueur;
+    }
+
+    m_boutonFond->setTaille ( m_taille );
+
+    if ( m_horizontal )
+        m_slider->setTaille ( { m_taille.y - 2*m_marge.y  , m_taille.y - 2*m_marge.y });
+//        m_slider->setTaille ( { 25 , m_taille.y - 2*m_marge.y });
+    else
+        m_slider->setTaille ( { m_taille.x - 2*m_marge.x, m_taille.x - 2*m_marge.x });
+//        m_slider->setTaille ( { m_taille.x - 2*m_marge.x, 25 });
 
     actualiser_bounds();
     m_boutonFond->actualiser_bounds();
@@ -155,18 +183,24 @@ void DnSlider::actualiser ()
 
 /////////////////////////////////////////////////
 float DnSlider::getValeur(){
-    float longueurMax = m_taille.x - 2*m_marge.x - m_slider->getTaille().x;
-    float coefPosition = ( m_slider->getPosition().x - m_marge.x ) / longueurMax;
-
-    float longueurVal = m_valeurMax - m_valeurMin;
-
-    float result =  coefPosition * longueurVal;
-
+    float result, longueurMax,coefPosition, longueurVal;
+    if ( m_horizontal ) {
+        longueurMax = m_taille.x - 2*m_marge.x - m_slider->getTaille().x;
+        coefPosition = ( m_slider->getPosition().x - m_marge.x ) / longueurMax;
+        longueurVal = m_valeurMax - m_valeurMin;
+        result =  coefPosition * longueurVal;
+    } else {
+        longueurMax = m_taille.y - 2*m_marge.y - m_slider->getTaille().y;
+        coefPosition = ( m_slider->getPosition().y - m_marge.y ) / longueurMax;
+        longueurVal = m_valeurMax - m_valeurMin;
+        result =  100 - coefPosition * longueurVal;
+    }
     return result;
 };
 
 
 
+/*
 
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  DnSlider::testerSurvol ( sf::Vector2i position )
@@ -181,7 +215,6 @@ std::shared_ptr<Gadget>  DnSlider::testerSurvol ( sf::Vector2i position )
         return nullptr;
 
 }
-
 /////////////////////////////////////////////////
 void DnSlider::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
@@ -192,9 +225,29 @@ void DnSlider::draw (sf::RenderTarget& target, sf::RenderStates states) const
     // On dessine les éléments
     target.draw(*m_boutonFond, states);
     target.draw(*m_slider, states);
-//    if ( m_valeur )
-//        target.draw(*m_coche, states);
+
 }
+
+
+
+*/
+/////////////////////////////////////////////////
+void DnSlider::corrigerPositionCurseur(){
+
+    if ( m_horizontal ) {
+        if ( m_slider->getPosition ( ).x < m_marge.x )
+            m_slider->setPosition ( m_marge.x, m_slider->getPosition ( ).y );
+        if ( m_slider->getPosition ( ).x > m_taille.x - m_marge.x - m_slider->getTaille().x )
+            m_slider->setPosition ( m_taille.x - m_marge.x - m_slider->getTaille().x, m_slider->getPosition ( ).y );
+    } else {
+        if ( m_slider->getPosition ( ).y < m_marge.y )
+            m_slider->setPosition ( m_slider->getPosition ( ).x , m_marge.y  );
+        if ( m_slider->getPosition ( ).y > m_taille.y - m_marge.y - m_slider->getTaille().y )
+            m_slider->setPosition ( m_slider->getPosition ( ).x,  m_taille.y - m_marge.y - m_slider->getTaille().y );
+    }
+}
+
+
 
 
 } // fin namespace gui

@@ -68,7 +68,7 @@ void BtnMenu::actualiser ()
 
         element->bouton->setPosition    ( m_marge.x , index * ( m_tailleMenu.y + m_ecart ) + m_marge.y );
         element->bouton->setTexte       ( element->nom );
-        element->bouton->setStyle       ( m_skin->menu );
+        element->bouton->setStyle       ( m_skin->getStyle( Skin::Styles::menu ) );
 
         index++;
     }
@@ -76,9 +76,9 @@ void BtnMenu::actualiser ()
 
     m_fond.setTaille( m_taille );
 
-    m_fond.setFillColor         ( m_skin->fond->fnd_couleur.repos );
-    m_fond.setOutlineColor      ( m_skin->fond->lgn_couleur.repos );
-    m_fond.setOutlineThickness  ( m_skin->fond->lgn_epaisseur.repos );
+    m_fond.setFillColor         ( m_skin->getStyle( Skin::Styles::fond )->fnd_couleur.repos );
+    m_fond.setOutlineColor      ( m_skin->getStyle( Skin::Styles::fond )->lgn_couleur.repos );
+    m_fond.setOutlineThickness  ( m_skin->getStyle( Skin::Styles::fond )->lgn_epaisseur.repos );
 
 }
 

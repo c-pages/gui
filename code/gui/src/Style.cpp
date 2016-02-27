@@ -20,11 +20,11 @@ Style::Style()
     txt_police.desactive.loadFromFile( "media/polices/consola.ttf" );
 
     txt_style.set(sf::Text::Style::Regular ) ;
-    txt_taille.set( 10 ) ;
+    txt_taille.set( 9 ) ;
     txt_couleur.set( sf::Color(255, 255, 255) ) ;
     lgn_epaisseur.set( 1 ) ;
-    lgn_couleur.set( sf::Color(255, 255, 0, 150) ) ;
-    fnd_couleur.set( sf::Color(255, 0, 255, 100) ) ;
+    lgn_couleur.set( sf::Color(255, 255, 255, 150) ) ;
+    fnd_couleur.set( sf::Color(255, 255, 255, 100) ) ;
 
 
 //    fnd_texture;

@@ -91,19 +91,19 @@ void DnZoneTexte::actualiser ()
     // le bouton
     m_bouton->setSkin       ( m_skin );
     if ( !m_ecritureActive ) {
-        m_bouton->setStyle      ( m_skin->bouton );
+        m_bouton->setStyle      ( m_skin->getStyle( Skin::Styles::bouton ) );
     } else {
-        m_bouton->setStyle      ( m_skin->zoneTexte );
+        m_bouton->setStyle      ( m_skin->getStyle( Skin::Styles::zoneTexte ) );
     }
     // le label
-    m_label->setStyle       ( m_skin->zoneTexte );
+    m_label->setStyle       ( m_skin->getStyle( Skin::Styles::zoneTexte ) );
     m_label->setSkin        ( m_skin );
     m_label->setPosition    ( m_marge.x , m_marge.y/2);
 
     // le curseur
 //    m_curseur->setPosition  ( , m_marge.y/2);
     m_curseur->setSkin      ( m_skin );
-    m_curseur->setStyle     ( m_skin->bouton );
+    m_curseur->setStyle     ( m_skin->getStyle( Skin::Styles::bouton ) );
     m_curseur->setFillColor ( sf::Color::White );
     m_curseur->setOutlineThickness ( 0 );
 
@@ -161,24 +161,6 @@ void DnZoneTexte::traiterEvenements(const sf::Event& evenement ){
         else {
 
             std::cout << " (event.text.unicode)  : " << (evenement.text.unicode)  << "\n";
-/*
-            // on verifie les entrées autorisées en fonction du type
-            bool b_accept = false;
-            // type : Chiffres
-            if (m_type == TypeEntree::chiffres )
-            {
-                if ( evenement.text.unicode == 46 )
-                    b_accept = true;
-                else if(  evenement.text.unicode >= 48  and  evenement.text.unicode <= 57 )
-                    b_accept = true;
-            }  else  b_accept = true;
-
-
-            if (not b_accept ) return;*/
-
-
-
-
 
             m_label->setTexte( txt + static_cast<char>(evenement.text.unicode)  );
             // s'il ne reste plus de place pour ecrire on retourne

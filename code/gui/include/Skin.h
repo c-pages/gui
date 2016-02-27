@@ -18,6 +18,26 @@ namespace gui{
 class Skin {
 
 
+public:
+enum class Styles{
+
+    invisible,
+    cadre,
+    txtCourant,
+    txtLog,
+    txtTitre,
+    fond,
+    bouton,
+    btnCoche,
+    img,
+    menu,
+    fenetre,
+    zoneTexte,
+    slider,
+
+    tous
+};
+
 
 /////////////////////////////////////////////////
 // Méthodes
@@ -29,25 +49,45 @@ public:
     /////////////////////////////////////////////////
     Skin ();
 
+    /////////////////////////////////////////////////
+    /// \brief Definir une police
+    ///
+    /// \param valeur la valeur à appliquer
+    /// \param style Le style à redefinir (par defaut tous)
+    /// \param etat L'etat à redefinir (par defaut tous)
+    /////////////////////////////////////////////////
+    template<typename T>
+    void set ( T valeur
+              , Style::Proprietes propriete = Style::Proprietes::tous
+              , Styles            style     = Styles::tous
+              , Etat              etat      = Etat::tous )
+    {
+        if ( style == Styles::tous)
+            for ( int i = 0; i != static_cast<int>(Styles::tous); i++ )
+                m_styles.at( static_cast<Styles>(i) )->set (valeur , propriete, etat) ;
+        else
+                m_styles.at( style )->set (valeur , propriete, etat) ;
+    };
+
+    /////////////////////////////////////////////////
+    /// \brief Definir une police
+    ///
+    /// \param police la police à appliquer
+    /// \param style Le style à redefinir (par defaut tous)
+    /// \param etat L'etat à redefinir (par defaut tous)
+    /////////////////////////////////////////////////
+    std::shared_ptr<Style> getStyle( Skin::Styles style )
+    {
+        return m_styles.at ( style );
+    };
+
 
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
-    std::shared_ptr<Style> invisible;
-    std::shared_ptr<Style> cadre;
-    std::shared_ptr<Style> txtCourant;
-    std::shared_ptr<Style> txtLog;
-    std::shared_ptr<Style> txtTitre;
-    std::shared_ptr<Style> fond;
-    std::shared_ptr<Style> bouton;
-    std::shared_ptr<Style> btnCoche;
-    std::shared_ptr<Style> img;
-    std::shared_ptr<Style> menu;
-    std::shared_ptr<Style> fenetre;
-    std::shared_ptr<Style> zoneTexte;
-    std::shared_ptr<Style> Slider;
-
+public:
+    std::map< Styles , std::shared_ptr<Style> > m_styles;
 }; // fin class Skin
 
 }; // fin namespace gui

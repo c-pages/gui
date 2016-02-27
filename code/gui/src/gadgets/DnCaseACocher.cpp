@@ -14,13 +14,16 @@ DnCaseACocher::DnCaseACocher ()
 , m_label  ( std::make_shared<AffLabel>() )
 {
     // initialiser quelques valeurs
-    m_marge.x = m_marge.y = 3;
+    m_marge.x = m_marge.y = 2;
     m_taille.x = 15;
     m_taille.y = 15;
 
     // le bouton
     m_bouton->setTexte ("");
-    m_bouton->setParent  (this);
+
+    ajouterComposant( m_bouton );
+    ajouterComposant( m_coche );
+    ajouterComposant( m_label );
 
     // Action du bouton
     m_bouton->lier ( Evenement::onBtnG_relacher , [this](){
@@ -31,6 +34,8 @@ DnCaseACocher::DnCaseACocher ()
             declencher(Evenement::onBool_allume);
         else
             declencher(Evenement::onBool_eteind);
+
+        actualiser ();
     });
 
     actualiser ();
@@ -51,16 +56,27 @@ void DnCaseACocher::actualiser_bounds() {
 void DnCaseACocher::actualiser ()
 {
     m_label->setTexte ( m_texte );
-    m_label->setStyle ( m_skin->btnCoche );
+    m_label->setStyle ( m_skin->getStyle( Skin::Styles::btnCoche ) );
     m_label->setPosition ( m_taille.x + 2*m_marge.x , 0 );
 
     m_bouton->setTaille  ( m_taille );
-    m_bouton->setStyle   ( m_skin->bouton );
+    m_bouton->setStyle   ( m_skin->getStyle( Skin::Styles::bouton ) );
 
     m_coche->setTaille   ( { m_taille.x - 2*m_marge.x , m_taille.y - 2*m_marge.y } );
     m_coche->setPosition ( m_marge.x , m_marge.y );
-    m_coche->setStyle    ( m_skin->btnCoche );
 
+    auto style = m_skin->getStyle( Skin::Styles::btnCoche );
+    m_coche->setStyle    ( style );
+
+    if ( ! m_valeur ) {
+        m_coche->setFillColor ( style->getFnd_couleur( Etat::repos ) );
+        m_coche->setOutlineColor (  style->getLgn_couleur( Etat::repos ));
+        m_coche->setOutlineThickness ( style->getLgn_epaisseur( Etat::repos ) );
+    } else {
+        m_coche->setFillColor ( style->getFnd_couleur( Etat::press ) );
+        m_coche->setOutlineColor (  style->getLgn_couleur( Etat::press ));
+        m_coche->setOutlineThickness ( style->getLgn_epaisseur( Etat::press ) );
+    }
     actualiser_bounds();
 }
 
@@ -68,25 +84,11 @@ void DnCaseACocher::actualiser ()
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  DnCaseACocher::testerSurvol ( sf::Vector2i position )
 {
+    // on test sur le bouton et le texte
     if ( m_globalBounds.contains( { position.x , position.y} ) )
         return m_bouton;
 
     return nullptr;
-}
-
-
-/////////////////////////////////////////////////
-void DnCaseACocher::draw (sf::RenderTarget& target, sf::RenderStates states) const
-{
-    //On applique la transformation
-    states.transform *= getTransform();
-
-    // On dessine les éléments
-    target.draw(*m_bouton, states);
-    target.draw(*m_label, states);
-    if ( m_valeur )
-        target.draw(*m_coche, states);
-
 }
 
 

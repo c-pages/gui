@@ -39,11 +39,8 @@ public:
 
     virtual void actualiser_bounds();
 
-    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
-
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
-//    virtual getGlobalBounds() const
 
 /////////////////////////////////////////////////
 // Membres

@@ -30,7 +30,7 @@ void AffRectangle::actualiser ()
     if ( m_style != nullptr )
         style = m_style;
     else
-        style = m_skin->fond;
+        style = m_skin->getStyle ( Skin::Styles::fond);
 
 //        std::cout << " ->Style 1\n";
 //        style = m_style;

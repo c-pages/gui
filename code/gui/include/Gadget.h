@@ -7,6 +7,7 @@
 #include "SFML/Graphics.hpp"
 #include <memory>
 #include <Geometrie.h>
+#include <Composant.h>
 #include <Skin.h>
 #include <ActionClavier.h>
 #include <Enums.h>
@@ -23,7 +24,7 @@ class Interface;
 /// \brief Classe communes à tout les gadgets, gère affichage actualisation, etc...
 ///
 /////////////////////////////////////////////////
-class Gadget : public std::enable_shared_from_this<Gadget>, public sf::Drawable, public gui::Geometrie, public ActionClavier  {
+class Gadget : public std::enable_shared_from_this<Gadget>, public sf::Drawable, public gui::Geometrie, public Composant, public ActionClavier  {
 
 
 /////////////////////////////////////////////////
@@ -70,8 +71,12 @@ public:
         { m_deplacable = val; };
 
     ///< Definir m_skin
-    virtual void setSkin( std::shared_ptr<Skin> val )
-        { m_skin = val; actualiser ();};
+    virtual void setSkin( std::shared_ptr<Skin> skin )
+        { m_skin = skin;
+        for ( auto composant : m_composants)
+            composant->setSkin( skin );
+            actualiser ();
+        };
 
     ///< Acceder à m_skin
     std::shared_ptr<Skin> getSkin () const
@@ -126,7 +131,7 @@ public:
     virtual void traiterEvenements (const sf::Event& evenement);
 
 
-    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const{};
+    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
 
     /////////////////////////////////////////////////
@@ -178,7 +183,12 @@ public:
 
     static Gadget*     getRacineCourante() { return ms_racineCourante; };
 
-    virtual     void setStyle ( std::shared_ptr<Style> style ){ m_style = style; actualiser();};
+    virtual     void setStyle ( std::shared_ptr<Style> style ){
+        m_style = style;
+        for ( auto composant : m_composants)
+            composant->setStyle(style);
+        actualiser();
+        };
 
     std::shared_ptr<Style> getStyle ( )const { return m_style; };
 

@@ -76,6 +76,9 @@ void Gadget::traiterEvenements (const sf::Event& evenement)
     // les evenement claviers
     ActionClavier::traiterEvenementsClavier( evenement );
 
+    // Les evenements des composants l'interface local
+    traiterEvenementsComposants( evenement );
+
     // les evenements des enfants
     for (auto enfant : m_enfants)
         enfant->traiterEvenements ( evenement );
@@ -127,8 +130,15 @@ bool Gadget::estDeplacable () const
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  Gadget::testerSurvol ( sf::Vector2i position )
 {
+
     if ( m_globalBounds.contains( position.x, position.y ) && estActif() )
-        return thisPtr();
+    {
+        auto testInterfaceLocal = testerSurvolComposants( position );
+        if ( testInterfaceLocal != nullptr )
+            return testInterfaceLocal;
+        else
+            return thisPtr();
+    }
     else
         return nullptr;
 
@@ -138,6 +148,8 @@ std::shared_ptr<Gadget>  Gadget::testerSurvol ( sf::Vector2i position )
 sf::Vector2i Gadget::getPosSouris ( ) {
     return Interface::getPosSouris();
 };
+
+/////////////////////////////////////////////////
 sf::Vector2i Gadget::getLocalPosSouris ( ) {
     sf::Vector2i result = Interface::getPosSouris();
     result.x -= getPosAbs().x;
@@ -145,6 +157,15 @@ sf::Vector2i Gadget::getLocalPosSouris ( ) {
     return result;
 };
 
+/////////////////////////////////////////////////
+void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
+{
+    //On applique la transformation
+    states.transform *= getTransform();
+
+    dessinerComposant   ( target, states );
+    dessinerEnfants     ( target, states );
+};
 
 } // fin namespace gui
 

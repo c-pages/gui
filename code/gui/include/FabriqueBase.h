@@ -20,6 +20,7 @@
 #include "gadgets\DnCaseACocher.h"
 #include "gadgets\DnZoneTexte.h"
 #include "gadgets\DnSlider.h"
+#include "gadgets\DnBarreDefilement.h"
 
 
 namespace gui{
@@ -31,6 +32,10 @@ namespace gui{
 /////////////////////////////////////////////////
 class FabriqueBase
 {
+private:
+
+template<typename T>
+std::shared_ptr<T>  creerGadget ();
 
 public:
 
@@ -116,6 +121,12 @@ public:
     /////////////////////////////////////////////////
     std::shared_ptr<DnSlider>        slider( );
 
+    /////////////////////////////////////////////////
+    /// \brief  Création d'un slider
+    ///
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<DnBarreDefilement>        barreDefilement( );
 
 };
 

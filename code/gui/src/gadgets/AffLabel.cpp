@@ -13,7 +13,7 @@ AffLabel::AffLabel ()
 , m_texteSFML   ( std::make_shared<sf::Text> () )
 //, m_texteTaille ( 0 )
 //, m_police      ( nullptr )
-, m_police      ( )
+, m_police      (  )
 {
     m_texteSFML->setString  ( m_texte );
     m_police.loadFromFile( "media/polices/arial.ttf");
@@ -77,7 +77,7 @@ void AffLabel::actualiser ()
 }
 
 /////////////////////////////////////////////////
-sf::Vector2i  AffLabel::getTaille() const
+sf::Vector2f  AffLabel::getTaille() const
 {
     return { m_texteSFML->getGlobalBounds().width , m_texteSFML->getGlobalBounds().height};
 }

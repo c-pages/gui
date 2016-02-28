@@ -10,7 +10,7 @@ namespace app
 /////////////////////////////////////////////////
 //initialisation des membres statics
 /////////////////////////////////////////////////
-ResourceMgr<sf::Font,int>                                   Config::m_polices;
+//ResourceMgr<sf::Font,int>                                   Config::m_polices;
 sf::Time                                                    Config::m_dureeImage  ;
 std::map < Config::Skins  , std::shared_ptr<gui::Skin >>    Config::m_skins = {};
 //std::map < Config::Styles , std::shared_ptr<gui::Style>>    Config::m_styles = {};
@@ -56,9 +56,9 @@ void Config::init()
 /////////////////////////////////////////////////
 void Config::initPolices()
 {
-    Config::m_polices.load( Polices::police_1   , "media/polices/arial.ttf"  );
-    Config::m_polices.load( Polices::police_2   , "media/polices/bgothl.ttf"  );
-    Config::m_polices.load( Polices::log        , "media/polices/consola.ttf"  );
+//    Config::m_polices.load( Polices::police_1   , "media/polices/arial.ttf"  );
+//    Config::m_polices.load( Polices::police_2   , "media/polices/bgothl.ttf"  );
+//    Config::m_polices.load( Polices::log        , "media/polices/consola.ttf"  );
 }
 
 

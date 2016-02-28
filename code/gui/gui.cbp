@@ -73,6 +73,8 @@
 		<Unit filename="include/Gadget.h" />
 		<Unit filename="include/Geometrie.h" />
 		<Unit filename="include/Interface.h" />
+		<Unit filename="include/ResourcesMgr.h" />
+		<Unit filename="include/ResourcesMgr.inl" />
 		<Unit filename="include/Skin.h" />
 		<Unit filename="include/Style.h" />
 		<Unit filename="include/gadgets/AffImage.h" />

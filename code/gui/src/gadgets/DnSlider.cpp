@@ -9,15 +9,14 @@ namespace gui {
 
 /////////////////////////////////////////////////
 DnSlider::DnSlider ()
-: m_boutonFond ( std::make_shared<BtnRectangle>() )
-, m_slider ( std::make_shared<BtnRectangle>() )
-, m_valeurMax ( 100 )
-, m_valeurMin ( 0 )
-, m_horizontal ( true )
-, m_drag ( false )
-, m_longueur ( 180 )
-, m_largeur ( 20 )
-, m_inc ( 5 )
+: m_boutonFond  ( std::make_shared<BtnRectangle>() )
+, m_slider      ( std::make_shared<BtnRectangle>() )
+, m_valeurMax   ( 100 )
+, m_valeurMin   ( 0 )
+, m_horizontal  ( true )
+, m_drag        ( false )
+, m_longueur    ( 180 )
+, m_largeur     ( 15 )
 {
     m_marge.x = 3;
     m_marge.y = 3;
@@ -28,8 +27,29 @@ DnSlider::DnSlider ()
 
     // Action du bouton
     m_boutonFond->lier ( Evenement::onBtnG_presser , [this](){
-        positionnerCurseurSurSouris ();
-        setDrag( true );
+//        positionnerCurseurSurSouris ();
+        if ( m_horizontal ) {
+            if ( getLocalPosSouris().x > m_marge.x + m_slider->getTaille().x/2 + m_slider->getPosition().x ){
+                incrementer ( 20 );
+                if ( m_slider->getPosition().x + ( m_slider->getTaille().x/2  ) > getLocalPosSouris().x )
+                    positionnerCurseurSurSouris ();
+            } else {
+                decrementer ( 20 );
+                if ( m_slider->getPosition().x + ( m_slider->getTaille().x/2  ) < getLocalPosSouris().x )
+                    positionnerCurseurSurSouris ();
+            }
+        } else {
+            if ( getLocalPosSouris().y > m_marge.y + m_slider->getTaille().y/2 + m_slider->getPosition().y ){
+                incrementer ( 20 );
+                if ( m_slider->getPosition().y - ( m_slider->getTaille().y/2 + m_marge.y )  > getLocalPosSouris().y )
+                    positionnerCurseurSurSouris ();
+            } else {
+                decrementer ( 20 );
+                if ( m_slider->getPosition().y - ( m_slider->getTaille().y/2 + m_marge.y )  < getLocalPosSouris().y )
+                    positionnerCurseurSurSouris ();
+            }
+
+        }
     });
     m_boutonFond->lier ( Evenement::onBtnG_relacher , [this](){
         setDrag( false );
@@ -43,7 +63,6 @@ DnSlider::DnSlider ()
         incrementer();
         actualiser ();
     });
-
     m_boutonFond->lier ( Evenement::onBtnM_roulerBas , [this](){
         decrementer();
         actualiser ();
@@ -51,6 +70,7 @@ DnSlider::DnSlider ()
 
 
     m_slider->setPosition ( m_marge.x, m_marge.y );
+    m_slider->setTaille ( { m_largeur - 2*m_marge.x  , m_largeur - 2*m_marge.y });
     m_slider->setStyle ( m_skin->getStyle( Skin::Styles::slider ) );
 
     // Action du slider
@@ -70,11 +90,11 @@ DnSlider::DnSlider ()
         incrementer();
         actualiser ();
     });
-
     m_slider->lier ( Evenement::onBtnM_roulerBas , [this](){
         decrementer();
         actualiser ();
     });
+
 
     actualiser();
     actualiser_bounds();
@@ -84,26 +104,26 @@ DnSlider::DnSlider ()
 }
 
 /////////////////////////////////////////////////
-void DnSlider::incrementer()
+void DnSlider::incrementer( float inc )
 {
     declencher ( Evenement::on_changerValeur );
     if ( m_horizontal )
-        m_slider->setPosition ( m_slider->getPosition ( ).x + m_inc , m_slider->getPosition ( ).y );
+        m_slider->setPosition ( m_slider->getPosition ( ).x + inc , m_slider->getPosition ( ).y );
     else
-        m_slider->setPosition ( m_slider->getPosition ( ).x  , m_slider->getPosition ( ).y + m_inc);
+        m_slider->setPosition ( m_slider->getPosition ( ).x  , m_slider->getPosition ( ).y + inc);
 
     corrigerPositionCurseur();
 
 }
 
 /////////////////////////////////////////////////
-void DnSlider::decrementer()
+void DnSlider::decrementer( float inc )
 {
     declencher ( Evenement::on_changerValeur );
     if ( m_horizontal )
-        m_slider->setPosition ( m_slider->getPosition ( ).x - m_inc , m_slider->getPosition ( ).y );
+        m_slider->setPosition ( m_slider->getPosition ( ).x - inc , m_slider->getPosition ( ).y );
     else
-        m_slider->setPosition ( m_slider->getPosition ( ).x , m_slider->getPosition ( ).y - m_inc );
+        m_slider->setPosition ( m_slider->getPosition ( ).x , m_slider->getPosition ( ).y - inc );
 
     corrigerPositionCurseur();
 }
@@ -144,13 +164,21 @@ void DnSlider::positionnerCurseurSurSouris ()
 void DnSlider::setLongCurseur( float pourcentage )
 {
 
+    if ( m_horizontal )
+        m_slider->setTailleX( m_longueur * pourcentage/100);
+    else
+        m_slider->setTailleY( m_longueur * pourcentage/100);
+
+    actualiser();
+    actualiser_bounds();
+    m_boutonFond->actualiser_bounds();
+    m_slider->actualiser_bounds();
+//    if ( m_horizontal )
+//        m_slider->setTaille ( {m_longueur * pourcentage/100, m_largeur} );
+//    else
+//        m_slider->setTaille ( {m_largeur , m_longueur * pourcentage/100} );
 }
 
-/////////////////////////////////////////////////
-void DnSlider::setLong( float pourcentage )
-{
-
-}
 
 /////////////////////////////////////////////////
 void DnSlider::actualiser ()
@@ -165,12 +193,16 @@ void DnSlider::actualiser ()
     }
 
     m_boutonFond->setTaille ( m_taille );
+//    if ( m_horizontal )
+//        m_slider->setTailleX( m_longueur * pourcentage/100);
+//    else
+//        m_slider->setTailleY( m_longueur * pourcentage/100);
 
-    if ( m_horizontal )
-        m_slider->setTaille ( { m_taille.y - 2*m_marge.y  , m_taille.y - 2*m_marge.y });
+//    if ( m_horizontal )
+//        m_slider->setTaille ( { m_taille.y - 2*m_marge.y  , m_taille.y - 2*m_marge.y });
 //        m_slider->setTaille ( { 25 , m_taille.y - 2*m_marge.y });
-    else
-        m_slider->setTaille ( { m_taille.x - 2*m_marge.x, m_taille.x - 2*m_marge.x });
+//    else
+//        m_slider->setTaille ( { m_taille.x - 2*m_marge.x, m_taille.x - 2*m_marge.x });
 //        m_slider->setTaille ( { m_taille.x - 2*m_marge.x, 25 });
 
     actualiser_bounds();
@@ -203,7 +235,7 @@ float DnSlider::getValeur(){
 /*
 
 /////////////////////////////////////////////////
-std::shared_ptr<Gadget>  DnSlider::testerSurvol ( sf::Vector2i position )
+std::shared_ptr<Gadget>  DnSlider::testerSurvol ( sf::Vector2f position )
 {
     if ( m_globalBounds.contains( position.x, position.y ) && estActif() )
     {

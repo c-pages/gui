@@ -51,12 +51,12 @@
 			<Cursor1 position="517" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\gadgets\DnBarreDefilement.h" open="1" top="0" tabpos="44" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\gadgets\DnBarreDefilement.h" open="1" top="1" tabpos="44" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="242" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\gadgets\DnBarreDefilement.cpp" open="1" top="1" tabpos="45" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\gadgets\DnBarreDefilement.cpp" open="1" top="0" tabpos="45" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="239" topLine="0" />
 		</Cursor>
@@ -146,6 +146,11 @@
 			<Cursor1 position="2941" topLine="57" />
 		</Cursor>
 	</File>
+	<File name="include\ResourcesMgr.h" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="45" topLine="57" />
+		</Cursor>
+	</File>
 	<File name="src\Bouton.cpp" open="1" top="0" tabpos="26" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1145" topLine="1" />
@@ -154,6 +159,11 @@
 	<File name="include\Style.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="3313" topLine="77" />
+		</Cursor>
+	</File>
+	<File name="include\ResourcesMgr.inl" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1972" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\Composite.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

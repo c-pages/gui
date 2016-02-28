@@ -37,6 +37,7 @@ public:
 
     virtual std::shared_ptr<Gadget> thisPtr(){
         std::cout << "DEMANDE DE thisPtr PROBLEMATIQUE\n";
+        return nullptr;
     };
 
 protected:

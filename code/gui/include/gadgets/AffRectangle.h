@@ -30,7 +30,7 @@ public:
     /// \brief Constructeur par défaut.
     ///
     /////////////////////////////////////////////////
-    AffRectangle ( sf::Vector2i taille = {100,100} );
+    AffRectangle ( sf::Vector2i taille = {10,10} );
 
     virtual void actualiser ();
 

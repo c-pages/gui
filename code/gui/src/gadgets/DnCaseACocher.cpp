@@ -69,9 +69,9 @@ void DnCaseACocher::actualiser ()
     m_coche->setStyle    ( style );
 
     if ( ! m_valeur ) {
-        m_coche->setFillColor ( style->getFnd_couleur( Etat::repos ) );
-        m_coche->setOutlineColor (  style->getLgn_couleur( Etat::repos ));
-        m_coche->setOutlineThickness ( style->getLgn_epaisseur( Etat::repos ) );
+        m_coche->setFillColor ( style->getFnd_couleur( Etat::desactive ) );
+        m_coche->setOutlineColor (  style->getLgn_couleur( Etat::desactive ));
+        m_coche->setOutlineThickness ( style->getLgn_epaisseur( Etat::desactive ) );
     } else {
         m_coche->setFillColor ( style->getFnd_couleur( Etat::press ) );
         m_coche->setOutlineColor (  style->getLgn_couleur( Etat::press ));

@@ -45,6 +45,7 @@ public:
 
    // virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
+    void setLongueurCurseur( float pourcentage ) { m_slider->setLongCurseur( pourcentage ); actualiser(); };
 
 
 /////////////////////////////////////////////////

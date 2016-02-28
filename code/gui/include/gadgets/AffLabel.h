@@ -30,7 +30,7 @@ class AffLabel : public gui::Affiche {
 
 public:
 
-    sf::Vector2i  getTaille() const;
+    sf::Vector2f  getTaille() const;
 //sf::Text::setColor()
 
     virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::repos );

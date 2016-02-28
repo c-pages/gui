@@ -53,14 +53,19 @@ public:
         actualiser();
     };
 
+    void setLargeur( float largeur ){
+        m_largeur = largeur;
+        actualiser_bounds();
+        actualiser();
+    };
 
     void setHorizontal (  ){ m_horizontal = true;actualiser (); };
 
     void setVertical (  ){ m_horizontal = false; actualiser ();}
 
-    void incrementer();
+    void incrementer( float increment = 5 );
 
-    void decrementer();
+    void decrementer( float increment = 5 );
 
     bool dragEnCours( ) {return m_drag;};
 
@@ -86,7 +91,7 @@ public:
     virtual void actualiser ( );
 
     void setLongCurseur( float pourcentage );
-    void setLong    ( float pixels );
+//    void setLong    ( float pixels );
 
 private:
     void positionnerCurseurSurSouris ();
@@ -102,10 +107,10 @@ private:
 
     float                           m_valeurMax;    ///<
     float                           m_valeurMin;    ///<
-    float                           m_longueur;      ///<
+
+    float                           m_longueur;     ///<
     float                           m_largeur;      ///<
 
-    float                           m_inc;
     bool                            m_drag;
 
 }; // fin class DnSlider

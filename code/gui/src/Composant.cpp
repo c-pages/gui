@@ -51,8 +51,12 @@ void Composant::mettre_composantAuDessus (std::shared_ptr<Gadget> gadget)
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget> Composant::testerSurvolComposants (sf::Vector2i position)
 {
-    for ( auto composant : m_composants )
+
+    for ( int i =0; i< m_composants.size(); i++ )
     {
+        int index = m_composants.size() - (i+1);
+        auto  composant = m_composants[ index ];
+
         auto testComposant = composant->testerSurvol( position );
         if ( testComposant != nullptr )
             return testComposant;

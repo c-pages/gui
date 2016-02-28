@@ -164,7 +164,6 @@ void
 EcranDemo::initGUI_test_Donnees  ()
 {
 
-
     sf::Vector2f posRoot = { 820 , 60 };
 
     std::cout << "\n---------------------------------------\n";
@@ -226,6 +225,7 @@ EcranDemo::initGUI_test_Donnees  ()
     m_slider = m_interface->creer.slider( );
     m_slider->setPosition    ( posRoot.x , posRoot.y  +  68 );
     m_slider->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::bouton ) );
+//    m_slider->setLongCurseur ( 50 );
 
     //m_slider->setVertical();
 
@@ -246,7 +246,7 @@ EcranDemo::initGUI_test_Donnees  ()
     m_barreDefil->setPosition    ( posRoot.x , posRoot.y  +  98 );
     m_barreDefil->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::bouton ) );
 
-
+    m_barreDefil->setLongueurCurseur ( 50 );
 
     /////// autre Label ///////
     m_label_10 = m_interface->creer.label( "<---  Barre de défilement" );

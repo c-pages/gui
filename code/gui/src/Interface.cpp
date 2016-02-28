@@ -59,15 +59,28 @@ Gadget::traiterEvenements ( evenement);
             if ( m_boutonSurvole ==  boutonSurvoleBack )
                 return;
 
-            // on gère le gadget survolé
-            if (m_boutonSurvole != nullptr) {
-                m_boutonSurvole->setSurvol( true );
-                m_boutonSurvole->declencher ( Evenement::on_entrer );
-            }
-            // on gère le gadget anciennement survolé
-            if (boutonSurvoleBack!=nullptr){
-                boutonSurvoleBack->setSurvol( false );
-                boutonSurvoleBack->declencher ( Evenement::on_sortir );
+            if (m_boutonPresse == nullptr )
+            {
+                // on gère le gadget survolé
+                if (m_boutonSurvole != nullptr) {
+                    m_boutonSurvole->setSurvol( true );
+                    m_boutonSurvole->declencher ( Evenement::on_entrer );
+                }
+                // on gère le gadget anciennement survolé
+                if (boutonSurvoleBack!=nullptr){
+                    boutonSurvoleBack->setSurvol( false );
+                    boutonSurvoleBack->declencher ( Evenement::on_sortir );
+                }
+            } else {
+                // on gère le gadget survolé
+                /*if (m_boutonSurvole==nullptr){
+                    boutonSurvoleBack->setSurvol( false );
+                    boutonSurvoleBack->declencher ( Evenement::on_sortir );
+                }*/
+                /*if (m_boutonSurvole != m_boutonPresse ) {
+                }*/
+                // on gère le gadget anciennement survolé*/
+
             }
         break;
 
@@ -107,6 +120,7 @@ Gadget::traiterEvenements ( evenement);
 
                 // on reset le bouton pressé
                 if ( m_boutonPresse !=  nullptr ){
+                    m_boutonPresse->setSurvol( false );
                     m_boutonPresse->setPresse( false );
                     m_boutonPresse = nullptr;
                 }
@@ -186,6 +200,18 @@ Gadget::traiterEvenements ( evenement);
     }
 
 }
+/*
+/////////////////////////////////////////////////
+void Interface::nouvellePolice( std::string fichier )
+{
+
+    m_textures->load( fichier );
+
+}*/
+
+
+
+
 
 /////////////////////////////////////////////////
 void Interface::declencherToutBoutons ( Evenement evenement , std::shared_ptr<Gadget> saufGadget )

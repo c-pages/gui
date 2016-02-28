@@ -37,7 +37,11 @@ enum class Styles{
 
     tous
 };
-
+enum class Polices {
+    Police_1,
+//    Police_2,
+    fin
+};
 
 /////////////////////////////////////////////////
 // Méthodes
@@ -48,6 +52,8 @@ public:
     ///
     /////////////////////////////////////////////////
     Skin ();
+
+    void creerDefaut();
 
     /////////////////////////////////////////////////
     /// \brief Definir une police
@@ -80,7 +86,6 @@ public:
     {
         return m_styles.at ( style );
     };
-
 
 
 /////////////////////////////////////////////////

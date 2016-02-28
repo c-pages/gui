@@ -21,6 +21,8 @@ enum class Etat {
 /// \brief Un style regroupe un ensemble de caractéristiques de base des gadgets.
 ///
 /////////////////////////////////////////////////
+
+
 template <typename T>
 struct Valeurs {
     void set ( T val , Etat etat = Etat::tous )    {

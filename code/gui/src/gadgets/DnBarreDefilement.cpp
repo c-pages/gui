@@ -9,12 +9,12 @@ namespace gui {
 
 /////////////////////////////////////////////////
 DnBarreDefilement::DnBarreDefilement ()
-: m_horizontal ( true )
+: m_horizontal  ( true )
 , m_slider      ( std::make_shared<DnSlider>() )
 , m_btnPlus     ( std::make_shared<BtnRectangle>() )
 , m_btnMoins    ( std::make_shared<BtnRectangle>() )
-, m_longeur ( 180 )
-, m_largeur ( 15 )
+, m_longeur     ( 180 )
+, m_largeur     ( 15 )
 {
     ajouterComposant( m_slider );
     ajouterComposant( m_btnPlus );

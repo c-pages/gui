@@ -11,6 +11,7 @@
 #include "gadgets\AffRectangle.h"
 #include "gadgets\AffLabel.h"
 #include "gadgets\AffImage.h"
+#include "gadgets\AffIcone.h"
 
 // BOUTONS
 #include "gadgets\BtnRectangle.h"
@@ -66,6 +67,22 @@ public:
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<AffImage>    image( std::string fichier = "" );
+/*
+    /////////////////////////////////////////////////
+    /// \brief  Création d'une simple image
+    ///
+    /// \param fichier
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<AffImage>    image( int id );*/
+
+    /////////////////////////////////////////////////
+    /// \brief  Création d'une simple icône
+    ///
+    /// \param fichier
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<AffIcone>    icone( std::string fichier = "" , unsigned int id = 1 );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BOUTONS

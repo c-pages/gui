@@ -68,8 +68,7 @@ class Application
         ///
         /// Actualiser les différents éléments du ou des écrans actifs.
         /// \param deltaT          Un \e float qui indique le delta du temps écoulé depuis la dernière actualisation.
-        /// ca permet quand on actualise de ponderer les mouvement en fonction du temps et ainsi avoir une indépendance entre animation et frame rate.
-        /// \return Rien
+        /// pour ponderer les mouvements en fonction du temps et ainsi avoir une indépendance entre animation et frame rate.
         ///
         /////////////////////////////////////////////////
         void actualiser ( float deltaT );

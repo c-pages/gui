@@ -10,11 +10,9 @@ namespace gui {
 /////////////////////////////////////////////////
 BtnRectangle::BtnRectangle ()
 : m_rectangle   ( std::make_shared<AffRectangle>())
-, m_label       ( std::make_shared<AffLabel>())
 {
     setTexte("");
     ajouterComposant( m_rectangle );
-    ajouterComposant( m_label );
 }
 
 /////////////////////////////////////////////////
@@ -38,14 +36,14 @@ void BtnRectangle::actualiser ()
     else if ( estSurvole () )
         etatBouton = Etat::survol;
 
-    if ( m_autoAjust )
-        m_taille = { m_label->getTaille().x + m_marge.x*2 , m_label->getTaille().y + m_marge.y*2 } ;
+//    if ( m_autoAjust )
+//        m_taille = { m_label->getTaille().x + m_marge.x*2 , m_label->getTaille().y + m_marge.y*2 } ;
 
     m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
-    m_label->setPosition( m_marge.x  , m_marge.y/2   );
+//    m_label->setPosition( m_marge.x  , m_marge.y/2   );
 
 
-    m_label->setStyle ( style, etatBouton );
+//    m_label->setStyle ( style, etatBouton );
 
     m_rectangle->setFillColor    ( sf::Color (
                                       style->fnd_couleur.get(etatBouton).r
@@ -63,19 +61,7 @@ void BtnRectangle::actualiser ()
 
     actualiser_bounds();
 }
-/*
-/////////////////////////////////////////////////
-void BtnRectangle::draw (sf::RenderTarget& target, sf::RenderStates states) const
-{
-    //On applique la transformation
-    states.transform *= getTransform();
 
-    // On dessine les éléments
-    target.draw(m_rectangle, states);
-    target.draw(m_label, states);
-
-}
-*/
 
 } // fin namespace gui
 

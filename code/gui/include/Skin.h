@@ -19,7 +19,9 @@ class Skin {
 
 
 public:
-enum class Styles{
+enum Styles{
+
+    defaut,
 
     invisible,
     cadre,
@@ -37,11 +39,7 @@ enum class Styles{
 
     tous
 };
-enum class Polices {
-    Police_1,
-//    Police_2,
-    fin
-};
+
 
 /////////////////////////////////////////////////
 // Méthodes
@@ -56,33 +54,12 @@ public:
     void creerDefaut();
 
     /////////////////////////////////////////////////
-    /// \brief Definir une police
+    /// \brief Acceder à un style du skin.
     ///
-    /// \param valeur la valeur à appliquer
-    /// \param style Le style à redefinir (par defaut tous)
-    /// \param etat L'etat à redefinir (par defaut tous)
+    /// \param Le style rechercher
+    /// \return Le style
     /////////////////////////////////////////////////
-    template<typename T>
-    void set ( T valeur
-              , Style::Proprietes propriete = Style::Proprietes::tous
-              , Styles            style     = Styles::tous
-              , Etat              etat      = Etat::tous )
-    {
-        if ( style == Styles::tous)
-            for ( int i = 0; i != static_cast<int>(Styles::tous); i++ )
-                m_styles.at( static_cast<Styles>(i) )->set (valeur , propriete, etat) ;
-        else
-                m_styles.at( style )->set (valeur , propriete, etat) ;
-    };
-
-    /////////////////////////////////////////////////
-    /// \brief Definir une police
-    ///
-    /// \param police la police à appliquer
-    /// \param style Le style à redefinir (par defaut tous)
-    /// \param etat L'etat à redefinir (par defaut tous)
-    /////////////////////////////////////////////////
-    std::shared_ptr<Style> getStyle( Skin::Styles style )
+    std::shared_ptr<Style> getStyle( Skin::Styles style = defaut)
     {
         return m_styles.at ( style );
     };
@@ -92,7 +69,8 @@ public:
 // Membres
 /////////////////////////////////////////////////
 public:
-    std::map< Styles , std::shared_ptr<Style> > m_styles;
+    std::map< int , std::shared_ptr<Style> > m_styles;
+
 }; // fin class Skin
 
 }; // fin namespace gui

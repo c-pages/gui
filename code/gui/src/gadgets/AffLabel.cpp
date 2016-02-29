@@ -15,9 +15,6 @@ AffLabel::AffLabel ()
 //, m_police      ( nullptr )
 , m_police      (  )
 {
-    m_texteSFML->setString  ( m_texte );
-    m_police.loadFromFile( "media/polices/arial.ttf");
-
     m_texteSFML->setFont    ( m_police );
 
     actualiser ();
@@ -25,33 +22,22 @@ AffLabel::AffLabel ()
 
 /////////////////////////////////////////////////
 void AffLabel::setStyle ( std::shared_ptr<Style> style , Etat etat ){
-/*
-    m_style = style;
 
-    m_texteSFML->setColor           ( m_style->txt_couleur.get(etat) );
-
-//    m_texteSFML->setStyle           ( m_style->txt_style.get(etat) );
-
-    m_texteSFML->setFont            ( m_style->txt_police.get(etat) );
-    if ( m_texteTaille != 0 )
-        m_texteSFML->setCharacterSize   ( m_texteTaille );
-    else
-        m_texteSFML->setCharacterSize   ( style->txt_taille.get(etat) );
-
-        */
         m_style = style;
-        m_police = style->txt_police.get(etat);
+
+        // si pas d'état on choisi #REPOS
+        if ( etat != Etat::tous )
+            m_police = style->txt_police.get(etat);
+        else     m_police = style->txt_police.get( Etat::repos );
 
         m_texteSFML->setColor           ( style->txt_couleur.get(etat) );
         m_texteSFML->setStyle           ( style->txt_style.get(etat) );
-        m_texteSFML->setFont            ( style->txt_police.get(etat) );
-//        if ( m_texteTaille != 0 )
-//            m_texteSFML->setCharacterSize   ( m_texteTaille );
-//        else
         m_texteSFML->setCharacterSize   ( style->txt_taille.get(etat) );
+        m_texteSFML->setFont            ( m_police );
 
-        m_texteSFML->setFont    ( m_police );
-        m_texteSFML->setString  ( m_texte );
+        std::cout << " ----------- " << float (style->txt_taille.get(etat)  ) << "\n";
+
+        actualiser();
 }
 
 
@@ -59,21 +45,38 @@ void AffLabel::setStyle ( std::shared_ptr<Style> style , Etat etat ){
 /////////////////////////////////////////////////
 void AffLabel::actualiser ()
 {
-    m_texteSFML = std::make_shared<sf::Text> ();
-
-    if( m_style != nullptr)
+    m_texteSFML->setString  ( m_texte );
+/**/
+    if( m_style == nullptr )
     {
-        m_police = m_style->txt_police.get(Etat::repos);
-        m_texteSFML->setColor           ( m_style->txt_couleur.get(Etat::repos) );
-        m_texteSFML->setStyle           ( m_style->txt_style.get(Etat::repos) );
-        m_texteSFML->setFont            ( m_style->txt_police.get(Etat::repos) );
+        auto style = m_skin->getStyle ( Skin::Styles::defaut );
 
-        m_texteSFML->setCharacterSize   ( m_style->txt_taille.get(Etat::repos) );
+        m_police = style->txt_police.get(Etat::repos);
+        m_texteSFML->setColor           ( style->txt_couleur.get(Etat::repos) );
+        m_texteSFML->setStyle           ( style->txt_style.get(Etat::repos) );
+        m_texteSFML->setFont            ( style->txt_police.get(Etat::repos) );
 
+//        m_texteSFML->setCharacterSize   ( m_style->txt_taille.get(Etat::repos) );
+        m_texteSFML->setString  ( m_texte );
+        m_texteSFML->setFont    ( m_police );
     }
 
-    m_texteSFML->setFont    ( m_police );
-    m_texteSFML->setString  ( m_texte );
+
+
+//    m_texteSFML = std::make_shared<sf::Text> ();
+
+//    if( m_style != nullptr)
+//    {
+//        m_police = m_style->txt_police.get(Etat::repos);
+//        m_texteSFML->setColor           ( m_style->txt_couleur.get(Etat::repos) );
+//        m_texteSFML->setStyle           ( m_style->txt_style.get(Etat::repos) );
+//        m_texteSFML->setFont            ( m_style->txt_police.get(Etat::repos) );
+//
+//        m_texteSFML->setCharacterSize   ( m_style->txt_taille.get(Etat::repos) );
+//
+//    }
+//
+//    m_texteSFML->setFont    ( m_police );
 }
 
 /////////////////////////////////////////////////

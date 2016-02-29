@@ -5,6 +5,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <SFML/Graphics.hpp>
+#include <memory>
 
 
 namespace gui{
@@ -17,19 +18,20 @@ enum class Etat {
     desactive,
     tous
 };
+
+
+
 /////////////////////////////////////////////////
-/// \brief Un style regroupe un ensemble de caractéristiques de base des gadgets.
+/// \brief Valeurs porte les valeurs pour une proprieté du style correspondants aux états possible du gadgets.
 ///
 /////////////////////////////////////////////////
-
-
 template <typename T>
 struct Valeurs {
+    /////////////////////////////////////////////////
     void set ( T val , Etat etat = Etat::tous )    {
         if ( etat == Etat::tous)
             repos = survol = press = desactive = val;
-        else
-        switch ( etat ){
+        else switch ( etat ){
             case Etat::repos :
                 repos = val; break;
             case Etat::survol :
@@ -38,8 +40,10 @@ struct Valeurs {
                 press = val; break;
             case Etat::desactive :
                 desactive = val; break;
+            default : break;
         }
     };
+    /////////////////////////////////////////////////
     T get ( Etat etat ){
          switch ( etat ){
             case Etat::repos :
@@ -50,15 +54,16 @@ struct Valeurs {
                 return press; break;
             case Etat::desactive :
                 return desactive; break;
+            default : break;
+
         }
     };
+    /////////////////////////////////////////////////
     T repos;
     T survol;
     T press;
     T desactive;
 };
-
-
 
 /////////////////////////////////////////////////
 /// \brief Un style regroupe un ensemble de caractéristiques de base des gadgets.
@@ -66,25 +71,19 @@ struct Valeurs {
 /////////////////////////////////////////////////
 class Style {
 
-
 public:
-enum class Proprietes{
 
-    txt_police,
-    txt_style,
-    txt_taille,
-    txt_couleur,
-    lgn_epaisseur,
-    lgn_couleur,
-    fnd_couleur,
-    fnd_texture,
-
-    tous
-};
 /////////////////////////////////////////////////
 // Méthodes
 /////////////////////////////////////////////////
 public:
+
+    /////////////////////////////////////////////////
+    /// \brief Constructeur par défaut.
+    ///
+    /////////////////////////////////////////////////
+    Style();
+/*
     /////////////////////////////////////////////////
     /// \brief Definir une police
     ///
@@ -116,13 +115,12 @@ public:
                 fnd_texture.set( valeur, etat ) ; break;
         }
 
-    };
+    };*/
+
     /////////////////////////////////////////////////
-    /// \brief Constructeur par défaut.
+    /// \brief Les accesseurs aux propriétés.
     ///
     /////////////////////////////////////////////////
-    Style();
-
     sf::Font        getTxt_police       ( Etat etat ){ return txt_police.get    (etat); };
 
     sf::Text::Style getTxt_style        ( Etat etat ){ return txt_style.get     (etat); };
@@ -133,13 +131,16 @@ public:
     sf::Color       getLgn_couleur      ( Etat etat ){ return lgn_couleur.get    (etat); };
 
     sf::Color       getFnd_couleur      ( Etat etat ){ return fnd_couleur.get    (etat); };
-    sf::Texture     getFnd_texture      ( Etat etat ){ return fnd_texture.get    (etat); };
+//    sf::Texture     getFnd_texture      ( Etat etat ){ return fnd_texture.get    (etat); };
 
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
 public:
+
+//    std::map<Proprietes , std::shared_ptr<void> >      m_proprietes;
+
 
     Valeurs<sf::Font>          txt_police;     ///< Police du texte.
     Valeurs<sf::Text::Style>   txt_style;      ///< Style SFML du texte (Regular, Italic, ... ).
@@ -150,7 +151,7 @@ public:
     Valeurs<sf::Color>         lgn_couleur;    ///< Couleur des lignes.
 
     Valeurs<sf::Color>         fnd_couleur;    ///< Couleur du fond.
-    Valeurs<sf::Texture>       fnd_texture;    ///< Texture du fond au repos.
+//    Valeurs<sf::Texture>       fnd_texture;    ///< Texture du fond au repos.
 
 
 }; // fin class Style

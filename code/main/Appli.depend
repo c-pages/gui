@@ -9,7 +9,7 @@
 1456161808 source:r:\06 - c++\110 - gui\code\main\main.cpp
 	<Application.h>
 
-1456241562 r:\06 - c++\110 - gui\code\main\include\application.h
+1456670293 r:\06 - c++\110 - gui\code\main\include\application.h
 	<Ecran.h>
 	<Gestion_ecrans.h>
 	<SFML/Graphics.hpp>
@@ -437,24 +437,25 @@
 1445711805 r:\06 - c++\110 - gui\code\main\include\resourcemgr.inl
 	"ResourceMgr.h"
 
-1456619437 r:\06 - c++\110 - gui\code\gui\include\skin.h
+1456755768 r:\06 - c++\110 - gui\code\gui\include\skin.h
 	<memory>
 	"Style.h"
 
-1456618642 r:\06 - c++\110 - gui\code\gui\include\style.h
+1456752484 r:\06 - c++\110 - gui\code\gui\include\style.h
 	<SFML/Graphics.hpp>
+	<memory>
 
-1456605563 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
+1456749063 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
 	<SFML/Graphics.hpp>
 	<memory>
 	<Ecran.h>
 	<Application.h>
 	<gui.h>
 
-1456500157 r:\06 - c++\110 - gui\code\gui\gui.h
+1456672537 r:\06 - c++\110 - gui\code\gui\gui.h
 	"Interface.h"
 
-1456622292 r:\06 - c++\110 - gui\code\gui\include\gadget.h
+1456752323 r:\06 - c++\110 - gui\code\gui\include\gadget.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<Geometrie.h>
@@ -480,13 +481,14 @@
 	<SFML/Graphics.hpp>
 	<functional>
 
-1456622401 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
+1456751270 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
 	"SFML/Graphics.hpp"
 	"memory"
 	"Gadget.h"
 	"gadgets\AffRectangle.h"
 	"gadgets\AffLabel.h"
 	"gadgets\AffImage.h"
+	"gadgets\AffIcone.h"
 	"gadgets\BtnRectangle.h"
 	"gadgets\BtnMenu.h"
 	"gadgets\DnCaseACocher.h"
@@ -508,7 +510,7 @@
 1445606138 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1456623841 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1456755204 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -516,14 +518,14 @@
 1445606138 source:r:\06 - c++\110 - gui\code\main\src\gestion_ecrans.cpp
 	"Gestion_ecrans.h"
 
-1456622112 r:\06 - c++\110 - gui\code\gui\include\gadgets\afflabel.h
+1456755659 r:\06 - c++\110 - gui\code\gui\include\gadgets\afflabel.h
 	"Affiche.h"
 	"Style.h"
 	<memory>
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1456622378 r:\06 - c++\110 - gui\code\gui\include\gadgets\affimage.h
+1456750523 r:\06 - c++\110 - gui\code\gui\include\gadgets\affimage.h
 	"Affiche.h"
 	<memory>
 	<SFML/Graphics.hpp>
@@ -544,9 +546,9 @@
 	"Gadget.h"
 	<Enums.h>
 
-1456505987 r:\06 - c++\110 - gui\code\gui\include\enums.h
+1456673333 r:\06 - c++\110 - gui\code\gui\include\enums.h
 
-1456609539 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnrectangle.h
+1456751951 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnrectangle.h
 	"Bouton.h"
 	"gadgets\AffRectangle.h"
 	"gadgets\AffLabel.h"
@@ -567,7 +569,7 @@
 1456502608 r:\06 - c++\110 - gui\code\gui\include\donnee.h
 	"ActionEvenement.h"
 
-1456623200 r:\06 - c++\110 - gui\code\gui\include\gadgets\dncaseacocher.h
+1456672015 r:\06 - c++\110 - gui\code\gui\include\gadgets\dncaseacocher.h
 	"Donnee.h"
 	"BtnRectangle.h"
 	"AffRectangle.h"
@@ -588,13 +590,13 @@
 	"Donnee.h"
 	"BtnRectangle.h"
 
-1456622968 r:\06 - c++\110 - gui\code\gui\include\interface.h
+1456740369 r:\06 - c++\110 - gui\code\gui\include\interface.h
 	"SFML/Graphics.hpp"
 	"Gadget.h"
 	"FabriqueBase.h"
 	"ResourcesMgr.h"
 
-1456623841 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnbarredefilement.h
+1456671771 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnbarredefilement.h
 	"Donnee.h"
 	"DnSlider.h"
 	"BtnRectangle.h"
@@ -616,14 +618,19 @@
 1456616325 r:\06 - c++\110 - gui\code\gui\include\resourcemgr.inl
 	"ResourceMgr.h"
 
-1456619090 r:\06 - c++\110 - gui\code\gui\include\resourcesmgr.h
+1456754192 r:\06 - c++\110 - gui\code\gui\include\resourcesmgr.h
 	<unordered_map>
 	<memory>
 	<stdexcept>
 	<SFML/Graphics.hpp>
 	<SFML/audio.hpp>
+	<string>
+	<sstream>
 	<ResourcesMgr.inl>
 
-1456619272 r:\06 - c++\110 - gui\code\gui\include\resourcesmgr.inl
+1456755017 r:\06 - c++\110 - gui\code\gui\include\resourcesmgr.inl
 	"ResourcesMgr.h"
+
+1456752540 r:\06 - c++\110 - gui\code\gui\include\gadgets\afficone.h
+	"AffImage.h"
 

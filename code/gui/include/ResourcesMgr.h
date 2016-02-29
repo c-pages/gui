@@ -7,10 +7,22 @@
 /////////////////////////////////////////////////
 #include <unordered_map>
 #include <memory>
+
 #include <stdexcept>
 #include <SFML/Graphics.hpp>
 #include <SFML/audio.hpp>
+#include <string>
+#include <sstream>
 
+namespace patch
+{
+    template < typename T > std::string to_string( const T& n )
+    {
+        std::ostringstream stm ;
+        stm << n ;
+        return stm.str() ;
+    }
+}
 namespace gui
 {
 
@@ -20,7 +32,7 @@ namespace gui
 /// Classe template des polices, images
 ///
 /////////////////////////////////////////////////
-template<typename RESOURCE,typename IDENTIFIANT = int>
+template<typename RESOURCE,typename IDENTIFIANT = std::string>
 class ResourcesMgr
 {
     public:
@@ -66,6 +78,11 @@ class ResourcesMgr
         ///
         /////////////////////////////////////////////////
         RESOURCE&   get(const IDENTIFIANT& id)const;
+
+        bool existe (const IDENTIFIANT& id)const;
+
+
+        std::string nomDefautSuivant();
 
     private:
 
@@ -116,6 +133,20 @@ class ResourcesMgr<sf::Music,IDENTIFIANT>
         /////////////////////////////////////////////////
         template<typename ... Args>
         void load(const IDENTIFIANT& id,Args&& ... args);
+
+        std::string nomDefautSuivant()
+        {
+            std::string nomImageDefaut = "ImageDefaut";
+            bool test = false;
+            int ind = 1;
+            while ( !test )
+            {
+                if ( get (  nomImageDefaut + patch::to_string(ind ) ) == mPlan.end() )
+                    return (  nomImageDefaut + patch::to_string(ind ) );
+                ind++;
+            }
+        };
+
 
         /////////////////////////////////////////////////
         /// \brief demande une musique à partir de son identifiant.

@@ -160,11 +160,14 @@ sf::Vector2i Gadget::getLocalPosSouris ( ) {
 /////////////////////////////////////////////////
 void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
-    //On applique la transformation
-    states.transform *= getTransform();
+    if ( estVisible() ) {
 
-    dessinerComposant   ( target, states );
-    dessinerEnfants     ( target, states );
+        //On applique la transformation
+        states.transform *= getTransform();
+
+        dessinerComposant   ( target, states );
+        dessinerEnfants     ( target, states );
+    }
 };
 
 } // fin namespace gui

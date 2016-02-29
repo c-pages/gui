@@ -16,9 +16,9 @@ EcranDemo::EcranDemo( Application*  appli )
 : Ecran             ( appli )
 , m_interface       ( nullptr )
 {
-
     // Initialisation de l'interface graphique.
     initGUI     ();
+
 
     // les tests
     initGUI_test_Affichages();
@@ -76,14 +76,14 @@ void EcranDemo::actualiser  ( float deltaT )
     // actualiser l'interface
     m_interface->actualiser    ( );
 
-
+/*
     std::string val;
     if ( m_interface->m_boutonSurvole != nullptr ){
         val =  "Survole : " + m_interface->m_boutonSurvole->getNom();
     } else val = "Survole : nullptr";
 
     m_labelRetour->setTexte ( val );
-
+*/
 
 
 //    std::string val =  "Retour : " + m_interface->m_boutonSurvole->getNom();
@@ -170,6 +170,7 @@ EcranDemo::initGUI_test_Donnees  ()
     std::cout << "      Test des gadgets : DONNEES";
     std::cout << "\n---------------------------------------\n\n";
 
+
     /////// TITRE Label ///////
     m_labelTitre_0 = m_interface->creer.label( "Données" );
     m_labelTitre_0->setPosition    ( posRoot.x , posRoot.y - 40 );
@@ -181,18 +182,18 @@ EcranDemo::initGUI_test_Donnees  ()
     m_boutonCoche = m_interface->creer.btnACocher( );
     m_boutonCoche->setPosition    ( posRoot.x , posRoot.y  +  0 );
     m_boutonCoche->setStyle       ( m_skin->getStyle ( gui::Skin::Styles::txtLog ) );
-    m_boutonCoche->setTexte       ( "Activer / Désactiver 'Machiner'" );
+    m_boutonCoche->setTexte       ( "'Machiner'" );
     m_boutonCoche->setValeur      ( true );
 
     m_boutonCoche->lier ( gui::Evenement::on_changerValeur , [this](){
                         std::cout << "ACTION Bool : changer Valeur\n";
                         if (  m_boutonRect->estActif() ){
                             delierMachiner ();
-                            m_boutonRect->setActif( false ); }
-                        else {
+                            m_boutonRect->setActif( false );
+                        } else {
                             lierMachiner ();
-                            m_boutonRect->setActif( true ); }
-                        });
+                            m_boutonRect->setActif( true );
+                        } });
     m_boutonCoche->lier ( gui::Evenement::onBool_allume , [this](){
                         std::cout << "ACTION Bool : allume\n";
                         });
@@ -365,7 +366,14 @@ void EcranDemo::lierMachiner ()
 
     m_boutonRect->lier ( gui::Evenement::onBtnG_relacher , [this](){
                         std::cout << "MACHINER: souris gauche relache : Faire un machin : " << m_zoneTexte->getValeur() <<"\n";
-                        std::cout << "   " << m_slider->getValeur() <<"\n";
+/*
+                        if (  m_boutonCoche->estVisible() ){
+                            m_boutonCoche->setVisible ( false );
+                        } else {
+                            m_boutonCoche->setVisible ( true );
+                        }
+                        */
+                        std::cout << "-> slider : " << m_slider->getValeur() <<"\n";
                     });
     m_boutonRect->lier ( gui::Evenement::onBtnG_presser , [this](){
                         std::cout << "MACHINER: souris gauche presse\n";
@@ -457,8 +465,8 @@ EcranDemo::initGUI_test_Affichages  ()
 
 
     /////// Une image ///////
-    m_image = m_interface->creer.image( "media/img/IconeVide.png" );
-    m_image->setTaille      ( { 500 , 500 } );
+    m_image = m_interface->creer.image( "media/img/Image_defaut.png" );
+//    m_image->setTaille      ( { 500 , 500 } );
     m_image->setPosition    (  posRoot.x , posRoot.y + 30 );
 
 
@@ -480,6 +488,33 @@ EcranDemo::initGUI_test_Affichages  ()
     m_label_4->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
 
 
+
+
+
+
+    /////// Une icone ///////
+    m_icone = m_interface->creer.icone( "media/img/ico_fleches.png" , 4);
+    m_icone->setPosition    (  posRoot.x , posRoot.y + 90 );
+
+    m_interface->lier ( sf::Keyboard::Num1 , [this](){
+                       m_icone->setIndex ( 1 );
+                       });
+
+    m_interface->lier ( sf::Keyboard::Num2 , [this](){
+                       m_icone->setIndex ( 2 );
+                       });
+    m_interface->lier ( sf::Keyboard::Num3 , [this](){
+                       m_icone->setIndex ( 3 );
+                       });
+    m_interface->lier ( sf::Keyboard::Num4 , [this](){
+                       m_icone->setIndex ( 4 );
+                       });
+
+
+    /////// autre Label ///////
+    m_label_11 = m_interface->creer.label( "<---  icone. ('1', '2', '3', '4' pour changer index de l'icone)" );
+    m_label_11->setPosition    ( 70 + posRoot.x , posRoot.y + 95 );
+    m_label_11->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
 
 
     // On associe des fonctions aux fleches pour faire bouger le label

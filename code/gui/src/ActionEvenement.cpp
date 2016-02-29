@@ -10,7 +10,7 @@ namespace gui {
 ActionEvenement::ActionEvenement  ()
 : m_evenementsSouris( )
 {
-    std::cout << " CREATION ACTION EVENEMENT\n";
+
 }
 
 /////////////////////////////////////////////////

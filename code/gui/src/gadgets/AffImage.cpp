@@ -2,6 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <AffImage.h>
+#include <Interface.h>
 
 #include <iostream>
 
@@ -19,16 +20,13 @@ AffImage::AffImage ()
     m_rectangle.setTexture( m_texture );
 }
 
+/*
 /////////////////////////////////////////////////
-void AffImage::chargerDepuisFichier ( std::string fichier )
+void AffImage::charger ( int id )
 {
-
-    if ( ! m_texture->loadFromFile ( fichier ) )
-            std::cout << "\n ! ATTENTION ! - Image: Impossible de charger '" << fichier << "' !\n\n";
-//    else    std::cout << "Image: Chargement de '" << fichier << "' reussi.\n";
+    m_texture = &ms_images.get( id  );
 
     m_rectangle.setTexture( m_texture );
-//    m_taille = { m_texture->getSize().x , m_texture->getSize().y };
     m_rectangle.setTextureRect ( { 0
                                  , 0
                                  , m_texture->getSize().x
@@ -36,18 +34,47 @@ void AffImage::chargerDepuisFichier ( std::string fichier )
     actualiser ();
 
 }
+*/
+
+
+/////////////////////////////////////////////////
+void AffImage::chargerDepuisFichier ( std::string fichier )
+{
+
+    std::cout << "AffImage : chargerDepuisFichier\n";
+    std::string nomUniqueImage = ms_images.nomDefautSuivant();
+
+    ms_images.load ( nomUniqueImage , fichier );
+
+    m_texture = &ms_images.get ( nomUniqueImage );
+
+    m_rectangle.setTexture( m_texture );
+
+    m_rectangle.setTextureRect ( { 0
+                                 , 0
+                                 , m_texture->getSize().x
+                                 , m_texture->getSize().y });
+
+    std::cout << "AffImage : taille image : " << m_texture->getSize().x << " "<< m_texture->getSize().y << "\n";
+
+    actualiser ();
+
+}
+
 
 /////////////////////////////////////////////////
 void AffImage::actualiser ()
 {
-//    std::cout << "Tmage: Texture -> " << m_rectangle.getTextureRect().width << "\n";
-//
-//    m_texture->setRepeated( true );
-//m_rectangle.getTextureRect()
-    m_rectangle.setSize ( { m_taille.x , m_taille.y } );
     m_rectangle.setTexture( m_texture );
 
-      if ( m_skin == nullptr ) {
+    if ( m_ajustement )
+        m_rectangle.setSize ( { m_taille.x , m_taille.y } );
+    else
+        m_rectangle.setSize ( { m_texture->getSize().x , m_texture->getSize().y } );
+//        m_taille = sf::Vector2i(m_texture->getSize().x , m_texture->getSize().y );
+
+
+    if ( m_skin == nullptr ) {
 
         m_rectangle.setFillColor        ( sf::Color ( 255, 255, 255, 255 * m_opacite ) );
         m_rectangle.setOutlineColor     ( sf::Color ( 255, 255, 255, 255 * m_opacite ) );
@@ -73,20 +100,6 @@ void AffImage::actualiser ()
 
     }
 
-
-//    auto texture = m_sprite.getTexture();
-//    m_sprite.
-    //texture->setRepeated( true );
-
-//     if ( m_skin == nullptr ) {
-//        m_sprite.setColor        ( sf::Color ( 255, 255, 255, 255 * m_opacite ) );
-//    } else {
-//        auto style = m_skin->imgRepos;
-//        m_sprite.setColor   ( sf::Color ( style->fnd_couleur.r
-//                                        , style->fnd_couleur.g
-//                                        , style->fnd_couleur.b
-//                                        , style->fnd_couleur.a * m_opacite ) ) ;
-//    }
 }
 
 
@@ -97,7 +110,6 @@ void AffImage::draw (sf::RenderTarget& target, sf::RenderStates states) const
     states.transform *= getTransform();
 
     // On dessine l'image
-//    target.draw( m_sprite, states);
     target.draw( m_rectangle, states);
 }
 

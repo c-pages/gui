@@ -56,11 +56,16 @@ template<typename RESOURCE,typename IDENTIFIANT>
 template<typename ... Args>
 void ResourcesMgr<RESOURCE,IDENTIFIANT>::load(const IDENTIFIANT& id , Args&& ... args)
 {
-//    std::shared_ptr<RESOURCE> ptr = std::make_shared<RESOURCE>();
+//    if ( get(id) != mPlan.end())
+//        throw std::runtime_error("Image: Nom unique existe deja : " + id );
+
+    std::cout << "ResourcesMgr : load " << id << "\n";
     std::unique_ptr<RESOURCE> ptr ( new RESOURCE );
     if(not ptr->loadFromFile(std::forward<Args>(args)...))
         throw std::runtime_error("Impossible de charger le fichier");
     mPlan.emplace(id,std::move(ptr));
+
+
 }
 
 
@@ -68,7 +73,31 @@ void ResourcesMgr<RESOURCE,IDENTIFIANT>::load(const IDENTIFIANT& id , Args&& ...
 template<typename RESOURCE,typename IDENTIFIANT>
 RESOURCE& ResourcesMgr<RESOURCE,IDENTIFIANT>::get(const IDENTIFIANT& id)const
 {
+    std::cout << "ResourcesMgr : get " << id << "\n";
     return *mPlan.at(id);
 }
 
+
+template<typename RESOURCE,typename IDENTIFIANT>
+bool ResourcesMgr<RESOURCE,IDENTIFIANT>::existe(const IDENTIFIANT& id)const
+{
+    if ( mPlan.find (id) == mPlan.end())
+         return false;
+    else return true;
+}
+
+
+template<typename RESOURCE,typename IDENTIFIANT>
+std::string ResourcesMgr<RESOURCE,IDENTIFIANT>::nomDefautSuivant()
+{
+    std::string nomImageDefaut = "ImageDefaut_";
+    bool test = false;
+    int ind = 1;
+    while ( !test )
+    {
+        if ( ! existe ( nomImageDefaut + patch::to_string( ind ) ) )
+            return (  nomImageDefaut + patch::to_string(ind ) );
+        ind++;
+    }
+};
 } // fin app

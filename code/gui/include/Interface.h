@@ -9,12 +9,29 @@
 
 namespace gui {
 
-//static  ResourcesMgr<sf::Texture,int>                        ms_textures;     ///< Manager des textures
-static  ResourcesMgr<sf::Font,int>                           ms_polices;      ///< Manager des polices
+//enum class Polices {
+//    Defaut,
+//    Police_1,
+//    Fin
+//};
+static  ResourcesMgr<sf::Font,      std::string >   ms_polices; ///< Manager des polices
+
+//enum class Icones {
+//    Fin
+//};
+
+static  ResourcesMgr<sf::Texture,   std::string >   ms_icones;  ///< Manager des icones
+
+//enum class Images {
+//    Fin
+//};
+static  ResourcesMgr<sf::Texture,   std::string >   ms_images;  ///< Manager des images
 
 
 /////////////////////////////////////////////////
 /// \brief Classe communes à tout les gadgets, gère affichage actualisation, etc...
+///
+/// \todo mmm c po claire ! Transformer en singleton ? ou transformer en singleton le ressourceMgr ( qui pourra du coup être partagé entre plusieurs interfaces...)?
 ///
 /////////////////////////////////////////////////
 class Interface : public Gadget{
@@ -48,8 +65,8 @@ public:
         result = sf::Mouse::getPosition( *ms_fenetre );
         return result;
     };
-    static sf::RenderWindow*           ms_fenetre;          ///< La fenetyre SFML;
 
+    static sf::RenderWindow*           ms_fenetre;          ///< La fenetyre SFML;
 
     FabriqueBase    creer;                          ///< La fabrique de gadget de base (GOF: Fabrique)
 

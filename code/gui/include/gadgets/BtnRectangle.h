@@ -33,20 +33,13 @@ public:
     BtnRectangle ();
 
     virtual void actualiser ( );
-/*
-    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
-*/
-    virtual void setTexte( std::string val ){
-        m_texte = val;
-        m_label->setTexte(m_texte);
-    };
+
 
 ////////////////////////////////// ///////////////
 // Membres
 /////////////////////////////////////////////////
 public:
     std::shared_ptr<AffRectangle>    m_rectangle;
-    std::shared_ptr<AffLabel>        m_label;
 
 }; // fin class BtnRectangle
 

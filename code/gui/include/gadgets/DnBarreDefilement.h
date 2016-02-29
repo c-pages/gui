@@ -22,7 +22,6 @@ namespace gui {
 class DnBarreDefilement : public gui::Donnee<float> {
 
 
-
 /////////////////////////////////////////////////
 // Méthodes
 /////////////////////////////////////////////////
@@ -43,8 +42,6 @@ public:
 
     virtual void actualiser ();
 
-   // virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
-
     void setLongueurCurseur( float pourcentage ) { m_slider->setLongCurseur( pourcentage ); actualiser(); };
 
 
@@ -56,11 +53,6 @@ private:
     std::shared_ptr<DnSlider>       m_slider;
     std::shared_ptr<BtnRectangle>   m_btnPlus;
     std::shared_ptr<BtnRectangle>   m_btnMoins;
-/*
-    std::shared_ptr<AffImage>       m_iconeHaut;
-    std::shared_ptr<AffImage>       m_iconeBas;
-    std::shared_ptr<AffImage>       m_iconedroite;
-    std::shared_ptr<AffImage>       m_iconeGauche;*/
 
     float                           m_longeur;      ///<
     float                           m_largeur;      ///<

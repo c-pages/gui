@@ -60,11 +60,15 @@ DnSlider::DnSlider ()
         actualiser ();
     });
     m_boutonFond->lier ( Evenement::onBtnM_roulerHaut , [this](){
-        incrementer();
+        if ( m_horizontal )
+                incrementer();
+        else    decrementer();
         actualiser ();
     });
     m_boutonFond->lier ( Evenement::onBtnM_roulerBas , [this](){
-        decrementer();
+        if ( m_horizontal )
+                decrementer();
+        else    incrementer();
         actualiser ();
     });
 
@@ -87,11 +91,15 @@ DnSlider::DnSlider ()
         actualiser ();
     });
     m_slider->lier ( Evenement::onBtnM_roulerHaut , [this](){
-        incrementer();
+        if ( m_horizontal )
+                incrementer();
+        else    decrementer();
         actualiser ();
     });
     m_slider->lier ( Evenement::onBtnM_roulerBas , [this](){
-        decrementer();
+        if ( m_horizontal )
+                decrementer();
+        else    incrementer();
         actualiser ();
     });
 
@@ -173,10 +181,7 @@ void DnSlider::setLongCurseur( float pourcentage )
     actualiser_bounds();
     m_boutonFond->actualiser_bounds();
     m_slider->actualiser_bounds();
-//    if ( m_horizontal )
-//        m_slider->setTaille ( {m_longueur * pourcentage/100, m_largeur} );
-//    else
-//        m_slider->setTaille ( {m_largeur , m_longueur * pourcentage/100} );
+
 }
 
 
@@ -193,17 +198,6 @@ void DnSlider::actualiser ()
     }
 
     m_boutonFond->setTaille ( m_taille );
-//    if ( m_horizontal )
-//        m_slider->setTailleX( m_longueur * pourcentage/100);
-//    else
-//        m_slider->setTailleY( m_longueur * pourcentage/100);
-
-//    if ( m_horizontal )
-//        m_slider->setTaille ( { m_taille.y - 2*m_marge.y  , m_taille.y - 2*m_marge.y });
-//        m_slider->setTaille ( { 25 , m_taille.y - 2*m_marge.y });
-//    else
-//        m_slider->setTaille ( { m_taille.x - 2*m_marge.x, m_taille.x - 2*m_marge.x });
-//        m_slider->setTaille ( { m_taille.x - 2*m_marge.x, 25 });
 
     actualiser_bounds();
     m_boutonFond->actualiser_bounds();
@@ -225,7 +219,7 @@ float DnSlider::getValeur(){
         longueurMax = m_taille.y - 2*m_marge.y - m_slider->getTaille().y;
         coefPosition = ( m_slider->getPosition().y - m_marge.y ) / longueurMax;
         longueurVal = m_valeurMax - m_valeurMin;
-        result =  100 - coefPosition * longueurVal;
+        result =  m_valeurMax - coefPosition * longueurVal;
     }
     return result;
 };

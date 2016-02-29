@@ -2,18 +2,18 @@
 // Headers
 /////////////////////////////////////////////////
 #include <Style.h>
+#include <Interface.h>
 
 namespace gui {
+/////////////////////////////////////////////////
 Style::Style()
-/*: txt_police    ( )
-, txt_style     ( sf::Text::Style::Regular )
-, txt_taille    ( 10 )
-, txt_couleur   ( sf::Color(255, 255, 255))
-, lgn_epaisseur ( 3 )
-, lgn_couleur   ( sf::Color(255, 255, 255))
-, fnd_couleur   ( sf::Color(255, 255, 255))
-, fnd_texture   ( )*/
 {
+
+    // initialiser les polices
+    gui::ms_polices.load( "Defaut" , "media/polices/consola.ttf" );
+
+    txt_police.set ( gui::ms_polices.get( "Defaut" ) );
+
     txt_police.press.loadFromFile ( "media/polices/consola.ttf" );
     txt_police.repos.loadFromFile ( "media/polices/consola.ttf" );
     txt_police.survol.loadFromFile( "media/polices/consola.ttf" );
@@ -37,7 +37,31 @@ Style::Style()
 
 //    fnd_texture;
 }
+/*
+/////////////////////////////////////////////////
+void Style::ajouterPropriete ( Proprietes propriete , Types type )
+{
+    switch ( type ){
+        case Types::Color:
+            m_proprietes.insert( { propriete , std::make_shared<Valeurs<sf::Color>>()} );
+            break;
+        case Types::Float:
+            m_proprietes.insert( { propriete , std::make_shared<Valeurs<float>>()} );
+            break;
+        case Types::Font:
+            m_proprietes.insert( { propriete , std::make_shared<Valeurs<sf::Font>>()} );
+            break;
+        case Types::TextStyle:
+            m_proprietes.insert( { propriete , std::make_shared<Valeurs<sf::Text::Style>>()} );
+            break;
+        case Types::Texture:
+            m_proprietes.insert( { propriete , std::make_shared<Valeurs<sf::Text::Style>>()} );
+            break;
+
+    }
 
 
+}
+*/
 
 }; // fin namespace gui

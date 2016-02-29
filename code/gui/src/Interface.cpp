@@ -124,6 +124,7 @@ Gadget::traiterEvenements ( evenement);
                     m_boutonPresse->setPresse( false );
                     m_boutonPresse = nullptr;
                 }
+
                 // On sort.
                 return;
             }
@@ -138,6 +139,7 @@ Gadget::traiterEvenements ( evenement);
                     declencherToutBoutons ( Evenement::onBtnD_relacherDehors   , m_boutonSurvole );
                 else if ( evenement.mouseButton.button == sf::Mouse::Middle )
                     declencherToutBoutons ( Evenement::onBtnM_relacherDehors   , m_boutonSurvole );
+
 /*
                 if ( evenement.mouseButton.button == sf::Mouse::Left )
                     m_boutonSurvole->declencher  ( Evenement::onBtnG_relacher );
@@ -146,8 +148,10 @@ Gadget::traiterEvenements ( evenement);
                 else if ( evenement.mouseButton.button == sf::Mouse::Middle )
                     m_boutonSurvole->declencher  ( Evenement::onBtnM_relacher );
 */
+
                 // on reset le bouton pressé
                 if ( m_boutonPresse !=  nullptr ){
+                    m_boutonPresse->setSurvol( false );
                     m_boutonPresse->setPresse( false );
                     m_boutonPresse = nullptr;
                 }

@@ -44,9 +44,35 @@ std::shared_ptr<AffLabel>    FabriqueBase::label( std::string text )
 std::shared_ptr<AffImage>    FabriqueBase::image( std::string fichier )
 {
     auto nouveauGadget = creerGadget<AffImage>( );
-    nouveauGadget->chargerDepuisFichier ( fichier );
+    if ( fichier != "");
+        nouveauGadget->chargerDepuisFichier ( fichier );
     return nouveauGadget;
 }
+/*
+/////////////////////////////////////////////////
+std::shared_ptr<AffImage>    FabriqueBase::image( int id )
+{
+    auto nouveauGadget = creerGadget<AffImage>( );
+//    if ( fichier != "");
+//        nouveauGadget->chargerDepuisFichier ( fichier );
+    return nouveauGadget;
+}
+*/
+
+
+/////////////////////////////////////////////////
+std::shared_ptr<AffIcone>    FabriqueBase::icone( std::string fichier , unsigned int id)
+{
+    auto nouveauGadget = creerGadget<AffIcone>( );
+    if ( fichier != "");
+        nouveauGadget->chargerDepuisFichier ( fichier );
+    nouveauGadget->setIndex ( id );
+    return nouveauGadget;
+}
+
+
+
+
 
 /////////////////////////////////////////////////
 std::shared_ptr<BtnRectangle>    FabriqueBase::bouton( std::string texte )

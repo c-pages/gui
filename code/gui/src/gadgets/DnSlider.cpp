@@ -18,8 +18,8 @@ DnSlider::DnSlider ()
 , m_longueur    ( 180 )
 , m_largeur     ( 15 )
 {
-    m_marge.x = 3;
-    m_marge.y = 3;
+    m_marge.x = 0;
+    m_marge.y = 0;
 
 //    m_boutonFond->setParent  ( this );
     ajouterComposant( m_boutonFond );
@@ -198,6 +198,8 @@ void DnSlider::actualiser ()
     }
 
     m_boutonFond->setTaille ( m_taille );
+
+    m_slider->setStyle ( m_skin->getStyle( Skin::Styles::slider ) );
 
     actualiser_bounds();
     m_boutonFond->actualiser_bounds();

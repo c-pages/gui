@@ -126,14 +126,16 @@ private:
     std::shared_ptr<gui::AffLabel>      m_label_9;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_10;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_11;      ///< Un autre label.
+    std::shared_ptr<gui::AffLabel>      m_label_12;      ///< Un autre label.
 
     std::shared_ptr<gui::AffImage>      m_image;        ///< Une simple image.
     std::shared_ptr<gui::AffIcone>      m_icone;        ///< Une simple icone.
 
     // BOUTON
-    std::shared_ptr<gui::BtnTexte>    m_boutonTexte;    ///< Un simple bouton rectangulaire.
-    std::shared_ptr<gui::BtnRectangle>    m_boutonRect;    ///< Un simple bouton rectangulaire.
-    std::shared_ptr<gui::BtnMenu>         m_boutonMenu;    ///< Un bouton Menu.
+    std::shared_ptr<gui::BtnIcone>      m_boutonIcone;    ///< Un simple bouton rectangulaire.
+    std::shared_ptr<gui::BtnTexte>      m_boutonTexte;    ///< Un simple bouton rectangulaire.
+    std::shared_ptr<gui::BtnRectangle>  m_boutonRect;    ///< Un simple bouton rectangulaire.
+    std::shared_ptr<gui::BtnMenu>       m_boutonMenu;    ///< Un bouton Menu.
 
     // DONNEE
     std::shared_ptr<gui::DnCaseACocher>  m_boutonCoche;    ///< Un bouton Menu.

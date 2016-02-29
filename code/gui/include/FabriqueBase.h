@@ -98,7 +98,7 @@ public:
     /// \param texte
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<BtnTexte>    bouton( std::string texte = "" );
+    std::shared_ptr<BtnTexte>    boutonTexte( std::string texte = "" );
 
     /////////////////////////////////////////////////
     /// \brief  Création d'un simple bouton rectangulaire
@@ -106,7 +106,16 @@ public:
     /// \param taille
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<BtnRectangle>    bouton( sf::Vector2i taille );
+    std::shared_ptr<BtnRectangle>    boutonRect( sf::Vector2i taille );
+
+    /////////////////////////////////////////////////
+    /// \brief  Création d'un simple bouton rectangulaire
+    ///
+    /// \param taille
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<BtnIcone>    boutonIcone( std::string texte = "" );
+
 
     /////////////////////////////////////////////////
     /// \brief  Création d'un Menu

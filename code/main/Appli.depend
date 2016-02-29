@@ -441,21 +441,23 @@
 	<memory>
 	"Style.h"
 
-1456752484 r:\06 - c++\110 - gui\code\gui\include\style.h
+1456768420 r:\06 - c++\110 - gui\code\gui\include\style.h
 	<SFML/Graphics.hpp>
+	<Enums.h>
 	<memory>
 
-1456759393 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
+1456765952 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
 	<SFML/Graphics.hpp>
 	<memory>
 	<Ecran.h>
 	<Application.h>
 	<gui.h>
 
-1456672537 r:\06 - c++\110 - gui\code\gui\gui.h
+1456768452 r:\06 - c++\110 - gui\code\gui\gui.h
 	"Interface.h"
+	<Enums.h>
 
-1456752323 r:\06 - c++\110 - gui\code\gui\include\gadget.h
+1456770303 r:\06 - c++\110 - gui\code\gui\include\gadget.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<Geometrie.h>
@@ -481,7 +483,7 @@
 	<SFML/Graphics.hpp>
 	<functional>
 
-1456759305 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
+1456760271 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
 	"SFML/Graphics.hpp"
 	"memory"
 	"Gadget.h"
@@ -512,7 +514,7 @@
 1445606138 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1456759495 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1456769503 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -548,7 +550,7 @@
 	"Gadget.h"
 	<Enums.h>
 
-1456673333 r:\06 - c++\110 - gui\code\gui\include\enums.h
+1456768408 r:\06 - c++\110 - gui\code\gui\include\enums.h
 
 1456751951 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnrectangle.h
 	"Bouton.h"
@@ -598,10 +600,10 @@
 	"FabriqueBase.h"
 	"ResourcesMgr.h"
 
-1456671771 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnbarredefilement.h
+1456766856 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnbarredefilement.h
 	"Donnee.h"
 	"DnSlider.h"
-	"BtnRectangle.h"
+	"BtnIcone.h"
 	<memory>
 
 1456622229 r:\06 - c++\110 - gui\code\gui\include\composant.h
@@ -630,10 +632,10 @@
 	<sstream>
 	<ResourcesMgr.inl>
 
-1456755017 r:\06 - c++\110 - gui\code\gui\include\resourcesmgr.inl
+1456767215 r:\06 - c++\110 - gui\code\gui\include\resourcesmgr.inl
 	"ResourcesMgr.h"
 
-1456752540 r:\06 - c++\110 - gui\code\gui\include\gadgets\afficone.h
+1456770765 r:\06 - c++\110 - gui\code\gui\include\gadgets\afficone.h
 	"AffImage.h"
 
 1456751825 r:\06 - c++\110 - gui\code\gui\include\gadgets\btntexte.h
@@ -642,7 +644,7 @@
 	"gadgets\AffLabel.h"
 	<SFML/Graphics.hpp>
 
-1456752139 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnicone.h
+1456770835 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnicone.h
 	"Bouton.h"
 	"gadgets\AffRectangle.h"
 	"gadgets\AffIcone.h"

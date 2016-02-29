@@ -188,7 +188,7 @@ public:
     virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous ){
         m_style = style;
         for ( auto composant : m_composants)
-            composant->setStyle(style);
+            composant->setStyle(style, etat);
         actualiser();
         };
 

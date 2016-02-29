@@ -6,6 +6,13 @@ namespace gui {
 
 
 
+enum class Etat {
+    repos,
+    survol,
+    press,
+    desactive,
+    tous
+};
 
 
 /////////////////////////////////////////////////

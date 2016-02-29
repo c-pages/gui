@@ -96,9 +96,9 @@ void Skin::creerDefaut(){
     style->txt_style.set(sf::Text::Style::Italic ) ;
     style->txt_taille.set( 14 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
-    style->lgn_epaisseur.set( 1 ) ;
+    style->lgn_epaisseur.set( 0 ) ;
     style->lgn_couleur.set( sf::Color(255, 255, 255, 100) ) ;
-    style->fnd_couleur.set( sf::Color(255, 255, 255, 10) ) ;
+    style->fnd_couleur.set( sf::Color(255, 255, 255, 50) ) ;
 
     style = getStyle( Styles::bouton);
 
@@ -107,7 +107,7 @@ void Skin::creerDefaut(){
     style->txt_taille.set( 14 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
     style->txt_couleur.desactive = sf::Color(255, 255, 255, 50 ) ;
-    style->lgn_epaisseur.set( 1 ) ;
+    style->lgn_epaisseur.set( 0 ) ;
     style->lgn_couleur.set ( sf::Color(255, 255, 255, 100) );
     style->lgn_couleur.desactive = sf::Color(255, 255, 255, 30 ) ;
     style->fnd_couleur.repos = sf::Color(255, 255, 255, 20) ;
@@ -168,7 +168,7 @@ void Skin::creerDefaut(){
     style->txt_style.set(sf::Text::Style::Italic ) ;
     style->txt_taille.set( 12 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
-    style->lgn_epaisseur.set( 1 ) ;
+    style->lgn_epaisseur.set( 0 ) ;
     style->lgn_couleur.set( sf::Color(255, 255, 255, 255) ) ;
     style->fnd_couleur.set( sf::Color(155, 155, 155, 255) ) ;
 
@@ -179,7 +179,7 @@ void Skin::creerDefaut(){
     style->txt_style.set(sf::Text::Style::Italic ) ;
     style->txt_taille.set( 12 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
-    style->lgn_epaisseur.set( 1 ) ;
+    style->lgn_epaisseur.set( 0 ) ;
     style->lgn_couleur.set( sf::Color(150, 150, 150, 255) ) ;
     style->fnd_couleur.repos = sf::Color(255, 255, 255, 100) ;
     style->fnd_couleur.survol= sf::Color(255, 255, 255, 150) ;

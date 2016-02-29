@@ -40,7 +40,6 @@ void AffImage::charger ( int id )
 /////////////////////////////////////////////////
 void AffImage::chargerDepuisFichier ( std::string fichier )
 {
-
     std::cout << "AffImage : chargerDepuisFichier\n";
     std::string nomUniqueImage = ms_images.nomDefautSuivant();
 

@@ -14,7 +14,7 @@ DnCaseACocher::DnCaseACocher ()
 , m_label  ( std::make_shared<AffLabel>() )
 {
     // initialiser quelques valeurs
-    m_marge.x = m_marge.y = 2;
+    m_marge.x = m_marge.y = 4;
     m_taille.x = 15;
     m_taille.y = 15;
 
@@ -27,13 +27,17 @@ DnCaseACocher::DnCaseACocher ()
 
     // Action du bouton
     m_bouton->lier ( Evenement::onBtnG_relacher , [this](){
+
+        // On inverse le boolean valeur
         m_valeur = !m_valeur;
-        // Déclechements
+
+        // Déclechements des evenements
         declencher(Evenement::on_changerValeur);
         if (m_valeur)
             declencher(Evenement::onBool_allume);
         else
             declencher(Evenement::onBool_eteind);
+
 
         actualiser ();
     });

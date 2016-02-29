@@ -6,7 +6,7 @@
 /////////////////////////////////////////////////
 #include "Donnee.h"
 #include "DnSlider.h"
-#include "BtnRectangle.h"
+#include "BtnIcone.h"
 #include <memory>
 
 
@@ -51,8 +51,8 @@ public:
 private:
     bool                            m_horizontal;    ///< #G#S
     std::shared_ptr<DnSlider>       m_slider;
-    std::shared_ptr<BtnRectangle>   m_btnPlus;
-    std::shared_ptr<BtnRectangle>   m_btnMoins;
+    std::shared_ptr<BtnIcone>       m_btnPlus;
+    std::shared_ptr<BtnIcone>       m_btnMoins;
 
     float                           m_longeur;      ///<
     float                           m_largeur;      ///<

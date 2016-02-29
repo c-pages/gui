@@ -76,14 +76,14 @@ void EcranDemo::actualiser  ( float deltaT )
     // actualiser l'interface
     m_interface->actualiser    ( );
 
-/*
+
     std::string val;
     if ( m_interface->m_boutonSurvole != nullptr ){
         val =  "Survole : " + m_interface->m_boutonSurvole->getNom();
     } else val = "Survole : nullptr";
 
     m_labelRetour->setTexte ( val );
-*/
+
 
 
 //    std::string val =  "Retour : " + m_interface->m_boutonSurvole->getNom();
@@ -280,7 +280,7 @@ EcranDemo::initGUI_test_Boutons  ()
     using namespace gui;
 
     /////// Simple bouton rectangulaire ///////
-    m_boutonTexte = m_interface->creer.bouton( "Machiner" );
+    m_boutonTexte = m_interface->creer.boutonTexte( "Machiner" );
     m_boutonTexte->setAutoAjuster ( true );
     m_boutonTexte->setSkin        ( m_skin );
 
@@ -305,7 +305,7 @@ EcranDemo::initGUI_test_Boutons  ()
 
 
     /////// autre Label ///////
-    m_label_5 = m_interface->creer.label( "<---  Simple bouton rectangulaire.\n (toute les interr-ACTIONs souris en console.)" );
+    m_label_5 = m_interface->creer.label( "<---  Simple bouton texte.\n (toute les interr-ACTIONs souris en console.)" );
     m_label_5->setPosition    ( 160 + posRoot.x , posRoot.y + 3 );
 //    m_label_5->setSkin        ( m_skin );
     m_label_5->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
@@ -314,7 +314,18 @@ EcranDemo::initGUI_test_Boutons  ()
 
 
 
+    /////// Simple bouton rectangulaire ///////
+    m_boutonIcone = m_interface->creer.boutonIcone( "media/img/Icone_test.png" );
+    m_boutonIcone->setAutoAjuster ( true );
+    m_boutonIcone->setSkin        ( m_skin );
+    m_boutonIcone->setFix         ( true );
+    m_boutonIcone->setPosition    ( posRoot.x , posRoot.y +35 );
 
+
+    /////// autre Label ///////
+    m_label_12 = m_interface->creer.label( "<---  Simple bouton icone." );
+    m_label_12->setPosition    ( 160 + posRoot.x , posRoot.y + 43 );
+    m_label_12->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
 
 
 
@@ -322,7 +333,7 @@ EcranDemo::initGUI_test_Boutons  ()
     /////// Menu ///////
     m_boutonMenu = m_interface->creer.menu( );
 
-    m_boutonMenu->setPosition    ( posRoot.x , posRoot.y  + 35 );
+    m_boutonMenu->setPosition    ( posRoot.x , posRoot.y  + 85 );
     m_boutonMenu->ajouter ( "Faire un truc" , [this](){
                         std::cout << "ACTION fait un truc.\n";
                         });
@@ -340,7 +351,7 @@ EcranDemo::initGUI_test_Boutons  ()
 
     /////// autre Label ///////
     m_label_6 = m_interface->creer.label( "<---  Menu (déroulant, contextuel, ...)." );
-    m_label_6->setPosition    ( 160 + posRoot.x , posRoot.y  +  60 );
+    m_label_6->setPosition    ( 160 + posRoot.x , posRoot.y  +  110 );
     m_label_6->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
 
 

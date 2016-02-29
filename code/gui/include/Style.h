@@ -5,19 +5,13 @@
 // Headers
 /////////////////////////////////////////////////
 #include <SFML/Graphics.hpp>
+#include <Enums.h>
 #include <memory>
 
 
 namespace gui{
 
 
-enum class Etat {
-    repos,
-    survol,
-    press,
-    desactive,
-    tous
-};
 
 
 

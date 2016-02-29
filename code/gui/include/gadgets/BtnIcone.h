@@ -32,18 +32,35 @@ public:
     /////////////////////////////////////////////////
     BtnIcone ();
 
-    virtual void actualiser ( );
 
+    void    setFix(bool val ){ m_fix = val; actualiser ();};
+
+    void    setIconeIndex( unsigned int val )
+    {
+        std::cout << "BtnIcone::nom: " << getNom() <<  "\n";
+        m_icone->setIndex( val );
+        actualiser ();
+    };
+
+    virtual void actualiser ( );
+/*
     virtual void setIndex( unsigned int val ){
 
+    };*/
+
+    void chargerDepuisFichier( std::string fichier )
+    {
+        m_icone->chargerDepuisFichier (fichier);
     };
 
 ////////////////////////////////// ///////////////
 // Membres
 /////////////////////////////////////////////////
 public:
-    std::shared_ptr<AffRectangle>    m_rectangle;
-    std::shared_ptr<AffIcone>        m_icone;
+    std::shared_ptr<AffRectangle>   m_rectangle;
+    std::shared_ptr<AffIcone>       m_icone;
+//    unsigned int                    m_index;
+    bool                            m_fix;
 
 }; // fin class BtnIcone
 

@@ -2,6 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <AffIcone.h>
+#include <cmath>
 
 
 
@@ -11,6 +12,7 @@ namespace gui {
 AffIcone::AffIcone ()
 : AffImage ()
 , m_index ( 1 )
+, m_nbrIcones (0)
 {
 
 }
@@ -21,11 +23,17 @@ AffIcone::AffIcone ()
 /////////////////////////////////////////////////
 void AffIcone::actualiser ()
 {
-
     int longueurTotal = m_texture->getSize().x;
     int largeur = m_texture->getSize().y;
-    m_taille = { largeur , largeur };
 
+//    if (largeur!=0)
+//    m_nbrIcones = std::trunc (longueurTotal / largeur );
+
+//    if ( m_index > m_nbrIcones )
+//        m_index = m_nbrIcones;
+
+    m_taille = { largeur , largeur };
+    std::cout << "AffIcone::actualiser : " << getNom() << "  m_index : " <<  m_index << "\n";
     m_rectangle.setTextureRect ( { ( m_index-1) * largeur
                                  , 0
                                  , largeur
@@ -37,7 +45,7 @@ void AffIcone::actualiser ()
     if ( m_skin == nullptr ) {
 
         m_rectangle.setFillColor        ( sf::Color ( 255, 255, 255, 255 * m_opacite ) );
-        m_rectangle.setOutlineColor     ( sf::Color ( 255, 255, 255, 255 * m_opacite ) );
+//        m_rectangle.setOutlineColor     ( sf::Color ( 255, 255, 255, 255 * m_opacite ) );
         m_rectangle.setOutlineThickness ( 0 );
 
     } else {
@@ -50,13 +58,14 @@ void AffIcone::actualiser ()
                                         , style->fnd_couleur.repos.b
                                         , style->fnd_couleur.repos.a * m_opacite ) );
 
-        m_rectangle.setOutlineColor     ( sf::Color (
-                                          style->lgn_couleur.repos.r
-                                        , style->lgn_couleur.repos.g
-                                        , style->lgn_couleur.repos.b
-                                        , style->lgn_couleur.repos.a * m_opacite ) );
+//        m_rectangle.setOutlineColor     ( sf::Color (
+//                                          style->lgn_couleur.repos.r
+//                                        , style->lgn_couleur.repos.g
+//                                        , style->lgn_couleur.repos.b
+//                                        , style->lgn_couleur.repos.a * m_opacite ) );
 
-        m_rectangle.setOutlineThickness ( style->lgn_epaisseur.repos ) ;
+//        m_rectangle.setOutlineThickness ( style->lgn_epaisseur.repos ) ;
+        m_rectangle.setOutlineThickness ( 0 );
 
     }
     actualiser_bounds();

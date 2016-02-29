@@ -61,7 +61,7 @@ std::shared_ptr<AffImage>    FabriqueBase::image( int id )
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<AffIcone>    FabriqueBase::icone( std::string fichier , unsigned int id)
+std::shared_ptr<AffIcone>    FabriqueBase::icone( std::string fichier , unsigned int id )
 {
     auto nouveauGadget = creerGadget<AffIcone>( );
     if ( fichier != "");
@@ -74,7 +74,7 @@ std::shared_ptr<AffIcone>    FabriqueBase::icone( std::string fichier , unsigned
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<BtnRectangle>    FabriqueBase::bouton( sf::Vector2i taille )
+std::shared_ptr<BtnRectangle>    FabriqueBase::boutonRect( sf::Vector2i taille )
 {
     auto nouveauGadget = creerGadget<BtnRectangle>( );
     nouveauGadget->setTaille ( taille );
@@ -84,12 +84,27 @@ std::shared_ptr<BtnRectangle>    FabriqueBase::bouton( sf::Vector2i taille )
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<BtnTexte>    FabriqueBase::bouton( std::string texte )
+std::shared_ptr<BtnTexte>    FabriqueBase::boutonTexte( std::string texte )
 {
     auto nouveauGadget = creerGadget<BtnTexte>( );
     nouveauGadget->setTexte ( texte );
     return nouveauGadget;
 }
+
+
+/////////////////////////////////////////////////
+std::shared_ptr<BtnIcone>    FabriqueBase::boutonIcone( std::string fichier )
+{
+    auto nouveauGadget = creerGadget<BtnIcone>( );
+    if ( fichier != "");
+        nouveauGadget->chargerDepuisFichier ( fichier );
+    return nouveauGadget;
+
+}
+
+
+
+
 /*
 /////////////////////////////////////////////////
 std::shared_ptr<BtnRectangle>    FabriqueBase::bouton( sf::Vector2i taille )

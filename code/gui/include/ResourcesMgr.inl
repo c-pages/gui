@@ -56,7 +56,7 @@ template<typename RESOURCE,typename IDENTIFIANT>
 template<typename ... Args>
 void ResourcesMgr<RESOURCE,IDENTIFIANT>::load(const IDENTIFIANT& id , Args&& ... args)
 {
-//    if ( get(id) != mPlan.end())
+
 //        throw std::runtime_error("Image: Nom unique existe deja : " + id );
 
     std::cout << "ResourcesMgr : load " << id << "\n";

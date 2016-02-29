@@ -11,10 +11,14 @@ namespace gui {
 BtnIcone::BtnIcone ()
 : m_rectangle   ( std::make_shared<AffRectangle>())
 , m_icone       ( std::make_shared<AffIcone>())
+, m_fix    ( false )
 {
-    setTexte("");
+    m_marge       = { 2 , 2} ;
     ajouterComposant( m_rectangle );
     ajouterComposant( m_icone );
+        m_icone->setIndex ( 1 );
+    actualiser ();
+//    m_icone->setStyle ( m_skin->getStyle( Skin::Styles::bouton ) , Etat::repos );
 }
 
 /////////////////////////////////////////////////
@@ -38,14 +42,21 @@ void BtnIcone::actualiser ()
     else if ( estSurvole () )
         etatBouton = Etat::survol;
 
+    if ( ! m_fix ){
+        m_icone->setStyle ( style, etatBouton );
+        m_icone->setIndex ( int( etatBouton ) +1 );
+    } else {
+        m_icone->setStyle ( style);
+    }
+
+
     if ( m_autoAjust )
         m_taille = { m_icone->getTaille().x + m_marge.x*2 , m_icone->getTaille().y + m_marge.y*2 } ;
 
     m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
-    m_icone->setPosition( m_marge.x  , m_marge.y/2   );
+    m_icone->setPosition( m_marge.x  , m_marge.y   );
 
 
-//    m_icone->setStyle ( style, etatBouton );
 
     m_rectangle->setFillColor    ( sf::Color (
                                       style->fnd_couleur.get(etatBouton).r
@@ -66,20 +77,6 @@ void BtnIcone::actualiser ()
 
 
 
-
-/*
-/////////////////////////////////////////////////
-void BtnIcone::draw (sf::RenderTarget& target, sf::RenderStates states) const
-{
-    //On applique la transformation
-    states.transform *= getTransform();
-
-    // On dessine les éléments
-    target.draw(m_rectangle, states);
-    target.draw(m_label, states);
-
-}
-*/
 
 } // fin namespace gui
 

@@ -60,7 +60,7 @@ public:
 /////////////////////////////////////////////////
 // membres
 /////////////////////////////////////////////////
-    static sf::Vector2i getPosSouris(){
+    static sf::Vector2i getPosSouris() {
         sf::Vector2i result = {-1,-1};
         result = sf::Mouse::getPosition( *ms_fenetre );
         return result;

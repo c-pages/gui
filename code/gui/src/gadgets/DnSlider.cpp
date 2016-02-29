@@ -2,6 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <DnSlider.h>
+#include <Interface.h>
 
 
 
@@ -17,6 +18,7 @@ DnSlider::DnSlider ()
 , m_drag        ( false )
 , m_longueur    ( 180 )
 , m_largeur     ( 15 )
+, m_decalageDragSouris ({0,0})
 {
     m_marge.x = 0;
     m_marge.y = 0;
@@ -79,6 +81,7 @@ DnSlider::DnSlider ()
 
     // Action du slider
     m_slider->lier ( Evenement::onBtnG_presser , [this](){
+        m_decalageDragSouris = sf::Vector2i ( getLocalPosSouris().x - m_slider->getPosition().x , getLocalPosSouris().y - m_slider->getPosition().y );
         setDrag( true );
         actualiser ();
     });
@@ -156,9 +159,9 @@ void DnSlider::positionnerCurseurSurSouris ()
 
     // Definir la nouvelle position avec les coords souris
     if ( m_horizontal )
-        m_slider->setPosition ( getLocalPosSouris().x - m_marge.x - m_slider->getTaille().x/2, m_marge.y );
+        m_slider->setPosition ( getLocalPosSouris().x - m_decalageDragSouris.x - m_marge.x , m_marge.y );
     else
-        m_slider->setPosition (  m_marge.x , getLocalPosSouris().y - m_marge.y - m_slider->getTaille().y/2);
+        m_slider->setPosition (  m_marge.x , getLocalPosSouris().y - m_marge.y  - m_decalageDragSouris.y );
 
     // Corriger la position pour la garder dans ses limites
     corrigerPositionCurseur();

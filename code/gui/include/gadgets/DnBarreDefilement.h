@@ -54,6 +54,7 @@ private:
     std::shared_ptr<BtnIcone>       m_btnPlus;
     std::shared_ptr<BtnIcone>       m_btnMoins;
 
+
     float                           m_longeur;      ///<
     float                           m_largeur;      ///<
 

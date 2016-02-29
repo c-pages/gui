@@ -112,6 +112,7 @@ private:
     float                           m_largeur;      ///<
 
     bool                            m_drag;
+    sf::Vector2i                    m_decalageDragSouris;
 
 }; // fin class DnSlider
 

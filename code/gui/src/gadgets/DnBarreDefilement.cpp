@@ -16,6 +16,7 @@ DnBarreDefilement::DnBarreDefilement ()
 , m_longeur     ( 180 )
 , m_largeur     ( 15 )
 {
+
     ajouterComposant( m_slider );
     ajouterComposant( m_btnPlus );
     ajouterComposant( m_btnMoins );
@@ -36,9 +37,11 @@ DnBarreDefilement::DnBarreDefilement ()
     m_btnPlus->lier (Evenement::onBtnG_relacher, [this](){
         m_slider->incrementer();
     });
+
     m_btnMoins->lier (Evenement::onBtnG_relacher, [this](){
         m_slider->decrementer();
     });
+
 }
 
 

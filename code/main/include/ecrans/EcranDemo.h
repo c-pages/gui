@@ -131,6 +131,7 @@ private:
     std::shared_ptr<gui::AffIcone>      m_icone;        ///< Une simple icone.
 
     // BOUTON
+    std::shared_ptr<gui::BtnTexte>    m_boutonTexte;    ///< Un simple bouton rectangulaire.
     std::shared_ptr<gui::BtnRectangle>    m_boutonRect;    ///< Un simple bouton rectangulaire.
     std::shared_ptr<gui::BtnMenu>         m_boutonMenu;    ///< Un bouton Menu.
 

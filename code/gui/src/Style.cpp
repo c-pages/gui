@@ -13,22 +13,19 @@ Style::Style()
     gui::ms_polices.load( "Defaut" , "media/polices/consola.ttf" );
 
     txt_police.set ( gui::ms_polices.get( "Defaut" ) );
-
     txt_police.press.loadFromFile ( "media/polices/consola.ttf" );
     txt_police.repos.loadFromFile ( "media/polices/consola.ttf" );
     txt_police.survol.loadFromFile( "media/polices/consola.ttf" );
     txt_police.desactive.loadFromFile( "media/polices/consola.ttf" );
-
     txt_style.set(sf::Text::Style::Regular ) ;
     txt_taille.set( 9.5 ) ;
-
     txt_couleur.set( sf::Color(200, 200, 200)) ;
     txt_couleur.set( sf::Color(200, 200, 200,50), Etat::desactive ) ;
 
     lgn_epaisseur.set( 1 ) ;
     lgn_couleur.set( sf::Color(150, 150, 150 ) ) ;
     lgn_couleur.set( sf::Color(150, 150, 150,100), Etat::desactive ) ;
-//    fnd_couleur.set( sf::Color(100, 100, 100) ) ;
+
     fnd_couleur.set( sf::Color(100, 100, 100,50), Etat::desactive ) ;
     fnd_couleur.set( sf::Color(200, 200, 200), Etat::press ) ;
     fnd_couleur.set( sf::Color(100, 100, 100), Etat::repos ) ;

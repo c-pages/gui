@@ -25,7 +25,7 @@ Skin::Skin ()
 void Skin::creerDefaut(){
 
     std::shared_ptr<Style> style;
-/*
+
     style = getStyle( Styles::defaut );
 
     style->txt_police.set ( gui::ms_polices.get(  "Defaut" ) );
@@ -35,7 +35,7 @@ void Skin::creerDefaut(){
     style->lgn_epaisseur.set( 1 ) ;
     style->lgn_couleur.set ( sf::Color(255, 255, 255, 100) );
     style->fnd_couleur.set ( sf::Color(255, 255, 255, 20) );
-*/
+
 
 
     style = getStyle( Styles::invisible );

@@ -28,7 +28,7 @@ void BtnMenu::ajouter (std::string nom, FctnAction fonction)
     nouvelElement->nom      = nom;
     nouvelElement->fonction = fonction;
 
-    std::shared_ptr<Bouton>     bouton = std::make_shared<BtnRectangle>( );
+    std::shared_ptr<Bouton>     bouton = std::make_shared<BtnTexte>( );
     bouton->setMarge            ( { 5 , 2 } );
     bouton->setTexte            ( nom );
     bouton->setAutoAjuster      ( false );

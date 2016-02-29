@@ -35,7 +35,7 @@ void AffLabel::setStyle ( std::shared_ptr<Style> style , Etat etat ){
         m_texteSFML->setCharacterSize   ( style->txt_taille.get(etat) );
         m_texteSFML->setFont            ( m_police );
 
-        std::cout << " ----------- " << float (style->txt_taille.get(etat)  ) << "\n";
+//        std::cout << " ----------- " << float (style->txt_taille.get(etat)  ) << "\n";
 
         actualiser();
 }
@@ -46,20 +46,18 @@ void AffLabel::setStyle ( std::shared_ptr<Style> style , Etat etat ){
 void AffLabel::actualiser ()
 {
     m_texteSFML->setString  ( m_texte );
-/**/
-    if( m_style == nullptr )
-    {
-        auto style = m_skin->getStyle ( Skin::Styles::defaut );
 
-        m_police = style->txt_police.get(Etat::repos);
-        m_texteSFML->setColor           ( style->txt_couleur.get(Etat::repos) );
-        m_texteSFML->setStyle           ( style->txt_style.get(Etat::repos) );
-        m_texteSFML->setFont            ( style->txt_police.get(Etat::repos) );
+    auto style = m_skin->getStyle ( Skin::Styles::defaut );
+    if( m_style !=  nullptr )
+        style = m_style;
 
-//        m_texteSFML->setCharacterSize   ( m_style->txt_taille.get(Etat::repos) );
-        m_texteSFML->setString  ( m_texte );
-        m_texteSFML->setFont    ( m_police );
-    }
+    m_police = style->txt_police.get(Etat::repos);
+    m_texteSFML->setColor           ( style->txt_couleur.get(Etat::repos) );
+    m_texteSFML->setStyle           ( style->txt_style.get(Etat::repos) );
+    m_texteSFML->setFont            ( style->txt_police.get(Etat::repos) );
+    m_texteSFML->setCharacterSize   ( style->txt_taille.get(Etat::repos) );
+    m_texteSFML->setString  ( m_texte );
+    m_texteSFML->setFont    ( m_police );
 
 
 

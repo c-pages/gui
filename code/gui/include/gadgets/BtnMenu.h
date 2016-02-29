@@ -6,7 +6,7 @@
 /////////////////////////////////////////////////
 #include "Bouton.h"
 #include "AffRectangle.h"
-#include "BtnRectangle.h"
+#include "BtnTexte.h"
 #include <vector>
 #include <memory>
 

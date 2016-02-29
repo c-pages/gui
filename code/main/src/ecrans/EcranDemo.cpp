@@ -187,12 +187,12 @@ EcranDemo::initGUI_test_Donnees  ()
 
     m_boutonCoche->lier ( gui::Evenement::on_changerValeur , [this](){
                         std::cout << "ACTION Bool : changer Valeur\n";
-                        if (  m_boutonRect->estActif() ){
+                        if (  m_boutonTexte->estActif() ){
                             delierMachiner ();
-                            m_boutonRect->setActif( false );
+                            m_boutonTexte->setActif( false );
                         } else {
                             lierMachiner ();
-                            m_boutonRect->setActif( true );
+                            m_boutonTexte->setActif( true );
                         } });
     m_boutonCoche->lier ( gui::Evenement::onBool_allume , [this](){
                         std::cout << "ACTION Bool : allume\n";
@@ -280,12 +280,11 @@ EcranDemo::initGUI_test_Boutons  ()
     using namespace gui;
 
     /////// Simple bouton rectangulaire ///////
-    m_boutonRect = m_interface->creer.bouton( sf::Vector2i (20,20) );
-    m_boutonRect->setTexte ( "Machiner" );
-    m_boutonRect->setAutoAjuster ( true );
-    m_boutonRect->setSkin        ( m_skin );
+    m_boutonTexte = m_interface->creer.bouton( "Machiner" );
+    m_boutonTexte->setAutoAjuster ( true );
+    m_boutonTexte->setSkin        ( m_skin );
 
-    m_boutonRect->setPosition    ( posRoot.x , posRoot.y );
+    m_boutonTexte->setPosition    ( posRoot.x , posRoot.y );
 
      lierMachiner ();
 
@@ -294,14 +293,14 @@ EcranDemo::initGUI_test_Boutons  ()
     m_interface->lier ( sf::Keyboard::Tab , [this]() {
             std::cout << "Interface - Action : touche 'Tab'\n";
             std::cout << "      -> toggle l'activite du bouton\n";
-            if (  m_boutonRect->estActif() ){
+            if (  m_boutonTexte->estActif() ){
                 delierMachiner ();
-                m_boutonRect->setActif( false );
+                m_boutonTexte->setActif( false );
             }else {
                 lierMachiner ();
-                m_boutonRect->setActif( true );
+                m_boutonTexte->setActif( true );
             }
-            m_boutonCoche->setValeur ( m_boutonRect->estActif() );
+            m_boutonCoche->setValeur ( m_boutonTexte->estActif() );
         } );
 
 
@@ -364,7 +363,7 @@ EcranDemo::initGUI_test_Boutons  ()
 void EcranDemo::lierMachiner ()
 {
 
-    m_boutonRect->lier ( gui::Evenement::onBtnG_relacher , [this](){
+    m_boutonTexte->lier ( gui::Evenement::onBtnG_relacher , [this](){
                         std::cout << "MACHINER: souris gauche relache : Faire un machin : " << m_zoneTexte->getValeur() <<"\n";
 /*
                         if (  m_boutonCoche->estVisible() ){
@@ -375,39 +374,39 @@ void EcranDemo::lierMachiner ()
                         */
                         std::cout << "-> slider : " << m_slider->getValeur() <<"\n";
                     });
-    m_boutonRect->lier ( gui::Evenement::onBtnG_presser , [this](){
+    m_boutonTexte->lier ( gui::Evenement::onBtnG_presser , [this](){
                         std::cout << "MACHINER: souris gauche presse\n";
                         });
-    m_boutonRect->lier ( gui::Evenement::onBtnD_presser , [this](){
+    m_boutonTexte->lier ( gui::Evenement::onBtnD_presser , [this](){
                         std::cout << "MACHINER: souris droite presse\n";
                         });
-    m_boutonRect->lier ( gui::Evenement::onBtnM_presser , [this](){
+    m_boutonTexte->lier ( gui::Evenement::onBtnM_presser , [this](){
                         std::cout << "MACHINER: souris milieu presse\n";
                         });
 
-    m_boutonRect->lier ( gui::Evenement::onBtnG_relacherDehors  , [this](){
+    m_boutonTexte->lier ( gui::Evenement::onBtnG_relacherDehors  , [this](){
                         std::cout << "MACHINER: souris gauche relacherDehors\n";
                         });
-    m_boutonRect->lier ( gui::Evenement::onBtnG_relacher , [this](){
+    m_boutonTexte->lier ( gui::Evenement::onBtnG_relacher , [this](){
                         std::cout << "MACHINER: souris gauche relacher\n";
                         });
-    m_boutonRect->lier ( gui::Evenement::onBtnD_relacherDehors  , [this](){
+    m_boutonTexte->lier ( gui::Evenement::onBtnD_relacherDehors  , [this](){
                         std::cout << "MACHINER: souris droite relacherDehors\n";
                         });
-    m_boutonRect->lier ( gui::Evenement::onBtnD_relacher , [this](){
+    m_boutonTexte->lier ( gui::Evenement::onBtnD_relacher , [this](){
                         std::cout << "MACHINER: souris droite relacher\n";
                         });
-    m_boutonRect->lier ( gui::Evenement::onBtnM_relacherDehors  , [this](){
+    m_boutonTexte->lier ( gui::Evenement::onBtnM_relacherDehors  , [this](){
                         std::cout << "MACHINER: souris milieu relacherDehors\n";
                         });
-    m_boutonRect->lier ( gui::Evenement::onBtnM_relacher , [this](){
+    m_boutonTexte->lier ( gui::Evenement::onBtnM_relacher , [this](){
                         std::cout << "MACHINER: souris milieu relacher\n";
                         });
 
-    m_boutonRect->lier ( gui::Evenement::onBtnM_roulerHaut  , [this](){
+    m_boutonTexte->lier ( gui::Evenement::onBtnM_roulerHaut  , [this](){
                         std::cout << "MACHINER: souris milieu ROULETTE PLUS\n";
                         });
-    m_boutonRect->lier ( gui::Evenement::onBtnM_roulerBas , [this](){
+    m_boutonTexte->lier ( gui::Evenement::onBtnM_roulerBas , [this](){
                         std::cout << "MACHINER: souris milieu ROULETTE MOINS\n";
                         });
 }
@@ -418,20 +417,20 @@ void EcranDemo::lierMachiner ()
 void EcranDemo::delierMachiner ()
 {
 
-    m_boutonRect->delier ( gui::Evenement::onBtnG_relacher);
-    m_boutonRect->delier ( gui::Evenement::onBtnG_presser);
-    m_boutonRect->delier ( gui::Evenement::onBtnD_presser);
-    m_boutonRect->delier ( gui::Evenement::onBtnM_presser );
+    m_boutonTexte->delier ( gui::Evenement::onBtnG_relacher);
+    m_boutonTexte->delier ( gui::Evenement::onBtnG_presser);
+    m_boutonTexte->delier ( gui::Evenement::onBtnD_presser);
+    m_boutonTexte->delier ( gui::Evenement::onBtnM_presser );
 
-    m_boutonRect->delier ( gui::Evenement::onBtnG_relacherDehors );
-    m_boutonRect->delier ( gui::Evenement::onBtnG_relacher);
-    m_boutonRect->delier ( gui::Evenement::onBtnD_relacherDehors );
-    m_boutonRect->delier ( gui::Evenement::onBtnD_relacher );
-    m_boutonRect->delier ( gui::Evenement::onBtnM_relacherDehors );
-    m_boutonRect->delier ( gui::Evenement::onBtnM_relacher );
+    m_boutonTexte->delier ( gui::Evenement::onBtnG_relacherDehors );
+    m_boutonTexte->delier ( gui::Evenement::onBtnG_relacher);
+    m_boutonTexte->delier ( gui::Evenement::onBtnD_relacherDehors );
+    m_boutonTexte->delier ( gui::Evenement::onBtnD_relacher );
+    m_boutonTexte->delier ( gui::Evenement::onBtnM_relacherDehors );
+    m_boutonTexte->delier ( gui::Evenement::onBtnM_relacher );
 
-    m_boutonRect->delier ( gui::Evenement::onBtnM_roulerHaut);
-    m_boutonRect->delier ( gui::Evenement::onBtnM_roulerBas );
+    m_boutonTexte->delier ( gui::Evenement::onBtnM_roulerHaut);
+    m_boutonTexte->delier ( gui::Evenement::onBtnM_roulerBas );
 
 }
 

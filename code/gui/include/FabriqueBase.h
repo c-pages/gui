@@ -15,6 +15,8 @@
 
 // BOUTONS
 #include "gadgets\BtnRectangle.h"
+#include "gadgets\BtnTexte.h"
+#include "gadgets\BtnIcone.h"
 #include "gadgets\BtnMenu.h"
 
 // DONNEES
@@ -88,13 +90,15 @@ public:
 // BOUTONS
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
     /////////////////////////////////////////////////
     /// \brief  Création d'un simple bouton texte
     ///
     /// \param texte
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<BtnRectangle>    bouton( std::string texte = "" );
+    std::shared_ptr<BtnTexte>    bouton( std::string texte = "" );
 
     /////////////////////////////////////////////////
     /// \brief  Création d'un simple bouton rectangulaire

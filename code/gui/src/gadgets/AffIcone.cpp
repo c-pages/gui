@@ -26,10 +26,10 @@ void AffIcone::actualiser ()
     int largeur = m_texture->getSize().y;
     m_taille = { largeur , largeur };
 
-//    m_rectangle.setTextureRect ( { ( m_index-1) * largeur
-//                                 , 0
-//                                 , largeur
-//                                 , largeur });
+    m_rectangle.setTextureRect ( { ( m_index-1) * largeur
+                                 , 0
+                                 , largeur
+                                 , largeur } );
 
     m_rectangle.setTexture( m_texture );
     m_rectangle.setSize ( { largeur , largeur } );

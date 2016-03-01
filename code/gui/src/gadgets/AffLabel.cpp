@@ -97,9 +97,9 @@ void AffLabel::actualiser ()
 }
 
 /////////////////////////////////////////////////
-sf::Vector2f  AffLabel::getTaille() const
+sf::Vector2i  AffLabel::getTaille() const
 {
-    return { m_texteSFML->getGlobalBounds().width , m_texteSFML->getGlobalBounds().height};
+    return { m_texteSFML->getGlobalBounds().width , m_texteSFML->getGlobalBounds().height };
 }
 
 

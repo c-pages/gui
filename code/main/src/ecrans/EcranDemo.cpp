@@ -174,7 +174,7 @@ EcranDemo::initGUI_test_Groupements  ()
     auto m_panneau = m_interface->creer.panneau(  );
     m_panneau->setPosition  ( posRoot.x , posRoot.y + 20 );
     m_panneau->setStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
-    m_panneau->setTaille    ( { 500 , 80 } );
+    m_panneau->setTaille    ( { 600 , 300 } );
 
     auto m_rect = m_interface->creer.rectangle( { 710 , 150 } );
     m_rect->setPosition     ( 20 , 20 );

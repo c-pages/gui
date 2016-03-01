@@ -80,6 +80,10 @@ public:
     /////////////////////////////////////////////////
     void actualiserContenu ()  ;
 
+private:
+    sf::Vector2f    deplMaxContenu();
+
+
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
@@ -91,8 +95,10 @@ private:
 
     sf::Texture     m_contenu;    ///< La texture SFML qui affiche le contenu du panneau.
     sf::RenderTexture m_renderTexture;
+    /*
     bool            m_afficherSlider_V;
-    bool            m_afficherSlider_H;
+    bool            m_afficherSlider_H;*/
+
     Repartiteur     m_repartiteur;    ///< cf; GOF Strategie #S
     int             m_posX_texture;
 

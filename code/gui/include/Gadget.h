@@ -44,6 +44,12 @@ public:
     };
 
 
+    virtual sf::Vector2i getTaille () const
+    {
+        if ( estVisible() )
+            return m_taille;
+        else return {0,0};
+    };
 
     ///< Definir m_visible
     void setVisible( bool val )

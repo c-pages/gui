@@ -49,7 +49,7 @@ public:
     virtual void setTailleY( float val ){ m_taille.y = val; actualiser_bounds(); actualiser(); };
 
     ///< Acceder à m_taille
-    sf::Vector2i getTaille () const { return m_taille; };
+    virtual sf::Vector2i getTaille () const { return m_taille;  };
 
     ///< Acceder à m_localBounds
     sf::FloatRect getLocalBounds () const { return m_localBounds; };

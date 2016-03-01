@@ -22,31 +22,39 @@ GrpPanneau::GrpPanneau ()
 , m_posX_texture(0)
 , m_posY_texture(0)
 {
-    m_renderTexture.create(1200, 900);
+    m_taille = { 400 , 200 };
+
+    m_renderTexture.create( 1200, 900 );
+
     ajouterComposant( m_fond );
     ajouterComposant( m_slider_V );
     ajouterComposant( m_slider_H );
-//    ajouterComposant( m_contenant );
+
     m_slider_V->setVertical();
 
-    m_taille = { 400 , 200 };
+    m_slider_V->lier ( Evenement::on_changerValeur , [this](){
 
-    m_slider_V->lier (Evenement::on_changerValeur , [this](){
-        float longueurCursV = m_taille.y/ float( boundgingB_enfants().height );
-        m_posY_texture = (100-m_slider_V->getValeur()) * longueurCursV;
-        std::cout << " VALEUR : " << m_slider_V->getValeur()  << "\n";
+        float longueurContenu       = float( boundgingB_enfants().height ) +  m_slider_H->getTaille().y;
+        float longueurContenant     = m_taille.y - m_slider_H->getTaille().y;
+        float longueurDeplacement   = longueurContenu - longueurContenant;
+        float coef                  = ( 100 - m_slider_V->getValeur() ) / 100;
+
+        m_posY_texture              = coef * longueurDeplacement;
+
         actualiser ();
     });
 
-    m_slider_H->lier (Evenement::on_changerValeur , [this](){
-        float longueurCursH = m_taille.x/ float( boundgingB_enfants().width );
-        m_posX_texture = m_slider_H->getValeur() * longueurCursH;
+    m_slider_H->lier ( Evenement::on_changerValeur , [this](){
+
+        float longueurContenu       = float( boundgingB_enfants().width ) +  m_slider_V->getTaille().x;
+        float longueurContenant     = m_taille.x - m_slider_V->getTaille().x;
+        float longueurDeplacement   = longueurContenu - longueurContenant;
+        float coef                  = ( m_slider_H->getValeur() ) / 100;
+
+        m_posX_texture              = coef * longueurDeplacement;
+
         actualiser ();
     });
-
-
-
-
 
     actualiser ();
 }
@@ -72,8 +80,6 @@ void GrpPanneau::actualiser ()
 
     float longueurCursH = m_taille.x/ float( boundgingB_enfants().width )* 100 ;
     float longueurCursV = m_taille.y /float( boundgingB_enfants().height )* 100 ;
-//    std::cout << "longueurCursH :"<< longueurCursH << ", longueurCursV :"<< longueurCursV << "\n";
-//    std::cout << "boundgingB_enfants() :"<< boundgingB_enfants().left << ", "<< boundgingB_enfants().top<< ", "<< boundgingB_enfants().width<< ", "<< boundgingB_enfants().height << "\n";
     m_slider_H->setLongueurCurseur(longueurCursH);
     m_slider_V->setLongueurCurseur(longueurCursV);
 

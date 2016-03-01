@@ -151,12 +151,6 @@ EcranDemo::initGUI ()
     m_labelRetour->setPosition    ( 20 , 5 );
     m_labelRetour->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
-
-    /////// Interactions clavier ///////
-    // On ajoute une liaison à la touche Espace pour changer le style du rectangle
-    m_interface->lier ( sf::Keyboard::Space , [this]() {
-            std::cout << "Interface - Action : touche 'Espace'\n";
-        } );
 }
 
 /////////////////////////////////////////////////
@@ -178,16 +172,21 @@ EcranDemo::initGUI_test_Groupements  ()
 
     //// creation d'un panneau
     auto m_panneau = m_interface->creer.panneau(  );
-    m_panneau->setPosition    ( posRoot.x , posRoot.y + 20 );
-    m_panneau->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
+    m_panneau->setPosition  ( posRoot.x , posRoot.y + 20 );
+    m_panneau->setStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
+    m_panneau->setTaille    ( { 500 , 80 } );
 
-    auto m_rect = m_interface->creer.rectangle( {680,500} );
-    m_rect->setPosition    ( 20 , 20 );
-    m_rect->setStyle       ( m_skin->getStyle ( gui::Styles::fond ) );
+    auto m_rect = m_interface->creer.rectangle( { 710 , 150 } );
+    m_rect->setPosition     ( 20 , 20 );
+    m_rect->setStyle        ( m_skin->getStyle ( gui::Styles::fond ) );
 
-    m_textePourPanneau = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil \nquod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
-    m_panneau->ajouter (m_textePourPanneau);
+    m_rect->setFillColor    ( sf::Color::Yellow );
+
+    m_textePourPanneau = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
+
     m_panneau->ajouter (m_rect);
+    m_panneau->ajouter (m_textePourPanneau);
+
 //    m_interface->retirer( m_textePourPanneau );
 //    m_textePourPanneau->ajouter (m_panneau);
 }

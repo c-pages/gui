@@ -55,6 +55,7 @@ public:
     ///
     /////////////////////////////////////////////////
     virtual void setTaille(sf::Vector2i taille){
+        m_taille = taille;
         m_fond->setTaille(taille);
         actualiser();
     }

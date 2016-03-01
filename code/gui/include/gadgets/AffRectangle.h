@@ -36,14 +36,47 @@ public:
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
-    void setFillColor (sf::Color couleur)
-        { m_rectangle.setFillColor( couleur ); };
 
-    void setOutlineColor (sf::Color couleur)
-        { m_rectangle.setOutlineColor( couleur ); };
 
-    void setOutlineThickness (float epaisseur)
-        { m_rectangle.setOutlineThickness( epaisseur ); };
+
+
+
+    void setFillColor (sf::Color couleur) {
+            m_couleurFond = std::make_shared<sf::Color>( couleur );
+            actualiser();
+        };
+
+    void viderFillColor ( ) {
+            m_couleurFond = nullptr;
+            actualiser();
+        };
+
+
+    void setOutlineColor (sf::Color couleur) {
+            m_rectangle.setOutlineColor( couleur );
+            m_couleurLignes = std::make_shared<sf::Color>( couleur );
+            actualiser();
+          };
+
+    void viderOutlineColor ( ) {
+            m_couleurLignes = nullptr;
+            actualiser();
+        };
+
+    void setOutlineThickness (float epaisseur) {
+            m_rectangle.setOutlineThickness( epaisseur );
+            m_epaisseur = std::make_shared<float>( epaisseur );
+            actualiser();
+          };
+
+    void viderOutlineThickness ( ) {
+            m_epaisseur = nullptr;
+            actualiser();
+        };
+
+
+
+
 
 
 protected:
@@ -52,7 +85,11 @@ protected:
 // Membres
 /////////////////////////////////////////////////
 private:
-    sf::RectangleShape      m_rectangle;    ///< Le rectangle sfml.
+    sf::RectangleShape  m_rectangle;        ///< Le rectangle sfml.
+
+    std::shared_ptr<sf::Color>  m_couleurFond;
+    std::shared_ptr<sf::Color>  m_couleurLignes;
+    std::shared_ptr<float>      m_epaisseur;
 
 }; // fin class AffRectangle
 

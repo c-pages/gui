@@ -30,7 +30,7 @@ class Composite {
 
 public:
     ///< Definir m_parent
-    void setParent( Gadget* val ){ m_parent = val; };
+    void setParent( Gadget* val );
 
     ///< Acceder à m_parent
     Gadget* getParent () const { return m_parent; };
@@ -90,6 +90,9 @@ public:
     /// \param states
     /////////////////////////////////////////////////
     virtual void dessinerEnfants (sf::RenderTarget& target, sf::RenderStates states) const ;
+
+
+    sf::IntRect  boundgingB_enfants();
 
 
 

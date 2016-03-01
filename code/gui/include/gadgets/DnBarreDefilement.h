@@ -47,7 +47,10 @@ public:
 
     virtual void actualiser ();
 
-    void setLongueurCurseur( float pourcentage ) { m_slider->setLongCurseur( pourcentage ); actualiser(); };
+    void setLongueurCurseur( float pourcentage ) {
+        m_slider->setLongCurseur( pourcentage );
+        actualiser();
+    };
 
         ///< Definir m_taille
     void setLongueur( float longueur ){

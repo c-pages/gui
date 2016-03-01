@@ -82,6 +82,7 @@ void Gadget::traiterEvenements (const sf::Event& evenement)
     // les evenements des enfants
     for (auto enfant : m_enfants)
         enfant->traiterEvenements ( evenement );
+
 }
 
 

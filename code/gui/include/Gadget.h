@@ -44,6 +44,11 @@ public:
     };
 
 
+    /////////////////////////////////////////////////
+    /// \brief accesseur à la taille
+    ///
+    /// \return la taille. Si non visible renvois {0,0}
+    /////////////////////////////////////////////////
     virtual sf::Vector2i getTaille () const
     {
         if ( estVisible() )

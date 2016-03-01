@@ -2,6 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <Composite.h>
+//#include <Groupement.h>
 
 #include <Gadget.h>
 
@@ -11,21 +12,27 @@ namespace gui {
 /////////////////////////////////////////////////
 void Composite::ajouter (std::shared_ptr<Gadget> enfant)
 {
-        std::cout << "Composite::ajouter\n";
+
     // si l'enfant avait un parent on le retire de sa liste des enfants
     auto parentBack = enfant->getParent();
-    if ( parentBack != nullptr ){
+    if ( parentBack != nullptr )
         parentBack->retirer ( enfant );
-        std::cout << "POR LOOOOOOOOOOOOOOOooooooooooooooooooo.................\n";
-    }
 
     m_enfants.push_back( enfant );
-    enfant->setParent ( static_cast<Gadget*>(this) );
-    static_cast<Gadget*>(this)->actualiser();
+
+    auto _this = static_cast<Gadget*>( this );
+    enfant->setParent ( _this );
     enfant->actualiser();
-//    actualiser();
+    _this->actualiser();
+
 }
 
+/////////////////////////////////////////////////
+void Composite::setParent( Gadget* val )
+{
+    m_parent = val;
+    m_parent->actualiser();
+};
 
 
 /////////////////////////////////////////////////
@@ -40,6 +47,7 @@ std::shared_ptr<Gadget> Composite::retirer ( std::shared_ptr<Gadget> gadget )
         }
         i++;
     }
+    static_cast<Gadget*>(this)->actualiser();
 }
 
 /////////////////////////////////////////////////
@@ -63,6 +71,35 @@ void Composite::supprimer (std::shared_ptr<Gadget> gadget ){
 
 }
 
+/////////////////////////////////////////////////
+sf::IntRect  Composite::boundgingB_enfants()
+{
+        sf::IntRect result;
+        if ( m_enfants.size() == 0 )
+            return result;
+
+        int minX = 90000;
+        int minY = 90000;
+        int maxX = -90000;
+        int maxY = -90000;
+
+        for ( auto enfant : m_enfants )
+        {
+            sf::FloatRect LB = enfant->getLocalBounds();
+
+            if (LB.left < minX) minX = LB.left;
+            if (LB.top  < minY) minY = LB.top;
+            if (LB.left+LB.width > maxX) maxX = LB.left + LB.width;
+            if (LB.top+LB.height > maxY) maxY = LB.top + LB.height;
+        }
+
+        result.left     = minX;
+        result.top      = minY;
+        result.width    = maxX - minX;
+        result.height   = maxY - minY;
+
+        return result;
+}
 
 /////////////////////////////////////////////////
 void Composite::dessinerEnfants (sf::RenderTarget& target, sf::RenderStates states) const

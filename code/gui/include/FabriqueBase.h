@@ -26,7 +26,7 @@
 #include "gadgets\DnBarreDefilement.h"
 
 // GROUPEMENT
-#include "gadgets\GrpPanneau.h"
+#include "gadgets\GrpPanneauSliders.h"
 
 namespace gui{
 
@@ -169,7 +169,7 @@ public:
     ///
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<GrpPanneau>        panneau( );
+    std::shared_ptr<GrpPanneauSliders>        panneau( );
 
 };
 

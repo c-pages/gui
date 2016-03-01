@@ -90,7 +90,8 @@
 		<Unit filename="include/gadgets/DnCaseACocher.h" />
 		<Unit filename="include/gadgets/DnSlider.h" />
 		<Unit filename="include/gadgets/DnZoneTexte.h" />
-		<Unit filename="include/gadgets/GrpPanneau.h" />
+		<Unit filename="include/gadgets/GrpPanneauSimple.h" />
+		<Unit filename="include/gadgets/GrpPanneauSliders.h" />
 		<Unit filename="include/repartiteurs/Repartiteur.h" />
 		<Unit filename="include/repartiteurs/RepartiteurGrille.h" />
 		<Unit filename="include/repartiteurs/RepartiteurHorizontal.h" />
@@ -131,7 +132,8 @@
 		<Unit filename="src/gadgets/DnCaseACocher.cpp" />
 		<Unit filename="src/gadgets/DnSlider.cpp" />
 		<Unit filename="src/gadgets/DnZoneTexte.cpp" />
-		<Unit filename="src/gadgets/GrpPanneau.cpp" />
+		<Unit filename="src/gadgets/GrpPanneauSimple.cpp" />
+		<Unit filename="src/gadgets/GrpPanneauSliders.cpp" />
 		<Unit filename="src/repartiteurs/Repartiteur.cpp" />
 		<Unit filename="src/repartiteurs/RepartiteurGrille.cpp" />
 		<Unit filename="src/repartiteurs/RepartiteurHorizontal.cpp" />

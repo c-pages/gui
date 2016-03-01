@@ -129,6 +129,7 @@ private:
     std::shared_ptr<gui::AffLabel>      m_label_10;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_11;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_12;      ///< Un autre label.
+    std::shared_ptr<gui::AffLabel>      m_label_13;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_textePourPanneau;      ///< Un autre label.
 
     std::shared_ptr<gui::AffImage>      m_image;        ///< Une simple image.

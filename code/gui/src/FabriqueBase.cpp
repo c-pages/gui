@@ -155,9 +155,9 @@ std::shared_ptr<DnBarreDefilement>        FabriqueBase::barreDefilement( )
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<GrpPanneau>        FabriqueBase::panneau( )
+std::shared_ptr<GrpPanneauSliders>        FabriqueBase::panneau( )
 {
-    auto nouveauGadget = creerGadget<GrpPanneau>( );
+    auto nouveauGadget = creerGadget<GrpPanneauSliders>( );
     return nouveauGadget;
 }
 

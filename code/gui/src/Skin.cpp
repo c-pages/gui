@@ -63,8 +63,8 @@ void Skin::creerDefaut(){
     style = getStyle( Styles::txtCourant);
 
     style->txt_police.set ( gui::ms_polices.get( "Defaut" ) );
-    style->txt_style.set       (sf::Text::Style::Regular ) ;
-    style->txt_taille.set      ( 5 ) ;
+    style->txt_style.set       (sf::Text::Style::Italic ) ;
+    style->txt_taille.set      ( 11 ) ;
     style->txt_couleur.set     ( sf::Color(255, 255, 255 , 255 ) ) ;
     style->lgn_epaisseur.set   ( 0 ) ;
     style->lgn_couleur.set     ( sf::Color(255, 255, 255, 0) ) ;

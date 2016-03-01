@@ -175,10 +175,14 @@ void DnSlider::positionnerCurseurSurSouris ()
 void DnSlider::setLongCurseur( float pourcentage )
 {
     if ( pourcentage >100) pourcentage = 100;
-    if ( m_horizontal )
+    if ( m_horizontal ){
         m_slider->setTailleX( m_longueur * pourcentage/100);
-    else
+        m_slider->setTailleY( m_largeur );
+
+    }else{
+        m_slider->setTailleX( m_largeur );
         m_slider->setTailleY( m_longueur * pourcentage/100);
+    }
 
     actualiser();
     actualiser_bounds();

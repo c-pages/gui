@@ -16,7 +16,7 @@
 			<Cursor1 position="590" topLine="2" />
 		</Cursor>
 	</File>
-	<File name="src\Skin.cpp" open="1" top="1" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Skin.cpp" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="5627" topLine="108" />
 		</Cursor>
@@ -165,7 +165,7 @@
 			<Collapse line="46" />
 		</Folding>
 	</File>
-	<File name="src\gadgets\PanSliders.cpp" open="1" top="0" tabpos="59" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\gadgets\PanSliders.cpp" open="1" top="1" tabpos="59" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="285" topLine="12" />
 		</Cursor>

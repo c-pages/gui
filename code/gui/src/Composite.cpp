@@ -106,8 +106,9 @@ sf::IntRect  Composite::boundgingB_enfants()
 
             if (LB.left < minX) minX = LB.left;
             if (LB.top  < minY) minY = LB.top;
-            if (LB.left+LB.width > maxX) maxX = LB.left + LB.width;
-            if (LB.top+LB.height > maxY) maxY = LB.top + LB.height;
+            if (LB.left + LB.width > maxX ) maxX = LB.left + LB.width;
+            if (LB.top  + LB.height> maxY ) maxY = LB.top  + LB.height;
+
         }
 
         result.left     = minX;

@@ -97,9 +97,10 @@ void Skin::creerDefaut(){
     style->txt_taille.set( 14 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
     style->lgn_epaisseur.set( 0 ) ;
-    style->lgn_couleur.set( sf::Color(255, 255, 255, 20) ) ;
-    style->fnd_couleur.set( sf::Color(255, 255, 255, 20) ) ;
-    style->fnd_couleur.set( sf::Color(255, 255, 255, 20) , Etat::repos ) ;
+    style->lgn_couleur.set( sf::Color(255, 255, 255, 10) ) ;
+//    style->fnd_couleur.set( sf::Color(0, 0, 0, 20) ) ;
+    style->fnd_couleur.set( sf::Color(255, 255, 255, 10) ) ;
+//    style->fnd_couleur.set( sf::Color(255, 255, 255, 10) , Etat::repos ) ;
 
     style = getStyle( Styles::bouton);
 
@@ -111,6 +112,9 @@ void Skin::creerDefaut(){
     style->lgn_epaisseur.set( 0 ) ;
     style->lgn_couleur.set ( sf::Color( 255, 255, 255, 100 ) );
     style->lgn_couleur.desactive = sf::Color( 255, 255, 255, 30 ) ;
+
+//    style->fnd_couleur.set ( sf::Color( 0, 0, 255, 255 ) );
+
     style->fnd_couleur.repos = sf::Color( 255, 255, 255, 40 ) ;
     style->fnd_couleur.survol= sf::Color( 255, 255, 255, 60 ) ;
     style->fnd_couleur.press = sf::Color( 255, 255, 255, 100 ) ;

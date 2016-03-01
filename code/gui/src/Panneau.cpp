@@ -66,18 +66,30 @@ sf::Vector2f    Panneau::deplMaxContenu(){
 
     sf::Vector2f result;
 
-    float longueurContenu       = float( boundgingB_enfants().left + boundgingB_enfants().width ) + 2;  //+  m_slider_V->getTaille().x;
-    float longueurContenant     = m_contenant->getSize().x;
+    float longueurContenu       = float( boundgingB_enfants().left + boundgingB_enfants().width ) + 25;  //+  m_slider_V->getTaille().x;
+    float longueurContenant     = m_taille.x;
     float longueurDeplacement   = longueurContenu - longueurContenant;
 
     result.x =  longueurDeplacement;
 
-    longueurContenu       = float( boundgingB_enfants().top + boundgingB_enfants().height ) + 2; // m_slider_H->getTaille().y;
-    longueurContenant     = m_contenant->getSize().y;
+    longueurContenu       = float( boundgingB_enfants().top + boundgingB_enfants().height ) + 25; // m_slider_H->getTaille().y;
+    longueurContenant     = m_taille.y;
     longueurDeplacement   = longueurContenu - longueurContenant;
 
     result.y =  longueurDeplacement;
-
+//
+//    float longueurContenu       = float( boundgingB_enfants().left + boundgingB_enfants().width ) + 2;  //+  m_slider_V->getTaille().x;
+//    float longueurContenant     = m_contenant->getSize().x;
+//    float longueurDeplacement   = longueurContenu - longueurContenant;
+//
+//    result.x =  longueurDeplacement;
+//
+//    longueurContenu       = float( boundgingB_enfants().top + boundgingB_enfants().height ) + 2; // m_slider_H->getTaille().y;
+//    longueurContenant     = m_contenant->getSize().y;
+//    longueurDeplacement   = longueurContenu - longueurContenant;
+//
+//    result.y =  longueurDeplacement;
+    std::cout << "result : " << result.x << ", " << result.y << "\n";
     return result;
 
 }

@@ -13,7 +13,7 @@ BtnIcone::BtnIcone ()
 , m_icone       ( std::make_shared<AffIcone>())
 , m_fix    ( false )
 {
-    m_marge       = { 2 , 2} ;
+    m_marge       = { 1 , 1} ;
     ajouterComposant( m_rectangle );
     ajouterComposant( m_icone );
         m_icone->setIndex ( 1 );

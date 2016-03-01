@@ -1,0 +1,56 @@
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include <AffBarreTitre.h>
+
+
+
+namespace gui {
+
+/////////////////////////////////////////////////
+AffBarreTitre::AffBarreTitre ()
+: m_rectangle ( std::make_shared<AffRectangle>() )
+, m_titre ( std::make_shared<AffLabel>() )
+, m_icone ( std::make_shared<AffIcone>() )
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void AffBarreTitre::setIcone ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void AffBarreTitre::setIconeIndex (int index)
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void AffBarreTitre::setTexte (std::string texte)
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void AffBarreTitre::actualiser ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void AffBarreTitre::draw (sf::RenderTarget& target, sf::RenderStates states) const
+{
+    
+}
+
+
+} // fin namespace gui
+

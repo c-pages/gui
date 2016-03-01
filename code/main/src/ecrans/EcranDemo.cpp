@@ -58,9 +58,16 @@ void EcranDemo::traiter_evenements  ( const sf::Event& event )
     // Resize the window
     if (event.type ==  sf::Event::Resized)
     {
+        sf::Vector2f pos = sf::Vector2f( m_appli->getFenetre()->getSize() );
+        m_vueJeu.setSize(pos);
+        m_vueGUI.setSize(pos);
+        pos *= 0.5f;
+        m_vueJeu.setCenter(pos);
+        m_vueGUI.setCenter(pos);
 
-        m_vueJeu.setSize    (event.size.width, event.size.height);
-        m_vueGUI.setSize    (event.size.width, event.size.height);
+//        m_fond.setSize      ( pos );
+//        m_vueJeu.setSize    (event.size.width, event.size.height);
+//        m_vueGUI.setSize    (event.size.width, event.size.height);
 
         m_appli->getFenetre()->setView(m_vueGUI);
     }
@@ -112,9 +119,12 @@ void EcranDemo::dessiner ()
 }
 
 
+
 /////////////////////////////////////////////////
 void
 EcranDemo::test () { std::cout << "CECI n'EST pas UN TEST QUI ne FONCTIONNE pas.\n";  }
+
+
 
 
 /////////////////////////////////////////////////
@@ -123,10 +133,13 @@ EcranDemo::initScene  ( )
 {
     // Initialisation du fond.
     m_fond.setPosition  ( 0,0 );
-    m_fond.setSize      ( sf::Vector2f ( m_appli->getFenetre()->getSize() ) );
+//    m_fond.setSize      ( sf::Vector2f ( m_appli->getFenetre()->getSize() ) );
+    m_fond.setSize      ( sf::Vector2f ( 1920 ,1080 ) );
     m_fond.setFillColor ( sf::Color (70,70,70) );
 
 }
+
+
 
 /////////////////////////////////////////////////
 void
@@ -152,6 +165,8 @@ EcranDemo::initGUI ()
     m_labelRetour->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 }
+
+
 
 /////////////////////////////////////////////////
 void
@@ -399,7 +414,7 @@ EcranDemo::initGUI_test_Boutons  ()
 
 
     /////// autre Label ///////
-    m_label_5 = m_interface->creer.label( "<---  Simple bouton texte.\n (toute les interr-ACTIONs souris en console.)" );
+    m_label_5 = m_interface->creer.label( "<---  Simple bouton texte.\n (ACTIONs souris en console.)" );
     m_label_5->setPosition    ( 160 + posRoot.x , posRoot.y + 3 );
 //    m_label_5->setSkin        ( m_skin );
     m_label_5->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
@@ -560,6 +575,7 @@ EcranDemo::initGUI_test_Affichages  ()
     /////// Simple rectangle ///////
     m_rectangle = m_interface->creer.rectangle( {20,20} );
     m_rectangle->setPosition    ( posRoot.x , posRoot.y );
+    m_rectangle->setStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
 
 
     /////// Un Label ///////
@@ -621,26 +637,18 @@ EcranDemo::initGUI_test_Affichages  ()
     m_label_11->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
-    // On associe des fonctions aux fleches pour faire bouger le label
-    /*
-    m_interface->lier ( sf::Keyboard::Left , [this]() {
-            std::cout << " touche : Left\n";
-            m_label->move ( -3,0);
-        } );
-    m_interface->lier ( sf::Keyboard::Right , [this]() {
-            std::cout << " touche : Right\n";
-            m_label->move ( 3,0);
-        } );
-    m_interface->lier ( sf::Keyboard::Up , [this]() {
-            std::cout << " touche : Up\n";
-            m_label->move ( 0,-3);
-        } );
-    m_interface->lier ( sf::Keyboard::Down , [this]() {
-            std::cout << " touche : Down\n";
-            m_label->move ( 0,3);
-        } );
-    */
 
+
+    ///////barre de titre ///////
+    auto m_barreTitre = m_interface->creer.barreTitre( "Titre" );
+    m_barreTitre->setPosition    ( posRoot.x , posRoot.y  +  128 );
+    m_barreTitre->setStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
+    m_barreTitre->setIconeImage  ( "media/img/icone_titre.png" );
+
+    /////// autre Label ///////
+    auto m_label_14 = m_interface->creer.label( "<---  Barre de titre" );
+    m_label_14->setPosition    ( 220 + posRoot.x , posRoot.y  +  132 );
+    m_label_14->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 

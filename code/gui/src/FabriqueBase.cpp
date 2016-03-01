@@ -48,6 +48,17 @@ std::shared_ptr<AffImage>    FabriqueBase::image( std::string fichier )
         nouveauGadget->chargerDepuisFichier ( fichier );
     return nouveauGadget;
 }
+
+
+
+/////////////////////////////////////////////////
+std::shared_ptr<AffBarreTitre>    FabriqueBase::barreTitre( std::string text )
+{
+    auto nouveauGadget = creerGadget<AffBarreTitre>( );
+    nouveauGadget->setTexte ( text );
+    return nouveauGadget;
+}
+
 /*
 /////////////////////////////////////////////////
 std::shared_ptr<AffImage>    FabriqueBase::image( int id )

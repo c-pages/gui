@@ -89,7 +89,7 @@ sf::Vector2f    Panneau::deplMaxContenu(){
 //    longueurDeplacement   = longueurContenu - longueurContenant;
 //
 //    result.y =  longueurDeplacement;
-    std::cout << "result : " << result.x << ", " << result.y << "\n";
+//    std::cout << "result : " << result.x << ", " << result.y << "\n";
     return result;
 
 }

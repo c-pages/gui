@@ -13,6 +13,8 @@
 #include "gadgets\AffImage.h"
 #include "gadgets\AffIcone.h"
 
+#include "gadgets\AffBarreTitre.h"
+
 // BOUTONS
 #include "gadgets\BtnRectangle.h"
 #include "gadgets\BtnTexte.h"
@@ -23,6 +25,7 @@
 #include "gadgets\DnCaseACocher.h"
 #include "gadgets\DnZoneTexte.h"
 #include "gadgets\DnSlider.h"
+
 #include "gadgets\DnBarreDefilement.h"
 
 // GROUPEMENT
@@ -88,6 +91,16 @@ public:
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<AffIcone>    icone( std::string fichier = "" , unsigned int id = 1 );
+
+    /////////////////////////////////////////////////
+    /// \brief  Création d'une simple icône
+    ///
+    /// \param fichier
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<AffBarreTitre>    barreTitre( std::string fichier = ""  );
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BOUTONS

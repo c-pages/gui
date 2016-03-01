@@ -37,7 +37,6 @@ void Skin::creerDefaut(){
     style->fnd_couleur.set ( sf::Color(255, 255, 255, 20) );
 
 
-
     style = getStyle( Styles::invisible );
 
     style->txt_police.set ( gui::ms_polices.get(  "Defaut" ) );
@@ -47,6 +46,7 @@ void Skin::creerDefaut(){
     style->lgn_epaisseur.set    ( 1 ) ;
     style->lgn_couleur.set      ( sf::Color(255, 255, 255, 0) ) ;
     style->fnd_couleur.set      ( sf::Color(255, 255, 255, 0) ) ;
+
 
     style = getStyle( Styles::cadre);
 
@@ -60,15 +60,17 @@ void Skin::creerDefaut(){
     style->fnd_couleur.set      ( sf::Color(255, 255, 255, 100) ) ;
     style->fnd_couleur.desactive= sf::Color(255, 255, 255, 50);
 
+
     style = getStyle( Styles::txtCourant);
 
-    style->txt_police.set ( gui::ms_polices.get( "Defaut" ) );
+    style->txt_police.set      ( gui::ms_polices.get( "Defaut" ) );
     style->txt_style.set       (sf::Text::Style::Italic ) ;
     style->txt_taille.set      ( 11 ) ;
     style->txt_couleur.set     ( sf::Color(255, 255, 255 , 255 ) ) ;
     style->lgn_epaisseur.set   ( 0 ) ;
     style->lgn_couleur.set     ( sf::Color(255, 255, 255, 0) ) ;
     style->fnd_couleur.set     ( sf::Color(255, 255, 255, 0) ) ;
+
 
     style = getStyle( Styles::txtLog);
 
@@ -80,15 +82,17 @@ void Skin::creerDefaut(){
     style->lgn_couleur.set( sf::Color(255, 255, 255, 255) ) ;
     style->fnd_couleur.set( sf::Color(255, 255, 255, 0) ) ;
 
+
     style = getStyle( Styles::txtTitre);
 
     style->txt_police.set ( gui::ms_polices.get( "Defaut" ) );
-    style->txt_style.set(sf::Text::Style::Bold ) ;
-    style->txt_taille.set( 30 ) ;
+    style->txt_style.set(sf::Text::Style::Italic ) ;
+    style->txt_taille.set( 25 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 200 ) ) ;
     style->lgn_epaisseur.set( 0 ) ;
     style->lgn_couleur.set( sf::Color(255, 255, 255, 255) ) ;
     style->fnd_couleur.set( sf::Color(255, 255, 255, 0) ) ;
+
 
     style = getStyle( Styles::fond);
 
@@ -137,6 +141,7 @@ void Skin::creerDefaut(){
 
 
     style = getStyle( Styles::img);
+
     style->txt_police.set ( gui::ms_polices.get(  "Defaut" )  );
     style->txt_style.set(sf::Text::Style::Italic ) ;
     style->txt_taille.set( 14 ) ;
@@ -144,6 +149,7 @@ void Skin::creerDefaut(){
     style->lgn_epaisseur.set( 1 ) ;
     style->lgn_couleur.set( sf::Color(255, 255, 255, 255) ) ;
     style->fnd_couleur.set( sf::Color(255, 255, 255, 255) ) ;
+
 
     style = getStyle( Styles::menu);
 
@@ -157,15 +163,17 @@ void Skin::creerDefaut(){
     style->fnd_couleur.survol= sf::Color(255, 255, 255, 70) ;
     style->fnd_couleur.press = sf::Color(255, 255, 255, 150) ;
 
+
     style = getStyle( Styles::fenetre);
 
     style->txt_police.set ( gui::ms_polices.get(  "Defaut" )  );
     style->txt_style.set(sf::Text::Style::Italic ) ;
     style->txt_taille.set( 14 ) ;
-    style->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
+    style->txt_couleur.set( sf::Color(255, 255, 255 , 200 ) ) ;
     style->lgn_epaisseur.set( 0 ) ;
     style->lgn_couleur.set( sf::Color(255, 255, 255, 255) ) ;
     style->fnd_couleur.set( sf::Color(255, 255, 255, 0) ) ;
+
 
     style = getStyle( Styles::zoneTexte);
 

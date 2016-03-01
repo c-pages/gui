@@ -484,7 +484,7 @@
 	<SFML/Graphics.hpp>
 	<functional>
 
-1456845033 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
+1456857043 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
 	"SFML/Graphics.hpp"
 	"memory"
 	"Gadget.h"
@@ -492,6 +492,7 @@
 	"gadgets\AffLabel.h"
 	"gadgets\AffImage.h"
 	"gadgets\AffIcone.h"
+	"gadgets\AffBarreTitre.h"
 	"gadgets\BtnRectangle.h"
 	"gadgets\BtnTexte.h"
 	"gadgets\BtnIcone.h"
@@ -517,7 +518,7 @@
 1445606138 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1456853742 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1456861068 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -736,4 +737,11 @@
 	"Enums.h"
 	<memory>
 	<SFML/Graphics.hpp>
+
+1456858952 r:\06 - c++\110 - gui\code\gui\include\gadgets\affbarretitre.h
+	"Affiche.h"
+	"AffRectangle.h"
+	"AffLabel.h"
+	"AffIcone.h"
+	<memory>
 

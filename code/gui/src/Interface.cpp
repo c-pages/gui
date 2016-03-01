@@ -38,6 +38,16 @@ std::shared_ptr<Gadget> Interface::chercherGadgetSurvole ()
     return nullptr;
 }
 
+
+/////////////////////////////////////////////////
+void Interface::actualiser ()
+{
+//    for ( auto enfant : m_enfants )
+//        enfant->actualiser();
+}
+
+
+
 /////////////////////////////////////////////////
 void Interface::traiterEvenements( sf::Event evenement )
 {

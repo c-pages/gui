@@ -179,4 +179,12 @@ std::shared_ptr<PanSliders>        FabriqueBase::panneauSliders( )
     return nouveauGadget;
 }
 
+
+/////////////////////////////////////////////////
+std::shared_ptr<SppFenetre>        FabriqueBase::fenetre( std::string titre )
+{
+    auto nouveauGadget = creerGadget<SppFenetre>( );
+    nouveauGadget->setTexte (titre);
+    return nouveauGadget;
+}
 }; // fin namespace gui

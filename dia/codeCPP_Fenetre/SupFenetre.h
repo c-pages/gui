@@ -1,0 +1,50 @@
+#ifndef SUPFENETRE__H
+#define SUPFENETRE__H
+
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include "Support.h"
+#include <memory>
+
+
+
+namespace gui {
+
+
+
+class SupFenetre : public gui::Support {
+
+
+
+/////////////////////////////////////////////////
+// Méthodes
+/////////////////////////////////////////////////
+
+public:
+public:
+    /////////////////////////////////////////////////
+    /// \brief Constructeur par défaut.
+    ///
+    /////////////////////////////////////////////////
+    SupFenetre ();
+
+    virtual void actualiser ();
+
+    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
+
+
+
+/////////////////////////////////////////////////
+// Membres
+/////////////////////////////////////////////////
+private:
+    std::shared_ptr<AffBarrTitre> m_titre;    
+    std::shared_ptr<BtnIcone> m_btnFermer;    
+    bool m_utiliserFermer;    
+
+}; // fin class SupFenetre
+
+} // fin namespace gui
+
+#endif

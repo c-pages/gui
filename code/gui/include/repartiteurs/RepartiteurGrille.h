@@ -10,10 +10,7 @@
 
 namespace gui {
 
-
-
 class RepartiteurGrille : public gui::Repartiteur {
-
 
 
 /////////////////////////////////////////////////
@@ -23,12 +20,11 @@ public:
     /////////////////////////////////////////////////
     /// \brief Constructeur par défaut.
     ///
-    /// \param racine		 
+    /// \param racine
     /////////////////////////////////////////////////
     RepartiteurGrille (Gadget* racine);
 
     virtual void repartir (std::vector<std::shared_ptr<Gadget>> groupe);
-
 
 }; // fin class RepartiteurGrille
 

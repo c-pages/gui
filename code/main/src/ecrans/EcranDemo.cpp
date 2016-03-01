@@ -19,15 +19,14 @@ EcranDemo::EcranDemo( Application*  appli )
     // Initialisation de l'interface graphique.
     initGUI     ();
 
-
     // les tests
-    initGUI_test_Affichages();
-    initGUI_test_Boutons();
-    initGUI_test_Donnees  ();
-    initGUI_test_Panneaux  ();
+    initGUI_test_Affichages ();
+    initGUI_test_Boutons    ();
+    initGUI_test_Donnees    ();
+    initGUI_test_Panneaux   ();
+    initGUI_test_Supports   ();
 
     initScene   ();
-
 
     // definition des positions et tailles des vues jeu et gui
     sf::Vector2f pos = sf::Vector2f( m_appli->getFenetre()->getSize() );
@@ -167,6 +166,36 @@ EcranDemo::initGUI ()
 }
 
 
+/////////////////////////////////////////////////
+void
+EcranDemo::initGUI_test_Supports  ()
+{
+    sf::Vector2f posRoot = { 420 , 300 };
+
+    std::cout << "\n---------------------------------------\n";
+    std::cout << "      Test des gadgets : Supports";
+    std::cout << "\n---------------------------------------\n\n";
+
+
+    /////// TITRE Label ///////
+    m_labelTitre_4 = m_interface->creer.label( "Supports" );
+    m_labelTitre_4->setPosition    ( posRoot.x , posRoot.y - 40 );
+    m_labelTitre_4->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
+
+
+    //// creation d'une fenetre
+    auto m_fenetre = m_interface->creer.fenetre(  );
+    m_fenetre->setPosition  ( posRoot.x , posRoot.y  );
+    m_fenetre->setStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
+
+    //// contenu de la fenetre
+    auto m_textePourFenetre = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
+    m_textePourFenetre->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
+
+    m_fenetre->ajouter ( m_textePourFenetre );
+
+//    m_panneau->setTaille    ( { 200 , 100 } );
+}
 
 /////////////////////////////////////////////////
 void

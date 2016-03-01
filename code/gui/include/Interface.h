@@ -43,6 +43,11 @@ public:
 
     virtual void traiterEvenements( sf::Event evenement );
 
+    /////////////////////////////////////////////////
+    /// \brief Actualiser les géométrie du gadgets, et donc ses bounds.
+    ///
+    /////////////////////////////////////////////////
+    virtual void actualiser ();
 //    void nouvellePolice(std::string fichier);
 
 private:

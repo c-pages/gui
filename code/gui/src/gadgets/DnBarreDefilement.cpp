@@ -22,6 +22,7 @@ DnBarreDefilement::DnBarreDefilement ()
     ajouterComposant( m_btnMoins );
 
     std::string fichier = "media/img/ico_fleches.png";
+
     m_btnMoins->chargerDepuisFichier ( fichier );
     m_btnPlus->chargerDepuisFichier ( fichier );
 

@@ -2,7 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <Composite.h>
-//#include <Groupement.h>
+//#include <Panneau.h>
 
 #include <Gadget.h>
 
@@ -56,6 +56,23 @@ void Composite::demander_aEtre_supprimer (){
 }
 
 
+
+/////////////////////////////////////////////////
+std::shared_ptr<Gadget> Composite::testerSurvolComposite ( sf::Vector2i position )
+{
+//    std::cout << "testerSurvolComposite\n";
+    for ( int i =0; i< m_enfants.size(); i++ )
+    {
+//        std::cout << "..." << i << " : " <<position.x <<", " << position.y <<  "\n";
+        int index = m_enfants.size() - (i+1);
+        auto  enfant = m_enfants[ index ];
+
+        auto testEnfant = enfant->testerSurvol( position );
+        if ( testEnfant != nullptr )
+            return testEnfant;
+    }
+    return nullptr;
+}
 
 /////////////////////////////////////////////////
 void Composite::supprimer (std::shared_ptr<Gadget> gadget ){

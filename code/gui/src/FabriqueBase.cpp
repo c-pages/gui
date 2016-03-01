@@ -155,11 +155,17 @@ std::shared_ptr<DnBarreDefilement>        FabriqueBase::barreDefilement( )
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<GrpPanneauSliders>        FabriqueBase::panneau( )
+std::shared_ptr<PanSimple>        FabriqueBase::panneau( )
 {
-    auto nouveauGadget = creerGadget<GrpPanneauSliders>( );
+    auto nouveauGadget = creerGadget<PanSimple>( );
     return nouveauGadget;
 }
 
+/////////////////////////////////////////////////
+std::shared_ptr<PanSliders>        FabriqueBase::panneauSliders( )
+{
+    auto nouveauGadget = creerGadget<PanSliders>( );
+    return nouveauGadget;
+}
 
 }; // fin namespace gui

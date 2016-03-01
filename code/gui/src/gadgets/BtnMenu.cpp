@@ -35,6 +35,7 @@ void BtnMenu::ajouterElement (std::string nom, FctnAction fonction)
     bouton->setTaille           ( m_tailleMenu );
     bouton->setParent           ( this );
     bouton->setSkin             ( m_skin );
+    bouton->setStyle            ( m_skin->getStyle( Styles::menu ) );
     bouton->lier                ( Evenement::onBtnG_relacher , fonction );
     nouvelElement->bouton   = bouton;
 
@@ -73,14 +74,17 @@ void BtnMenu::actualiser ()
 
         index++;
     }
-    actualiser_bounds ();
 
-    m_fond->setTaille( m_taille );
 
     m_fond->setFillColor         ( m_skin->getStyle( Styles::fond )->fnd_couleur.repos );
     m_fond->setOutlineColor      ( m_skin->getStyle( Styles::fond )->lgn_couleur.repos );
     m_fond->setOutlineThickness  ( m_skin->getStyle( Styles::fond )->lgn_epaisseur.repos );
 
+    actualiser_bounds ();
+
+    m_fond->setTaille( m_taille );
+
+    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }
 
 /////////////////////////////////////////////////

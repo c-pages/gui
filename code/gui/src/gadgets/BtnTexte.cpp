@@ -12,9 +12,11 @@ BtnTexte::BtnTexte ()
 : m_rectangle   ( std::make_shared<AffRectangle>())
 , m_label       ( std::make_shared<AffLabel>())
 {
+    m_autoAjust = true;
     setTexte("");
     ajouterComposant( m_rectangle );
     ajouterComposant( m_label );
+    actualiser ();
 }
 
 /////////////////////////////////////////////////
@@ -62,6 +64,12 @@ void BtnTexte::actualiser ()
     m_rectangle->setOutlineThickness ( style->lgn_epaisseur.get(etatBouton) ) ;
 
     actualiser_bounds();
+
+    if ( m_parent != nullptr ) {
+//            std::cout << "parent : " << m_parent->getNom() << "\n";
+            m_parent->actualiserContenu();
+    }
+
 }
 /*
 /////////////////////////////////////////////////

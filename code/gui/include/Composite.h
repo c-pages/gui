@@ -35,6 +35,9 @@ public:
     ///< Acceder à m_parent
     Gadget* getParent () const { return m_parent; };
 
+    virtual void actualiserContenu (){};
+
+
     virtual std::shared_ptr<Gadget> thisPtr(){
         std::cout << "DEMANDE DE thisPtr PROBLEMATIQUE\n";
 //        return static_cast<std::shared_ptr<Gadget>> shared_from_this();
@@ -91,6 +94,7 @@ public:
     /////////////////////////////////////////////////
     virtual void dessinerEnfants (sf::RenderTarget& target, sf::RenderStates states) const ;
 
+    std::shared_ptr<Gadget> testerSurvolComposite (sf::Vector2i position);
 
     sf::IntRect  boundgingB_enfants();
 

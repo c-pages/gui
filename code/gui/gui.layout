@@ -16,14 +16,14 @@
 			<Cursor1 position="590" topLine="2" />
 		</Cursor>
 	</File>
-	<File name="src\Skin.cpp" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Skin.cpp" open="1" top="1" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="5627" topLine="108" />
 		</Cursor>
 	</File>
-	<File name="include\gadgets\GrpPanneauSliders.h" open="1" top="0" tabpos="57" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\gadgets\PanSliders.h" open="1" top="0" tabpos="57" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3046" topLine="55" />
+			<Cursor1 position="663" topLine="6" />
 		</Cursor>
 	</File>
 	<File name="include\Style.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -146,7 +146,7 @@
 			<Cursor1 position="1345" topLine="25" />
 		</Cursor>
 	</File>
-	<File name="src\gadgets\DnSlider.cpp" open="1" top="1" tabpos="41" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\gadgets\DnSlider.cpp" open="1" top="0" tabpos="41" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="6277" topLine="0" />
 		</Cursor>
@@ -165,14 +165,10 @@
 			<Collapse line="46" />
 		</Folding>
 	</File>
-	<File name="src\gadgets\GrpPanneauSliders.cpp" open="1" top="0" tabpos="59" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\gadgets\PanSliders.cpp" open="1" top="0" tabpos="59" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="5591" topLine="88" />
+			<Cursor1 position="285" topLine="12" />
 		</Cursor>
-		<Folding>
-			<Collapse line="108" />
-			<Collapse line="137" />
-		</Folding>
 	</File>
 	<File name="src\ActionClavier.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
@@ -204,9 +200,9 @@
 			<Cursor1 position="565" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\Groupement.h" open="1" top="0" tabpos="56" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\Panneau.h" open="1" top="0" tabpos="56" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="244" topLine="0" />
+			<Cursor1 position="18" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\repartiteurs\RepartiteurHorizontal.cpp" open="1" top="0" tabpos="62" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -254,9 +250,9 @@
 			<Cursor1 position="751" topLine="25" />
 		</Cursor>
 	</File>
-	<File name="src\gadgets\GrpPanneauSimple.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\gadgets\PanSimple.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="696" topLine="2" />
 		</Cursor>
 	</File>
 	<File name="include\gadgets\BtnMenu.h" open="1" top="0" tabpos="29" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -304,9 +300,9 @@
 			<Cursor1 position="3309" topLine="107" />
 		</Cursor>
 	</File>
-	<File name="include\gadgets\GrpPanneauSimple.h" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\gadgets\PanSimple.h" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="1362" topLine="6" />
 		</Cursor>
 	</File>
 	<File name="include\gadgets\DnBarreDefilement.h" open="1" top="0" tabpos="44" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -334,9 +330,9 @@
 			<Cursor1 position="1754" topLine="25" />
 		</Cursor>
 	</File>
-	<File name="src\Groupement.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Panneau.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="1231" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include\gadgets\DnSlider.h" open="1" top="0" tabpos="40" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

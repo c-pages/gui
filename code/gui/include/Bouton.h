@@ -36,14 +36,8 @@ public:
 
     virtual void actualiser ( ){};
 
-//    virtual void setTexte( std::string val ){ m_texte = val; actualiser(); };
-//    std::string getTexte( ) const { return m_texte; };
-
     void setAutoAjuster (bool val ){ m_autoAjust = val; actualiser ();};
 
-//    void setMarge ( sf::Vector2f marge ){ m_marge = marge;};
-
-//    static  std::vector<std::shared_ptr<Gadget>>  sGetBoutons(){ return ms_boutons ; };
     static  std::vector<Gadget*>  GetBoutons(){ return ms_boutons ; };
 
 

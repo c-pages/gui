@@ -63,11 +63,13 @@ Gadget::traiterEvenements ( evenement);
             {
                 // on gère le gadget survolé
                 if (m_boutonSurvole != nullptr) {
+//                        std::cout << "--------> m_boutonSurvole : " << m_boutonSurvole->getNom() << "\n";
                     m_boutonSurvole->setSurvol( true );
                     m_boutonSurvole->declencher ( Evenement::on_entrer );
                 }
                 // on gère le gadget anciennement survolé
                 if (boutonSurvoleBack!=nullptr){
+//                        std::cout << "--------> boutonSurvoleBack : " << boutonSurvoleBack->getNom() << "\n";
                     boutonSurvoleBack->setSurvol( false );
                     boutonSurvoleBack->declencher ( Evenement::on_sortir );
                 }

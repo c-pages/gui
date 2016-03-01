@@ -82,6 +82,8 @@ void DnCaseACocher::actualiser ()
         m_coche->setOutlineThickness ( style->getLgn_epaisseur( Etat::press ) );
     }
     actualiser_bounds();
+
+    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }
 
 

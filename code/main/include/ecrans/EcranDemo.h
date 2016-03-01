@@ -88,7 +88,7 @@ private:
     void initGUI_test_Affichages ();
     void initGUI_test_Boutons ();
     void initGUI_test_Donnees ();
-    void initGUI_test_Groupements ();
+    void initGUI_test_Panneaux ();
 
     void lierMachiner ();
     void delierMachiner ();

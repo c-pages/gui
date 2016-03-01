@@ -131,7 +131,11 @@ bool Gadget::estDeplacable () const
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  Gadget::testerSurvol ( sf::Vector2i position )
 {
-
+/*
+    std::cout << "m_globalBounds : "    << m_globalBounds.left << ", "
+                                        << m_globalBounds.top << ", "
+                                        << m_globalBounds.width << ", "
+                                        << m_globalBounds.height << "\n";*/
     if ( m_globalBounds.contains( position.x, position.y ) && estActif() )
     {
         auto testInterfaceLocal = testerSurvolComposants( position );

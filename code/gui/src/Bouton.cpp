@@ -44,7 +44,7 @@ Bouton::~Bouton ()
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  Bouton::testerSurvol ( sf::Vector2i position )
 {
-//    std::cout << "Bouton : Tester survol\n";
+//    std::cout << "Bouton : Tester survol : " << Gadget::testerSurvol ( position ) << "\n";
     return Gadget::testerSurvol ( position );
 }
 

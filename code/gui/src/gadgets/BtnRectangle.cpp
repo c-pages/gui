@@ -58,8 +58,18 @@ void BtnRectangle::actualiser ()
                                     , style->lgn_couleur.get(etatBouton).a * m_opacite ) ) ;
 
     m_rectangle->setOutlineThickness ( style->lgn_epaisseur.get(etatBouton) ) ;
+/*
+    if ( m_parent != nullptr ) {
+//            std::cout << "parent : " << m_parent->getNom() << "\n";
+            m_parent->actualiserContenu ();
+    }*/
 
+    if ( m_parent != nullptr ) {
+//            std::cout << "parent : " << m_parent->getNom() << "\n";
+            m_parent->actualiserContenu();
+    }
     actualiser_bounds();
+
 }
 
 

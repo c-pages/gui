@@ -113,6 +113,7 @@ void DnZoneTexte::actualiser ()
     m_curseur->setPosition ( pos.x , pos.y );
     m_curseur->move( 5 , m_marge.y/2 );
 
+    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }
 
 

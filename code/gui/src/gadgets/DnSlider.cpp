@@ -212,6 +212,7 @@ void DnSlider::actualiser ()
     m_boutonFond->actualiser_bounds();
     m_slider->actualiser_bounds();
 
+    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 
 }
 

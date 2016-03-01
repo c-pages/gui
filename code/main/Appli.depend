@@ -447,7 +447,7 @@
 	<Enums.h>
 	<memory>
 
-1456840857 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
+1456845144 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
 	<SFML/Graphics.hpp>
 	<memory>
 	<Ecran.h>
@@ -473,7 +473,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1456843127 r:\06 - c++\110 - gui\code\gui\include\composite.h
+1456849816 r:\06 - c++\110 - gui\code\gui\include\composite.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<vector>
@@ -484,7 +484,7 @@
 	<SFML/Graphics.hpp>
 	<functional>
 
-1456841848 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
+1456845033 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
 	"SFML/Graphics.hpp"
 	"memory"
 	"Gadget.h"
@@ -500,7 +500,8 @@
 	"gadgets\DnZoneTexte.h"
 	"gadgets\DnSlider.h"
 	"gadgets\DnBarreDefilement.h"
-	"gadgets\GrpPanneauSliders.h"
+	"gadgets\PanSimple.h"
+	"gadgets\PanSliders.h"
 
 1456830504 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
 	"Affiche.h"
@@ -516,7 +517,7 @@
 1445606138 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1456844096 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1456850482 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -542,7 +543,7 @@
 	"gadgets\AffLabel.h"
 	<SFML/Graphics.hpp>
 
-1456622216 r:\06 - c++\110 - gui\code\gui\include\bouton.h
+1456847173 r:\06 - c++\110 - gui\code\gui\include\bouton.h
 	"ActionEvenement.h"
 	"Gadget.h"
 
@@ -695,6 +696,38 @@
 	"AffImage.h"
 	"DnBarreDefilement.h"
 	"Groupement.h"
+	"repartiteurs/Repartiteur.h"
+	"repartiteurs/RepartiteurGrille.h"
+	"repartiteurs/RepartiteurHorizontal.h"
+	"repartiteurs/RepartiteurLibre.h"
+	"repartiteurs/RepartiteurVerticale.h"
+	"Enums.h"
+	<memory>
+	<SFML/Graphics.hpp>
+
+1456844862 r:\06 - c++\110 - gui\code\gui\include\gadgets\pansliders.h
+	"Panneau.h"
+	"AffRectangle.h"
+	"AffImage.h"
+	"DnBarreDefilement.h"
+	"Panneau.h"
+	"repartiteurs/Repartiteur.h"
+	"repartiteurs/RepartiteurGrille.h"
+	"repartiteurs/RepartiteurHorizontal.h"
+	"repartiteurs/RepartiteurLibre.h"
+	"repartiteurs/RepartiteurVerticale.h"
+	"Enums.h"
+	<memory>
+	<SFML/Graphics.hpp>
+
+1456849816 r:\06 - c++\110 - gui\code\gui\include\panneau.h
+	"Gadget.h"
+	"gadgets/AffRectangle.h"
+	"repartiteurs/Repartiteur.h"
+
+1456844596 r:\06 - c++\110 - gui\code\gui\include\gadgets\pansimple.h
+	"Panneau.h"
+	"AffRectangle.h"
 	"repartiteurs/Repartiteur.h"
 	"repartiteurs/RepartiteurGrille.h"
 	"repartiteurs/RepartiteurHorizontal.h"

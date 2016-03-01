@@ -73,6 +73,9 @@ void BtnIcone::actualiser ()
     m_rectangle->setOutlineThickness ( style->lgn_epaisseur.get(etatBouton) ) ;
 
     actualiser_bounds();
+
+    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+
 }
 
 

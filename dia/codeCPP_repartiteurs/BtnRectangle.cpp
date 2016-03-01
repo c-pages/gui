@@ -1,0 +1,44 @@
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include <BtnRectangle.h>
+
+#include <AffImage.h>
+
+
+namespace gui {
+
+/////////////////////////////////////////////////
+BtnRectangle::BtnRectangle ()
+: m_rectangle (  )
+, m_texte ( "" )
+, m_label (  )
+, m_icone (  )
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void BtnRectangle::setTexte (std::string texte)
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void BtnRectangle::actualiser ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void BtnRectangle::draw (sf::RenderTarget& target, sf::RenderStates states) const
+{
+    
+}
+
+
+} // fin namespace gui
+

@@ -22,7 +22,7 @@ void BtnRectangle::actualiser ()
     // On choisie le style a appliquer (du style s'il en a un sinon du skin)
     std::shared_ptr<Style> style;
     if ( m_style == nullptr )
-        style = m_skin->getStyle( Skin::Styles::bouton );
+        style = m_skin->getStyle( Styles::bouton );
     else
         style = m_style;
 

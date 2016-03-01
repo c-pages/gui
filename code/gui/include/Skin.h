@@ -6,6 +6,7 @@
 /////////////////////////////////////////////////
 #include <memory>
 #include "Style.h"
+#include "Enums.h"
 
 
 namespace gui{
@@ -18,27 +19,6 @@ namespace gui{
 class Skin {
 
 
-public:
-enum Styles{
-
-    defaut,
-
-    invisible,
-    cadre,
-    txtCourant,
-    txtLog,
-    txtTitre,
-    fond,
-    bouton,
-    btnCoche,
-    img,
-    menu,
-    fenetre,
-    zoneTexte,
-    slider,
-
-    tous
-};
 
 
 /////////////////////////////////////////////////
@@ -59,7 +39,7 @@ public:
     /// \param Le style rechercher
     /// \return Le style
     /////////////////////////////////////////////////
-    std::shared_ptr<Style> getStyle( Skin::Styles style = defaut)
+    std::shared_ptr<Style> getStyle( Styles style = defaut )
     {
         return m_styles.at ( style );
     };

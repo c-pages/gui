@@ -28,10 +28,15 @@ class DnBarreDefilement : public gui::Donnee<float> {
 
 public:
     ///< Definir m_horizontal
-    void setHorizontal( bool val ){ m_horizontal = val; };
+
+    void setHorizontal (  ){ m_horizontal = true;actualiser (); };
+
+    void setVertical (  ){ m_horizontal = false; actualiser ();}
 
     ///< Acceder à m_horizontal
     bool getHorizontal () const { return m_horizontal; };
+
+    virtual float getValeur(){ return m_slider->getValeur();};
 
 public:
     /////////////////////////////////////////////////
@@ -44,6 +49,16 @@ public:
 
     void setLongueurCurseur( float pourcentage ) { m_slider->setLongCurseur( pourcentage ); actualiser(); };
 
+        ///< Definir m_taille
+    void setLongueur( float longueur ){
+        m_longueur = longueur;
+        actualiser();
+    };
+
+    void setLargeur( float largeur ){
+        m_largeur = largeur;
+        actualiser();
+    };
 
 /////////////////////////////////////////////////
 // Membres
@@ -55,7 +70,7 @@ private:
     std::shared_ptr<BtnIcone>       m_btnMoins;
 
 
-    float                           m_longeur;      ///<
+    float                           m_longueur;      ///<
     float                           m_largeur;      ///<
 
 }; // fin class DnBarreDefilement

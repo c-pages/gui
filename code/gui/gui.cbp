@@ -72,6 +72,7 @@
 		<Unit filename="include/FabriqueBase.h" />
 		<Unit filename="include/Gadget.h" />
 		<Unit filename="include/Geometrie.h" />
+		<Unit filename="include/Groupement.h" />
 		<Unit filename="include/Interface.h" />
 		<Unit filename="include/ResourcesMgr.h" />
 		<Unit filename="include/ResourcesMgr.inl" />
@@ -89,6 +90,12 @@
 		<Unit filename="include/gadgets/DnCaseACocher.h" />
 		<Unit filename="include/gadgets/DnSlider.h" />
 		<Unit filename="include/gadgets/DnZoneTexte.h" />
+		<Unit filename="include/gadgets/GrpPanneau.h" />
+		<Unit filename="include/repartiteurs/Repartiteur.h" />
+		<Unit filename="include/repartiteurs/RepartiteurGrille.h" />
+		<Unit filename="include/repartiteurs/RepartiteurHorizontal.h" />
+		<Unit filename="include/repartiteurs/RepartiteurLibre.h" />
+		<Unit filename="include/repartiteurs/RepartiteurVerticale.h" />
 		<Unit filename="media/img/nuage.jpg" />
 		<Unit filename="media/polices/arial.ttf" />
 		<Unit filename="media/polices/bgothl.ttf" />
@@ -108,6 +115,7 @@
 		<Unit filename="src/FabriqueBase.cpp" />
 		<Unit filename="src/Gadget.cpp" />
 		<Unit filename="src/Geometrie.cpp" />
+		<Unit filename="src/Groupement.cpp" />
 		<Unit filename="src/Interface.cpp" />
 		<Unit filename="src/Skin.cpp" />
 		<Unit filename="src/Style.cpp" />
@@ -123,6 +131,12 @@
 		<Unit filename="src/gadgets/DnCaseACocher.cpp" />
 		<Unit filename="src/gadgets/DnSlider.cpp" />
 		<Unit filename="src/gadgets/DnZoneTexte.cpp" />
+		<Unit filename="src/gadgets/GrpPanneau.cpp" />
+		<Unit filename="src/repartiteurs/Repartiteur.cpp" />
+		<Unit filename="src/repartiteurs/RepartiteurGrille.cpp" />
+		<Unit filename="src/repartiteurs/RepartiteurHorizontal.cpp" />
+		<Unit filename="src/repartiteurs/RepartiteurLibre.cpp" />
+		<Unit filename="src/repartiteurs/RepartiteurVerticale.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -32,13 +32,13 @@ void Geometrie::actualiser_bounds ()
 
     m_globalBounds.left     = pos.x;
     m_globalBounds.top      = pos.y;
-    m_globalBounds.width    = m_taille.x;
-    m_globalBounds.height   = m_taille.y;
+    m_globalBounds.width    = getTaille().x;
+    m_globalBounds.height   = getTaille().y;
 
     m_localBounds.left      = getPosition().x;
     m_localBounds.top       = getPosition().y;
-    m_localBounds.width     = m_taille.x;
-    m_localBounds.height    = m_taille.y;
+    m_localBounds.width     = getTaille().x;
+    m_localBounds.height    = getTaille().y;
 }
 
 

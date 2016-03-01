@@ -77,7 +77,7 @@ DnSlider::DnSlider ()
 
     m_slider->setPosition ( m_marge.x, m_marge.y );
     m_slider->setTaille ( { m_largeur - 2*m_marge.x  , m_largeur - 2*m_marge.y });
-    m_slider->setStyle ( m_skin->getStyle( Skin::Styles::slider ) );
+    m_slider->setStyle ( m_skin->getStyle( Styles::slider ) );
 
     // Action du slider
     m_slider->lier ( Evenement::onBtnG_presser , [this](){
@@ -174,7 +174,7 @@ void DnSlider::positionnerCurseurSurSouris ()
 /////////////////////////////////////////////////
 void DnSlider::setLongCurseur( float pourcentage )
 {
-
+    if ( pourcentage >100) pourcentage = 100;
     if ( m_horizontal )
         m_slider->setTailleX( m_longueur * pourcentage/100);
     else
@@ -202,7 +202,7 @@ void DnSlider::actualiser ()
 
     m_boutonFond->setTaille ( m_taille );
 
-    m_slider->setStyle ( m_skin->getStyle( Skin::Styles::slider ) );
+    m_slider->setStyle ( m_skin->getStyle( Styles::slider ) );
 
     actualiser_bounds();
     m_boutonFond->actualiser_bounds();

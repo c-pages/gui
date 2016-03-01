@@ -88,6 +88,7 @@ private:
     void initGUI_test_Affichages ();
     void initGUI_test_Boutons ();
     void initGUI_test_Donnees ();
+    void initGUI_test_Groupements ();
 
     void lierMachiner ();
     void delierMachiner ();
@@ -114,6 +115,7 @@ private:
     std::shared_ptr<gui::AffLabel>      m_labelTitre_0;        ///< Un simple label.
     std::shared_ptr<gui::AffLabel>      m_labelTitre_1;        ///< Un simple label.
     std::shared_ptr<gui::AffLabel>      m_labelTitre_2;        ///< Un simple label.
+    std::shared_ptr<gui::AffLabel>      m_labelTitre_3;        ///< Un simple label.
 
     std::shared_ptr<gui::AffLabel>      m_label;        ///< Un simple label.
     std::shared_ptr<gui::AffLabel>      m_label_2;      ///< Un autre label.
@@ -127,6 +129,7 @@ private:
     std::shared_ptr<gui::AffLabel>      m_label_10;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_11;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_12;      ///< Un autre label.
+    std::shared_ptr<gui::AffLabel>      m_textePourPanneau;      ///< Un autre label.
 
     std::shared_ptr<gui::AffImage>      m_image;        ///< Une simple image.
     std::shared_ptr<gui::AffIcone>      m_icone;        ///< Une simple icone.

@@ -40,7 +40,7 @@ void AffImage::charger ( int id )
 /////////////////////////////////////////////////
 void AffImage::chargerDepuisFichier ( std::string fichier )
 {
-    std::cout << "AffImage : chargerDepuisFichier\n";
+//    std::cout << "AffImage : chargerDepuisFichier\n";
     std::string nomUniqueImage = ms_images.nomDefautSuivant();
 
     ms_images.load ( nomUniqueImage , fichier );
@@ -54,7 +54,7 @@ void AffImage::chargerDepuisFichier ( std::string fichier )
                                  , m_texture->getSize().x
                                  , m_texture->getSize().y });
 
-    std::cout << "AffImage : taille image : " << m_texture->getSize().x << " "<< m_texture->getSize().y << "\n";
+//    std::cout << "AffImage : taille image : " << m_texture->getSize().x << " "<< m_texture->getSize().y << "\n";
 
     actualiser ();
 
@@ -81,7 +81,7 @@ void AffImage::actualiser ()
 
     } else {
 
-        auto style = m_skin->getStyle( Skin::Styles::img );
+        auto style = m_skin->getStyle( Styles::img );
 
         m_rectangle.setFillColor        ( sf::Color (
                                           style->fnd_couleur.repos.r

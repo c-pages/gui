@@ -37,10 +37,11 @@ public:
 
     virtual std::shared_ptr<Gadget> thisPtr(){
         std::cout << "DEMANDE DE thisPtr PROBLEMATIQUE\n";
+//        return static_cast<std::shared_ptr<Gadget>> shared_from_this();
         return nullptr;
     };
 
-protected:
+public:
     /////////////////////////////////////////////////
     /// \brief Ajouter un gadget à la liste de gadgets enfant.
     ///
@@ -88,7 +89,8 @@ protected:
     /// \param target
     /// \param states
     /////////////////////////////////////////////////
-    void dessinerEnfants (sf::RenderTarget& target, sf::RenderStates states) const {};
+    virtual void dessinerEnfants (sf::RenderTarget& target, sf::RenderStates states) const ;
+
 
 
 /////////////////////////////////////////////////

@@ -12,6 +12,7 @@ BtnMenu::BtnMenu ()
 : m_elements    ( 0 )
 , m_tailleMenu  ( { 150 , 15 } )
 , m_ecart       ( 0 )
+, m_fond        (std::make_shared<AffRectangle>())
 {
     m_marge.x = 0;
     m_marge.y = 0;
@@ -19,9 +20,8 @@ BtnMenu::BtnMenu ()
 
 
 /////////////////////////////////////////////////
-void BtnMenu::ajouter (std::string nom, FctnAction fonction)
+void BtnMenu::ajouterElement (std::string nom, FctnAction fonction)
 {
-//    std::cout << "Menu: Ajouter '" << nom << "'\n";
 
     ElementMenu *    nouvelElement = new ElementMenu ();
 
@@ -41,11 +41,12 @@ void BtnMenu::ajouter (std::string nom, FctnAction fonction)
     m_elements.push_back( nouvelElement );
 
     actualiser ();
+
 }
 
 
 /////////////////////////////////////////////////
-void BtnMenu::supprimer (unsigned int id)
+void BtnMenu::supprimerElement (unsigned int id)
 {
 
 }
@@ -68,17 +69,17 @@ void BtnMenu::actualiser ()
 
         element->bouton->setPosition    ( m_marge.x , index * ( m_tailleMenu.y + m_ecart ) + m_marge.y );
         element->bouton->setTexte       ( element->nom );
-        element->bouton->setStyle       ( m_skin->getStyle( Skin::Styles::menu ) );
+        element->bouton->setStyle       ( m_skin->getStyle( Styles::menu ) );
 
         index++;
     }
     actualiser_bounds ();
 
-    m_fond.setTaille( m_taille );
+    m_fond->setTaille( m_taille );
 
-    m_fond.setFillColor         ( m_skin->getStyle( Skin::Styles::fond )->fnd_couleur.repos );
-    m_fond.setOutlineColor      ( m_skin->getStyle( Skin::Styles::fond )->lgn_couleur.repos );
-    m_fond.setOutlineThickness  ( m_skin->getStyle( Skin::Styles::fond )->lgn_epaisseur.repos );
+    m_fond->setFillColor         ( m_skin->getStyle( Styles::fond )->fnd_couleur.repos );
+    m_fond->setOutlineColor      ( m_skin->getStyle( Styles::fond )->lgn_couleur.repos );
+    m_fond->setOutlineThickness  ( m_skin->getStyle( Styles::fond )->lgn_epaisseur.repos );
 
 }
 
@@ -128,7 +129,7 @@ void BtnMenu::draw (sf::RenderTarget& target, sf::RenderStates states) const
     //On applique la transformation
     states.transform *= getTransform();
 
-   target.draw ( m_fond , states ) ;
+   target.draw ( *m_fond , states ) ;
 
     // On dessine les éléments
     for ( auto element : m_elements )

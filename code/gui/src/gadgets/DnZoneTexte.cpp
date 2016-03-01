@@ -91,19 +91,19 @@ void DnZoneTexte::actualiser ()
     // le bouton
     m_bouton->setSkin       ( m_skin );
     if ( !m_ecritureActive ) {
-        m_bouton->setStyle      ( m_skin->getStyle( Skin::Styles::bouton ) );
+        m_bouton->setStyle      ( m_skin->getStyle( Styles::bouton ) );
     } else {
-        m_bouton->setStyle      ( m_skin->getStyle( Skin::Styles::zoneTexte ) );
+        m_bouton->setStyle      ( m_skin->getStyle( Styles::zoneTexte ) );
     }
     // le label
-    m_label->setStyle       ( m_skin->getStyle( Skin::Styles::zoneTexte ) );
+    m_label->setStyle       ( m_skin->getStyle( Styles::zoneTexte ) );
     m_label->setSkin        ( m_skin );
     m_label->setPosition    ( m_marge.x , m_marge.y/2);
 
     // le curseur
 //    m_curseur->setPosition  ( , m_marge.y/2);
     m_curseur->setSkin      ( m_skin );
-    m_curseur->setStyle     ( m_skin->getStyle( Skin::Styles::bouton ) );
+    m_curseur->setStyle     ( m_skin->getStyle( Styles::bouton ) );
     m_curseur->setFillColor ( sf::Color::White );
     m_curseur->setOutlineThickness ( 0 );
 

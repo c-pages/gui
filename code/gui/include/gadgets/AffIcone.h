@@ -27,7 +27,7 @@ class AffIcone : public AffImage {
 public:
     ///< Definir m_index
     void setIndex( unsigned int val ){
-        std::cout << "AffIcone::nom: " << getNom() << " INDEX : " << m_index << "\n";
+//        std::cout << "AffIcone::nom: " << getNom() << " INDEX : " << m_index << "\n";
         m_index = val;
         actualiser ();
     };

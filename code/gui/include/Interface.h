@@ -20,7 +20,7 @@ static  ResourcesMgr<sf::Font,      std::string >   ms_polices; ///< Manager des
 //    Fin
 //};
 
-static  ResourcesMgr<sf::Texture,   std::string >   ms_icones;  ///< Manager des icones
+//static  ResourcesMgr<sf::Texture,   std::string >   ms_icones;  ///< Manager des icones
 
 //enum class Images {
 //    Fin

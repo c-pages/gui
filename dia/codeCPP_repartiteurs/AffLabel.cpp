@@ -1,0 +1,43 @@
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include <AffLabel.h>
+
+
+
+namespace gui {
+
+/////////////////////////////////////////////////
+AffLabel::AffLabel ()
+: m_texte ( "Label" )
+, m_texteSFML (  )
+, m_texteTaille ( 10 )
+, m_police (  )
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void AffLabel::actualiser ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void AffLabel::draw (sf::RenderTarget& target, sf::RenderStates states) const
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void AffLabel::setPoliceFichier (sf::Font police)
+{
+    
+}
+
+
+} // fin namespace gui
+

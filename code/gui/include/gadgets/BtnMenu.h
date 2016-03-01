@@ -46,14 +46,14 @@ public:
     /////////////////////////////////////////////////
     BtnMenu ();
 
-    void ajouter (std::string nom, FctnAction fonction);
+    void ajouterElement (std::string nom, FctnAction fonction);
 
     /////////////////////////////////////////////////
     /// \brief
     ///
     /// \param id
     /////////////////////////////////////////////////
-    void supprimer (unsigned int id);
+    void supprimerElement (unsigned int id);
 
     virtual void actualiser ();
     virtual void actualiser_bounds ();
@@ -62,15 +62,12 @@ public:
 
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
-//    virtual std::shared_ptr<Gadget>  chercherEnfantSurvole ( sf::Vector2i pos );
-
-
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
 public:
     std::vector <ElementMenu*>      m_elements;
-    AffRectangle                    m_fond;
+    std::shared_ptr<AffRectangle>   m_fond;
     sf::Vector2i                    m_tailleMenu;   ///< La taille d'un bouton du menu
     float                           m_ecart;
 

@@ -154,5 +154,12 @@ std::shared_ptr<DnBarreDefilement>        FabriqueBase::barreDefilement( )
 }
 
 
+/////////////////////////////////////////////////
+std::shared_ptr<GrpPanneau>        FabriqueBase::panneau( )
+{
+    auto nouveauGadget = creerGadget<GrpPanneau>( );
+    return nouveauGadget;
+}
+
 
 }; // fin namespace gui

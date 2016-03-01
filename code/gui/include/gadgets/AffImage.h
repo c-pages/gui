@@ -38,7 +38,11 @@ public:
 
     void chargerDepuisFichier ( std::string fichier );
 
-    void setImage ( sf::Texture );
+    void setImage ( const sf::Texture* texture )
+    {
+        std::cout << " SET IMAGE\n";
+        m_rectangle.setTexture( texture );
+    };
 
     void setAjustement ( bool val ) { m_ajustement = val; };
 

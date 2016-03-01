@@ -40,14 +40,31 @@ void AffLabel::setStyle ( std::shared_ptr<Style> style , Etat etat ){
         actualiser();
 }
 
+/*
+/////////////////////////////////////////////////
+void AffLabel::actualiser_bounds ()
+{
 
+    sf::Vector2f pos = getPosAbs ();
 
+    m_globalBounds.left     = pos.x;
+    m_globalBounds.top      = pos.y;
+    m_globalBounds.width    = getTaille().x;
+    m_globalBounds.height   = getTaille().y;
+
+    m_localBounds.left      = getPosition().x;
+    m_localBounds.top       = getPosition().y;
+    m_localBounds.width     = getTaille().x;
+    m_localBounds.height    = getTaille().y;
+
+}
+*/
 /////////////////////////////////////////////////
 void AffLabel::actualiser ()
 {
     m_texteSFML->setString  ( m_texte );
 
-    auto style = m_skin->getStyle ( Skin::Styles::defaut );
+    auto style = m_skin->getStyle ( Styles::defaut );
     if( m_style !=  nullptr )
         style = m_style;
 
@@ -59,7 +76,9 @@ void AffLabel::actualiser ()
     m_texteSFML->setString  ( m_texte );
     m_texteSFML->setFont    ( m_police );
 
+    actualiser_bounds();
 
+    //m_texteSFML->getGlobalBounds().width , m_texteSFML->getGlobalBounds().height
 
 //    m_texteSFML = std::make_shared<sf::Text> ();
 

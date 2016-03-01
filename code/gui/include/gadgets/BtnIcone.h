@@ -37,7 +37,7 @@ public:
 
     void    setIconeIndex( unsigned int val )
     {
-        std::cout << "BtnIcone::nom: " << getNom() <<  "\n";
+//        std::cout << "BtnIcone::nom: " << getNom() <<  "\n";
         m_icone->setIndex( val );
         actualiser ();
     };

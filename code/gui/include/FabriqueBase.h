@@ -25,6 +25,8 @@
 #include "gadgets\DnSlider.h"
 #include "gadgets\DnBarreDefilement.h"
 
+// GROUPEMENT
+#include "gadgets\GrpPanneau.h"
 
 namespace gui{
 
@@ -152,11 +154,22 @@ public:
     std::shared_ptr<DnSlider>        slider( );
 
     /////////////////////////////////////////////////
-    /// \brief  Création d'un slider
+    /// \brief  Création d'une barre de defilement pour deplacer un contenu à l'interieur d'un panneau
     ///
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<DnBarreDefilement>        barreDefilement( );
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// GROUPEMENT
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////
+    /// \brief  Création d'un panneau
+    ///
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<GrpPanneau>        panneau( );
 
 };
 

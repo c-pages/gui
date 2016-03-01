@@ -5,6 +5,40 @@
 namespace gui {
 
 
+/////////////////////////////////////////////////
+/// \brief
+/////////////////////////////////////////////////
+enum Repartitions {
+    Libre,
+    Verticale,
+    Horizontale,
+    Grille
+};
+
+
+/////////////////////////////////////////////////
+/// \brief
+/////////////////////////////////////////////////
+enum Styles{
+
+    defaut,
+
+    invisible,
+    cadre,
+    txtCourant,
+    txtLog,
+    txtTitre,
+    fond,
+    bouton,
+    btnCoche,
+    img,
+    menu,
+    fenetre,
+    zoneTexte,
+    slider,
+
+    tous
+};
 
 enum class Etat {
     repos,

@@ -60,16 +60,16 @@ void DnCaseACocher::actualiser_bounds() {
 void DnCaseACocher::actualiser ()
 {
     m_label->setTexte ( m_texte );
-    m_label->setStyle ( m_skin->getStyle( Skin::Styles::btnCoche ) );
+    m_label->setStyle ( m_skin->getStyle( Styles::btnCoche ) );
     m_label->setPosition ( m_taille.x + 2*m_marge.x , 0 );
 
     m_bouton->setTaille  ( m_taille );
-    m_bouton->setStyle   ( m_skin->getStyle( Skin::Styles::bouton ) );
+    m_bouton->setStyle   ( m_skin->getStyle( Styles::bouton ) );
 
     m_coche->setTaille   ( { m_taille.x - 2*m_marge.x , m_taille.y - 2*m_marge.y } );
     m_coche->setPosition ( m_marge.x , m_marge.y );
 
-    auto style = m_skin->getStyle( Skin::Styles::btnCoche );
+    auto style = m_skin->getStyle( Styles::btnCoche );
     m_coche->setStyle    ( style );
 
     if ( ! m_valeur ) {

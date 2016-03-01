@@ -24,6 +24,7 @@ EcranDemo::EcranDemo( Application*  appli )
     initGUI_test_Affichages();
     initGUI_test_Boutons();
     initGUI_test_Donnees  ();
+    initGUI_test_Groupements  ();
 
     initScene   ();
 
@@ -148,7 +149,7 @@ EcranDemo::initGUI ()
     /////// Label retour ///////
     m_labelRetour = m_interface->creer.label( "Retour :" );
     m_labelRetour->setPosition    ( 20 , 5 );
-    m_labelRetour->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
+    m_labelRetour->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
     /////// Interactions clavier ///////
@@ -157,6 +158,41 @@ EcranDemo::initGUI ()
             std::cout << "Interface - Action : touche 'Espace'\n";
         } );
 }
+
+/////////////////////////////////////////////////
+void
+EcranDemo::initGUI_test_Groupements  ()
+{
+
+    sf::Vector2f posRoot = { 20 , 300 };
+
+    std::cout << "\n---------------------------------------\n";
+    std::cout << "      Test des gadgets : GROUPEMENT";
+    std::cout << "\n---------------------------------------\n\n";
+
+//
+//    /////// TITRE Label ///////
+//    m_labelTitre_3 = m_interface->creer.label( "Groupements" );
+//    m_labelTitre_3->setPosition    ( posRoot.x , posRoot.y - 40 );
+//    m_labelTitre_3->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
+
+    //// creation d'un panneau
+    auto m_panneau = m_interface->creer.panneau(  );
+    m_panneau->setPosition    ( posRoot.x , posRoot.y + 20 );
+    m_panneau->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
+
+    auto m_rect = m_interface->creer.rectangle( {680,500} );
+    m_rect->setPosition    ( 20 , 20 );
+    m_rect->setStyle       ( m_skin->getStyle ( gui::Styles::fond ) );
+
+    m_textePourPanneau = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil \nquod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
+    m_panneau->ajouter (m_textePourPanneau);
+    m_panneau->ajouter (m_rect);
+//    m_interface->retirer( m_textePourPanneau );
+//    m_textePourPanneau->ajouter (m_panneau);
+}
+
+
 
 
 /////////////////////////////////////////////////
@@ -174,14 +210,14 @@ EcranDemo::initGUI_test_Donnees  ()
     /////// TITRE Label ///////
     m_labelTitre_0 = m_interface->creer.label( "Données" );
     m_labelTitre_0->setPosition    ( posRoot.x , posRoot.y - 40 );
-    m_labelTitre_0->setStyle       ( m_skin->getStyle ( gui::Skin::Styles::txtTitre ) );
+    m_labelTitre_0->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 
 
 
     /////// Bouton à cocher ///////
     m_boutonCoche = m_interface->creer.btnACocher( );
     m_boutonCoche->setPosition    ( posRoot.x , posRoot.y  +  0 );
-    m_boutonCoche->setStyle       ( m_skin->getStyle ( gui::Skin::Styles::txtLog ) );
+    m_boutonCoche->setStyle       ( m_skin->getStyle ( gui::Styles::txtLog ) );
     m_boutonCoche->setTexte       ( "'Machiner'" );
     m_boutonCoche->setValeur      ( true );
 
@@ -204,20 +240,20 @@ EcranDemo::initGUI_test_Donnees  ()
     /////// autre Label ///////
     m_label_7 = m_interface->creer.label( "<---  Bouton Booleén, interrupteur ... ('Tab')" );
     m_label_7->setPosition    ( 190 + posRoot.x , posRoot.y  +  2 );
-    m_label_7->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
+    m_label_7->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
     /////// Zone de texte ///////
     m_zoneTexte = m_interface->creer.zoneTexte( "Zone de texte" );
     m_zoneTexte->setPosition    ( posRoot.x , posRoot.y  +  28 );
-    m_zoneTexte->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
+    m_zoneTexte->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
     /////// autre Label ///////
     m_label_8 = m_interface->creer.label( "<---  Zone de texte (simple pour l'instant)." );
     m_label_8->setPosition    ( 190 + posRoot.x , posRoot.y  +  30 );
-    m_label_8->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
+    m_label_8->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
@@ -225,7 +261,7 @@ EcranDemo::initGUI_test_Donnees  ()
     ///////slider ///////
     m_slider = m_interface->creer.slider( );
     m_slider->setPosition    ( posRoot.x , posRoot.y  +  68 );
-    m_slider->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::bouton ) );
+    m_slider->setStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
 //    m_slider->setLongCurseur ( 50 );
 
     //m_slider->setVertical();
@@ -238,21 +274,21 @@ EcranDemo::initGUI_test_Donnees  ()
     /////// autre Label ///////
     m_label_9 = m_interface->creer.label( "<---  Slider pour controler valeur de 0.0 à 1.0" );
     m_label_9->setPosition    ( 190 + posRoot.x , posRoot.y  +  70 );
-    m_label_9->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
+    m_label_9->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
     ///////barreDefilement ///////
     m_barreDefil = m_interface->creer.barreDefilement( );
     m_barreDefil->setPosition    ( posRoot.x , posRoot.y  +  98 );
-    m_barreDefil->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::bouton ) );
+    m_barreDefil->setStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
 
     m_barreDefil->setLongueurCurseur ( 50 );
 
     /////// autre Label ///////
     m_label_10 = m_interface->creer.label( "<---  Barre de défilement" );
     m_label_10->setPosition    ( 190 + posRoot.x , posRoot.y  +  100 );
-    m_label_10->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
+    m_label_10->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
@@ -272,7 +308,7 @@ EcranDemo::initGUI_test_Boutons  ()
     /////// TITRE Label ///////
     m_labelTitre_1 = m_interface->creer.label( "Boutons" );
     m_labelTitre_1->setPosition    ( posRoot.x , posRoot.y - 40 );
-    m_labelTitre_1->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtTitre ) );
+    m_labelTitre_1->setStyle       ( m_skin->getStyle (  gui::Styles::txtTitre ) );
 
 
 
@@ -308,7 +344,7 @@ EcranDemo::initGUI_test_Boutons  ()
     m_label_5 = m_interface->creer.label( "<---  Simple bouton texte.\n (toute les interr-ACTIONs souris en console.)" );
     m_label_5->setPosition    ( 160 + posRoot.x , posRoot.y + 3 );
 //    m_label_5->setSkin        ( m_skin );
-    m_label_5->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
+    m_label_5->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
@@ -325,7 +361,7 @@ EcranDemo::initGUI_test_Boutons  ()
     /////// autre Label ///////
     m_label_12 = m_interface->creer.label( "<---  Simple bouton icone." );
     m_label_12->setPosition    ( 160 + posRoot.x , posRoot.y + 43 );
-    m_label_12->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
+    m_label_12->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
@@ -334,25 +370,25 @@ EcranDemo::initGUI_test_Boutons  ()
     m_boutonMenu = m_interface->creer.menu( );
 
     m_boutonMenu->setPosition    ( posRoot.x , posRoot.y  + 85 );
-    m_boutonMenu->ajouter ( "Faire un truc" , [this](){
+    m_boutonMenu->ajouterElement ( "Faire un truc" , [this](){
                         std::cout << "ACTION fait un truc.\n";
                         });
-    m_boutonMenu->ajouter ( "Bidouiller" , [this](){
+    m_boutonMenu->ajouterElement ( "Bidouiller" , [this](){
                         std::cout << "ACTION bidouille.\n";
                         });
 
-    m_boutonMenu->ajouter ( "Faire autre chose" , [this](){
+    m_boutonMenu->ajouterElement ( "Faire autre chose" , [this](){
                         std::cout << "ACTION fait autre chose.\n";
                         });
 
-    m_boutonMenu->ajouter ( "Buller" , [this](){
+    m_boutonMenu->ajouterElement ( "Buller" , [this](){
                         std::cout << "ACTION ne fait rien.\n";
                         });
 
     /////// autre Label ///////
     m_label_6 = m_interface->creer.label( "<---  Menu (déroulant, contextuel, ...)." );
     m_label_6->setPosition    ( 160 + posRoot.x , posRoot.y  +  110 );
-    m_label_6->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
+    m_label_6->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
@@ -458,7 +494,7 @@ EcranDemo::initGUI_test_Affichages  ()
     /////// TITRE Label ///////
     m_labelTitre_1 = m_interface->creer.label( "Affichages" );
     m_labelTitre_1->setPosition    ( posRoot.x , posRoot.y - 40 );
-    m_labelTitre_1->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtTitre ) );
+    m_labelTitre_1->setStyle       ( m_skin->getStyle (  gui::Styles::txtTitre ) );
 
 
     using namespace gui;
@@ -471,7 +507,7 @@ EcranDemo::initGUI_test_Affichages  ()
     /////// Un Label ///////
     m_label = m_interface->creer.label( "<---  simple rectangle." );
     m_label->setPosition    ( 70 + posRoot.x , posRoot.y + 5 );
-    m_label->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
+    m_label->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
     /////// Une image ///////
@@ -483,7 +519,7 @@ EcranDemo::initGUI_test_Affichages  ()
     /////// autre Label ///////
     m_label_2 = m_interface->creer.label( "<---  simple image. ('media/img/IconeVide.png')" );
     m_label_2->setPosition    (70 + posRoot.x , posRoot.y + 35 );
-    m_label_2->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
+    m_label_2->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
@@ -495,7 +531,7 @@ EcranDemo::initGUI_test_Affichages  ()
     /////// autre Label ///////
     m_label_4 = m_interface->creer.label( "<---  simple label. (comme ça ici là)" );
     m_label_4->setPosition    ( 70 + posRoot.x , posRoot.y + 65 );
-    m_label_4->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
+    m_label_4->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
@@ -524,7 +560,7 @@ EcranDemo::initGUI_test_Affichages  ()
     /////// autre Label ///////
     m_label_11 = m_interface->creer.label( "<---  icone. ('1', '2', '3', '4' pour changer index de l'icone)" );
     m_label_11->setPosition    ( 70 + posRoot.x , posRoot.y + 95 );
-    m_label_11->setStyle       ( m_skin->getStyle (  gui::Skin::Styles::txtLog ) );
+    m_label_11->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
     // On associe des fonctions aux fleches pour faire bouger le label

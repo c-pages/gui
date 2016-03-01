@@ -33,7 +33,7 @@ void AffIcone::actualiser ()
 //        m_index = m_nbrIcones;
 
     m_taille = { largeur , largeur };
-    std::cout << "AffIcone::actualiser : " << getNom() << "  m_index : " <<  m_index << "\n";
+//    std::cout << "AffIcone::actualiser : " << getNom() << "  m_index : " <<  m_index << "\n";
     m_rectangle.setTextureRect ( { ( m_index-1) * largeur
                                  , 0
                                  , largeur
@@ -50,7 +50,7 @@ void AffIcone::actualiser ()
 
     } else {
 
-        auto style = m_skin->getStyle( Skin::Styles::img );
+        auto style = m_skin->getStyle( Styles::img );
 
         m_rectangle.setFillColor        ( sf::Color (
                                           style->fnd_couleur.repos.r

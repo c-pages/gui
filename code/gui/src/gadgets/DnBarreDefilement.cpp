@@ -13,7 +13,7 @@ DnBarreDefilement::DnBarreDefilement ()
 , m_slider      ( std::make_shared<DnSlider>() )
 , m_btnPlus     ( std::make_shared<BtnIcone>() )
 , m_btnMoins    ( std::make_shared<BtnIcone>() )
-, m_longeur     ( 180 )
+, m_longueur     ( 180 )
 , m_largeur     ( 15 )
 {
 
@@ -36,10 +36,17 @@ DnBarreDefilement::DnBarreDefilement ()
 
     m_btnPlus->lier (Evenement::onBtnG_relacher, [this](){
         m_slider->incrementer();
+        declencher(Evenement::on_changerValeur);
     });
 
     m_btnMoins->lier (Evenement::onBtnG_relacher, [this](){
         m_slider->decrementer();
+        declencher(Evenement::on_changerValeur);
+    });
+
+
+    m_slider->lier (Evenement::on_changerValeur , [this](){
+        declencher(Evenement::on_changerValeur);
     });
 
 }
@@ -49,9 +56,9 @@ DnBarreDefilement::DnBarreDefilement ()
 void DnBarreDefilement::actualiser ()
 {
     if (m_horizontal)
-        m_taille = { m_longeur , m_largeur };
+        m_taille = { m_longueur , m_largeur };
     else
-        m_taille = { m_largeur , m_longeur };
+        m_taille = { m_largeur , m_longueur };
 
     if (m_horizontal){
 
@@ -63,12 +70,12 @@ void DnBarreDefilement::actualiser ()
         m_btnMoins->setPosition ( 0 , 0 );
 
         m_slider->setHorizontal ();
-        m_slider->setLongueur   ( m_longeur - 2*m_largeur );
+        m_slider->setLongueur   ( m_longueur - 2*m_largeur );
         m_slider->setLargeur    ( m_largeur );
         m_slider->setPosition   ( m_largeur , 0 );
 
         m_btnPlus->setTaille   ( { m_largeur , m_largeur} );
-        m_btnPlus->setPosition ( m_longeur - m_largeur , 0 );
+        m_btnPlus->setPosition ( m_longueur - m_largeur , 0 );
 
     }else {
         m_btnMoins->setIconeIndex( 1 );
@@ -80,12 +87,12 @@ void DnBarreDefilement::actualiser ()
         m_btnMoins->setPosition ( 0 , 0  );
 
         m_slider->setVertical ();
-        m_slider->setLongueur   (  m_longeur - 2*m_largeur );
+        m_slider->setLongueur   (  m_longueur - 2*m_largeur );
         m_slider->setLargeur   ( m_largeur );
         m_slider->setPosition   ( 0, m_largeur  );
 
         m_btnPlus->setTaille   ( { m_largeur , m_largeur} );
-        m_btnPlus->setPosition ( 0 , m_longeur - m_largeur  );
+        m_btnPlus->setPosition ( 0 , m_longueur - m_largeur  );
 
     }
 

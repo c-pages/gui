@@ -1,0 +1,25 @@
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include <RepartiteurHorizontal.h>
+
+
+
+namespace gui {
+
+/////////////////////////////////////////////////
+RepartiteurHorizontal::RepartiteurHorizontal (Gadget* racine)
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void RepartiteurHorizontal::repartir (std::vector<std::shared_ptr<Gadget>> groupe)
+{
+    
+}
+
+
+} // fin namespace gui
+

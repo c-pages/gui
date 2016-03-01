@@ -214,7 +214,7 @@ protected:
 // Membres
 /////////////////////////////////////////////////
 public:
-    static  Gadget*     ms_racineCourante;    ///< L'interface courante dans laquelle on créé les gadgets.
+    static  Gadget*     ms_racineCourante;    ///< L'interface courante dans laquelle on créé les gadgets.(peut etre interface ou grp?...)
 private:
     static  int         ms_CompteurGadgets;   ///< L'interface courante dans laquelle on créé les gadgets.
 

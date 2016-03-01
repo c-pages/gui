@@ -1,0 +1,35 @@
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include <DnBarreDefilement.h>
+
+#include <DnSlider.h>
+#include <BtnRectangle.h>
+#include <BtnRectangle.h>
+
+
+namespace gui {
+
+/////////////////////////////////////////////////
+DnBarreDefilement::BtnBarreDefilement ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void DnBarreDefilement::actualiser ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void DnBarreDefilement::draw (sf::RenderTarget& target, sf::RenderStates states) const
+{
+    
+}
+
+
+} // fin namespace gui
+

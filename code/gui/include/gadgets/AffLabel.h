@@ -74,6 +74,8 @@ public:
 
     virtual void actualiser ();
 
+//    virtual void actualiser_bounds ();
+
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
     /////////////////////////////////////////////////
@@ -82,7 +84,6 @@ public:
     /// \param police
     /////////////////////////////////////////////////
     void setPoliceFichier (sf::Font police);
-
 
 
 /////////////////////////////////////////////////

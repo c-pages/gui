@@ -21,11 +21,12 @@ class Support : public Gadget {
 public:
     Support();
     /////////////////////////////////////////////////
-    /// \brief Bascule entre un panneau simple et un panneau slider.
+    /// \brief Bascule entre un panneau simple (false) et un panneau slider (true).
     ///
     /// \param val
     /////////////////////////////////////////////////
     virtual void setDefilementActif (bool val);
+
 
     /////////////////////////////////////////////////
     virtual void ajouter (std::shared_ptr<Gadget> enfant);

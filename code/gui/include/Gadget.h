@@ -132,7 +132,7 @@ public:
     ///
     /// \param deltaTemps		 Le temps écoulé depuis la dernière actualisation.
     /////////////////////////////////////////////////
-    virtual void actualiser (sf::Time deltaTemps);
+    virtual void actualiser ( sf::Time deltaTemps );
 
     /////////////////////////////////////////////////
     /// \brief  Traitement des évènements  du gadget.
@@ -219,8 +219,12 @@ public:
 
     void setMarge ( sf::Vector2f marge ){ m_marge = marge;};
 
+
 protected:
     sf::Vector2f                m_marge;            ///< La marge à laissé
+
+//    bool                        m_necessiteActualisation;
+
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////

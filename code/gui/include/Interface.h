@@ -50,6 +50,12 @@ public:
     virtual void actualiser ();
 //    void nouvellePolice(std::string fichier);
 
+    /////////////////////////////////////////////////
+    virtual void actualiser ( sf::Time deltaTemps ){
+//        Gadget::actualiser( deltaTemps );
+    };
+
+
 private:
     std::shared_ptr<Gadget> chercherGadgetSurvole ();
 

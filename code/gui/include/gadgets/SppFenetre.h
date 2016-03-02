@@ -38,6 +38,7 @@ public:
     void positionnerFenetre ();
 
     virtual void actualiser ();
+//    virtual void actualiser ( sf::Time delta );
 
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 

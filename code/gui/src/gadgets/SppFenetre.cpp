@@ -31,16 +31,19 @@ SppFenetre::SppFenetre ()
 
     // Action du slider
     m_btndrag->lier ( Evenement::onBtnG_presser , [this](){
-        m_decalageDragSouris = sf::Vector2i ( getLocalPosSouris().x - getPosition().x , getLocalPosSouris().y - getPosition().y );
+        m_decalageDragSouris = sf::Vector2i ( getPosSouris().x - getPosition().x , getPosSouris().y - getPosition().y );
         setDrag( true );
+//        m_necessiteActualisation = true ;
         actualiser ();
     });
     m_btndrag->lier ( Evenement::onBtnG_relacher , [this](){
         setDrag( false );
+//        m_necessiteActualisation = false ;
         actualiser ();
     });
     m_btndrag->lier ( Evenement::onBtnG_relacherDehors , [this](){
         setDrag( false );
+//        m_necessiteActualisation = false ;
         actualiser ();
     });
 
@@ -49,9 +52,33 @@ SppFenetre::SppFenetre ()
 /////////////////////////////////////////////////
 void SppFenetre::traiterEvenements (const sf::Event& evenement)
 {
+ /*   std::cout << " evt";*/
+    if ( dragEnCours() )
+        positionnerFenetre ();
+
+    for ( auto enfant : m_enfants )
+        enfant->traiterEvenements ( evenement);
+
+    for ( auto composant : m_composants )
+        composant->traiterEvenements ( evenement);
+}
+/*
+void SppFenetre::draw (sf::RenderTarget& target, sf::RenderStates states) const
+{
     if ( dragEnCours() )
         positionnerFenetre ();
 }
+*/
+/*
+/////////////////////////////////////////////////
+void SppFenetre::actualiser ( sf::Time delta )
+{
+    std::cout << " ACTUUUUU";
+    if ( dragEnCours() )
+        positionnerFenetre ();
+}*/
+
+
 
 
 /////////////////////////////////////////////////
@@ -101,7 +128,7 @@ std::shared_ptr<Gadget>  SppFenetre::testerSurvol ( sf::Vector2i position )
 void SppFenetre::positionnerFenetre ()
 {
 
-    setPosition ( getLocalPosSouris().x - m_decalageDragSouris.x  , getLocalPosSouris().y - m_decalageDragSouris.y );
+    setPosition ( getPosSouris().x - m_decalageDragSouris.x  , getPosSouris().y - m_decalageDragSouris.y );
 
     actualiser ();
 }

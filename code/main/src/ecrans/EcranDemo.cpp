@@ -83,6 +83,8 @@ void EcranDemo::actualiser  ( float deltaT )
     // actualiser l'interface
     m_interface->actualiser    ( );
 
+    // actualiser l'interface
+    m_interface->actualiser    ( sf::seconds( deltaT ) ) ;
 
     std::string val;
     if ( m_interface->m_boutonSurvole != nullptr ){

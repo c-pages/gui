@@ -38,13 +38,13 @@ public:
     void positionnerFenetre ();
     void chargerIcone   (std::string fichier );
     virtual void actualiser ();
-    virtual void actualiser ( sf::Time delta );
+//    virtual void actualiser ( sf::Time delta );
 
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
-/*
-/////////////////////////////////////////////////
-void traiterEvenements (const sf::Event& evenement);
-*/
+
+    /////////////////////////////////////////////////
+    void traiterEvenements (const sf::Event& evenement);
+
 
 //    /////////////////////////////////////////////////
 //    /// \brief Ajouter un gadget à la liste de gadgets enfant.

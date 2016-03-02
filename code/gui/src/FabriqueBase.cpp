@@ -1,24 +1,68 @@
+
 #include "FabriqueBase.h"
+#include "Interface.h"
+
 
 #include <iostream>
 
+
 namespace gui{
+
+/////////////////////////////////////////////////
+FabriqueBase::FabriqueBase ( Interface* interfaceParent )
+: m_interfaceParent ( interfaceParent )
+{}
+
 
 
 /////////////////////////////////////////////////
 template<typename T>
 std::shared_ptr<T>  FabriqueBase::creerGadget (){
+
     // Creation du nouveau gadget
     std::shared_ptr<T> nouveauGadget = std::make_shared<T>( );
 
-    // Affiliation au gadget racine courant
-    Gadget::ms_racineCourante->ajouter ( nouveauGadget );
-    nouveauGadget->setParent ( Gadget::ms_racineCourante );
+    // Affiliation a l'interface
+    m_interfaceParent->ajouter ( nouveauGadget );
+    nouveauGadget->setParent ( m_interfaceParent );
+/*
+    std::vector<std::shared_ptr<Gadget>>        m_bureau;
+    std::vector<std::shared_ptr<Gadget>>        m_fenetres;
+    std::vector<std::shared_ptr<Gadget>>        m_supports;*/
+
+    m_interfaceParent->m_calque_bureau->ajouter ( nouveauGadget );
 
     // renvois du nouveau gadget créé.
     return nouveauGadget;
-
 }
+
+/////////////////////////////////////////////////
+template<typename T>
+std::shared_ptr<T>  FabriqueBase::creerFenetre (){
+
+    // Creation du nouveau gadget
+    std::shared_ptr<T> nouveauGadget = std::make_shared<T>( );
+/*
+    // Affiliation a l'interface
+    m_interfaceParent->ajouterFenetre ( nouveauGadget );
+    nouveauGadget->setParent ( m_interfaceParent );*/
+
+    m_interfaceParent->ajouter ( nouveauGadget );
+    nouveauGadget->setParent ( m_interfaceParent );
+
+    m_interfaceParent->m_calque_fenetres->ajouter ( nouveauGadget );
+
+    // renvois du nouveau gadget créé.
+    return nouveauGadget;
+}
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
 
 
@@ -183,8 +227,34 @@ std::shared_ptr<PanSliders>        FabriqueBase::panneauSliders( )
 /////////////////////////////////////////////////
 std::shared_ptr<FenSimple>        FabriqueBase::fenetre( std::string titre )
 {
-    auto nouveauGadget = creerGadget<FenSimple>( );
+    auto nouveauGadget = creerFenetre<FenSimple>( );
     nouveauGadget->setTexte (titre);
     return nouveauGadget;
 }
+
+
+/////////////////////////////////////////////////
+
+std::shared_ptr<FenRedim>        FabriqueBase::fenetreRedim( std::string titre  )
+{
+    auto nouveauGadget = creerFenetre<FenRedim>( );
+    nouveauGadget->setTexte (titre);
+    return nouveauGadget;
+}
+
 }; // fin namespace gui
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

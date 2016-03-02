@@ -4,6 +4,7 @@
 
 #include "SFML/Graphics.hpp"
 #include "Gadget.h"
+#include "Calque.h"
 #include "FabriqueBase.h"
 #include "ResourcesMgr.h"
 
@@ -43,6 +44,7 @@ public:
 
     virtual void traiterEvenements( sf::Event evenement );
 
+
     /////////////////////////////////////////////////
     /// \brief Actualiser les géométrie du gadgets, et donc ses bounds.
     ///
@@ -78,9 +80,15 @@ public:
     };
 
     static sf::RenderWindow*                    ms_fenetreSFML;      ///< La fenetyre SFML;
+//
+//    std::vector<std::shared_ptr<Gadget>>        m_bureau;
+//    std::vector<std::shared_ptr<Gadget>>        m_fenetres;
+//    std::vector<std::shared_ptr<Gadget>>        m_supports;
 
-    std::vector<std::shared_ptr<Gadget>>        m_fenetres;
-    std::vector<std::shared_ptr<Gadget>>        m_supports;
+    std::shared_ptr<Calque>        m_calque_bureau;
+    std::shared_ptr<Calque>        m_calque_fenetres;
+    std::shared_ptr<Calque>        m_calque_supports;
+
 
     FabriqueBase    creer;                              ///< La fabrique de gadget de base (GOF: Fabrique)
 

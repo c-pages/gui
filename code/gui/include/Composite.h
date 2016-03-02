@@ -68,7 +68,7 @@ public:
 
     void demanderASupprimer (std::shared_ptr<Gadget> gadget );
 
-    void nettoyerEnfantsASupprimer ( );
+    void actualiserListes ( );
 
     /////////////////////////////////////////////////
     /// \brief Supprimer un gadget.
@@ -81,14 +81,14 @@ public:
     /// \brief Demander au parent d'être mis au dessus des autres gadgets ( mouvements de la liste des enfants).
     ///
     /////////////////////////////////////////////////
-    void demander_aEtre_auDessus () const {};
+    void demander_aEtre_auDessus ();
 
     /////////////////////////////////////////////////
     /// \brief Mettre au dessus des autres gadgets ( mouvements de la liste des enfants).
     ///
     /// \param gadget		 le pointeur vers le gadget à mettre au dessus des autres parmis m_enfants.
     /////////////////////////////////////////////////
-    virtual void mettre_auDessus ( std::shared_ptr<Gadget> gadget) {};
+    virtual void mettre_auDessus ( std::shared_ptr<Gadget> gadget);
 
     /////////////////////////////////////////////////
     /// \brief Dessiner les enfants du gadget.
@@ -98,7 +98,7 @@ public:
     /////////////////////////////////////////////////
     virtual void dessinerEnfants (sf::RenderTarget& target, sf::RenderStates states) const ;
 
-    std::shared_ptr<Gadget> testerSurvolComposite (sf::Vector2i position);
+    std::shared_ptr<Gadget> testerSurvolEnfants (sf::Vector2i position);
 
     sf::IntRect  boundgingB_enfants();
 

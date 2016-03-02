@@ -171,8 +171,8 @@ void Skin::creerDefaut(){
     style->txt_taille.set( 14 ) ;
     style->txt_couleur.set( sf::Color( 255, 255, 255 , 200 ) ) ;
 
-    style->lgn_epaisseur.set( 1 ) ;
-    style->lgn_couleur.set( sf::Color( 120, 120, 120, 255) ) ;
+    style->lgn_epaisseur.set( 0.5 ) ;
+    style->lgn_couleur.set( sf::Color( 140, 140, 140, 255) ) ;
 
     style->fnd_couleur.set( sf::Color( 90, 90, 90, 255 ) ) ;
 

@@ -22,6 +22,7 @@ Panneau::Panneau ()
 /////////////////////////////////////////////////
 void Panneau::actualiserContenu ()
 {
+
     // Render to texture des enfants
     m_renderTexture.clear( m_skin->getStyle ( Styles::fond )->fnd_couleur.repos );
 
@@ -37,6 +38,7 @@ void Panneau::actualiserContenu ()
                                     , m_contenant->getSize().x
                                     , m_contenant->getSize().y });
 
+
 };
 
 std::shared_ptr<Gadget>  Panneau::testerSurvol ( sf::Vector2i position )
@@ -51,7 +53,7 @@ std::shared_ptr<Gadget>  Panneau::testerSurvol ( sf::Vector2i position )
             return testInterfaceLocal;
         else {
             // sinon on regarde si on survol un enfant
-            auto testEnfants = testerSurvolComposite( { position.x + m_posX_texture, position.y + m_posY_texture } );
+            auto testEnfants = testerSurvolEnfants( { position.x + m_posX_texture, position.y + m_posY_texture } );
             if ( testEnfants != nullptr )
                 return testEnfants;
            else return thisPtr();

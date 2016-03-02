@@ -13,9 +13,13 @@ namespace gui {
 Fenetre::Fenetre ()
 : m_panneau ( std::make_shared<PanSliders>() )
 , m_fond ( std::make_shared<AffRectangle>() )
+, m_ombre ( std::make_shared<AffRectangle>() )
 {
+    ajouterComposant( m_ombre );
     ajouterComposant( m_fond );
     ajouterComposant( m_panneau );
+    m_ombre->setFillColor ( sf::Color ( 0,0,0,50 ) );
+    m_ombre->setPosition  ( 5,5 );
 }
 
 /////////////////////////////////////////////////

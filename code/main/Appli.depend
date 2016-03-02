@@ -458,7 +458,7 @@
 	"Interface.h"
 	<Enums.h>
 
-1456926996 r:\06 - c++\110 - gui\code\gui\include\gadget.h
+1456931496 r:\06 - c++\110 - gui\code\gui\include\gadget.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<Geometrie.h>
@@ -473,7 +473,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1456930855 r:\06 - c++\110 - gui\code\gui\include\composite.h
+1456942596 r:\06 - c++\110 - gui\code\gui\include\composite.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<vector>
@@ -484,7 +484,7 @@
 	<SFML/Graphics.hpp>
 	<functional>
 
-1456929169 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
+1456936245 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
 	"SFML/Graphics.hpp"
 	"memory"
 	"Gadget.h"
@@ -504,6 +504,7 @@
 	"gadgets\PanSimple.h"
 	"gadgets\PanSliders.h"
 	"gadgets\FenSimple.h"
+	"gadgets\FenRedim.h"
 
 1456830504 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
 	"Affiche.h"
@@ -519,7 +520,7 @@
 1445606138 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1456929192 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1456947027 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -545,7 +546,7 @@
 	"gadgets\AffLabel.h"
 	<SFML/Graphics.hpp>
 
-1456847173 r:\06 - c++\110 - gui\code\gui\include\bouton.h
+1456943518 r:\06 - c++\110 - gui\code\gui\include\bouton.h
 	"ActionEvenement.h"
 	"Gadget.h"
 
@@ -599,9 +600,10 @@
 	"Donnee.h"
 	"BtnRectangle.h"
 
-1456928796 r:\06 - c++\110 - gui\code\gui\include\interface.h
+1456934192 r:\06 - c++\110 - gui\code\gui\include\interface.h
 	"SFML/Graphics.hpp"
 	"Gadget.h"
+	"Calque.h"
 	"FabriqueBase.h"
 	"ResourcesMgr.h"
 
@@ -758,15 +760,23 @@
 	<memory>
 	<Panneau.h>
 
-1456929131 r:\06 - c++\110 - gui\code\gui\include\gadgets\fensimple.h
+1456938950 r:\06 - c++\110 - gui\code\gui\include\gadgets\fensimple.h
 	"Fenetre.h"
 	"BtnIcone.h"
 	"BtnRectangle.h"
 	"AffBarreTitre.h"
 	<memory>
 
-1456928987 r:\06 - c++\110 - gui\code\gui\include\fenetre.h
+1456943941 r:\06 - c++\110 - gui\code\gui\include\fenetre.h
 	"ActionEvenement.h"
 	<memory>
 	<Panneau.h>
+
+1456934192 r:\06 - c++\110 - gui\code\gui\include\calque.h
+	"Gadget.h"
+
+1456948469 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenredim.h
+	"FenSimple.h"
+	<memory>
+	"FenSimple.h"
 

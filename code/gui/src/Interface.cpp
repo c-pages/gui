@@ -16,11 +16,28 @@ Interface::Interface( sf::RenderWindow* fenetre )
 , m_boutonSurvole   ( nullptr )
 , m_boutonPresse    ( nullptr )
 , m_fenetre         ( fenetre )
+, creer             ( this )
+
+, m_calque_bureau      ( std::make_shared<Calque>())
+, m_calque_supports    ( std::make_shared<Calque>())
+, m_calque_fenetres    ( std::make_shared<Calque>())
 {
-    m_parent = nullptr;
-    m_fenetre = fenetre;
+    // la fenetre SFML
     ms_fenetreSFML = fenetre;
-    Gadget::ms_racineCourante = this;
+
+    // les calques
+    ajouter ( m_calque_bureau );
+    ajouter ( m_calque_supports );
+    ajouter ( m_calque_fenetres );
+
+    m_taille = { m_fenetre->getSize().x ,m_fenetre->getSize().y };
+
+    m_calque_bureau->setTaille    ( m_taille );
+    m_calque_supports->setTaille  ( m_taille );
+    m_calque_fenetres->setTaille  ( m_taille );
+
+    m_parent = nullptr;
+
 }
 
 /////////////////////////////////////////////////
@@ -254,9 +271,31 @@ void Interface::declencherToutBoutons ( Evenement evenement , std::shared_ptr<Ga
 /////////////////////////////////////////////////
 void Interface::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+
     // On dessine le gadgets de l'interface
     for (auto enfant : m_enfants )
         target.draw(*enfant, states);
+        /*
+        target.draw(*m_bureau, states);
+        target.draw(*m_supports, states);
+        target.draw(*m_fenetres, states);
+*/
+
+
+    /*
+     // On dessine le gadgets de l'interface
+    for (auto enfant : m_bureau )
+        target.draw(*enfant, states);
+            // On dessine le gadgets de l'interface
+//    for (auto enfant : m_supports )
+//        target.draw(*enfant, states);
+            // On dessine le gadgets de l'interface
+    for (auto enfant : m_fenetres )
+        target.draw(*enfant, states);
+*/
+
+
+
 
 }
 

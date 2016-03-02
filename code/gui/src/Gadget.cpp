@@ -14,7 +14,7 @@ namespace gui {
 /////////////////////////////////////////////////
 // Initialisation des membre static
 /////////////////////////////////////////////////
-Gadget *    Gadget::ms_racineCourante   = nullptr;
+//Gadget *    Gadget::ms_racineCourante   = nullptr;
 int         Gadget::ms_CompteurGadgets  = 0;
 
 
@@ -27,16 +27,16 @@ Gadget::Gadget ()
 , m_survol      ( false )
 , m_presse      ( false )
 , m_deplacable  ( false )
-//, m_skin        ( std::make_shared<Skin>() )
-, m_skin        ( nullptr )
+, m_skin        ( std::make_shared<Skin>() )
+//, m_skin        ( nullptr )
 , m_style       ( nullptr )
 , m_necessiteActualisation ( false )
 {
     // Si on a une racine active, on utilise son skin
-    if ( ms_racineCourante != nullptr )
-        m_skin = ms_racineCourante->getSkin();
-    else
-        m_skin = std::make_shared<Skin>() ;
+//    if ( ms_racineCourante != nullptr )
+//        m_skin = ms_racineCourante->getSkin();
+//    else
+//        m_skin = std::make_shared<Skin>() ;
 
     // Mise a jour du nombre de gadgets.
     ms_CompteurGadgets++;
@@ -89,7 +89,7 @@ void Gadget::traiterEvenements (const sf::Event& evenement)
     traiterEvenementsComposants( evenement );
 
     //
-    nettoyerEnfantsASupprimer ( );
+    actualiserListes ( );
 
     // la meme chose pour les enfants
     for (auto enfant : m_enfants)
@@ -143,18 +143,24 @@ bool Gadget::estDeplacable () const
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  Gadget::testerSurvol ( sf::Vector2i position )
 {
-/*
-    std::cout << "m_globalBounds : "    << m_globalBounds.left << ", "
-                                        << m_globalBounds.top << ", "
-                                        << m_globalBounds.width << ", "
-                                        << m_globalBounds.height << "\n";*/
+    ///<\todo... a voir si on peut se passer de faire l'actualisation a chaque fois ...(pour l'instant sans ca, ca pose problème a bouton dans fenentre)
+    actualiser_bounds();
+
+    // Si on survol le gadget
     if ( m_globalBounds.contains( position.x, position.y ) && estActif() )
     {
+        // On test le survol des composants
         auto testInterfaceLocal = testerSurvolComposants( position );
         if ( testInterfaceLocal != nullptr )
             return testInterfaceLocal;
+        // On test le survol des enfants
         else
-            return thisPtr();
+        {
+            auto testEnfants = testerSurvolEnfants( position );
+            if ( testEnfants != nullptr )
+                return testEnfants;
+            else  return thisPtr();
+        }
     }
     else
         return nullptr;

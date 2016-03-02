@@ -193,7 +193,7 @@ public:
     sf::Vector2i getPosSouris ( );
     sf::Vector2i getLocalPosSouris ( );
 
-    static Gadget*     getRacineCourante() { return ms_racineCourante; };
+//    static Gadget*     getRacineCourante() { return ms_racineCourante; };
 
 //    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat );
 
@@ -230,7 +230,7 @@ protected:
 // Membres
 /////////////////////////////////////////////////
 public:
-    static  Gadget*     ms_racineCourante;    ///< L'interface courante dans laquelle on créé les gadgets.(peut etre interface ou grp?...)
+//    static  Gadget*     ms_racineCourante;    ///< L'interface courante dans laquelle on créé les gadgets.(peut etre interface ou grp?...)
 private:
     static  int         ms_CompteurGadgets;   ///< L'interface courante dans laquelle on créé les gadgets.
 

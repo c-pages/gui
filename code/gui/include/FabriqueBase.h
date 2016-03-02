@@ -34,6 +34,7 @@
 
 // SUPPORTS
 #include "gadgets\FenSimple.h"
+#include "gadgets\FenRedim.h"
 
 
 namespace gui{
@@ -47,14 +48,20 @@ class FabriqueBase
 {
 private:
 
-template<typename T>
-std::shared_ptr<T>  creerGadget ();
+    template<typename T>
+    std::shared_ptr<T>  creerGadget ();
+
+    template<typename T>
+    std::shared_ptr<T>  creerFenetre ();
+
 
 public:
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // AFFICHAGES
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    FabriqueBase ( Interface* interfaceParent );
 
     /////////////////////////////////////////////////
     /// \brief  Création d'un simple rectangle
@@ -206,6 +213,29 @@ public:
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<FenSimple>        fenetre( std::string titre = "Fenêtre" );
+
+
+    /////////////////////////////////////////////////
+    /// \brief  Création d'un panneau
+    ///
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<FenRedim>        fenetreRedim( std::string titre = "Fenêtre redim." );
+
+
+
+
+
+
+
+/////////////////////////////////////////////////
+// Membres
+/////////////////////////////////////////////////
+
+    Interface* m_interfaceParent;
+
+
+
 
 
 };

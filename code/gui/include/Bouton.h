@@ -47,6 +47,7 @@ public:
 private:
     friend class Interface;
     friend class FabriqueBase;
+
     static  std::vector<Gadget*>      ms_boutons;
 
 protected:

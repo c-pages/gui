@@ -65,6 +65,7 @@
 		<Unit filename="include/ActionEvenement.h" />
 		<Unit filename="include/Affiche.h" />
 		<Unit filename="include/Bouton.h" />
+		<Unit filename="include/Calque.h" />
 		<Unit filename="include/Composant.h" />
 		<Unit filename="include/Composite.h" />
 		<Unit filename="include/Donnee.h" />
@@ -92,6 +93,7 @@
 		<Unit filename="include/gadgets/DnCaseACocher.h" />
 		<Unit filename="include/gadgets/DnSlider.h" />
 		<Unit filename="include/gadgets/DnZoneTexte.h" />
+		<Unit filename="include/gadgets/FenRedim.h" />
 		<Unit filename="include/gadgets/FenSimple.h" />
 		<Unit filename="include/gadgets/PanSimple.h" />
 		<Unit filename="include/gadgets/PanSliders.h" />
@@ -113,6 +115,7 @@
 		<Unit filename="src/ActionEvenement.cpp" />
 		<Unit filename="src/Affiche.cpp" />
 		<Unit filename="src/Bouton.cpp" />
+		<Unit filename="src/Calque.cpp" />
 		<Unit filename="src/Composant.cpp" />
 		<Unit filename="src/Composite.cpp" />
 		<Unit filename="src/Donnee.cpp" />
@@ -137,6 +140,7 @@
 		<Unit filename="src/gadgets/DnCaseACocher.cpp" />
 		<Unit filename="src/gadgets/DnSlider.cpp" />
 		<Unit filename="src/gadgets/DnZoneTexte.cpp" />
+		<Unit filename="src/gadgets/FenRedim.cpp" />
 		<Unit filename="src/gadgets/FenSimple.cpp" />
 		<Unit filename="src/gadgets/PanSimple.cpp" />
 		<Unit filename="src/gadgets/PanSliders.cpp" />

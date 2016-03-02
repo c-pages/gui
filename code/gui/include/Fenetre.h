@@ -42,6 +42,7 @@ public:
 protected:
     std::shared_ptr<Panneau> m_panneau;
     std::shared_ptr<AffRectangle> m_fond;
+    std::shared_ptr<AffRectangle> m_ombre;
 
 }; // fin class Fenetre
 

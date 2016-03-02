@@ -38,7 +38,7 @@ void Composite::setParent( Gadget* val )
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget> Composite::retirer ( std::shared_ptr<Gadget> gadget )
 {
-    std::cout << "Composite::retirer\n";
+//    std::cout << "Composite::retirer\n";
     int i = 0;
     for ( auto enfant : m_enfants ){
         if ( enfant == gadget ) {
@@ -58,9 +58,9 @@ void Composite::demander_aEtre_supprimer (){
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<Gadget> Composite::testerSurvolComposite ( sf::Vector2i position )
+std::shared_ptr<Gadget> Composite::testerSurvolEnfants ( sf::Vector2i position )
 {
-//    std::cout << "testerSurvolComposite\n";
+//    std::cout << "testerSurvolEnfants\n";
     for ( int i =0; i< m_enfants.size(); i++ )
     {
 //        std::cout << "..." << i << " : " <<position.x <<", " << position.y <<  "\n";
@@ -111,10 +111,12 @@ void Composite::supprimer (std::shared_ptr<Gadget> gadget ){
 }
 
 /////////////////////////////////////////////////
-void Composite::nettoyerEnfantsASupprimer ( ){
+void Composite::actualiserListes ( ){
+
     for ( auto enfant : m_enfantsASupprimer )
         supprimer ( enfant );
     m_enfantsASupprimer.clear();
+
 }
 
 /////////////////////////////////////////////////
@@ -156,6 +158,36 @@ void Composite::dessinerEnfants (sf::RenderTarget& target, sf::RenderStates stat
         target.draw( *enfant , states);
 }
 
+/////////////////////////////////////////////////
+void Composite::demander_aEtre_auDessus ()
+{
+    m_parent->mettre_auDessus ( thisPtr() );
+}
+
+/////////////////////////////////////////////////
+void Composite::mettre_auDessus ( std::shared_ptr<Gadget> gadget )
+{
+    std::cout << "Mettre au dessus\n";
+    // on supprime le gadget de sa place dans le tableau
+    int i = 0;
+    int result = 0;
+    for ( auto enfant : m_enfants ){
+        if ( enfant == gadget ) {
+            result = i;
+            break;
+        }
+        i++;
+    }
+    m_enfants.erase( m_enfants.begin()+result );
+
+    // puis on le replace à la fin du tableau
+    m_enfants.push_back( gadget );
+
+}
+
+
 
 } // fin namespace gui
+
+
 

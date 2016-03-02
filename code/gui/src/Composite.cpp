@@ -38,7 +38,7 @@ void Composite::setParent( Gadget* val )
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget> Composite::retirer ( std::shared_ptr<Gadget> gadget )
 {
-        std::cout << "Composite::retirer\n";
+    std::cout << "Composite::retirer\n";
     int i = 0;
     for ( auto enfant : m_enfants ){
         if ( enfant == gadget ) {
@@ -52,7 +52,7 @@ std::shared_ptr<Gadget> Composite::retirer ( std::shared_ptr<Gadget> gadget )
 
 /////////////////////////////////////////////////
 void Composite::demander_aEtre_supprimer (){
-    m_parent->supprimer ( thisPtr() );
+    m_parent->demanderASupprimer ( thisPtr() );
 }
 
 
@@ -73,19 +73,48 @@ std::shared_ptr<Gadget> Composite::testerSurvolComposite ( sf::Vector2i position
     }
     return nullptr;
 }
+/////////////////////////////////////////////////
+void Composite::demanderASupprimer (std::shared_ptr<Gadget> gadget ){
+
+    m_enfantsASupprimer.push_back( gadget );
+//
+//    int i = 0;
+//    int result = 0;
+//    for ( auto enfant : m_enfants ){
+//        if ( enfant == gadget ) {
+//                result = i;
+//        break;
+////            m_enfants.erase( m_enfants.begin()+i );
+//            //return;
+//        }
+//        i++;
+//    }
+//    m_enfants.erase( m_enfants.begin()+result );
+
+}
 
 /////////////////////////////////////////////////
 void Composite::supprimer (std::shared_ptr<Gadget> gadget ){
 
+
     int i = 0;
+    int result = 0;
     for ( auto enfant : m_enfants ){
         if ( enfant == gadget ) {
-            m_enfants.erase( m_enfants.begin()+i );
-            return;
+            result = i;
+            break;
         }
         i++;
     }
+    m_enfants.erase( m_enfants.begin()+result );
 
+}
+
+/////////////////////////////////////////////////
+void Composite::nettoyerEnfantsASupprimer ( ){
+    for ( auto enfant : m_enfantsASupprimer )
+        supprimer ( enfant );
+    m_enfantsASupprimer.clear();
 }
 
 /////////////////////////////////////////////////

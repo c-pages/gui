@@ -181,9 +181,9 @@ std::shared_ptr<PanSliders>        FabriqueBase::panneauSliders( )
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<SppFenetre>        FabriqueBase::fenetre( std::string titre )
+std::shared_ptr<FenSimple>        FabriqueBase::fenetre( std::string titre )
 {
-    auto nouveauGadget = creerGadget<SppFenetre>( );
+    auto nouveauGadget = creerGadget<FenSimple>( );
     nouveauGadget->setTexte (titre);
     return nouveauGadget;
 }

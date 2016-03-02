@@ -89,7 +89,7 @@ private:
     void initGUI_test_Boutons ();
     void initGUI_test_Donnees ();
     void initGUI_test_Panneaux ();
-    void initGUI_test_Supports ();
+    void initGUI_test_Fenetres ();
 
     void lierMachiner ();
     void delierMachiner ();

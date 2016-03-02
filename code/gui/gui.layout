@@ -31,9 +31,9 @@
 			<Cursor1 position="710" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\Support.h" open="1" top="0" tabpos="70" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\Fenetre.h" open="0" top="0" tabpos="70" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="696" topLine="0" />
+			<Cursor1 position="1208" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\gadgets\DnCaseACocher.cpp" open="1" top="0" tabpos="35" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -106,9 +106,9 @@
 			<Cursor1 position="565" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\gadgets\SppFenetre.cpp" open="1" top="0" tabpos="72" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\gadgets\FenSimple.cpp" open="0" top="0" tabpos="72" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1184" topLine="22" />
+			<Cursor1 position="124" topLine="3" />
 		</Cursor>
 	</File>
 	<File name="include\gadgets\BtnIcone.h" open="1" top="0" tabpos="52" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -266,14 +266,14 @@
 			<Cursor1 position="6746" topLine="156" />
 		</Cursor>
 	</File>
-	<File name="include\FabriqueBase.h" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\FabriqueBase.h" open="1" top="1" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="7550" topLine="163" />
 		</Cursor>
 	</File>
-	<File name="include\gadgets\SppFenetre.h" open="1" top="0" tabpos="74" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\gadgets\FenSimple.h" open="1" top="0" tabpos="74" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="908" topLine="21" />
+			<Cursor1 position="42" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\Style.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -291,9 +291,9 @@
 			<Cursor1 position="284" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\Support.cpp" open="1" top="0" tabpos="73" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Fenetre.cpp" open="0" top="0" tabpos="73" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="328" topLine="0" />
+			<Cursor1 position="790" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include\Composant.h" open="1" top="0" tabpos="46" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

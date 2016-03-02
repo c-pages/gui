@@ -8,7 +8,7 @@
 namespace gui {
 
 
-sf::RenderWindow*  Interface::ms_fenetre = nullptr;
+sf::RenderWindow*  Interface::ms_fenetreSFML = nullptr;
 
 /////////////////////////////////////////////////
 Interface::Interface( sf::RenderWindow* fenetre )
@@ -17,8 +17,9 @@ Interface::Interface( sf::RenderWindow* fenetre )
 , m_boutonPresse    ( nullptr )
 , m_fenetre         ( fenetre )
 {
+    m_parent = nullptr;
     m_fenetre = fenetre;
-    ms_fenetre = fenetre;
+    ms_fenetreSFML = fenetre;
     Gadget::ms_racineCourante = this;
 }
 

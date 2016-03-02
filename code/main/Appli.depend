@@ -447,7 +447,7 @@
 	<Enums.h>
 	<memory>
 
-1456922935 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
+1456929192 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
 	<SFML/Graphics.hpp>
 	<memory>
 	<Ecran.h>
@@ -473,7 +473,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1456849816 r:\06 - c++\110 - gui\code\gui\include\composite.h
+1456930855 r:\06 - c++\110 - gui\code\gui\include\composite.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<vector>
@@ -484,7 +484,7 @@
 	<SFML/Graphics.hpp>
 	<functional>
 
-1456871380 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
+1456929169 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
 	"SFML/Graphics.hpp"
 	"memory"
 	"Gadget.h"
@@ -503,7 +503,7 @@
 	"gadgets\DnBarreDefilement.h"
 	"gadgets\PanSimple.h"
 	"gadgets\PanSliders.h"
-	"gadgets\SppFenetre.h"
+	"gadgets\FenSimple.h"
 
 1456830504 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
 	"Affiche.h"
@@ -519,7 +519,7 @@
 1445606138 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1456922935 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1456929192 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -599,7 +599,7 @@
 	"Donnee.h"
 	"BtnRectangle.h"
 
-1456918573 r:\06 - c++\110 - gui\code\gui\include\interface.h
+1456928796 r:\06 - c++\110 - gui\code\gui\include\interface.h
 	"SFML/Graphics.hpp"
 	"Gadget.h"
 	"FabriqueBase.h"
@@ -746,7 +746,7 @@
 	"AffIcone.h"
 	<memory>
 
-1456919434 r:\06 - c++\110 - gui\code\gui\include\gadgets\sppfenetre.h
+1456927536 r:\06 - c++\110 - gui\code\gui\include\gadgets\sppfenetre.h
 	"Support.h"
 	"BtnIcone.h"
 	"BtnRectangle.h"
@@ -754,6 +754,18 @@
 	<memory>
 
 1456926041 r:\06 - c++\110 - gui\code\gui\include\support.h
+	"ActionEvenement.h"
+	<memory>
+	<Panneau.h>
+
+1456929131 r:\06 - c++\110 - gui\code\gui\include\gadgets\fensimple.h
+	"Fenetre.h"
+	"BtnIcone.h"
+	"BtnRectangle.h"
+	"AffBarreTitre.h"
+	<memory>
+
+1456928987 r:\06 - c++\110 - gui\code\gui\include\fenetre.h
 	"ActionEvenement.h"
 	<memory>
 	<Panneau.h>

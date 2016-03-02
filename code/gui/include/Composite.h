@@ -66,6 +66,10 @@ public:
     /////////////////////////////////////////////////
     virtual void demander_aEtre_supprimer ();
 
+    void demanderASupprimer (std::shared_ptr<Gadget> gadget );
+
+    void nettoyerEnfantsASupprimer ( );
+
     /////////////////////////////////////////////////
     /// \brief Supprimer un gadget.
     ///
@@ -107,6 +111,7 @@ protected:
     std::vector<std::shared_ptr<Gadget>>    m_enfants;          ///< Les enfants du gadget.
     Gadget*                                 m_parent = nullptr; ///< Le gadget parent.
 
+    std::vector<std::shared_ptr<Gadget>>    m_enfantsASupprimer;          ///< Les enfants du gadget.
 }; // fin class Composite
 
 } // fin namespace gui

@@ -24,7 +24,7 @@ EcranDemo::EcranDemo( Application*  appli )
     initGUI_test_Boutons    ();
     initGUI_test_Donnees    ();
     initGUI_test_Panneaux   ();
-    initGUI_test_Supports   ();
+    initGUI_test_Fenetres   ();
 
     initScene   ();
 
@@ -170,17 +170,17 @@ EcranDemo::initGUI ()
 
 /////////////////////////////////////////////////
 void
-EcranDemo::initGUI_test_Supports  ()
+EcranDemo::initGUI_test_Fenetres  ()
 {
     sf::Vector2f posRoot = { 420 , 300 };
 
     std::cout << "\n---------------------------------------\n";
-    std::cout << "      Test des gadgets : Supports";
+    std::cout << "      Test des gadgets : Fenetres";
     std::cout << "\n---------------------------------------\n\n";
 
 
     /////// TITRE Label ///////
-    m_labelTitre_4 = m_interface->creer.label( "Supports" );
+    m_labelTitre_4 = m_interface->creer.label( "Fenetres" );
     m_labelTitre_4->setPosition    ( posRoot.x , posRoot.y - 40 );
     m_labelTitre_4->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 

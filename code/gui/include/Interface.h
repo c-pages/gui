@@ -73,13 +73,16 @@ public:
 /////////////////////////////////////////////////
     static sf::Vector2i getPosSouris() {
         sf::Vector2i result = {-1,-1};
-        result = sf::Mouse::getPosition( *ms_fenetre );
+        result = sf::Mouse::getPosition( *ms_fenetreSFML );
         return result;
     };
 
-    static sf::RenderWindow*           ms_fenetre;          ///< La fenetyre SFML;
+    static sf::RenderWindow*                    ms_fenetreSFML;      ///< La fenetyre SFML;
 
-    FabriqueBase    creer;                          ///< La fabrique de gadget de base (GOF: Fabrique)
+    std::vector<std::shared_ptr<Gadget>>        m_fenetres;
+    std::vector<std::shared_ptr<Gadget>>        m_supports;
+
+    FabriqueBase    creer;                              ///< La fabrique de gadget de base (GOF: Fabrique)
 
 public:
 

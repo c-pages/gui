@@ -170,7 +170,8 @@ void Skin::creerDefaut(){
     style->txt_style.set(sf::Text::Style::Italic ) ;
     style->txt_taille.set( 14 ) ;
     style->txt_couleur.set( sf::Color( 255, 255, 255 , 200 ) ) ;
-    style->lgn_epaisseur.set( 0 ) ;
+
+    style->lgn_epaisseur.set( 1 ) ;
     style->lgn_couleur.set( sf::Color( 120, 120, 120, 255) ) ;
 
     style->fnd_couleur.set( sf::Color( 90, 90, 90, 255 ) ) ;

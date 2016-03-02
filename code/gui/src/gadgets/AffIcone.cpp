@@ -68,7 +68,7 @@ void AffIcone::actualiser ()
         m_rectangle.setOutlineThickness ( 0 );
 
     }
-    actualiser_bounds();
+    //actualiser_bounds();
 }
 
 

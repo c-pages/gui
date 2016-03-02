@@ -67,12 +67,15 @@ void Gadget::actualiser ()
 /////////////////////////////////////////////////
 void Gadget::actualiser (sf::Time deltaTemps)
 {
+
     if ( m_necessiteActualisation )
     {
         actualiser();
     }
+
     for ( auto enfant : m_enfants )
         enfant->actualiser (deltaTemps);
+
 }
 
 
@@ -85,7 +88,10 @@ void Gadget::traiterEvenements (const sf::Event& evenement)
     // Les evenements des composants l'interface local
     traiterEvenementsComposants( evenement );
 
-    // les evenements des enfants
+    //
+    nettoyerEnfantsASupprimer ( );
+
+    // la meme chose pour les enfants
     for (auto enfant : m_enfants)
         enfant->traiterEvenements ( evenement );
 

@@ -33,7 +33,7 @@
 #include "gadgets\PanSliders.h"
 
 // SUPPORTS
-#include "gadgets\SppFenetre.h"
+#include "gadgets\FenSimple.h"
 
 
 namespace gui{
@@ -205,7 +205,7 @@ public:
     ///
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<SppFenetre>        fenetre( std::string titre = "Fenêtre" );
+    std::shared_ptr<FenSimple>        fenetre( std::string titre = "Fenêtre" );
 
 
 };

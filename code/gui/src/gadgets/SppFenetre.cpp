@@ -23,6 +23,10 @@ SppFenetre::SppFenetre ()
     ajouterComposant( m_titre );
     ajouterComposant( m_btndrag );
 
+
+    chargerIcone   ( "media/img/ico_fenetre.png" );
+
+
 //    std::string fichier = "media/img/ico_fenetreFermer.png";
     m_btnFermer->chargerDepuisFichier   ( "media/img/ico_fenetreFermer.png" );
     m_btnFermer->setFix                 ( true );
@@ -33,28 +37,55 @@ SppFenetre::SppFenetre ()
     m_btndrag->lier ( Evenement::onBtnG_presser , [this](){
         m_decalageDragSouris = sf::Vector2i ( getPosSouris().x - getPosition().x , getPosSouris().y - getPosition().y );
         setDrag( true );
-//        m_necessiteActualisation = true ;
+        positionnerFenetre ();
+        m_necessiteActualisation = true ;
         actualiser ();
     });
     m_btndrag->lier ( Evenement::onBtnG_relacher , [this](){
         setDrag( false );
-//        m_necessiteActualisation = false ;
+        m_necessiteActualisation = false ;
         actualiser ();
     });
     m_btndrag->lier ( Evenement::onBtnG_relacherDehors , [this](){
         setDrag( false );
-//        m_necessiteActualisation = false ;
+        m_necessiteActualisation = false ;
         actualiser ();
     });
 
+
+    m_btnFermer->lier ( Evenement::onBtnG_relacher , [this](){
+        demander_aEtre_supprimer ();
+    });
+
+
+//
+//
+//    // Action du slider
+//    lier ( Evenement::onBtnG_presser , [this](){
+//        m_decalageDragSouris = sf::Vector2i ( getPosSouris().x - getPosition().x , getPosSouris().y - getPosition().y );
+//        setDrag( true );
+//        positionnerFenetre ();
+////        m_necessiteActualisation = true ;
+//        actualiser ();
+//    });
+//    lier ( Evenement::onBtnG_relacher , [this](){
+//        setDrag( false );
+////        m_necessiteActualisation = false ;
+//        actualiser ();
+//    });
+//    lier ( Evenement::onBtnG_relacherDehors , [this](){
+//        setDrag( false );
+////        m_necessiteActualisation = false ;
+//        actualiser ();
+//    });
 }
 
 /////////////////////////////////////////////////
 void SppFenetre::traiterEvenements (const sf::Event& evenement)
 {
- /*   std::cout << " evt";*/
-    if ( dragEnCours() )
-        positionnerFenetre ();
+//   std::cout << " evt\n";
+  /*   if ( dragEnCours() )
+        positionnerFenetre ();*/
 
     for ( auto enfant : m_enfants )
         enfant->traiterEvenements ( evenement);
@@ -69,14 +100,14 @@ void SppFenetre::draw (sf::RenderTarget& target, sf::RenderStates states) const
         positionnerFenetre ();
 }
 */
-/*
+/**/
 /////////////////////////////////////////////////
 void SppFenetre::actualiser ( sf::Time delta )
 {
-    std::cout << " ACTUUUUU";
+//   std::cout << " actualiser Delta\n";
     if ( dragEnCours() )
         positionnerFenetre ();
-}*/
+}
 
 
 
@@ -93,10 +124,10 @@ void SppFenetre::actualiser ()
     m_btnFermer->setTaille  ( { m_titre->getTaille().y , m_titre->getTaille().y } );
     m_btnFermer->setPosition( m_taille.x - m_titre->getTaille().y  , 0 );
 
-    m_btndrag->setStyle     ( m_skin->getStyle(Styles::fenetre));
+    m_btndrag->setStyle     ( m_skin->getStyle(Styles::invisible));
     m_fond->setStyle        ( m_skin->getStyle(Styles::fenetre));
-    m_btnFermer->setStyle   ( m_skin->getStyle(Styles::fenetre));
-    m_titre->setStyle       ( m_skin->getStyle(Styles::fenetre));
+    m_btnFermer->setStyle   ( m_skin->getStyle(Styles::bouton));
+    m_titre->setStyle       ( m_skin->getStyle(Styles::txtTitre));
 
 }
 
@@ -124,13 +155,23 @@ std::shared_ptr<Gadget>  SppFenetre::testerSurvol ( sf::Vector2i position )
 }
 
 
+
+/////////////////////////////////////////////////
+void SppFenetre::chargerIcone   (std::string fichier )
+{
+    m_titre->setIconeImage( fichier );
+}
+
+
+
+
 /////////////////////////////////////////////////
 void SppFenetre::positionnerFenetre ()
 {
 
     setPosition ( getPosSouris().x - m_decalageDragSouris.x  , getPosSouris().y - m_decalageDragSouris.y );
 
-    actualiser ();
+   // actualiser ();
 }
 
 

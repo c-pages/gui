@@ -12,6 +12,7 @@ namespace gui {
 DnSlider::DnSlider ()
 : m_boutonFond  ( std::make_shared<BtnRectangle>() )
 , m_slider      ( std::make_shared<BtnRectangle>() )
+, m_fond        ( std::make_shared<AffRectangle>() )
 , m_valeurMax   ( 100 )
 , m_valeurMin   ( 0 )
 , m_horizontal  ( true )
@@ -24,6 +25,7 @@ DnSlider::DnSlider ()
     m_marge.y = 0;
 
 //    m_boutonFond->setParent  ( this );
+    ajouterComposant( m_fond );
     ajouterComposant( m_boutonFond );
     ajouterComposant( m_slider );
 
@@ -203,10 +205,16 @@ void DnSlider::actualiser ()
         m_taille.x = m_largeur;
         m_taille.y = m_longueur;
     }
-
+    m_fond->setTaille ( m_taille );
     m_boutonFond->setTaille ( m_taille );
+    m_boutonFond->setStyle ( m_skin->getStyle( Styles::bouton ) );
 
-    m_slider->setStyle ( m_skin->getStyle( Styles::slider ) );
+    auto style = m_skin->getStyle( Styles::bouton );
+    if ( m_style != nullptr )
+        style = m_style;
+
+    m_fond->setStyle    ( m_skin->getStyle( Styles::fond ) );
+    m_slider->setStyle  ( m_skin->getStyle( Styles::slider ) );
 
     actualiser_bounds();
     m_boutonFond->actualiser_bounds();

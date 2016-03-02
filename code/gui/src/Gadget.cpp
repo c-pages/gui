@@ -30,7 +30,7 @@ Gadget::Gadget ()
 //, m_skin        ( std::make_shared<Skin>() )
 , m_skin        ( nullptr )
 , m_style       ( nullptr )
-//, m_necessiteActualisation ( false )
+, m_necessiteActualisation ( false )
 {
     // Si on a une racine active, on utilise son skin
     if ( ms_racineCourante != nullptr )
@@ -67,12 +67,12 @@ void Gadget::actualiser ()
 /////////////////////////////////////////////////
 void Gadget::actualiser (sf::Time deltaTemps)
 {
-//    if ( m_necessiteActualisation )
-//    {
-//        actualiser();
-//    }
-//    for ( auto enfant : m_enfants )
-//        enfant->actualiser (deltaTemps);
+    if ( m_necessiteActualisation )
+    {
+        actualiser();
+    }
+    for ( auto enfant : m_enfants )
+        enfant->actualiser (deltaTemps);
 }
 
 

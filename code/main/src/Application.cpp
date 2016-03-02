@@ -28,7 +28,8 @@ Application::Application()
 
     // La synchronisation verticale pour des histoire de bugs de chqrgement de police bidule truc
     m_fenetre->setVerticalSyncEnabled(true);
-    m_fenetre->setFramerateLimit( 30 );
+
+//    m_fenetre->setFramerateLimit( 30 );
 
     //   Ajout du premier écran.
     m_ecrans.ajouter( new EcranDemo( this ) );

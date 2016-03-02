@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "Gadget.h"
+#include "ActionEvenement.h"
 #include <memory>
 #include <Panneau.h>
 
@@ -12,7 +12,7 @@
 namespace gui {
 
 
-class Support : public Gadget {
+class Support : public ActionEvenement {
 
 
 /////////////////////////////////////////////////

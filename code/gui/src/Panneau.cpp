@@ -55,7 +55,6 @@ std::shared_ptr<Gadget>  Panneau::testerSurvol ( sf::Vector2i position )
             if ( testEnfants != nullptr )
                 return testEnfants;
            else return thisPtr();
-//             else return nullptr;
         }
     }
     else return nullptr;

@@ -86,11 +86,11 @@ void EcranDemo::actualiser  ( float deltaT )
     // actualiser l'interface
     m_interface->actualiser    ( sf::seconds( deltaT ) ) ;
 
+
     std::string val;
     if ( m_interface->m_boutonSurvole != nullptr ){
         val =  "Survole : " + m_interface->m_boutonSurvole->getNom();
     } else val = "Survole : nullptr";
-
     m_labelRetour->setTexte ( val );
 
 
@@ -188,6 +188,7 @@ EcranDemo::initGUI_test_Supports  ()
     //// creation d'une fenetre
     auto m_fenetre = m_interface->creer.fenetre(  );
     m_fenetre->setPosition  ( posRoot.x , posRoot.y  );
+    m_fenetre->setTaille    ( { 300 , 100 });
     m_fenetre->setStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 
     //// contenu de la fenetre
@@ -380,7 +381,7 @@ EcranDemo::initGUI_test_Donnees  ()
     m_label_9->setPosition    ( 190 + posRoot.x , posRoot.y  +  70 );
     m_label_9->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
-
+/*
 
     ///////barreDefilement ///////
     m_barreDefil = m_interface->creer.barreDefilement( );
@@ -394,7 +395,7 @@ EcranDemo::initGUI_test_Donnees  ()
     m_label_10->setPosition    ( 190 + posRoot.x , posRoot.y  +  100 );
     m_label_10->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
-
+*/
 
 
 }
@@ -668,7 +669,7 @@ EcranDemo::initGUI_test_Affichages  ()
     m_label_11->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
-
+/*
 
     ///////barre de titre ///////
     auto m_barreTitre = m_interface->creer.barreTitre( "Titre" );
@@ -681,7 +682,7 @@ EcranDemo::initGUI_test_Affichages  ()
     m_label_14->setPosition    ( 220 + posRoot.x , posRoot.y  +  132 );
     m_label_14->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
-
+*/
 
 
 

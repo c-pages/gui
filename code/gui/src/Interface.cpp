@@ -29,8 +29,10 @@ std::shared_ptr<Gadget> Interface::chercherGadgetSurvole ()
 
     sf::Vector2i posSouris = sf::Mouse::getPosition( *m_fenetre );
 
-    for (auto gadget : m_enfants )    {
-        std::shared_ptr<Gadget> result = gadget->testerSurvol ( posSouris );
+    for (int i=m_enfants.size()-1; i>=0; i-- )    {
+            auto enfant = m_enfants[i];
+//    for (auto gadget : m_enfants )    {
+        std::shared_ptr<Gadget> result = enfant->testerSurvol ( posSouris );
         if ( result != nullptr )
             return result;
     }
@@ -45,6 +47,13 @@ void Interface::actualiser ()
 //    for ( auto enfant : m_enfants )
 //        enfant->actualiser();
 }
+
+///////////////////////////////////////////////////
+//void Interface::actualiser (sf::Time delta)
+//{
+//    for ( auto enfant : m_enfants )
+//        enfant->actualiser( delta );
+//}
 
 
 

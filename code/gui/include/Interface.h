@@ -52,7 +52,7 @@ public:
 
     /////////////////////////////////////////////////
     virtual void actualiser ( sf::Time deltaTemps ){
-//        Gadget::actualiser( deltaTemps );
+        Gadget::actualiser( deltaTemps );
     };
 
 

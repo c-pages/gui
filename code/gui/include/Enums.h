@@ -36,6 +36,7 @@ enum Styles{
     fenetre,
     zoneTexte,
     slider,
+    defilement,
 
     tous
 };

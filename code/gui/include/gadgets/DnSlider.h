@@ -46,7 +46,7 @@ public:
 //
 //        actualiser_bounds();
 //        actualiser(); };
-        ///< Definir m_taille
+    ///< Definir m_taille
     void setLongueur( float longueur ){
         m_longueur = longueur;
         actualiser_bounds();
@@ -102,8 +102,10 @@ private:
 /////////////////////////////////////////////////
 private:
     bool                            m_horizontal;   ///< Orientation : true bouton
+
     std::shared_ptr<BtnRectangle>   m_boutonFond;
     std::shared_ptr<BtnRectangle>   m_slider;
+    std::shared_ptr<AffRectangle>   m_fond;
 
     float                           m_valeurMax;    ///<
     float                           m_valeurMin;    ///<

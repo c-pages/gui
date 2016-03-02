@@ -83,11 +83,12 @@ public:
 
     ///< Definir m_skin
     virtual void setSkin( std::shared_ptr<Skin> skin )
-        { m_skin = skin;
+    {
+        m_skin = skin;
         for ( auto composant : m_composants)
             composant->setSkin( skin );
-            actualiser ();
-        };
+        actualiser ();
+    };
 
     ///< Acceder à m_skin
     std::shared_ptr<Skin> getSkin () const
@@ -223,7 +224,7 @@ public:
 protected:
     sf::Vector2f                m_marge;            ///< La marge à laissé
 
-//    bool                        m_necessiteActualisation;
+    bool                        m_necessiteActualisation;
 
 /////////////////////////////////////////////////
 // Membres

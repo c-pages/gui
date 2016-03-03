@@ -459,6 +459,7 @@ EcranDemo::initGUI_test_Boutons  ()
     m_boutonTexte = m_interface->creer.boutonTexte( "Machiner" );
     m_boutonTexte->setAutoAjuster ( true );
     m_boutonTexte->setSkin        ( m_skin );
+    m_boutonTexte->setStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
 
     m_boutonTexte->setPosition    ( posRoot.x , posRoot.y );
 

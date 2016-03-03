@@ -9,31 +9,58 @@ namespace gui {
 
 /////////////////////////////////////////////////
 BtnTexte::BtnTexte ()
-: m_rectangle   ( std::make_shared<AffRectangle>())
+: BtnRectangle ()
 , m_label       ( std::make_shared<AffLabel>())
 {
+    m_marge = { 5, 5 };
     m_autoAjust = true;
-    setTexte("");
-    ajouterComposant( m_rectangle );
+    m_texte = "";
+
     ajouterComposant( m_label );
+
     actualiser ();
+
 }
 
 /////////////////////////////////////////////////
 void BtnTexte::actualiserGeometrie ()
 {
+    m_label->setTexte ( m_texte );
+
     if ( m_autoAjust )
         m_taille = { m_label->getTaille().x + m_marge.x*2 , m_label->getTaille().y + m_marge.y*2 } ;
 
-    m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
-    m_label->setPosition( m_marge.x  , m_marge.y/2   );
+    BtnRectangle::actualiserGeometrie();
+
+    m_label->setPosition( m_marge.x  , m_marge.y/3 );
+
 }
 
 /////////////////////////////////////////////////
 void BtnTexte::actualiserStyle ()
 {
 
+    BtnRectangle::actualiserStyle ();
 }
+
+
+/////////////////////////////////////////////////
+void BtnTexte::setStyle ( std::shared_ptr<Style> style , Etat etat )
+{
+    std::cout << "BtnTexte::setStyle : " << style << "\n";
+
+    BtnRectangle::setStyle ( style , etat );
+    m_label->setStyle ( style , etat );
+
+    actualiserGeometrie ();
+    actualiserStyle();
+
+}
+
+
+
+
+
 /*
 /////////////////////////////////////////////////
 void BtnTexte::actualiser ()

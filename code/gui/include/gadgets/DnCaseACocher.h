@@ -22,8 +22,6 @@ class AffRectangle;*/
 /////////////////////////////////////////////////
 class DnCaseACocher : public gui::Donnee<bool> {
 
-
-
 /////////////////////////////////////////////////
 // Méthodes
 /////////////////////////////////////////////////
@@ -35,7 +33,9 @@ public:
     /////////////////////////////////////////////////
     DnCaseACocher ();
 
-    virtual void actualiser ();
+//    virtual void actualiser ();
+    virtual void actualiserGeometrie ();
+    virtual void actualiserStyle ();
 
     virtual void actualiser_bounds();
 
@@ -48,6 +48,8 @@ private:
     std::shared_ptr<BtnRectangle>    m_bouton;
     std::shared_ptr<AffRectangle>    m_coche;
     std::shared_ptr<AffLabel>        m_label;
+
+
 
 }; // fin class DnCaseACocher
 

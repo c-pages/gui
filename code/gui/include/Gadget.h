@@ -58,24 +58,24 @@ public:
 
     ///< Definir m_visible
     void setVisible( bool val )
-        { m_visible = val; };
+        { m_visible = val;  actualiserEtat (); actualiser(); };
 
     ///< Definir m_actif
     void setActif( bool val )
-        { m_actif = val;  actualiser();};
+        { m_actif = val;  actualiserEtat (); actualiser(); };
 
     ///< Definir m_focus
     void setFocus( bool val )
-        { m_focus = val; actualiser(); };
+        { m_focus = val; actualiserEtat (); actualiser(); };
 
     ///< Definir m_survol
     void setSurvol( bool val )
-        { m_survol = val; actualiser(); };
+        {
+            m_survol = val; actualiserEtat ();  actualiser(); };
 
     ///< Definir m_presse
     void setPresse( bool val )
-        { m_presse = val;
-        actualiser(); };
+        { m_presse = val; actualiserEtat (); actualiser(); };
 
     ///< Definir m_deplacable
     void setDeplacable( bool val )
@@ -133,6 +133,25 @@ public:
 
     /////////////////////////////////////////////////
     virtual void actualiserStyle (){};
+
+
+    /////////////////////////////////////////////////
+    virtual void actualiserEtat (){
+        // On analyse l'etat du bouton
+        if ( ! estActif() )
+            m_etat = Etat::desactive;
+        else if ( !estSurvole () && !estPresse() )
+            m_etat = Etat::repos;
+        else if ( estPresse () )
+            m_etat = Etat::press;
+        else if ( estSurvole () )
+            m_etat = Etat::survol;
+    };
+
+    /////////////////////////////////////////////////
+    Etat etat (){
+        actualiserEtat ();
+        return m_etat; };
 
     /////////////////////////////////////////////////
     /// \brief Actualiser le gadget pour l'animation.
@@ -251,6 +270,9 @@ protected:
     bool m_survol;      ///< Le survol par la souris (true si le gadget est survolé par la souris).
     bool m_presse;      ///< Le bouton gauche de la souris est pressé (true si le gadget est survolé par la souris).
     bool m_deplacable;  ///< Si le gadget est déplacable (clique and drag)
+
+    Etat m_etat; ///< l'etat du bouton
+
 protected:
     std::shared_ptr<Skin>   m_skin;    ///< Le skin, model pour les paramètres de rendu.
     std::shared_ptr<Style>  m_style;

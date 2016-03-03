@@ -110,8 +110,8 @@ void Skin::creerDefaut(){
 
     style->txt_police.set ( gui::ms_polices.get(  "Defaut" ) );
     style->txt_style.set(sf::Text::Style::Bold ) ;
-    style->txt_taille.set( 14 ) ;
-    style->txt_couleur.set( sf::Color( 255, 255, 255 , 255 ) ) ;
+    style->txt_taille.set( 13 ) ;
+    style->txt_couleur.set( sf::Color( 0, 255, 255 , 255 ) ) ;
     style->txt_couleur.desactive = sf::Color( 255, 255, 255, 50 ) ;
     style->lgn_epaisseur.set( 0 ) ;
     style->lgn_couleur.set ( sf::Color( 255, 255, 255, 100 ) );
@@ -119,9 +119,9 @@ void Skin::creerDefaut(){
 
 //    style->fnd_couleur.set ( sf::Color( 0, 0, 255, 255 ) );
 
-    style->fnd_couleur.repos = sf::Color( 255, 255, 255, 0 ) ;
-    style->fnd_couleur.survol= sf::Color( 255, 255, 255, 25 ) ;
-    style->fnd_couleur.press = sf::Color( 255, 255, 255, 50 ) ;
+    style->fnd_couleur.repos = sf::Color( 255, 255, 255, 50 ) ;
+    style->fnd_couleur.survol= sf::Color( 255, 255, 255, 100 ) ;
+    style->fnd_couleur.press = sf::Color( 255, 255, 255, 150 ) ;
     style->fnd_couleur.desactive = sf::Color(255, 255, 255, 10 ) ;
 
 

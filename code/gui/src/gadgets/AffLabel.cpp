@@ -33,10 +33,9 @@ void AffLabel::setStyle ( std::shared_ptr<Style> style , Etat etat ){
     m_textCouleur   =   style->txt_couleur.get( etat );
     m_textStyle     =   style->txt_style.get( etat );
     m_textTaille    =   style->txt_taille.get( etat );
-//    m_textPolice    =   style->txt_police.get( etat );
+    m_textPolice    =   style->txt_police.get( etat );
 
-    actualiserStyle ();
-
+    actualiser ();
 
 }
 
@@ -45,6 +44,10 @@ void AffLabel::setStyle ( std::shared_ptr<Style> style , Etat etat ){
 void AffLabel::actualiserGeometrie ()
 {
     m_texteSFML->setString  ( m_texte );
+//    m_texteSFML->setPosition ( -m_texteSFML->getGlobalBounds().left , -m_texteSFML->getGlobalBounds().top );
+
+
+    actualiser_bounds();
 }
 
 /////////////////////////////////////////////////

@@ -31,6 +31,7 @@ Gadget::Gadget ()
 //, m_skin        ( nullptr )
 , m_style       ( nullptr )
 , m_necessiteActualisation ( false )
+, m_etat        ( Etat::repos )
 {
     // Si on a une racine active, on utilise son skin
 //    if ( ms_racineCourante != nullptr )
@@ -60,11 +61,10 @@ Gadget::~Gadget ()
 /////////////////////////////////////////////////
 void Gadget::actualiser ()
 {
-//    if ( m_necessiteActualisation )
-//    {
-    actualiserGeometrie ();
+//    std::cout << "Gadget::actualiser\n";
+
     actualiserStyle ();
-//    }
+    actualiserGeometrie ();
 
     actualiserEnfants();
     actualiserComposants();

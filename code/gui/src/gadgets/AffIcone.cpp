@@ -26,6 +26,8 @@ void AffIcone::actualiserGeometrie ()
     m_taille = { largeur , largeur };
     m_rectangle.setSize ( { largeur , largeur } );
 
+    actualiser_bounds();
+
 }
 
 /////////////////////////////////////////////////

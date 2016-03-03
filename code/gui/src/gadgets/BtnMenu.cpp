@@ -60,31 +60,29 @@ void BtnMenu::actualiser_bounds ()
     Geometrie::actualiser_bounds();
 
 }
-
-
-/////////////////////////////////////////////////
-void BtnMenu::actualiser ()
+void BtnMenu::actualiserGeometrie()
 {
     int index = 0;
     for ( auto element : m_elements ) {
 
         element->bouton->setPosition    ( m_marge.x , index * ( m_tailleMenu.y + m_ecart ) + m_marge.y );
         element->bouton->setTexte       ( element->nom );
-        element->bouton->setStyle       ( m_skin->getStyle( Styles::menu ) );
 
         index++;
     }
+    actualiser_bounds ();
+    m_fond->setTaille( m_taille );
+}
 
+/////////////////////////////////////////////////
+void BtnMenu::actualiserStyle()
+{
+    for ( auto element : m_elements )
+        element->bouton->setStyle       ( m_skin->getStyle( Styles::menu ) );
 
     m_fond->setFillColor         ( m_skin->getStyle( Styles::fond )->fnd_couleur.repos );
     m_fond->setOutlineColor      ( m_skin->getStyle( Styles::fond )->lgn_couleur.repos );
     m_fond->setOutlineThickness  ( m_skin->getStyle( Styles::fond )->lgn_epaisseur.repos );
-
-    actualiser_bounds ();
-
-    m_fond->setTaille( m_taille );
-
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }
 
 /////////////////////////////////////////////////

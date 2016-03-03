@@ -55,8 +55,15 @@ public:
     /////////////////////////////////////////////////
     void supprimerElement (unsigned int id);
 
-    virtual void actualiser ();
+//    virtual void actualiser ();
     virtual void actualiser_bounds ();
+
+    /////////////////////////////////////////////////
+    void actualiserGeometrie();
+
+    /////////////////////////////////////////////////
+    void actualiserStyle();
+
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 

@@ -19,9 +19,11 @@ AffImage::AffImage ()
 
     m_couleurFond   = sf::Color::White ;
     m_couleurLignes = sf::Color::White ;
+
     m_epaisseur     = 0 ;
 
     m_rectangle.setTexture( m_texture );
+    actualiser();
 }
 
 
@@ -42,7 +44,7 @@ void AffImage::chargerDepuisFichier ( std::string fichier )
                                  , 0
                                  , m_texture->getSize().x
                                  , m_texture->getSize().y });
-
+    actualiserGeometrie ();
 }
 
 /////////////////////////////////////////////////
@@ -52,6 +54,8 @@ void AffImage::actualiserGeometrie ()
         m_rectangle.setSize ( { m_taille.x , m_taille.y } );
     else
         m_rectangle.setSize ( { m_texture->getSize().x , m_texture->getSize().y } );
+
+    actualiser_bounds();
 }
 /////////////////////////////////////////////////
 void AffImage::actualiserStyle ()

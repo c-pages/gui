@@ -57,6 +57,45 @@ void DnCaseACocher::actualiser_bounds() {
 
 
 /////////////////////////////////////////////////
+void DnCaseACocher::actualiserGeometrie ()
+{
+    m_label->setTexte ( m_texte );
+    m_label->setPosition ( m_taille.x + 2*m_marge.x , 0 );
+
+    m_bouton->setTaille  ( m_taille );
+
+    m_coche->setTaille   ( { m_taille.x - 2*m_marge.x , m_taille.y - 2*m_marge.y } );
+    m_coche->setPosition ( m_marge.x , m_marge.y );
+
+    actualiser_bounds();
+}
+
+
+/////////////////////////////////////////////////
+void DnCaseACocher::actualiserStyle ()
+{
+
+    m_label->setStyle ( m_skin->getStyle( Styles::btnCoche ) );
+
+    m_bouton->setStyle   ( m_skin->getStyle( Styles::bouton ) );
+
+    auto style = m_skin->getStyle( Styles::btnCoche );
+    m_coche->setStyle    ( style );
+
+    if ( ! m_valeur ) {
+        m_coche->setFillColor ( style->getFnd_couleur( Etat::desactive ) );
+        m_coche->setOutlineColor (  style->getLgn_couleur( Etat::desactive ));
+        m_coche->setOutlineThickness ( style->getLgn_epaisseur( Etat::desactive ) );
+    } else {
+        m_coche->setFillColor ( style->getFnd_couleur( Etat::press ) );
+        m_coche->setOutlineColor (  style->getLgn_couleur( Etat::press ));
+        m_coche->setOutlineThickness ( style->getLgn_epaisseur( Etat::press ) );
+    }
+}
+
+
+/*
+/////////////////////////////////////////////////
 void DnCaseACocher::actualiser ()
 {
     m_label->setTexte ( m_texte );
@@ -85,7 +124,7 @@ void DnCaseACocher::actualiser ()
 
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }
-
+*/
 
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  DnCaseACocher::testerSurvol ( sf::Vector2i position )

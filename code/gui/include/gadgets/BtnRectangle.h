@@ -32,7 +32,7 @@ public:
     /////////////////////////////////////////////////
     BtnRectangle ();
 
-//    virtual void actualiser ( );
+    //    virtual void actualiser ( );
 
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();

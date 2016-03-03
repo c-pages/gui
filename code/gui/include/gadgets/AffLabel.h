@@ -35,12 +35,12 @@ public:
 
     virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
 
-
+/*
     ///< Definir m_texte
     virtual void setTexte( std::string val ){
         m_texte = val;
         actualiserGeometrie();
-    };
+    };*/
 //
 //    ///< Acceder à m_texte
 //    std::string getTexte () const { return m_texte; };

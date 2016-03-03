@@ -34,7 +34,7 @@ public:
 
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
-    virtual void actualiser ( ){};
+//    virtual void actualiser ( ){};
 
     void setAutoAjuster (bool val ){ m_autoAjust = val; actualiser ();};
 

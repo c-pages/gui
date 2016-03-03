@@ -29,7 +29,7 @@ Application::Application()
     // La synchronisation verticale pour des histoire de bugs de chqrgement de police bidule truc
     m_fenetre->setVerticalSyncEnabled(true);
 
-//    m_fenetre->setFramerateLimit( 30 );
+//    m_fenetre->setFramerateLimit( 60 );
 
     //   Ajout du premier écran.
     m_ecrans.ajouter( new EcranDemo( this ) );
@@ -52,7 +52,6 @@ void    Application::executer()
     sf::Clock   horloge;
     sf::Time    tempsDepuisMAJ = sf::Time::Zero;
 
-//sf::sleep( sf::seconds(0.005f)) ;
 
     while ( m_fenetre->isOpen() )
     {

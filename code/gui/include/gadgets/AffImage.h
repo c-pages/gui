@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "Affiche.h"
+#include "AffRectangle.h"
 #include <memory>
 #include <SFML/Graphics.hpp>
 
@@ -18,7 +18,7 @@ namespace gui {
 /// \brief Classe concrète d'affichage d'une simple image.
 ///
 /////////////////////////////////////////////////
-class AffImage : public gui::Affiche {
+class AffImage : public gui::AffRectangle {
 
 
 
@@ -32,7 +32,14 @@ public:
     /////////////////////////////////////////////////
     AffImage ();
 
-    virtual void actualiser ();
+//    virtual void actualiser ();
+
+    /////////////////////////////////////////////////
+    virtual void actualiserGeometrie ();
+
+    /////////////////////////////////////////////////
+    virtual void actualiserStyle ();
+
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
@@ -40,7 +47,6 @@ public:
 
     void setImage ( const sf::Texture* texture )
     {
-        std::cout << " SET IMAGE\n";
         m_rectangle.setTexture( texture );
     };
 
@@ -50,14 +56,14 @@ public:
 
 //        m_taille = val;
 
-        actualiser();
+        actualiserGeometrie();
     };
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
 protected:
-    sf::RectangleShape  m_rectangle;
+    /*sf::RectangleShape  m_rectangle;*/
 //    sf::Sprite          m_sprite;
     sf::Texture*        m_texture;
     bool                m_ajustement;       ///< true: l'image est ajusté au rectangle, false: le rectangle s'ajuste à limge (facon sprite).

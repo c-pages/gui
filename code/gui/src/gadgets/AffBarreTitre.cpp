@@ -39,9 +39,9 @@ void AffBarreTitre::setIconeImage ( std::string texture )
 
 
 /////////////////////////////////////////////////
-void AffBarreTitre::setIconeIndex (int index)
+void AffBarreTitre::setIconeIndex ( int index )
 {
-
+    m_icone->setIndex ( index );
 }
 
 
@@ -52,22 +52,37 @@ void AffBarreTitre::setTexte (std::string texte)
     m_titre->setTexte ( texte );
 }
 
-
 /////////////////////////////////////////////////
-void AffBarreTitre::actualiser ()
+void AffBarreTitre::actualiserGeometrie ()
 {
     m_icone->setTaille      ( { m_taille.y + m_marge.x, m_taille.y + m_marge.y } );
     m_icone->setPosition    ( m_marge.x, m_marge.y );
+
     m_rectangle->setTaille  ( { m_taille.x , m_taille.y } );
 
     m_titre->setPosition    ( m_taille.y + m_marge.x, m_marge.y );
 
-    m_titre->setStyle       ( m_skin->getStyle ( Styles::fenetre ) );
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
-
     actualiser_bounds ();
 
 }
+
+/////////////////////////////////////////////////
+void AffBarreTitre::actualiserStyle ()
+{
+    m_titre->setStyle       ( m_skin->getStyle ( Styles::fenetre ) );
+//    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+}
+/*
+/////////////////////////////////////////////////
+void AffBarreTitre::actualiser ()
+{
+
+
+    m_titre->setStyle       ( m_skin->getStyle ( Styles::fenetre ) );
+    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+
+
+}*/
 
 /*
 /////////////////////////////////////////////////

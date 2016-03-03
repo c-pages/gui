@@ -44,9 +44,9 @@ class Geometrie : public sf::Transformable, public gui::Composite {
 
 public:
     ///< Definir m_taille
-    virtual void setTaille( sf::Vector2i val ){ m_taille = val; actualiser_bounds(); actualiser(); };
-    virtual void setTailleX( float val ){ m_taille.x = val; actualiser_bounds(); actualiser(); };
-    virtual void setTailleY( float val ){ m_taille.y = val; actualiser_bounds(); actualiser(); };
+    virtual void setTaille( sf::Vector2i val ){ m_taille = val; actualiser_bounds(); actualiserGeometrie(); };
+    virtual void setTailleX( float val ){ m_taille.x = val; actualiser_bounds(); actualiserGeometrie(); };
+    virtual void setTailleY( float val ){ m_taille.y = val; actualiser_bounds(); actualiserGeometrie(); };
 
     ///< Acceder à m_taille
     virtual sf::Vector2i getTaille () const { return m_taille;  };
@@ -58,7 +58,7 @@ public:
     sf::FloatRect getGlobalBounds () const { return m_globalBounds; };
 
     ///< Definir m_opacite
-    void setOpacite( double val ){ m_opacite = val; actualiser();  };
+    void setOpacite( double val ){ m_opacite = val; actualiserStyle();  };
 
     ///< Acceder à m_taille
     double getOpacite () const { return m_opacite; };
@@ -86,6 +86,12 @@ public:
     ///
     /////////////////////////////////////////////////
     virtual void actualiser (){std::cout << "ACTUALISER GEOMETRIE_H\n";};
+
+    /////////////////////////////////////////////////
+    virtual void actualiserGeometrie (){};
+
+    /////////////////////////////////////////////////
+    virtual void actualiserStyle (){};
 
     /////////////////////////////////////////////////
     /// \brief Actualiser les membres bounds local et global.

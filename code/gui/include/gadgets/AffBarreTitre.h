@@ -40,7 +40,11 @@ public:
 
     virtual void setTexte (std::string texte);
 
-    virtual void actualiser ();
+    /////////////////////////////////////////////////
+    virtual void actualiserGeometrie ();
+
+    /////////////////////////////////////////////////
+    virtual void actualiserStyle ();
 
 //    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
@@ -53,6 +57,7 @@ private:
     std::shared_ptr<AffLabel>       m_titre;
     std::shared_ptr<AffIcone>       m_icone;
 
+//    m_
 
 }; // fin class AffBarreTitre
 

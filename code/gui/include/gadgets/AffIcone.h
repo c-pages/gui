@@ -29,7 +29,7 @@ public:
     void setIndex( unsigned int val ){
 //        std::cout << "AffIcone::nom: " << getNom() << " INDEX : " << m_index << "\n";
         m_index = val;
-        actualiser ();
+        actualiserStyle ();
     };
 
     ///< Acceder à m_index
@@ -50,8 +50,13 @@ public:
     /////////////////////////////////////////////////
     AffIcone ();
 
-    virtual void actualiser ();
+//    virtual void actualiser ();
 
+    /////////////////////////////////////////////////
+    virtual void actualiserGeometrie ();
+
+    /////////////////////////////////////////////////
+    virtual void actualiserStyle ();
 
 
 /////////////////////////////////////////////////

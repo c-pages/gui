@@ -60,6 +60,14 @@ Gadget::~Gadget ()
 /////////////////////////////////////////////////
 void Gadget::actualiser ()
 {
+//    if ( m_necessiteActualisation )
+//    {
+    actualiserGeometrie ();
+    actualiserStyle ();
+//    }
+
+    actualiserEnfants();
+    actualiserComposants();
 
 }
 

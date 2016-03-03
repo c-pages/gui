@@ -151,6 +151,14 @@ sf::IntRect  Composite::boundgingB_enfants()
 }
 
 /////////////////////////////////////////////////
+void Composite::actualiserEnfants ()
+{
+    for ( auto enfant : m_enfants )
+        enfant->actualiser();
+}
+
+
+/////////////////////////////////////////////////
 void Composite::dessinerEnfants (sf::RenderTarget& target, sf::RenderStates states) const
 {
 

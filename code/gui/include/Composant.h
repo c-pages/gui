@@ -62,6 +62,7 @@ protected:
     void dessinerComposant (sf::RenderTarget& target, sf::RenderStates states) const;
 
 
+    void actualiserComposants ();
 
 
 /////////////////////////////////////////////////

@@ -21,6 +21,29 @@ namespace gui{
 /////////////////////////////////////////////////
 template <typename T>
 struct Valeurs {
+
+    /////////////////////////////////////////////////
+    void set ( Valeurs val , Etat etat = Etat::tous )    {
+        if ( etat == Etat::tous)
+        {
+            desactive = val.get(Etat::desactive);
+            repos = val.get(Etat::repos);
+            survol = val.get(Etat::survol);
+            press = val.get(Etat::press);
+        }
+        else switch ( etat ){
+            case Etat::repos :
+                repos = val.get(Etat::repos); break;
+            case Etat::survol :
+                survol = val.get(Etat::survol); break;
+            case Etat::press :
+                press = val.get(Etat::press); break;
+            case Etat::desactive :
+                desactive = val.get(Etat::desactive); break;
+            default : break;
+        }
+    };
+
     /////////////////////////////////////////////////
     void set ( T val , Etat etat = Etat::tous )    {
         if ( etat == Etat::tous)
@@ -48,6 +71,8 @@ struct Valeurs {
                 return press; break;
             case Etat::desactive :
                 return desactive; break;
+            case Etat::tous :
+                return repos; break;
             default : break;
 
         }
@@ -77,6 +102,8 @@ public:
     ///
     /////////////////////////////////////////////////
     Style();
+
+
 /*
     /////////////////////////////////////////////////
     /// \brief Definir une police

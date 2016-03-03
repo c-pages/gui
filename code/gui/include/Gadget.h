@@ -129,6 +129,12 @@ public:
     virtual void actualiser ();
 
     /////////////////////////////////////////////////
+    virtual void actualiserGeometrie (){};
+
+    /////////////////////////////////////////////////
+    virtual void actualiserStyle (){};
+
+    /////////////////////////////////////////////////
     /// \brief Actualiser le gadget pour l'animation.
     ///
     /// \param deltaTemps		 Le temps écoulé depuis la dernière actualisation.
@@ -201,10 +207,10 @@ public:
         m_style = style;
         for ( auto composant : m_composants)
             composant->setStyle(style, etat);
-        actualiser();
-        };
+        actualiserStyle();
+    };
 
-    std::shared_ptr<Style> getStyle ( )const { return m_style; };
+    virtual std::shared_ptr<Style> getStyle ( )const { return m_style; };
 
     bool aDesEnfants () { return ( m_enfants.size() > 0 ); };
 
@@ -214,11 +220,11 @@ public:
 
     int getNombreGadgets () const { return ms_CompteurGadgets; };
 
-    virtual void setTexte( std::string val ){ m_texte = val; actualiser(); };
+    virtual void setTexte( std::string val ){ m_texte = val; actualiserGeometrie(); };
 
     std::string getTexte( ) const { return m_texte; };
 
-    void setMarge ( sf::Vector2f marge ){ m_marge = marge;};
+    void setMarge ( sf::Vector2f marge ){ m_marge = marge; actualiserGeometrie(); };
 
 
 protected:

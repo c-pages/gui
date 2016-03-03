@@ -68,6 +68,9 @@ public:
 
     void demanderASupprimer (std::shared_ptr<Gadget> gadget );
 
+    void actualiserEnfants();
+
+
     void actualiserListes ( );
 
     /////////////////////////////////////////////////

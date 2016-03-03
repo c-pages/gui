@@ -10,52 +10,41 @@ namespace gui {
 
 /////////////////////////////////////////////////
 AffRectangle::AffRectangle ( sf::Vector2i taille )
-: m_rectangle()
-, m_couleurFond(nullptr)
-, m_couleurLignes(nullptr)
-, m_epaisseur(nullptr)
+: m_rectangle       ( )
+, m_couleurFond     ( sf::Color(0,0,255,255) )
+, m_couleurLignes   ( sf::Color(0,0,255,200) )
+, m_epaisseur       ( 1 )
 {
     m_taille = taille;
     actualiser ();
 }
 
+/////////////////////////////////////////////////
+void AffRectangle::setStyle ( std::shared_ptr<Style> style , Etat etat )
+{
+    m_couleurFond       = style->fnd_couleur.get( etat );
+    m_couleurLignes     = style->lgn_couleur.get( etat );
+    m_epaisseur         = style->lgn_epaisseur.get( etat );
+
+    actualiserStyle ();
+}
+
+
 
 /////////////////////////////////////////////////
-void AffRectangle::actualiser ()
+void AffRectangle::actualiserGeometrie ()
 {
-//    std::cout << "ACTUALISER AFFRECTANGLE_H\n";
-
     m_rectangle.setSize ( { m_taille.x, m_taille.y } );
-
-    // On choisi le style adéquate ...
-
-    std::shared_ptr<Style> style = nullptr;
-    if ( m_style != nullptr )
-        style = m_style;
-    else
-        style = m_skin->getStyle ( Styles::fond );
-
-    if ( m_couleurFond == nullptr)
-        m_rectangle.setFillColor    ( sf::Color (
-                                      style->fnd_couleur.repos.r
-                                    , style->fnd_couleur.repos.g
-                                    , style->fnd_couleur.repos.b
-                                    , style->fnd_couleur.repos.a * m_opacite ) );
-    else m_rectangle.setFillColor    ( *m_couleurFond );
-
-    if ( m_couleurLignes == nullptr)
-        m_rectangle.setOutlineColor ( sf::Color (
-                                      style->lgn_couleur.repos.r
-                                    , style->lgn_couleur.repos.g
-                                    , style->lgn_couleur.repos.b
-                                    , style->lgn_couleur.repos.a * m_opacite ) );
-    else m_rectangle.setOutlineColor    ( *m_couleurLignes );
-
-    if ( m_epaisseur == nullptr)
-        m_rectangle.setOutlineThickness ( style->lgn_epaisseur.repos );
-    else m_rectangle.setOutlineThickness    ( *m_epaisseur );
-
 }
+
+/////////////////////////////////////////////////
+void AffRectangle::actualiserStyle ()
+{
+    m_rectangle.setFillColor        ( m_couleurFond );
+    m_rectangle.setOutlineColor     ( m_couleurLignes );
+    m_rectangle.setOutlineThickness ( m_epaisseur );
+}
+
 
 /////////////////////////////////////////////////
 void AffRectangle::draw (sf::RenderTarget& target, sf::RenderStates states) const

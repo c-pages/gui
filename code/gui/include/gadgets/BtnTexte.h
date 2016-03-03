@@ -32,7 +32,13 @@ public:
     /////////////////////////////////////////////////
     BtnTexte ();
 
-    virtual void actualiser ( );
+//    virtual void actualiser ( );
+
+    /////////////////////////////////////////////////
+    virtual void actualiserGeometrie ();
+
+    /////////////////////////////////////////////////
+    virtual void actualiserStyle ();
 /*
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 */
@@ -47,6 +53,7 @@ public:
 public:
     std::shared_ptr<AffRectangle>    m_rectangle;
     std::shared_ptr<AffLabel>        m_label;
+
 
 }; // fin class BtnTexte
 

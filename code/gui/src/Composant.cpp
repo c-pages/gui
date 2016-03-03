@@ -47,6 +47,14 @@ void Composant::mettre_composantAuDessus (std::shared_ptr<Gadget> gadget)
 
 }
 
+/////////////////////////////////////////////////
+void Composant::actualiserComposants ()
+{
+    for ( auto composant : m_composants )
+        composant->actualiser();
+}
+
+
 
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget> Composant::testerSurvolComposants (sf::Vector2i position)

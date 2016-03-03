@@ -20,6 +20,22 @@ BtnTexte::BtnTexte ()
 }
 
 /////////////////////////////////////////////////
+void BtnTexte::actualiserGeometrie ()
+{
+    if ( m_autoAjust )
+        m_taille = { m_label->getTaille().x + m_marge.x*2 , m_label->getTaille().y + m_marge.y*2 } ;
+
+    m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
+    m_label->setPosition( m_marge.x  , m_marge.y/2   );
+}
+
+/////////////////////////////////////////////////
+void BtnTexte::actualiserStyle ()
+{
+
+}
+/*
+/////////////////////////////////////////////////
 void BtnTexte::actualiser ()
 {
 
@@ -40,11 +56,7 @@ void BtnTexte::actualiser ()
     else if ( estSurvole () )
         etatBouton = Etat::survol;
 
-    if ( m_autoAjust )
-        m_taille = { m_label->getTaille().x + m_marge.x*2 , m_label->getTaille().y + m_marge.y*2 } ;
 
-    m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
-    m_label->setPosition( m_marge.x  , m_marge.y/2   );
 
 
     m_label->setStyle ( style, etatBouton );
@@ -71,6 +83,7 @@ void BtnTexte::actualiser ()
     }
 
 }
+*/
 /*
 /////////////////////////////////////////////////
 void BtnTexte::draw (sf::RenderTarget& target, sf::RenderStates states) const

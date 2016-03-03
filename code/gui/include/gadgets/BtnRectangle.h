@@ -32,7 +32,29 @@ public:
     /////////////////////////////////////////////////
     BtnRectangle ();
 
-    virtual void actualiser ( );
+//    virtual void actualiser ( );
+
+    /////////////////////////////////////////////////
+    virtual void actualiserGeometrie ();
+
+    /////////////////////////////////////////////////
+    virtual void actualiserStyle ();
+
+    void setFillColor (sf::Color couleur , Etat etat = Etat::tous ) {
+            m_couleurFond.set ( couleur , etat );
+            m_rectangle->setFillColor( couleur );
+        };
+    void setOutlineColor (sf::Color couleur , Etat etat = Etat::tous ) {
+            m_couleurLignes.set ( couleur , etat );
+            m_rectangle->setOutlineColor( couleur );
+        };
+    void setOutlineThickness (float epaisseur , Etat etat = Etat::tous ) {
+            m_epaisseur.set ( epaisseur , etat );
+            m_rectangle->setOutlineThickness( epaisseur );
+        };
+
+    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
+
 
 
 ////////////////////////////////// ///////////////
@@ -40,6 +62,10 @@ public:
 /////////////////////////////////////////////////
 public:
     std::shared_ptr<AffRectangle>    m_rectangle;
+
+    Valeurs<sf::Color>       m_couleurFond;
+    Valeurs<sf::Color>       m_couleurLignes;
+    Valeurs<float>           m_epaisseur;
 
 }; // fin class BtnRectangle
 

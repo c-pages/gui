@@ -13,6 +13,11 @@ DnSlider::DnSlider ()
 : m_boutonFond  ( std::make_shared<BtnRectangle>() )
 , m_slider      ( std::make_shared<BtnRectangle>() )
 , m_fond        ( std::make_shared<AffRectangle>() )
+
+, m_styleBtnFond    ( std::make_shared<Style>() )
+, m_styleBtnSlider  ( std::make_shared<Style>() )
+, m_styleFond       ( std::make_shared<Style>() )
+
 , m_valeurMax   ( 100 )
 , m_valeurMin   ( 0 )
 , m_horizontal  ( true )
@@ -24,14 +29,13 @@ DnSlider::DnSlider ()
     m_marge.x = 0;
     m_marge.y = 0;
 
-//    m_boutonFond->setParent  ( this );
+    // Ajouter les composant
     ajouterComposant( m_fond );
     ajouterComposant( m_boutonFond );
     ajouterComposant( m_slider );
 
-    // Action du bouton
-    m_boutonFond->lier ( Evenement::onBtnG_presser , [this](){
-//        positionnerCurseurSurSouris ();
+    // Declaration des fonctions de fonctionnement de l'interface interne du gadget.
+    auto fct_cliqueBtnFond = [this](){
         if ( m_horizontal ) {
             if ( getLocalPosSouris().x > m_marge.x + m_slider->getTaille().x/2 + m_slider->getPosition().x ){
                 incrementer ( 20 );
@@ -52,67 +56,51 @@ DnSlider::DnSlider ()
                 if ( m_slider->getPosition().y - ( m_slider->getTaille().y/2 + m_marge.y )  < getLocalPosSouris().y )
                     positionnerCurseurSurSouris ();
             }
-
         }
-    });
-    m_boutonFond->lier ( Evenement::onBtnG_relacher , [this](){
+    };
+
+    auto fct_dragStart = [this](){
+        m_decalageDragSouris = sf::Vector2i ( getLocalPosSouris().x - m_slider->getPosition().x , getLocalPosSouris().y - m_slider->getPosition().y );
+        setDrag( true );
+        actualiser ();
+    };
+
+    auto fct_dragStop = [this](){
         setDrag( false );
         actualiser ();
-    });
-    m_boutonFond->lier ( Evenement::onBtnG_relacherDehors , [this](){
-        setDrag( false );
-        actualiser ();
-    });
-    m_boutonFond->lier ( Evenement::onBtnM_roulerHaut , [this](){
+    };
+
+    auto fct_roulette  = [this](){
         if ( m_horizontal )
                 incrementer();
         else    decrementer();
         actualiser ();
-    });
-    m_boutonFond->lier ( Evenement::onBtnM_roulerBas , [this](){
-        if ( m_horizontal )
-                decrementer();
-        else    incrementer();
-        actualiser ();
-    });
+    };
 
 
+
+    // Actions du bouton
+    m_boutonFond->lier ( Evenement::onBtnG_presser          , fct_cliqueBtnFond );
+    m_boutonFond->lier ( Evenement::onBtnG_relacher         , fct_dragStop );
+    m_boutonFond->lier ( Evenement::onBtnG_relacherDehors   , fct_dragStop );
+    m_boutonFond->lier ( Evenement::onBtnM_roulerHaut       , fct_roulette );
+    m_boutonFond->lier ( Evenement::onBtnM_roulerBas        , fct_roulette );
+
+
+    // Actions du slider
+    m_slider->lier ( Evenement::onBtnG_presser          , fct_dragStart );
+    m_slider->lier ( Evenement::onBtnG_relacher         , fct_dragStop );
+    m_slider->lier ( Evenement::onBtnG_relacherDehors   , fct_dragStop );
+    m_slider->lier ( Evenement::onBtnM_roulerHaut       , fct_roulette );
+    m_slider->lier ( Evenement::onBtnM_roulerBas        , fct_roulette );
+
+
+    // Initialisation du slider
     m_slider->setPosition ( m_marge.x, m_marge.y );
     m_slider->setTaille ( { m_largeur - 2*m_marge.x  , m_largeur - 2*m_marge.y });
     m_slider->setStyle ( m_skin->getStyle( Styles::slider ) );
 
-    // Action du slider
-    m_slider->lier ( Evenement::onBtnG_presser , [this](){
-        m_decalageDragSouris = sf::Vector2i ( getLocalPosSouris().x - m_slider->getPosition().x , getLocalPosSouris().y - m_slider->getPosition().y );
-        setDrag( true );
-        actualiser ();
-    });
-    m_slider->lier ( Evenement::onBtnG_relacher , [this](){
-        setDrag( false );
-        actualiser ();
-    });
-    m_slider->lier ( Evenement::onBtnG_relacherDehors , [this](){
-        setDrag( false );
-        actualiser ();
-    });
-    m_slider->lier ( Evenement::onBtnM_roulerHaut , [this](){
-        if ( m_horizontal )
-                incrementer();
-        else    decrementer();
-        actualiser ();
-    });
-    m_slider->lier ( Evenement::onBtnM_roulerBas , [this](){
-        if ( m_horizontal )
-                decrementer();
-        else    incrementer();
-        actualiser ();
-    });
-
-
     actualiser();
-    actualiser_bounds();
-    m_boutonFond->actualiser_bounds();
-    m_slider->actualiser_bounds();
 
 }
 
@@ -176,7 +164,9 @@ void DnSlider::positionnerCurseurSurSouris ()
 /////////////////////////////////////////////////
 void DnSlider::setLongCurseur( float pourcentage )
 {
-    if ( pourcentage >100) pourcentage = 100;
+    if ( pourcentage > 100 )    pourcentage = 100;
+    if ( pourcentage < 0 )      pourcentage = 0;
+
     if ( m_horizontal ){
         m_slider->setTailleX( m_longueur * pourcentage/100);
         m_slider->setTailleY( m_largeur );
@@ -187,44 +177,82 @@ void DnSlider::setLongCurseur( float pourcentage )
     }
 
     actualiser();
-    actualiser_bounds();
-    m_boutonFond->actualiser_bounds();
-    m_slider->actualiser_bounds();
+
+}
+
+/////////////////////////////////////////////////
+void DnSlider::actualiserGeometrie ()
+{
+    if ( m_horizontal )
+        m_taille = { m_longueur,  m_largeur};
+     else
+        m_taille = { m_largeur ,  m_longueur};
+
+    m_fond->setTaille ( m_taille );
+    m_boutonFond->setTaille ( m_taille );
+
+    actualiserBounds();
+    m_boutonFond->actualiserBounds();
+    m_slider->actualiserBounds();
+}
+
+/////////////////////////////////////////////////
+void DnSlider::actualiserStyle ()
+{
+
+    m_slider->setStyle      ( m_style );
+    m_boutonFond->setStyle  ( m_style );
+
+    m_fond->setFillColor ( m_style->fnd_couleur.repos );
+    m_fond->setFillColor ( m_style->fnd_couleur.repos );
+    m_fond->setFillColor ( m_style->fnd_couleur.repos );
+
+
 
 }
 
 
 /////////////////////////////////////////////////
+void DnSlider::setSkin( std::shared_ptr<Skin> skin )
+{
+    m_styleFond         = skin->getStyle( Styles::fond ) ;
+    m_styleBtnSlider    = skin->getStyle( Styles::slider ) ;
+    m_styleBtnFond      = skin->getStyle( Styles::bouton ) ;
+}
+/*
+/////////////////////////////////////////////////
+void DnSlider::setStyle( std::shared_ptr<Style> style , Etat etat = Etat::tous )
+{
+    m_styleFond         = skin->getStyle( Styles::fond ) ;
+    m_styleBtnSlider    = skin->getStyle( Styles::slider ) ;
+    m_styleBtnFond      = skin->getStyle( Styles::bouton ) ;
+}
+
+*/
+/*
+/////////////////////////////////////////////////
+void DnSlider::setStyle ( std::shared_ptr<Style> style , Etat etat ){
+
+    m_styleFond.set( style , etat);
+    m_styleBtnSlider    = style->getStyle( Styles::slider ) ;
+    m_styleBtnFond      = style->getStyle( Styles::bouton ) ;
+
+    m_styleFond         = style;
+    m_styleBtnSlider    = style;
+    m_styleBtnFond      = style;
+}
+
+*/
+/*
+/////////////////////////////////////////////////
 void DnSlider::actualiser ()
 {
 
-    if ( m_horizontal ) {
-        m_taille.x = m_longueur;
-        m_taille.y = m_largeur;
-    } else {
-        m_taille.x = m_largeur;
-        m_taille.y = m_longueur;
-    }
-    m_fond->setTaille ( m_taille );
-    m_boutonFond->setTaille ( m_taille );
-    m_boutonFond->setStyle ( m_skin->getStyle( Styles::bouton ) );
 
-    auto style = m_skin->getStyle( Styles::bouton );
-    if ( m_style != nullptr )
-        style = m_style;
-
-    m_fond->setStyle    ( m_skin->getStyle( Styles::fond ) );
-    m_slider->setStyle  ( m_skin->getStyle( Styles::slider ) );
-
-    actualiser_bounds();
-    m_boutonFond->actualiser_bounds();
-    m_slider->actualiser_bounds();
-
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 
 }
 
-
+*/
 /////////////////////////////////////////////////
 float DnSlider::getValeur(){
     float result, longueurMax,coefPosition, longueurVal;

@@ -45,7 +45,10 @@ public:
     /////////////////////////////////////////////////
     DnBarreDefilement ();
 
-    virtual void actualiser ();
+//    virtual void actualiser ();
+
+    virtual void actualiserGeometrie ();
+    virtual void actualiserStyle ();
 
     void setLongueurCurseur( float pourcentage ) {
         m_slider->setLongCurseur( pourcentage );

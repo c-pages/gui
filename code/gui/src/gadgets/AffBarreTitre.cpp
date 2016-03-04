@@ -62,7 +62,7 @@ void AffBarreTitre::actualiserGeometrie ()
 
     m_titre->setPosition    ( m_taille.y + m_marge.x, m_marge.y );
 
-    actualiser_bounds ();
+    actualiserBounds ();
 
 }
 

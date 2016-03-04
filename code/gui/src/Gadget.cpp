@@ -29,7 +29,8 @@ Gadget::Gadget ()
 , m_deplacable  ( false )
 , m_skin        ( std::make_shared<Skin>() )
 //, m_skin        ( nullptr )
-, m_style       ( nullptr )
+, m_style       ( std::make_shared<Style>() )
+//, m_style       ( nullptr )
 , m_necessiteActualisation ( false )
 , m_etat        ( Etat::repos )
 {
@@ -65,6 +66,7 @@ void Gadget::actualiser ()
 
     actualiserStyle ();
     actualiserGeometrie ();
+    actualiserBounds();
 
     actualiserEnfants();
     actualiserComposants();
@@ -152,7 +154,7 @@ bool Gadget::estDeplacable () const
 std::shared_ptr<Gadget>  Gadget::testerSurvol ( sf::Vector2i position )
 {
     ///<\todo... a voir si on peut se passer de faire l'actualisation a chaque fois ...(pour l'instant sans ca, ca pose problème a bouton dans fenentre)
-    actualiser_bounds();
+    actualiserBounds();
 
     // Si on survol le gadget
     if ( m_globalBounds.contains( position.x, position.y ) && estActif() )

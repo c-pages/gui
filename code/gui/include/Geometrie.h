@@ -44,9 +44,9 @@ class Geometrie : public sf::Transformable, public gui::Composite {
 
 public:
     ///< Definir m_taille
-    virtual void setTaille( sf::Vector2i val ){ m_taille = val; actualiser_bounds(); actualiserGeometrie(); };
-    virtual void setTailleX( float val ){ m_taille.x = val; actualiser_bounds(); actualiserGeometrie(); };
-    virtual void setTailleY( float val ){ m_taille.y = val; actualiser_bounds(); actualiserGeometrie(); };
+    virtual void setTaille( sf::Vector2i val ){ m_taille = val; actualiserBounds(); actualiserGeometrie(); };
+    virtual void setTailleX( float val ){ m_taille.x = val; actualiserBounds(); actualiserGeometrie(); };
+    virtual void setTailleY( float val ){ m_taille.y = val; actualiserBounds(); actualiserGeometrie(); };
 
     ///< Acceder à m_taille
     virtual sf::Vector2i getTaille () const { return m_taille;  };
@@ -64,7 +64,7 @@ public:
     double getOpacite () const { return m_opacite; };
 
     ///< reDefinir setPosition
-    virtual     void setPosition( float x , float y ){ sf::Transformable::setPosition( x , y ); actualiser_bounds(); };
+    virtual     void setPosition( float x , float y ){ sf::Transformable::setPosition( x , y ); actualiserBounds(); };
 
     /////////////////////////////////////////////////
     /// \brief Calculer la position absolue du gadget.
@@ -97,7 +97,7 @@ public:
     /// \brief Actualiser les membres bounds local et global.
     ///
     /////////////////////////////////////////////////
-    virtual void actualiser_bounds ();
+    virtual void actualiserBounds ();
 
 /////////////////////////////////////////////////
 // Membres

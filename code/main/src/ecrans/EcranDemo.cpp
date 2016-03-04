@@ -21,10 +21,10 @@ EcranDemo::EcranDemo( Application*  appli )
 
     // les tests
     initGUI_test_Affichages ();
-    initGUI_test_Fenetres   ();
     initGUI_test_Boutons    ();
     initGUI_test_Donnees    ();
     initGUI_test_Panneaux   ();
+    initGUI_test_Fenetres   ();
 
     initScene   ();
 

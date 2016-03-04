@@ -87,7 +87,7 @@ public:
         m_skin = skin;
         for ( auto composant : m_composants)
             composant->setSkin( skin );
-        actualiser ();
+        actualiserStyle ();
     };
 
     ///< Acceder à m_skin

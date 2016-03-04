@@ -17,6 +17,7 @@ BtnRectangle::BtnRectangle ()
     m_couleurFond.set   ( sf::Color( 255,0,0, 100 ) , Etat::survol );
     m_couleurFond.set   ( sf::Color( 255,0,0, 150 ) , Etat::press );
     m_couleurLignes.set ( sf::Color( 0,255,0, 255 ) );
+
     m_epaisseur.set     ( 1 );
 
     ajouterComposant( m_rectangle );
@@ -33,6 +34,7 @@ void BtnRectangle::setStyle ( std::shared_ptr<Style> style , Etat etat )
     m_epaisseur.set     ( style->lgn_epaisseur , etat );
 
     actualiserStyle ();
+    actualiserGeometrie ();
 }
 
 
@@ -41,7 +43,7 @@ void BtnRectangle::actualiserGeometrie ()
 {
 //    std::cout << "BtnRectangle::actualiserGeometrie\n";
     m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
-    actualiser_bounds();
+    actualiserBounds();
 }
 
 /////////////////////////////////////////////////

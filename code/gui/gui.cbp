@@ -59,8 +59,8 @@
 			<Add directory="R:/06 - C++/110 - GUI/code/gui/src" />
 			<Add directory="src/gadgets" />
 		</Linker>
+		<Unit filename="GUI.h" />
 		<Unit filename="gui.cpp" />
-		<Unit filename="gui.h" />
 		<Unit filename="include/ActionClavier.h" />
 		<Unit filename="include/ActionEvenement.h" />
 		<Unit filename="include/Affiche.h" />
@@ -102,15 +102,6 @@
 		<Unit filename="include/repartiteurs/RepartiteurHorizontal.h" />
 		<Unit filename="include/repartiteurs/RepartiteurLibre.h" />
 		<Unit filename="include/repartiteurs/RepartiteurVerticale.h" />
-		<Unit filename="media/img/nuage.jpg" />
-		<Unit filename="media/polices/arial.ttf" />
-		<Unit filename="media/polices/bgothl.ttf" />
-		<Unit filename="media/polices/consola.ttf" />
-		<Unit filename="media/polices/consolab.ttf" />
-		<Unit filename="media/polices/consolai.ttf" />
-		<Unit filename="media/polices/consolaz.ttf" />
-		<Unit filename="media/polices/webdings.ttf" />
-		<Unit filename="media/polices/wingding.ttf" />
 		<Unit filename="src/ActionClavier.cpp" />
 		<Unit filename="src/ActionEvenement.cpp" />
 		<Unit filename="src/Affiche.cpp" />

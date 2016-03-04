@@ -39,8 +39,30 @@ void BtnTexte::actualiserGeometrie ()
 /////////////////////////////////////////////////
 void BtnTexte::actualiserStyle ()
 {
-
     BtnRectangle::actualiserStyle ();
+    m_label->setTexteCouleur    ( sf::Color (
+                                      m_textCouleur.get( this->etat() ).r
+                                    , m_textCouleur.get( this->etat() ).g
+                                    , m_textCouleur.get( this->etat() ).b
+                                    , m_textCouleur.get( this->etat() ).a * m_opacite ) ) ;
+
+    m_label->setTexteTaille     ( m_textTaille.get( this->etat() ) ) ;
+
+    m_label->setPolice          ( m_textPolice.get( this->etat() ) ) ;
+
+    m_label->setTexteStyle      ( m_textStyle.get( this->etat() ) ) ;
+
+
+
+
+            /*
+    m_rectangle->setOutlineColor     ( sf::Color (
+                                      m_couleurLignes.get( this->etat() ).r
+                                    , m_couleurLignes.get( this->etat() ).g
+                                    , m_couleurLignes.get( this->etat() ).b
+                                    , m_couleurLignes.get( this->etat() ).a * m_opacite ) ) ;
+    m_rectangle->setOutlineThickness ( m_epaisseur.get( this->etat() ) ) ;*/
+
 }
 
 
@@ -49,11 +71,13 @@ void BtnTexte::setStyle ( std::shared_ptr<Style> style , Etat etat )
 {
     std::cout << "BtnTexte::setStyle : " << style << "\n";
 
-    BtnRectangle::setStyle ( style , etat );
-    m_label->setStyle ( style , etat );
 
-    actualiserGeometrie ();
-    actualiserStyle();
+    m_textCouleur   = style->txt_couleur;
+    m_textStyle     = style->txt_style;
+    m_textTaille    = style->txt_taille;
+    m_textPolice    = style->txt_police;
+
+    BtnRectangle::setStyle ( style , etat );
 
 }
 
@@ -102,7 +126,7 @@ void BtnTexte::actualiser ()
 
     m_rectangle->setOutlineThickness ( style->lgn_epaisseur.get(etatBouton) ) ;
 
-    actualiser_bounds();
+    actualiserBounds();
 
     if ( m_parent != nullptr ) {
 //            std::cout << "parent : " << m_parent->getNom() << "\n";

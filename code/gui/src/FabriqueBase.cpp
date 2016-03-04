@@ -25,16 +25,17 @@ std::shared_ptr<T>  FabriqueBase::creerGadget (){
     // Affiliation a l'interface
     m_interfaceParent->ajouter ( nouveauGadget );
     nouveauGadget->setParent ( m_interfaceParent );
-/*
-    std::vector<std::shared_ptr<Gadget>>        m_bureau;
-    std::vector<std::shared_ptr<Gadget>>        m_fenetres;
-    std::vector<std::shared_ptr<Gadget>>        m_supports;*/
-
     m_interfaceParent->m_calque_bureau->ajouter ( nouveauGadget );
+
+    // Application du skin de l'interface au gadget
+    nouveauGadget->setSkin ( m_interfaceParent->getSkin() );
 
     // renvois du nouveau gadget créé.
     return nouveauGadget;
+
 }
+
+
 
 /////////////////////////////////////////////////
 template<typename T>
@@ -42,18 +43,17 @@ std::shared_ptr<T>  FabriqueBase::creerFenetre (){
 
     // Creation du nouveau gadget
     std::shared_ptr<T> nouveauGadget = std::make_shared<T>( );
-/*
-    // Affiliation a l'interface
-    m_interfaceParent->ajouterFenetre ( nouveauGadget );
-    nouveauGadget->setParent ( m_interfaceParent );*/
 
     m_interfaceParent->ajouter ( nouveauGadget );
     nouveauGadget->setParent ( m_interfaceParent );
-
     m_interfaceParent->m_calque_fenetres->ajouter ( nouveauGadget );
+
+    // Application du skin de l'interface au gadget
+    nouveauGadget->setSkin ( m_interfaceParent->getSkin() );
 
     // renvois du nouveau gadget créé.
     return nouveauGadget;
+
 }
 
 

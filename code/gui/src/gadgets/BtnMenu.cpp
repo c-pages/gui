@@ -53,11 +53,11 @@ void BtnMenu::supprimerElement (unsigned int id)
 }
 
 /////////////////////////////////////////////////
-void BtnMenu::actualiser_bounds ()
+void BtnMenu::actualiserBounds ()
 {
     m_taille.x = m_tailleMenu.x + 2 * m_marge.x;
     m_taille.y = m_elements.size() *  m_tailleMenu.y + ( m_elements.size()-1) * m_ecart  + 2 * m_marge.y;
-    Geometrie::actualiser_bounds();
+    Geometrie::actualiserBounds();
 
 }
 void BtnMenu::actualiserGeometrie()
@@ -70,7 +70,7 @@ void BtnMenu::actualiserGeometrie()
 
         index++;
     }
-    actualiser_bounds ();
+    actualiserBounds ();
     m_fond->setTaille( m_taille );
 }
 

@@ -84,28 +84,10 @@ std::shared_ptr<Gadget>  DnZoneTexte::testerSurvol ( sf::Vector2i position )
     return nullptr;
 }
 
-
 /////////////////////////////////////////////////
-void DnZoneTexte::actualiser ()
+void DnZoneTexte::actualiserGeometrie ()
 {
-    // le bouton
-    m_bouton->setSkin       ( m_skin );
-    if ( !m_ecritureActive ) {
-        m_bouton->setStyle      ( m_skin->getStyle( Styles::bouton ) );
-    } else {
-        m_bouton->setStyle      ( m_skin->getStyle( Styles::zoneTexte ) );
-    }
-    // le label
-    m_label->setStyle       ( m_skin->getStyle( Styles::zoneTexte ) );
-    m_label->setSkin        ( m_skin );
     m_label->setPosition    ( m_marge.x , m_marge.y/2);
-
-    // le curseur
-//    m_curseur->setPosition  ( , m_marge.y/2);
-    m_curseur->setSkin      ( m_skin );
-    m_curseur->setStyle     ( m_skin->getStyle( Styles::bouton ) );
-    m_curseur->setFillColor ( sf::Color::White );
-    m_curseur->setOutlineThickness ( 0 );
 
 //    sf::Vector2f pos = m_label->getSFTexte()->findCharacterPos 	(  m_label->getTexte().size() ) ;
     sf::Vector2f pos = m_label->getSFTexte()->findCharacterPos 	(  m_label->getSFTexte()->getString().getSize() ) ;
@@ -113,8 +95,37 @@ void DnZoneTexte::actualiser ()
     m_curseur->setPosition ( pos.x , pos.y );
     m_curseur->move( 5 , m_marge.y/2 );
 
+    // actualiser
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }
+
+
+/////////////////////////////////////////////////
+void DnZoneTexte::actualiserStyle ()
+{
+     // le bouton
+    m_bouton->setSkin       ( m_skin );
+    if ( !m_ecritureActive ) {
+        m_bouton->setStyle      ( m_skin->getStyle( Styles::bouton ) );
+    } else {
+        m_bouton->setStyle      ( m_skin->getStyle( Styles::zoneTexte ) );
+    }
+
+    // le label
+    m_label->setStyle       ( m_skin->getStyle( Styles::zoneTexte ) );
+    m_label->setSkin        ( m_skin );
+
+    // le curseur
+    // m_curseur->setPosition  ( , m_marge.y/2);
+    m_curseur->setSkin      ( m_skin );
+    m_curseur->setStyle     ( m_skin->getStyle( Styles::bouton ) );
+    m_curseur->setFillColor ( sf::Color::White );
+    m_curseur->setOutlineThickness ( 0 );
+
+
+    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+}
+
 
 
 /////////////////////////////////////////////////

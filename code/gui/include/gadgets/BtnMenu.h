@@ -56,7 +56,7 @@ public:
     void supprimerElement (unsigned int id);
 
 //    virtual void actualiser ();
-    virtual void actualiser_bounds ();
+    virtual void actualiserBounds ();
 
     /////////////////////////////////////////////////
     void actualiserGeometrie();

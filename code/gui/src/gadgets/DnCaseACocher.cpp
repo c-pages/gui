@@ -48,7 +48,7 @@ DnCaseACocher::DnCaseACocher ()
 
 
 /////////////////////////////////////////////////
-void DnCaseACocher::actualiser_bounds() {
+void DnCaseACocher::actualiserBounds() {
     m_globalBounds.left = getPosAbs().x;
     m_globalBounds.top = getPosAbs().y;
     m_globalBounds.width = m_taille.x + m_label->getTaille().x + 2*m_marge.x;
@@ -67,7 +67,7 @@ void DnCaseACocher::actualiserGeometrie ()
     m_coche->setTaille   ( { m_taille.x - 2*m_marge.x , m_taille.y - 2*m_marge.y } );
     m_coche->setPosition ( m_marge.x , m_marge.y );
 
-    actualiser_bounds();
+    actualiserBounds();
 }
 
 
@@ -120,7 +120,7 @@ void DnCaseACocher::actualiser ()
         m_coche->setOutlineColor (  style->getLgn_couleur( Etat::press ));
         m_coche->setOutlineThickness ( style->getLgn_epaisseur( Etat::press ) );
     }
-    actualiser_bounds();
+    actualiserBounds();
 
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }

@@ -68,10 +68,41 @@ public:
 /////////////////////////////////////////////////
 public:
 
-    std::shared_ptr<AffLabel>        m_label;
+    std::shared_ptr<AffLabel>       m_label;
+
+    Valeurs<sf::Color>              m_textCouleur;
+    Valeurs<sf::Text::Style>        m_textStyle;
+    Valeurs<float>                  m_textTaille;
+    Valeurs<sf::Font>               m_textPolice;
+
+
 
 }; // fin class BtnTexte
 
 } // fin namespace gui
 
 #endif // BTNRECTANGLE__H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

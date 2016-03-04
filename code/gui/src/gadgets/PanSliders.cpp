@@ -91,7 +91,7 @@ void PanSliders::actualiser ()
 
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
 
-    actualiser_bounds ();
+    actualiserBounds ();
 
 }
 

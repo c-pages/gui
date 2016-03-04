@@ -28,7 +28,7 @@ void PanSimple::actualiser ()
 
     actualiserContenu();
 
-    actualiser_bounds ();
+    actualiserBounds ();
 
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }

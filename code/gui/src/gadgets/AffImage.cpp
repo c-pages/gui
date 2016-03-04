@@ -55,7 +55,7 @@ void AffImage::actualiserGeometrie ()
     else
         m_rectangle.setSize ( { m_texture->getSize().x , m_texture->getSize().y } );
 
-    actualiser_bounds();
+    actualiserBounds();
 }
 /////////////////////////////////////////////////
 void AffImage::actualiserStyle ()

@@ -37,7 +37,7 @@ public:
     virtual void actualiserGeometrie ();
     virtual void actualiserStyle ();
 
-    virtual void actualiser_bounds();
+    virtual void actualiserBounds();
 
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 

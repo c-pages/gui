@@ -38,13 +38,18 @@ public:
     /////////////////////////////////////////////////
     DnZoneTexte ();
 
-    virtual void actualiser ();
+//    virtual void actualiser ();
+    /////////////////////////////////////////////////
+    virtual void actualiserGeometrie ();
+
+    /////////////////////////////////////////////////
+    virtual void actualiserStyle ();
 
     virtual void setTexte( std::string val ){
         m_valeur    = val;
         m_texte     = val;
         m_label->setTexte       ( m_texte ) ;
-        actualiser();
+        actualiserGeometrie();
     };
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;

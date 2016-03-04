@@ -10,13 +10,10 @@ Style::Style()
 {
 
     // initialiser les polices
-    gui::ms_polices.load( "Defaut" , "media/polices/consola.ttf" );
+    ms_polices.load( "Defaut" , "media/polices/consola.ttf" );
 
-    txt_police.set ( gui::ms_polices.get( "Defaut" ) );
-    txt_police.press.loadFromFile ( "media/polices/consola.ttf" );
-    txt_police.repos.loadFromFile ( "media/polices/consola.ttf" );
-    txt_police.survol.loadFromFile( "media/polices/consola.ttf" );
-    txt_police.desactive.loadFromFile( "media/polices/consola.ttf" );
+    txt_police.set ( ms_polices.get( "Defaut" ) );
+
     txt_style.set(sf::Text::Style::Regular ) ;
     txt_taille.set( 9.5 ) ;
     txt_couleur.set( sf::Color(200, 200, 200)) ;

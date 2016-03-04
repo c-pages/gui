@@ -47,7 +47,7 @@ void AffLabel::actualiserGeometrie ()
 //    m_texteSFML->setPosition ( -m_texteSFML->getGlobalBounds().left , -m_texteSFML->getGlobalBounds().top );
 
 
-    actualiser_bounds();
+    actualiserBounds();
 }
 
 /////////////////////////////////////////////////

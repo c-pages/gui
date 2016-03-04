@@ -67,10 +67,14 @@ public:
         m_texteSFML->setFont    ( m_textPolice );/* actualiser();*/
     };
 
+    ///< Definir m_police
+    void setTexteStyle( sf::Text::Style val ){
+        m_textStyle = val;
+        m_texteSFML->setStyle    ( m_textStyle );/* actualiser();*/
+    };
 
     ///< Acceder à m_police
     sf::Font getPolice () const { return m_textPolice; };
-
 public:
     /////////////////////////////////////////////////
     /// \brief Constructeur par défaut.
@@ -86,7 +90,7 @@ public:
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
 
-//    virtual void actualiser_bounds ();
+//    virtual void actualiserBounds ();
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 

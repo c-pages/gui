@@ -26,7 +26,7 @@ void Geometrie::Aligner ( std::shared_ptr<Gadget> cible, Alignement alignement, 
 
 
 /////////////////////////////////////////////////
-void Geometrie::actualiser_bounds ()
+void Geometrie::actualiserBounds ()
 {
     sf::Vector2f pos = getPosAbs ();
 
@@ -39,6 +39,9 @@ void Geometrie::actualiser_bounds ()
     m_localBounds.top       = getPosition().y;
     m_localBounds.width     = getTaille().x;
     m_localBounds.height    = getTaille().y;
+    /*
+    for ( auto enfant : m_enfants )
+        actualiserBounds ();*/
 }
 
 

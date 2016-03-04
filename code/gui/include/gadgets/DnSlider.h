@@ -44,18 +44,18 @@ public:
 ////        m_longueur = val.x;
 ////        m_largeur = val.y;
 //
-//        actualiser_bounds();
+//        actualiserBounds();
 //        actualiser(); };
     ///< Definir m_taille
     void setLongueur( float longueur ){
         m_longueur = longueur;
-        actualiser_bounds();
+        actualiserBounds();
         actualiser();
     };
 
     void setLargeur( float largeur ){
         m_largeur = largeur;
-        actualiser_bounds();
+        actualiserBounds();
         actualiser();
     };
 
@@ -83,19 +83,45 @@ public:
 
     virtual float getValeur();
 
-//    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
+    //    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
 
-//    virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
+    //    virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
-    virtual void actualiser ( );
+    //    virtual void actualiser ( );
+
+    /////////////////////////////////////////////////
+    virtual void actualiserGeometrie ();
+
+    /////////////////////////////////////////////////
+    virtual void actualiserStyle ();
+
 
     void setLongCurseur( float pourcentage );
 //    void setLong    ( float pixels );
 
+    virtual void setSkin( std::shared_ptr<Skin> skin );
+
+//    virtual void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
+
+    void setStyleBtnFond( std::shared_ptr<Style> style )
+        { m_styleBtnFond = style;
+          m_boutonFond->setStyle  ( m_styleBtnFond ); };
+
+    void setStyleBtnRectangle( std::shared_ptr<Style> style )
+        { m_styleBtnSlider = style;
+          m_slider->setStyle      ( m_styleBtnSlider );};
+
+    void setStyleFond( std::shared_ptr<Style> style )
+        { m_styleFond = style;
+          m_fond->setStyle        ( m_styleFond );};
+
 private:
     void positionnerCurseurSurSouris ();
     void corrigerPositionCurseur();
+
+
+
 
 /////////////////////////////////////////////////
 // Membres
@@ -106,6 +132,12 @@ private:
     std::shared_ptr<BtnRectangle>   m_boutonFond;
     std::shared_ptr<BtnRectangle>   m_slider;
     std::shared_ptr<AffRectangle>   m_fond;
+
+    std::shared_ptr<Style>               m_styleBtnFond;
+    std::shared_ptr<Style>               m_styleBtnSlider;
+    std::shared_ptr<Style>               m_styleFond;
+
+
 
     float                           m_valeurMax;    ///<
     float                           m_valeurMin;    ///<

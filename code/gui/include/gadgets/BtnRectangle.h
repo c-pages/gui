@@ -53,7 +53,22 @@ public:
             m_rectangle->setOutlineThickness( epaisseur );
         };
 
-    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
+    void setFillColor ( Valeurs<sf::Color> couleurs  ) {
+            m_couleurFond = couleurs;
+            actualiserStyle();
+//            m_rectangle->setFillColor( couleur );
+        };
+    void setOutlineColor ( Valeurs<sf::Color> couleurs  ) {
+            m_couleurLignes = couleurs;
+            actualiserStyle();
+//            m_rectangle->setOutlineColor( couleur );
+        };
+    void setOutlineThickness ( Valeurs<float> epaisseur ) {
+            m_epaisseur =  epaisseur;
+            actualiserStyle();
+//            m_rectangle->setOutlineThickness( epaisseur );
+        };
+//    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
 
 
 
@@ -61,8 +76,11 @@ public:
 // Membres
 /////////////////////////////////////////////////
 public:
+
+    // les composants de l'interface du gadget
     std::shared_ptr<AffRectangle>    m_rectangle;
 
+    // les proprietés graphiques
     Valeurs<sf::Color>       m_couleurFond;
     Valeurs<sf::Color>       m_couleurLignes;
     Valeurs<float>           m_epaisseur;

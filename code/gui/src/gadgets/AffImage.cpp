@@ -32,11 +32,11 @@ AffImage::AffImage ()
 void AffImage::chargerDepuisFichier ( std::string fichier )
 {
 //    std::cout << "AffImage : chargerDepuisFichier\n";
-    std::string nomUniqueImage = ms_images.nomDefautSuivant();
+    std::string nomUniqueImage = Interface::ms_images.nomDefautSuivant();
 
-    ms_images.load ( nomUniqueImage , fichier );
+    Interface::ms_images.load ( nomUniqueImage , fichier );
 
-    m_texture = &ms_images.get ( nomUniqueImage );
+    m_texture = &Interface::ms_images.get ( nomUniqueImage );
 
     m_rectangle.setTexture( m_texture );
 

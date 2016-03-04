@@ -10,9 +10,9 @@ Style::Style()
 {
 
     // initialiser les polices
-    ms_polices.load( "Defaut" , "media/polices/consola.ttf" );
+    Interface::ms_polices.load( "Defaut" , "media/polices/consola.ttf" );
 
-    txt_police.set ( ms_polices.get( "Defaut" ) );
+    txt_police.set ( Interface::ms_polices.get( "Defaut" ) );
 
     txt_style.set(sf::Text::Style::Regular ) ;
     txt_taille.set( 9.5 ) ;

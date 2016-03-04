@@ -2,6 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <BtnTexte.h>
+#include <Interface.h>
 
 
 
@@ -15,6 +16,15 @@ BtnTexte::BtnTexte ()
     m_marge = { 5, 5 };
     m_autoAjust = true;
     m_texte = "";
+
+    // valeurs par defaut
+    m_textCouleur.set( sf::Color::White );
+    m_textCouleur.set( sf::Color( 255,255,255,50 ) , Etat::desactive );
+    m_textTaille.set ( 1 ) ;
+    std::cout << "PAR LAAA <------------------------ 1 ---\n";
+    m_textPolice.set ( Interface::ms_polices.get( "Defaut" ) ) ;
+    std::cout << "PAR LAAA <------------------------ 2 ---\n";
+    m_textStyle.set  ( sf::Text::Style::Regular ) ;
 
     ajouterComposant( m_label );
 
@@ -52,19 +62,8 @@ void BtnTexte::actualiserStyle ()
 
     m_label->setTexteStyle      ( m_textStyle.get( this->etat() ) ) ;
 
-
-
-
-            /*
-    m_rectangle->setOutlineColor     ( sf::Color (
-                                      m_couleurLignes.get( this->etat() ).r
-                                    , m_couleurLignes.get( this->etat() ).g
-                                    , m_couleurLignes.get( this->etat() ).b
-                                    , m_couleurLignes.get( this->etat() ).a * m_opacite ) ) ;
-    m_rectangle->setOutlineThickness ( m_epaisseur.get( this->etat() ) ) ;*/
-
 }
-
+/*
 
 /////////////////////////////////////////////////
 void BtnTexte::setStyle ( std::shared_ptr<Style> style , Etat etat )
@@ -81,7 +80,7 @@ void BtnTexte::setStyle ( std::shared_ptr<Style> style , Etat etat )
 
 }
 
-
+*/
 
 
 

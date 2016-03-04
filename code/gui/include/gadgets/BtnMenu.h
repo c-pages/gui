@@ -28,9 +28,9 @@ class BtnMenu : public gui::Bouton {
 // struct
 /////////////////////////////////////////////////
 struct ElementMenu {
-    std::string             nom;
-    FctnAction              fonction;
-    std::shared_ptr<Bouton> bouton;
+    std::string                 nom;
+    FctnAction                  fonction;
+    std::shared_ptr<BtnTexte>   bouton;
 };
 
 
@@ -73,10 +73,28 @@ public:
 // Membres
 /////////////////////////////////////////////////
 public:
-    std::vector <ElementMenu*>      m_elements;
-    std::shared_ptr<AffRectangle>   m_fond;
+
+    // les proprietés fonctionnelles
     sf::Vector2i                    m_tailleMenu;   ///< La taille d'un bouton du menu
     float                           m_ecart;
+
+    // les composants de l'interface du gadget
+    std::vector <ElementMenu*>      m_elements;
+    std::shared_ptr<AffRectangle>   m_fond;
+
+    // les proprietés graphiques
+    Valeurs<sf::Color>  m_btnCouleurs;
+    Valeurs<sf::Color>  m_btnLignesCouleurs;
+    Valeurs<float>      m_btnLignesEpaisseurs;
+
+    sf::Color           m_fndCouleur;
+    sf::Color           m_fndLignesCouleur;
+    float               m_fndLignesEpaisseur;
+
+    sf::Color           m_textCouleur;
+    sf::Text::Style     m_textStyle;
+    float               m_textTaille;
+    sf::Font            m_textPolice;
 
 }; // fin class BtnMenu
 

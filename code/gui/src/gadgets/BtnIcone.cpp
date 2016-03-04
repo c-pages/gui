@@ -9,8 +9,9 @@ namespace gui {
 
 /////////////////////////////////////////////////
 BtnIcone::BtnIcone ()
-: m_rectangle   ( std::make_shared<AffRectangle>())
-, m_icone       ( std::make_shared<AffIcone>())
+: /*m_rectangle   ( std::make_shared<AffRectangle>())
+, */
+  m_icone       ( std::make_shared<AffIcone>())
 , m_fix    ( false )
 {
     m_marge       = { 1 , 1} ;
@@ -21,12 +22,40 @@ BtnIcone::BtnIcone ()
 //    m_icone->setStyle ( m_skin->getStyle( Styles::bouton ) , Etat::repos );
 }
 
+
+/////////////////////////////////////////////////
+void BtnIcone::actualiserGeometrie ()
+{
+
+    if ( m_autoAjust )
+        m_taille = { m_icone->getTaille().x + m_marge.x*2 , m_icone->getTaille().y + m_marge.y*2 } ;
+
+    BtnRectangle::actualiserGeometrie();
+
+    m_icone->setPosition( m_marge.x  , m_marge.y/3 );
+
+}
+
+/////////////////////////////////////////////////
+void BtnIcone::actualiserStyle ()
+{
+
+    m_rectangle->setFillColor    ( sf::Color (
+                                      255
+                                    , 255
+                                    , 255
+                                    , 255 * m_opacite ) ) ;
+
+    m_rectangle->setOutlineThickness ( 0 ) ;
+
+}
+/*
 /////////////////////////////////////////////////
 void BtnIcone::actualiser ()
 {
 
     // On choisie le style a appliquer (du style s'il en a un sinon du skin)
-    std::shared_ptr<Style> style;
+/*    std::shared_ptr<Style> style;
     if ( m_style == nullptr )
         style = m_skin->getStyle( Styles::bouton );
     else
@@ -77,7 +106,7 @@ void BtnIcone::actualiser ()
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
 
 }
-
+*/
 
 
 

@@ -24,7 +24,7 @@ void Panneau::actualiserContenu ()
 {
 
     // Render to texture des enfants
-    m_renderTexture.clear( m_skin->getStyle ( Styles::fond )->fnd_couleur.repos );
+    m_renderTexture.clear( sf::Color::Transparent );
 
     for (auto enfant : m_enfants)
         m_renderTexture.draw( *enfant );

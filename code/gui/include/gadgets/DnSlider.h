@@ -100,10 +100,10 @@ public:
     void setLongCurseur( float pourcentage );
 //    void setLong    ( float pixels );
 
-    virtual void setSkin( std::shared_ptr<Skin> skin );
+//    virtual void setSkin( std::shared_ptr<Skin> skin );
 
 //    virtual void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
-
+/*
     void setStyleBtnFond( std::shared_ptr<Style> style )
         { m_styleBtnFond = style;
           m_boutonFond->setStyle  ( m_styleBtnFond ); };
@@ -115,7 +115,7 @@ public:
     void setStyleFond( std::shared_ptr<Style> style )
         { m_styleFond = style;
           m_fond->setStyle        ( m_styleFond );};
-
+*/
 private:
     void positionnerCurseurSurSouris ();
     void corrigerPositionCurseur();
@@ -127,26 +127,29 @@ private:
 // Membres
 /////////////////////////////////////////////////
 private:
-    bool                            m_horizontal;   ///< Orientation : true bouton
 
+    // les proprietés fonctionnelles
+    bool                            m_horizontal;   ///< Orientation : true bouton
+    float                           m_valeurMax;    ///<
+    float                           m_valeurMin;    ///<
+    float                           m_longueur;     ///<
+    float                           m_largeur;      ///<
+    bool                            m_drag;
+    sf::Vector2i                    m_decalageDragSouris;
+
+    // les composants de l'interface du gadget
     std::shared_ptr<BtnRectangle>   m_boutonFond;
     std::shared_ptr<BtnRectangle>   m_slider;
     std::shared_ptr<AffRectangle>   m_fond;
 
-    std::shared_ptr<Style>               m_styleBtnFond;
-    std::shared_ptr<Style>               m_styleBtnSlider;
-    std::shared_ptr<Style>               m_styleFond;
+    // Les actions pour le fonctionnement
+    FctnAction     fct_cliqueBtnFond;
+    FctnAction     fct_dragStart;
+    FctnAction     fct_dragStop;
+    FctnAction     fct_roulette;
 
 
 
-    float                           m_valeurMax;    ///<
-    float                           m_valeurMin;    ///<
-
-    float                           m_longueur;     ///<
-    float                           m_largeur;      ///<
-
-    bool                            m_drag;
-    sf::Vector2i                    m_decalageDragSouris;
 
 }; // fin class DnSlider
 

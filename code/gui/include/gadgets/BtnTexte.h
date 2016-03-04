@@ -18,7 +18,7 @@ namespace gui {
 /// \brief Un simple bouton rectangulaire
 ///
 /////////////////////////////////////////////////
-class BtnTexte : public gui::BtnRectangle {
+class BtnTexte : public BtnRectangle {
 
 
 
@@ -43,7 +43,7 @@ public:
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 */
 
-    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
+//    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
 
     ///< Definir m_texteTaille
     void setTexteTaille( float val ){
@@ -63,13 +63,21 @@ public:
         actualiserGeometrie ();
     };
 
+    ///< Definir m_police
+    void setTexteStyle( sf::Text::Style val ){
+        m_label->setTexteStyle    ( val );
+        actualiserGeometrie ();
+    };
+
 ////////////////////////////////// ///////////////
 // Membres
 /////////////////////////////////////////////////
 public:
 
+    // les composants de l'interface du gadget
     std::shared_ptr<AffLabel>       m_label;
 
+    // les proprietés graphiques
     Valeurs<sf::Color>              m_textCouleur;
     Valeurs<sf::Text::Style>        m_textStyle;
     Valeurs<float>                  m_textTaille;

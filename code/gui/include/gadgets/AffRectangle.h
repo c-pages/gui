@@ -47,9 +47,6 @@ public:
 
 
 
-    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
-
-
     void setFillColor (sf::Color couleur) {
             m_couleurFond = couleur ;
             m_rectangle.setFillColor( couleur );
@@ -72,11 +69,11 @@ public:
 // Membres
 /////////////////////////////////////////////////
 protected:
+
+    // les composants de l'interface du gadget
     sf::RectangleShape  m_rectangle;        ///< Le rectangle sfml.
 
-//    std::shared_ptr<sf::Color>  m_couleurFond;
-//    std::shared_ptr<sf::Color>  m_couleurLignes;
-//    std::shared_ptr<float>      m_epaisseur;
+    // les proprietés graphiques
     sf::Color  m_couleurFond;
     sf::Color  m_couleurLignes;
     float      m_epaisseur;

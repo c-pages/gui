@@ -15,7 +15,6 @@ namespace gui {
 //    Police_1,
 //    Fin
 //};
-static  ResourcesMgr<sf::Font,      std::string >   ms_polices; ///< Manager des polices
 
 //enum class Icones {
 //    Fin
@@ -25,8 +24,6 @@ static  ResourcesMgr<sf::Font,      std::string >   ms_polices; ///< Manager des
 
 //enum class Images {
 //    Fin
-//};
-static  ResourcesMgr<sf::Texture,   std::string >   ms_images;  ///< Manager des images
 
 
 /////////////////////////////////////////////////
@@ -57,6 +54,9 @@ public:
         Gadget::actualiser( deltaTemps );
     };
 
+    //};
+    static  ResourcesMgr<sf::Font,std::string >         ms_polices; ///< Manager des polices
+    static  ResourcesMgr<sf::Texture,   std::string >   ms_images;  ///< Manager des images
 
 private:
     std::shared_ptr<Gadget> chercherGadgetSurvole ();

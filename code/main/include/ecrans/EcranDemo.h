@@ -106,7 +106,7 @@ private:
     std::shared_ptr<gui::Interface>     m_interface;    ///< Le groupe de GUI du menu principal.
 
     // un skin permettant de gérer le rendu
-    std::shared_ptr<gui::Skin>          m_skin;         ///< Un skin.
+//    std::shared_ptr<gui::Skin>          m_skin;         ///< Un skin.
 
     // AFFICHAGE
     std::shared_ptr<gui::AffRectangle>  m_rectangle;    ///< Un simple rectangle.

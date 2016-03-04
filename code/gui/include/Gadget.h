@@ -8,7 +8,7 @@
 #include <memory>
 #include <Geometrie.h>
 #include <Composant.h>
-#include <Skin.h>
+//#include <Skin.h>
 #include <ActionClavier.h>
 #include <Enums.h>
 //#include <Interface.h>
@@ -80,7 +80,7 @@ public:
     ///< Definir m_deplacable
     void setDeplacable( bool val )
         { m_deplacable = val; };
-
+/*
     ///< Definir m_skin
     virtual void setSkin( std::shared_ptr<Skin> skin )
     {
@@ -93,7 +93,7 @@ public:
     ///< Acceder à m_skin
     std::shared_ptr<Skin> getSkin () const
         { return m_skin; };
-
+*/
 
 public:
     /////////////////////////////////////////////////
@@ -222,15 +222,15 @@ public:
 
 //    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat );
 
-    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous ){
+/*    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous ){
         m_style = style;
         for ( auto composant : m_composants)
             composant->setStyle(style, etat);
         actualiserStyle();
-    };
-
+    };*/
+/*
     virtual std::shared_ptr<Style> getStyle ( )const { return m_style; };
-
+*/
     bool aDesEnfants () { return ( m_enfants.size() > 0 ); };
 
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
@@ -274,8 +274,8 @@ protected:
     Etat m_etat; ///< l'etat du bouton
 
 protected:
-    std::shared_ptr<Skin>   m_skin;    ///< Le skin, model pour les paramètres de rendu.
-    std::shared_ptr<Style>  m_style;
+//    std::shared_ptr<Skin>   m_skin;    ///< Le skin, model pour les paramètres de rendu.
+//    std::shared_ptr<Style>  m_style;
 
     friend class FabriqueBase;
 

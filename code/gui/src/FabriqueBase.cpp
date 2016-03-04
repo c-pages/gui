@@ -27,8 +27,8 @@ std::shared_ptr<T>  FabriqueBase::creerGadget (){
     nouveauGadget->setParent ( m_interfaceParent );
     m_interfaceParent->m_calque_bureau->ajouter ( nouveauGadget );
 
-    // Application du skin de l'interface au gadget
-    nouveauGadget->setSkin ( m_interfaceParent->getSkin() );
+//    // Application du skin de l'interface au gadget
+//    nouveauGadget->setSkin ( m_interfaceParent->getSkin() );
 
     // renvois du nouveau gadget créé.
     return nouveauGadget;
@@ -48,8 +48,8 @@ std::shared_ptr<T>  FabriqueBase::creerFenetre (){
     nouveauGadget->setParent ( m_interfaceParent );
     m_interfaceParent->m_calque_fenetres->ajouter ( nouveauGadget );
 
-    // Application du skin de l'interface au gadget
-    nouveauGadget->setSkin ( m_interfaceParent->getSkin() );
+//    // Application du skin de l'interface au gadget
+//    nouveauGadget->setSkin ( m_interfaceParent->getSkin() );
 
     // renvois du nouveau gadget créé.
     return nouveauGadget;

@@ -45,6 +45,7 @@ public:
 // Membres
 /////////////////////////////////////////////////
 private:
+    // les composants de l'interface du gadget
     std::shared_ptr<BtnRectangle>    m_bouton;
     std::shared_ptr<AffRectangle>    m_coche;
     std::shared_ptr<AffLabel>        m_label;

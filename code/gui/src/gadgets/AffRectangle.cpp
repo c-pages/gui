@@ -18,7 +18,7 @@ AffRectangle::AffRectangle ( sf::Vector2i taille )
     m_taille = taille;
     actualiser ();
 }
-
+/*
 /////////////////////////////////////////////////
 void AffRectangle::setStyle ( std::shared_ptr<Style> style , Etat etat )
 {
@@ -28,7 +28,7 @@ void AffRectangle::setStyle ( std::shared_ptr<Style> style , Etat etat )
 
     actualiserStyle ();
 }
-
+*/
 
 
 /////////////////////////////////////////////////

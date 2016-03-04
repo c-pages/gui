@@ -63,10 +63,11 @@ public:
 // Membres
 /////////////////////////////////////////////////
 protected:
-    /*sf::RectangleShape  m_rectangle;*/
-//    sf::Sprite          m_sprite;
+
+    // les proprietés fonctionnelles
     sf::Texture*        m_texture;
     bool                m_ajustement;       ///< true: l'image est ajusté au rectangle, false: le rectangle s'ajuste à limge (facon sprite).
+
 }; // fin class AffImage
 
 } // fin namespace gui

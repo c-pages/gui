@@ -60,7 +60,7 @@ void PanSliders::actualiser ()
         m_slider_H->setLongueurCurseur(longueurCursH);
         m_slider_H->setLongueur( m_taille.x -  m_slider_V->getTaille().x );
         m_slider_H->setPosition( 0 , m_taille.y - m_slider_H->getTaille().y);
-        m_slider_H->setStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
+//        m_slider_H->setStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
 
     // si le contenu est plus petit, on cache le slider
     } else {
@@ -77,7 +77,7 @@ void PanSliders::actualiser ()
         m_slider_V->setLongueurCurseur( longueurCursV );
         m_slider_V->setLongueur ( m_taille.y - m_slider_H->getTaille().y );
         m_slider_V->setPosition ( m_taille.x - m_slider_V->getTaille().x , 0 );
-        m_slider_V->setStyle    ( m_skin->getStyle (  gui::Styles::bouton ) );
+//        m_slider_V->setStyle    ( m_skin->getStyle (  gui::Styles::bouton ) );
 
     // si le contenu est plus petit, on cache le slider
     } else {
@@ -85,7 +85,7 @@ void PanSliders::actualiser ()
     }
 
 
-    m_fond->setStyle ( m_skin->getStyle ( Styles::fond ) );
+//    m_fond->setStyle ( m_skin->getStyle ( Styles::fond ) );
 
     actualiserContenu();
 

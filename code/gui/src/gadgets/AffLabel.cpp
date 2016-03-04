@@ -20,6 +20,7 @@ AffLabel::AffLabel ()
     ///<\todo gerer la police par defaut facon RAII
     // ?!? Police par defaut ?!?
     m_textPolice.loadFromFile("media/polices/arial.ttf");
+
     m_texteSFML->setFont ( m_textPolice );
 
     actualiser ();

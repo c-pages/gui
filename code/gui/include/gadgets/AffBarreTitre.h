@@ -53,11 +53,21 @@ public:
 // Membres
 /////////////////////////////////////////////////
 private:
-    std::shared_ptr<AffRectangle>   m_rectangle;
+
+    // les composants de l'interface du gadget
+    std::shared_ptr<AffRectangle>   m_fond;
     std::shared_ptr<AffLabel>       m_titre;
     std::shared_ptr<AffIcone>       m_icone;
 
-//    m_
+    // les proprietés graphiques
+    sf::Color           m_textCouleur;
+    sf::Text::Style     m_textStyle;
+    float               m_textTaille;
+    sf::Font            m_textPolice;
+
+    sf::Color           m_fndCouleur;
+    sf::Color           m_fndLignesCouleur;
+    float               m_fndLignesEpaisseur;
 
 }; // fin class AffBarreTitre
 

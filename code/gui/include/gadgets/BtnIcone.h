@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "Bouton.h"
+#include "BtnRectangle.h"
 #include "gadgets\AffRectangle.h"
 #include "gadgets\AffIcone.h"
 #include <SFML/Graphics.hpp>
@@ -18,7 +18,7 @@ namespace gui {
 /// \brief Un simple bouton rectangulaire
 ///
 /////////////////////////////////////////////////
-class BtnIcone : public gui::Bouton {
+class BtnIcone : public gui::BtnRectangle {
 
 
 
@@ -42,7 +42,7 @@ public:
         actualiser ();
     };
 
-    virtual void actualiser ( );
+//    virtual void actualiser ( );
 /*
     virtual void setIndex( unsigned int val ){
 
@@ -53,14 +53,23 @@ public:
         m_icone->chargerDepuisFichier (fichier);
     };
 
+
+    /////////////////////////////////////////////////
+    void actualiserGeometrie ();
+    /////////////////////////////////////////////////
+    void actualiserStyle ();
+
 ////////////////////////////////// ///////////////
 // Membres
 /////////////////////////////////////////////////
 public:
-    std::shared_ptr<AffRectangle>   m_rectangle;
-    std::shared_ptr<AffIcone>       m_icone;
-//    unsigned int                    m_index;
+
+    // les proprietés fonctionnelles
     bool                            m_fix;
+
+    // les composants de l'interface du gadget
+    std::shared_ptr<AffIcone>       m_icone;
+
 
 }; // fin class BtnIcone
 

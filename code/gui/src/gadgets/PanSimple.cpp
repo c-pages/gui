@@ -24,7 +24,7 @@ void PanSimple::actualiser ()
     m_fond->setTaille(m_taille);
     m_contenant->setSize({ m_taille.x , m_taille.y });
 
-    m_fond->setStyle ( m_skin->getStyle ( Styles::fond ) );
+//    m_fond->setStyle ( m_skin->getStyle ( Styles::fond ) );
 
     actualiserContenu();
 

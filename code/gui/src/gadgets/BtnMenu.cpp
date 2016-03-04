@@ -2,6 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <BtnMenu.h>
+#include <Interface.h>
 
 
 
@@ -16,6 +17,19 @@ BtnMenu::BtnMenu ()
 {
     m_marge.x = 0;
     m_marge.y = 0;
+
+    m_btnCouleurs           = sf::Color( 255 , 0 , 0 );
+    m_btnLignesCouleurs     = sf::Color( 255 , 100 , 100 );
+    m_btnLignesEpaisseurs   = 1;
+
+    m_fndCouleur            = sf::Color( 255 , 0 , 0 );
+    m_fndLignesCouleur      = sf::Color( 255 , 100 , 100 );
+    m_fndLignesEpaisseur    = 1;
+
+    m_textCouleur           = sf::Color( 255 , 0 , 0 );
+    m_textStyle             = sf::Text::Style::Regular;
+    m_textTaille            = 10;
+    m_textPolice            = Interface::ms_polices.get ( "Defaut" );
 }
 
 
@@ -28,14 +42,17 @@ void BtnMenu::ajouterElement (std::string nom, FctnAction fonction)
     nouvelElement->nom      = nom;
     nouvelElement->fonction = fonction;
 
-    std::shared_ptr<Bouton>     bouton = std::make_shared<BtnTexte>( );
+    std::shared_ptr<BtnTexte>     bouton = std::make_shared<BtnTexte>( );
     bouton->setMarge            ( { 5 , 2 } );
     bouton->setTexte            ( nom );
     bouton->setAutoAjuster      ( false );
     bouton->setTaille           ( m_tailleMenu );
     bouton->setParent           ( this );
-    bouton->setSkin             ( m_skin );
-    bouton->setStyle            ( m_skin->getStyle( Styles::menu ) );
+
+    bouton->setFillColor        ( m_btnCouleurs );
+    bouton->setOutlineColor     ( m_btnLignesCouleurs );
+    bouton->setOutlineThickness     ( m_btnLignesEpaisseurs );
+
     bouton->lier                ( Evenement::onBtnG_relacher , fonction );
     nouvelElement->bouton   = bouton;
 
@@ -77,12 +94,24 @@ void BtnMenu::actualiserGeometrie()
 /////////////////////////////////////////////////
 void BtnMenu::actualiserStyle()
 {
-    for ( auto element : m_elements )
-        element->bouton->setStyle       ( m_skin->getStyle( Styles::menu ) );
+    for ( auto element : m_elements ) {
 
-    m_fond->setFillColor         ( m_skin->getStyle( Styles::fond )->fnd_couleur.repos );
-    m_fond->setOutlineColor      ( m_skin->getStyle( Styles::fond )->lgn_couleur.repos );
-    m_fond->setOutlineThickness  ( m_skin->getStyle( Styles::fond )->lgn_epaisseur.repos );
+        auto btn = element->bouton;
+
+        btn->setFillColor       ( m_btnCouleurs );
+        btn->setOutlineColor    ( m_btnLignesCouleurs );
+        btn->setOutlineThickness( m_btnLignesEpaisseurs );
+
+        btn->setTexteTaille     ( m_textTaille );
+        btn->setTexteCouleur    ( m_textCouleur );
+        btn->setPolice          ( m_textPolice );
+        btn->setTexteStyle      ( m_textStyle );
+    }
+
+    m_fond->setFillColor         ( m_fndCouleur );
+    m_fond->setOutlineColor      ( m_fndLignesCouleur );
+    m_fond->setOutlineThickness  ( m_fndLignesEpaisseur );
+
 }
 
 /////////////////////////////////////////////////

@@ -70,14 +70,18 @@ public:
 // Membres
 /////////////////////////////////////////////////
 private:
+
+    // les proprietés fonctionnelles
     bool                            m_horizontal;    ///< #G#S
+    float                           m_longueur;      ///<
+    float                           m_largeur;      ///<
+
+    // les composants de l'interface du gadget
     std::shared_ptr<DnSlider>       m_slider;
     std::shared_ptr<BtnIcone>       m_btnPlus;
     std::shared_ptr<BtnIcone>       m_btnMoins;
 
 
-    float                           m_longueur;      ///<
-    float                           m_largeur;      ///<
 
 }; // fin class DnBarreDefilement
 

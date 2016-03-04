@@ -150,10 +150,10 @@ void FenSimple::actualiser ()
 
 
 
-    m_btndrag->setStyle     ( m_skin->getStyle(Styles::invisible));
-    m_fond->setStyle        ( m_skin->getStyle(Styles::fenetre));
-    m_btnFermer->setStyle   ( m_skin->getStyle(Styles::bouton));
-    m_titre->setStyle       ( m_skin->getStyle(Styles::txtTitre));
+//    m_btndrag->setStyle     ( m_skin->getStyle(Styles::invisible));
+//    m_fond->setStyle        ( m_skin->getStyle(Styles::fenetre));
+//    m_btnFermer->setStyle   ( m_skin->getStyle(Styles::bouton));
+//    m_titre->setStyle       ( m_skin->getStyle(Styles::txtTitre));
 
 /*
     m_titre->setTailleX     ( m_taille.x  );

@@ -75,22 +75,22 @@ void DnCaseACocher::actualiserGeometrie ()
 void DnCaseACocher::actualiserStyle ()
 {
 
-    m_label->setStyle ( m_skin->getStyle( Styles::btnCoche ) );
-
-    m_bouton->setStyle   ( m_skin->getStyle( Styles::bouton ) );
-
-    auto style = m_skin->getStyle( Styles::btnCoche );
-    m_coche->setStyle    ( style );
-
-    if ( ! m_valeur ) {
-        m_coche->setFillColor ( style->getFnd_couleur( Etat::desactive ) );
-        m_coche->setOutlineColor (  style->getLgn_couleur( Etat::desactive ));
-        m_coche->setOutlineThickness ( style->getLgn_epaisseur( Etat::desactive ) );
-    } else {
-        m_coche->setFillColor ( style->getFnd_couleur( Etat::press ) );
-        m_coche->setOutlineColor (  style->getLgn_couleur( Etat::press ));
-        m_coche->setOutlineThickness ( style->getLgn_epaisseur( Etat::press ) );
-    }
+//    m_label->setStyle ( m_skin->getStyle( Styles::btnCoche ) );
+//
+//    m_bouton->setStyle   ( m_skin->getStyle( Styles::bouton ) );
+//
+//    auto style = m_skin->getStyle( Styles::btnCoche );
+//    m_coche->setStyle    ( style );
+//
+//    if ( ! m_valeur ) {
+//        m_coche->setFillColor ( style->getFnd_couleur( Etat::desactive ) );
+//        m_coche->setOutlineColor (  style->getLgn_couleur( Etat::desactive ));
+//        m_coche->setOutlineThickness ( style->getLgn_epaisseur( Etat::desactive ) );
+//    } else {
+//        m_coche->setFillColor ( style->getFnd_couleur( Etat::press ) );
+//        m_coche->setOutlineColor (  style->getLgn_couleur( Etat::press ));
+//        m_coche->setOutlineThickness ( style->getLgn_epaisseur( Etat::press ) );
+//    }
 }
 
 

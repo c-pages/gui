@@ -70,13 +70,21 @@ public:
 // Membres
 /////////////////////////////////////////////////
 private:
+
+    // les proprietés fonctionnelles
+    bool                            m_ecritureActive;    ///<
+
+    // les composants de l'interface du gadget
     std::shared_ptr<BtnRectangle>   m_bouton;
     std::shared_ptr<AffRectangle>   m_curseur;
     std::shared_ptr<AffLabel>       m_label;
-    bool                            m_ecritureActive;    ///<
 
+    // Les actions pour le fonctionnement
     FctnAction                      fn_sortir ;
     FctnAction                      fn_valider ;
+
+    // les proprietés graphiques
+
 
 }; // fin class DnZoneTexte
 

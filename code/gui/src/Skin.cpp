@@ -11,9 +11,6 @@ namespace gui{
 Skin::Skin ()
 {
 
-    // initialiser les polices
-    gui::ms_polices.load( "Defaut"  , "media/polices/consola.ttf" );
-
     // Creation des differents style du skin
     for ( int i = 0; i != Styles::tous ; i++ )
         m_styles.insert( { i , std::make_shared<Style>() } );
@@ -28,7 +25,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::defaut );
 
-    style->txt_police.set ( gui::ms_polices.get(  "Defaut" ) );
+    style->txt_police.set ( Interface::ms_polices.get(  "Defaut" ) );
     style->txt_style.set(sf::Text::Style::Bold ) ;
     style->txt_taille.set( 14 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
@@ -39,7 +36,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::invisible );
 
-    style->txt_police.set ( gui::ms_polices.get(  "Defaut" ) );
+    style->txt_police.set ( Interface::ms_polices.get(  "Defaut" ) );
     style->txt_style.set       ( sf::Text::Style::Regular ) ;
     style->txt_taille.set       ( 10 ) ;
     style->txt_couleur.set      ( sf::Color(255, 255, 255 , 0) ) ;
@@ -50,7 +47,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::cadre);
 
-    style->txt_police.set ( gui::ms_polices.get( "Defaut" ) );
+    style->txt_police.set ( Interface::ms_polices.get( "Defaut" ) );
     style->txt_style.set        (sf::Text::Style::Regular ) ;
     style->txt_taille.set       ( 10 ) ;
     style->txt_couleur.set      ( sf::Color(255, 255, 255 , 0) ) ;
@@ -63,7 +60,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::txtCourant);
 
-    style->txt_police.set      ( gui::ms_polices.get( "Defaut" ) );
+    style->txt_police.set      ( Interface::ms_polices.get( "Defaut" ) );
     style->txt_style.set       (sf::Text::Style::Italic ) ;
     style->txt_taille.set      ( 11 ) ;
     style->txt_couleur.set     ( sf::Color(255, 255, 255 , 255 ) ) ;
@@ -74,7 +71,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::txtLog);
 
-    style->txt_police.set ( gui::ms_polices.get( "Defaut" ) );
+    style->txt_police.set ( Interface::ms_polices.get( "Defaut" ) );
     style->txt_style.set(sf::Text::Style::Regular ) ;
     style->txt_taille.set( 9.5 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 150 ) ) ;
@@ -85,7 +82,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::txtTitre);
 
-    style->txt_police.set ( gui::ms_polices.get( "Defaut" ) );
+    style->txt_police.set ( Interface::ms_polices.get( "Defaut" ) );
     style->txt_style.set(sf::Text::Style::Italic ) ;
     style->txt_taille.set( 25 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 200 ) ) ;
@@ -96,7 +93,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::fond);
 
-    style->txt_police.set ( gui::ms_polices.get(  "Defaut" ) );
+    style->txt_police.set ( Interface::ms_polices.get(  "Defaut" ) );
     style->txt_style.set(sf::Text::Style::Italic ) ;
     style->txt_taille.set( 14 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
@@ -108,7 +105,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::bouton);
 
-    style->txt_police.set ( gui::ms_polices.get(  "Defaut" ) );
+    style->txt_police.set ( Interface::ms_polices.get(  "Defaut" ) );
     style->txt_style.set(sf::Text::Style::Bold ) ;
     style->txt_taille.set( 13 ) ;
     style->txt_couleur.set( sf::Color( 0, 255, 255 , 255 ) ) ;
@@ -127,7 +124,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::btnCoche);
 
-    style->txt_police.set ( gui::ms_polices.get(  "Defaut" ) );
+    style->txt_police.set ( Interface::ms_polices.get(  "Defaut" ) );
     style->txt_style.set(sf::Text::Style::Regular ) ;
     style->txt_taille.set( 11 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
@@ -142,7 +139,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::img);
 
-    style->txt_police.set ( gui::ms_polices.get(  "Defaut" )  );
+    style->txt_police.set ( Interface::ms_polices.get(  "Defaut" )  );
     style->txt_style.set(sf::Text::Style::Italic ) ;
     style->txt_taille.set( 14 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
@@ -153,7 +150,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::menu);
 
-    style->txt_police.set ( gui::ms_polices.get(  "Defaut" )  );
+    style->txt_police.set ( Interface::ms_polices.get(  "Defaut" )  );
     style->txt_style.set(sf::Text::Style::Italic ) ;
     style->txt_taille.set( 10 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
@@ -166,7 +163,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::fenetre);
 
-    style->txt_police.set ( gui::ms_polices.get(  "Defaut" )  );
+    style->txt_police.set ( Interface::ms_polices.get(  "Defaut" )  );
     style->txt_style.set(sf::Text::Style::Italic ) ;
     style->txt_taille.set( 14 ) ;
     style->txt_couleur.set( sf::Color( 255, 255, 255 , 200 ) ) ;
@@ -183,7 +180,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::zoneTexte);
 
-    style->txt_police.set ( gui::ms_polices.get(  "Defaut" ) );
+    style->txt_police.set ( Interface::ms_polices.get(  "Defaut" ) );
     style->txt_style.set(sf::Text::Style::Italic ) ;
     style->txt_taille.set( 12 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) );
@@ -194,7 +191,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::slider);
 
-    style->txt_police.set ( gui::ms_polices.get( "Defaut" ) );
+    style->txt_police.set ( Interface::ms_polices.get( "Defaut" ) );
     style->txt_style.set(sf::Text::Style::Italic ) ;
     style->txt_taille.set( 12 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;
@@ -207,7 +204,7 @@ void Skin::creerDefaut(){
 
     style = getStyle( Styles::defilement);
 
-    style->txt_police.set ( gui::ms_polices.get( "Defaut" ) );
+    style->txt_police.set ( Interface::ms_polices.get( "Defaut" ) );
     style->txt_style.set(sf::Text::Style::Italic ) ;
     style->txt_taille.set( 12 ) ;
     style->txt_couleur.set( sf::Color(255, 255, 255 , 255 ) ) ;

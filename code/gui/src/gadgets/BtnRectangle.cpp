@@ -12,30 +12,31 @@ BtnRectangle::BtnRectangle ()
 : m_rectangle   ( std::make_shared<AffRectangle>())
 {
 
+    // valeurs par defaut
     m_couleurFond.set   ( sf::Color( 255,0,0, 10 )  , Etat::desactive );
     m_couleurFond.set   ( sf::Color( 255,0,0, 50 )  , Etat::repos );
     m_couleurFond.set   ( sf::Color( 255,0,0, 100 ) , Etat::survol );
     m_couleurFond.set   ( sf::Color( 255,0,0, 150 ) , Etat::press );
     m_couleurLignes.set ( sf::Color( 0,255,0, 255 ) );
-
     m_epaisseur.set     ( 1 );
 
+    // creer l'interface
     ajouterComposant( m_rectangle );
 
     actualiser();
 
 }
 
-/////////////////////////////////////////////////
-void BtnRectangle::setStyle ( std::shared_ptr<Style> style , Etat etat )
-{
-    m_couleurFond.set   ( style->fnd_couleur   , etat );
-    m_couleurLignes.set ( style->lgn_couleur   , etat );
-    m_epaisseur.set     ( style->lgn_epaisseur , etat );
-
-    actualiserStyle ();
-    actualiserGeometrie ();
-}
+///////////////////////////////////////////////////
+//void BtnRectangle::setStyle ( std::shared_ptr<Style> style , Etat etat )
+//{
+//    m_couleurFond.set   ( style->fnd_couleur   , etat );
+//    m_couleurLignes.set ( style->lgn_couleur   , etat );
+//    m_epaisseur.set     ( style->lgn_epaisseur , etat );
+//
+//    actualiserStyle ();
+//    actualiserGeometrie ();
+//}
 
 
 /////////////////////////////////////////////////

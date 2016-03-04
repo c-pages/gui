@@ -23,6 +23,42 @@ template <typename T>
 struct Valeurs {
 
     /////////////////////////////////////////////////
+    /// \brief Constructeur par copie d'ensemble de valeurs
+    ///
+    /// \param autre l'autre ensemble de valeurs a copier
+    /// \return
+    ///
+    /////////////////////////////////////////////////
+    Valeurs & operator= (const Valeurs & autre)
+    {
+        // copie des valeurs
+        desactive = autre.get(Etat::desactive);
+        repos = autre.get(Etat::repos);
+        survol = autre.get(Etat::survol);
+        press = autre.get(Etat::press);
+
+        return *this;
+    };
+
+    /////////////////////////////////////////////////
+    /// \brief Constructeur par copie d'une valeurs unique
+    ///
+    /// \param autre l'autre ensemble de valeurs a copier
+    /// \return
+    ///
+    /////////////////////////////////////////////////
+    Valeurs & operator= ( T  valeur )
+    {
+        // copie des valeurs
+        desactive = valeur;
+        repos = valeur;
+        survol = valeur;
+        press = valeur;
+
+        return *this;
+    };
+
+    /////////////////////////////////////////////////
     void set ( Valeurs val , Etat etat = Etat::tous )    {
         if ( etat == Etat::tous)
         {
@@ -61,7 +97,7 @@ struct Valeurs {
         }
     };
     /////////////////////////////////////////////////
-    T get ( Etat etat ){
+    T get ( Etat etat ) const {
          switch ( etat ){
             case Etat::repos :
                 return repos; break;

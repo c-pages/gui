@@ -14,9 +14,9 @@ DnSlider::DnSlider ()
 , m_slider      ( std::make_shared<BtnRectangle>() )
 , m_fond        ( std::make_shared<AffRectangle>() )
 
-, m_styleBtnFond    ( std::make_shared<Style>() )
-, m_styleBtnSlider  ( std::make_shared<Style>() )
-, m_styleFond       ( std::make_shared<Style>() )
+//, m_styleBtnFond    ( std::make_shared<Style>() )
+//, m_styleBtnSlider  ( std::make_shared<Style>() )
+//, m_styleFond       ( std::make_shared<Style>() )
 
 , m_valeurMax   ( 100 )
 , m_valeurMin   ( 0 )
@@ -98,7 +98,7 @@ DnSlider::DnSlider ()
     // Initialisation du slider
     m_slider->setPosition ( m_marge.x, m_marge.y );
     m_slider->setTaille ( { m_largeur - 2*m_marge.x  , m_largeur - 2*m_marge.y });
-    m_slider->setStyle ( m_skin->getStyle( Styles::slider ) );
+//    m_slider->setStyle ( m_skin->getStyle( Styles::slider ) );
 
     actualiser();
 
@@ -200,25 +200,25 @@ void DnSlider::actualiserGeometrie ()
 void DnSlider::actualiserStyle ()
 {
 
-    m_slider->setStyle      ( m_style );
-    m_boutonFond->setStyle  ( m_style );
-
-    m_fond->setFillColor ( m_style->fnd_couleur.repos );
-    m_fond->setFillColor ( m_style->fnd_couleur.repos );
-    m_fond->setFillColor ( m_style->fnd_couleur.repos );
-
+//    m_slider->setStyle      ( m_style );
+//    m_boutonFond->setStyle  ( m_style );
+//
+//    m_fond->setFillColor ( m_style->fnd_couleur.repos );
+//    m_fond->setFillColor ( m_style->fnd_couleur.repos );
+//    m_fond->setFillColor ( m_style->fnd_couleur.repos );
+//
 
 
 }
 
 
-/////////////////////////////////////////////////
-void DnSlider::setSkin( std::shared_ptr<Skin> skin )
-{
-    m_styleFond         = skin->getStyle( Styles::fond ) ;
-    m_styleBtnSlider    = skin->getStyle( Styles::slider ) ;
-    m_styleBtnFond      = skin->getStyle( Styles::bouton ) ;
-}
+///////////////////////////////////////////////////
+//void DnSlider::setSkin( std::shared_ptr<Skin> skin )
+//{
+//    m_styleFond         = skin->getStyle( Styles::fond ) ;
+//    m_styleBtnSlider    = skin->getStyle( Styles::slider ) ;
+//    m_styleBtnFond      = skin->getStyle( Styles::bouton ) ;
+//}
 /*
 /////////////////////////////////////////////////
 void DnSlider::setStyle( std::shared_ptr<Style> style , Etat etat = Etat::tous )

@@ -8,11 +8,13 @@
 namespace gui {
 
 
-sf::RenderWindow*  Interface::ms_fenetreSFML = nullptr;
+sf::RenderWindow*                           Interface::ms_fenetreSFML = nullptr;
+ResourcesMgr<sf::Font,std::string >         Interface::ms_polices = {};
+ResourcesMgr<sf::Texture,   std::string >   Interface::ms_images = {};
 
 /////////////////////////////////////////////////
 Interface::Interface( sf::RenderWindow* fenetre )
-:Gadget ()
+: Gadget ()
 , m_boutonSurvole   ( nullptr )
 , m_boutonPresse    ( nullptr )
 , m_fenetre         ( fenetre )
@@ -30,11 +32,14 @@ Interface::Interface( sf::RenderWindow* fenetre )
     ajouter ( m_calque_supports );
     ajouter ( m_calque_fenetres );
 
+    // les tailles
     m_taille = { m_fenetre->getSize().x ,m_fenetre->getSize().y };
-
     m_calque_bureau->setTaille    ( m_taille );
     m_calque_supports->setTaille  ( m_taille );
     m_calque_fenetres->setTaille  ( m_taille );
+
+    // initialiser les polices
+    ms_polices.load( "Defaut"  , "media/polices/consola.ttf" );
 
     m_parent = nullptr;
 

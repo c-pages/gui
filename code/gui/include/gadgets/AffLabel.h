@@ -107,12 +107,10 @@ public:
 /////////////////////////////////////////////////
 private:
 
-
+    // les composants de l'interface du gadget
     std::shared_ptr<sf::Text>   m_texteSFML;        ///< Le shape SFML qui affiche le texte.
-//    sf::Font                    m_police;           ///< La police du texte à afficher par le label.#S#G
 
-
-
+    // les proprietés graphiques
     sf::Color           m_textCouleur;
     sf::Text::Style     m_textStyle;
     float               m_textTaille;

@@ -34,14 +34,14 @@ public:
 
     ///< Acceder à m_index
     unsigned int getIndex () const { return m_index;  };
-
+/*
     virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous )
     {
         m_style = style;
         if (etat!= Etat::tous)
             setIndex ( int ( etat ) - 1 );
         actualiser();
-    };
+    };*/
 
 public:
     /////////////////////////////////////////////////
@@ -63,6 +63,8 @@ public:
 // Membres
 /////////////////////////////////////////////////
 private:
+
+    // les proprietés fonctionnelles
     unsigned int    m_index;    ///< #G#S
     float           m_nbrIcones;///< le nombre d'icones correspond au nombre largeur qu'il y a dans longueur.
 

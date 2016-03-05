@@ -30,7 +30,13 @@ public:
 
  //   virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
-    virtual void actualiser ();
+//    virtual void actualiser ();
+    /////////////////////////////////////////////////
+    virtual void actualiserGeometrie ();
+
+    /////////////////////////////////////////////////
+    virtual void actualiserStyle ();
+
     virtual void traiterEvenements (const sf::Event& evenement);
 
     /////////////////////////////////////////////////
@@ -78,6 +84,18 @@ private:
     std::shared_ptr<BtnRectangle> m_btn_haut;
     std::shared_ptr<BtnRectangle> m_btn_bas;
 
+    // les proprietés graphiques
+    Valeurs<sf::Color>      m_btnDragCouleurs;
+    Valeurs<sf::Color>      m_btnDragLgnCouleurs;
+    Valeurs<float>          m_btnDragLgnepaisseurs;
+
+    Valeurs<sf::Color>      m_btnDragSlideCouleurs;
+    Valeurs<sf::Color>      m_btnDragSlideLgnCouleurs;
+    Valeurs<float>          m_btnDragSlideLgnepaisseurs;
+
+    sf::Color               m_btnDragFndCouleur;
+    sf::Color               m_btnDragFndLgnCouleur;
+    float                   m_btnDragFndLgnepaisseur;
 
     // Les actions pour le fonctionnement
     FctnAction     fct_redimStartG;

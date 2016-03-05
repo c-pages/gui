@@ -442,9 +442,10 @@
 	"Style.h"
 	"Enums.h"
 
-1457124260 r:\06 - c++\110 - gui\code\gui\include\style.h
+1457185634 r:\06 - c++\110 - gui\code\gui\include\style.h
 	<SFML/Graphics.hpp>
-	<Enums.h>
+	"Valeurs.h"
+	"Enums.h"
 	<memory>
 
 1457126010 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
@@ -454,11 +455,12 @@
 	<Application.h>
 	<gui.h>
 
-1457060390 r:\06 - c++\110 - gui\code\gui\gui.h
+1457185543 r:\06 - c++\110 - gui\code\gui\gui.h
 	"Interface.h"
-	<Enums.h>
+	"Valeurs.h"
+	"Enums.h"
 
-1457112501 r:\06 - c++\110 - gui\code\gui\include\gadget.h
+1457186176 r:\06 - c++\110 - gui\code\gui\include\gadget.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<Geometrie.h>
@@ -467,7 +469,7 @@
 	<Enums.h>
 	<ActionEvenement.h>
 
-1457060390 r:\06 - c++\110 - gui\code\gui\include\geometrie.h
+1457186531 r:\06 - c++\110 - gui\code\gui\include\geometrie.h
 	"Composite.h"
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -527,9 +529,8 @@
 1457060390 source:r:\06 - c++\110 - gui\code\main\src\gestion_ecrans.cpp
 	"Gestion_ecrans.h"
 
-1457125195 r:\06 - c++\110 - gui\code\gui\include\gadgets\afflabel.h
+1457185574 r:\06 - c++\110 - gui\code\gui\include\gadgets\afflabel.h
 	"Affiche.h"
-	"Style.h"
 	<memory>
 	<iostream>
 	<SFML/Graphics.hpp>
@@ -557,8 +558,9 @@
 
 1457060390 r:\06 - c++\110 - gui\code\gui\include\enums.h
 
-1457125195 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnrectangle.h
+1457185549 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnrectangle.h
 	"Bouton.h"
+	"Valeurs.h"
 	"gadgets\AffRectangle.h"
 	"gadgets\AffLabel.h"
 	<SFML/Graphics.hpp>
@@ -723,12 +725,12 @@
 	<memory>
 	<SFML/Graphics.hpp>
 
-1457177700 r:\06 - c++\110 - gui\code\gui\include\panneau.h
+1457184914 r:\06 - c++\110 - gui\code\gui\include\panneau.h
 	"Gadget.h"
 	"gadgets/AffRectangle.h"
 	"repartiteurs/Repartiteur.h"
 
-1457141899 r:\06 - c++\110 - gui\code\gui\include\gadgets\pansimple.h
+1457182214 r:\06 - c++\110 - gui\code\gui\include\gadgets\pansimple.h
 	"Panneau.h"
 	"AffRectangle.h"
 	"repartiteurs/Repartiteur.h"
@@ -740,7 +742,7 @@
 	<memory>
 	<SFML/Graphics.hpp>
 
-1457125495 r:\06 - c++\110 - gui\code\gui\include\gadgets\affbarretitre.h
+1457187871 r:\06 - c++\110 - gui\code\gui\include\gadgets\affbarretitre.h
 	"Affiche.h"
 	"AffRectangle.h"
 	"AffLabel.h"
@@ -759,14 +761,14 @@
 	<memory>
 	<Panneau.h>
 
-1457060390 r:\06 - c++\110 - gui\code\gui\include\gadgets\fensimple.h
+1457187958 r:\06 - c++\110 - gui\code\gui\include\gadgets\fensimple.h
 	"Fenetre.h"
 	"BtnIcone.h"
 	"BtnRectangle.h"
 	"AffBarreTitre.h"
 	<memory>
 
-1457060390 r:\06 - c++\110 - gui\code\gui\include\fenetre.h
+1457183816 r:\06 - c++\110 - gui\code\gui\include\fenetre.h
 	"ActionEvenement.h"
 	<memory>
 	<Panneau.h>
@@ -774,7 +776,7 @@
 1457060390 r:\06 - c++\110 - gui\code\gui\include\calque.h
 	"Gadget.h"
 
-1457178497 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenredim.h
+1457187788 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenredim.h
 	"FenSimple.h"
 	<memory>
 	"FenSimple.h"
@@ -1079,4 +1081,7 @@
 
 1456916800 source:c:\users\kris\desktop\gui-master\code\main\src\gestion_ecrans.cpp
 	"Gestion_ecrans.h"
+
+1457185708 r:\06 - c++\110 - gui\code\gui\include\valeurs.h
+	"Enums.h"
 

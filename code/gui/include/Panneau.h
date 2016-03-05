@@ -36,6 +36,11 @@ public:
     /////////////////////////////////////////////////
     virtual void actualiserContenu ();
 
+    /////////////////////////////////////////////////
+    virtual void actualiserGeometrie ();
+
+    /////////////////////////////////////////////////
+    virtual void actualiserStyle ();
 
     /////////////////////////////////////////////////
     /// \brief Constructeur par défaut.
@@ -59,6 +64,22 @@ public:
         };
     void setOutlineThickness ( float epaisseur ) {
             m_fndLgnepaisseur =  epaisseur;
+            actualiserStyle();
+//            m_rectangle->setOutlineThickness( epaisseur );
+        };
+
+    void setContenantFillColor ( sf::Color couleurs  ) {
+            m_contenantCouleur = couleurs;
+            actualiserStyle();
+//            m_rectangle->setFillColor( couleur );
+        };
+    void setContenantOutlineColor ( sf::Color couleurs  ) {
+            m_contenantLgnCouleur = couleurs;
+            actualiserStyle();
+//            m_rectangle->setOutlineColor( couleur );
+        };
+    void setContenantOutlineThickness ( float epaisseur ) {
+            m_contenantLgnepaisseur =  epaisseur;
             actualiserStyle();
 //            m_rectangle->setOutlineThickness( epaisseur );
         };
@@ -89,6 +110,9 @@ protected:
     sf::Color               m_fndLgnCouleur;
     float                   m_fndLgnepaisseur;
 
+    sf::Color               m_contenantCouleur;
+    sf::Color               m_contenantLgnCouleur;
+    float                   m_contenantLgnepaisseur;
 
 }; // fin class Panneau
 

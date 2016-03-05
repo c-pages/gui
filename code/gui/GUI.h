@@ -2,7 +2,9 @@
 #define __GUI_H__
 
 #include "Interface.h"
-#include <Enums.h>
+#include "Valeurs.h"
+#include "Enums.h"
+
 namespace gui {
 
 

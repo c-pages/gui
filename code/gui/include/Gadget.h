@@ -151,7 +151,8 @@ public:
     /////////////////////////////////////////////////
     Etat etat (){
         actualiserEtat ();
-        return m_etat; };
+        return m_etat;
+    };
 
     /////////////////////////////////////////////////
     /// \brief Actualiser le gadget pour l'animation.

@@ -16,10 +16,13 @@ Panneau::Panneau ()
 {
     m_renderTexture.create( 1200, 900 );
 
-    m_fndCouleur            = sf::Color( 255,255,255, 00 );
+    m_fndCouleur            = sf::Color( 70,70,70, 255 );
     m_fndLgnCouleur         = sf::Color( 255,255,255, 20 );
     m_fndLgnepaisseur       = 1;
 
+    m_contenantCouleur            = sf::Color( 255,255,255, 255 );
+    m_contenantLgnCouleur         = sf::Color( 255,255,255, 20 );
+    m_contenantLgnepaisseur       = 1;
 
     ajouterComposant( m_fond );
 }
@@ -30,11 +33,11 @@ void Panneau::actualiserContenu ()
 
     // Render to texture des enfants
     m_renderTexture.clear( sf::Color::Transparent );
-
     for (auto enfant : m_enfants)
         m_renderTexture.draw( *enfant );
     m_renderTexture.display();
 
+    // on applique la texture
     m_contenant->setTexture( &m_renderTexture.getTexture() );
     m_contenant->setTextureRect(    { m_posX_texture
                                     , m_posY_texture
@@ -43,6 +46,32 @@ void Panneau::actualiserContenu ()
 
 };
 
+/////////////////////////////////////////////////
+void Panneau::actualiserGeometrie ()
+{
+    m_fond->setTaille(m_taille);
+    m_contenant->setSize({ m_taille.x , m_taille.y });
+
+    actualiserContenu();
+    actualiserBounds ();
+    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+}
+
+/////////////////////////////////////////////////
+void Panneau::actualiserStyle ()
+{
+    m_fond->setFillColor            ( m_fndCouleur ) ;
+    m_fond->setOutlineColor         ( m_fndLgnCouleur  ) ;
+    m_fond->setOutlineThickness     ( m_fndLgnepaisseur  );
+
+    m_contenant->setFillColor       ( m_contenantCouleur ) ;
+    m_contenant->setOutlineColor    ( m_contenantLgnCouleur  ) ;
+    m_contenant->setOutlineThickness( m_contenantLgnepaisseur  );
+}
+
+
+
+/////////////////////////////////////////////////
 std::shared_ptr<Gadget>  Panneau::testerSurvol ( sf::Vector2i position )
 {
     // si on est dans le panneau

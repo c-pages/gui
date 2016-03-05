@@ -70,7 +70,7 @@ void Gadget::actualiser ()
 
     actualiserEnfants();
     actualiserComposants();
-
+//    m_parent->actualiserContenu();
 }
 
 

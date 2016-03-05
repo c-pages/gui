@@ -22,7 +22,7 @@ FenRedim::FenRedim ()
 
 //, m_fenetre         ( std::make_shared<FenSimple>() )
 {
-    m_marge = { 7 , 7 };
+    m_marge = { 6 , 6 };
 
     ajouterComposant( m_btn_gauche );
     ajouterComposant( m_btn_droite );
@@ -34,6 +34,33 @@ FenRedim::FenRedim ()
     ajouterComposant( m_btn_basGauche );
     ajouterComposant( m_btn_basDroite );
 
+
+
+
+    m_btnDragCouleurs.set       ( sf::Color( 0, 0, 0, 50 )     , Etat::desactive );
+    m_btnDragCouleurs.set       ( sf::Color( 0, 0, 0, 50 )     , Etat::desactive );
+    m_btnDragCouleurs.set       ( sf::Color( 255,255,255, 0 ) , Etat::repos );
+    m_btnDragCouleurs.set       ( sf::Color( 255,255,255, 20 ) , Etat::survol );
+    m_btnDragCouleurs.set       ( sf::Color( 255,255,255, 25 ) , Etat::press );
+    m_btnDragLgnCouleurs.set    ( sf::Color( 255,255,255, 20 ) );
+    m_btnDragLgnepaisseurs.set  ( 0 );
+
+    m_btnDragSlideCouleurs.set       ( sf::Color( 0, 0, 0, 50 )     , Etat::desactive );
+    m_btnDragSlideCouleurs.set       ( sf::Color( 255,255,255, 40 ) , Etat::repos );
+    m_btnDragSlideCouleurs.set       ( sf::Color( 255,255,255, 60 ) , Etat::survol );
+    m_btnDragSlideCouleurs.set       ( sf::Color( 255,255,255, 80 ) , Etat::press );
+    m_btnDragSlideLgnCouleurs.set    ( sf::Color( 255,255,255, 20 ) );
+    m_btnDragSlideLgnepaisseurs.set  ( 0 );
+
+    m_btnDragFndCouleur            = sf::Color::Transparent;
+    m_btnDragFndLgnCouleur         = sf::Color( 255,255,255, 20 );
+    m_btnDragFndLgnepaisseur       = 1;
+
+
+
+
+
+
     fct_redimStartG = [this](){
             m_sourisPosOrigin = getPosSouris();
             m_tailleOrigin = m_taille;
@@ -41,7 +68,6 @@ FenRedim::FenRedim ()
             m_redimGauche = true;
         };
     fct_redimStopG = [this](){ m_redimGauche = false; actualiserBounds(); };
-
     fct_redimStartD = [this](){
             m_sourisPosOrigin = getPosSouris();
             m_tailleOrigin = m_taille;
@@ -49,7 +75,6 @@ FenRedim::FenRedim ()
             m_redimDroite = true;
         };
     fct_redimStopD = [this](){ m_redimDroite = false; actualiserBounds(); };
-
     fct_redimStartH = [this](){
             m_sourisPosOrigin = getPosSouris();
             m_tailleOrigin = m_taille;
@@ -57,7 +82,6 @@ FenRedim::FenRedim ()
             m_redimHaut = true;
         };
     fct_redimStopH = [this](){ m_redimHaut = false; actualiserBounds(); };
-
     fct_redimStartB = [this](){
             m_sourisPosOrigin = getPosSouris();
             m_tailleOrigin = m_taille;
@@ -65,6 +89,8 @@ FenRedim::FenRedim ()
             m_redimBas = true;
         };
     fct_redimStopB = [this](){ m_redimBas = false; actualiserBounds(); };
+
+
 
     m_btn_gauche->lier (Evenement::onBtnG_presser , fct_redimStartG );
     m_btn_gauche->lier (Evenement::onBtnG_relacher, fct_redimStopG );
@@ -140,11 +166,10 @@ void FenRedim::draw (sf::RenderTarget& target, sf::RenderStates states) const
 
 }*/
 
-
 /////////////////////////////////////////////////
-void FenRedim::actualiser ()
+void FenRedim::actualiserGeometrie ()
 {
-    FenSimple::actualiser ();
+    FenSimple::actualiserGeometrie ();
 
 
     m_btn_gauche->setTaille ( {m_marge.x , m_taille.y - 2*m_marge.y} );
@@ -169,9 +194,20 @@ void FenRedim::actualiser ()
     m_btn_basDroite->setPosition  ( m_taille.x - m_marge.x , m_taille.y - m_marge.y );
 
 
+}
 
+/////////////////////////////////////////////////
+void FenRedim::actualiserStyle ()
+{
 
 }
+
+/*
+/////////////////////////////////////////////////
+void FenRedim::actualiser ()
+{
+
+}*/
 
 
 /////////////////////////////////////////////////
@@ -181,19 +217,16 @@ void FenRedim::redimmensionner_haut ()
     m_taille = { m_taille.x , m_tailleOrigin.y - ( posSouris.y - m_sourisPosOrigin.y  ) };
     setPosition ( getPosition().x , m_posOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ));
 //    move( 0, 0 ( posSouris.y - m_sourisPosOrigin.y  ));
-    actualiser();
+    actualiserGeometrie();
 }
 
 
 /////////////////////////////////////////////////
 void FenRedim::redimmensionner_bas ()
 {
-//    std::cout << "Redim BAS\n";
-
     auto posSouris = getPosSouris();
     m_taille = { m_taille.x , m_tailleOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ) };
-    actualiser();
-
+    actualiserGeometrie();
 }
 
 
@@ -201,24 +234,17 @@ void FenRedim::redimmensionner_bas ()
 void FenRedim::redimmensionner_gauche ()
 {
     auto posSouris = getPosSouris();
-//    m_taille = { m_taille.x , m_tailleOrigin.y - ( posSouris.y - m_sourisPosOrigin.y  ) };
-//    setPosition ( m_posOrigin.x , m_posOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ));
-
     m_taille = { m_tailleOrigin.x - ( posSouris.x - m_sourisPosOrigin.x  ) , m_taille.y };
     setPosition ( m_posOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ),  getPosition().y );
-
-    actualiser();
-
+    actualiserGeometrie();
 }
-
 
 /////////////////////////////////////////////////
 void FenRedim::redimmensionner_droite ()
 {
-
     auto posSouris = getPosSouris();
     m_taille = { m_tailleOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ) , m_taille.y };
-    actualiser();
+    actualiserGeometrie();
 }
 
 

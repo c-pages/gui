@@ -25,7 +25,7 @@ AffLabel::AffLabel ()
 
     actualiser ();
 }
-
+/*
 /////////////////////////////////////////////////
 void AffLabel::setStyle ( std::shared_ptr<Style> style , Etat etat ){
 
@@ -39,7 +39,7 @@ void AffLabel::setStyle ( std::shared_ptr<Style> style , Etat etat ){
     actualiser ();
 
 }
-
+*/
 
 /////////////////////////////////////////////////
 void AffLabel::actualiserGeometrie ()

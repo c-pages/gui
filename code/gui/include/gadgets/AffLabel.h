@@ -5,7 +5,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include "Affiche.h"
-#include "Style.h"
+//#include "Style.h"
 #include <memory>
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -33,7 +33,7 @@ public:
     virtual sf::Vector2i  getTaille() const;
 //sf::Text::setColor()
 
-    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
+//    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
 
 /*
     ///< Definir m_texte
@@ -70,8 +70,9 @@ public:
     ///< Definir m_police
     void setTexteStyle( sf::Text::Style val ){
         m_textStyle = val;
-        m_texteSFML->setStyle    ( m_textStyle );/* actualiser();*/
+        m_texteSFML->setStyle    ( m_textStyle );
     };
+
 
     ///< Acceder à m_police
     sf::Font getPolice () const { return m_textPolice; };

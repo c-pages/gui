@@ -35,15 +35,9 @@ void ActionEvenement::delier ( Evenement evenement )
 /////////////////////////////////////////////////
 void ActionEvenement::declencher ( Evenement evenement )
 {
-
-//    std::cout << "  declencher : m_evenementsSouris.size : " << m_evenementsSouris.size() << "\n";
-//    for (auto evt : m_evenementsSouris )
-//        if ( evenement == evt.first )
-//            evt.second();
     auto cherche = m_evenementsSouris.find( evenement );
     if ( cherche != m_evenementsSouris.end() )
         cherche->second();
-
 }
 
 

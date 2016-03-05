@@ -38,7 +38,44 @@ public:
 
     void setIconeIndex (int index);
 
-    virtual void setTexte (std::string texte);
+    ///< Definir m_texteTaille
+    void setTexteTaille( float val ){
+        m_textTaille = val;
+        m_titre->setTexteTaille ( val ) ;
+        };
+
+
+    ///< Definir m_police
+    void setTexteCouleur( sf::Color couleur ){
+        m_textCouleur = couleur;
+        m_titre->setTexteCouleur ( couleur );
+    };
+
+    ///< Definir m_police
+    void setPolice( sf::Font val ){
+        m_textPolice = val;
+        m_titre->setPolice    ( m_textPolice );/* actualiser();*/
+    };
+
+    ///< Definir m_police
+    void setTexteStyle( sf::Text::Style val ){
+        m_textStyle = val;
+        m_titre->setTexteStyle    ( m_textStyle );
+    };
+    void setFillColor (sf::Color couleur) {
+            m_fndCouleur = couleur ;
+            m_fond->setFillColor( couleur );
+        };
+    void setOutlineColor (sf::Color couleur) {
+            m_fndLignesCouleur =  couleur;
+            m_fond->setOutlineColor( couleur );
+        };
+    void setOutlineThickness (float epaisseur) {
+            m_fndLignesEpaisseur = epaisseur;
+            m_fond->setOutlineThickness( epaisseur );
+        };
+
+
 
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();

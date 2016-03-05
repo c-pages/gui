@@ -15,31 +15,26 @@ PanSimple::PanSimple ()
     m_taille = { 400 , 200 };
     actualiser ();
 }
-
-/////////////////////////////////////////////////
-void PanSimple::actualiserGeometrie (){
-
-    m_fond->setTaille(m_taille);
-    m_contenant->setSize({ m_taille.x , m_taille.y });
-
-    actualiserContenu();
-    actualiserBounds ();
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
-
-}
-
-/////////////////////////////////////////////////
-void PanSimple::actualiserStyle (){
-
-    m_fond->setFillColor (    m_fndCouleur ) ;
-    m_fond->setOutlineColor (    m_fndLgnCouleur  ) ;
-    m_fond->setOutlineThickness ( m_fndLgnepaisseur  );
-
-    actualiserContenu();
-    actualiserBounds ();
-
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
-}
+//
+///////////////////////////////////////////////////
+//void PanSimple::actualiserGeometrie (){
+//
+//
+//
+//}
+//
+///////////////////////////////////////////////////
+//void PanSimple::actualiserStyle (){
+//
+//    m_fond->setFillColor (    m_fndCouleur ) ;
+//    m_fond->setOutlineColor (    m_fndLgnCouleur  ) ;
+//    m_fond->setOutlineThickness ( m_fndLgnepaisseur  );
+//
+//    actualiserContenu();
+//    actualiserBounds ();
+//
+//    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+//}
 
 ///////////////////////////////////////////////////
 //void PanSimple::actualiser ()

@@ -56,16 +56,13 @@ void AffBarreTitre::setIconeIndex ( int index )
 }
 
 
-/////////////////////////////////////////////////
-void AffBarreTitre::setTexte (std::string texte)
-{
-    m_texte = texte;
-    m_titre->setTexte ( texte );
-}
 
 /////////////////////////////////////////////////
 void AffBarreTitre::actualiserGeometrie ()
 {
+
+    m_titre->setTexte ( m_texte );
+
     m_icone->setTaille      ( { m_taille.y + m_marge.x, m_taille.y + m_marge.y } );
     m_icone->setPosition    ( m_marge.x, m_marge.y );
 

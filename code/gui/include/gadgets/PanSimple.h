@@ -48,10 +48,10 @@ public:
 //    virtual void actualiser ();
 
     /////////////////////////////////////////////////
-    virtual void actualiserGeometrie ();
-
-    /////////////////////////////////////////////////
-    virtual void actualiserStyle ();
+//    virtual void actualiserGeometrie ();
+//
+//    /////////////////////////////////////////////////
+//    virtual void actualiserStyle ();
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 

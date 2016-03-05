@@ -44,9 +44,9 @@ class Geometrie : public sf::Transformable, public gui::Composite {
 
 public:
     ///< Definir m_taille
-    virtual void setTaille( sf::Vector2i val ){ m_taille = val; actualiserBounds(); actualiserGeometrie(); };
-    virtual void setTailleX( float val ){ m_taille.x = val; actualiserBounds(); actualiserGeometrie(); };
-    virtual void setTailleY( float val ){ m_taille.y = val; actualiserBounds(); actualiserGeometrie(); };
+    virtual void setTaille( sf::Vector2i val ){ m_taille = val; actualiser(); };
+    virtual void setTailleX( float val ){ m_taille.x = val; actualiser(); };
+    virtual void setTailleY( float val ){ m_taille.y = val; actualiser(); };
 
     ///< Acceder à m_taille
     virtual sf::Vector2i getTaille () const { return m_taille;  };

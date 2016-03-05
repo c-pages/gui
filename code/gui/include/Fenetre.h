@@ -35,14 +35,34 @@ public:
     /////////////////////////////////////////////////
     virtual std::shared_ptr<Gadget> retirer (std::shared_ptr<Gadget> enfant);
 
+    /////////////////////////////////////////////////
+    void actualiserGeometrie ();
+
+    /////////////////////////////////////////////////
+    void actualiserStyle ();
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
 protected:
-    std::shared_ptr<Panneau> m_panneau;
-    std::shared_ptr<AffRectangle> m_fond;
-    std::shared_ptr<AffRectangle> m_ombre;
+    std::shared_ptr<Panneau>        m_panneau;
+    std::shared_ptr<AffRectangle>   m_fond;
+    std::shared_ptr<AffRectangle>   m_ombre;
+
+    sf::Color               m_panneauFndCouleur;
+    sf::Color               m_panneauFndLgnCouleur;
+    float                   m_panneauFndLgnepaisseur;
+    sf::Color               m_panneauContenantCouleur;
+    sf::Color               m_panneauContenantLgnCouleur;
+    float                   m_panneauContenantLgnepaisseur;
+
+    sf::Color               m_fondCouleur;
+    sf::Color               m_fondLgnCouleur;
+    float                   m_fondLgnepaisseur;
+
+    sf::Color               m_ombreCouleur;
+    sf::Color               m_ombreLgnCouleur;
+    float                   m_ombreLgnepaisseur;
 
 }; // fin class Fenetre
 

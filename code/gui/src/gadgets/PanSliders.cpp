@@ -38,7 +38,7 @@ PanSliders::PanSliders ()
 
     m_btnFndCouleur            = sf::Color::Transparent;
     m_btnFndLgnCouleur         = sf::Color( 255,255,255, 20 );
-    m_btnFndLgnepaisseur       = 1;
+    m_btnFndLgnepaisseur       = 0;
 
     m_slider_V->setVertical();
     m_slider_V->setLargeur (7);

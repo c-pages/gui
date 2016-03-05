@@ -84,11 +84,11 @@ void Interface::actualiser ()
 void Interface::traiterEvenements( sf::Event evenement )
 {
 
-Gadget::traiterEvenements ( evenement);
+    Gadget::traiterEvenements ( evenement);
 
-//////////////////////////////////////////
-// les evenements 'souris' de l'interface
-//////////////////////////////////////////
+    //////////////////////////////////////////
+    // les evenements 'souris' de l'interface
+    //////////////////////////////////////////
     auto boutonSurvoleBack = m_boutonSurvole;
     m_boutonSurvole = chercherGadgetSurvole ();
 

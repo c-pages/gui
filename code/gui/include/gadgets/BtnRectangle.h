@@ -5,6 +5,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include "Bouton.h"
+#include "Valeurs.h"
 #include "gadgets\AffRectangle.h"
 #include "gadgets\AffLabel.h"
 #include <SFML/Graphics.hpp>

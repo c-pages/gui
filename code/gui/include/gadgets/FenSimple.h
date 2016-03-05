@@ -37,7 +37,15 @@ public:
 
     void positionnerFenetre ();
     void chargerIcone   (std::string fichier );
-    virtual void actualiser ();
+
+//    virtual void actualiser ();
+
+    /////////////////////////////////////////////////
+    virtual void actualiserGeometrie ();
+
+    /////////////////////////////////////////////////
+    virtual void actualiserStyle ();
+
 //    virtual void actualiser ( sf::Time delta );
 
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
@@ -63,8 +71,6 @@ public:
 
 //    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
-
-
     bool dragEnCours( ) {return m_drag;};
 
     void setDrag (bool val ){m_drag = val;};
@@ -73,14 +79,32 @@ public:
 // Membres
 /////////////////////////////////////////////////
 private:
-    std::shared_ptr<AffBarreTitre>  m_titre;
-    std::shared_ptr<BtnIcone>       m_btnFermer;
-    std::shared_ptr<BtnRectangle>   m_btndrag;
     bool                            m_fermable;
     bool                            m_draggable;
-
     bool                            m_drag;
     sf::Vector2i                    m_decalageDragSouris;
+
+    std::shared_ptr<AffBarreTitre>  m_titre;
+    std::shared_ptr<BtnIcone>       m_btnFermer;
+    std::shared_ptr<BtnRectangle>   m_btnDrag;
+
+    // les proprietés graphiques
+    sf::Color               m_titreFondCouleur;
+    sf::Color               m_titreFondLgnCouleur;
+    float                   m_titreFondLgnepaisseur;
+    sf::Color               m_titreTextCouleur;
+
+    sf::Text::Style         m_titreTextStyle;
+    float                   m_titreTextTaille;
+    sf::Font                m_titreTextPolice;
+
+    sf::Color               m_btnDragCouleurs;
+    sf::Color               m_btnDragLgnCouleurs;
+    float                   m_btnDragLgnepaisseurs;
+
+    Valeurs<sf::Color>      m_btnFermerCouleurs;
+    Valeurs<sf::Color>      m_btnFermerLgnCouleurs;
+    Valeurs<float>          m_btnFermerLgnepaisseurs;
 
 }; // fin class FenSimple
 

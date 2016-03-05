@@ -22,9 +22,9 @@ EcranDemo::EcranDemo( Application*  appli )
     // les tests
     initGUI_test_Affichages ();
     initGUI_test_Boutons    ();
-//    initGUI_test_Donnees    ();
-//    initGUI_test_Panneaux   ();
-//    initGUI_test_Fenetres   ();
+    initGUI_test_Donnees    ();
+    initGUI_test_Panneaux   ();
+    initGUI_test_Fenetres   ();
 
     initScene   ();
 
@@ -464,7 +464,7 @@ EcranDemo::initGUI_test_Boutons  ()
     m_boutonTexte->setPosition    ( posRoot.x , posRoot.y );
 
      lierMachiner ();
-/*
+
     /////// Interactions clavier ///////
     // On ajoute une liaison à la touche Espace pour changer le style du rectangle
     m_interface->lier ( sf::Keyboard::Tab , [this]() {
@@ -539,7 +539,6 @@ EcranDemo::initGUI_test_Boutons  ()
 
 
 
-*/
 
 
 
@@ -552,7 +551,8 @@ void EcranDemo::lierMachiner ()
 {
 
     m_boutonTexte->lier ( gui::Evenement::onBtnG_relacher , [this](){
-                        std::cout << "MACHINER: souris gauche relache : Faire un machin : " << m_zoneTexte->getValeur() <<"\n";
+                        std::cout << "MACHINER: souris gauche relache : Faire un machin : " ;
+//                        std::cout << m_zoneTexte->getValeur() <<"\n";
 /*
                         if (  m_boutonCoche->estVisible() ){
                             m_boutonCoche->setVisible ( false );
@@ -560,7 +560,7 @@ void EcranDemo::lierMachiner ()
                             m_boutonCoche->setVisible ( true );
                         }
                         */
-                        std::cout << "-> slider : " << m_slider->getValeur() <<"\n";
+//                        std::cout << "-> slider : " << m_slider->getValeur() <<"\n";
                     });
     m_boutonTexte->lier ( gui::Evenement::onBtnG_presser , [this](){
                         std::cout << "MACHINER: souris gauche presse\n";

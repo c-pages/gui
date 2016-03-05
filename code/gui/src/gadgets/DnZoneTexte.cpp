@@ -2,6 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <DnZoneTexte.h>
+#include <Interface.h>
 
 
 
@@ -18,15 +19,40 @@ DnZoneTexte::DnZoneTexte ()
     m_taille.x = 180;
     m_taille.y = 20;
 
-    m_marge.x = 5;
+    m_marge.x = 2;
     m_marge.y = 5;
 
+    ajouterComposant( m_bouton );
+    ajouterComposant( m_label );
+    ajouterComposant( m_curseur );
+
+/*
     m_label->setTexte   ( m_texte );
     m_curseur->setTaille( { 2, 15 });
     m_bouton->setTaille ( m_taille );
 
+*/
+    // valeurs par defaut
+    m_btnCouleurs.set       ( sf::Color( 0, 0, 0, 50 )     , Etat::desactive );
+    m_btnCouleurs.set       ( sf::Color( 255,255,255, 0 ) , Etat::repos );
+    m_btnCouleurs.set       ( sf::Color( 255,255,255, 20 ) , Etat::survol );
+    m_btnCouleurs.set       ( sf::Color( 255,255,255, 40 ) , Etat::press );
+    m_btnLgnCouleurs.set    ( sf::Color( 255,255,255, 20 ) );
+    m_btnLgnepaisseurs.set  ( 1 );
+
+    m_curseurCouleurs          = sf::Color(255,255,255,200) ;
+    m_curseurCouleurs.set      ( sf::Color( 70, 70, 70 )  , Etat::desactive );
+    m_curseurLgnCouleurs       = sf::Color( 255,255,0, 255 ) ;
+    m_curseurLgnepaisseurs     = 0 ;
+
+    m_textCouleur = sf::Color::White ;
+    m_textTaille =  10  ;
+    m_textPolice = Interface::ms_polices.get( "Defaut" )  ;
+    m_textStyle = sf::Text::Style::Regular  ;
 
 
+
+    // Declaration des fonctions de fonctionnement de l'interface interne du gadget.
     fn_valider = [this](){
         if ( m_ecritureActive ){
             setModeEcritureActif ( false );
@@ -34,7 +60,6 @@ DnZoneTexte::DnZoneTexte ()
             actualiser ();
         }
     };
-
     fn_sortir = [this](){
         if ( m_ecritureActive ){
             setModeEcritureActif ( false );
@@ -42,32 +67,20 @@ DnZoneTexte::DnZoneTexte ()
             actualiser ();
         }
     };
-
-    // Action du bouton
-    m_bouton->lier ( Evenement::onBtnG_relacher , [this](){
-
+    fn_cliqueTexte = [this](){
         std::cout << "Clique zone de texte\n";
-
         if ( m_ecritureActive ){}
-
             // on place le curseur là où on a cliqué.(todo)
-
-
         else {
-
             // on active la saisie clavier
             setModeEcritureActif ( true ) ;
-
-//    m_bouton->lier ( Evenement::onBtnG_relacherDehors , fn_valider );
-//    m_bouton->lier ( Evenement::onBtnD_relacherDehors , fn_sortir );
-
             actualiser ();
         }
-
-    });
-
+    };
 
 
+    // Action du bouton
+    m_bouton->lier ( Evenement::onBtnG_relacher , fn_cliqueTexte );
     m_bouton->lier ( Evenement::onBtnG_relacherDehors , fn_valider );
     m_bouton->lier ( Evenement::onBtnD_relacherDehors , fn_sortir );
 
@@ -87,6 +100,7 @@ std::shared_ptr<Gadget>  DnZoneTexte::testerSurvol ( sf::Vector2i position )
 /////////////////////////////////////////////////
 void DnZoneTexte::actualiserGeometrie ()
 {
+    m_bouton->setTaille ( m_taille );
     m_label->setPosition    ( m_marge.x , m_marge.y/2);
 
 //    sf::Vector2f pos = m_label->getSFTexte()->findCharacterPos 	(  m_label->getTexte().size() ) ;
@@ -94,6 +108,7 @@ void DnZoneTexte::actualiserGeometrie ()
 
     m_curseur->setPosition ( pos.x , pos.y );
     m_curseur->move( 5 , m_marge.y/2 );
+    m_curseur->setTaille( { 2, 15 });
 
     // actualiser
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
@@ -103,26 +118,27 @@ void DnZoneTexte::actualiserGeometrie ()
 /////////////////////////////////////////////////
 void DnZoneTexte::actualiserStyle ()
 {
-    // le bouton
-//    m_bouton->setSkin       ( m_skin );
+    m_bouton->setFillColor (    m_btnCouleurs ) ;
+    m_bouton->setOutlineColor (    m_btnLgnCouleurs  ) ;
+    m_bouton->setOutlineThickness ( m_btnLgnepaisseurs  );
 
-//    if ( !m_ecritureActive ) {
-//        m_bouton->setStyle      ( m_skin->getStyle( Styles::bouton ) );
-//    } else {
-//        m_bouton->setStyle      ( m_skin->getStyle( Styles::zoneTexte ) );
-//    }
-//
-//    // le label
-//    m_label->setStyle       ( m_skin->getStyle( Styles::zoneTexte ) );
-//    m_label->setSkin        ( m_skin );
-//
-//    // le curseur
-//    // m_curseur->setPosition  ( , m_marge.y/2);
-//    m_curseur->setSkin      ( m_skin );
-//    m_curseur->setStyle     ( m_skin->getStyle ( Styles::bouton ) );
-//    m_curseur->setFillColor ( sf::Color::White );
-//    m_curseur->setOutlineThickness ( 0 );
+    if ( ! m_ecritureActive ) {
+        m_curseur->setFillColor ( m_curseurCouleurs.desactive  );
+        m_curseur->setOutlineColor (  m_curseurLgnCouleurs.desactive );
+        m_curseur->setOutlineThickness ( m_curseurLgnepaisseurs.desactive  );
+    } else {
+        m_curseur->setFillColor ( m_curseurCouleurs.press );
+        m_curseur->setOutlineColor (  m_curseurLgnCouleurs.press);
+        m_curseur->setOutlineThickness ( m_curseurLgnepaisseurs.press );
+    }
 
+    m_label->setTexteCouleur    ( sf::Color (   m_textCouleur.r
+                                            ,   m_textCouleur.g
+                                            ,   m_textCouleur.b
+                                            ,   m_textCouleur.a * m_opacite ) ) ;
+    m_label->setTexteTaille     ( m_textTaille ) ;
+    m_label->setPolice          ( m_textPolice ) ;
+    m_label->setTexteStyle      ( m_textStyle ) ;
 
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }

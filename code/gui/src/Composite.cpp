@@ -22,8 +22,8 @@ void Composite::ajouter (std::shared_ptr<Gadget> enfant)
 
     auto _this = static_cast<Gadget*>( this );
     enfant->setParent ( _this );
-//    enfant->actualiser();
-//    _this->actualiser();
+    enfant->actualiser();
+    _this->actualiser();
 
 }
 

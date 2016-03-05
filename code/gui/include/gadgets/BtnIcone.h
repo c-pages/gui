@@ -53,9 +53,14 @@ public:
         m_icone->chargerDepuisFichier (fichier);
     };
 
+    void setImage ( const sf::Texture* texture )
+    {
+        m_icone->setImage( texture );
+    };
 
     /////////////////////////////////////////////////
     void actualiserGeometrie ();
+
     /////////////////////////////////////////////////
     void actualiserStyle ();
 

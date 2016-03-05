@@ -19,11 +19,9 @@ BtnTexte::BtnTexte ()
 
     // valeurs par defaut
     m_textCouleur.set( sf::Color::White );
-    m_textCouleur.set( sf::Color( 255,255,255,50 ) , Etat::desactive );
-    m_textTaille.set ( 1 ) ;
-    std::cout << "PAR LAAA <------------------------ 1 ---\n";
+    m_textCouleur.set( sf::Color( 100,100,100 ) , Etat::desactive );
+    m_textTaille.set ( 12 ) ;
     m_textPolice.set ( Interface::ms_polices.get( "Defaut" ) ) ;
-    std::cout << "PAR LAAA <------------------------ 2 ---\n";
     m_textStyle.set  ( sf::Text::Style::Regular ) ;
 
     ajouterComposant( m_label );

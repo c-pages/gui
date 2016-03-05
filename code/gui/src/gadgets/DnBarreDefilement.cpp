@@ -18,8 +18,8 @@ DnBarreDefilement::DnBarreDefilement ()
 {
 
     ajouterComposant( m_slider );
-    ajouterComposant( m_btnPlus );
-    ajouterComposant( m_btnMoins );
+//    ajouterComposant( m_btnPlus );
+//    ajouterComposant( m_btnMoins );
 
     std::string fichier = "media/img/ico_fleches.png";
 

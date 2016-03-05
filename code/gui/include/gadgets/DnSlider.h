@@ -96,8 +96,12 @@ public:
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
 
-
-    void setLongCurseur( float pourcentage );
+/*
+    void setLongueurCurseur( float pourcentage ) {
+        m_slider->setLongCurseur( pourcentage );
+        actualiser();
+    };*/
+    void setLongueurCurseur( float pourcentage );
 //    void setLong    ( float pixels );
 
 //    virtual void setSkin( std::shared_ptr<Skin> skin );
@@ -116,6 +120,47 @@ public:
         { m_styleFond = style;
           m_fond->setStyle        ( m_styleFond );};
 */
+    // le slider
+    void setSliderFillColor ( Valeurs<sf::Color> couleurs  ) {
+            m_slideCouleurs = couleurs;
+            actualiserStyle();
+        };
+    void setSliderOutlineColor ( Valeurs<sf::Color> couleurs  ) {
+            m_slideLgnCouleurs = couleurs;
+            actualiserStyle();
+        };
+    void setSliderOutlineThickness ( Valeurs<float> epaisseur ) {
+            m_slideLgnepaisseurs =  epaisseur;
+            actualiserStyle();
+        };
+
+    // le bouton
+    void setBoutonFillColor ( Valeurs<sf::Color> couleurs  ) {
+            m_btnCouleurs = couleurs;
+            actualiserStyle();
+        };
+    void setBoutonOutlineColor ( Valeurs<sf::Color> couleurs  ) {
+            m_btnLgnCouleurs = couleurs;
+            actualiserStyle();
+        };
+    void setBoutonOutlineThickness ( Valeurs<float> epaisseur ) {
+            m_btnLgnepaisseurs =  epaisseur;
+            actualiserStyle();
+        };
+
+    // le fond
+    void setFillColor ( sf::Color couleurs  ) {
+            m_fndCouleur = couleurs;
+            actualiserStyle();
+        };
+    void setOutlineColor ( sf::Color couleurs  ) {
+            m_fndLgnCouleur = couleurs;
+            actualiserStyle();
+        };
+    void setOutlineThickness ( float epaisseur ) {
+            m_fndLgnepaisseur =  epaisseur;
+            actualiserStyle();
+        };
 private:
     void positionnerCurseurSurSouris ();
     void corrigerPositionCurseur();
@@ -142,12 +187,26 @@ private:
     std::shared_ptr<BtnRectangle>   m_slider;
     std::shared_ptr<AffRectangle>   m_fond;
 
+
     // Les actions pour le fonctionnement
     FctnAction     fct_cliqueBtnFond;
     FctnAction     fct_dragStart;
     FctnAction     fct_dragStop;
-    FctnAction     fct_roulette;
+    FctnAction     fct_rouletteH;
+    FctnAction     fct_rouletteB;
 
+
+    Valeurs<sf::Color>      m_btnCouleurs;
+    Valeurs<sf::Color>      m_btnLgnCouleurs;
+    Valeurs<float>          m_btnLgnepaisseurs;
+
+    Valeurs<sf::Color>      m_slideCouleurs;
+    Valeurs<sf::Color>      m_slideLgnCouleurs;
+    Valeurs<float>          m_slideLgnepaisseurs;
+
+    sf::Color               m_fndCouleur;
+    sf::Color               m_fndLgnCouleur;
+    float                   m_fndLgnepaisseur;
 
 
 

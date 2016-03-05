@@ -50,7 +50,21 @@ private:
     std::shared_ptr<AffRectangle>    m_coche;
     std::shared_ptr<AffLabel>        m_label;
 
+    // Les actions pour le fonctionnement
+    FctnAction     fn_basculerValeur;
 
+    Valeurs<sf::Color>      m_btnCouleurs;
+    Valeurs<sf::Color>      m_btnLgnCouleurs;
+    Valeurs<float>          m_btnLgnepaisseurs;
+
+    Valeurs<sf::Color>      m_cocheCouleurs;
+    Valeurs<sf::Color>      m_cocheLgnCouleurs;
+    Valeurs<float>          m_cocheLgnepaisseurs;
+
+    sf::Color               m_textCouleur;
+    float                   m_textTaille;
+    sf::Font                m_textPolice;
+    sf::Text::Style         m_textStyle;
 
 }; // fin class DnCaseACocher
 

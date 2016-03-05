@@ -13,12 +13,12 @@ BtnRectangle::BtnRectangle ()
 {
 
     // valeurs par defaut
-    m_couleurFond.set   ( sf::Color( 255,0,0, 10 )  , Etat::desactive );
-    m_couleurFond.set   ( sf::Color( 255,0,0, 50 )  , Etat::repos );
-    m_couleurFond.set   ( sf::Color( 255,0,0, 100 ) , Etat::survol );
-    m_couleurFond.set   ( sf::Color( 255,0,0, 150 ) , Etat::press );
+    m_couleurFond.set   ( sf::Color( 60, 60, 60 )  , Etat::desactive );
+    m_couleurFond.set   ( sf::Color( 255,255,255, 0 )  , Etat::repos );
+    m_couleurFond.set   ( sf::Color( 255,255,255, 30 ) , Etat::survol );
+    m_couleurFond.set   ( sf::Color( 255,255,255, 100 ) , Etat::press );
     m_couleurLignes.set ( sf::Color( 0,255,0, 255 ) );
-    m_epaisseur.set     ( 1 );
+    m_epaisseur.set     ( 0 );
 
     // creer l'interface
     ajouterComposant( m_rectangle );
@@ -45,6 +45,8 @@ void BtnRectangle::actualiserGeometrie ()
 //    std::cout << "BtnRectangle::actualiserGeometrie\n";
     m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
     actualiserBounds();
+    // actualiser
+    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }
 
 /////////////////////////////////////////////////
@@ -65,6 +67,8 @@ void BtnRectangle::actualiserStyle ()
                                     , m_couleurLignes.get( this->etat() ).a * m_opacite ) ) ;
     m_rectangle->setOutlineThickness ( m_epaisseur.get( this->etat() ) ) ;
 
+    // actualiser
+    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }
 
 

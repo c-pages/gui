@@ -82,8 +82,21 @@ private:
     // Les actions pour le fonctionnement
     FctnAction                      fn_sortir ;
     FctnAction                      fn_valider ;
+    FctnAction                      fn_cliqueTexte ;
 
     // les proprietés graphiques
+    Valeurs<sf::Color>      m_btnCouleurs;
+    Valeurs<sf::Color>      m_btnLgnCouleurs;
+    Valeurs<float>          m_btnLgnepaisseurs;
+
+    Valeurs<sf::Color>      m_curseurCouleurs;
+    Valeurs<sf::Color>      m_curseurLgnCouleurs;
+    Valeurs<float>          m_curseurLgnepaisseurs;
+
+    sf::Color               m_textCouleur;
+    float                   m_textTaille;
+    sf::Font                m_textPolice;
+    sf::Text::Style         m_textStyle;
 
 
 }; // fin class DnZoneTexte

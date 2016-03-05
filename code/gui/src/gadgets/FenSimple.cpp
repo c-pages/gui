@@ -92,6 +92,7 @@ FenSimple::FenSimple ()
 ////        m_necessiteActualisation = false ;
 //        actualiser ();
 //    });
+    actualiser();
 }
 
 /////////////////////////////////////////////////

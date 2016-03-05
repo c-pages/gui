@@ -38,11 +38,35 @@ public:
     /////////////////////////////////////////////////
     PanSliders ();
 
+//    /////////////////////////////////////////////////
+//    /// \brief Actualise le repartiteur puis les gadgets enfant contenus.
+//    ///
+//    /////////////////////////////////////////////////
+//    virtual void actualiser ();
+
+
+    void setSliderFillColor ( Valeurs<sf::Color> couleurs  ) {
+            m_btnCouleurs = couleurs;
+            actualiserStyle();
+//            m_rectangle->setFillColor( couleur );
+        };
+    void setSliderOutlineColor ( Valeurs<sf::Color> couleurs  ) {
+            m_btnLgnCouleurs = couleurs;
+            actualiserStyle();
+//            m_rectangle->setOutlineColor( couleur );
+        };
+    void setSliderOutlineThickness ( Valeurs<float> epaisseur ) {
+            m_btnLgnepaisseurs =  epaisseur;
+            actualiserStyle();
+//            m_rectangle->setOutlineThickness( epaisseur );
+        };
+
+
     /////////////////////////////////////////////////
-    /// \brief Actualise le repartiteur puis les gadgets enfant contenus.
-    ///
+    virtual void actualiserGeometrie ();
+
     /////////////////////////////////////////////////
-    virtual void actualiser ();
+    virtual void actualiserStyle ();
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
@@ -55,8 +79,26 @@ private:
 /////////////////////////////////////////////////
 private:
 
-    std::shared_ptr<DnBarreDefilement>  m_slider_V;
-    std::shared_ptr<DnBarreDefilement>  m_slider_H;
+    // les composants de l'interface du gadget
+    std::shared_ptr<DnSlider>  m_slider_V;
+    std::shared_ptr<DnSlider>  m_slider_H;
+
+    // les proprietés graphiques
+    Valeurs<sf::Color>      m_btnCouleurs;
+    Valeurs<sf::Color>      m_btnLgnCouleurs;
+    Valeurs<float>          m_btnLgnepaisseurs;
+
+    Valeurs<sf::Color>      m_btnBtnCouleurs;
+    Valeurs<sf::Color>      m_btnBtnLgnCouleurs;
+    Valeurs<float>          m_btnBtnLgnepaisseurs;
+
+    Valeurs<sf::Color>      m_btnSlideCouleurs;
+    Valeurs<sf::Color>      m_btnSlideLgnCouleurs;
+    Valeurs<float>          m_btnSlideLgnepaisseurs;
+
+    sf::Color               m_btnFndCouleur;
+    sf::Color               m_btnFndLgnCouleur;
+    float                   m_btnFndLgnepaisseur;
 
 }; // fin class PanSliders
 

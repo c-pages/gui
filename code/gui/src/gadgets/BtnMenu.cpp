@@ -17,19 +17,28 @@ BtnMenu::BtnMenu ()
 {
     m_marge.x = 0;
     m_marge.y = 0;
+/*
+    m_couleurLignes.set ( sf::Color( 0,255,0, 255 ) );
+    m_epaisseur.set     ( 0 );*/
+    m_btnCouleurs.set   ( sf::Color( 0, 0, 0, 20 )  , Etat::desactive );
+    m_btnCouleurs.set   ( sf::Color( 255,255,255, 0 )  , Etat::repos );
+    m_btnCouleurs.set   ( sf::Color( 255,255,255, 30 ) , Etat::survol );
+    m_btnCouleurs.set   ( sf::Color( 255,255,255, 100 ) , Etat::press );
 
-    m_btnCouleurs           = sf::Color( 255 , 0 , 0 );
+
     m_btnLignesCouleurs     = sf::Color( 255 , 100 , 100 );
-    m_btnLignesEpaisseurs   = 1;
+    m_btnLignesEpaisseurs   = 0;
 
-    m_fndCouleur            = sf::Color( 255 , 0 , 0 );
-    m_fndLignesCouleur      = sf::Color( 255 , 100 , 100 );
+    m_fndCouleur            = sf::Color( 70 , 70 , 70 );
+    m_fndLignesCouleur      = sf::Color( 255 , 255 , 255 , 20);
     m_fndLignesEpaisseur    = 1;
 
-    m_textCouleur           = sf::Color( 255 , 0 , 0 );
+    m_textCouleur           = sf::Color( 200 , 200 , 200 );
     m_textStyle             = sf::Text::Style::Regular;
     m_textTaille            = 10;
     m_textPolice            = Interface::ms_polices.get ( "Defaut" );
+
+    actualiser();
 }
 
 
@@ -43,15 +52,12 @@ void BtnMenu::ajouterElement (std::string nom, FctnAction fonction)
     nouvelElement->fonction = fonction;
 
     std::shared_ptr<BtnTexte>     bouton = std::make_shared<BtnTexte>( );
+
     bouton->setMarge            ( { 5 , 2 } );
     bouton->setTexte            ( nom );
     bouton->setAutoAjuster      ( false );
-    bouton->setTaille           ( m_tailleMenu );
     bouton->setParent           ( this );
-
-    bouton->setFillColor        ( m_btnCouleurs );
-    bouton->setOutlineColor     ( m_btnLignesCouleurs );
-    bouton->setOutlineThickness     ( m_btnLignesEpaisseurs );
+    bouton->setTaille           ( m_tailleMenu );
 
     bouton->lier                ( Evenement::onBtnG_relacher , fonction );
     nouvelElement->bouton   = bouton;

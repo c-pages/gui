@@ -83,13 +83,13 @@ public:
     std::shared_ptr<AffRectangle>   m_fond;
 
     // les proprietés graphiques
-    Valeurs<sf::Color>  m_btnCouleurs;
-    Valeurs<sf::Color>  m_btnLignesCouleurs;
-    Valeurs<float>      m_btnLignesEpaisseurs;
-
     sf::Color           m_fndCouleur;
     sf::Color           m_fndLignesCouleur;
     float               m_fndLignesEpaisseur;
+
+    Valeurs<sf::Color>  m_btnCouleurs;
+    Valeurs<sf::Color>  m_btnLignesCouleurs;
+    Valeurs<float>      m_btnLignesEpaisseurs;
 
     sf::Color           m_textCouleur;
     sf::Text::Style     m_textStyle;

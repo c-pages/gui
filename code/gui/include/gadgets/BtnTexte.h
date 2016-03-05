@@ -47,26 +47,31 @@ public:
 
     ///< Definir m_texteTaille
     void setTexteTaille( float val ){
+        m_textTaille = val;
         m_label->setTexteTaille ( val ) ;
-        actualiserGeometrie ();
+//        actualiserGeometrie ();
     };
 
 
     ///< Definir m_police
     void setTexteCouleur( sf::Color couleur ){
+        m_textCouleur = couleur;
         m_label->setTexteCouleur ( couleur );
+//        actualiser ();
     };
 
     ///< Definir m_police
     void setPolice( sf::Font val ){
+        m_textPolice = val;
         m_label->setPolice    ( val );
-        actualiserGeometrie ();
+//        actualiserGeometrie ();
     };
 
     ///< Definir m_police
     void setTexteStyle( sf::Text::Style val ){
+        m_textStyle = val;
         m_label->setTexteStyle    ( val );
-        actualiserGeometrie ();
+//        actualiserGeometrie ();
     };
 
 ////////////////////////////////// ///////////////

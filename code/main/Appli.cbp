@@ -73,6 +73,7 @@
 		<Unit filename="include/Gestion_ecrans.h" />
 		<Unit filename="include/ResourceMgr.h" />
 		<Unit filename="include/ResourceMgr.inl" />
+		<Unit filename="include/ecrans/EcranAtelier.h" />
 		<Unit filename="include/ecrans/EcranDemo.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="media/img/IconeVide.png" />
@@ -89,6 +90,7 @@
 		<Unit filename="src/Config.cpp" />
 		<Unit filename="src/Ecran.cpp" />
 		<Unit filename="src/Gestion_ecrans.cpp" />
+		<Unit filename="src/ecrans/EcranAtelier.cpp" />
 		<Unit filename="src/ecrans/EcranDemo.cpp" />
 		<Extensions>
 			<code_completion />

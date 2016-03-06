@@ -20,6 +20,7 @@ PanSliders::PanSliders ()
 
     // valeurs par defaut
     m_taille = { 400 , 200 };
+    m_largeurSliders = 7;
     m_renderTexture.create( 1200, 900 );
 
     m_btnBtnCouleurs.set       ( sf::Color( 0, 0, 0, 50 )     , Etat::desactive );
@@ -41,8 +42,8 @@ PanSliders::PanSliders ()
     m_btnFndLgnepaisseur       = 0;
 
     m_slider_V->setVertical();
-    m_slider_V->setLargeur (7);
-    m_slider_H->setLargeur (7);
+    m_slider_V->setLargeur ( m_largeurSliders );
+    m_slider_H->setLargeur ( m_largeurSliders );
     m_slider_V->setMarge({ 0 , 0});
     m_slider_H->setMarge({ 0 , 0});
     m_slider_V->lier ( Evenement::on_changerValeur , [this](){ actualiser (); });
@@ -57,22 +58,22 @@ void PanSliders::actualiserGeometrie (){
 
     m_fond->setTaille(m_taille);
 
-
     sf::Vector2f longueurs = deplMaxContenu();
 
     m_slider_H->setVisible ( longueurs.x > 0 );
     m_slider_V->setVisible ( longueurs.y > 0 );
 
     m_contenant->setSize({ m_taille.x -  m_slider_V->getTaille().x , m_taille.y -  m_slider_H->getTaille().y});
+//    m_contenant->setSize({ m_taille.x , m_taille.y });
 
     // si le contenu est plus grand que le contenant
     if ( m_slider_H->estVisible() ) {
-        float coef                  = (  m_slider_H->getValeur() ) / 100;
-        m_posX_texture              = coef * longueurs.x;
-        float longueurCursH = m_taille.x/ float( boundgingB_enfants().width )* 100 ;
-        m_slider_H->setLongueurCurseur(longueurCursH);
         m_slider_H->setLongueur( m_taille.x -  m_slider_V->getTaille().x );
         m_slider_H->setPosition( 0 , m_taille.y - m_slider_H->getTaille().y);
+        float longueurCursH = m_taille.x/ float( boundgingB_enfants().width )* 100 ;
+        m_slider_H->setLongueurCurseur(longueurCursH);
+        float coef                  = (  m_slider_H->getValeur() ) / 100;
+        m_posX_texture              = coef * longueurs.x;
     // si le contenu est plus petit, on cache le slider
     } else {
         m_posX_texture      = 0;
@@ -80,12 +81,13 @@ void PanSliders::actualiserGeometrie (){
 
     // si contenu plus grand, on a le slider vert
     if (  m_slider_V->estVisible() ) {  // si contenu plus grand, on a le slider
-        float coef                  = ( 100 - m_slider_V->getValeur() ) / 100;
-        m_posY_texture              = coef * longueurs.y;
-        float longueurCursV = m_taille.y /float( boundgingB_enfants().height )* 100 ;
-        m_slider_V->setLongueurCurseur( longueurCursV );
         m_slider_V->setLongueur ( m_taille.y - m_slider_H->getTaille().y );
         m_slider_V->setPosition ( m_taille.x - m_slider_V->getTaille().x , 0 );
+        float longueurCursV = m_taille.y /float( boundgingB_enfants().height )* 100 ;
+        m_slider_V->setLongueurCurseur( longueurCursV );
+        float coef                  = ( 100 - m_slider_V->getValeur()  ) / 100;
+        m_posY_texture              = coef * longueurs.y;
+//        std::cout << "coef : " << coef << "     longueurs.y : " << longueurs.y << "\n";
     // si le contenu est plus petit, on cache le slider
     } else {
         m_posY_texture      = 0;

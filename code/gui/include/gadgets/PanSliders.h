@@ -79,6 +79,8 @@ private:
 /////////////////////////////////////////////////
 private:
 
+    float                   m_largeurSliders;
+
     // les composants de l'interface du gadget
     std::shared_ptr<DnSlider>  m_slider_V;
     std::shared_ptr<DnSlider>  m_slider_H;

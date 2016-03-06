@@ -6,6 +6,7 @@
 #include "Application.h"
 #include "Config.h"
 #include "ecrans/EcranDemo.h"
+#include "ecrans/EcranAtelier.h"
 #include <SFML/System.hpp>
 
 namespace app
@@ -27,12 +28,13 @@ Application::Application()
     m_fenetre->create(sf::VideoMode(1280, 720), "Appli de base" , sf::Style::Default , contextFenetre );
 
     // La synchronisation verticale pour des histoire de bugs de chqrgement de police bidule truc
-    m_fenetre->setVerticalSyncEnabled(true);
+//    m_fenetre->setVerticalSyncEnabled(true);
 
-//    m_fenetre->setFramerateLimit( 30 );
+    m_fenetre->setFramerateLimit( 30 );
 
     //   Ajout du premier écran.
     m_ecrans.ajouter( new EcranDemo( this ) );
+//    m_ecrans.ajouter( new EcranAtelier( this ) );
 
 }
 

@@ -286,13 +286,19 @@ float DnSlider::getValeur(){
         longueurMax = m_taille.x - 2*m_marge.x - m_slider->getTaille().x;
         coefPosition = ( m_slider->getPosition().x - m_marge.x ) / longueurMax;
         longueurVal = m_valeurMax - m_valeurMin;
-        result =  coefPosition * longueurVal;
+        if (longueurMax == 0 )
+            result = 0;
+        else result =  coefPosition * longueurVal;
     } else {
         longueurMax = m_taille.y - 2*m_marge.y - m_slider->getTaille().y;
         coefPosition = ( m_slider->getPosition().y - m_marge.y ) / longueurMax;
         longueurVal = m_valeurMax - m_valeurMin;
-        result =  m_valeurMax - coefPosition * longueurVal;
+        if (longueurMax == 0 )
+            result = 100;
+        else result =  m_valeurMax - coefPosition * longueurVal;
     }
+//        std::cout << "---> longueurMax : " << longueurMax << "---> coefPosition : " << coefPosition << "\n";
+//        std::cout << "---> longueurVal : " << longueurVal << "---> result : " << result  << "\n";
     return result;
 };
 

@@ -33,10 +33,11 @@ void Panneau::actualiserContenu ()
 
     // Render to texture des enfants
     m_renderTexture.clear( sf::Color::Transparent );
+    m_renderTexture.clear( sf::Color::Red );
     for (auto enfant : m_enfants)
         m_renderTexture.draw( *enfant );
     m_renderTexture.display();
-
+//    std::cout << " -> m_posX_texture : " << m_posX_texture << "     m_posY_texture : " << m_posY_texture << "\nm_contenant->getSize().x : " << m_contenant->getSize().x<< "   m_contenant->getSize().y : " << m_contenant->getSize().y << "\n";
     // on applique la texture
     m_contenant->setTexture( &m_renderTexture.getTexture() );
     m_contenant->setTextureRect(    { m_posX_texture
@@ -101,14 +102,16 @@ sf::Vector2f    Panneau::deplMaxContenu(){
     float longueurContenu       = float( boundgingB_enfants().left + boundgingB_enfants().width ) + 25;  //+  m_slider_V->getTaille().x;
     float longueurContenant     = m_taille.x;
     float longueurDeplacement   = longueurContenu - longueurContenant;
-
+//    std::cout << " longueurContenu : " << longueurContenu << " longueurContenant : " << longueurContenant << "\n";
     result.x =  longueurDeplacement;
 
     longueurContenu       = float( boundgingB_enfants().top + boundgingB_enfants().height ) + 25; // m_slider_H->getTaille().y;
     longueurContenant     = m_taille.y;
     longueurDeplacement   = longueurContenu - longueurContenant;
+//    std::cout << " longueurContenu : " << longueurContenu << " longueurContenant : " << longueurContenant << "\n";
 
     result.y =  longueurDeplacement;
+//    std::cout << " result : " << result.x << ", " << result.y << "\n";
 
     return result;
 

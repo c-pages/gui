@@ -80,7 +80,7 @@ FenSimple::FenSimple ()
     m_titreTextTaille       = 10;
     m_titreTextPolice       = Interface::ms_polices.get( "Defaut" );
 
-    m_btnFermerCouleurs.set       ( sf::Color( 0, 0, 0, 50 )      , Etat::desactive );
+    m_btnFermerCouleurs.set       ( sf::Color( 0, 0, 0, 50 )     , Etat::desactive );
     m_btnFermerCouleurs.set       ( sf::Color( 255,255,255, 0 )  , Etat::repos );
     m_btnFermerCouleurs.set       ( sf::Color( 255,255,255, 15 ) , Etat::survol );
     m_btnFermerCouleurs.set       ( sf::Color( 255,255,255, 30 ) , Etat::press );
@@ -144,6 +144,7 @@ void FenSimple::actualiserGeometrie (){
 
     m_ombre->setPosition    ( 5,5 );
     m_ombre->setTaille      ( m_taille );
+
 }
 
 

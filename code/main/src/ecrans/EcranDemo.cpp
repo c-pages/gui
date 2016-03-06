@@ -182,13 +182,14 @@ EcranDemo::initGUI_test_Fenetres  ()
     /////// TITRE Label ///////
     m_labelTitre_4 = m_interface->creer.label( "Fenetres" );
     m_labelTitre_4->setPosition    ( posRoot.x , posRoot.y - 40 );
+    m_labelTitre_4->setTexteTaille (20);
 //    m_labelTitre_4->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 
 
     //// creation d'une fenetre
     auto m_fenetre = m_interface->creer.fenetre(  );
     m_fenetre->setPosition  ( posRoot.x , posRoot.y  );
-    m_fenetre->setTaille    ( { 300 , 100 });
+    m_fenetre->setTaille    ( { 300 , 100 } );
 //    m_fenetre->setStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 
     //// contenu de la fenetre
@@ -220,7 +221,6 @@ EcranDemo::initGUI_test_Fenetres  ()
     m_fenetre2->setPosition  ( posRoot.x , posRoot.y + 120 );
     m_fenetre2->setTaille    ( { 300 , 100 });
 //    m_fenetre2->setStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
-
 //    m_panneau->setTaille    ( { 200 , 100 } );
 
     //// contenu de la fenetre
@@ -245,6 +245,7 @@ EcranDemo::initGUI_test_Panneaux  ()
     /////// TITRE Label ///////
     m_labelTitre_3 = m_interface->creer.label( "Panneaux" );
     m_labelTitre_3->setPosition    ( posRoot.x , posRoot.y - 40 );
+    m_labelTitre_3->setTexteTaille (20);
 //    m_labelTitre_3->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 
     //// creation d'un panneau
@@ -350,6 +351,7 @@ EcranDemo::initGUI_test_Donnees  ()
     /////// TITRE Label ///////
     m_labelTitre_0 = m_interface->creer.label( "Données" );
     m_labelTitre_0->setPosition    ( posRoot.x , posRoot.y - 40 );
+    m_labelTitre_0->setTexteTaille (20);
 //    m_labelTitre_0->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 
 
@@ -448,6 +450,7 @@ EcranDemo::initGUI_test_Boutons  ()
     /////// TITRE Label ///////
     m_labelTitre_1 = m_interface->creer.label( "Boutons" );
     m_labelTitre_1->setPosition    ( posRoot.x , posRoot.y - 40 );
+    m_labelTitre_1->setTexteTaille (20);
 //    m_labelTitre_1->setStyle       ( m_skin->getStyle (  gui::Styles::txtTitre ) );
 
 
@@ -635,6 +638,7 @@ EcranDemo::initGUI_test_Affichages  ()
     /////// TITRE Label ///////
     m_labelTitre_1 = m_interface->creer.label( "Affichages" );
     m_labelTitre_1->setPosition    ( posRoot.x , posRoot.y - 40 );
+    m_labelTitre_1->setTexteTaille ( 20 );
 //    m_labelTitre_1->setStyle       ( m_skin->getStyle (  gui::Styles::txtTitre ) );
 
 

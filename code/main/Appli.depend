@@ -355,10 +355,11 @@
 1457060390 r:\06 - c++\110 - gui\code\main\include\gestion_ecrans.h
 	<Ecran.h>
 
-1457060390 source:r:\06 - c++\110 - gui\code\main\src\application.cpp
+1457268651 source:r:\06 - c++\110 - gui\code\main\src\application.cpp
 	"Application.h"
 	"Config.h"
 	"ecrans/EcranDemo.h"
+	"ecrans/EcranAtelier.h"
 	<SFML/System.hpp>
 
 1457060390 r:\06 - c++\110 - gui\code\main\include\config.h
@@ -521,7 +522,7 @@
 1457060390 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1457175898 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1457269816 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -640,7 +641,7 @@
 	<sstream>
 	<ResourcesMgr.inl>
 
-1457127034 r:\06 - c++\110 - gui\code\gui\include\resourcesmgr.inl
+1457268916 r:\06 - c++\110 - gui\code\gui\include\resourcesmgr.inl
 	"ResourcesMgr.h"
 
 1457125195 r:\06 - c++\110 - gui\code\gui\include\gadgets\afficone.h
@@ -710,7 +711,7 @@
 	<memory>
 	<SFML/Graphics.hpp>
 
-1457177706 r:\06 - c++\110 - gui\code\gui\include\gadgets\pansliders.h
+1457192057 r:\06 - c++\110 - gui\code\gui\include\gadgets\pansliders.h
 	"Panneau.h"
 	"AffRectangle.h"
 	"AffImage.h"
@@ -725,7 +726,7 @@
 	<memory>
 	<SFML/Graphics.hpp>
 
-1457184914 r:\06 - c++\110 - gui\code\gui\include\panneau.h
+1457191916 r:\06 - c++\110 - gui\code\gui\include\panneau.h
 	"Gadget.h"
 	"gadgets/AffRectangle.h"
 	"repartiteurs/Repartiteur.h"
@@ -1084,4 +1085,16 @@
 
 1457185708 r:\06 - c++\110 - gui\code\gui\include\valeurs.h
 	"Enums.h"
+
+1457268335 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecranatelier.cpp
+	"ecrans/EcranAtelier.h"
+	<iostream>
+	<Config.h>
+
+1457268016 r:\06 - c++\110 - gui\code\main\include\ecrans\ecranatelier.h
+	<SFML/Graphics.hpp>
+	<memory>
+	<Ecran.h>
+	<Application.h>
+	<gui.h>
 

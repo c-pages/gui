@@ -38,6 +38,7 @@
 
 // SUPPORTS
 #include "gadgets\SupBandeau.h"
+#include "gadgets\SupBandeauMenusDeroulants.h"
 
 namespace gui{
 
@@ -248,6 +249,12 @@ public:
     std::shared_ptr<SupBandeau>        bandeau( );
 
 
+    /////////////////////////////////////////////////
+    /// \brief  Création d'un panneau
+    ///
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<SupBandeauMenusDeroulants>    menusDeroulants(  );
 
 
 

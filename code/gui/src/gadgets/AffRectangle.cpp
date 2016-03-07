@@ -53,7 +53,8 @@ void AffRectangle::draw (sf::RenderTarget& target, sf::RenderStates states) cons
     states.transform *= getTransform();
 
     // On dessine le rectangle
-    target.draw(m_rectangle, states);
+    if (estVisible())
+        target.draw(m_rectangle, states);
 }
 
 

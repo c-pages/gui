@@ -305,6 +305,14 @@ std::shared_ptr<SupBandeau>    FabriqueBase::bandeau(  )
 }
 
 
+/////////////////////////////////////////////////
+std::shared_ptr<SupBandeauMenusDeroulants>    FabriqueBase::menusDeroulants(  )
+{
+    auto nouveauGadget = creerSupport<SupBandeauMenusDeroulants>( );
+    return nouveauGadget;
+}
+
+
 
 
 

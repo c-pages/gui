@@ -196,7 +196,7 @@ EcranDemo::initGUI ()
 void
 EcranDemo::initGUI_test_Fenetres  ()
 {
-    sf::Vector2f posRoot = { 420 , 300 };
+    sf::Vector2f posRoot = { 420 , 390 };
 
     std::cout << "\n---------------------------------------\n";
     std::cout << "      Test des gadgets : Fenetres";
@@ -242,7 +242,7 @@ EcranDemo::initGUI_test_Fenetres  ()
 
     //// creation d'une fenetre
     auto m_fenetre2 = m_interface->creer.fenetreRedim(  );
-    m_fenetre2->setPosition  ( posRoot.x , posRoot.y + 120 );
+    m_fenetre2->setPosition  ( m_fenetre->getPosition().x + 40 , m_fenetre->getPosition().y + 40 );
     m_fenetre2->setTaille    ( { 300 , 100 });
 //    m_fenetre2->setStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 //    m_panneau->setTaille    ( { 200 , 100 } );
@@ -259,7 +259,7 @@ void
 EcranDemo::initGUI_test_Panneaux  ()
 {
 
-    sf::Vector2f posRoot = { 20 , 300 };
+    sf::Vector2f posRoot = { 20 , 390 };
 
     std::cout << "\n---------------------------------------\n";
     std::cout << "      Test des gadgets : Panneaux";
@@ -365,7 +365,7 @@ void
 EcranDemo::initGUI_test_Donnees  ()
 {
 
-    sf::Vector2f posRoot = { 820 , 60 };
+    sf::Vector2f posRoot = { 820 , 150 };
 
     std::cout << "\n---------------------------------------\n";
     std::cout << "      Test des gadgets : DONNEES";
@@ -465,7 +465,7 @@ void
 EcranDemo::initGUI_test_Boutons  ()
 {
 
-    sf::Vector2f posRoot = { 420 , 60 };
+    sf::Vector2f posRoot = { 420 , 150 };
 
     std::cout << "\n---------------------------------------\n";
     std::cout << "      Test des gadgets : BOUTONS";
@@ -657,7 +657,7 @@ EcranDemo::initGUI_test_Affichages  ()
     std::cout << "      Test des gadgets : AFFICHAGES";
     std::cout << "\n---------------------------------------\n\n";
 
-    sf::Vector2f posRoot = { 20 , 60 };
+    sf::Vector2f posRoot = { 20 , 150 };
 
     /////// TITRE Label ///////
     m_labelTitre_1 = m_interface->creer.label( "Affichages" );

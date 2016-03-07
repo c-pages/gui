@@ -11,20 +11,33 @@ namespace gui {
 
 /////////////////////////////////////////////////
 BtnBarreOutils::BtnBarreOutils ( )
-: /*m_panneau ( std::make_shared<PanSimple>() )
-, */m_fond    ( std::make_shared<AffRectangle>() )
+: m_fond    ( std::make_shared<AffRectangle>() )
+, m_ombre   ( std::make_shared<AffRectangle>() )
+, m_modeFenetre(false)
 {
     m_taille  = { 10, 26 };
     m_marge  = { 2,2 };
     m_tailleBouton = { m_taille.y - 2*m_marge.y , m_taille.y - 2*m_marge.y };
     m_largeurDrag = 7 ;
 
+    ajouterComposant( m_ombre );
     ajouterComposant( m_fond );
+    m_ombre->setVisible ( false );
+    m_ombre->setPosition ( 5,5);
 //    ajouterComposant( m_panneau );
+
+
 
     m_fndCouleur        = sf::Color( 60, 60, 60 );
     m_fndLgnCouleur     = sf::Color( 90,90,90 );
     m_fndLgnEpaisseur   = 1 ;
+
+    m_ombreCouleur                  = sf::Color( 0,0,0, 100 );
+    m_ombreLgnCouleur               = sf::Color( 255,255,255, 255 );
+    m_ombreLgnepaisseur             = 0;
+
+
+
 
 
 
@@ -36,23 +49,38 @@ BtnBarreOutils::BtnBarreOutils ( )
         setDrag( true );
         positionnerFenetre ();
 
+        m_ombre->setVisible ( true );
+
     });
 
     lier ( Evenement::onBtnG_relacher , [this](){
 
         if ( dragEnCours() ){
+            bool survolBandeau = false;
             for ( auto bandeau : Interface::ms_calque_bandeaux->getEnfants() )
-                if ( bandeau->testerSurvol( getPosSouris() ) != nullptr)
+                if ( bandeau->testerSurvol( getPosSouris() ) != nullptr) {
                     bandeau->ajouter ( thisPtr() );
+                    survolBandeau = true;
+                }
+            if ( survolBandeau )            {
+                m_ombre->setVisible ( false );
+            }
             Interface::ms_calque_bandeaux->actualiser();
+
             setDrag( false );
          }
     });
     lier ( Evenement::onBtnG_relacherDehors , [this](){
         if ( dragEnCours() ){
+            bool survolBandeau = false;
             for ( auto bandeau : Interface::ms_calque_bandeaux->getEnfants() )
-                if ( bandeau->testerSurvol( getPosSouris() ) != nullptr)
+                if ( bandeau->testerSurvol( getPosSouris() ) != nullptr) {
                     bandeau->ajouter ( thisPtr() );
+                    survolBandeau = true;
+                }
+            if ( survolBandeau )            {
+                m_ombre->setVisible ( false );
+            }
             Interface::ms_calque_bandeaux->actualiser();
             setDrag( false );
          }
@@ -153,6 +181,7 @@ void BtnBarreOutils::actualiserGeometrie ()
 
     m_taille.x =  m_largeurDrag + m_tailleBouton.x * m_elements.size() + 2*m_marge.x;
     m_fond->setTaille ( m_taille );
+    m_ombre->setTaille ( m_taille );
 //    m_panneau->setTaille ( { m_taille.x - 2*m_marge.x, m_taille.y - 2*m_marge.y } );
 //    m_panneau->setPosition ( m_marge.x, m_marge.y  );
 
@@ -194,6 +223,11 @@ void BtnBarreOutils::actualiserStyle ()
     m_fond->setFillColor (m_fndCouleur);
     m_fond->setOutlineColor (m_fndLgnCouleur);
     m_fond->setOutlineThickness (m_fndLgnEpaisseur);
+
+    m_ombre->setFillColor (m_ombreCouleur);
+    m_ombre->setOutlineColor (m_ombreLgnCouleur);
+    m_ombre->setOutlineThickness (m_ombreLgnepaisseur);
+
 }
 
 /*

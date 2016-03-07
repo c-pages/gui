@@ -62,6 +62,7 @@ FenRedim::FenRedim ()
 
 
     fct_redimStartG = [this](){
+    demander_aEtre_auDessus();
             m_sourisPosOrigin = getPosSouris();
             m_tailleOrigin = m_taille;
             m_posOrigin = getPosition();
@@ -69,6 +70,7 @@ FenRedim::FenRedim ()
         };
     fct_redimStopG = [this](){ m_redimGauche = false; actualiserBounds(); };
     fct_redimStartD = [this](){
+    demander_aEtre_auDessus();
             m_sourisPosOrigin = getPosSouris();
             m_tailleOrigin = m_taille;
             m_posOrigin = getPosition();
@@ -76,6 +78,7 @@ FenRedim::FenRedim ()
         };
     fct_redimStopD = [this](){ m_redimDroite = false; actualiserBounds(); };
     fct_redimStartH = [this](){
+    demander_aEtre_auDessus();
             m_sourisPosOrigin = getPosSouris();
             m_tailleOrigin = m_taille;
             m_posOrigin = getPosition();
@@ -83,6 +86,7 @@ FenRedim::FenRedim ()
         };
     fct_redimStopH = [this](){ m_redimHaut = false; actualiserBounds(); };
     fct_redimStartB = [this](){
+    demander_aEtre_auDessus();
             m_sourisPosOrigin = getPosSouris();
             m_tailleOrigin = m_taille;
             m_posOrigin = getPosition();
@@ -113,6 +117,7 @@ FenRedim::FenRedim ()
 
 
     m_btn_hautGauche->lier (Evenement::onBtnG_presser , [this](){
+    demander_aEtre_auDessus();
             m_sourisPosOrigin = getPosSouris();
             m_tailleOrigin = m_taille;
             m_posOrigin = getPosition();
@@ -123,6 +128,7 @@ FenRedim::FenRedim ()
     m_btn_hautGauche->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimGauche = false;   m_redimHaut = false; });
 
     m_btn_hautDroite->lier (Evenement::onBtnG_presser , [this](){
+    demander_aEtre_auDessus();
             m_sourisPosOrigin = getPosSouris();
             m_tailleOrigin = m_taille;
             m_posOrigin = getPosition();
@@ -133,6 +139,7 @@ FenRedim::FenRedim ()
     m_btn_droite->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimDroite = false;   m_redimHaut = false; });
 
     m_btn_basGauche->lier (Evenement::onBtnG_presser , [this](){
+    demander_aEtre_auDessus();
             m_sourisPosOrigin = getPosSouris();
             m_tailleOrigin = m_taille;
             m_posOrigin = getPosition();
@@ -143,6 +150,7 @@ FenRedim::FenRedim ()
     m_btn_basGauche->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimBas = false; m_redimGauche = false; });
 
     m_btn_basDroite->lier (Evenement::onBtnG_presser , [this](){
+    demander_aEtre_auDessus();
             m_sourisPosOrigin = getPosSouris();
             m_tailleOrigin = m_taille;
             m_posOrigin = getPosition();
@@ -226,7 +234,7 @@ void FenRedim::redimmensionner_haut ()
 {
     auto posSouris = getPosSouris();
     m_taille = { m_taille.x , m_tailleOrigin.y - ( posSouris.y - m_sourisPosOrigin.y  ) };
-
+//    demander_aEtre_auDessus();
     corrigerTailleMinimum ();
 
     setPosition ( getPosition().x , m_posOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ));
@@ -241,6 +249,7 @@ void FenRedim::redimmensionner_bas ()
     auto posSouris = getPosSouris();
     m_taille = { m_taille.x , m_tailleOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ) };
 
+//    demander_aEtre_auDessus();
     corrigerTailleMinimum ();
 
     actualiserGeometrie();
@@ -253,6 +262,7 @@ void FenRedim::redimmensionner_gauche ()
     auto posSouris = getPosSouris();
     m_taille = { m_tailleOrigin.x - ( posSouris.x - m_sourisPosOrigin.x  ) , m_taille.y };
 
+//    demander_aEtre_auDessus();
     corrigerTailleMinimum ();
 
     setPosition ( m_posOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ),  getPosition().y );
@@ -265,6 +275,7 @@ void FenRedim::redimmensionner_droite ()
     auto posSouris = getPosSouris();
     m_taille = { m_tailleOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ) , m_taille.y };
     corrigerTailleMinimum ();
+//    demander_aEtre_auDessus();
     actualiserGeometrie();
 }
 

@@ -83,7 +83,7 @@ void Interface::actualiser ()
     }
 
     // ... pour décaller le calque du bureau ... à voir si c'est pas le bordel
-    ms_calque_bureau->setPosition ( decallage.x , decallage.y );
+//    ms_calque_bureau->setPosition ( decallage.x , decallage.y );
 
 }
 

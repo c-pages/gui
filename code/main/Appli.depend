@@ -486,7 +486,7 @@
 	<SFML/Graphics.hpp>
 	<functional>
 
-1457377518 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
+1457382195 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
 	"SFML/Graphics.hpp"
 	"memory"
 	"Gadget.h"
@@ -509,6 +509,7 @@
 	"gadgets\FenSimple.h"
 	"gadgets\FenRedim.h"
 	"gadgets\SupBandeau.h"
+	"gadgets\SupBandeauMenusDeroulants.h"
 
 1457125195 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
 	"Affiche.h"
@@ -524,7 +525,7 @@
 1457060390 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1457378865 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1457381638 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -1113,8 +1114,13 @@
 	"BtnIcone.h"
 	"Panneau.h"
 
-1457379188 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnbarreoutils.h
+1457380818 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnbarreoutils.h
 	"Bouton.h"
 	"BtnIcone.h"
 	"Panneau.h"
+
+1457348417 r:\06 - c++\110 - gui\code\gui\include\gadgets\supbandeaumenusderoulants.h
+	"Support.h"
+	<SFML/Graphics.hpp>
+	<memory>
 

@@ -69,17 +69,22 @@ public:
 private:
 //    std::shared_ptr<Panneau>        m_panneau;
     std::shared_ptr<AffRectangle>   m_fond;
+    std::shared_ptr<AffRectangle>   m_ombre;
 
     sf::Vector2i                    m_tailleBouton;   ///< La taille d'un bouton du menu
     std::vector< ElementOutil*>     m_elements;
     float                           m_largeurDrag;
     bool                            m_drag;
     sf::Vector2i                    m_decalageDragSouris;
+    bool                            m_modeFenetre;
 
     sf::Color   m_fndCouleur;
     sf::Color   m_fndLgnCouleur;
     float       m_fndLgnEpaisseur;
 
+    sf::Color               m_ombreCouleur;
+    sf::Color               m_ombreLgnCouleur;
+    float                   m_ombreLgnepaisseur;
 }; // fin class BtnBarreOutils
 
 } // fin namespace gui

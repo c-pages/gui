@@ -1,0 +1,25 @@
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include <SupBandeauMenusDeroulants.h>
+
+
+
+namespace gui {
+
+/////////////////////////////////////////////////
+SupBandeauMenusDeroulants::GrpFenetre ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void SupBandeauMenusDeroulants::draw (sf::RenderTarget& target, sf::RenderStates states) const
+{
+    
+}
+
+
+} // fin namespace gui
+

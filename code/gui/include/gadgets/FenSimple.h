@@ -78,7 +78,7 @@ public:
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
-private:
+protected:
     bool                            m_fermable;
     bool                            m_draggable;
     bool                            m_drag;

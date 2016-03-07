@@ -30,10 +30,11 @@ Panneau::Panneau ()
 /////////////////////////////////////////////////
 void Panneau::actualiserContenu ()
 {
+//    std::cout << "Panneau::actualiserContenu\n";
 
     // Render to texture des enfants
     m_renderTexture.clear( sf::Color::Transparent );
-    m_renderTexture.clear( sf::Color::Red );
+//    m_renderTexture.clear( sf::Color::Red );
     for (auto enfant : m_enfants)
         m_renderTexture.draw( *enfant );
     m_renderTexture.display();

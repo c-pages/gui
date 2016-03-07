@@ -60,7 +60,7 @@
 			<Cursor1 position="2296" topLine="55" />
 		</Cursor>
 	</File>
-	<File name="src\gadgets\PanSliders.cpp" open="1" top="1" tabpos="64" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\gadgets\PanSliders.cpp" open="1" top="0" tabpos="64" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2736" topLine="48" />
 		</Cursor>
@@ -110,6 +110,11 @@
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="include\gadgets\SupPanneau.h" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="src\repartiteurs\RepartiteurLibre.cpp" open="1" top="0" tabpos="61" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="137" topLine="0" />
@@ -130,6 +135,11 @@
 			<Cursor1 position="371" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="include\gadgets\SupBandeauMenusDeroulants.h" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="src\ActionClavier.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="698" topLine="0" />
@@ -140,14 +150,29 @@
 			<Cursor1 position="2119" topLine="39" />
 		</Cursor>
 	</File>
+	<File name="include\Support.h" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="src\ActionEvenement.cpp" open="1" top="0" tabpos="40" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="985" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="include\gadgets\SupBandeau.h" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="include\Panneau.h" open="1" top="0" tabpos="70" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="3190" topLine="65" />
+		</Cursor>
+	</File>
+	<File name="src\gadgets\SupBandeau.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\Affiche.cpp" open="1" top="0" tabpos="26" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -160,6 +185,11 @@
 			<Cursor1 position="849" topLine="7" />
 		</Cursor>
 	</File>
+	<File name="src\gadgets\SupBandeauMenusDeroulants.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="src\Bouton.cpp" open="1" top="0" tabpos="27" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1048" topLine="1" />
@@ -170,6 +200,11 @@
 			<Cursor1 position="502" topLine="6" />
 		</Cursor>
 	</File>
+	<File name="src\gadgets\SupPanneau.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="src\Calque.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
@@ -178,6 +213,11 @@
 	<File name="include\Style.h" open="1" top="0" tabpos="89" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="207" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\Support.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="src\Composant.cpp" open="1" top="0" tabpos="48" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -225,6 +265,11 @@
 			<Cursor1 position="1212" topLine="18" />
 		</Cursor>
 	</File>
+	<File name="include\gadgets\BtnBarreOutils.h" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2407" topLine="29" />
+		</Cursor>
+	</File>
 	<File name="src\FabriqueBase.cpp" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1368" topLine="46" />
@@ -244,6 +289,14 @@
 		<Cursor>
 			<Cursor1 position="1054" topLine="0" />
 		</Cursor>
+	</File>
+	<File name="src\gadgets\BtnBarreOutils.cpp" open="1" top="1" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5098" topLine="110" />
+		</Cursor>
+		<Folding>
+			<Collapse line="84" />
+		</Folding>
 	</File>
 	<File name="src\Fenetre.cpp" open="1" top="0" tabpos="74" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>

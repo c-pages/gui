@@ -34,12 +34,15 @@ void BtnIcone::actualiserGeometrie ()
     m_icone->setPosition( m_marge.x  , m_marge.y/3 );
 
     BtnRectangle::actualiserGeometrie();
+//    if (m_parent!=nullptr)
+//        m_parent->actualiserContenu();
 
 }
 
 /////////////////////////////////////////////////
 void BtnIcone::actualiserStyle ()
 {
+//    std::cout << "Actualiser un bouton icone : " << getNom() << "\n";
 
     m_icone->setFillColor    ( sf::Color (
                                       255
@@ -50,7 +53,8 @@ void BtnIcone::actualiserStyle ()
     m_icone->setOutlineThickness ( 0 ) ;
 
     BtnRectangle::actualiserStyle();
-
+//    if (m_parent!=nullptr)
+//        m_parent->actualiserContenu();
 }
 /*
 /////////////////////////////////////////////////

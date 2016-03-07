@@ -25,7 +25,28 @@ std::shared_ptr<T>  FabriqueBase::creerGadget (){
     // Affiliation a l'interface
     m_interfaceParent->ajouter ( nouveauGadget );
     nouveauGadget->setParent ( m_interfaceParent );
-    m_interfaceParent->m_calque_bureau->ajouter ( nouveauGadget );
+//    m_interfaceParent->ms_calque_bureau->ajouter ( nouveauGadget );
+
+//    // Application du skin de l'interface au gadget
+//    nouveauGadget->setSkin ( m_interfaceParent->getSkin() );
+
+    // renvois du nouveau gadget créé.
+    return nouveauGadget;
+
+}
+
+
+/////////////////////////////////////////////////
+template<typename T>
+std::shared_ptr<T>  FabriqueBase::creerBureau (){
+
+    // Creation du nouveau gadget
+    std::shared_ptr<T> nouveauGadget = std::make_shared<T>( );
+
+    // Affiliation a l'interface
+    m_interfaceParent->ajouter ( nouveauGadget );
+    nouveauGadget->setParent ( m_interfaceParent );
+    m_interfaceParent->ms_calque_bureau->ajouter ( nouveauGadget );
 
 //    // Application du skin de l'interface au gadget
 //    nouveauGadget->setSkin ( m_interfaceParent->getSkin() );
@@ -46,7 +67,7 @@ std::shared_ptr<T>  FabriqueBase::creerFenetre (){
 
     m_interfaceParent->ajouter ( nouveauGadget );
     nouveauGadget->setParent ( m_interfaceParent );
-    m_interfaceParent->m_calque_fenetres->ajouter ( nouveauGadget );
+    m_interfaceParent->ms_calque_fenetres->ajouter ( nouveauGadget );
 
 //    // Application du skin de l'interface au gadget
 //    nouveauGadget->setSkin ( m_interfaceParent->getSkin() );
@@ -55,6 +76,27 @@ std::shared_ptr<T>  FabriqueBase::creerFenetre (){
     return nouveauGadget;
 
 }
+
+/////////////////////////////////////////////////
+template<typename T>
+std::shared_ptr<T>  FabriqueBase::creerSupport (){
+
+    // Creation du nouveau gadget
+    std::shared_ptr<T> nouveauGadget = std::make_shared<T>( );
+
+    // La hierarchie
+    m_interfaceParent->ajouter  ( nouveauGadget );
+    nouveauGadget->setParent    ( m_interfaceParent );
+    m_interfaceParent->ms_calque_bandeaux->ajouter ( nouveauGadget );
+
+    // la reference à l'interface parent.
+    nouveauGadget->setInterface( m_interfaceParent );
+
+    // renvois du nouveau gadget créé.
+    return nouveauGadget;
+
+}
+
 
 
 
@@ -69,7 +111,7 @@ std::shared_ptr<T>  FabriqueBase::creerFenetre (){
 /////////////////////////////////////////////////
 std::shared_ptr<AffRectangle>    FabriqueBase::rectangle( sf::Vector2i taille )
 {
-    auto nouveauGadget = creerGadget<AffRectangle>( );
+    auto nouveauGadget = creerBureau<AffRectangle>( );
     nouveauGadget->setTaille ( taille );
     return nouveauGadget;
 }
@@ -79,7 +121,7 @@ std::shared_ptr<AffRectangle>    FabriqueBase::rectangle( sf::Vector2i taille )
 /////////////////////////////////////////////////
 std::shared_ptr<AffLabel>    FabriqueBase::label( std::string text )
 {
-    auto nouveauGadget = creerGadget<AffLabel>( );
+    auto nouveauGadget = creerBureau<AffLabel>( );
     nouveauGadget->setTexte ( text );
     return nouveauGadget;
 }
@@ -87,7 +129,7 @@ std::shared_ptr<AffLabel>    FabriqueBase::label( std::string text )
 /////////////////////////////////////////////////
 std::shared_ptr<AffImage>    FabriqueBase::image( std::string fichier )
 {
-    auto nouveauGadget = creerGadget<AffImage>( );
+    auto nouveauGadget = creerBureau<AffImage>( );
     if ( fichier != "");
         nouveauGadget->chargerDepuisFichier ( fichier );
     return nouveauGadget;
@@ -98,7 +140,7 @@ std::shared_ptr<AffImage>    FabriqueBase::image( std::string fichier )
 /////////////////////////////////////////////////
 std::shared_ptr<AffBarreTitre>    FabriqueBase::barreTitre( std::string text )
 {
-    auto nouveauGadget = creerGadget<AffBarreTitre>( );
+    auto nouveauGadget = creerBureau<AffBarreTitre>( );
     nouveauGadget->setTexte ( text );
     return nouveauGadget;
 }
@@ -107,7 +149,7 @@ std::shared_ptr<AffBarreTitre>    FabriqueBase::barreTitre( std::string text )
 /////////////////////////////////////////////////
 std::shared_ptr<AffImage>    FabriqueBase::image( int id )
 {
-    auto nouveauGadget = creerGadget<AffImage>( );
+    auto nouveauGadget = creerBureau<AffImage>( );
 //    if ( fichier != "");
 //        nouveauGadget->chargerDepuisFichier ( fichier );
     return nouveauGadget;
@@ -118,7 +160,7 @@ std::shared_ptr<AffImage>    FabriqueBase::image( int id )
 /////////////////////////////////////////////////
 std::shared_ptr<AffIcone>    FabriqueBase::icone( std::string fichier , unsigned int id )
 {
-    auto nouveauGadget = creerGadget<AffIcone>( );
+    auto nouveauGadget = creerBureau<AffIcone>( );
     if ( fichier != "");
         nouveauGadget->chargerDepuisFichier ( fichier );
     nouveauGadget->setIndex ( id );
@@ -131,7 +173,7 @@ std::shared_ptr<AffIcone>    FabriqueBase::icone( std::string fichier , unsigned
 /////////////////////////////////////////////////
 std::shared_ptr<BtnRectangle>    FabriqueBase::boutonRect( sf::Vector2i taille )
 {
-    auto nouveauGadget = creerGadget<BtnRectangle>( );
+    auto nouveauGadget = creerBureau<BtnRectangle>( );
     nouveauGadget->setTaille ( taille );
     return nouveauGadget;
 }
@@ -141,7 +183,7 @@ std::shared_ptr<BtnRectangle>    FabriqueBase::boutonRect( sf::Vector2i taille )
 /////////////////////////////////////////////////
 std::shared_ptr<BtnTexte>    FabriqueBase::boutonTexte( std::string texte )
 {
-    auto nouveauGadget = creerGadget<BtnTexte>( );
+    auto nouveauGadget = creerBureau<BtnTexte>( );
     nouveauGadget->setTexte ( texte );
     return nouveauGadget;
 }
@@ -150,7 +192,7 @@ std::shared_ptr<BtnTexte>    FabriqueBase::boutonTexte( std::string texte )
 /////////////////////////////////////////////////
 std::shared_ptr<BtnIcone>    FabriqueBase::boutonIcone( std::string fichier )
 {
-    auto nouveauGadget = creerGadget<BtnIcone>( );
+    auto nouveauGadget = creerBureau<BtnIcone>( );
     if ( fichier != "");
         nouveauGadget->chargerDepuisFichier ( fichier );
     return nouveauGadget;
@@ -164,7 +206,7 @@ std::shared_ptr<BtnIcone>    FabriqueBase::boutonIcone( std::string fichier )
 /////////////////////////////////////////////////
 std::shared_ptr<BtnRectangle>    FabriqueBase::bouton( sf::Vector2i taille )
 {
-    auto nouveauGadget = creerGadget<BtnRectangle>( );
+    auto nouveauGadget = creerBureau<BtnRectangle>( );
     nouveauGadget->setTaille ( taille );
     return nouveauGadget;
 }*/
@@ -172,14 +214,14 @@ std::shared_ptr<BtnRectangle>    FabriqueBase::bouton( sf::Vector2i taille )
 /////////////////////////////////////////////////
 std::shared_ptr<BtnMenu>   FabriqueBase::menu( )
 {
-    return creerGadget<BtnMenu>( );
+    return creerBureau<BtnMenu>( );
 }
 
 
 /////////////////////////////////////////////////
 std::shared_ptr<DnCaseACocher>        FabriqueBase::btnACocher( bool val )
 {
-    auto nouveauGadget = creerGadget<DnCaseACocher>( );
+    auto nouveauGadget = creerBureau<DnCaseACocher>( );
     nouveauGadget->setValeur ( val );
     return nouveauGadget;
 }
@@ -188,7 +230,7 @@ std::shared_ptr<DnCaseACocher>        FabriqueBase::btnACocher( bool val )
 /////////////////////////////////////////////////
 std::shared_ptr<DnZoneTexte>        FabriqueBase::zoneTexte( std::string texte )
 {
-    auto nouveauGadget = creerGadget<DnZoneTexte>( );
+    auto nouveauGadget = creerBureau<DnZoneTexte>( );
     nouveauGadget->setTexte ( texte );
     return nouveauGadget;
 }
@@ -196,7 +238,7 @@ std::shared_ptr<DnZoneTexte>        FabriqueBase::zoneTexte( std::string texte )
 /////////////////////////////////////////////////
 std::shared_ptr<DnSlider>        FabriqueBase::slider( )
 {
-    auto nouveauGadget = creerGadget<DnSlider>( );
+    auto nouveauGadget = creerBureau<DnSlider>( );
     return nouveauGadget;
 }
 
@@ -204,22 +246,31 @@ std::shared_ptr<DnSlider>        FabriqueBase::slider( )
 /////////////////////////////////////////////////
 std::shared_ptr<DnBarreDefilement>        FabriqueBase::barreDefilement( )
 {
-    auto nouveauGadget = creerGadget<DnBarreDefilement>( );
+    auto nouveauGadget = creerBureau<DnBarreDefilement>( );
     return nouveauGadget;
 }
+
+/////////////////////////////////////////////////
+std::shared_ptr<BtnBarreOutils>    FabriqueBase::barreOutils(  )
+{
+    auto nouveauGadget = creerGadget<BtnBarreOutils>( );
+    return nouveauGadget;
+}
+
+
 
 
 /////////////////////////////////////////////////
 std::shared_ptr<PanSimple>        FabriqueBase::panneau( )
 {
-    auto nouveauGadget = creerGadget<PanSimple>( );
+    auto nouveauGadget = creerBureau<PanSimple>( );
     return nouveauGadget;
 }
 
 /////////////////////////////////////////////////
 std::shared_ptr<PanSliders>        FabriqueBase::panneauSliders( )
 {
-    auto nouveauGadget = creerGadget<PanSliders>( );
+    auto nouveauGadget = creerBureau<PanSliders>( );
     return nouveauGadget;
 }
 
@@ -241,6 +292,21 @@ std::shared_ptr<FenRedim>        FabriqueBase::fenetreRedim( std::string titre  
     nouveauGadget->setTexte (titre);
     return nouveauGadget;
 }
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////
+std::shared_ptr<SupBandeau>    FabriqueBase::bandeau(  )
+{
+    auto nouveauGadget = creerSupport<SupBandeau>( );
+    return nouveauGadget;
+}
+
+
+
+
 
 }; // fin namespace gui
 

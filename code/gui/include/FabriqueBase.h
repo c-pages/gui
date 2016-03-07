@@ -25,17 +25,19 @@
 #include "gadgets\DnCaseACocher.h"
 #include "gadgets\DnZoneTexte.h"
 #include "gadgets\DnSlider.h"
-
 #include "gadgets\DnBarreDefilement.h"
+#include "gadgets\BtnBarreOutils.h"
 
 // GROUPEMENT
 #include "gadgets\PanSimple.h"
 #include "gadgets\PanSliders.h"
 
-// SUPPORTS
+// FENTRES
 #include "gadgets\FenSimple.h"
 #include "gadgets\FenRedim.h"
 
+// SUPPORTS
+#include "gadgets\SupBandeau.h"
 
 namespace gui{
 
@@ -52,8 +54,13 @@ private:
     std::shared_ptr<T>  creerGadget ();
 
     template<typename T>
+    std::shared_ptr<T>  creerBureau ();
+
+    template<typename T>
     std::shared_ptr<T>  creerFenetre ();
 
+    template<typename T>
+    std::shared_ptr<T>  creerSupport ();
 
 public:
 
@@ -185,6 +192,12 @@ public:
     /////////////////////////////////////////////////
     std::shared_ptr<DnBarreDefilement>        barreDefilement( );
 
+    /////////////////////////////////////////////////
+    /// \brief  Création d'une barre de defilement pour deplacer un contenu à l'interieur d'un panneau
+    ///
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<BtnBarreOutils>        barreOutils( );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // GROUPEMENT
@@ -205,7 +218,7 @@ public:
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// SUPPORTS
+// FENETRES
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////
     /// \brief  Création d'un panneau
@@ -223,6 +236,18 @@ public:
     std::shared_ptr<FenRedim>        fenetreRedim( std::string titre = "Fenêtre redim." );
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SUPPORTS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////
+    /// \brief  Création d'un panneau
+    ///
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<SupBandeau>        bandeau( );
+
+
 
 
 
@@ -232,7 +257,7 @@ public:
 // Membres
 /////////////////////////////////////////////////
 
-    Interface* m_interfaceParent;
+    Interface*      m_interfaceParent;
 
 
 

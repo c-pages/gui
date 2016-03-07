@@ -46,7 +46,7 @@ void BtnRectangle::actualiserGeometrie ()
     m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
     actualiserBounds();
     // actualiser
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+//    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }
 
 /////////////////////////////////////////////////

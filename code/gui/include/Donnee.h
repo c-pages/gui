@@ -36,7 +36,7 @@ public:
     /// \brief Définir la valeur
     ///
     /////////////////////////////////////////////////
-    void setValeur( T val )
+    virtual void setValeur( T val )
     {   m_valeur = val; };
 
 

@@ -64,7 +64,7 @@ public:
     double getOpacite () const { return m_opacite; };
 
     ///< reDefinir setPosition
-    virtual     void setPosition( float x , float y ){ sf::Transformable::setPosition( x , y ); actualiserBounds(); };
+    virtual     void setPosition( float x , float y );
 
     /////////////////////////////////////////////////
     /// \brief Calculer la position absolue du gadget.

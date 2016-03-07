@@ -12,6 +12,11 @@ sf::RenderWindow*                           Interface::ms_fenetreSFML = nullptr;
 ResourcesMgr<sf::Font,std::string >         Interface::ms_polices = {};
 ResourcesMgr<sf::Texture,   std::string >   Interface::ms_images = {};
 
+
+std::shared_ptr<Calque>        Interface::ms_calque_bureau      = std::make_shared<Calque>();
+std::shared_ptr<Calque>        Interface::ms_calque_fenetres    = std::make_shared<Calque>();
+std::shared_ptr<Calque>        Interface::ms_calque_bandeaux    = std::make_shared<Calque>();
+
 /////////////////////////////////////////////////
 Interface::Interface( sf::RenderWindow* fenetre )
 : Gadget ()
@@ -20,23 +25,23 @@ Interface::Interface( sf::RenderWindow* fenetre )
 , m_fenetre         ( fenetre )
 , creer             ( this )
 
-, m_calque_bureau      ( std::make_shared<Calque>())
-, m_calque_supports    ( std::make_shared<Calque>())
-, m_calque_fenetres    ( std::make_shared<Calque>())
+//, ms_calque_bureau      ( std::make_shared<Calque>())
+//, ms_calque_bandeaux    ( std::make_shared<Calque>())
+//, ms_calque_fenetres    ( std::make_shared<Calque>())
 {
     // la fenetre SFML
     ms_fenetreSFML = fenetre;
 
     // les calques
-    ajouter ( m_calque_bureau );
-    ajouter ( m_calque_supports );
-    ajouter ( m_calque_fenetres );
+    ajouter ( ms_calque_bureau );
+    ajouter ( ms_calque_bandeaux );
+    ajouter ( ms_calque_fenetres );
 
     // les tailles
     m_taille = { m_fenetre->getSize().x ,m_fenetre->getSize().y };
-    m_calque_bureau->setTaille    ( m_taille );
-    m_calque_supports->setTaille  ( m_taille );
-    m_calque_fenetres->setTaille  ( m_taille );
+    ms_calque_bureau->setTaille    ( m_taille );
+    ms_calque_bandeaux->setTaille  ( m_taille );
+    ms_calque_fenetres->setTaille  ( m_taille );
 
     // initialiser les polices
     ms_polices.load( "Defaut"  , "media/polices/consola.ttf" );
@@ -67,8 +72,19 @@ std::shared_ptr<Gadget> Interface::chercherGadgetSurvole ()
 /////////////////////////////////////////////////
 void Interface::actualiser ()
 {
-//    for ( auto enfant : m_enfants )
-//        enfant->actualiser();
+
+    // on calcule la taille verticale des bandeaux ...
+    sf::Vector2f decallage = {0,0};
+    for ( auto enfant : ms_calque_bandeaux->m_enfants )
+    {
+        enfant->setPosition (decallage.x, decallage.y);
+        decallage.y += enfant->getTaille().y;
+
+    }
+
+    // ... pour décaller le calque du bureau ... à voir si c'est pas le bordel
+    ms_calque_bureau->setPosition ( decallage.x , decallage.y );
+
 }
 
 ///////////////////////////////////////////////////
@@ -103,6 +119,7 @@ void Interface::traiterEvenements( sf::Event evenement )
 
             if (m_boutonPresse == nullptr )
             {
+
                 // on gère le gadget survolé
                 if (m_boutonSurvole != nullptr) {
 //                        std::cout << "--------> m_boutonSurvole : " << m_boutonSurvole->getNom() << "\n";

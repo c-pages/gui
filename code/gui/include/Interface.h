@@ -52,12 +52,16 @@ public:
     /////////////////////////////////////////////////
     virtual void actualiser ( sf::Time deltaTemps ){
         Gadget::actualiser( deltaTemps );
+
     };
 
     //};
     static  ResourcesMgr<sf::Font,std::string >         ms_polices; ///< Manager des polices
     static  ResourcesMgr<sf::Texture,   std::string >   ms_images;  ///< Manager des images
 
+    static  std::shared_ptr<Calque>        ms_calque_bureau;
+    static  std::shared_ptr<Calque>        ms_calque_fenetres;
+    static  std::shared_ptr<Calque>        ms_calque_bandeaux;
 private:
     std::shared_ptr<Gadget> chercherGadgetSurvole ();
 
@@ -80,14 +84,13 @@ public:
     };
 
     static sf::RenderWindow*                    ms_fenetreSFML;      ///< La fenetyre SFML;
+
+    sf::RenderWindow*        getFenetre()  { return m_fenetre; };
 //
 //    std::vector<std::shared_ptr<Gadget>>        m_bureau;
 //    std::vector<std::shared_ptr<Gadget>>        m_fenetres;
 //    std::vector<std::shared_ptr<Gadget>>        m_supports;
 
-    std::shared_ptr<Calque>        m_calque_bureau;
-    std::shared_ptr<Calque>        m_calque_fenetres;
-    std::shared_ptr<Calque>        m_calque_supports;
 
 
     FabriqueBase    creer;                              ///< La fabrique de gadget de base (GOF: Fabrique)

@@ -207,14 +207,28 @@ void FenRedim::actualiserStyle ()
 void FenRedim::actualiser ()
 {
 
-}*/
+}
+*/
 
+
+/////////////////////////////////////////////////
+void FenRedim::corrigerTailleMinimum ()
+{
+    if ( m_taille.y < m_titre->getTaille().y + m_marge.y*2 )
+        m_taille.y = m_titre->getTaille().y + m_marge.y*2;
+
+    if ( m_taille.x < 150 +  m_marge.x*2 )
+        m_taille.x = 150 + m_marge.x*2;
+}
 
 /////////////////////////////////////////////////
 void FenRedim::redimmensionner_haut ()
 {
     auto posSouris = getPosSouris();
     m_taille = { m_taille.x , m_tailleOrigin.y - ( posSouris.y - m_sourisPosOrigin.y  ) };
+
+    corrigerTailleMinimum ();
+
     setPosition ( getPosition().x , m_posOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ));
 //    move( 0, 0 ( posSouris.y - m_sourisPosOrigin.y  ));
     actualiserGeometrie();
@@ -226,6 +240,9 @@ void FenRedim::redimmensionner_bas ()
 {
     auto posSouris = getPosSouris();
     m_taille = { m_taille.x , m_tailleOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ) };
+
+    corrigerTailleMinimum ();
+
     actualiserGeometrie();
 }
 
@@ -235,6 +252,9 @@ void FenRedim::redimmensionner_gauche ()
 {
     auto posSouris = getPosSouris();
     m_taille = { m_tailleOrigin.x - ( posSouris.x - m_sourisPosOrigin.x  ) , m_taille.y };
+
+    corrigerTailleMinimum ();
+
     setPosition ( m_posOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ),  getPosition().y );
     actualiserGeometrie();
 }
@@ -244,6 +264,7 @@ void FenRedim::redimmensionner_droite ()
 {
     auto posSouris = getPosSouris();
     m_taille = { m_tailleOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ) , m_taille.y };
+    corrigerTailleMinimum ();
     actualiserGeometrie();
 }
 

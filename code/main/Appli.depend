@@ -470,12 +470,12 @@
 	<Enums.h>
 	<ActionEvenement.h>
 
-1457186531 r:\06 - c++\110 - gui\code\gui\include\geometrie.h
+1457378513 r:\06 - c++\110 - gui\code\gui\include\geometrie.h
 	"Composite.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1457060390 r:\06 - c++\110 - gui\code\gui\include\composite.h
+1457379737 r:\06 - c++\110 - gui\code\gui\include\composite.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<vector>
@@ -486,7 +486,7 @@
 	<SFML/Graphics.hpp>
 	<functional>
 
-1457060390 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
+1457377518 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
 	"SFML/Graphics.hpp"
 	"memory"
 	"Gadget.h"
@@ -503,10 +503,12 @@
 	"gadgets\DnZoneTexte.h"
 	"gadgets\DnSlider.h"
 	"gadgets\DnBarreDefilement.h"
+	"gadgets\BtnBarreOutils.h"
 	"gadgets\PanSimple.h"
 	"gadgets\PanSliders.h"
 	"gadgets\FenSimple.h"
 	"gadgets\FenRedim.h"
+	"gadgets\SupBandeau.h"
 
 1457125195 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
 	"Affiche.h"
@@ -522,7 +524,7 @@
 1457060390 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1457269816 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1457378865 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -578,7 +580,7 @@
 	"BtnRectangle.h"
 	"AffRectangle.h"
 
-1457060390 r:\06 - c++\110 - gui\code\gui\include\donnee.h
+1457364569 r:\06 - c++\110 - gui\code\gui\include\donnee.h
 	"ActionEvenement.h"
 
 1457137642 r:\06 - c++\110 - gui\code\gui\include\gadgets\dncaseacocher.h
@@ -602,7 +604,7 @@
 	"Donnee.h"
 	"BtnRectangle.h"
 
-1457127295 r:\06 - c++\110 - gui\code\gui\include\interface.h
+1457376530 r:\06 - c++\110 - gui\code\gui\include\interface.h
 	"SFML/Graphics.hpp"
 	"Gadget.h"
 	"Calque.h"
@@ -757,12 +759,14 @@
 	"AffBarreTitre.h"
 	<memory>
 
-1456926041 r:\06 - c++\110 - gui\code\gui\include\support.h
-	"ActionEvenement.h"
+1457379618 r:\06 - c++\110 - gui\code\gui\include\support.h
+	"Gadget.h"
+	"Panneau.h"
+	"repartiteurs/Repartiteur.h"
 	<memory>
-	<Panneau.h>
+	<map>
 
-1457187958 r:\06 - c++\110 - gui\code\gui\include\gadgets\fensimple.h
+1457348850 r:\06 - c++\110 - gui\code\gui\include\gadgets\fensimple.h
 	"Fenetre.h"
 	"BtnIcone.h"
 	"BtnRectangle.h"
@@ -777,7 +781,7 @@
 1457060390 r:\06 - c++\110 - gui\code\gui\include\calque.h
 	"Gadget.h"
 
-1457187788 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenredim.h
+1457349104 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenredim.h
 	"FenSimple.h"
 	<memory>
 	"FenSimple.h"
@@ -1097,4 +1101,20 @@
 	<Ecran.h>
 	<Application.h>
 	<gui.h>
+
+1457369111 r:\06 - c++\110 - gui\code\gui\include\gadgets\supbandeau.h
+	"Support.h"
+	"AffRectangle.h"
+	<SFML/Graphics.hpp>
+	<memory>
+
+1457377011 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnbarreoutils.h
+	"Bouton.h"
+	"BtnIcone.h"
+	"Panneau.h"
+
+1457379188 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnbarreoutils.h
+	"Bouton.h"
+	"BtnIcone.h"
+	"Panneau.h"
 

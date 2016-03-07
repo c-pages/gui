@@ -60,6 +60,9 @@ public:
     /////////////////////////////////////////////////
     virtual std::shared_ptr<Gadget> retirer (std::shared_ptr<Gadget> enfant);
 
+    std::vector<std::shared_ptr<Gadget>>   getEnfants(){return  m_enfants; } ;
+
+
     /////////////////////////////////////////////////
     /// \brief Demander au parent de nous supprimer.
     ///

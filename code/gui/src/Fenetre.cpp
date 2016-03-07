@@ -48,6 +48,8 @@ void Fenetre::setDefilementActif (bool val)
 void Fenetre::ajouter (std::shared_ptr<Gadget> enfant)
 {
     m_panneau->ajouter ( enfant );
+    if (m_parent != nullptr)
+        m_parent->actualiserContenu();
 }
 
 

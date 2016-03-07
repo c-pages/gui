@@ -1,0 +1,53 @@
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
+#include <BtnBarreOutils.h>
+
+
+
+namespace gui {
+
+/////////////////////////////////////////////////
+BtnBarreOutils::BtnBarreOutils ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void BtnBarreOutils::ajouterElement (std::string nom, std::string fichierIcone, FctnAction action)
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void BtnBarreOutils::supprimerElement (unsigned int id)
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void BtnBarreOutils::actualiserGeometrie ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void BtnBarreOutils::actualiserStyle ()
+{
+    
+}
+
+
+/////////////////////////////////////////////////
+void BtnBarreOutils::draw (sf::RenderTarget& target, sf::RenderStates states) const
+{
+    
+}
+
+
+} // fin namespace gui
+

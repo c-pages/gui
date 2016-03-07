@@ -43,19 +43,19 @@ FenSimple::FenSimple ()
         setDrag( true );
         positionnerFenetre ();
 //        m_necessiteActualisation = true ;
-        actualiser ();
+//        actualiser ();
     });
     m_btnDrag->lier ( Evenement::onBtnG_relacher , [this](){
         //demander_aEtre_auDessus();
         setDrag( false );
 //        m_necessiteActualisation = false ;
-        actualiser ();
+//        actualiser ();
     });
     m_btnDrag->lier ( Evenement::onBtnG_relacherDehors , [this](){
         //demander_aEtre_auDessus();
         setDrag( false );
 //        m_necessiteActualisation = false ;
-        actualiser ();
+//        actualiser ();
     });
 
     // Action du bouton fermer

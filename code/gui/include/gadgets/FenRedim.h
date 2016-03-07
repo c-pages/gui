@@ -49,12 +49,16 @@ public:
     };
 
 private:
+
     void redimmensionner_haut ();
     void redimmensionner_bas ();
     void redimmensionner_gauche ();
     void redimmensionner_droite ();
 
     void redimmensionner ();
+
+    void corrigerTailleMinimum ();
+
 
 
 /////////////////////////////////////////////////

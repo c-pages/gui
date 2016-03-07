@@ -18,6 +18,13 @@ sf::Vector2f Geometrie::getPosAbs () const
 }
 
 
+void Geometrie::setPosition( float x , float y ){
+     sf::Transformable::setPosition( x , y );
+     actualiserBounds();
+     for ( auto enfant : m_enfants )
+        enfant->actualiserBounds();
+};
+
 /////////////////////////////////////////////////
 void Geometrie::Aligner ( std::shared_ptr<Gadget> cible, Alignement alignement, Alignement alignementCible)
 {

@@ -50,7 +50,7 @@ public:
     void ajouterMenu (std::string nom);
 
 //    void ajouterElement (std::string nom, FctnAction fonction);
-    void ajouterElement ( std::string nom, FctnAction fonction, std::string menu = ms_menuBack );
+    void ajouterElement ( std::string nom, FctnAction fonction = [](){} , std::string menu = ms_menuBack );
 
     /////////////////////////////////////////////////
     /// \brief

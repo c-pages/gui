@@ -28,7 +28,7 @@ void SupBandeauMenusDeroulants::ajouterMenu ( std::string nom )
 
     std::shared_ptr<BtnTexte>     bouton = std::make_shared<BtnTexte>( );
 
-    bouton->setMarge            ( { 5 , 2 } );
+    bouton->setMarge            ( { 5 , 5 } );
     bouton->setTexte            ( nom );
     bouton->setAutoAjuster      ( false );
     bouton->setAutoAjuster      ( true );
@@ -44,7 +44,7 @@ void SupBandeauMenusDeroulants::ajouterMenu ( std::string nom )
 
 
 
-    bouton->lier                ( Evenement::onBtnG_relacher , [nouvelElement](){
+    bouton->lier                ( Evenement::onBtnG_presser , [nouvelElement](){
         if ( ms_menuActif )
         {
             if ( nouvelElement->menu->ms_menuOuvert != nullptr )

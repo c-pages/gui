@@ -11,8 +11,8 @@ namespace gui {
 
 /////////////////////////////////////////////////
 SupBandeau::SupBandeau (){
-    m_marge = { 3 , 2 };
-    m_taille = { 150 , 30 };
+    m_marge = { 3 , 3 };
+    m_taille = { 150 , 31 };
 }
 
 

@@ -59,7 +59,7 @@ void ResourcesMgr<RESOURCE,IDENTIFIANT>::load(const IDENTIFIANT& id , Args&& ...
 
 //        throw std::runtime_error("Image: Nom unique existe deja : " + id );
 
-    std::cout << "ResourcesMgr : load '" << id << "'\n";
+//    std::cout << "ResourcesMgr : load '" << id << "'\n";
 
 //    if ( mPlan.at(id) != mPlan.end() )
 

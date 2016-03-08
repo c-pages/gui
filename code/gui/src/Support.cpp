@@ -19,7 +19,7 @@ Support::Support ()
 
     m_taille = { 150 , 28 };
 
-    m_fndCouleur        = sf::Color( 60, 60, 60 );
+    m_fndCouleur        = sf::Color( 55, 55, 55 );
     m_fndLgnCouleur     = sf::Color( 90,90,90 );
     m_fndLgnEpaisseur   = 1 ;
 

@@ -175,7 +175,7 @@ void Composite::demander_aEtre_auDessus ()
 /////////////////////////////////////////////////
 void Composite::mettre_auDessus ( std::shared_ptr<Gadget> gadget )
 {
-    std::cout << "Mettre au dessus\n";
+//    std::cout << "Mettre au dessus\n";
     // on supprime le gadget de sa place dans le tableau
     int i = 0;
     int result = 0;

@@ -179,13 +179,32 @@ EcranDemo::initGUI ()
     menusDeroulants->ajouterMenu ( "Edition" );
     menusDeroulants->ajouterElement ("Annuler", [this](){std::cout << "Annuler...\n";});
     menusDeroulants->ajouterElement ("Rétablir", [this](){std::cout << "Rétablir...\n";});
+    menusDeroulants->ajouterElement ("" );
     menusDeroulants->ajouterElement ("Copier", [this](){std::cout << "Copier...\n";});
     menusDeroulants->ajouterElement ("Couper", [this](){std::cout << "Couper...\n";});
     menusDeroulants->ajouterElement ("Coller", [this](){std::cout << "Coller...\n";});
 
     menusDeroulants->ajouterMenu ( "Aide" );
-    menusDeroulants->ajouterElement ("A propos", [this](){std::cout << "Version...\n";});
+    menusDeroulants->ajouterElement ("A propos", [this](){std::cout << "A propos...\n";
+
+                //// creation d'une fenetre
+                auto m_fenetre3 = m_interface->creer.fenetreRedim(  );
+                m_fenetre3->setPosition  ( 400 , 400 );
+                m_fenetre3->setTaille    ( { 300 , 100 });
+                m_fenetre3->setTexte ( "A propos");
+                //// contenu de la fenetre
+                auto m_texteCPourFenetre = m_interface->creer.label( "A propos \nblablabla\nblabla");
+                                                                    //Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
+            //    m_texteCPourFenetre->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
+                m_texteCPourFenetre->setPosition ( 5,5);
+                m_fenetre3->ajouter ( m_texteCPourFenetre );
+
+
+});
     menusDeroulants->ajouterElement ("Version", [this](){std::cout << "Version...\n";});
+
+
+
 
 
     auto bandeau2 = m_interface->creer.bandeau( );

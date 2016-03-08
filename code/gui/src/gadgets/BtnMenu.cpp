@@ -15,17 +15,25 @@ BtnMenu::BtnMenu ()
 , m_tailleMenu  ( { 150 , 15 } )
 , m_ecart       ( 0 )
 , m_fond        (std::make_shared<AffRectangle>())
+, m_ombre        (std::make_shared<AffRectangle>())
+, m_ombreActive ( true )
 {
     m_marge.x = 0;
     m_marge.y = 0;
+
+    m_ombre->setPosition (5,5);
+
 /*
     m_couleurLignes.set ( sf::Color( 0,255,0, 255 ) );
     m_epaisseur.set     ( 0 );*/
-    m_btnCouleurs.set   ( sf::Color( 0, 0, 0, 20 )  , Etat::desactive );
+    m_btnCouleurs.set   ( sf::Color( 0, 0, 0, 0 )  , Etat::desactive );
     m_btnCouleurs.set   ( sf::Color( 255,255,255, 0 )  , Etat::repos );
     m_btnCouleurs.set   ( sf::Color( 255,255,255, 30 ) , Etat::survol );
     m_btnCouleurs.set   ( sf::Color( 255,255,255, 100 ) , Etat::press );
 
+    m_ombreCouleur                  = sf::Color( 0,0,0, 100 );
+    m_ombreLgnCouleur               = sf::Color( 255,255,255, 255 );
+    m_ombreLgnepaisseur             = 0;
 
     m_btnLignesCouleurs     = sf::Color( 255 , 100 , 100 );
     m_btnLignesEpaisseurs   = 0;
@@ -58,7 +66,13 @@ void BtnMenu::ajouterElement (std::string nom, FctnAction fonction)
     bouton->setTexte            ( nom );
     bouton->setAutoAjuster      ( false );
     bouton->setParent           ( this );
-    bouton->setTaille           ( m_tailleMenu );
+
+    if ( nom == "" ){
+        bouton->setActif(false);
+        bouton->setTaille           ( { m_tailleMenu.x , m_tailleMenu.y/3 } );
+    } else {
+        bouton->setTaille           ( m_tailleMenu );
+    }
 
     bouton->lier                ( Evenement::onBtnG_relacher , fonction );
     nouvelElement->bouton   = bouton;
@@ -79,23 +93,28 @@ void BtnMenu::supprimerElement (unsigned int id)
 /////////////////////////////////////////////////
 void BtnMenu::actualiserBounds ()
 {
+    int decallage = m_marge.y ;
+    for ( auto element : m_elements ) {
+        decallage += element->bouton->getTaille().y + m_ecart;
+    }
     m_taille.x = m_tailleMenu.x + 2 * m_marge.x;
-    m_taille.y = m_elements.size() *  m_tailleMenu.y + ( m_elements.size()-1) * m_ecart  + 2 * m_marge.y;
+    m_taille.y = decallage + m_marge.y;
     Geometrie::actualiserBounds();
 
 }
 void BtnMenu::actualiserGeometrie()
 {
-    int index = 0;
+    int decallage = m_marge.y ;
     for ( auto element : m_elements ) {
 
-        element->bouton->setPosition    ( m_marge.x , index * ( m_tailleMenu.y + m_ecart ) + m_marge.y );
+        element->bouton->setPosition    ( m_marge.x , decallage );
         element->bouton->setTexte       ( element->nom );
-
-        index++;
+        decallage += element->bouton->getTaille().y + m_ecart;
     }
+    m_taille.y = decallage + m_marge.y;
     actualiserBounds ();
     m_fond->setTaille( m_taille );
+    m_ombre->setTaille( m_taille );
 }
 
 /////////////////////////////////////////////////
@@ -119,6 +138,9 @@ void BtnMenu::actualiserStyle()
     m_fond->setOutlineColor      ( m_fndLignesCouleur );
     m_fond->setOutlineThickness  ( m_fndLignesEpaisseur );
 
+    m_ombre->setFillColor            ( m_ombreCouleur ) ;
+    m_ombre->setOutlineColor         ( m_ombreLgnCouleur  ) ;
+    m_ombre->setOutlineThickness     ( m_ombreLgnepaisseur  );
 }
 
 /////////////////////////////////////////////////
@@ -170,7 +192,10 @@ void BtnMenu::draw (sf::RenderTarget& target, sf::RenderStates states) const
     //On applique la transformation
     states.transform *= getTransform();
 
-   target.draw ( *m_fond , states ) ;
+    if ( m_ombreActive )
+        target.draw ( *m_ombre , states ) ;
+
+    target.draw ( *m_fond , states ) ;
 
     // On dessine les éléments
     for ( auto element : m_elements )

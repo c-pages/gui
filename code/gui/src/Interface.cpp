@@ -42,7 +42,8 @@ Interface::Interface( sf::RenderWindow* fenetre )
     ajouter ( ms_calque_menuDeroulants );
 
     // les tailles
-    m_taille = { m_fenetre->getSize().x ,m_fenetre->getSize().y };
+//    m_taille = { m_fenetre->getSize().x ,m_fenetre->getSize().y };
+    m_taille = { 1920 , 1080 };
     ms_calque_bureau->setTaille    ( m_taille );
     ms_calque_bandeaux->setTaille  ( m_taille );
     ms_calque_fenetres->setTaille  ( m_taille );

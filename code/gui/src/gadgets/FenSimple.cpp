@@ -66,13 +66,13 @@ FenSimple::FenSimple ()
 
     // Action du gadget
     this->lier ( Evenement::onBtnG_presser , [this](){
-        std::cout << "Fenetre presse\n";
+//        std::cout << "Fenetre presse\n";
         demander_aEtre_auDessus ();
     });
 
 
 
-    m_titreFondCouleur      = sf::Color( 65,65,65);
+    m_titreFondCouleur      = sf::Color( 55,55,55);
     m_titreFondLgnCouleur   = sf::Color( 90,90,90);
     m_titreFondLgnepaisseur = 1;
     m_titreTextCouleur      = sf::Color( 200,200,200);

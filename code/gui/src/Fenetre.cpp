@@ -27,7 +27,7 @@ Fenetre::Fenetre ()
     m_panneauContenantLgnCouleur    = sf::Color( 90,90,90, 255 );
     m_panneauContenantLgnepaisseur  = 0;
 
-    m_fondCouleur                   = sf::Color( 70,70,70, 255 );
+    m_fondCouleur                   = sf::Color( 55,55,55, 255 );
     m_fondLgnCouleur                = sf::Color( 90,90,90, 255 );
     m_fondLgnepaisseur              = 1;
 

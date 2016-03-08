@@ -31,7 +31,7 @@ AffImage::AffImage ()
 /////////////////////////////////////////////////
 void AffImage::chargerDepuisFichier ( std::string fichier )
 {
-    std::cout << "AffImage : chargerDepuisFichier : " << fichier << "\n";
+//    std::cout << "AffImage : chargerDepuisFichier : " << fichier << "\n";
     std::string nomUniqueImage = Interface::ms_images.nomDefautSuivant();
 
     Interface::ms_images.load ( nomUniqueImage , fichier );

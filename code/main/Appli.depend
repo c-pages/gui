@@ -481,7 +481,7 @@
 	<vector>
 	<iostream>
 
-1457060390 r:\06 - c++\110 - gui\code\gui\include\actionclavier.h
+1457389518 r:\06 - c++\110 - gui\code\gui\include\actionclavier.h
 	<map>
 	<SFML/Graphics.hpp>
 	<functional>
@@ -525,7 +525,7 @@
 1457060390 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1457381638 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1457398550 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -569,7 +569,7 @@
 	"gadgets\AffLabel.h"
 	<SFML/Graphics.hpp>
 
-1457135833 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnmenu.h
+1457395721 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnmenu.h
 	"Bouton.h"
 	"AffRectangle.h"
 	"BtnTexte.h"
@@ -605,7 +605,7 @@
 	"Donnee.h"
 	"BtnRectangle.h"
 
-1457376530 r:\06 - c++\110 - gui\code\gui\include\interface.h
+1457395623 r:\06 - c++\110 - gui\code\gui\include\interface.h
 	"SFML/Graphics.hpp"
 	"Gadget.h"
 	"Calque.h"
@@ -1103,7 +1103,7 @@
 	<Application.h>
 	<gui.h>
 
-1457369111 r:\06 - c++\110 - gui\code\gui\include\gadgets\supbandeau.h
+1457389936 r:\06 - c++\110 - gui\code\gui\include\gadgets\supbandeau.h
 	"Support.h"
 	"AffRectangle.h"
 	<SFML/Graphics.hpp>
@@ -1119,8 +1119,9 @@
 	"BtnIcone.h"
 	"Panneau.h"
 
-1457348417 r:\06 - c++\110 - gui\code\gui\include\gadgets\supbandeaumenusderoulants.h
-	"Support.h"
+1457398028 r:\06 - c++\110 - gui\code\gui\include\gadgets\supbandeaumenusderoulants.h
+	"SupBandeau.h"
+	"BtnTexte.h"
 	<SFML/Graphics.hpp>
 	<memory>
 

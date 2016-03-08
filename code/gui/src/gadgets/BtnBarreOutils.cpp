@@ -18,7 +18,7 @@ BtnBarreOutils::BtnBarreOutils ( )
     m_taille  = { 10, 26 };
     m_marge  = { 2,2 };
     m_tailleBouton = { m_taille.y - 2*m_marge.y , m_taille.y - 2*m_marge.y };
-    m_largeurDrag = 7 ;
+    m_largeurDrag = 5 ;
 
     ajouterComposant( m_ombre );
     ajouterComposant( m_fond );

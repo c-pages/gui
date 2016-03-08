@@ -74,6 +74,10 @@ public:
 /////////////////////////////////////////////////
 public:
 
+    static  std::shared_ptr<BtnMenu>        ms_menuOuvert;
+
+protected:
+
     // les proprietés fonctionnelles
     sf::Vector2i                    m_tailleMenu;   ///< La taille d'un bouton du menu
     float                           m_ecart;

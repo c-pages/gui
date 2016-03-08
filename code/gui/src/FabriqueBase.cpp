@@ -308,7 +308,18 @@ std::shared_ptr<SupBandeau>    FabriqueBase::bandeau(  )
 /////////////////////////////////////////////////
 std::shared_ptr<SupBandeauMenusDeroulants>    FabriqueBase::menusDeroulants(  )
 {
-    auto nouveauGadget = creerSupport<SupBandeauMenusDeroulants>( );
+//    auto nouveauGadget = creerSupport<SupBandeauMenusDeroulants>( );
+
+    std::shared_ptr<SupBandeauMenusDeroulants> nouveauGadget = std::make_shared<SupBandeauMenusDeroulants>( );
+
+    // La hierarchie
+    m_interfaceParent->ms_calque_bandeauMenuDeroulants->ajouter ( nouveauGadget );
+
+    // la reference à l'interface parent.
+    nouveauGadget->setInterface( m_interfaceParent );
+
+
+
     return nouveauGadget;
 }
 

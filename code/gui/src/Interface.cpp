@@ -13,9 +13,11 @@ ResourcesMgr<sf::Font,std::string >         Interface::ms_polices = {};
 ResourcesMgr<sf::Texture,   std::string >   Interface::ms_images = {};
 
 
-std::shared_ptr<Calque>        Interface::ms_calque_bureau      = std::make_shared<Calque>();
-std::shared_ptr<Calque>        Interface::ms_calque_fenetres    = std::make_shared<Calque>();
-std::shared_ptr<Calque>        Interface::ms_calque_bandeaux    = std::make_shared<Calque>();
+std::shared_ptr<Calque>        Interface::ms_calque_bureau          = std::make_shared<Calque>();
+std::shared_ptr<Calque>        Interface::ms_calque_fenetres        = std::make_shared<Calque>();
+std::shared_ptr<Calque>        Interface::ms_calque_bandeaux        = std::make_shared<Calque>();
+std::shared_ptr<Calque>        Interface::ms_calque_bandeauMenuDeroulants  = std::make_shared<Calque>();
+std::shared_ptr<Calque>        Interface::ms_calque_menuDeroulants  = std::make_shared<Calque>();
 
 /////////////////////////////////////////////////
 Interface::Interface( sf::RenderWindow* fenetre )
@@ -35,13 +37,17 @@ Interface::Interface( sf::RenderWindow* fenetre )
     // les calques
     ajouter ( ms_calque_bureau );
     ajouter ( ms_calque_bandeaux );
+    ajouter ( ms_calque_bandeauMenuDeroulants );
     ajouter ( ms_calque_fenetres );
+    ajouter ( ms_calque_menuDeroulants );
 
     // les tailles
     m_taille = { m_fenetre->getSize().x ,m_fenetre->getSize().y };
     ms_calque_bureau->setTaille    ( m_taille );
     ms_calque_bandeaux->setTaille  ( m_taille );
     ms_calque_fenetres->setTaille  ( m_taille );
+    ms_calque_menuDeroulants->setTaille  ( m_taille );
+    ms_calque_bandeauMenuDeroulants->setTaille  ( m_taille );
 
     // initialiser les polices
     ms_polices.load( "Defaut"  , "media/polices/consola.ttf" );
@@ -75,11 +81,15 @@ void Interface::actualiser ()
 
     // on calcule la taille verticale des bandeaux ...
     sf::Vector2f decallage = {0,0};
+    for ( auto enfant : ms_calque_bandeauMenuDeroulants->m_enfants )
+    {
+        enfant->setPosition (decallage.x, decallage.y);
+        decallage.y += enfant->getTaille().y;
+    }
     for ( auto enfant : ms_calque_bandeaux->m_enfants )
     {
         enfant->setPosition (decallage.x, decallage.y);
         decallage.y += enfant->getTaille().y;
-
     }
 
     // ... pour décaller le calque du bureau ... à voir si c'est pas le bordel

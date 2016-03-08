@@ -35,9 +35,13 @@ void ActionEvenement::delier ( Evenement evenement )
 /////////////////////////////////////////////////
 void ActionEvenement::declencher ( Evenement evenement )
 {
-    auto cherche = m_evenementsSouris.find( evenement );
-    if ( cherche != m_evenementsSouris.end() )
-        cherche->second();
+    if (estVisible() && estActif())
+    {
+//        std::cout << "DECLENCHER\n";
+        auto cherche = m_evenementsSouris.find( evenement );
+        if ( cherche != m_evenementsSouris.end() )
+            cherche->second();
+    }
 }
 
 

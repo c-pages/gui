@@ -162,13 +162,32 @@ EcranDemo::initGUI ()
 
     /////// Label retour ///////
     m_labelRetour = m_interface->creer.label( "Retour :" );
-    m_labelRetour->setPosition    ( 20 , 5 );
+    m_labelRetour->setPosition    ( 20 , 55 );
 //    m_labelRetour->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
     /////// Bandeau ///////
-    auto bandeau = m_interface->creer.bandeau( );
+//    auto bandeau = m_interface->creer.bandeau( );
+    auto menusDeroulants = m_interface->creer.menusDeroulants( );
+    menusDeroulants->ajouterMenu ( "Fichier" );
+    menusDeroulants->ajouterElement ("Nouveau", [this](){std::cout << "Nouveau fichier...\n";});
+    menusDeroulants->ajouterElement ("Ouvrir", [this](){std::cout << "Ouvrir fichier...\n";});
+    menusDeroulants->ajouterElement ("Enregistrer", [this](){std::cout << "Enregistrer fichier...\n";});
+    menusDeroulants->ajouterElement ("Enregistrer sous", [this](){std::cout << "Enregistrer fichier sous...\n";});
+
+    menusDeroulants->ajouterMenu ( "Edition" );
+    menusDeroulants->ajouterElement ("Annuler", [this](){std::cout << "Annuler...\n";});
+    menusDeroulants->ajouterElement ("Rétablir", [this](){std::cout << "Rétablir...\n";});
+    menusDeroulants->ajouterElement ("Copier", [this](){std::cout << "Copier...\n";});
+    menusDeroulants->ajouterElement ("Couper", [this](){std::cout << "Couper...\n";});
+    menusDeroulants->ajouterElement ("Coller", [this](){std::cout << "Coller...\n";});
+
+    menusDeroulants->ajouterMenu ( "Aide" );
+    menusDeroulants->ajouterElement ("A propos", [this](){std::cout << "Version...\n";});
+    menusDeroulants->ajouterElement ("Version", [this](){std::cout << "Version...\n";});
+
+
     auto bandeau2 = m_interface->creer.bandeau( );
 
     auto barreOutil = m_interface->creer.barreOutils( );

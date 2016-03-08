@@ -7,6 +7,7 @@
 
 
 namespace gui {
+std::shared_ptr<BtnMenu>        BtnMenu::ms_menuOuvert = nullptr;
 
 /////////////////////////////////////////////////
 BtnMenu::BtnMenu ()
@@ -163,6 +164,9 @@ std::shared_ptr<Gadget> BtnMenu::chercherEnfantSurvole ( sf::Vector2i pos )
 /////////////////////////////////////////////////
 void BtnMenu::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
+    if ( ! estVisible() )
+        return;
+
     //On applique la transformation
     states.transform *= getTransform();
 

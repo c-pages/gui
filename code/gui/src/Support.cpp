@@ -38,6 +38,7 @@ void Support::actualiserGeometrie ()
     }
     m_fond->setTaille ( m_taille );
 //    m_panneaux->setTaille ( { m_taille.x - 2*m_marge.x , m_taille.y - 2*m_marge.y });
+
 }
 
 

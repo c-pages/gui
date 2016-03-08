@@ -62,6 +62,10 @@ public:
     static  std::shared_ptr<Calque>        ms_calque_bureau;
     static  std::shared_ptr<Calque>        ms_calque_fenetres;
     static  std::shared_ptr<Calque>        ms_calque_bandeaux;
+    static  std::shared_ptr<Calque>        ms_calque_bandeauMenuDeroulants;
+    static  std::shared_ptr<Calque>        ms_calque_menuDeroulants;
+
+
 private:
     std::shared_ptr<Gadget> chercherGadgetSurvole ();
 
@@ -99,6 +103,9 @@ public:
 
 
     std::shared_ptr<Gadget>     m_boutonSurvole;    ///< Le bouton survolé actuelement par la souris.
+//
+//    static  std::shared_ptr<BtnMenu>        ms_menuOuvert;
+
 private:
     std::shared_ptr<Gadget>     m_boutonPresse;     ///< Le bouton pressé actuelement par la souris.
     sf::RenderWindow*           m_fenetre;          ///< La fenetyre SFML;

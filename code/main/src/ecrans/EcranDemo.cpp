@@ -215,7 +215,7 @@ EcranDemo::initGUI ()
 
     auto bandeau2 = m_interface->creer.bandeau( );
 
-    auto barreOutil = m_interface->creer.barreOutils( );
+    auto barreOutil = m_interface->creer.barreFonctions( );
     bandeau2->ajouter( barreOutil );
 
     barreOutil->ajouterElement ("Nouveau", "media/img/ico_fichiers.png" , [this](){std::cout << "Execute la fonction de creation d'un nouveau fichier.\n";} );
@@ -224,7 +224,7 @@ EcranDemo::initGUI ()
     barreOutil->ajouterElement ("Sauvegarder sous", "media/img/ico_fichiers.png" , [this](){std::cout << "Execute la fonction de sauvegarde sous du fichier.\n";} );
 
     auto bandeau3 = m_interface->creer.bandeau( );
-    auto barreOutil2 = m_interface->creer.barreOutils( );
+    auto barreOutil2 = m_interface->creer.barreFonctions( );
     bandeau3->ajouter( barreOutil2 );
 
     barreOutil2->ajouterElement ("Lecture", "media/img/ico_lecteur.png" , [this](){std::cout << "Execute la fonction Lecture\n";} );

@@ -274,9 +274,9 @@ std::shared_ptr<DnBarreDefilement>        FabriqueBase::barreDefilement( )
 }
 
 /////////////////////////////////////////////////
-std::shared_ptr<BtnBarreOutils>    FabriqueBase::barreOutils(  )
+std::shared_ptr<BtnBarreFonctions>    FabriqueBase::barreFonctions(  )
 {
-    auto nouveauGadget = creerGadget<BtnBarreOutils>( );
+    auto nouveauGadget = creerGadget<BtnBarreFonctions>( );
     return nouveauGadget;
 }
 

@@ -147,7 +147,6 @@ void    SupPanneau::actualiserGeometrie ()
         switch ( m_cote ) {
             case Cote::Droite:
                 m_btn_gauche->setVisible ( false );
-                setPosition( getPosition().x  + m_taille.x - tailleTmp.x, getPosition().y );
                 break;
             case Cote::Gauche:
                 m_btn_droite->setVisible ( false );

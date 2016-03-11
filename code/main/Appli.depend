@@ -486,7 +486,7 @@
 	<SFML/Graphics.hpp>
 	<functional>
 
-1457650650 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
+1457698469 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
 	"SFML/Graphics.hpp"
 	"memory"
 	"Gadget.h"
@@ -503,7 +503,7 @@
 	"gadgets\DnZoneTexte.h"
 	"gadgets\DnSlider.h"
 	"gadgets\DnBarreDefilement.h"
-	"gadgets\BtnBarreOutils.h"
+	"gadgets\BtnBarreFonctions.h"
 	"gadgets\GrpSimple.h"
 	"gadgets\GrpSliders.h"
 	"gadgets\FenSimple.h"
@@ -1167,4 +1167,9 @@
 
 1457664801 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenpanneau.h
 	<gadgets/FenSimple.h>
+
+1457698319 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnbarrefonctions.h
+	"Bouton.h"
+	"BtnIcone.h"
+	"Groupe.h"
 

@@ -26,7 +26,7 @@
 #include "gadgets\DnZoneTexte.h"
 #include "gadgets\DnSlider.h"
 #include "gadgets\DnBarreDefilement.h"
-#include "gadgets\BtnBarreOutils.h"
+#include "gadgets\BtnBarreFonctions.h"
 
 // GROUPEMENT
 #include "gadgets\GrpSimple.h"
@@ -203,7 +203,7 @@ public:
     ///
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<BtnBarreOutils>        barreOutils( );
+    std::shared_ptr<BtnBarreFonctions>        barreFonctions( );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // GROUPEMENT

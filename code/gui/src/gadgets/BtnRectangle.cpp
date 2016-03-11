@@ -68,7 +68,7 @@ void BtnRectangle::actualiserStyle ()
     m_rectangle->setOutlineThickness ( m_epaisseur.get( this->etat() ) ) ;
 
     // actualiser
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+    //if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }
 
 

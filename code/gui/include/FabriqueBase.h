@@ -25,7 +25,7 @@
 #include "gadgets\DnCaseACocher.h"
 #include "gadgets\DnZoneTexte.h"
 #include "gadgets\DnSlider.h"
-#include "gadgets\DnBarreDefilement.h"
+//#include "gadgets\DnBarreDefilement.h"
 #include "gadgets\BtnBarreFonctions.h"
 
 // GROUPEMENT
@@ -33,9 +33,9 @@
 #include "gadgets\GrpSliders.h"
 
 // FENTRES
-#include "gadgets\FenSimple.h"
-#include "gadgets\FenRedim.h"
-#include "gadgets\FenPanneau.h"
+#include "gadgets\Fenetre.h"
+//#include "gadgets\FenRedim.h"
+//#include "gadgets\FenPanneau.h"
 
 // SUPPORTS
 #include "gadgets\SupBandeau.h"
@@ -191,12 +191,12 @@ public:
     /////////////////////////////////////////////////
     std::shared_ptr<DnSlider>        slider( );
 
-    /////////////////////////////////////////////////
-    /// \brief  Création d'une barre de defilement pour deplacer un contenu à l'interieur d'un panneau
-    ///
-    /// \return Un pointeur vers le nouveau gadget.
-    /////////////////////////////////////////////////
-    std::shared_ptr<DnBarreDefilement>        barreDefilement( );
+//    /////////////////////////////////////////////////
+//    /// \brief  Création d'une barre de defilement pour deplacer un contenu à l'interieur d'un panneau
+//    ///
+//    /// \return Un pointeur vers le nouveau gadget.
+//    /////////////////////////////////////////////////
+//    std::shared_ptr<DnBarreDefilement>        barreDefilement( );
 
     /////////////////////////////////////////////////
     /// \brief  Création d'une barre de defilement pour deplacer un contenu à l'interieur d'un panneau
@@ -231,23 +231,23 @@ public:
     ///
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<FenSimple>        fenetre( std::string titre = "Fenêtre" );
+    std::shared_ptr<Fenetre>        fenetre( std::string titre = "Fenêtre" );
 
 
-    /////////////////////////////////////////////////
-    /// \brief  Création d'un panneau
-    ///
-    /// \return Un pointeur vers le nouveau gadget.
-    /////////////////////////////////////////////////
-    std::shared_ptr<FenRedim>        fenetreRedim( std::string titre = "Fenêtre" );
+//    /////////////////////////////////////////////////
+//    /// \brief  Création d'un panneau
+//    ///
+//    /// \return Un pointeur vers le nouveau gadget.
+//    /////////////////////////////////////////////////
+//    std::shared_ptr<FenRedim>        fenetreRedim( std::string titre = "Fenêtre" );
 
 
-    /////////////////////////////////////////////////
-    /// \brief  Création d'un panneau
-    ///
-    /// \return Un pointeur vers le nouveau gadget.
-    /////////////////////////////////////////////////
-    std::shared_ptr<FenPanneau>        panneau( std::string titre = "Panneau" );
+//    /////////////////////////////////////////////////
+//    /// \brief  Création d'un panneau
+//    ///
+//    /// \return Un pointeur vers le nouveau gadget.
+//    /////////////////////////////////////////////////
+//    std::shared_ptr<FenPanneau>        panneau( std::string titre = "Panneau" );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // SUPPORTS

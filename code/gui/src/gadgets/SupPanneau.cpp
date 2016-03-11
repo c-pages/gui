@@ -96,13 +96,13 @@ void SupPanneau::corrigerTailleMinimum ()
 /////////////////////////////////////////////////
 void    SupPanneau::ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i positionEcran )
 {
-    std::cout << "Ajouter avec position\n";
+//    std::cout << "Ajouter avec position\n";
     int i = 0;
     for ( auto enfant : m_enfants )
     {
         if ( gadget->getPosAbs().y  < enfant->getPosAbs().y  )
         {
-            std::cout << "  ... test ok : " << i << "\n";
+//            std::cout << "  ... test ok : " << i << "\n";
               // si l'enfant avait un parent on le retire de sa liste des enfants
             auto parentBack = gadget->getParent();
             if ( parentBack != nullptr )

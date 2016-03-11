@@ -7,7 +7,7 @@
 #include "Groupe.h"
 #include "AffRectangle.h"
 #include "AffImage.h"
-#include "DnBarreDefilement.h"
+//#include "DnBarreDefilement.h"
 #include "Groupe.h"
 #include "repartiteurs/Repartiteur.h"
 #include "repartiteurs/RepartiteurGrille.h"

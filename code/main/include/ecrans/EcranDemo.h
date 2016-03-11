@@ -94,7 +94,7 @@ private:
     void lierMachiner ();
     void delierMachiner ();
 
-private:ç
+private:
 
     /////////////////////////////////////////////////
     // Les membres

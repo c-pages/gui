@@ -44,10 +44,11 @@ class Geometrie : public sf::Transformable, public gui::Composite {
 
 public:
     ///< Definir m_taille
-    virtual void setTaille( float x, float y ){ m_taille = {x,y}; actualiser(); };
-    virtual void setTaille( sf::Vector2i val ){ m_taille = val; actualiser(); };
-    virtual void setTailleX( float val ){ m_taille.x = val; actualiser(); };
-    virtual void setTailleY( float val ){ m_taille.y = val; actualiser(); };
+    virtual void setTaille( float x, float y ){ m_taille = {x,y}; actualiserGeometrie(); };
+    virtual void setTaille( sf::Vector2i val ){ m_taille = val; actualiserGeometrie(); };
+    virtual void setTailleX( float val ){ m_taille.x = val; actualiserGeometrie(); };
+    virtual void setTailleY( float val ){ m_taille.y = val; actualiserGeometrie(); };
+
 
     ///< Acceder à m_taille
     virtual sf::Vector2i getTaille () const { return m_taille;  };
@@ -66,6 +67,10 @@ public:
 
     ///< reDefinir setPosition
     virtual     void setPosition( float x , float y );
+
+    /////////////////////////////////////////////////
+    void setPosAbs (sf::Vector2f posAbsDest );
+
 
     /////////////////////////////////////////////////
     /// \brief Calculer la position absolue du gadget.

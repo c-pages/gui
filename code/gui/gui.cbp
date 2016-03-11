@@ -73,7 +73,6 @@
 		<Unit filename="include/Donnee.h" />
 		<Unit filename="include/Enums.h" />
 		<Unit filename="include/FabriqueBase.h" />
-		<Unit filename="include/Fenetre.h" />
 		<Unit filename="include/Gadget.h" />
 		<Unit filename="include/Geometrie.h" />
 		<Unit filename="include/Groupe.h" />
@@ -94,18 +93,18 @@
 		<Unit filename="include/gadgets/BtnMenu.h" />
 		<Unit filename="include/gadgets/BtnRectangle.h" />
 		<Unit filename="include/gadgets/BtnTexte.h" />
-		<Unit filename="include/gadgets/DnBarreDefilement.h" />
 		<Unit filename="include/gadgets/DnCaseACocher.h" />
 		<Unit filename="include/gadgets/DnSlider.h" />
 		<Unit filename="include/gadgets/DnZoneTexte.h" />
-		<Unit filename="include/gadgets/FenPanneau.h" />
-		<Unit filename="include/gadgets/FenRedim.h" />
-		<Unit filename="include/gadgets/FenSimple.h" />
+		<Unit filename="include/gadgets/Fenetre.h" />
 		<Unit filename="include/gadgets/GrpSimple.h" />
 		<Unit filename="include/gadgets/GrpSliders.h" />
 		<Unit filename="include/gadgets/SupBandeau.h" />
 		<Unit filename="include/gadgets/SupBandeauMenusDeroulants.h" />
 		<Unit filename="include/gadgets/SupPanneau.h" />
+		<Unit filename="include/gadgets/decorations/FenDecoDrag.h" />
+		<Unit filename="include/gadgets/decorations/FenDecoRedim.h" />
+		<Unit filename="include/gadgets/decorations/FenDecoration.h" />
 		<Unit filename="include/repartiteurs/Repartiteur.h" />
 		<Unit filename="include/repartiteurs/RepartiteurGrille.h" />
 		<Unit filename="include/repartiteurs/RepartiteurHorizontal.h" />
@@ -120,7 +119,6 @@
 		<Unit filename="src/Composite.cpp" />
 		<Unit filename="src/Donnee.cpp" />
 		<Unit filename="src/FabriqueBase.cpp" />
-		<Unit filename="src/Fenetre.cpp" />
 		<Unit filename="src/Gadget.cpp" />
 		<Unit filename="src/Geometrie.cpp" />
 		<Unit filename="src/Groupe.cpp" />
@@ -139,18 +137,18 @@
 		<Unit filename="src/gadgets/BtnMenu.cpp" />
 		<Unit filename="src/gadgets/BtnRectangle.cpp" />
 		<Unit filename="src/gadgets/BtnTexte.cpp" />
-		<Unit filename="src/gadgets/DnBarreDefilement.cpp" />
 		<Unit filename="src/gadgets/DnCaseACocher.cpp" />
 		<Unit filename="src/gadgets/DnSlider.cpp" />
 		<Unit filename="src/gadgets/DnZoneTexte.cpp" />
-		<Unit filename="src/gadgets/FenPanneau.cpp" />
-		<Unit filename="src/gadgets/FenRedim.cpp" />
-		<Unit filename="src/gadgets/FenSimple.cpp" />
+		<Unit filename="src/gadgets/Fenetre.cpp" />
 		<Unit filename="src/gadgets/GrpSimple.cpp" />
 		<Unit filename="src/gadgets/GrpSliders.cpp" />
 		<Unit filename="src/gadgets/SupBandeau.cpp" />
 		<Unit filename="src/gadgets/SupBandeauMenusDeroulants.cpp" />
 		<Unit filename="src/gadgets/SupPanneau.cpp" />
+		<Unit filename="src/gadgets/decorations/FenDecoDrag.cpp" />
+		<Unit filename="src/gadgets/decorations/FenDecoRedim.cpp" />
+		<Unit filename="src/gadgets/decorations/FenDecoration.cpp" />
 		<Unit filename="src/repartiteurs/Repartiteur.cpp" />
 		<Unit filename="src/repartiteurs/RepartiteurGrille.cpp" />
 		<Unit filename="src/repartiteurs/RepartiteurHorizontal.cpp" />
@@ -160,6 +158,15 @@
 			<code_completion />
 			<envvars />
 			<debugger />
+			<DoxyBlocks>
+				<comment_style block="5" line="2" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

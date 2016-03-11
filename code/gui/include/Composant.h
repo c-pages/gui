@@ -29,7 +29,6 @@ class Composant {
 public:
     virtual void traiterEvenementsComposants (const sf::Event& evenement);
 
-protected:
     /////////////////////////////////////////////////
     /// \brief Ajouter un gadget à la liste de gadgets enfant.
     ///
@@ -65,6 +64,7 @@ protected:
     void actualiserComposants ();
 
 
+protected:
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////

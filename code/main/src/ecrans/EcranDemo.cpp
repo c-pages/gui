@@ -178,35 +178,35 @@ EcranDemo::initGUI ()
     menusDeroulants->ajouterElement ("Enregistrer sous", [this](){std::cout << "Enregistrer fichier sous...\n";});
 
     menusDeroulants->ajouterMenu ( "Edition" );
-    menusDeroulants->ajouterElement ("Annuler", [this](){std::cout << "Annuler...\n";});
-    menusDeroulants->ajouterElement ("Rétablir", [this](){std::cout << "Rétablir...\n";});
-    menusDeroulants->ajouterElement ("" );
-    menusDeroulants->ajouterElement ("Copier", [this](){std::cout << "Copier...\n";});
-    menusDeroulants->ajouterElement ("Couper", [this](){std::cout << "Couper...\n";});
-    menusDeroulants->ajouterElement ("Coller", [this](){std::cout << "Coller...\n";});
+    menusDeroulants->ajouterElement ( "Annuler", [this](){std::cout << "Annuler...\n";});
+    menusDeroulants->ajouterElement ( "Rétablir", [this](){std::cout << "Rétablir...\n";});
+    menusDeroulants->ajouterElement ( "" );
+    menusDeroulants->ajouterElement ( "Copier", [this](){std::cout << "Copier...\n";});
+    menusDeroulants->ajouterElement ( "Couper", [this](){std::cout << "Couper...\n";});
+    menusDeroulants->ajouterElement ( "Coller", [this](){std::cout << "Coller...\n";});
 
     menusDeroulants->ajouterMenu ( "Aide" );
     menusDeroulants->ajouterElement ("A propos", [this](){std::cout << "A propos...\n";
 
-                //// creation d'une fenetre
-                auto m_fenetre3 = m_interface->creer.fenetreRedim(  );
-                m_fenetre3->setPosition  ( 400 , 400 );
-                m_fenetre3->setTaille    ( { 300 , 100 });
-                m_fenetre3->setTexte ( "A propos");
-                //// contenu de la fenetre
-                auto m_texteCPourFenetre = m_interface->creer.label( "A propos ");
-                auto m_texteDPourFenetre = m_interface->creer.label( "blablabla\nblablablablabla\nblablablablablablabla\nblabla");
-                                                                    //Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
-            //    m_texteCPourFenetre->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
-                m_texteCPourFenetre->setPosition ( 5,5);
-                m_texteCPourFenetre->setTexteTaille ( 20 );
-                m_fenetre3->ajouter ( m_texteCPourFenetre );
+            //// creation d'une fenetre
+            auto m_fenetre3 = m_interface->creer.fenetre(  );
+            m_fenetre3->setPosition  ( 400 , 400 );
+            m_fenetre3->setTaille    ( { 300 , 100 });
+            m_fenetre3->setTexte ( "A propos");
+            //// contenu de la fenetre
+            auto m_texteCPourFenetre = m_interface->creer.label( "A propos ");
+            auto m_texteDPourFenetre = m_interface->creer.label( "blablabla\nblablablablabla\nblablablablablablabla\nblabla");
+                                                                //Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
+        //    m_texteCPourFenetre->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
+            m_texteCPourFenetre->setPosition ( 5,5);
+            m_texteCPourFenetre->setTexteTaille ( 20 );
+            m_fenetre3->ajouter ( m_texteCPourFenetre );
 
-                m_texteDPourFenetre->setPosition ( 5,30 );
-                m_texteDPourFenetre->setTexteTaille ( 12 );
-                m_fenetre3->ajouter ( m_texteDPourFenetre );
+            m_texteDPourFenetre->setPosition ( 5,30 );
+            m_texteDPourFenetre->setTexteTaille ( 12 );
+            m_fenetre3->ajouter ( m_texteDPourFenetre );
 
-});
+        });
     menusDeroulants->ajouterElement ("Version", [this](){std::cout << "Version...\n";});
 
 
@@ -237,10 +237,10 @@ EcranDemo::initGUI ()
     auto panneau_G = m_interface->creer.supportPanneaux();
     panneau_G->setCote ( gui::Cote::Droite );
 
-    auto panneau_G2 = m_interface->creer.supportPanneaux();
-    panneau_G->setCote ( gui::Cote::Droite );
+//    auto panneau_G2 = m_interface->creer.supportPanneaux();
+//    panneau_G->setCote ( gui::Cote::Droite );
 
-    auto fenetrePanneauD_1 = m_interface->creer.panneau("Test 1");
+    auto fenetrePanneauD_1 = m_interface->creer.fenetre("Test 1");
     fenetrePanneauD_1->setTaille( {500,500});
     panneau_G->ajouter ( fenetrePanneauD_1 );
 
@@ -251,17 +251,17 @@ EcranDemo::initGUI ()
 
     auto panneau_D = m_interface->creer.supportPanneaux();
 
-    auto fenetrePanneau_1 = m_interface->creer.panneau("Test 1");
+    auto fenetrePanneau_1 = m_interface->creer.fenetre("Test 1");
     panneau_D->ajouter ( fenetrePanneau_1 );
-    fenetrePanneau_1->reduire();
+//    fenetrePanneau_1->reduire();
 
-    auto fenetrePanneau_2 = m_interface->creer.panneau("Test 2");
+    auto fenetrePanneau_2 = m_interface->creer.fenetre("Test 2");
     panneau_D->ajouter ( fenetrePanneau_2 );
-    fenetrePanneau_2->reduire();
+//    fenetrePanneau_2->reduire();
 
-    auto fenetrePanneau_3 = m_interface->creer.panneau("Test 3");
+    auto fenetrePanneau_3 = m_interface->creer.fenetre("Test 3");
     panneau_D->ajouter ( fenetrePanneau_3 );
-    fenetrePanneau_3->reduire();
+//    fenetrePanneau_3->reduire();
 }
 
 
@@ -316,7 +316,7 @@ EcranDemo::initGUI_test_Fenetres  ()
 
 
     //// creation d'une fenetre
-    auto m_fenetre2 = m_interface->creer.fenetreRedim(  );
+    auto m_fenetre2 = m_interface->creer.fenetre(  );
     m_fenetre2->setPosition  ( m_fenetre->getPosition().x + 40 , m_fenetre->getPosition().y + 40 );
     m_fenetre2->setTaille    ( { 300 , 100 });
 //    m_fenetre2->setStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );

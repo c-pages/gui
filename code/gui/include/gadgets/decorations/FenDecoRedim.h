@@ -1,37 +1,21 @@
-#ifndef FENREDIM__H
-#define FENREDIM__H
+#ifndef FENDECOREDIM_H
+#define FENDECOREDIM_H
 
-/////////////////////////////////////////////////
-// Headers
-/////////////////////////////////////////////////
-#include "FenSimple.h"
-#include <memory>
-#include "FenSimple.h"
+#include <decorations/FenDecoration.h>
+#include <Valeurs.h>
+#include <ActionEvenement.h>
 
+namespace gui{
+class BtnRectangle;
+class FenDecoRedim : public FenDecoration
+{
+    public:
 
+        FenDecoRedim( Fenetre* fenetre );
 
-namespace gui {
+//        virtual ~FenDecoRedim();
 
-
-
-class FenRedim : public gui::FenSimple {
-
-
-
-/////////////////////////////////////////////////
-// Méthodes
-/////////////////////////////////////////////////
-public:
-    /////////////////////////////////////////////////
-    /// \brief Constructeur par défaut.
-    ///
-    /////////////////////////////////////////////////
-    FenRedim ();
-
- //   virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
-
-//    virtual void actualiser ();
-    /////////////////////////////////////////////////
+   /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
 
     /////////////////////////////////////////////////
@@ -40,7 +24,7 @@ public:
     virtual void traiterEvenements (const sf::Event& evenement);
 
     /////////////////////////////////////////////////
-    void actualiser ( sf::Time delta );
+//    void actualiser ( sf::Time delta );
 
     bool redimEnCours () {
         if ( m_redimGauche || m_redimDroite || m_redimHaut || m_redimBas )
@@ -49,6 +33,7 @@ public:
     };
 
 private:
+    typedef ActionEvenement::FctnAction FctnAction;
 
     void redimmensionner_haut ();
     void redimmensionner_bas ();
@@ -77,16 +62,18 @@ private:
     sf::Vector2i     m_tailleOrigin;
     sf::Vector2f     m_posOrigin;
 
+    sf::Vector2i     m_tailleFenetre;
+
 
     // les composants de l'interface du gadget
-    std::shared_ptr<BtnRectangle> m_btn_gauche;
-    std::shared_ptr<BtnRectangle> m_btn_droite;
-    std::shared_ptr<BtnRectangle> m_btn_hautGauche;
-    std::shared_ptr<BtnRectangle> m_btn_hautDroite;
-    std::shared_ptr<BtnRectangle> m_btn_basGauche;
-    std::shared_ptr<BtnRectangle> m_btn_basDroite;
-    std::shared_ptr<BtnRectangle> m_btn_haut;
-    std::shared_ptr<BtnRectangle> m_btn_bas;
+    std::shared_ptr<BtnRectangle>   m_btn_gauche;
+    std::shared_ptr<BtnRectangle>   m_btn_droite;
+    std::shared_ptr<BtnRectangle>   m_btn_hautGauche;
+    std::shared_ptr<BtnRectangle>   m_btn_hautDroite;
+    std::shared_ptr<BtnRectangle>   m_btn_basGauche;
+    std::shared_ptr<BtnRectangle>   m_btn_basDroite;
+    std::shared_ptr<BtnRectangle>   m_btn_haut;
+    std::shared_ptr<BtnRectangle>   m_btn_bas;
 
     // les proprietés graphiques
     Valeurs<sf::Color>      m_btnDragCouleurs;
@@ -110,9 +97,8 @@ private:
     FctnAction     fct_redimStopH;
     FctnAction     fct_redimStartB;
     FctnAction     fct_redimStopB;
-
-}; // fin class FenRedim
-
-} // fin namespace gui
-
-#endif
+    protected:
+    private:
+};
+}; // fin namesapce gui
+#endif // FENDECOREDIM_H

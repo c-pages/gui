@@ -248,7 +248,7 @@ public:
     std::string getTexte( ) const { return m_texte; };
 
     void setMarge ( sf::Vector2f marge ){ m_marge = marge; actualiserGeometrie(); };
-
+    sf::Vector2f getMarge() { return m_marge;};
 
 protected:
     sf::Vector2f                m_marge;            ///< La marge à laissé

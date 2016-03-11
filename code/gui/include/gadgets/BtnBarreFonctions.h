@@ -58,6 +58,7 @@ public:
     bool dragEnCours(){return m_drag;};
     void positionnerFenetre ();
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
+
 //    virtual void actualiserContenu ();
 //    virtual void actualiserBounds ();
 

@@ -266,12 +266,12 @@ std::shared_ptr<DnSlider>        FabriqueBase::slider( )
 }
 
 
-/////////////////////////////////////////////////
-std::shared_ptr<DnBarreDefilement>        FabriqueBase::barreDefilement( )
-{
-    auto nouveauGadget = creerBureau<DnBarreDefilement>( );
-    return nouveauGadget;
-}
+///////////////////////////////////////////////////
+//std::shared_ptr<DnBarreDefilement>        FabriqueBase::barreDefilement( )
+//{
+//    auto nouveauGadget = creerBureau<DnBarreDefilement>( );
+//    return nouveauGadget;
+//}
 
 /////////////////////////////////////////////////
 std::shared_ptr<BtnBarreFonctions>    FabriqueBase::barreFonctions(  )
@@ -299,32 +299,32 @@ std::shared_ptr<GrpSliders>        FabriqueBase::groupeSliders( )
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<FenSimple>        FabriqueBase::fenetre( std::string titre )
+std::shared_ptr<Fenetre>        FabriqueBase::fenetre( std::string titre )
 {
-    auto nouveauGadget = creerFenetre<FenSimple>( );
+    auto nouveauGadget = creerFenetre<Fenetre>( );
     nouveauGadget->setTexte (titre);
     return nouveauGadget;
 }
 
 
-/////////////////////////////////////////////////
-
-std::shared_ptr<FenRedim>        FabriqueBase::fenetreRedim( std::string titre  )
-{
-    auto nouveauGadget = creerFenetre<FenRedim>( );
-    nouveauGadget->setTexte (titre);
-    return nouveauGadget;
-}
-
-
-
-/////////////////////////////////////////////////
-std::shared_ptr<FenPanneau>    FabriqueBase::panneau( std::string titre  )
-{
-    auto nouveauGadget = creerGadget<FenPanneau>( );
-    nouveauGadget->setTexte (titre);
-    return nouveauGadget;
-}
+///////////////////////////////////////////////////
+//
+//std::shared_ptr<FenRedim>        FabriqueBase::fenetreRedim( std::string titre  )
+//{
+//    auto nouveauGadget = creerFenetre<FenRedim>( );
+//    nouveauGadget->setTexte (titre);
+//    return nouveauGadget;
+//}
+//
+//
+//
+///////////////////////////////////////////////////
+//std::shared_ptr<FenPanneau>    FabriqueBase::panneau( std::string titre  )
+//{
+//    auto nouveauGadget = creerGadget<FenPanneau>( );
+//    nouveauGadget->setTexte (titre);
+//    return nouveauGadget;
+//}
 
 
 

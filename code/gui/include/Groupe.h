@@ -17,6 +17,9 @@ namespace gui {
 class Groupe : public Gadget {
 
 
+enum class Decorations{
+    Sliders
+};
 
 /////////////////////////////////////////////////
 // Méthodes

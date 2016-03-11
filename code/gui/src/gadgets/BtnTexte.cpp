@@ -40,7 +40,7 @@ void BtnTexte::actualiserGeometrie ()
 
     BtnRectangle::actualiserGeometrie();
 
-    m_label->setPosition( m_marge.x  , m_marge.y/3 );
+    m_label->setPosition( int( m_marge.x ) , int ( m_marge.y/3 ) );
 
 }
 

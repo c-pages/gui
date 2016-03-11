@@ -1,5 +1,5 @@
 #include "Interface.h"
-
+#include "Interface.h"
 
 
 #include <iostream>
@@ -11,11 +11,14 @@ namespace gui {
 sf::RenderWindow*                           Interface::ms_fenetreSFML = nullptr;
 ResourcesMgr<sf::Font,std::string >         Interface::ms_polices = {};
 ResourcesMgr<sf::Texture,   std::string >   Interface::ms_images = {};
+ResourcesMgr<sf::Texture,   std::string >   Interface::ms_icones = {};
 
 
 std::shared_ptr<Calque>        Interface::ms_calque_bureau          = std::make_shared<Calque>();
 std::shared_ptr<Calque>        Interface::ms_calque_fenetres        = std::make_shared<Calque>();
 std::shared_ptr<Calque>        Interface::ms_calque_bandeaux        = std::make_shared<Calque>();
+std::shared_ptr<Calque>        Interface::ms_calque_panneau_G        = std::make_shared<Calque>();
+std::shared_ptr<Calque>        Interface::ms_calque_panneau_D        = std::make_shared<Calque>();
 std::shared_ptr<Calque>        Interface::ms_calque_bandeauMenuDeroulants  = std::make_shared<Calque>();
 std::shared_ptr<Calque>        Interface::ms_calque_menuDeroulants  = std::make_shared<Calque>();
 
@@ -36,6 +39,8 @@ Interface::Interface( sf::RenderWindow* fenetre )
 
     // les calques
     ajouter ( ms_calque_bureau );
+    ajouter ( ms_calque_panneau_G );
+    ajouter ( ms_calque_panneau_D );
     ajouter ( ms_calque_bandeaux );
     ajouter ( ms_calque_bandeauMenuDeroulants );
     ajouter ( ms_calque_fenetres );
@@ -46,12 +51,18 @@ Interface::Interface( sf::RenderWindow* fenetre )
     m_taille = { 1920 , 1080 };
     ms_calque_bureau->setTaille    ( m_taille );
     ms_calque_bandeaux->setTaille  ( m_taille );
+    ms_calque_panneau_G->setTaille  ( m_taille );
+    ms_calque_panneau_D->setTaille  ( m_taille );
     ms_calque_fenetres->setTaille  ( m_taille );
     ms_calque_menuDeroulants->setTaille  ( m_taille );
     ms_calque_bandeauMenuDeroulants->setTaille  ( m_taille );
 
     // initialiser les polices
     ms_polices.load( "Defaut"  , "media/polices/consola.ttf" );
+
+    // initialiser les icones
+    ms_icones.load( "ico_fenetre"  , "media/img/icones_fenetre.png" );
+
 
     m_parent = nullptr;
 
@@ -79,23 +90,45 @@ std::shared_ptr<Gadget> Interface::chercherGadgetSurvole ()
 /////////////////////////////////////////////////
 void Interface::actualiser ()
 {
+    if ( ! m_aBesoinActualisation ) return;
 
     // on calcule la taille verticale des bandeaux ...
     sf::Vector2f decallage = {0,0};
-    for ( auto enfant : ms_calque_bandeauMenuDeroulants->m_enfants )
+    for ( auto MenuDeroulant : ms_calque_bandeauMenuDeroulants->getEnfants() )
     {
-        enfant->setPosition (decallage.x, decallage.y);
-        decallage.y += enfant->getTaille().y;
+        MenuDeroulant->setPosition (decallage.x, decallage.y);
+        MenuDeroulant->setTailleX ( m_fenetre->getSize().x );
+        decallage.y += MenuDeroulant->getTaille().y;
     }
-    for ( auto enfant : ms_calque_bandeaux->m_enfants )
+    for ( auto bandeau : ms_calque_bandeaux->getEnfants() )
     {
-        enfant->setPosition (decallage.x, decallage.y);
-        decallage.y += enfant->getTaille().y;
+        bandeau->setPosition (decallage.x, decallage.y);
+        bandeau->setTailleX ( m_fenetre->getSize().x );
+        decallage.y += bandeau->getTaille().y;
     }
 
+    for ( std::shared_ptr<Gadget> panneau : ms_calque_panneau_G->getEnfants() )
+    {
+
+        panneau->setPosition ( decallage.x , decallage.y );
+        //panneau->setTailleX ( 250 );
+        panneau->setTailleY ( m_fenetre->getSize().y - decallage.y );
+        decallage.x += panneau->getTaille().x;
+
+    }
     // ... pour décaller le calque du bureau ... à voir si c'est pas le bordel
-//    ms_calque_bureau->setPosition ( decallage.x , decallage.y );
+    ms_calque_bureau->setPosition ( decallage.x , decallage.y );
+    decallage.x = 0;
+    for ( std::shared_ptr<Gadget> panneau : ms_calque_panneau_D->getEnfants() )
+    {
 
+        decallage.x += panneau->getTaille().x;
+        panneau->setPosition ( m_fenetre->getSize().x -  decallage.x , decallage.y );
+        //panneau->setTailleX ( 250 );
+        panneau->setTailleY ( m_fenetre->getSize().y - decallage.y );
+
+    }
+    m_aBesoinActualisation = false;
 }
 
 ///////////////////////////////////////////////////

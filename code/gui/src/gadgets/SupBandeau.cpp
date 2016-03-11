@@ -3,7 +3,7 @@
 /////////////////////////////////////////////////
 #include <Interface.h>
 #include <SupBandeau.h>
-#include <PanSliders.h>
+#include <GrpSliders.h>
 
 
 
@@ -21,8 +21,7 @@ void SupBandeau::actualiserGeometrie ()
 {
     Support::actualiserGeometrie();
     int posX = m_marge.x;
-    for (auto enfant : m_enfants )
-    {
+    for (auto enfant : m_enfants )    {
         enfant->setPosition    ( posX ,  m_marge.y );
         posX += enfant->getTaille().x + m_marge.x;
     }
@@ -35,7 +34,6 @@ void SupBandeau::actualiserGeometrie ()
 //
 //        index++;
 //    }
-    actualiserBounds ();
 
     /*    std::cout << " BAH IL PASS PAR ICI ON DIRAIT BIEN\n";
     if (m_interface != nullptr)

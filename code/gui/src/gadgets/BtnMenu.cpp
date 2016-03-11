@@ -16,7 +16,7 @@ BtnMenu::BtnMenu ()
 , m_ecart       ( 0 )
 , m_fond        (std::make_shared<AffRectangle>())
 , m_ombre        (std::make_shared<AffRectangle>())
-, m_ombreActive ( true )
+, m_ombreActive ( false )
 {
     m_marge.x = 0;
     m_marge.y = 0;
@@ -27,22 +27,37 @@ BtnMenu::BtnMenu ()
     m_couleurLignes.set ( sf::Color( 0,255,0, 255 ) );
     m_epaisseur.set     ( 0 );*/
     m_btnCouleurs.set   ( sf::Color( 0, 0, 0, 0 )  , Etat::desactive );
-    m_btnCouleurs.set   ( sf::Color( 255,255,255, 0 )  , Etat::repos );
-    m_btnCouleurs.set   ( sf::Color( 255,255,255, 30 ) , Etat::survol );
-    m_btnCouleurs.set   ( sf::Color( 255,255,255, 100 ) , Etat::press );
+    m_btnCouleurs.set   ( sf::Color( 0,0,0, 0 )  , Etat::repos );
+    m_btnCouleurs.set   ( sf::Color( 0,0,0, 120 ) , Etat::survol );
+    m_btnCouleurs.set   ( sf::Color( 0,0,0, 150 ) , Etat::press );
 
     m_ombreCouleur                  = sf::Color( 0,0,0, 100 );
     m_ombreLgnCouleur               = sf::Color( 255,255,255, 255 );
+
+    m_btnLignesCouleurs.set   ( sf::Color( 0, 0, 0, 0 )  , Etat::desactive );
+    m_btnLignesCouleurs.set   ( sf::Color( 0,0,0, 50 )  , Etat::repos );
+    m_btnLignesCouleurs.set   ( sf::Color( 0,0,0, 200 ) , Etat::survol );
+    m_btnLignesCouleurs.set   ( sf::Color( 0,0,0, 200 ) , Etat::press );
+
+
+
     m_ombreLgnepaisseur             = 0;
 
-    m_btnLignesCouleurs     = sf::Color( 255 , 100 , 100 );
+//    m_btnLignesCouleurs     = sf::Color( 255 , 100 , 100 );
     m_btnLignesEpaisseurs   = 0;
 
-    m_fndCouleur            = sf::Color( 70 , 70 , 70 );
-    m_fndLignesCouleur      = sf::Color( 255 , 255 , 255 , 20);
+    m_fndCouleur            = sf::Color( 255 , 255 , 255 );
+    m_fndLignesCouleur      = sf::Color( 50 , 50 , 50);
     m_fndLignesEpaisseur    = 1;
 
-    m_textCouleur           = sf::Color( 200 , 200 , 200 );
+    m_textCouleur           = sf::Color( 50 , 50 , 50 );
+
+    m_textCouleur.set   ( sf::Color( 0, 0, 0, 0 )  , Etat::desactive );
+    m_textCouleur.set   ( sf::Color( 0,0,0, 255 )  , Etat::repos );
+    m_textCouleur.set   ( sf::Color( 255,255,255, 255 ) , Etat::survol );
+    m_textCouleur.set   ( sf::Color( 255,255,255, 255 ) , Etat::press );
+
+
     m_textStyle             = sf::Text::Style::Regular;
     m_textTaille            = 10;
     m_textPolice            = Interface::ms_polices.get ( "Defaut" );

@@ -52,16 +52,18 @@ public:
     /////////////////////////////////////////////////
     virtual void actualiser ( sf::Time deltaTemps ){
         Gadget::actualiser( deltaTemps );
-
     };
 
     //};
     static  ResourcesMgr<sf::Font,std::string >         ms_polices; ///< Manager des polices
     static  ResourcesMgr<sf::Texture,   std::string >   ms_images;  ///< Manager des images
+    static  ResourcesMgr<sf::Texture,   std::string >   ms_icones;  ///< Manager des images
 
     static  std::shared_ptr<Calque>        ms_calque_bureau;
     static  std::shared_ptr<Calque>        ms_calque_fenetres;
     static  std::shared_ptr<Calque>        ms_calque_bandeaux;
+    static  std::shared_ptr<Calque>        ms_calque_panneau_G;
+    static  std::shared_ptr<Calque>        ms_calque_panneau_D;
     static  std::shared_ptr<Calque>        ms_calque_bandeauMenuDeroulants;
     static  std::shared_ptr<Calque>        ms_calque_menuDeroulants;
 
@@ -86,7 +88,7 @@ public:
         result = sf::Mouse::getPosition( *ms_fenetreSFML );
         return result;
     };
-
+    void demanderActualisation() { m_aBesoinActualisation = true ; };
     static sf::RenderWindow*                    ms_fenetreSFML;      ///< La fenetyre SFML;
 
     sf::RenderWindow*        getFenetre()  { return m_fenetre; };
@@ -109,7 +111,7 @@ public:
 private:
     std::shared_ptr<Gadget>     m_boutonPresse;     ///< Le bouton pressé actuelement par la souris.
     sf::RenderWindow*           m_fenetre;          ///< La fenetyre SFML;
-
+    bool                        m_aBesoinActualisation = true;
 }; // fin class gui
 
 }; // fin namespace gui

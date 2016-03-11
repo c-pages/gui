@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "Panneau.h"
+#include "Groupe.h"
 #include "AffRectangle.h"
 
 #include "repartiteurs/Repartiteur.h"
@@ -23,7 +23,7 @@ namespace gui {
 
 
 
-class PanSimple : public gui::Panneau {
+class GrpSimple : public gui::Groupe {
 
 
 /////////////////////////////////////////////////
@@ -39,7 +39,7 @@ public:
     /// \brief Constructeur par défaut.
     ///
     /////////////////////////////////////////////////
-    PanSimple ();
+    GrpSimple ();
 
 //    /////////////////////////////////////////////////
 //    /// \brief Actualise le repartiteur puis les gadgets enfant contenus.
@@ -62,7 +62,7 @@ public:
 
 
 
-}; // fin class PanSimple
+}; // fin class GrpSimple
 
 } // fin namespace gui
 

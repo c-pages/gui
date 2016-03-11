@@ -7,7 +7,7 @@
 //#include "Donnee.h"
 #include "Bouton.h"
 #include "BtnIcone.h"
-#include "Panneau.h"
+#include "Groupe.h"
 
 
 
@@ -67,7 +67,7 @@ public:
 // Membres
 /////////////////////////////////////////////////
 private:
-//    std::shared_ptr<Panneau>        m_panneau;
+//    std::shared_ptr<Groupe>        m_panneau;
     std::shared_ptr<AffRectangle>   m_fond;
     std::shared_ptr<AffRectangle>   m_ombre;
 

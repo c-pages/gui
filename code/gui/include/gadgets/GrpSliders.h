@@ -4,11 +4,11 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "Panneau.h"
+#include "Groupe.h"
 #include "AffRectangle.h"
 #include "AffImage.h"
 #include "DnBarreDefilement.h"
-#include "Panneau.h"
+#include "Groupe.h"
 #include "repartiteurs/Repartiteur.h"
 #include "repartiteurs/RepartiteurGrille.h"
 #include "repartiteurs/RepartiteurHorizontal.h"
@@ -24,7 +24,7 @@ namespace gui {
 
 
 
-class PanSliders : public gui::Panneau {
+class GrpSliders : public gui::Groupe {
 
 
 /////////////////////////////////////////////////
@@ -36,7 +36,7 @@ public:
     /// \brief Constructeur par défaut.
     ///
     /////////////////////////////////////////////////
-    PanSliders ();
+    GrpSliders ();
 
 //    /////////////////////////////////////////////////
 //    /// \brief Actualise le repartiteur puis les gadgets enfant contenus.
@@ -102,7 +102,7 @@ private:
     sf::Color               m_btnFndLgnCouleur;
     float                   m_btnFndLgnepaisseur;
 
-}; // fin class PanSliders
+}; // fin class GrpSliders
 
 } // fin namespace gui
 

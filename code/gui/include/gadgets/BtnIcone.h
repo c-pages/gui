@@ -53,8 +53,9 @@ public:
         m_icone->chargerDepuisFichier (fichier);
     };
 
-    void setImage ( const sf::Texture* texture )
+    virtual void setImage ( sf::Texture* texture )
     {
+
         m_icone->setImage( texture );
     };
 

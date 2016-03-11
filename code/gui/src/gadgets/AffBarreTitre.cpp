@@ -37,7 +37,7 @@ AffBarreTitre::AffBarreTitre ()
 
 
 /////////////////////////////////////////////////
-void AffBarreTitre::setIconeImage ( const sf::Texture* texture  )
+void AffBarreTitre::setIconeImage ( sf::Texture* texture  )
 {
     m_icone->setImage( texture );
 }

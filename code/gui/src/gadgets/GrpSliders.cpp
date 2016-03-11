@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <PanSliders.h>
+#include <GrpSliders.h>
 #include <Enums.h>
 
 
@@ -9,8 +9,8 @@
 namespace gui {
 
 /////////////////////////////////////////////////
-PanSliders::PanSliders ()
-: Panneau ()
+GrpSliders::GrpSliders ()
+: Groupe ()
 , m_slider_V ( std::make_shared<DnSlider>() )
 , m_slider_H ( std::make_shared<DnSlider>() )
 {
@@ -54,7 +54,7 @@ PanSliders::PanSliders ()
 
 
 /////////////////////////////////////////////////
-void PanSliders::actualiserGeometrie (){
+void GrpSliders::actualiserGeometrie (){
 
     m_fond->setTaille(m_taille);
 
@@ -99,7 +99,7 @@ void PanSliders::actualiserGeometrie (){
 }
 
 /////////////////////////////////////////////////
-void PanSliders::actualiserStyle (){
+void GrpSliders::actualiserStyle (){
 
 
     m_slider_V->setSliderFillColor          ( m_btnSlideCouleurs  );
@@ -136,7 +136,7 @@ void PanSliders::actualiserStyle (){
 
 /*
 /////////////////////////////////////////////////
-void PanSliders::actualiser ()
+void GrpSliders::actualiser ()
 {
 
     m_fond->setTaille(m_taille);
@@ -197,7 +197,7 @@ void PanSliders::actualiser ()
 
 
 /////////////////////////////////////////////////
-void PanSliders::draw (sf::RenderTarget& target, sf::RenderStates states) const
+void GrpSliders::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
 
     if ( estVisible() ) {

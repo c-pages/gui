@@ -10,7 +10,8 @@ namespace gui {
 
 /////////////////////////////////////////////////
 FenRedim::FenRedim ()
-: m_btn_gauche      ( std::make_shared<BtnRectangle>() )
+: FenSimple ()
+, m_btn_gauche      ( std::make_shared<BtnRectangle>() )
 , m_btn_droite      ( std::make_shared<BtnRectangle>() )
 , m_btn_haut        ( std::make_shared<BtnRectangle>() )
 , m_btn_bas         ( std::make_shared<BtnRectangle>() )

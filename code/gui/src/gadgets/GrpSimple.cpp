@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <PanSimple.h>
+#include <GrpSimple.h>
 #include <Enums.h>
 
 
@@ -9,22 +9,22 @@
 namespace gui {
 
 /////////////////////////////////////////////////
-PanSimple::PanSimple ()
-: Panneau ()
+GrpSimple::GrpSimple ()
+: Groupe ()
 {
     m_taille = { 400 , 200 };
     actualiser ();
 }
 //
 ///////////////////////////////////////////////////
-//void PanSimple::actualiserGeometrie (){
+//void GrpSimple::actualiserGeometrie (){
 //
 //
 //
 //}
 //
 ///////////////////////////////////////////////////
-//void PanSimple::actualiserStyle (){
+//void GrpSimple::actualiserStyle (){
 //
 //    m_fond->setFillColor (    m_fndCouleur ) ;
 //    m_fond->setOutlineColor (    m_fndLgnCouleur  ) ;
@@ -37,7 +37,7 @@ PanSimple::PanSimple ()
 //}
 
 ///////////////////////////////////////////////////
-//void PanSimple::actualiser ()
+//void GrpSimple::actualiser ()
 //{
 //
 //    m_fond->setTaille(m_taille);
@@ -54,7 +54,7 @@ PanSimple::PanSimple ()
 
 
 /////////////////////////////////////////////////
-void PanSimple::draw (sf::RenderTarget& target, sf::RenderStates states) const
+void GrpSimple::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
 
     if ( estVisible() ) {

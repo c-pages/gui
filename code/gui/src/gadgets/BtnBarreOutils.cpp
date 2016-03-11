@@ -2,7 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <BtnBarreOutils.h>
-#include "PanSimple.h"
+#include "GrpSimple.h"
 #include "Interface.h"
 
 
@@ -58,10 +58,13 @@ BtnBarreOutils::BtnBarreOutils ( )
         if ( dragEnCours() ){
             bool survolBandeau = false;
             for ( auto bandeau : Interface::ms_calque_bandeaux->getEnfants() )
+            {
                 if ( bandeau->testerSurvol( getPosSouris() ) != nullptr) {
                     bandeau->ajouter ( thisPtr() );
                     survolBandeau = true;
                 }
+                bandeau->setAbsorbable( false );
+            }
             if ( survolBandeau )            {
                 m_ombre->setVisible ( false );
             }
@@ -77,6 +80,7 @@ BtnBarreOutils::BtnBarreOutils ( )
                 if ( bandeau->testerSurvol( getPosSouris() ) != nullptr) {
                     bandeau->ajouter ( thisPtr() );
                     survolBandeau = true;
+                    bandeau->setAbsorbable( false );
                 }
             if ( survolBandeau )            {
                 m_ombre->setVisible ( false );
@@ -140,6 +144,16 @@ void BtnBarreOutils::ajouterElement (std::string nom, std::string fichierIcone, 
 void BtnBarreOutils::positionnerFenetre ()
 {
     setPosition ( getPosSouris().x - m_decalageDragSouris.x  , getPosSouris().y - m_decalageDragSouris.y );
+
+    bool survolBandeau = false;
+
+    for ( auto bandeau : Interface::ms_calque_bandeaux->getEnfants() )
+        if ( bandeau->testerSurvol( getPosSouris() ) != nullptr) {
+                bandeau->setAbsorbable( true );
+        } else
+                bandeau->setAbsorbable( false );
+
+//    Interface::ms_calque_bandeaux->actualiser();
 //    for ( auto bandeau : Interface::ms_calque_bandeaux->getEnfants() )
 //        if ( bandeau->testerSurvol( getPosSouris() ) != nullptr)
 //            bandeau->

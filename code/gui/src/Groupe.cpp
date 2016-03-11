@@ -1,14 +1,14 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <Panneau.h>
+#include <Groupe.h>
 
 
 
 namespace gui {
 
 /////////////////////////////////////////////////
-Panneau::Panneau ()
+Groupe::Groupe ()
 : m_contenant ( std::make_shared<sf::RectangleShape>() )
 , m_posX_texture(0)
 , m_posY_texture(0)
@@ -28,9 +28,9 @@ Panneau::Panneau ()
 }
 
 /////////////////////////////////////////////////
-void Panneau::actualiserContenu ()
+void Groupe::actualiserContenu ()
 {
-//    std::cout << "Panneau::actualiserContenu\n";
+//    std::cout << "Groupe::actualiserContenu\n";
 
     // Render to texture des enfants
     m_renderTexture.clear( sf::Color::Transparent );
@@ -49,7 +49,7 @@ void Panneau::actualiserContenu ()
 };
 
 /////////////////////////////////////////////////
-void Panneau::actualiserGeometrie ()
+void Groupe::actualiserGeometrie ()
 {
     m_fond->setTaille(m_taille);
     m_contenant->setSize({ m_taille.x , m_taille.y });
@@ -57,24 +57,27 @@ void Panneau::actualiserGeometrie ()
     actualiserContenu();
     actualiserBounds ();
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
+
 }
 
 /////////////////////////////////////////////////
-void Panneau::actualiserStyle ()
+void Groupe::actualiserStyle ()
 {
-    m_fond->setFillColor            ( m_fndCouleur ) ;
-    m_fond->setOutlineColor         ( m_fndLgnCouleur  ) ;
+
+    m_fond->setFillColor            ( m_fndCouleur );
+    m_fond->setOutlineColor         ( m_fndLgnCouleur  );
     m_fond->setOutlineThickness     ( m_fndLgnepaisseur  );
 
-    m_contenant->setFillColor       ( m_contenantCouleur ) ;
-    m_contenant->setOutlineColor    ( m_contenantLgnCouleur  ) ;
-    m_contenant->setOutlineThickness( m_contenantLgnepaisseur  );
+    m_contenant->setFillColor       ( m_contenantCouleur );
+    m_contenant->setOutlineColor    ( m_contenantLgnCouleur );
+    m_contenant->setOutlineThickness( m_contenantLgnepaisseur );
+
 }
 
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<Gadget>  Panneau::testerSurvol ( sf::Vector2i position )
+std::shared_ptr<Gadget>  Groupe::testerSurvol ( sf::Vector2i position )
 {
     // si on est dans le panneau
     if ( m_globalBounds.contains( position.x, position.y ) && estActif() )
@@ -96,7 +99,7 @@ std::shared_ptr<Gadget>  Panneau::testerSurvol ( sf::Vector2i position )
 }
 
 /////////////////////////////////////////////////
-sf::Vector2f    Panneau::deplMaxContenu(){
+sf::Vector2f    Groupe::deplMaxContenu(){
 
     sf::Vector2f result;
 

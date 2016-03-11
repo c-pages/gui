@@ -14,7 +14,7 @@ namespace gui {
 
 
 
-class Panneau : public Gadget {
+class Groupe : public Gadget {
 
 
 
@@ -26,7 +26,7 @@ public:
     /// \brief Constructeur par défaut.
     ///
     /////////////////////////////////////////////////
-    Panneau ();
+    Groupe ();
 
 
 public:
@@ -115,7 +115,7 @@ protected:
     sf::Color               m_contenantLgnCouleur;
     float                   m_contenantLgnepaisseur;
 
-}; // fin class Panneau
+}; // fin class Groupe
 
 } // fin namespace gui
 

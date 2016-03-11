@@ -21,16 +21,16 @@ Application::Application()
 
     //   Creation de la fenêtre SFML.
     sf::ContextSettings 	contextFenetre  ( 	0,  //  depth
-                                                0,  //  stencil
-                                                4,  //  antialiasing
+                                                0,  //  stencilc
+                                                0,  //  antialiasing
                                                 2,  //  major
                                                 0); //  minor
     m_fenetre->create(sf::VideoMode(1280, 720), "Appli de base" , sf::Style::Default , contextFenetre );
 
-    // La synchronisation verticale pour des histoire de bugs de chqrgement de police bidule truc
+    // La synchronisation verticale pour des histoire de bugs de chargement de police bidule truc
 //    m_fenetre->setVerticalSyncEnabled(true);
 
-    m_fenetre->setFramerateLimit( 30 );
+    m_fenetre->setFramerateLimit( 60 );
 
     //   Ajout du premier écran.
     m_ecrans.ajouter( new EcranDemo( this ) );

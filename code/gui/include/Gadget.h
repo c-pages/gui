@@ -56,9 +56,12 @@ public:
         else return {0,0};
     };
 
+    virtual bool estAbsorbable(){};
+    virtual void setAbsorbable ( bool val ) {};
+
     ///< Definir m_visible
     void setVisible( bool val )
-        { m_visible = val;  actualiserEtat (); actualiser(); };
+        { m_visible = val;  /*actualiserEtat (); actualiser();*/ };
 
     ///< Definir m_actif
     void setActif( bool val )

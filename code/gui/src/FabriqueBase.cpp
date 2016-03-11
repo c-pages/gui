@@ -69,6 +69,7 @@ std::shared_ptr<T>  FabriqueBase::creerFenetre (){
     nouveauGadget->setParent ( m_interfaceParent );
     m_interfaceParent->ms_calque_fenetres->ajouter ( nouveauGadget );
 
+    m_interfaceParent->demanderActualisation();
 //    // Application du skin de l'interface au gadget
 //    nouveauGadget->setSkin ( m_interfaceParent->getSkin() );
 
@@ -79,7 +80,7 @@ std::shared_ptr<T>  FabriqueBase::creerFenetre (){
 
 /////////////////////////////////////////////////
 template<typename T>
-std::shared_ptr<T>  FabriqueBase::creerSupport (){
+std::shared_ptr<T>  FabriqueBase::creerBandeau (){
 
     // Creation du nouveau gadget
     std::shared_ptr<T> nouveauGadget = std::make_shared<T>( );
@@ -91,12 +92,34 @@ std::shared_ptr<T>  FabriqueBase::creerSupport (){
 
     // la reference à l'interface parent.
     nouveauGadget->setInterface( m_interfaceParent );
+    m_interfaceParent->demanderActualisation();
 
     // renvois du nouveau gadget créé.
     return nouveauGadget;
 
 }
 
+
+/////////////////////////////////////////////////
+template<typename T>
+std::shared_ptr<T>  FabriqueBase::creerPanneau (){
+
+    // Creation du nouveau gadget
+    std::shared_ptr<T> nouveauGadget = std::make_shared<T>( );
+
+    // La hierarchie
+    m_interfaceParent->ajouter  ( nouveauGadget );
+    nouveauGadget->setParent    ( m_interfaceParent );
+    m_interfaceParent->ms_calque_panneau_G->ajouter ( nouveauGadget );
+
+    // la reference à l'interface parent.
+    nouveauGadget->setInterface( m_interfaceParent );
+    m_interfaceParent->demanderActualisation();
+
+    // renvois du nouveau gadget créé.
+    return nouveauGadget;
+
+}
 
 
 
@@ -261,16 +284,16 @@ std::shared_ptr<BtnBarreOutils>    FabriqueBase::barreOutils(  )
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<PanSimple>        FabriqueBase::panneau( )
+std::shared_ptr<GrpSimple>        FabriqueBase::groupe( )
 {
-    auto nouveauGadget = creerBureau<PanSimple>( );
+    auto nouveauGadget = creerBureau<GrpSimple>( );
     return nouveauGadget;
 }
 
 /////////////////////////////////////////////////
-std::shared_ptr<PanSliders>        FabriqueBase::panneauSliders( )
+std::shared_ptr<GrpSliders>        FabriqueBase::groupeSliders( )
 {
-    auto nouveauGadget = creerBureau<PanSliders>( );
+    auto nouveauGadget = creerBureau<GrpSliders>( );
     return nouveauGadget;
 }
 
@@ -294,13 +317,25 @@ std::shared_ptr<FenRedim>        FabriqueBase::fenetreRedim( std::string titre  
 }
 
 
+
+/////////////////////////////////////////////////
+std::shared_ptr<FenPanneau>    FabriqueBase::panneau( std::string titre  )
+{
+    auto nouveauGadget = creerGadget<FenPanneau>( );
+    nouveauGadget->setTexte (titre);
+    return nouveauGadget;
+}
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////
 std::shared_ptr<SupBandeau>    FabriqueBase::bandeau(  )
 {
-    auto nouveauGadget = creerSupport<SupBandeau>( );
+    auto nouveauGadget = creerBandeau<SupBandeau>( );
     return nouveauGadget;
 }
 
@@ -308,7 +343,7 @@ std::shared_ptr<SupBandeau>    FabriqueBase::bandeau(  )
 /////////////////////////////////////////////////
 std::shared_ptr<SupBandeauMenusDeroulants>    FabriqueBase::menusDeroulants(  )
 {
-//    auto nouveauGadget = creerSupport<SupBandeauMenusDeroulants>( );
+//    auto nouveauGadget = creerBandeau<SupBandeauMenusDeroulants>( );
 
     std::shared_ptr<SupBandeauMenusDeroulants> nouveauGadget = std::make_shared<SupBandeauMenusDeroulants>( );
 
@@ -325,6 +360,12 @@ std::shared_ptr<SupBandeauMenusDeroulants>    FabriqueBase::menusDeroulants(  )
 
 
 
+/////////////////////////////////////////////////
+std::shared_ptr<SupPanneau>    FabriqueBase::supportPanneaux(  )
+{
+    auto nouveauGadget = creerPanneau<SupPanneau>( );
+    return nouveauGadget;
+}
 
 
 }; // fin namespace gui

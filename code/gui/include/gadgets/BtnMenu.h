@@ -63,7 +63,7 @@ public:
 
     /////////////////////////////////////////////////
     void actualiserStyle();
-
+    void setOmbreActive ( bool val ) { m_ombreActive = val; };
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
@@ -102,10 +102,10 @@ protected:
     Valeurs<sf::Color>  m_btnLignesCouleurs;
     Valeurs<float>      m_btnLignesEpaisseurs;
 
-    sf::Color           m_textCouleur;
-    sf::Text::Style     m_textStyle;
-    float               m_textTaille;
-    sf::Font            m_textPolice;
+    Valeurs<sf::Color>           m_textCouleur;
+    Valeurs<sf::Text::Style>     m_textStyle;
+    Valeurs<float>               m_textTaille;
+    Valeurs<sf::Font>            m_textPolice;
 
 }; // fin class BtnMenu
 

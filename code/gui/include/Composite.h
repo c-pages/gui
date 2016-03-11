@@ -52,6 +52,8 @@ public:
     /////////////////////////////////////////////////
     virtual void ajouter (std::shared_ptr<Gadget> enfant);
 
+    virtual void ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i positionEcran ){};
+
     /////////////////////////////////////////////////
     /// \brief Retirer un enfant de la liste des enfants de ce gadget sans le supprimer.
     ///
@@ -60,7 +62,7 @@ public:
     /////////////////////////////////////////////////
     virtual std::shared_ptr<Gadget> retirer (std::shared_ptr<Gadget> enfant);
 
-    std::vector<std::shared_ptr<Gadget>>   getEnfants(){return  m_enfants; } ;
+    std::vector<std::shared_ptr<Gadget>>   getEnfants(){ return  m_enfants; } ;
 
 
     /////////////////////////////////////////////////
@@ -71,7 +73,7 @@ public:
 
     void demanderASupprimer (std::shared_ptr<Gadget> gadget );
 
-    void actualiserEnfants();
+    virtual void actualiserEnfants();
 
 
     void actualiserListes ( );

@@ -29,16 +29,18 @@
 #include "gadgets\BtnBarreOutils.h"
 
 // GROUPEMENT
-#include "gadgets\PanSimple.h"
-#include "gadgets\PanSliders.h"
+#include "gadgets\GrpSimple.h"
+#include "gadgets\GrpSliders.h"
 
 // FENTRES
 #include "gadgets\FenSimple.h"
 #include "gadgets\FenRedim.h"
+#include "gadgets\FenPanneau.h"
 
 // SUPPORTS
 #include "gadgets\SupBandeau.h"
 #include "gadgets\SupBandeauMenusDeroulants.h"
+#include "gadgets\SupPanneau.h"
 
 namespace gui{
 
@@ -61,7 +63,10 @@ private:
     std::shared_ptr<T>  creerFenetre ();
 
     template<typename T>
-    std::shared_ptr<T>  creerSupport ();
+    std::shared_ptr<T>  creerBandeau ();
+
+    template<typename T>
+    std::shared_ptr<T>  creerPanneau ();
 
 public:
 
@@ -208,14 +213,14 @@ public:
     ///
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<PanSimple>        panneau( );
+    std::shared_ptr<GrpSimple>        groupe( );
 
     /////////////////////////////////////////////////
     /// \brief  Création d'un panneau
     ///
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<PanSliders>        panneauSliders( );
+    std::shared_ptr<GrpSliders>        groupeSliders( );
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -234,8 +239,15 @@ public:
     ///
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<FenRedim>        fenetreRedim( std::string titre = "Fenêtre redim." );
+    std::shared_ptr<FenRedim>        fenetreRedim( std::string titre = "Fenêtre" );
 
+
+    /////////////////////////////////////////////////
+    /// \brief  Création d'un panneau
+    ///
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<FenPanneau>        panneau( std::string titre = "Panneau" );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // SUPPORTS
@@ -255,6 +267,15 @@ public:
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<SupBandeauMenusDeroulants>    menusDeroulants(  );
+
+
+
+    /////////////////////////////////////////////////
+    /// \brief  Création d'un panneau
+    ///
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<SupPanneau>        supportPanneaux( );
 
 
 

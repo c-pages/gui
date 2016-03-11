@@ -5,7 +5,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include "Gadget.h"
-#include "Panneau.h"
+#include "Groupe.h"
 #include "repartiteurs/Repartiteur.h"
 #include <memory>
 #include <map>
@@ -33,6 +33,8 @@ public:
 
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
+    virtual bool estAbsorbable(){return m_absorbable; };
+    virtual void setAbsorbable ( bool val ) {m_absorbable = val; actualiserStyle ();};
 
     void setInterface ( Interface *     interface )    {
         m_interface = interface;
@@ -45,13 +47,14 @@ public:
 public:
     Repartiteur m_repartiteur;
 protected:
-    std::shared_ptr<AffRectangle>       m_fond;
-    std::shared_ptr<Panneau>            m_panneaux;
-
+    std::shared_ptr<AffRectangle>      m_fond;
+    std::shared_ptr<Groupe>            m_panneaux;
+    bool                               m_absorbable = false;
 
     Interface *     m_interface;
 
     sf::Color   m_fndCouleur;
+    sf::Color   m_fndCouleurSurvol;
     sf::Color   m_fndLgnCouleur;
     float       m_fndLgnEpaisseur;
 

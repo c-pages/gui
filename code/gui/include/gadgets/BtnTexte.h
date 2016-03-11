@@ -52,12 +52,28 @@ public:
 //        actualiserGeometrie ();
     };
 
+    ///< Definir m_texteTaille
+    void setTexteTaille( Valeurs<float> val ){
+        m_textTaille = val;
+//        m_label->setTexteTaille ( val ) ;
+        actualiser ();
+    };
+
+
+
 
     ///< Definir m_police
     void setTexteCouleur( sf::Color couleur ){
         m_textCouleur = couleur;
         m_label->setTexteCouleur ( couleur );
 //        actualiser ();
+    };
+
+    ///< Definir m_police
+    void setTexteCouleur( Valeurs<sf::Color> couleur ){
+        m_textCouleur = couleur;
+//        m_label->setTexteCouleur ( couleur );
+        actualiser ();
     };
 
     ///< Definir m_police
@@ -68,12 +84,24 @@ public:
     };
 
     ///< Definir m_police
+    void setPolice( Valeurs<sf::Font> val ){
+        m_textPolice = val;
+//        m_label->setPolice    ( val );
+        actualiserGeometrie ();
+    };
+    ///< Definir m_police
     void setTexteStyle( sf::Text::Style val ){
         m_textStyle = val;
         m_label->setTexteStyle    ( val );
 //        actualiserGeometrie ();
     };
 
+    ///< Definir m_police
+    void setTexteStyle( Valeurs<sf::Text::Style> val ){
+        m_textStyle = val;
+//        m_label->setTexteStyle    ( val );
+        actualiser ();
+    };
 ////////////////////////////////// ///////////////
 // Membres
 /////////////////////////////////////////////////

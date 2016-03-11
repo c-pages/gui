@@ -26,7 +26,7 @@ class Geometrie : public sf::Transformable, public gui::Composite {
     /////////////////////////////////////////////////
     /// \brief les 9 endroits d'alignement entre gadgets
     /////////////////////////////////////////////////
-    enum Alignement {
+    enum class Alignement {
         Centre,
         Gauche,
         Droite,
@@ -44,6 +44,7 @@ class Geometrie : public sf::Transformable, public gui::Composite {
 
 public:
     ///< Definir m_taille
+    virtual void setTaille( float x, float y ){ m_taille = {x,y}; actualiser(); };
     virtual void setTaille( sf::Vector2i val ){ m_taille = val; actualiser(); };
     virtual void setTailleX( float val ){ m_taille.x = val; actualiser(); };
     virtual void setTailleY( float val ){ m_taille.y = val; actualiser(); };
@@ -108,7 +109,6 @@ protected:
     sf::FloatRect   m_globalBounds;     ///< la rectangle englobant du gadget en coordonnés globales.
     double          m_opacite = 1;      ///< L'opacité du gadget ( entre 0 et 1 )
 
-friend class Interface;
 
 }; // fin class Geometrie
 

@@ -32,7 +32,7 @@ public:
     /////////////////////////////////////////////////
     AffBarreTitre ();
 
-    void setIconeImage ( const sf::Texture* texture  );
+    void setIconeImage ( sf::Texture* texture  );
 
     void setIconeImage ( std::string texture  );
 

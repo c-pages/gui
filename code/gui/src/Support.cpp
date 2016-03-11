@@ -12,14 +12,15 @@ namespace gui {
 Support::Support ()
 : m_interface   ( nullptr )
 , m_fond        ( std::make_shared<AffRectangle>() )
-//, m_panneaux    ( std::make_shared<PanSimple>() )
+//, m_panneaux    ( std::make_shared<GrpSimple>() )
 {
     ajouterComposant ( m_fond );
 //    ajouterComposant ( m_panneaux );
 
-    m_taille = { 150 , 28 };
+    m_taille = { 250 , 280 };
 
-    m_fndCouleur        = sf::Color( 55, 55, 55 );
+    m_fndCouleur        = sf::Color( 60, 60, 60 );
+    m_fndCouleurSurvol  = sf::Color( 80, 80, 80 );
     m_fndLgnCouleur     = sf::Color( 90,90,90 );
     m_fndLgnEpaisseur   = 1 ;
 
@@ -34,7 +35,7 @@ void Support::actualiserGeometrie ()
     if (m_interface != nullptr)
     {
         auto tailleFenetre = m_interface->getFenetre()->getSize();
-        m_taille = {tailleFenetre.x , m_taille.y};
+        m_taille = {tailleFenetre.x , m_taille.y };
     }
     m_fond->setTaille ( m_taille );
 //    m_panneaux->setTaille ( { m_taille.x - 2*m_marge.x , m_taille.y - 2*m_marge.y });
@@ -47,8 +48,12 @@ void Support::actualiserGeometrie ()
 /////////////////////////////////////////////////
 void Support::actualiserStyle ()
 {
-    m_fond->setFillColor (m_fndCouleur);
-    m_fond->setOutlineColor (m_fndLgnCouleur);
+    if ( estAbsorbable() )
+        m_fond->setFillColor ( m_fndCouleurSurvol );
+    else
+        m_fond->setFillColor ( m_fndCouleur );
+
+    m_fond->setOutlineColor ( m_fndLgnCouleur );
     m_fond->setOutlineThickness (m_fndLgnEpaisseur);
 }
 

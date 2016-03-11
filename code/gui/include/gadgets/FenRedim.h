@@ -67,11 +67,11 @@ private:
 private:
 
     // les proprietés fonctionnelles
-    bool    m_redimGauche = false;
-    bool    m_redimDroite = false;
-    bool    m_redimHaut = false;
-    bool    m_redimBas = false;
-    bool    m_redimmensionner = false;
+    bool    m_redimGauche       = false;
+    bool    m_redimDroite       = false;
+    bool    m_redimHaut         = false;
+    bool    m_redimBas          = false;
+    bool    m_redimmensionner   = false;
 
     sf::Vector2i     m_sourisPosOrigin;
     sf::Vector2i     m_tailleOrigin;

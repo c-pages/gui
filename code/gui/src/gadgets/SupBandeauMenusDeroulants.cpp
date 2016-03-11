@@ -36,6 +36,8 @@ void SupBandeauMenusDeroulants::ajouterMenu ( std::string nom )
 
     nouvelElement->menu = std::make_shared<BtnMenu>( );
     nouvelElement->menu->setVisible(false);
+    nouvelElement->menu->setOmbreActive ( true );
+
     Interface::ms_calque_menuDeroulants->ajouter ( nouvelElement->menu ) ;
 
 
@@ -61,6 +63,7 @@ void SupBandeauMenusDeroulants::ajouterMenu ( std::string nom )
             nouvelElement->menu->setPosition ( nouvelElement->bouton->getPosAbs().x
                                              , nouvelElement->bouton->getPosAbs().y + nouvelElement->bouton->getTaille().y
                                              );
+
             ms_menuActif = true;
             ms_init = true;
         }

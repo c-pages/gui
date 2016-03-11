@@ -19,7 +19,7 @@ sf::Vector2f Geometrie::getPosAbs () const
 
 
 void Geometrie::setPosition( float x , float y ){
-     sf::Transformable::setPosition( x , y );
+     sf::Transformable::setPosition( int ( x )  , int ( y ) );
      actualiserBounds();
      for ( auto enfant : m_enfants )
         enfant->actualiserBounds();

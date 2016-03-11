@@ -6,7 +6,7 @@
 /////////////////////////////////////////////////
 #include "ActionEvenement.h"
 #include <memory>
-#include <Panneau.h>
+#include <Groupe.h>
 
 
 namespace gui {
@@ -45,7 +45,7 @@ public:
 // Membres
 /////////////////////////////////////////////////
 protected:
-    std::shared_ptr<Panneau>        m_panneau;
+    std::shared_ptr<Groupe>         m_panneau;
     std::shared_ptr<AffRectangle>   m_fond;
     std::shared_ptr<AffRectangle>   m_ombre;
 

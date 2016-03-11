@@ -2,7 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <Composite.h>
-//#include <Panneau.h>
+//#include <Groupe.h>
 
 #include <Gadget.h>
 
@@ -47,7 +47,7 @@ std::shared_ptr<Gadget> Composite::retirer ( std::shared_ptr<Gadget> gadget )
         }
         i++;
     }
-//    static_cast<Gadget*>(this)->actualiser();
+    static_cast<Gadget*>(this)->actualiser();
 }
 
 /////////////////////////////////////////////////
@@ -96,7 +96,6 @@ void Composite::demanderASupprimer (std::shared_ptr<Gadget> gadget ){
 /////////////////////////////////////////////////
 void Composite::supprimer (std::shared_ptr<Gadget> gadget ){
 
-
     int i = 0;
     int result = 0;
     for ( auto enfant : m_enfants ){
@@ -113,10 +112,13 @@ void Composite::supprimer (std::shared_ptr<Gadget> gadget ){
 /////////////////////////////////////////////////
 void Composite::actualiserListes ( ){
 
+    if ( m_enfantsASupprimer.empty() ) return ;
+
     for ( auto enfant : m_enfantsASupprimer )
         supprimer ( enfant );
     m_enfantsASupprimer.clear();
 
+    static_cast<Gadget*>(this)->actualiser();
 }
 
 /////////////////////////////////////////////////

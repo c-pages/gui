@@ -2,8 +2,8 @@
 // Headers
 /////////////////////////////////////////////////
 #include <Fenetre.h>
-#include <PanSliders.h>
-#include <PanSimple.h>
+#include <GrpSliders.h>
+#include <GrpSimple.h>
 
 
 
@@ -11,7 +11,7 @@ namespace gui {
 
 /////////////////////////////////////////////////
 Fenetre::Fenetre ()
-: m_panneau ( std::make_shared<PanSliders>() )
+: m_panneau ( std::make_shared<GrpSliders>() )
 , m_fond ( std::make_shared<AffRectangle>() )
 , m_ombre ( std::make_shared<AffRectangle>() )
 {

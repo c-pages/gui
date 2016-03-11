@@ -25,11 +25,16 @@ FenSimple::FenSimple ()
     ajouterComposant( m_btnFermer );
     ajouterComposant( m_btnDrag );
 
-    // icone titre par defaut
-    chargerIcone   ( "media/img/Icone_test x16.png" );
+//    // icone titre par defaut
+//    chargerIcone   ( "media/img/Icone_test x16.png" );
 
     // icone fermer par defaut
-    m_btnFermer->chargerDepuisFichier   ( "media/img/ico_fenetreFermer.png" );
+//    m_btnFermer->chargerDepuisFichier   ( "media/img/ico_fenetreFermer.png" );
+
+
+    m_btnFermer->setImage   ( &Interface::ms_icones.get( "ico_fenetre" ) );
+    m_btnFermer->setIconeIndex ( 1 );
+
     m_btnFermer->setFix                 ( true );
     m_btnFermer->setVisible             ( m_fermable );
     m_btnDrag->setVisible               ( m_draggable );
@@ -103,28 +108,15 @@ void FenSimple::traiterEvenements (const sf::Event& evenement)
     for ( auto composant : m_composants )
         composant->traiterEvenements ( evenement);
 }
-/*
-void FenSimple::draw (sf::RenderTarget& target, sf::RenderStates states) const
-{
-    if ( dragEnCours() )
-        positionnerFenetre ();
-}
-*/
-/*
-/////////////////////////////////////////////////
-void FenSimple::actualiser ( sf::Time delta )
-{
-//   std::cout << " actualiser Delta\n";
-//    if ( dragEnCours() )
-//        positionnerFenetre ();
-}
-*/
+
+
 
 
 
 
 /////////////////////////////////////////////////
 void FenSimple::actualiserGeometrie (){
+
 
     m_titre->setTailleX     ( m_taille.x - 2*m_marge.x );
     m_titre->setPosition    ( m_marge.x , m_marge.y );
@@ -151,6 +143,8 @@ void FenSimple::actualiserGeometrie (){
 /////////////////////////////////////////////////
 void FenSimple::actualiserStyle ()
 {
+    m_btnFermer->setImage   ( &Interface::ms_icones.get( "ico_fenetre" ) );
+
     Fenetre::actualiserStyle ();
 
     m_btnDragCouleurs       = sf::Color::Transparent;

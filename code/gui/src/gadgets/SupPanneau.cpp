@@ -13,8 +13,9 @@ SupPanneau::SupPanneau ()
 : m_cote        ( Cote::Gauche )
 , m_btn_gauche  ( std::make_shared<BtnRectangle>() )
 , m_btn_droite  ( std::make_shared<BtnRectangle>() )
+, m_largeurBtnTaille ( 5 )
 {
-    m_marge = { 3 , 3 };
+    m_marge = { m_largeurBtnTaille , m_largeurBtnTaille };
 
     ajouterComposant ( m_btn_gauche );
     ajouterComposant ( m_btn_droite );
@@ -191,7 +192,7 @@ void SupPanneau::actualiserEnfants()
     sf::Vector2i pos;
     switch ( m_cote ) {
         case Cote::Droite:
-            pos = { m_largeurBtnTaille + m_marge.x ,  m_marge.y };
+            pos = { m_largeurBtnTaille  ,  m_marge.y };
             break;
         case Cote::Gauche:
             pos = { m_marge.x ,  m_marge.y };
@@ -201,9 +202,9 @@ void SupPanneau::actualiserEnfants()
     {
 
 //        if ( enfant->getPosition ().x !=  pos.x && enfant->getPosition().y !=  pos.y )
-            enfant->setPosition( pos.x , pos.y );
-        if ( enfant->getTaille().x != m_taille.x - m_largeurBtnTaille -2* m_marge.x )
-            enfant->setTailleX( m_taille.x - m_largeurBtnTaille -2* m_marge.x );
+        enfant->setPosition( pos.x , pos.y );
+        if ( enfant->getTaille().x != m_taille.x - m_largeurBtnTaille - m_marge.x )
+            enfant->setTailleX( m_taille.x - m_largeurBtnTaille - m_marge.x );
         pos.y += enfant->getTaille().y;
     }
 }

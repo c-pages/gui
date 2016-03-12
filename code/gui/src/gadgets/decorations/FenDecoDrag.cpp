@@ -1,5 +1,6 @@
 #include "decorations/FenDecoDrag.h"
 #include "Interface.h"
+#include "Fenetre.h"
 
 
 
@@ -58,13 +59,9 @@ FenDecoDrag::FenDecoDrag( Fenetre* fenetre )
                 }
                 panneau->setAbsorbable( false );
             }
-            if ( survolPanneau )            {
-                m_fenetre->getOmbre()->setVisible ( false );
-                Interface::ms_calque_panneau_D->actualiser();
-                Interface::ms_calque_panneau_G->actualiser();
-                m_fenetre->getOmbre()->setVisible(false);
-            } //else if ( m_fenetre->getParent()->getNom() != Interface::ms_calque_fenetres->getNom() )
-            else m_fenetre->getOmbre()->setVisible(true);
+            if ( survolPanneau )
+                entreDansPanneau ();
+            else sortDuPanneau ();
 
             setDrag( false );
     };
@@ -79,7 +76,45 @@ FenDecoDrag::~FenDecoDrag( )
     m_fenetre->delier ( Evenement::onBtnG_presser );
     m_fenetre->delier ( Evenement::onBtnG_relacher );
     m_fenetre->delier ( Evenement::onBtnG_relacherDehors );
+
+
 }
+
+
+
+
+
+/////////////////////////////////////////////////
+void FenDecoDrag::sortDuPanneau ()
+{
+    std::cout << "Sortir du panneau\n";
+    m_fenetre->getOmbre()->setVisible(true);
+
+//    m_fenetre->retirerDecoration ( Fenetre::Decorations::RetaillePanneau );
+//    m_fenetre->ajouterDecoration ( Fenetre::Decorations::Retaille );
+
+}
+
+
+
+
+
+
+/////////////////////////////////////////////////
+void FenDecoDrag::entreDansPanneau ()
+{
+    std::cout << "Entrer dans le panneau\n";
+    Interface::ms_calque_panneau_D->actualiser();
+    Interface::ms_calque_panneau_G->actualiser();
+    m_fenetre->getOmbre()->setVisible(false);
+//
+//    m_fenetre->retirerDecoration ( Fenetre::Decorations::Retaille );
+//    m_fenetre->ajouterDecoration ( Fenetre::Decorations::RetaillePanneau );
+}
+
+
+
+
 
 /////////////////////////////////////////////////
 // Fonctions du templates decoration

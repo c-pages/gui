@@ -5,6 +5,7 @@
 #include <Interface.h>
 
 
+#include <string>
 
 namespace gui {
 
@@ -13,7 +14,8 @@ DnZoneTexte::DnZoneTexte ()
 : m_bouton  ( std::make_shared<BtnRectangle>() )
 , m_curseur ( std::make_shared<AffRectangle>() )
 , m_label   ( std::make_shared<AffLabel>() )
-, m_ecritureActive ( false )
+, m_ecritureActive  ( false )
+, m_numerique       ( false )
 {
     // initialiser
     m_taille.x = 180;
@@ -58,6 +60,7 @@ DnZoneTexte::DnZoneTexte ()
             setModeEcritureActif ( false );
             m_texte = m_valeur = m_label->getSFTexte()->getString() ;
             actualiser ();
+            declencher( Evenement::on_valeurValide);
         }
     };
     fn_sortir = [this](){
@@ -84,6 +87,8 @@ DnZoneTexte::DnZoneTexte ()
     m_bouton->lier ( Evenement::onBtnG_relacherDehors , fn_valider );
     m_bouton->lier ( Evenement::onBtnD_relacherDehors , fn_sortir );
 
+    m_bouton->lier ( Evenement::onBtnM_roulerHaut , [this](){ declencher ( Evenement::onBtnM_roulerHaut ) ;} );
+    m_bouton->lier ( Evenement::onBtnM_roulerBas , [this](){ declencher ( Evenement::onBtnM_roulerBas ) ;} );
     actualiser ();
 
 }
@@ -155,6 +160,8 @@ void DnZoneTexte::traiterEvenements(const sf::Event& evenement ){
 
 
 
+        std::cout << " (event.text.unicode)  : " << (evenement.text.unicode)  << "\n";
+
         // le texte avant modif dans le label
         std::string txt = m_label->getTexte() ;
 
@@ -166,16 +173,17 @@ void DnZoneTexte::traiterEvenements(const sf::Event& evenement ){
             // sinon on retire une lettre et on declenche l'action
             txt.erase ( txt.size()-1 , 1);
             m_label->setTexte( txt  );
-           // declencher( onCha_ChangeValeur );
+            declencher( Evenement::on_valeurChange );
         }
 
         // touche Entrée : Valider  //////////////////////////////
         else if ( evenement.text.unicode == 13 )  {
-          //  declencher( onCha_ValideValeur );
 //            m_btn->setCoche( false);
             setModeEcritureActif ( false ) ;
-            m_texte = txt;
+            m_texte = m_valeur = txt;
+//            m_texte = m_valeur;
             m_label->setTexte       ( m_texte ) ;
+           declencher( Evenement::on_valeurValide );
         }
 
         // touche Echappe : Annuler  //////////////////////////////
@@ -184,14 +192,21 @@ void DnZoneTexte::traiterEvenements(const sf::Event& evenement ){
 //            m_btn->setCoche( false);
             setModeEcritureActif ( false ) ;
             m_label->setTexte    ( m_texte ) ;
+            declencher( Evenement::on_valeurChange );
         }
 
         // les autres touches  //////////////////////////////
         else {
+            if ( m_numerique ){
+                if ( evenement.text.unicode >= 46 && evenement.text.unicode <= 57 ){
+                    m_label->setTexte( txt + static_cast<char>(evenement.text.unicode)  );
+                    declencher( Evenement::on_valeurChange );
+                }
+            } else  {
+                m_label->setTexte( txt + static_cast<char>(evenement.text.unicode)  );
+                declencher( Evenement::on_valeurChange );
+            }
 
-            std::cout << " (event.text.unicode)  : " << (evenement.text.unicode)  << "\n";
-
-            m_label->setTexte( txt + static_cast<char>(evenement.text.unicode)  );
             // s'il ne reste plus de place pour ecrire on retourne
 //            float largeurTexte = m_label->getSFTexte()->findCharacterPos 	(  m_label->getTexte().size() ).x;
 //            if ( largeurTexte > m_btn->getSize().x - 1 )

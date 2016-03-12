@@ -46,8 +46,8 @@ GrpSliders::GrpSliders ()
     m_slider_H->setLargeur ( m_largeurSliders );
     m_slider_V->setMarge({ 0 , 0});
     m_slider_H->setMarge({ 0 , 0});
-    m_slider_V->lier ( Evenement::on_changerValeur , [this](){ actualiser (); });
-    m_slider_H->lier ( Evenement::on_changerValeur , [this](){ actualiser (); });
+    m_slider_V->lier ( Evenement::on_valeurChange , [this](){ actualiser (); });
+    m_slider_H->lier ( Evenement::on_valeurChange , [this](){ actualiser (); });
 
     actualiser ();
 }

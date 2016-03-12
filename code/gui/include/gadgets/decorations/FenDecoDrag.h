@@ -27,13 +27,20 @@ public:
 
     // Fonctions locales
     /////////////////////////////////////////////////
-    bool dragEnCours( ) {return m_drag;};
+    bool dragEnCours( ) { return m_drag; };
 
     /////////////////////////////////////////////////
     void setDrag (bool val ){m_drag = val;};
 
     /////////////////////////////////////////////////
     void positionnerFenetre ();
+
+
+
+    void sortDuPanneau ();
+
+    void entreDansPanneau ();
+
 
 protected:
 private:

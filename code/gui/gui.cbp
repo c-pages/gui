@@ -19,6 +19,7 @@
 					<Add option="-DSFML_STATIC" />
 					<Add directory="include" />
 					<Add directory="include/gadget" />
+					<Add directory="include/gadgets" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-audio-s-d" />
@@ -40,6 +41,7 @@
 					<Add option="-DSFML_STATIC" />
 					<Add directory="include" />
 					<Add directory="include/gadget" />
+					<Add directory="include/gadgets" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -62,6 +64,7 @@
 			<Add directory="src/gadgets" />
 		</Linker>
 		<Unit filename="GUI.h" />
+		<Unit filename="Patch.h" />
 		<Unit filename="gui.cpp" />
 		<Unit filename="include/ActionClavier.h" />
 		<Unit filename="include/ActionEvenement.h" />
@@ -95,6 +98,7 @@
 		<Unit filename="include/gadgets/BtnTexte.h" />
 		<Unit filename="include/gadgets/DnCaseACocher.h" />
 		<Unit filename="include/gadgets/DnSlider.h" />
+		<Unit filename="include/gadgets/DnZoneNum.h" />
 		<Unit filename="include/gadgets/DnZoneTexte.h" />
 		<Unit filename="include/gadgets/Fenetre.h" />
 		<Unit filename="include/gadgets/GrpSimple.h" />
@@ -104,6 +108,7 @@
 		<Unit filename="include/gadgets/SupPanneau.h" />
 		<Unit filename="include/gadgets/decorations/FenDecoDrag.h" />
 		<Unit filename="include/gadgets/decorations/FenDecoRedim.h" />
+		<Unit filename="include/gadgets/decorations/FenDecoRedimPanneau.h" />
 		<Unit filename="include/gadgets/decorations/FenDecoration.h" />
 		<Unit filename="include/repartiteurs/Repartiteur.h" />
 		<Unit filename="include/repartiteurs/RepartiteurGrille.h" />
@@ -139,6 +144,7 @@
 		<Unit filename="src/gadgets/BtnTexte.cpp" />
 		<Unit filename="src/gadgets/DnCaseACocher.cpp" />
 		<Unit filename="src/gadgets/DnSlider.cpp" />
+		<Unit filename="src/gadgets/DnZoneNum.cpp" />
 		<Unit filename="src/gadgets/DnZoneTexte.cpp" />
 		<Unit filename="src/gadgets/Fenetre.cpp" />
 		<Unit filename="src/gadgets/GrpSimple.cpp" />
@@ -148,6 +154,7 @@
 		<Unit filename="src/gadgets/SupPanneau.cpp" />
 		<Unit filename="src/gadgets/decorations/FenDecoDrag.cpp" />
 		<Unit filename="src/gadgets/decorations/FenDecoRedim.cpp" />
+		<Unit filename="src/gadgets/decorations/FenDecoRedimPanneau.cpp" />
 		<Unit filename="src/gadgets/decorations/FenDecoration.cpp" />
 		<Unit filename="src/repartiteurs/Repartiteur.cpp" />
 		<Unit filename="src/repartiteurs/RepartiteurGrille.cpp" />

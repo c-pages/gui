@@ -52,6 +52,8 @@ public:
         actualiserGeometrie();
     };
 
+    virtual std::string getValeur ( ){ m_valeur = m_texte;  return m_valeur; }
+
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
@@ -65,6 +67,7 @@ public:
     ///< Acceder à m_ecritureActive
     bool modeEcritureActif () const { return m_ecritureActive;  };
 
+    void setNumerique ( bool val ){m_numerique = val; };
 
 /////////////////////////////////////////////////
 // Membres
@@ -72,7 +75,8 @@ public:
 private:
 
     // les proprietés fonctionnelles
-    bool                            m_ecritureActive;    ///<
+    bool            m_ecritureActive;    ///<
+    bool            m_numerique;
 
     // les composants de l'interface du gadget
     std::shared_ptr<BtnRectangle>   m_bouton;

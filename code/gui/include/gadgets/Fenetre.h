@@ -20,6 +20,7 @@ public:
     enum class Decorations{
         Drag,
         Retaille,
+        RetaillePanneau,
         Fermer
     };
 
@@ -28,6 +29,7 @@ public:
 /////////////////////////////////////////////////
 public:
     Fenetre();
+    virtual ~Fenetre(){};
     /////////////////////////////////////////////////
     /// \brief Bascule entre un panneau simple (false) et un panneau slider (true).
     ///
@@ -64,19 +66,43 @@ public:
     /////////////////////////////////////////////////
     virtual sf::Vector2i getTailleBouton (){ return m_tailleBoutons; };
 
-    std::shared_ptr<AffRectangle> getOmbre() { return m_ombre;};
+    std::shared_ptr<AffRectangle> getOmbre() { return m_ombre; };
 
+//
+//    void sortDuPanneau ();
+//    void entreDansPanneau ();
+//
+
+    virtual void setParent (Gadget* parent );
     void ajouterDecoration ( Decorations deco  );
 
     void retirerDecoration ( Decorations deco  )
     {
-        m_decorations.erase( deco  );
+        if ( m_decorations.find( deco ) != m_decorations.end())
+        {
+            std::cout<<"Retirer Decoration : ok\n";
+//            m_decoASupprimer.push_back( deco );
+                m_decorations.erase( deco  );
+
+        } else
+            std::cout<<"Retirer Decoration : pas trouvé\n";
+
+    };
+    void viderTableaux()
+    {
+        if ( m_decoASupprimer.size()>0 )
+            for ( auto deco : m_decoASupprimer )
+                m_decorations.erase( deco  );
     };
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
 protected:
+
+
+    std::vector<Decorations>        m_decoASupprimer;
+
     std::shared_ptr<Groupe>         m_panneau;
     std::shared_ptr<AffRectangle>   m_fond;
     std::shared_ptr<AffRectangle>   m_ombre;

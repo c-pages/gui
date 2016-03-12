@@ -74,7 +74,7 @@ private:
     bool            m_redimGauche = false;
     bool            m_redimDroite = false;
 
-    float           m_largeurBtnTaille = 5;
+    float           m_largeurBtnTaille;
 
     Cote            m_cote;
 

@@ -273,7 +273,9 @@ protected:
     bool m_focus;       ///< Le focus du gadget ( true: à le focus, false: sans le focus )
     bool m_survol;      ///< Le survol par la souris (true si le gadget est survolé par la souris).
     bool m_presse;      ///< Le bouton gauche de la souris est pressé (true si le gadget est survolé par la souris).
+
     bool m_deplacable;  ///< Si le gadget est déplacable (clique and drag)
+    bool m_redimensionnable;  ///< Si le gadget est redimensionnable (clique and drag)
 
     Etat m_etat; ///< l'etat du bouton
 

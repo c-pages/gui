@@ -161,6 +161,8 @@ void BtnMenu::actualiserStyle()
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  BtnMenu::testerSurvol ( sf::Vector2i position )
 {
+    if ( ! estVisible() )
+        return false;
 
 //    std::cout << "  testerSurvol MENU ...\n";
     if ( m_globalBounds.contains( position.x, position.y ) )

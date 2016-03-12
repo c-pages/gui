@@ -18,6 +18,7 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
 
 //, m_fenetre         ( std::make_shared<FenSimple>() )
 {
+    std::cout << "Decoration redim : creation\n";
     m_fenetre->setMarge( { 6 , 6 } );
 
     m_fenetre->ajouterComposant( m_btn_gauche );
@@ -64,7 +65,10 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
             m_posOrigin = m_fenetre->getPosition();
             m_redimGauche = true;
         };
-    fct_redimStopG = [this](){ m_redimGauche = false; m_fenetre->actualiserBounds(); };
+    fct_redimStopG = [this](){
+        m_redimGauche = false;
+//        m_fenetre->actualiserBounds();
+        };
     fct_redimStartD = [this](){
             m_fenetre->demander_aEtre_auDessus();
             m_sourisPosOrigin = m_fenetre->getPosSouris();
@@ -72,7 +76,9 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
             m_posOrigin = m_fenetre->getPosition();
             m_redimDroite = true;
         };
-    fct_redimStopD = [this](){ m_redimDroite = false; m_fenetre->actualiserBounds(); };
+    fct_redimStopD = [this](){ m_redimDroite = false;
+    //m_fenetre->actualiserBounds();
+    };
     fct_redimStartH = [this](){
             m_fenetre->demander_aEtre_auDessus();
             m_sourisPosOrigin = m_fenetre->getPosSouris();
@@ -80,7 +86,9 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
             m_posOrigin = m_fenetre->getPosition();
             m_redimHaut = true;
         };
-    fct_redimStopH = [this](){ m_redimHaut = false; m_fenetre->actualiserBounds(); };
+    fct_redimStopH = [this](){ m_redimHaut = false;
+    //m_fenetre->actualiserBounds();
+    };
     fct_redimStartB = [this](){
             m_fenetre->demander_aEtre_auDessus();
             m_sourisPosOrigin = m_fenetre->getPosSouris();
@@ -88,7 +96,9 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
             m_posOrigin = m_fenetre->getPosition();
             m_redimBas = true;
         };
-    fct_redimStopB = [this](){ m_redimBas = false; m_fenetre->actualiserBounds(); };
+    fct_redimStopB = [this](){ m_redimBas = false;
+    //m_fenetre->actualiserBounds();
+    };
 
 
 
@@ -159,9 +169,31 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
 
 
 
-
+    m_fenetre->actualiser();
 
 }
+
+
+/////////////////////////////////////////////////
+FenDecoRedim::~FenDecoRedim()
+{
+
+
+    m_fenetre->retirerComposant( m_btn_gauche );
+    m_fenetre->retirerComposant( m_btn_droite );
+    m_fenetre->retirerComposant( m_btn_haut );
+    m_fenetre->retirerComposant( m_btn_bas );
+
+    m_fenetre->retirerComposant( m_btn_hautGauche );
+    m_fenetre->retirerComposant( m_btn_hautDroite );
+    m_fenetre->retirerComposant( m_btn_basGauche );
+    m_fenetre->retirerComposant( m_btn_basDroite );
+
+    std::cout << " nombre de composants restant : " << m_fenetre->getComposants().size()  << "\n";
+}
+
+
+
 
 /*
 /////////////////////////////////////////////////
@@ -169,6 +201,23 @@ void FenRedim::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
 
 }*/
+
+///////////////////////////////////////////////////
+//void FenDecoRedim::sortDuPanneau ()
+//{
+////    if ( m_redimensionnable )
+//
+//}
+//
+//
+//
+///////////////////////////////////////////////////
+//void FenDecoRedim::entreDansPanneau ()
+//{
+//
+//}
+
+
 
 /////////////////////////////////////////////////
 void FenDecoRedim::actualiserGeometrie ()
@@ -239,7 +288,8 @@ void FenDecoRedim::redimmensionner_haut ()
     m_fenetre->setTailleY( m_tailleFenetre.y  );
     m_fenetre->setPosition ( m_fenetre->getPosition().x , m_posOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ));
 
-    actualiserGeometrie();
+    m_fenetre->actualiserGeometrie();
+    m_fenetre->actualiserBounds();
 }
 
 
@@ -252,7 +302,8 @@ void FenDecoRedim::redimmensionner_bas ()
     corrigerTailleMinimum ();
     m_fenetre->setTailleY( m_tailleFenetre.y  );
 
-    actualiserGeometrie();
+    m_fenetre->actualiserGeometrie();
+    m_fenetre->actualiserBounds();
 }
 
 
@@ -270,7 +321,8 @@ void FenDecoRedim::redimmensionner_gauche ()
     corrigerTailleMinimum ();
 
     m_fenetre->setPosition ( m_posOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ),  m_fenetre->getPosition().y );
-    actualiserGeometrie();
+    m_fenetre->actualiserGeometrie();
+    m_fenetre->actualiserBounds();
 }
 
 /////////////////////////////////////////////////
@@ -282,7 +334,8 @@ void FenDecoRedim::redimmensionner_droite ()
     corrigerTailleMinimum ();
     m_fenetre->setTailleX( m_tailleFenetre.x  );
 //    demander_aEtre_auDessus();
-    actualiserGeometrie();
+    m_fenetre->actualiserGeometrie();
+    m_fenetre->actualiserBounds();
 }
 
 
@@ -301,8 +354,6 @@ void FenDecoRedim::actualiser ( sf::Time delta )
 /////////////////////////////////////////////////
 void FenDecoRedim::traiterEvenements (const sf::Event& evenement)
 {
-
-
     if ( m_redimGauche ){ redimmensionner_gauche (); }
     if ( m_redimDroite ){ redimmensionner_droite (); }
     if ( m_redimHaut )  { redimmensionner_haut (); }

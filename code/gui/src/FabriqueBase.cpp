@@ -259,6 +259,19 @@ std::shared_ptr<DnZoneTexte>        FabriqueBase::zoneTexte( std::string texte )
 }
 
 /////////////////////////////////////////////////
+std::shared_ptr<DnZoneNum>        FabriqueBase::zoneNum( float valeurInitial ,float min , float max , float pas )
+{
+    auto nouveauGadget = creerBureau<DnZoneNum>( );
+    nouveauGadget->setValeur ( valeurInitial );
+    nouveauGadget->setMin ( min );
+    nouveauGadget->setMax ( max );
+    nouveauGadget->setPas ( pas );
+    return nouveauGadget;
+}
+
+
+
+/////////////////////////////////////////////////
 std::shared_ptr<DnSlider>        FabriqueBase::slider( )
 {
     auto nouveauGadget = creerBureau<DnSlider>( );

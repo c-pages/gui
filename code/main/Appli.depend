@@ -456,12 +456,12 @@
 	<Application.h>
 	<gui.h>
 
-1457185543 r:\06 - c++\110 - gui\code\gui\gui.h
+1457744646 r:\06 - c++\110 - gui\code\gui\gui.h
 	"Interface.h"
 	"Valeurs.h"
 	"Enums.h"
 
-1457708837 r:\06 - c++\110 - gui\code\gui\include\gadget.h
+1457731503 r:\06 - c++\110 - gui\code\gui\include\gadget.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<Geometrie.h>
@@ -475,7 +475,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1457666393 r:\06 - c++\110 - gui\code\gui\include\composite.h
+1457740563 r:\06 - c++\110 - gui\code\gui\include\composite.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<vector>
@@ -486,7 +486,7 @@
 	<SFML/Graphics.hpp>
 	<functional>
 
-1457726987 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
+1457749862 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
 	"SFML/Graphics.hpp"
 	"memory"
 	"Gadget.h"
@@ -499,10 +499,11 @@
 	"gadgets\BtnTexte.h"
 	"gadgets\BtnIcone.h"
 	"gadgets\BtnMenu.h"
+	"gadgets\BtnBarreFonctions.h"
 	"gadgets\DnCaseACocher.h"
 	"gadgets\DnZoneTexte.h"
 	"gadgets\DnSlider.h"
-	"gadgets\BtnBarreFonctions.h"
+	"gadgets\DnZoneNum.h"
 	"gadgets\GrpSimple.h"
 	"gadgets\GrpSliders.h"
 	"gadgets\Fenetre.h"
@@ -524,7 +525,7 @@
 1457060390 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1457726214 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1457750764 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -559,7 +560,7 @@
 	"Gadget.h"
 	<Enums.h>
 
-1457645405 r:\06 - c++\110 - gui\code\gui\include\enums.h
+1457747337 r:\06 - c++\110 - gui\code\gui\include\enums.h
 
 1457185549 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnrectangle.h
 	"Bouton.h"
@@ -580,7 +581,7 @@
 	"BtnRectangle.h"
 	"AffRectangle.h"
 
-1457364569 r:\06 - c++\110 - gui\code\gui\include\donnee.h
+1457738646 r:\06 - c++\110 - gui\code\gui\include\donnee.h
 	"ActionEvenement.h"
 
 1457137642 r:\06 - c++\110 - gui\code\gui\include\gadgets\dncaseacocher.h
@@ -594,7 +595,7 @@
 	"Gadget.h"
 	<Enums.h>
 
-1457139473 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnzonetexte.h
+1457748346 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnzonetexte.h
 	"Donnee.h"
 	"BtnRectangle.h"
 	"AffLabel.h"
@@ -617,7 +618,7 @@
 	"BtnIcone.h"
 	<memory>
 
-1457708443 r:\06 - c++\110 - gui\code\gui\include\composant.h
+1457736433 r:\06 - c++\110 - gui\code\gui\include\composant.h
 	<memory>
 	<vector>
 	<SFML/Graphics.hpp>
@@ -633,9 +634,10 @@
 1456616325 r:\06 - c++\110 - gui\code\gui\include\resourcemgr.inl
 	"ResourceMgr.h"
 
-1457060390 r:\06 - c++\110 - gui\code\gui\include\resourcesmgr.h
+1457744690 r:\06 - c++\110 - gui\code\gui\include\resourcesmgr.h
 	<unordered_map>
 	<memory>
+	<..\Patch.h>
 	<stdexcept>
 	<SFML/Graphics.hpp>
 	<SFML/audio.hpp>
@@ -1126,7 +1128,7 @@
 	<SFML/Graphics.hpp>
 	<memory>
 
-1457670764 r:\06 - c++\110 - gui\code\gui\include\gadgets\suppanneau.h
+1457741071 r:\06 - c++\110 - gui\code\gui\include\gadgets\suppanneau.h
 	"Support.h"
 	"BtnRectangle.h"
 	<SFML/Graphics.hpp>
@@ -1144,10 +1146,11 @@
 	<memory>
 	<SFML/Graphics.hpp>
 
-1457726987 r:\06 - c++\110 - gui\code\gui\include\gadgets\grpsliders.h
+1457730882 r:\06 - c++\110 - gui\code\gui\include\gadgets\grpsliders.h
 	"Groupe.h"
 	"AffRectangle.h"
 	"AffImage.h"
+	"DnSlider.h"
 	"Groupe.h"
 	"repartiteurs/Repartiteur.h"
 	"repartiteurs/RepartiteurGrille.h"
@@ -1155,6 +1158,7 @@
 	"repartiteurs/RepartiteurLibre.h"
 	"repartiteurs/RepartiteurVerticale.h"
 	"Enums.h"
+	"Valeurs.h"
 	<memory>
 	<SFML/Graphics.hpp>
 
@@ -1175,7 +1179,7 @@
 	<memory>
 	"SFML/Graphics.hpp"
 
-1457726783 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenetre.h
+1457740563 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenetre.h
 	"ActionEvenement.h"
 	"decorations/FenDecoration.h"
 	"gadgets/AffBarreTitre.h"
@@ -1189,4 +1193,10 @@
 1457724919 r:\06 - c++\110 - gui\code\gui\include\gadgets\decorations\fendecoration.h
 	<memory>
 	"SFML/Graphics.hpp"
+
+1457750634 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnzonenum.h
+	<Donnee.h>
+
+1457750655 r:\06 - c++\110 - gui\code\gui\patch.h
+	<sstream>
 

@@ -302,6 +302,9 @@ EcranDemo::initGUI_test_Fenetres  ()
 //    m_boutonPourGroupe_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
     m_boutonPourGroupe_2->setPosition (115,20);
     m_fenetre->ajouter ( m_boutonPourGroupe_2 );
+    m_boutonPourGroupe_2->lier(gui::Evenement::onBtnG_relacher, [this](){
+                               std::cout << "Bouton\n";
+                               });
 /*
     auto  m_bouton2PourGroupe_2 = m_interface->creer.boutonTexte( "Bouton\nBouton\nBouton\nBouton\nBouton\nBouton\nBouton" );
     m_bouton2PourGroupe_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
@@ -462,7 +465,7 @@ EcranDemo::initGUI_test_Donnees  ()
     m_boutonCoche->setTexte       ( "'Machiner'" );
     m_boutonCoche->setValeur      ( true );
 
-    m_boutonCoche->lier ( gui::Evenement::on_changerValeur , [this](){
+    m_boutonCoche->lier ( gui::Evenement::on_valeurChange , [this](){
                         std::cout << "ACTION Bool : changer Valeur\n";
                         if (  m_boutonTexte->estActif() ){
                             delierMachiner ();
@@ -507,7 +510,7 @@ EcranDemo::initGUI_test_Donnees  ()
 
     //m_slider->setVertical();
 
-    m_slider->lier ( gui::Evenement::on_changerValeur , [this](){
+    m_slider->lier ( gui::Evenement::on_valeurChange , [this](){
         std::cout << "ACTION - Valeur : " << m_slider->getValeur() << "\n";
     });
 
@@ -517,23 +520,9 @@ EcranDemo::initGUI_test_Donnees  ()
     m_label_9->setPosition    ( 190 + posRoot.x , posRoot.y  +  70 );
 //    m_label_9->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
-/*
-
-    ///////barreDefilement ///////
-    m_barreDefil = m_interface->creer.barreDefilement( );
-    m_barreDefil->setPosition    ( posRoot.x , posRoot.y  +  98 );
-    m_barreDefil->setStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
-
-    m_barreDefil->setLongueurCurseur ( 50 );
-
-    /////// autre Label ///////
-    m_label_10 = m_interface->creer.label( "<---  Barre de défilement" );
-    m_label_10->setPosition    ( 190 + posRoot.x , posRoot.y  +  100 );
-    m_label_10->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
-
-*/
-
-
+    auto zoneNum = m_interface->creer.zoneNum ( );
+    zoneNum->setPosition    ( posRoot.x , posRoot.y  +  108 );
+    zoneNum->setPas ( .1);
 }
 /////////////////////////////////////////////////
 void

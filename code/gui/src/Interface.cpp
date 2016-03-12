@@ -62,6 +62,7 @@ Interface::Interface( sf::RenderWindow* fenetre )
 
     // initialiser les icones
     ms_icones.load( "ico_fenetre"  , "media/img/icones_fenetre.png" );
+    ms_icones.load( "ico_fleches"  , "media/img/ico_fleches.png" );
 
 
     m_parent = nullptr;

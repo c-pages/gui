@@ -4,6 +4,7 @@
 #include <Fenetre.h>
 #include <decorations/FenDecoDrag.h>
 #include <decorations/FenDecoRedim.h>
+#include <decorations/FenDecoRedimPanneau.h>
 
 #include <Interface.h>
 
@@ -22,6 +23,8 @@ Fenetre::Fenetre ()
 , m_tailleBoutons   ( { 18 , 18 } )
 {
     m_taille = { 350 , 200 };
+    m_redimensionnable = true;
+    m_deplacable = true;
 
     // les composants
     ajouterComposant( m_ombre );
@@ -30,8 +33,10 @@ Fenetre::Fenetre ()
     ajouterComposant( m_titre );
 
     // les decorations
-    ajouterDecoration ( Decorations::Drag );
-    ajouterDecoration ( Decorations::Retaille );
+    if ( m_redimensionnable )
+        ajouterDecoration ( Decorations::Retaille );
+    if ( m_deplacable )
+        ajouterDecoration ( Decorations::Drag );
 
     // les couleurs
     m_panneauFndCouleur             = sf::Color( 70,70,70, 255 );
@@ -62,16 +67,28 @@ Fenetre::Fenetre ()
 /////////////////////////////////////////////////
 void Fenetre::ajouterDecoration ( Decorations deco  )
 {
-    switch ( deco )
+    // si il est deja dans la liste on zappe.
+    if ( m_decorations.find( deco ) != m_decorations.end() )
     {
+        std::cout<<"Ajouter Decoration : deja present\n";
+        return;
+    }
+
+    std::cout<<"Ajouter Decoration : ok\n";
+
+    switch ( deco )    {
         case Decorations::Drag:
             m_decorations.insert( { deco , std::make_shared<FenDecoDrag> ( this ) } );
             break;
         case Decorations::Retaille:
             m_decorations.insert( { deco , std::make_shared<FenDecoRedim> ( this ) } );
             break;
+        case Decorations::RetaillePanneau:
+            m_decorations.insert( { deco , std::make_shared<FenDecoRedimPanneau> ( this ) } );
+            break;
         default:break;
     }
+    actualiser();
 };
 
 /////////////////////////////////////////////////
@@ -95,6 +112,9 @@ void Fenetre::traiterEvenements (const sf::Event& evenement)
 
     for ( auto composant : m_composants )
         composant->traiterEvenements ( evenement);
+//
+//    // ?!?!?
+//    viderTableaux();
 }
 
 
@@ -120,8 +140,27 @@ std::shared_ptr<Gadget> Fenetre::retirer (std::shared_ptr<Gadget> enfant)
 }
 
 /////////////////////////////////////////////////
+void Fenetre::setParent (Gadget* parent )
+{
+    m_parent = parent;
+    if ( parent != nullptr ){
+        if ( parent->getNom() == Interface::ms_calque_fenetres->getNom() ){
+            retirerDecoration ( Decorations::RetaillePanneau );
+            ajouterDecoration ( Decorations::Retaille );
+        } else {
+            retirerDecoration ( Decorations::Retaille );
+            ajouterDecoration ( Decorations::RetaillePanneau );
+        }
+    }
+}
+
+/////////////////////////////////////////////////
 void Fenetre::actualiserGeometrie ()
 {
+
+//    // ?!?!?
+//    viderTableaux();
+
     m_panneau->setTaille    ( { m_taille.x - 2*m_marge.x, m_taille.y - getTailleBouton().y - 2*m_marge.y } );
     m_panneau->setPosition  ( m_marge.x , getTailleBouton().y + m_marge.y );
     m_panneau->actualiser   ( );
@@ -190,14 +229,6 @@ std::shared_ptr<Gadget>  Fenetre::testerSurvol ( sf::Vector2i position )
             // on le renvois
             return testInterfaceLocal;
         else return thisPtr();
-//        else {
-//            // sinon on regarde si on survol un enfant
-//            auto testEnfants = testerSurvolComposite( { position.x + m_posX_texture, position.y + m_posY_texture } );
-//            if ( testEnfants != nullptr )
-//                return testEnfants;
-//           else return thisPtr();
-////             else return nullptr;
-//        }
     }
     else return nullptr;
 }

@@ -128,7 +128,7 @@ DnSlider::DnSlider ()
 /////////////////////////////////////////////////
 void DnSlider::incrementer( float inc )
 {
-    declencher ( Evenement::on_changerValeur );
+    declencher ( Evenement::on_valeurChange );
     if ( m_horizontal )
         m_slider->setPosition ( m_slider->getPosition ( ).x + inc , m_slider->getPosition ( ).y );
     else
@@ -141,7 +141,7 @@ void DnSlider::incrementer( float inc )
 /////////////////////////////////////////////////
 void DnSlider::decrementer( float inc )
 {
-    declencher ( Evenement::on_changerValeur );
+    declencher ( Evenement::on_valeurChange );
     if ( m_horizontal )
         m_slider->setPosition ( m_slider->getPosition ( ).x - inc , m_slider->getPosition ( ).y );
     else
@@ -166,7 +166,7 @@ void DnSlider::traiterEvenements (const sf::Event& evenement)
 void DnSlider::positionnerCurseurSurSouris ()
 {
 
-    declencher ( Evenement::on_changerValeur );
+    declencher ( Evenement::on_valeurChange );
 
     // Definir la nouvelle position avec les coords souris
     if ( m_horizontal )

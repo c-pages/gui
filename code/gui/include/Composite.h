@@ -30,7 +30,7 @@ class Composite {
 
 public:
     ///< Definir m_parent
-    void setParent( Gadget* val );
+    virtual void setParent( Gadget* val );
 
     ///< Acceder à m_parent
     Gadget* getParent () const { return m_parent; };

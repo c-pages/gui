@@ -53,7 +53,7 @@ DnCaseACocher::DnCaseACocher ()
         m_valeur = !m_valeur;
 
         // Déclechements des evenements
-        declencher(Evenement::on_changerValeur);
+        declencher(Evenement::on_valeurChange);
         if (m_valeur)   declencher(Evenement::onBool_allume);
         else            declencher(Evenement::onBool_eteind);
 

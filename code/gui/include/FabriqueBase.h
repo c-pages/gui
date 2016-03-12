@@ -20,13 +20,13 @@
 #include "gadgets\BtnTexte.h"
 #include "gadgets\BtnIcone.h"
 #include "gadgets\BtnMenu.h"
+#include "gadgets\BtnBarreFonctions.h"
 
 // DONNEES
 #include "gadgets\DnCaseACocher.h"
 #include "gadgets\DnZoneTexte.h"
 #include "gadgets\DnSlider.h"
-//#include "gadgets\DnBarreDefilement.h"
-#include "gadgets\BtnBarreFonctions.h"
+#include "gadgets\DnZoneNum.h"
 
 // GROUPEMENT
 #include "gadgets\GrpSimple.h"
@@ -183,6 +183,16 @@ public:
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<DnZoneTexte>        zoneTexte( std::string texte = "zone de texte" );
+
+    /////////////////////////////////////////////////
+    /// \brief  Création d'une zone de texte
+    ///
+    /// \param texte
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<DnZoneNum>        zoneNum( float valeurInitial = 12345 ,float min = 0, float max = 100000, float pas = 1 );
+
+
 
     /////////////////////////////////////////////////
     /// \brief  Création d'un slider

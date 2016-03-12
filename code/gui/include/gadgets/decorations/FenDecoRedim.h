@@ -13,7 +13,7 @@ class FenDecoRedim : public FenDecoration
 
         FenDecoRedim( Fenetre* fenetre );
 
-//        virtual ~FenDecoRedim();
+        virtual ~FenDecoRedim();
 
    /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
@@ -45,6 +45,8 @@ private:
     void corrigerTailleMinimum ();
 
 
+//    void sortDuPanneau ();
+//    void entreDansPanneau ();
 
 /////////////////////////////////////////////////
 // Membres

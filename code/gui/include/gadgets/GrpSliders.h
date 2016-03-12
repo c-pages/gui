@@ -7,7 +7,7 @@
 #include "Groupe.h"
 #include "AffRectangle.h"
 #include "AffImage.h"
-//#include "DnBarreDefilement.h"
+#include "DnSlider.h"
 #include "Groupe.h"
 #include "repartiteurs/Repartiteur.h"
 #include "repartiteurs/RepartiteurGrille.h"
@@ -15,10 +15,9 @@
 #include "repartiteurs/RepartiteurLibre.h"
 #include "repartiteurs/RepartiteurVerticale.h"
 #include "Enums.h"
+#include "Valeurs.h"
 #include <memory>
 #include <SFML/Graphics.hpp>
-
-
 
 namespace gui {
 

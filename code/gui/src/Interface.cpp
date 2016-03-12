@@ -144,6 +144,7 @@ void Interface::actualiser ()
 /////////////////////////////////////////////////
 void Interface::traiterEvenements( sf::Event evenement )
 {
+//    std::cout << "EVENEMTN--------------\n";
 
     Gadget::traiterEvenements ( evenement);
 

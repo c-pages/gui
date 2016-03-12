@@ -20,10 +20,10 @@ EcranDemo::EcranDemo( Application*  appli )
     initGUI     ();
 
     // les tests
-    initGUI_test_Affichages ();
-    initGUI_test_Boutons    ();
-    initGUI_test_Donnees    ();
-    initGUI_test_Groupex   ();
+//    initGUI_test_Affichages ();
+//    initGUI_test_Boutons    ();
+//    initGUI_test_Donnees    ();
+//    initGUI_test_Groupex   ();
     initGUI_test_Fenetres   ();
 
     initScene   ();
@@ -79,6 +79,14 @@ void EcranDemo::traiter_evenements  ( const sf::Event& event )
 /////////////////////////////////////////////////
 void EcranDemo::actualiser  ( float deltaT )
 {
+    // les FPS
+    m_compteurFrameFPS++;
+    if ( m_chronoFPS.getElapsedTime().asSeconds() >= 1 )    {
+        m_FPS = m_compteurFrameFPS;
+        m_chronoFPS.restart();
+        m_compteurFrameFPS = 0;
+    }
+
     // actualiser la fenetre du jeu ...
 
     // actualiser l'interface
@@ -88,10 +96,10 @@ void EcranDemo::actualiser  ( float deltaT )
 //    m_interface->actualiser    ( sf::seconds( deltaT ) ) ;
 
 
-    std::string val;
+    std::string val=  "FPS : " + patch::to_string( m_FPS ) + "  - Survole : ";
     if ( m_interface->m_boutonSurvole != nullptr ){
-        val =  "Survole : " + m_interface->m_boutonSurvole->getNom();
-    } else val = "Survole : nullptr";
+        val +=   m_interface->m_boutonSurvole->getNom() ;
+    } else val += "nullptr";
     m_labelRetour->setTexte ( val );
 
 

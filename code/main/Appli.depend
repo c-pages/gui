@@ -449,7 +449,7 @@
 	"Enums.h"
 	<memory>
 
-1457701014 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
+1457803186 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
 	<SFML/Graphics.hpp>
 	<memory>
 	<Ecran.h>
@@ -475,7 +475,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1457740563 r:\06 - c++\110 - gui\code\gui\include\composite.h
+1457799701 r:\06 - c++\110 - gui\code\gui\include\composite.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<vector>
@@ -525,7 +525,7 @@
 1457060390 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1457750764 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1457803432 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -683,7 +683,7 @@
 	"gadgets/AffRectangle.h"
 	"repartiteurs/Repartiteur.h"
 
-1457060390 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteur.h
+1457793223 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteur.h
 	<SFML/Graphics.hpp>
 	<memory>
 	"Gadget.h"
@@ -691,13 +691,13 @@
 1457060390 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurgrille.h
 	"Repartiteur.h"
 
-1457060390 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurhorizontal.h
+1457791317 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurhorizontal.h
 	"Repartiteur.h"
 
-1457060390 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurlibre.h
+1457791317 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurlibre.h
 	"Repartiteur.h"
 
-1457060390 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurverticale.h
+1457791317 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurverticale.h
 	"Repartiteur.h"
 
 1456843536 r:\06 - c++\110 - gui\code\gui\include\gadgets\grppanneausliders.h
@@ -761,7 +761,7 @@
 	"AffBarreTitre.h"
 	<memory>
 
-1457662914 r:\06 - c++\110 - gui\code\gui\include\support.h
+1457797123 r:\06 - c++\110 - gui\code\gui\include\support.h
 	"Gadget.h"
 	"Groupe.h"
 	"repartiteurs/Repartiteur.h"
@@ -1128,9 +1128,10 @@
 	<SFML/Graphics.hpp>
 	<memory>
 
-1457741071 r:\06 - c++\110 - gui\code\gui\include\gadgets\suppanneau.h
+1457792636 r:\06 - c++\110 - gui\code\gui\include\gadgets\suppanneau.h
 	"Support.h"
 	"BtnRectangle.h"
+	"GrpSliders.h"
 	<SFML/Graphics.hpp>
 	<memory>
 
@@ -1146,7 +1147,7 @@
 	<memory>
 	<SFML/Graphics.hpp>
 
-1457730882 r:\06 - c++\110 - gui\code\gui\include\gadgets\grpsliders.h
+1457796077 r:\06 - c++\110 - gui\code\gui\include\gadgets\grpsliders.h
 	"Groupe.h"
 	"AffRectangle.h"
 	"AffImage.h"
@@ -1162,7 +1163,7 @@
 	<memory>
 	<SFML/Graphics.hpp>
 
-1457716900 r:\06 - c++\110 - gui\code\gui\include\groupe.h
+1457801361 r:\06 - c++\110 - gui\code\gui\include\groupe.h
 	"Gadget.h"
 	"gadgets/AffRectangle.h"
 	"repartiteurs/Repartiteur.h"

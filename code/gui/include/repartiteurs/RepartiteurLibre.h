@@ -23,9 +23,9 @@ public:
     /////////////////////////////////////////////////
     /// \brief Constructeur par défaut.
     ///
-    /// \param racine		 
+    /// \param racine
     /////////////////////////////////////////////////
-    RepartiteurLibre (Gadget* racine);
+    RepartiteurLibre ( Gadget* racine );
 
     virtual void repartir (std::vector<std::shared_ptr<Gadget>> groupe);
 

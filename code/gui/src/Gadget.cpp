@@ -71,8 +71,10 @@ void Gadget::actualiser ()
 
     actualiserEnfants();
     actualiserComposants();
-    if (m_parent!=nullptr)
-        m_parent->actualiserContenu();
+//    actualiserContenu();
+
+//    if (m_parent!=nullptr)
+//        m_parent->actualiserContenu();
 }
 
 

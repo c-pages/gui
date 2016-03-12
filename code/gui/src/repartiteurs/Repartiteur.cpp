@@ -8,8 +8,9 @@
 namespace gui {
 
 /////////////////////////////////////////////////
-Repartiteur::Repartiteur ()
-: m_espacement ( {5,5} )
+Repartiteur::Repartiteur ( Gadget* racine )
+: m_racine      ( racine )
+, m_espacement  ( {5,5} )
 {
 
 }

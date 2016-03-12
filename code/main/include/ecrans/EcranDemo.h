@@ -100,6 +100,10 @@ private:
     // Les membres
     /////////////////////////////////////////////////
 
+    sf::Clock                m_chronoFPS;
+    int                m_compteurFrameFPS = 0;
+    int                m_FPS = 0;
+
     sf::RectangleShape                  m_fond;         ///< Le shape SFML du fond de l'écran.
 
     // l'Interface

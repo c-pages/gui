@@ -44,11 +44,11 @@ public:
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
-public:
-    Repartiteur m_repartiteur;
+//public:
+//    Repartiteur m_repartiteur;
 protected:
     std::shared_ptr<AffRectangle>      m_fond;
-    std::shared_ptr<Groupe>            m_panneaux;
+//    std::shared_ptr<Groupe>            m_panneaux;
     bool                               m_absorbable = false;
 
     Interface *     m_interface;

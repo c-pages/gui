@@ -22,10 +22,42 @@ void Composite::ajouter (std::shared_ptr<Gadget> enfant)
 
     auto _this = static_cast<Gadget*>( this );
     enfant->setParent ( _this );
+
     enfant->actualiser();
     _this->actualiser();
 
 }
+
+
+/////////////////////////////////////////////////
+void Composite::actualiserContenu (){
+//    std::cout <<"Composite::actualiserContenu n";
+    // on demande juste au parent d'actualiser son contenu ...
+    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+};
+
+/////////////////////////////////////////////////
+void Composite::replacerContenu () {
+
+}
+
+/////////////////////////////////////////////////
+void Composite::ajouter ( std::shared_ptr<Gadget> enfant, unsigned int index )    {
+
+    // si l'enfant avait un parent on le retire de sa liste des enfants
+    auto parentBack = enfant->getParent();
+    if ( parentBack != nullptr )
+        parentBack->retirer ( enfant );
+
+    m_enfants.insert ( m_enfants.begin() + index, enfant );
+
+    auto _this = static_cast<Gadget*>( this );
+    enfant->setParent ( _this );
+
+    _this->actualiser();
+
+//    std::cout <<"Composite::ajouter reussi\n";
+};
 
 /////////////////////////////////////////////////
 void Composite::setParent( Gadget* val )

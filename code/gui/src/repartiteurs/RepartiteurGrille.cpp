@@ -8,7 +8,8 @@
 namespace gui {
 
 /////////////////////////////////////////////////
-RepartiteurGrille::RepartiteurGrille (Gadget* racine)
+RepartiteurGrille::RepartiteurGrille ( Gadget* racine )
+: Repartiteur   ( racine )
 {
 
 }
@@ -17,6 +18,7 @@ RepartiteurGrille::RepartiteurGrille (Gadget* racine)
 /////////////////////////////////////////////////
 void RepartiteurGrille::repartir (std::vector<std::shared_ptr<Gadget>> groupe)
 {
+//    std::cout << "repartir grille\n";
 
 }
 

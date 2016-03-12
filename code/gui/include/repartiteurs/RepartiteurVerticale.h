@@ -23,7 +23,7 @@ public:
     /////////////////////////////////////////////////
     /// \brief Constructeur par défaut.
     ///
-    /// \param racine		 
+    /// \param racine
     /////////////////////////////////////////////////
     RepartiteurVerticale (Gadget* racine);
 

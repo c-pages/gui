@@ -65,6 +65,7 @@ private:
     sf::Vector2f     m_posOrigin;
 
     sf::Vector2i     m_tailleFenetre;
+    sf::Vector2i     m_posFenetre;
 
 
     // les composants de l'interface du gadget

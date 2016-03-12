@@ -3,6 +3,7 @@
 /////////////////////////////////////////////////
 #include <SupPanneau.h>
 #include <Interface.h>
+//#include <GrpSliders.h>
 
 
 
@@ -13,12 +14,16 @@ SupPanneau::SupPanneau ()
 : m_cote        ( Cote::Gauche )
 , m_btn_gauche  ( std::make_shared<BtnRectangle>() )
 , m_btn_droite  ( std::make_shared<BtnRectangle>() )
+, m_groupe      ( std::make_shared<GrpSliders>() )
 , m_largeurBtnTaille ( 5 )
 {
     m_marge = { m_largeurBtnTaille , m_largeurBtnTaille };
 
     ajouterComposant ( m_btn_gauche );
     ajouterComposant ( m_btn_droite );
+    ajouterComposant ( m_groupe );
+
+    m_groupe->setRepartition ( Repartitions::Verticale );
 
 
     auto fct_redimStartG = [this](){
@@ -97,43 +102,35 @@ void SupPanneau::corrigerTailleMinimum ()
 /////////////////////////////////////////////////
 void    SupPanneau::ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i positionEcran )
 {
-//    std::cout << "Ajouter avec position\n";
-    int i = 0;
-    for ( auto enfant : m_enfants )
+    std::cout << "Ajouter avec position ...\n";
+
+   int i = 0;
+    for ( auto enfant : m_groupe->getEnfants() )
     {
+//        std::cout << "  ... on test ...\n";
         if ( gadget->getPosAbs().y  < enfant->getPosAbs().y  )
         {
-//            std::cout << "  ... test ok : " << i << "\n";
-              // si l'enfant avait un parent on le retire de sa liste des enfants
-            auto parentBack = gadget->getParent();
-            if ( parentBack != nullptr )
-                parentBack->retirer ( gadget );
+            m_groupe->ajouter ( gadget , i );
+//    m_interface->demanderActualisation();
+//            m_groupe->actualiserContenu (  );
 
-            m_enfants.insert( m_enfants.begin()+ i , gadget );
-
-            gadget->setParent ( static_cast<Gadget*>( this ) );
-
-            gadget->actualiser();
-            actualiser();
-
-
-
-
-              // si l'enfant avait un parent on le retire de sa liste des enfants
-
-
-
+            std::cout << "  ... reussi.\n";
             return;
         }
         i++;
     }
-    Composite::ajouter( gadget );
+    std::cout << "  ... rate, on le met a la fin.\n";
+    m_groupe->ajouter ( gadget );
+
+//    m_interface->demanderActualisation();
+
+//    Composite::ajouter( gadget );
 };
 
 
 /////////////////////////////////////////////////
 sf::Vector2i     SupPanneau::getTaille () const {
-    if ( m_enfants.size() == 0)
+    if ( m_groupe->getEnfants().size() == 0)
         return { 10, m_taille.y};
     else return m_taille;
 }
@@ -141,9 +138,11 @@ sf::Vector2i     SupPanneau::getTaille () const {
 /////////////////////////////////////////////////
 void    SupPanneau::actualiserGeometrie ()
 {
+//    std::cout << "Actualiser PANNEAU\n";
+
     auto tailleTmp = m_taille;
-    if ( m_enfants.size() == 0)
-    {
+
+    if ( m_groupe->getEnfants().size() == 0)    {
         tailleTmp.x = 10;
         switch ( m_cote ) {
             case Cote::Droite:
@@ -155,7 +154,6 @@ void    SupPanneau::actualiserGeometrie ()
         }
         if ( m_interface !=nullptr)
             m_interface->demanderActualisation();
-
     }
    else switch ( m_cote ) {
         case Cote::Droite:
@@ -167,15 +165,18 @@ void    SupPanneau::actualiserGeometrie ()
             m_btn_droite->setVisible ( true );
             break;
     }
+
     m_fond->setTaille ( tailleTmp );
 
     m_btn_droite->setPosition ( tailleTmp.x - m_btn_droite->getTaille().x, 0 );
     m_btn_gauche->setTaille ( m_largeurBtnTaille , tailleTmp.y );
     m_btn_droite->setTaille ( m_largeurBtnTaille , tailleTmp.y );
 
+    m_groupe->setTaille ( { tailleTmp.x - 2*m_marge.x , tailleTmp.y - 2*m_marge.y });
+    m_groupe->setPosition ( m_marge.x , m_marge.y );
 
-
-    actualiserEnfants();
+//    actualiserBounds();
+//    actualiserEnfants();
 //    if (m_interface != nullptr)
 //    {
 //        auto tailleFenetre = m_interface->getFenetre()->getSize();
@@ -185,7 +186,7 @@ void    SupPanneau::actualiserGeometrie ()
 }
 
 
-
+/*
 /////////////////////////////////////////////////
 void SupPanneau::actualiserEnfants()
 {
@@ -198,16 +199,17 @@ void SupPanneau::actualiserEnfants()
             pos = { m_marge.x ,  m_marge.y };
             break;
     }
-    for ( auto enfant : m_enfants )
+    for ( auto enfant : m_groupe->getEnfants() )
     {
 
 //        if ( enfant->getPosition ().x !=  pos.x && enfant->getPosition().y !=  pos.y )
         enfant->setPosition( pos.x , pos.y );
-        if ( enfant->getTaille().x != m_taille.x - m_largeurBtnTaille - m_marge.x )
-            enfant->setTailleX( m_taille.x - m_largeurBtnTaille - m_marge.x );
+        if ( enfant->getTaille().x != m_taille.x - m_largeurBtnTaille - 4*m_marge.x )
+            enfant->setTailleX( m_taille.x - m_largeurBtnTaille - 4*m_marge.x );
+
         pos.y += enfant->getTaille().y;
     }
-}
+}*/
 
 
 
@@ -238,7 +240,7 @@ void SupPanneau::redimmensionner_gauche ()
     actualiserGeometrie();
 
 //    actualiserEnfants();
-    m_interface->demanderActualisation();
+//    m_interface->demanderActualisation();
 }
 
 /////////////////////////////////////////////////
@@ -250,18 +252,81 @@ void SupPanneau::redimmensionner_droite ()
 //    demander_aEtre_auDessus();
     actualiserGeometrie();
 //    actualiserEnfants();
-    m_interface->demanderActualisation();
+//    m_interface->demanderActualisation();
 }
-
 
 /*
 
 /////////////////////////////////////////////////
+std::shared_ptr<Gadget>   SupPanneau::testerSurvol ( sf::Vector2i position )
+{
+    if (! estVisible() )
+        return nullptr;
+
+  ///<\todo... a voir si on peut se passer de faire l'actualisation a chaque fois ...(pour l'instant sans ca, ca pose problème a bouton dans fenentre)
+    actualiserBounds();
+
+    // Si on survol le gadget
+    if ( m_globalBounds.contains( position.x, position.y ) && estActif() )
+    {
+//        std::cout << "TESTER SURVOL\n";
+        // On test le survol des composants
+        auto testInterfaceLocal = testerSurvolComposants( position );
+        if ( testInterfaceLocal != nullptr )
+            return testInterfaceLocal;
+        // On test le survol des enfants
+        else
+        {
+            auto testEnfants = testerSurvolEnfants( position );
+            if ( testEnfants != nullptr )
+                return testEnfants;
+            else  return thisPtr();
+        }
+    }
+    else
+        return nullptr;
+
+}
+*/
+
+/*
+/////////////////////////////////////////////////
 void SupPanneau::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
+    if (! estVisible() )
+        return;
+
+
+    //On applique la transformation
+    states.transform *= getTransform();
+
+    // on dessine les composants
+    dessinerComposant ( target, states);
+
+    // On dessine les enfants (du groupe)
+    for ( auto enfant : m_groupe->getEnfants() )
+        target.draw ( *enfant , states ) ;
 
 }
 */
 
 } // fin namespace gui
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

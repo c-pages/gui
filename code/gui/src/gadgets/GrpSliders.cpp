@@ -46,15 +46,17 @@ GrpSliders::GrpSliders ()
     m_slider_H->setLargeur ( m_largeurSliders );
     m_slider_V->setMarge({ 0 , 0});
     m_slider_H->setMarge({ 0 , 0});
-    m_slider_V->lier ( Evenement::on_valeurChange , [this](){ actualiser (); });
-    m_slider_H->lier ( Evenement::on_valeurChange , [this](){ actualiser (); });
+
+    m_slider_V->lier ( Evenement::on_valeurChange , [this](){ replacerContenu (); });
+    m_slider_H->lier ( Evenement::on_valeurChange , [this](){ replacerContenu (); });
 
     actualiser ();
 }
 
-
 /////////////////////////////////////////////////
 void GrpSliders::actualiserGeometrie (){
+//    std::cout << "GrpSliders::actualiserGeometrie ()\n";
+    Groupe::actualiserGeometrie ();
 
     m_fond->setTaille(m_taille);
 
@@ -63,14 +65,27 @@ void GrpSliders::actualiserGeometrie (){
     m_slider_H->setVisible ( longueurs.x > 0 );
     m_slider_V->setVisible ( longueurs.y > 0 );
 
-    m_contenant->setSize({ m_taille.x -  m_slider_V->getTaille().x , m_taille.y -  m_slider_H->getTaille().y});
-//    m_contenant->setSize({ m_taille.x , m_taille.y });
+
+////
+
+
+
+
+////
+
+    m_posContenant = {0,0};
+    m_tailleContenant = { m_taille.x -  m_slider_V->getTaille().x , m_taille.y -  m_slider_H->getTaille().y };
+
+
+    m_contenant->setSize( { m_tailleContenant.x, m_tailleContenant.y } );
+    m_fond->setTaille(m_taille);
+
 
     // si le contenu est plus grand que le contenant
     if ( m_slider_H->estVisible() ) {
-        m_slider_H->setLongueur( m_taille.x -  m_slider_V->getTaille().x );
-        m_slider_H->setPosition( 0 , m_taille.y - m_slider_H->getTaille().y);
-        float longueurCursH = m_taille.x/ float( boundgingB_enfants().width )* 100 ;
+        m_slider_H->setLongueur( m_tailleContenant.x );
+        m_slider_H->setPosition( 0 , m_tailleContenant.y );
+        float longueurCursH = m_taille.x/ float( boundgingB_enfants().width )* 100;
         m_slider_H->setLongueurCurseur(longueurCursH);
         float coef                  = (  m_slider_H->getValeur() ) / 100;
         m_posX_texture              = coef * longueurs.x;
@@ -81,8 +96,8 @@ void GrpSliders::actualiserGeometrie (){
 
     // si contenu plus grand, on a le slider vert
     if (  m_slider_V->estVisible() ) {  // si contenu plus grand, on a le slider
-        m_slider_V->setLongueur ( m_taille.y - m_slider_H->getTaille().y );
-        m_slider_V->setPosition ( m_taille.x - m_slider_V->getTaille().x , 0 );
+        m_slider_V->setLongueur ( m_tailleContenant.y );
+        m_slider_V->setPosition ( m_tailleContenant.x , 0 );
         float longueurCursV = m_taille.y /float( boundgingB_enfants().height )* 100 ;
         m_slider_V->setLongueurCurseur( longueurCursV );
         float coef                  = ( 100 - m_slider_V->getValeur()  ) / 100;
@@ -92,6 +107,10 @@ void GrpSliders::actualiserGeometrie (){
     } else {
         m_posY_texture      = 0;
     }
+
+
+    repartirEnfants ();
+
     actualiserContenu();
     actualiserBounds ();
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
@@ -194,6 +213,41 @@ void GrpSliders::actualiser ()
 }
 */
 
+
+
+/////////////////////////////////////////////////
+void GrpSliders::replacerContenu () {
+
+    sf::Vector2f longueurs = deplMaxContenu();
+
+
+    // si le contenu est plus grand que le contenant
+    if ( m_slider_H->estVisible() ) {
+        float coef                  = (  m_slider_H->getValeur() ) / 100;
+        m_posX_texture              = coef * longueurs.x;
+    } else {
+        m_posX_texture      = 0;
+    }
+
+    // si contenu plus grand, on a le slider vert
+    if (  m_slider_V->estVisible() ) {  // si contenu plus grand, on a le slider
+        float coef                  = ( 100 - m_slider_V->getValeur()  ) / 100;
+        m_posY_texture              = coef * longueurs.y;
+    } else {
+        m_posY_texture      = 0;
+    }
+
+
+
+     m_contenant->setTextureRect(   { m_posX_texture
+                                    , m_posY_texture
+                                    , m_contenant->getSize().x
+                                    , m_contenant->getSize().y });
+
+    if (m_parent != nullptr)
+        m_parent->actualiserContenu();
+
+}
 
 
 /////////////////////////////////////////////////

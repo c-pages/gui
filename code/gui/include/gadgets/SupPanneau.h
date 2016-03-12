@@ -7,6 +7,7 @@
 #include "Support.h"
 
 #include "BtnRectangle.h"
+#include "GrpSliders.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 
@@ -18,8 +19,7 @@ namespace gui {
 
 class SupPanneau : public gui::Support {
 
-
-public:
+//class GrpSliders;
 
 
 
@@ -40,7 +40,7 @@ public:
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
 
-    virtual void actualiserEnfants();
+//    virtual void actualiserEnfants();
 
     /////////////////////////////////////////////////
 
@@ -53,11 +53,14 @@ public:
     /////////////////////////////////////////////////
     void traiterEvenements (const sf::Event& evenement);
 
+//    virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
+
+ //   virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
+
     virtual void ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i positionEcran );
     virtual void ajouter ( std::shared_ptr<Gadget> gadget)
-    {
-        Composite::ajouter(gadget);
-    };
+        { m_groupe->ajouter ( gadget ); };
+
 private:
 
     void redimmensionner_gauche ();
@@ -82,8 +85,10 @@ private:
     sf::Vector2i     m_tailleOrigin;
     sf::Vector2f     m_posOrigin;
 
-    std::shared_ptr<BtnRectangle> m_btn_gauche;
-    std::shared_ptr<BtnRectangle> m_btn_droite;
+    std::shared_ptr<BtnRectangle>   m_btn_gauche;
+    std::shared_ptr<BtnRectangle>   m_btn_droite;
+    std::shared_ptr<GrpSliders>     m_groupe;
+
 
 }; // fin class SupPanneau
 

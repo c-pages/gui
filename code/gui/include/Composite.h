@@ -35,12 +35,12 @@ public:
     ///< Acceder à m_parent
     Gadget* getParent () const { return m_parent; };
 
-    virtual void actualiserContenu (){};
 
+    virtual sf::Vector2i    getTailleContenant (){};
 
     virtual std::shared_ptr<Gadget> thisPtr(){
         std::cout << "DEMANDE DE thisPtr PROBLEMATIQUE\n";
-//        return static_cast<std::shared_ptr<Gadget>> shared_from_this();
+        //return static_cast<std::shared_ptr<Gadget>> shared_from_this();
         return nullptr;
     };
 
@@ -52,7 +52,8 @@ public:
     /////////////////////////////////////////////////
     virtual void ajouter (std::shared_ptr<Gadget> enfant);
 
-    virtual void ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i positionEcran ){};
+    virtual void ajouter ( std::shared_ptr<Gadget> enfant, sf::Vector2i positionEcran ){};
+    virtual void ajouter ( std::shared_ptr<Gadget> enfant, unsigned int index );
 
     /////////////////////////////////////////////////
     /// \brief Retirer un enfant de la liste des enfants de ce gadget sans le supprimer.
@@ -75,6 +76,10 @@ public:
 
     virtual void actualiserEnfants();
 
+
+    virtual void actualiserContenu ();
+
+    void    replacerContenu ();
 
     void actualiserListes ( );
 

@@ -67,7 +67,7 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
         };
     fct_redimStopG = [this](){
         m_redimGauche = false;
-//        m_fenetre->actualiserBounds();
+        m_fenetre->actualiserBounds();
         };
     fct_redimStartD = [this](){
             m_fenetre->demander_aEtre_auDessus();
@@ -77,7 +77,7 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
             m_redimDroite = true;
         };
     fct_redimStopD = [this](){ m_redimDroite = false;
-    //m_fenetre->actualiserBounds();
+    m_fenetre->actualiserBounds();
     };
     fct_redimStartH = [this](){
             m_fenetre->demander_aEtre_auDessus();
@@ -87,7 +87,7 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
             m_redimHaut = true;
         };
     fct_redimStopH = [this](){ m_redimHaut = false;
-    //m_fenetre->actualiserBounds();
+    m_fenetre->actualiserBounds();
     };
     fct_redimStartB = [this](){
             m_fenetre->demander_aEtre_auDessus();
@@ -97,7 +97,7 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
             m_redimBas = true;
         };
     fct_redimStopB = [this](){ m_redimBas = false;
-    //m_fenetre->actualiserBounds();
+    m_fenetre->actualiserBounds();
     };
 
 
@@ -130,8 +130,8 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
             m_redimHaut = true;
             m_redimGauche = true;
         });
-    m_btn_hautGauche->lier (Evenement::onBtnG_relacher, [this](){ m_redimGauche = false;  m_redimHaut = false; });
-    m_btn_hautGauche->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimGauche = false;   m_redimHaut = false; });
+    m_btn_hautGauche->lier (Evenement::onBtnG_relacher, [this](){ m_redimGauche = false;  m_redimHaut = false; m_fenetre->actualiserBounds(); });
+    m_btn_hautGauche->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimGauche = false;   m_redimHaut = false; m_fenetre->actualiserBounds(); });
 
     m_btn_hautDroite->lier (Evenement::onBtnG_presser , [this](){
             m_fenetre->demander_aEtre_auDessus();
@@ -141,8 +141,8 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
             m_redimHaut = true;
             m_redimDroite = true;
         });
-    m_btn_droite->lier (Evenement::onBtnG_relacher, [this](){ m_redimDroite = false;   m_redimHaut = false; });
-    m_btn_droite->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimDroite = false;   m_redimHaut = false; });
+    m_btn_droite->lier (Evenement::onBtnG_relacher, [this](){ m_redimDroite = false;   m_redimHaut = false; m_fenetre->actualiserBounds(); });
+    m_btn_droite->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimDroite = false;   m_redimHaut = false; m_fenetre->actualiserBounds(); });
 
     m_btn_basGauche->lier (Evenement::onBtnG_presser , [this](){
             m_fenetre->demander_aEtre_auDessus();
@@ -152,8 +152,8 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
             m_redimBas = true;
             m_redimGauche = true;
         });
-    m_btn_basGauche->lier (Evenement::onBtnG_relacher, [this](){ m_redimBas = false; m_redimGauche = false; });
-    m_btn_basGauche->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimBas = false; m_redimGauche = false; });
+    m_btn_basGauche->lier (Evenement::onBtnG_relacher, [this](){ m_redimBas = false; m_redimGauche = false; m_fenetre->actualiserBounds(); });
+    m_btn_basGauche->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimBas = false; m_redimGauche = false; m_fenetre->actualiserBounds(); });
 
     m_btn_basDroite->lier (Evenement::onBtnG_presser , [this](){
             m_fenetre->demander_aEtre_auDessus();
@@ -163,8 +163,8 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
             m_redimBas = true;
             m_redimDroite = true;
         });
-    m_btn_basDroite->lier (Evenement::onBtnG_relacher, [this](){ m_redimBas = false; m_redimDroite = false; });
-    m_btn_basDroite->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimBas = false; m_redimDroite = false; });
+    m_btn_basDroite->lier (Evenement::onBtnG_relacher, [this](){ m_redimBas = false; m_redimDroite = false; m_fenetre->actualiserBounds(); });
+    m_btn_basDroite->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimBas = false; m_redimDroite = false; m_fenetre->actualiserBounds(); });
 
 
 
@@ -226,6 +226,7 @@ void FenDecoRedim::actualiserGeometrie ()
 
     auto marge = m_fenetre->getMarge();
     auto taille = m_fenetre->getTaille();
+
     m_btn_gauche->setTaille ( {marge.x , taille.y - 2*marge.y} );
     m_btn_droite->setTaille ( {marge.x , taille.y - 2*marge.y} );
     m_btn_haut->setTaille   ( {taille.x - 2*marge.x , marge.y} );
@@ -285,11 +286,12 @@ void FenDecoRedim::redimmensionner_haut ()
     //m_fenetre->setTailleY( m_tailleOrigin.y - ( posSouris.y - m_sourisPosOrigin.y  ) );
     m_tailleFenetre = { m_fenetre->getTaille().x , m_tailleOrigin.y - ( posSouris.y - m_sourisPosOrigin.y  ) };
     corrigerTailleMinimum ();
+
     m_fenetre->setTailleY( m_tailleFenetre.y  );
     m_fenetre->setPosition ( m_fenetre->getPosition().x , m_posOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ));
 
-    m_fenetre->actualiserGeometrie();
-    m_fenetre->actualiserBounds();
+//    m_fenetre->actualiserGeometrie();
+//    m_fenetre->actualiserBounds();
 }
 
 
@@ -302,8 +304,8 @@ void FenDecoRedim::redimmensionner_bas ()
     corrigerTailleMinimum ();
     m_fenetre->setTailleY( m_tailleFenetre.y  );
 
-    m_fenetre->actualiserGeometrie();
-    m_fenetre->actualiserBounds();
+//    m_fenetre->actualiserGeometrie();
+//    m_fenetre->actualiserBounds();
 }
 
 
@@ -321,8 +323,8 @@ void FenDecoRedim::redimmensionner_gauche ()
     corrigerTailleMinimum ();
 
     m_fenetre->setPosition ( m_posOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ),  m_fenetre->getPosition().y );
-    m_fenetre->actualiserGeometrie();
-    m_fenetre->actualiserBounds();
+//    m_fenetre->actualiserGeometrie();
+//    m_fenetre->actualiserBounds();
 }
 
 /////////////////////////////////////////////////
@@ -334,8 +336,8 @@ void FenDecoRedim::redimmensionner_droite ()
     corrigerTailleMinimum ();
     m_fenetre->setTailleX( m_tailleFenetre.x  );
 //    demander_aEtre_auDessus();
-    m_fenetre->actualiserGeometrie();
-    m_fenetre->actualiserBounds();
+//    m_fenetre->actualiserGeometrie();
+//    m_fenetre->actualiserBounds();
 }
 
 
@@ -358,6 +360,9 @@ void FenDecoRedim::traiterEvenements (const sf::Event& evenement)
     if ( m_redimDroite ){ redimmensionner_droite (); }
     if ( m_redimHaut )  { redimmensionner_haut (); }
     if ( m_redimBas )   { redimmensionner_bas (); }
+
+    if ( redimEnCours () )
+        m_fenetre->actualiserGeometrie();
 
 //    FenSimple::traiterEvenements (evenement);
 

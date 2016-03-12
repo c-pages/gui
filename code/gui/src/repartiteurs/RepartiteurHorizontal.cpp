@@ -8,7 +8,8 @@
 namespace gui {
 
 /////////////////////////////////////////////////
-RepartiteurHorizontal::RepartiteurHorizontal (Gadget* racine)
+RepartiteurHorizontal::RepartiteurHorizontal ( Gadget* racine )
+: Repartiteur   ( racine )
 {
 
 }
@@ -17,6 +18,7 @@ RepartiteurHorizontal::RepartiteurHorizontal (Gadget* racine)
 /////////////////////////////////////////////////
 void RepartiteurHorizontal::repartir (std::vector<std::shared_ptr<Gadget>> groupe)
 {
+//    std::cout << "repartir horizontalement\n";
 
 }
 

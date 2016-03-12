@@ -2,6 +2,12 @@
 // Headers
 /////////////////////////////////////////////////
 #include <Groupe.h>
+#include "repartiteurs/RepartiteurGrille.h"
+#include "repartiteurs/RepartiteurHorizontal.h"
+#include "repartiteurs/RepartiteurVerticale.h"
+#include "repartiteurs/RepartiteurLibre.h"
+
+
 
 
 
@@ -13,8 +19,9 @@ Groupe::Groupe ()
 , m_posX_texture(0)
 , m_posY_texture(0)
 , m_fond ( std::make_shared<AffRectangle>() )
+, m_repartiteur ( new RepartiteurLibre ( this ) )
 {
-    m_renderTexture.create( 1200, 900 );
+    m_renderTexture.create( 1920, 1080 );
 
     m_fndCouleur            = sf::Color( 70,70,70, 255 );
     m_fndLgnCouleur         = sf::Color( 255,255,255, 20 );
@@ -28,15 +35,43 @@ Groupe::Groupe ()
 }
 
 /////////////////////////////////////////////////
+void Groupe::setRepartition ( Repartitions repartition )
+{
+//    std::cout << " SET REPART |-------------> "<< repartition << "\n";
+
+    switch ( repartition ){
+        case Repartitions::Grille:
+            m_repartiteur.reset();
+            m_repartiteur = std::unique_ptr<Repartiteur> ( new RepartiteurGrille ( this ) );
+            break;
+        case Repartitions::Horizontale:
+            m_repartiteur.reset();
+            m_repartiteur = std::unique_ptr<Repartiteur> ( new RepartiteurHorizontal ( this )  );
+            break;
+        case Repartitions::Libre:
+            m_repartiteur.reset();
+            m_repartiteur = std::unique_ptr<Repartiteur> ( new RepartiteurLibre ( this ) ) ;
+            break;
+        case Repartitions::Verticale:
+            m_repartiteur.reset();
+            m_repartiteur = std::unique_ptr<Repartiteur> ( new RepartiteurVerticale ( this )  );
+            break;
+    }
+}
+
+
+/////////////////////////////////////////////////
 void Groupe::actualiserContenu ()
 {
 //    std::cout << "Groupe::actualiserContenu\n";
-
+//    sf::Vector2i taille = { boundgingB_enfants().left + boundgingB_enfants().width , boundgingB_enfants().top + boundgingB_enfants().height };
+//    m_renderTexture.create( taille.x, taille.y );
     // Render to texture des enfants
     m_renderTexture.clear( sf::Color::Transparent );
 //    m_renderTexture.clear( sf::Color::Red );
     for (auto enfant : m_enfants)
         m_renderTexture.draw( *enfant );
+
     m_renderTexture.display();
 //    std::cout << " -> m_posX_texture : " << m_posX_texture << "     m_posY_texture : " << m_posY_texture << "\nm_contenant->getSize().x : " << m_contenant->getSize().x<< "   m_contenant->getSize().y : " << m_contenant->getSize().y << "\n";
     // on applique la texture
@@ -46,17 +81,25 @@ void Groupe::actualiserContenu ()
                                     , m_contenant->getSize().x
                                     , m_contenant->getSize().y });
 
+    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+
 };
 
 /////////////////////////////////////////////////
 void Groupe::actualiserGeometrie ()
 {
+//    std::cout << " BAHALORS \n";
     m_fond->setTaille(m_taille);
-    m_contenant->setSize({ m_taille.x , m_taille.y });
+    m_contenant->setSize( { m_taille.x , m_taille.y } );
+
+    m_posContenant = {0,0};
+    m_tailleContenant = m_taille;
+
+    repartirEnfants ();
 
     actualiserContenu();
     actualiserBounds ();
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+//    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 
 }
 
@@ -98,6 +141,47 @@ std::shared_ptr<Gadget>  Groupe::testerSurvol ( sf::Vector2i position )
     else return nullptr;
 }
 
+/////////////////////////////////////////////////
+void Groupe::ajouter ( std::shared_ptr<Gadget> enfant, unsigned int index )    {
+
+    // si l'enfant avait un parent on le retire de sa liste des enfants
+    auto parentBack = enfant->getParent();
+    if ( parentBack != nullptr )
+        parentBack->retirer ( enfant );
+
+    m_enfants.insert ( m_enfants.begin() + index, enfant );
+
+    enfant->setParent ( this );
+
+    repartirEnfants();
+
+//    enfant->actualiser();
+
+//    actualiserContenu();
+    std::cout <<"Groupe::ajouter reussi\n";
+};
+
+/////////////////////////////////////////////////
+void Groupe::ajouter ( std::shared_ptr<Gadget> enfant )    {
+    Composite::ajouter( enfant );
+
+    repartirEnfants();
+
+//    // si l'enfant avait un parent on le retire de sa liste des enfants
+//    auto parentBack = enfant->getParent();
+//    if ( parentBack != nullptr )
+//        parentBack->retirer ( enfant );
+//
+//    m_enfants.insert ( m_enfants.begin() + index, enfant );
+//
+//    auto _this = static_cast<Gadget*>( this );
+//    enfant->setParent ( _this );
+//
+//    enfant->actualiser();
+////    _this->actualiser();
+//    _this->actualiserContenu();
+//    std::cout <<"Composite::ajouter reussi\n";
+};
 /////////////////////////////////////////////////
 sf::Vector2f    Groupe::deplMaxContenu(){
 

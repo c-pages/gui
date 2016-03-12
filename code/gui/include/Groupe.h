@@ -14,6 +14,7 @@ namespace gui {
 
 
 
+
 class Groupe : public Gadget {
 
 
@@ -34,7 +35,18 @@ public:
 
 public:
     ///< Definir m_repartiteur
-    void setRepartiteur( Repartiteur val ){ m_repartiteur = val; };
+    void setRepartiteur( std::unique_ptr<Repartiteur> val ){ m_repartiteur = std::move(val); };
+
+    void repartirEnfants () {
+//        std::cout << " BAH ca c queque chose\n";
+        m_repartiteur->repartir( m_enfants );
+    };
+
+    /////////////////////////////////////////////////
+    virtual void ajouter ( std::shared_ptr<Gadget> enfant, unsigned int index );
+    virtual void ajouter ( std::shared_ptr<Gadget> enfant );
+
+    void setRepartition ( Repartitions repartition );
 
     /////////////////////////////////////////////////
     virtual void actualiserContenu ();
@@ -92,18 +104,24 @@ public:
 
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
+    virtual sf::Vector2i getTailleContenant()   { return m_tailleContenant;};
+//    virtual sf::Vector2i getPosContenant()      { return m_posContenant;};
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
 protected:
 
-    Repartiteur                         m_repartiteur;      ///< cf; GOF Strategie
+    std::unique_ptr<Repartiteur>        m_repartiteur;      ///< cf; GOF Strategie
+
     int                                 m_posX_texture;
     int                                 m_posY_texture;
     sf::Texture                         m_contenu;          ///< La texture SFML qui affiche le contenu du panneau.
     sf::RenderTexture                   m_renderTexture;
     sf::Vector2f                        m_largeurSliders;
+
+    sf::Vector2i                        m_tailleContenant;
+    sf::Vector2i                        m_posContenant;
 
     // les composants de l'interface du gadget
     std::shared_ptr<AffRectangle>       m_fond;

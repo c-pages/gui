@@ -161,9 +161,11 @@ void Fenetre::actualiserGeometrie ()
 //    // ?!?!?
 //    viderTableaux();
 
+    for(auto deco : m_decorations)
+        deco.second->actualiserGeometrie ();
+
     m_panneau->setTaille    ( { m_taille.x - 2*m_marge.x, m_taille.y - getTailleBouton().y - 2*m_marge.y } );
     m_panneau->setPosition  ( m_marge.x , getTailleBouton().y + m_marge.y );
-    m_panneau->actualiser   ( );
 
     m_titre->setTailleX     ( m_taille.x - 2*m_marge.x );
     m_titre->setTailleY     ( getTailleBouton().y );
@@ -175,8 +177,6 @@ void Fenetre::actualiserGeometrie ()
     m_ombre->setPosition    ( 5,5 );
     m_ombre->setTaille      ( m_taille );
 
-    for(auto deco : m_decorations)
-        deco.second->actualiserGeometrie ();
 
 }
 

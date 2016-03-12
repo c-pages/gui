@@ -22,6 +22,10 @@ FenDecoDrag::FenDecoDrag( Fenetre* fenetre )
 
     // Action du bouton drag
     m_fenetre->lier ( Evenement::onBtnG_presser , [this](){
+        auto posSouris = m_fenetre->getPosSouris();
+        m_decalageDragSouris = sf::Vector2i ( posSouris.x - m_fenetre->getPosAbs().x , posSouris.y - m_fenetre->getPosAbs().y );
+        setDrag( true );
+//        positionnerFenetre ();
 
         // Si on est pas deja dans le calque fenetres on s'y met
         if ( m_fenetre->getParent()->getNom() != Interface::ms_calque_fenetres->getNom() ){
@@ -33,37 +37,41 @@ FenDecoDrag::FenDecoDrag( Fenetre* fenetre )
         else
             m_fenetre->demander_aEtre_auDessus();
 
-        m_decalageDragSouris = sf::Vector2i ( m_fenetre->getPosSouris().x - m_fenetre->getPosAbs().x , m_fenetre->getPosSouris().y - m_fenetre->getPosAbs().y );
-        setDrag( true );
-        positionnerFenetre ();
     });
 
 
 
 
     auto fct_finDuDrag = [this](){
+
+            setDrag( false );
+
+
             bool survolPanneau = false;
             for ( auto panneau : Interface::ms_calque_panneau_D->getEnfants() )
             {
+                panneau->setAbsorbable( false );
                 if ( panneau->testerSurvol( m_fenetre->getPosSouris() ) != nullptr) {
                     panneau->ajouter ( m_fenetre->thisPtr() , m_fenetre->getPosSouris() );
                     survolPanneau = true;
+                    break;
                 }
-                panneau->setAbsorbable( false );
             }
-            for ( auto panneau : Interface::ms_calque_panneau_G->getEnfants() )
-            {
-                if ( panneau->testerSurvol( m_fenetre->getPosSouris() ) != nullptr) {
-                    panneau->ajouter ( m_fenetre->thisPtr() , m_fenetre->getPosSouris());
-                    survolPanneau = true;
+            if (! survolPanneau )
+                for ( auto panneau : Interface::ms_calque_panneau_G->getEnfants() )
+                {
+                    panneau->setAbsorbable( false );
+                    if ( panneau->testerSurvol( m_fenetre->getPosSouris() ) != nullptr) {
+                        panneau->ajouter ( m_fenetre->thisPtr() , m_fenetre->getPosSouris());
+                        survolPanneau = true;
+                        break;
+                    }
                 }
-                panneau->setAbsorbable( false );
-            }
             if ( survolPanneau )
                 entreDansPanneau ();
             else sortDuPanneau ();
 
-            setDrag( false );
+
     };
     m_fenetre->lier ( Evenement::onBtnG_relacher , fct_finDuDrag );
     m_fenetre->lier ( Evenement::onBtnG_relacherDehors , fct_finDuDrag );
@@ -87,12 +95,12 @@ FenDecoDrag::~FenDecoDrag( )
 /////////////////////////////////////////////////
 void FenDecoDrag::sortDuPanneau ()
 {
-    std::cout << "Sortir du panneau\n";
     m_fenetre->getOmbre()->setVisible(true);
 
 //    m_fenetre->retirerDecoration ( Fenetre::Decorations::RetaillePanneau );
 //    m_fenetre->ajouterDecoration ( Fenetre::Decorations::Retaille );
 
+    std::cout << "Sortir du panneau\n";
 }
 
 
@@ -103,10 +111,12 @@ void FenDecoDrag::sortDuPanneau ()
 /////////////////////////////////////////////////
 void FenDecoDrag::entreDansPanneau ()
 {
-    std::cout << "Entrer dans le panneau\n";
-    Interface::ms_calque_panneau_D->actualiser();
-    Interface::ms_calque_panneau_G->actualiser();
+//    m_fenetre->getParent()->actualiserContenu();
+//    Interface::ms_calque_panneau_D->actualiser();
+//    Interface::ms_calque_panneau_G->actualiser();
     m_fenetre->getOmbre()->setVisible(false);
+
+    std::cout << "Entrer dans le panneau\n";
 //
 //    m_fenetre->retirerDecoration ( Fenetre::Decorations::Retaille );
 //    m_fenetre->ajouterDecoration ( Fenetre::Decorations::RetaillePanneau );

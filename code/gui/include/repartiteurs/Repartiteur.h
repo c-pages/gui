@@ -22,30 +22,29 @@ class Repartiteur {
 // Méthodes
 /////////////////////////////////////////////////
 
-public:
-    ///< Definir m_espacement
-    void setEspacement( sf::Vector2i val ){ m_espacement = val; };
-
-    ///< Acceder à m_espacement
-    sf::Vector2i getEspacement () const { return m_espacement; };
 
 public:
     /////////////////////////////////////////////////
     /// \brief Constructeur par défaut.
     ///
     /////////////////////////////////////////////////
-    Repartiteur ();
+    Repartiteur ( Gadget* racine );
 
-    virtual void repartir (std::vector<std::shared_ptr<Gadget>> groupe){};
+    virtual void repartir ( std::vector<std::shared_ptr<Gadget>> groupe ){};
 
+    ///< Definir m_espacement
+    void setEspacement( sf::Vector2i val ){ m_espacement = val; };
+
+    ///< Acceder à m_espacement
+    sf::Vector2i getEspacement () const { return m_espacement; };
 
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
-private:
-    sf::Vector2i m_espacement;    ///< #G#S
-
+protected:
+    sf::Vector2i m_espacement;    ///<
+    Gadget*         m_racine;
 }; // fin class Repartiteur
 
 } // fin namespace gui

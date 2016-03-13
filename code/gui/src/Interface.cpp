@@ -11,6 +11,7 @@ namespace gui {
 sf::RenderWindow*                           Interface::ms_fenetreSFML = nullptr;
 ResourcesMgr<sf::Font,std::string >         Interface::ms_polices = {};
 ResourcesMgr<sf::Texture,   std::string >   Interface::ms_images = {};
+ResourcesMgr<sf::Texture,   std::string >   Interface::ms_curseurs = {};
 ResourcesMgr<sf::Texture,   std::string >   Interface::ms_icones = {};
 
 
@@ -21,6 +22,10 @@ std::shared_ptr<Calque>        Interface::ms_calque_panneau_G        = std::make
 std::shared_ptr<Calque>        Interface::ms_calque_panneau_D        = std::make_shared<Calque>();
 std::shared_ptr<Calque>        Interface::ms_calque_bandeauMenuDeroulants  = std::make_shared<Calque>();
 std::shared_ptr<Calque>        Interface::ms_calque_menuDeroulants  = std::make_shared<Calque>();
+//
+std::shared_ptr<AffCurseurSouris>       Interface::ms_curseurSouris;
+
+
 
 /////////////////////////////////////////////////
 Interface::Interface( sf::RenderWindow* fenetre )
@@ -29,6 +34,8 @@ Interface::Interface( sf::RenderWindow* fenetre )
 , m_boutonPresse    ( nullptr )
 , m_fenetre         ( fenetre )
 , creer             ( this )
+//, m_curseurSouris   ( std::make_shared<AffCurseurSouris>()  )
+
 
 //, ms_calque_bureau      ( std::make_shared<Calque>())
 //, ms_calque_bandeaux    ( std::make_shared<Calque>())
@@ -57,6 +64,9 @@ Interface::Interface( sf::RenderWindow* fenetre )
     ms_calque_menuDeroulants->setTaille  ( m_taille );
     ms_calque_bandeauMenuDeroulants->setTaille  ( m_taille );
 
+
+
+
     // initialiser les polices
     ms_polices.load( "Defaut"  , "media/polices/consola.ttf" );
 
@@ -64,6 +74,10 @@ Interface::Interface( sf::RenderWindow* fenetre )
     ms_icones.load( "ico_fenetre"  , "media/img/icones_fenetre.png" );
     ms_icones.load( "ico_fleches"  , "media/img/ico_fleches.png" );
 
+
+    // initialiser les curseurs
+    ms_curseurSouris = std::make_shared<AffCurseurSouris>( this );
+    ms_curseurs.load( "Redimensionnement"  , "media/img/curs_redimensionnement.png" );
 
     m_parent = nullptr;
 
@@ -155,9 +169,31 @@ void Interface::traiterEvenements( sf::Event evenement )
     m_boutonSurvole = chercherGadgetSurvole ();
 
 
+
+//    auto posSouris = sf::Mouse::getPosition();
+//
+//    sf::FloatRect  BBFenetre = sf::FloatRect ( m_fenetre->getPosition().x , m_fenetre->getPosition().y , m_fenetre->getSize().x , m_fenetre->getSize().y );
+//        std::cout << " BBFenetre : "  <<  BBFenetre.left << ", " << BBFenetre.top << ", " << BBFenetre.width <<", " << BBFenetre.height << "\n";
+//        std::cout << " posSouris : "  <<  posSouris.x << ", " << posSouris.y << "\n";
+//
+//    if ( ! BBFenetre.contains( posSouris.x , posSouris.y ) )
+//    {
+//        std::cout << " O N S O R T D E L A F E N E T R E \n";
+//        declencherToutBoutons ( Evenement::onBtnD_relacherDehors );
+//        declencherToutBoutons ( Evenement::onBtnG_relacherDehors );
+//        return;
+//    }
+
+
+
+
     switch ( evenement.type ){
         ///////// Deplacement souris /////////////////////////////////////////
         case sf::Event::MouseMoved :
+
+            // On gere le cureur souris
+            if (ms_curseurSouris->estVisible())
+                ms_curseurSouris->traiterEvenements( evenement );
 
             // On sort si on a pas changer de bouton survolé
             if ( m_boutonSurvole ==  boutonSurvoleBack )
@@ -166,17 +202,17 @@ void Interface::traiterEvenements( sf::Event evenement )
             if (m_boutonPresse == nullptr )
             {
 
-                // on gère le gadget survolé
-                if (m_boutonSurvole != nullptr) {
-//                        std::cout << "--------> m_boutonSurvole : " << m_boutonSurvole->getNom() << "\n";
-                    m_boutonSurvole->setSurvol( true );
-                    m_boutonSurvole->declencher ( Evenement::on_entrer );
-                }
                 // on gère le gadget anciennement survolé
                 if (boutonSurvoleBack!=nullptr){
 //                        std::cout << "--------> boutonSurvoleBack : " << boutonSurvoleBack->getNom() << "\n";
                     boutonSurvoleBack->setSurvol( false );
                     boutonSurvoleBack->declencher ( Evenement::on_sortir );
+                }
+                // on gère le gadget survolé
+                if (m_boutonSurvole != nullptr) {
+//                        std::cout << "--------> m_boutonSurvole : " << m_boutonSurvole->getNom() << "\n";
+                    m_boutonSurvole->setSurvol( true );
+                    m_boutonSurvole->declencher ( Evenement::on_entrer );
                 }
             } else {
                 // on gère le gadget survolé
@@ -343,6 +379,11 @@ void Interface::draw(sf::RenderTarget& target, sf::RenderStates states) const
     // On dessine le gadgets de l'interface
     for (auto enfant : m_enfants )
         target.draw(*enfant, states);
+
+    // on dessine la souris (si besoin)
+    if (ms_curseurSouris->estVisible() )
+        target.draw(*ms_curseurSouris, states);
+
         /*
         target.draw(*m_bureau, states);
         target.draw(*m_supports, states);

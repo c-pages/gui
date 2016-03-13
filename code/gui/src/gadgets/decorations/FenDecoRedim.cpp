@@ -1,6 +1,7 @@
 #include "decorations/FenDecoRedim.h"
 #include "Fenetre.h"
 #include "BtnRectangle.h"
+#include "Interface.h"
 
 namespace gui{
 
@@ -33,8 +34,16 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
 
 
 
+    m_btn_gauche->setFillColor ( sf::Color::Transparent );
+    m_btn_droite->setFillColor ( sf::Color::Transparent );
+    m_btn_haut->setFillColor ( sf::Color::Transparent );
+    m_btn_bas->setFillColor ( sf::Color::Transparent );
 
-    m_btnDragCouleurs.set       ( sf::Color( 0, 0, 0, 50 )     , Etat::desactive );
+    m_btn_hautGauche->setFillColor ( sf::Color::Transparent );
+    m_btn_hautDroite->setFillColor ( sf::Color::Transparent );
+    m_btn_basGauche->setFillColor ( sf::Color::Transparent );
+    m_btn_basDroite->setFillColor ( sf::Color::Transparent );
+
     m_btnDragCouleurs.set       ( sf::Color( 0, 0, 0, 50 )     , Etat::desactive );
     m_btnDragCouleurs.set       ( sf::Color( 255,255,255, 0 )  , Etat::repos );
     m_btnDragCouleurs.set       ( sf::Color( 255,255,255, 20 ) , Etat::survol );
@@ -168,6 +177,23 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
 
 
 
+    m_btn_gauche->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_horizontal); });
+    m_btn_gauche->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
+    m_btn_droite->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_horizontal); });
+    m_btn_droite->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
+    m_btn_haut->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_vertical); });
+    m_btn_haut->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
+    m_btn_bas->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_vertical); });
+    m_btn_bas->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
+
+    m_btn_hautGauche->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_diag1); });
+    m_btn_hautGauche->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
+    m_btn_hautDroite->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_diag2); });
+    m_btn_hautDroite->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
+    m_btn_basGauche->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_diag2); });
+    m_btn_basGauche->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
+    m_btn_basDroite->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_diag1); });
+    m_btn_basDroite->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
 
     m_fenetre->actualiser();
 
@@ -303,7 +329,8 @@ void FenDecoRedim::redimmensionner_bas ()
     m_tailleFenetre = { m_fenetre->getTaille().x , m_tailleOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ) };
     corrigerTailleMinimum ();
     m_fenetre->setTailleY( m_tailleFenetre.y  );
-
+//
+//    Interface::setCurseur ( Curseurs::Redim_vertical);
 //    m_fenetre->actualiserGeometrie();
 //    m_fenetre->actualiserBounds();
 }
@@ -313,18 +340,15 @@ void FenDecoRedim::redimmensionner_bas ()
 void FenDecoRedim::redimmensionner_gauche ()
 {
     auto posSouris = m_fenetre->getPosSouris();
-//    m_fenetre->setTailleX( m_tailleOrigin.x - ( posSouris.x - m_sourisPosOrigin.x  ) );
-//    m_fenetre->setTailleX( m_tailleOrigin.x - ( posSouris.x - m_sourisPosOrigin.x  ) );
+
     m_tailleFenetre = { m_tailleOrigin.x - ( posSouris.x - m_sourisPosOrigin.x ), m_fenetre->getTaille().y   };
     corrigerTailleMinimum ();
     m_fenetre->setTailleX( m_tailleFenetre.x  );
 
-//    demander_aEtre_auDessus();
     corrigerTailleMinimum ();
 
     m_fenetre->setPosition ( m_posOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ),  m_fenetre->getPosition().y );
-//    m_fenetre->actualiserGeometrie();
-//    m_fenetre->actualiserBounds();
+
 }
 
 /////////////////////////////////////////////////

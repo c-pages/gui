@@ -85,6 +85,7 @@
 		<Unit filename="include/Support.h" />
 		<Unit filename="include/Valeurs.h" />
 		<Unit filename="include/gadgets/AffBarreTitre.h" />
+		<Unit filename="include/gadgets/AffCurseurSouris.h" />
 		<Unit filename="include/gadgets/AffIcone.h" />
 		<Unit filename="include/gadgets/AffImage.h" />
 		<Unit filename="include/gadgets/AffLabel.h" />
@@ -129,6 +130,7 @@
 		<Unit filename="src/Support.cpp" />
 		<Unit filename="src/Valeurs.cpp" />
 		<Unit filename="src/gadgets/AffBarreTitre.cpp" />
+		<Unit filename="src/gadgets/AffCurseurSouris.cpp" />
 		<Unit filename="src/gadgets/AffIcone.cpp" />
 		<Unit filename="src/gadgets/AffImage.cpp" />
 		<Unit filename="src/gadgets/AffLabel.cpp" />

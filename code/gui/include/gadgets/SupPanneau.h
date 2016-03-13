@@ -59,7 +59,7 @@ public:
 
     virtual void ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i positionEcran );
     virtual void ajouter ( std::shared_ptr<Gadget> gadget)
-        { m_contenant->ajouter ( gadget ); };
+        { m_contenant->ajouter ( gadget ); gadget->actualiserEtatDeco ( ); };
 
 private:
 
@@ -78,6 +78,7 @@ private:
     bool            m_redimDroite = false;
 
     float           m_largeurBtnTaille;
+    float           m_largeurMini;
 
     Cote            m_cote;
 
@@ -87,6 +88,7 @@ private:
 
     std::shared_ptr<BtnRectangle>   m_btn_gauche;
     std::shared_ptr<BtnRectangle>   m_btn_droite;
+
     std::shared_ptr<CntSliders>     m_contenant;
 
 

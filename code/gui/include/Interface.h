@@ -7,6 +7,7 @@
 #include "Calque.h"
 #include "FabriqueBase.h"
 #include "ResourcesMgr.h"
+#include "gadgets/AffCurseurSouris.h"
 
 namespace gui {
 
@@ -57,7 +58,8 @@ public:
     //};
     static  ResourcesMgr<sf::Font,std::string >         ms_polices; ///< Manager des polices
     static  ResourcesMgr<sf::Texture,   std::string >   ms_images;  ///< Manager des images
-    static  ResourcesMgr<sf::Texture,   std::string >   ms_icones;  ///< Manager des images
+    static  ResourcesMgr<sf::Texture,   std::string >   ms_icones;  ///< Manager des icones ... a voir
+    static  ResourcesMgr<sf::Texture,   std::string >   ms_curseurs;  ///< Manager des curseurs
 
     static  std::shared_ptr<Calque>        ms_calque_bureau;
     static  std::shared_ptr<Calque>        ms_calque_fenetres;
@@ -68,7 +70,19 @@ public:
     static  std::shared_ptr<Calque>        ms_calque_menuDeroulants;
 
 
+
+    static  void setCurseur ( Curseurs    curseur   )
+    {
+        ms_curseurSouris->setCurseur ( curseur  );
+    };
+
 private:
+
+    static  std::shared_ptr<AffCurseurSouris>       ms_curseurSouris;
+
+
+
+
     std::shared_ptr<Gadget> chercherGadgetSurvole ();
 
     /////////////////////////////////////////////////
@@ -89,6 +103,7 @@ public:
         return result;
     };
     void demanderActualisation() { m_aBesoinActualisation = true ; };
+
     static sf::RenderWindow*                    ms_fenetreSFML;      ///< La fenetyre SFML;
 
     sf::RenderWindow*        getFenetre()  { return m_fenetre; };

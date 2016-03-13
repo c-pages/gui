@@ -24,7 +24,7 @@ Contenant::Contenant ()
 {
     m_renderTexture.create( 1920, 1080 );
 
-    m_fndCouleur            = sf::Color( 70,70,70, 255 );
+    m_fndCouleur            = sf::Color( 0,0,0, 50 );
     m_fndLgnCouleur         = sf::Color( 255,255,255, 20 );
     m_fndLgnepaisseur       = 1;
 
@@ -34,6 +34,42 @@ Contenant::Contenant ()
 
     ajouterComposant( m_fond );
     ajouterComposant( m_groupe );
+}
+
+
+/////////////////////////////////////////////////
+void Contenant::replacerContenu () {
+
+//    sf::Vector2f deplPossibleMax = deplMaxContenu();
+//
+//
+//    // si le contenu est plus grand que le contenant
+//    if ( m_slider_H->estVisible() ) {
+//        float coef                  = (  m_slider_H->getValeur() ) / 100;
+//        m_posX_texture              = coef * deplPossibleMax.x;
+//    } else {
+//        m_posX_texture      = 0;
+//    }
+//
+//    // si contenu plus grand, on a le slider vert
+//    if (  m_slider_V->estVisible() ) {  // si contenu plus grand, on a le slider
+//        float coef                  = ( 100 - m_slider_V->getValeur()  ) / 100;
+//        m_posY_texture              = coef * deplPossibleMax.y;
+//    } else {
+//        m_posY_texture      = 0;
+//    }
+
+
+//    m_groupe->setPosition ( -m_posX_texture , -m_posY_texture );
+
+     m_affContenant->setTextureRect(   { 0
+                                    , 0
+                                    , m_affContenant->getSize().x
+                                    , m_affContenant->getSize().y });
+
+    if (m_parent != nullptr)
+        m_parent->actualiserContenu();
+
 }
 
 /////////////////////////////////////////////////
@@ -65,6 +101,9 @@ void Contenant::setRepartition ( Repartitions repartition )
 /////////////////////////////////////////////////
 void Contenant::actualiserContenu ()
 {
+
+    repartirEnfants();
+
 //    std::cout << "Contenant::actualiserContenu\n";
 //    sf::Vector2i taille = { boundgingB_enfants().left + boundgingB_enfants().width , boundgingB_enfants().top + boundgingB_enfants().height };
 //    m_renderTexture.create( taille.x, taille.y );
@@ -92,7 +131,7 @@ void Contenant::actualiserContenu ()
 /////////////////////////////////////////////////
 void Contenant::actualiserGeometrie ()
 {
-//    std::cout << " BAHALORS \n";
+//    std::cout << " Contenant::actualiserGeometrie \n";
     m_fond->setTaille(m_taille);
     m_affContenant->setSize( { m_taille.x , m_taille.y } );
 
@@ -101,8 +140,8 @@ void Contenant::actualiserGeometrie ()
 
     repartirEnfants ();
 
-    actualiserContenu();
-    actualiserBounds ();
+//    actualiserContenu();
+//    actualiserBounds ();
 //    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 
 }
@@ -158,8 +197,8 @@ void Contenant::ajouter ( std::shared_ptr<Gadget> enfant, unsigned int index )  
     //enfant->setParent ( this );
 
 
-    repartirEnfants();
-    actualiserContenu();
+//    repartirEnfants();
+//    actualiserContenu();
     actualiser();
 
 //    actualiserContenu();
@@ -172,8 +211,8 @@ void Contenant::ajouter ( std::shared_ptr<Gadget> enfant )    {
 
     m_groupe->ajouter ( enfant );
 
-    repartirEnfants();
-    actualiserContenu();
+//    repartirEnfants();
+//    actualiserContenu();
     actualiser();
 //    // si l'enfant avait un parent on le retire de sa liste des enfants
 //    auto parentBack = enfant->getParent();

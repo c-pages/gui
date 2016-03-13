@@ -221,7 +221,7 @@ public:
 
     sf::Vector2i getPosSouris ( );
     sf::Vector2i getLocalPosSouris ( );
-
+    virtual void actualiserEtatDeco ( ){};
 //    static Gadget*     getRacineCourante() { return ms_racineCourante; };
 
 //    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat );

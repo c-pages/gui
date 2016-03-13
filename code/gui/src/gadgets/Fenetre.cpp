@@ -125,7 +125,7 @@ void Fenetre::setDefilementActif (bool val)
 }
 
 /////////////////////////////////////////////////
-void Fenetre::ajouter ( std::shared_ptr<Gadget> enfant )
+void Fenetre::ajouter ( std::shared_ptr<Gadget>  enfant )
 {
     m_contenant->ajouter ( enfant );
     if (m_parent != nullptr)
@@ -139,8 +139,15 @@ std::shared_ptr<Gadget> Fenetre::retirer (std::shared_ptr<Gadget> enfant)
     m_contenant->retirer ( enfant );
 }
 
+///////////////////////////////////////////////////
+//void Fenetre::setParent (Gadget* parent )
+//{
+//    m_parent = parent;
+////    actualiserEtatDeco ( );
+//}
+
 /////////////////////////////////////////////////
-void Fenetre::actualiserDecoRetaille ( )
+void Fenetre::actualiserEtatDeco ( )
 {
     if ( m_parent != nullptr ){
     // si on est dans le calque fenetres on redimmenssione des 4 cotés
@@ -154,7 +161,6 @@ void Fenetre::actualiserDecoRetaille ( )
         }
     }
 }
-
 /////////////////////////////////////////////////
 void Fenetre::actualiserGeometrie ()
 {
@@ -162,11 +168,13 @@ void Fenetre::actualiserGeometrie ()
 //    // ?!?!?
 //    viderTableaux();
 
+
     for(auto deco : m_decorations)
         deco.second->actualiserGeometrie ();
 
     m_contenant->setTaille    ( { m_taille.x - 2*m_marge.x, m_taille.y - getTailleBouton().y - 2*m_marge.y } );
     m_contenant->setPosition  ( m_marge.x , getTailleBouton().y + m_marge.y );
+//    m_contenant->actualiser();
 
     m_titre->setTailleX     ( m_taille.x - 2*m_marge.x );
     m_titre->setTailleY     ( getTailleBouton().y );

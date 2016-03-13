@@ -12,11 +12,12 @@ class Groupe : public Gadget
         Groupe();
         /** Default destructor */
         virtual ~Groupe();
-   /* /////////////////////////////////////////////////
+    /////////////////////////////////////////////////
     virtual void actualiserGeometrie ()
     {
-        actualiserEnfants();
-    };*/
+        //Gadget::actualiserGeometrie();
+        getParent()->actualiserGeometrie();
+    };
 
 //    /////////////////////////////////////////////////
 //    virtual void actualiserStyle ()

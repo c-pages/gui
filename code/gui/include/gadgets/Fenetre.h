@@ -74,6 +74,7 @@ public:
 //
 
 //    virtual void setParent (Gadget* parent );
+
     void ajouterDecoration ( Decorations deco  );
 
     void retirerDecoration ( Decorations deco  )
@@ -89,7 +90,7 @@ public:
 
     };
 
-    void actualiserDecoRetaille ( );
+    virtual void actualiserEtatDeco ( );
 
 
     void viderTableaux()
@@ -104,10 +105,12 @@ public:
 /////////////////////////////////////////////////
 protected:
 
+//friend class FenDecoRedimPanneau;
 
     std::vector<Decorations>        m_decoASupprimer;
 
     std::shared_ptr<Contenant>      m_contenant;
+
     std::shared_ptr<AffRectangle>   m_fond;
     std::shared_ptr<AffRectangle>   m_ombre;
     std::shared_ptr<AffBarreTitre>  m_titre;
@@ -115,6 +118,7 @@ protected:
     std::map<Decorations, std::shared_ptr<FenDecoration>>     m_decorations;
 
     sf::Vector2i            m_tailleBoutons;
+
 
 
     // les proprietés graphiques

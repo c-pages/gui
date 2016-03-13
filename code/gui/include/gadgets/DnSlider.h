@@ -49,19 +49,19 @@ public:
     ///< Definir m_taille
     void setLongueur( float longueur ){
         m_longueur = longueur;
-        actualiserBounds();
-        actualiser();
+//        actualiserBounds();
+        //actualiserGeometrie();
     };
 
     void setLargeur( float largeur ){
         m_largeur = largeur;
-        actualiserBounds();
-        actualiser();
+//        actualiserBounds();
+        //actualiserGeometrie();
     };
 
-    void setHorizontal (  ){ m_horizontal = true;actualiser (); };
+    void setHorizontal (  ){ m_horizontal = true;actualiserGeometrie (); };
 
-    void setVertical (  ){ m_horizontal = false; actualiser ();}
+    void setVertical (  ){ m_horizontal = false; actualiserGeometrie ();}
 
     void incrementer( float increment = 5 );
 

@@ -62,7 +62,7 @@ public:
 
 
     /////////////////////////////////////////////////
-    void replacerContenu ();
+    virtual void replacerContenu ();
 
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();

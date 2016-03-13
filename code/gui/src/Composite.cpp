@@ -30,7 +30,6 @@ void Composite::ajouter (std::shared_ptr<Gadget> enfant)
 
 /////////////////////////////////////////////////
 void Composite::actualiserContenu (){
-//    std::cout <<"Composite::actualiserContenu n";
     // on demande juste au parent d'actualiser son contenu ...
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
 };
@@ -38,6 +37,8 @@ void Composite::actualiserContenu (){
 /////////////////////////////////////////////////
 void Composite::replacerContenu () {
 
+    // on demande juste au parent d'actualiser son contenu ...
+    if ( m_parent != nullptr ) m_parent->replacerContenu();
 }
 
 /////////////////////////////////////////////////

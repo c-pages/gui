@@ -11,7 +11,9 @@ namespace gui {
 /////////////////////////////////////////////////
 void Geometrie::setPosAbs (sf::Vector2f posAbsDest )
 {
-    sf::Vector2f posAbsParent = m_parent->getPosAbs();
+    sf::Vector2f posAbsParent = {0,0};
+    if (m_parent != nullptr)
+        posAbsParent = m_parent->getPosAbs();
     setPosition( posAbsDest.x -  posAbsParent.x , posAbsDest.y -  posAbsParent.y ) ;
 }
 

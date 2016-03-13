@@ -177,7 +177,7 @@ void DnSlider::positionnerCurseurSurSouris ()
     // Corriger la position pour la garder dans ses limites
     corrigerPositionCurseur();
 
-    actualiser ();
+    actualiserGeometrie ();
 }
 
 
@@ -197,7 +197,7 @@ void DnSlider::setLongueurCurseur( float pourcentage )
         m_slider->setTailleY( m_longueur * pourcentage/100- 2*m_marge.x);
     }
 
-    actualiser();
+//    actualiserGeometrie();
 
 }
 

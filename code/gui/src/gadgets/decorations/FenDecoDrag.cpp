@@ -31,12 +31,15 @@ FenDecoDrag::FenDecoDrag( Fenetre* fenetre )
         if ( m_fenetre->getParent()->getNom() != Interface::ms_calque_fenetres->getNom() ){
             auto posAbsBack = m_fenetre->getPosAbs();
             Interface::ms_calque_fenetres->ajouter ( m_fenetre->thisPtr() );
+
+            Interface::ms_calque_panneau_D->actualiser();
+            Interface::ms_calque_panneau_G->actualiser();
+
             m_fenetre->setPosAbs( posAbsBack );
             m_fenetre->getOmbre()->setVisible(true);
         }
         else
             m_fenetre->demander_aEtre_auDessus();
-
     });
 
 
@@ -97,7 +100,7 @@ FenDecoDrag::~FenDecoDrag( )
 void FenDecoDrag::sortDuPanneau ()
 {
     m_fenetre->getOmbre()->setVisible(true);
-    m_fenetre->actualiserDecoRetaille();
+    m_fenetre->actualiserEtatDeco();
 
 //    m_fenetre->retirerDecoration ( Fenetre::Decorations::RetaillePanneau );
 //    m_fenetre->ajouterDecoration ( Fenetre::Decorations::Retaille );
@@ -118,7 +121,7 @@ void FenDecoDrag::entreDansPanneau ()
 //    Interface::ms_calque_panneau_G->actualiser();
     m_fenetre->getOmbre()->setVisible(false);
 
-    m_fenetre->actualiserDecoRetaille();
+    m_fenetre->actualiserEtatDeco();
     std::cout << "Entrer dans le panneau\n";
 //
 //    m_fenetre->retirerDecoration ( Fenetre::Decorations::Retaille );

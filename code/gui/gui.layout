@@ -101,6 +101,11 @@
 			<Collapse line="85" />
 		</Folding>
 	</File>
+	<File name="include\gadgets\AffCurseurSouris.h" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="include\gadgets\AffBarreTitre.h" open="1" top="0" tabpos="60" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="824" topLine="19" />
@@ -161,6 +166,11 @@
 			<Cursor1 position="4335" topLine="134" />
 		</Cursor>
 	</File>
+	<File name="src\gadgets\AffCurseurSouris.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="include\gadgets\AffLabel.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="789" topLine="27" />
@@ -211,7 +221,7 @@
 			<Cursor1 position="18" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\gadgets\SupPanneau.cpp" open="1" top="0" tabpos="73" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\gadgets\SupPanneau.cpp" open="1" top="1" tabpos="73" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="5558" topLine="168" />
 		</Cursor>
@@ -359,7 +369,7 @@
 			<Cursor1 position="731" topLine="27" />
 		</Cursor>
 	</File>
-	<File name="include\gadgets\Fenetre.h" open="1" top="1" tabpos="81" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\gadgets\Fenetre.h" open="1" top="0" tabpos="81" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2038" topLine="57" />
 		</Cursor>
@@ -452,6 +462,11 @@
 	<File name="src\gadgets\AffLabel.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="592" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\Groupe.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="include\gadgets\decorations\FenDecoDrag.h" open="1" top="0" tabpos="84" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

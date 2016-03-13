@@ -27,6 +27,12 @@ Application::Application()
                                                 0); //  minor
     m_fenetre->create(sf::VideoMode(1280, 720), "Appli de base" , sf::Style::Default , contextFenetre );
 
+    sf::Image iconeFenetre;
+    if( iconeFenetre.loadFromFile("media/img/Icone_test.png"))
+        m_fenetre->setIcon( iconeFenetre.getSize().x
+                           ,iconeFenetre.getSize().y
+                           ,iconeFenetre.getPixelsPtr());
+
     // La synchronisation verticale pour des histoire de bugs de chargement de police bidule truc
 //    m_fenetre->setVerticalSyncEnabled(true);
 

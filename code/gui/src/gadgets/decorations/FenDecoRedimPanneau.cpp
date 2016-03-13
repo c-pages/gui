@@ -1,6 +1,7 @@
 #include "decorations/FenDecoRedimPanneau.h"
 #include "Fenetre.h"
 #include "BtnRectangle.h"
+#include "Interface.h"
 
 namespace gui{
 
@@ -43,6 +44,9 @@ FenDecoRedimPanneau::FenDecoRedimPanneau( Fenetre* fenetre )
 
 
 
+    m_btn_bas->setFillColor ( sf::Color::Transparent );
+    m_btn_bas->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_vertical); });
+    m_btn_bas->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
 
     m_btn_bas->lier (Evenement::onBtnG_presser , fct_redimStartB );
     m_btn_bas->lier (Evenement::onBtnG_relacher, fct_redimStopB );
@@ -113,9 +117,12 @@ void FenDecoRedimPanneau::redimensionner ()
     m_tailleFenetre = { m_fenetre->getTaille().x , m_tailleOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ) };
     corrigerTailleMinimum ();
     m_fenetre->setTailleY( m_tailleFenetre.y  );
+//    m_fenetre->m_contenant->actualiserGeometrie ();
 
-    actualiserGeometrie();
-    m_fenetre->getParent()->actualiserGeometrie();
+    m_fenetre->getParent()->actualiserGeometrie ();
+    m_fenetre->getParent()->actualiserContenu();
+
+//    m_fenetre->getParent()->getParent()->actualiserContenu();
 }
 
 

@@ -34,7 +34,6 @@ void RepartiteurVerticale::repartir (std::vector<std::shared_ptr<Gadget>> groupe
         enfant->setPosition( pos.x , pos.y );
         if ( enfant->getTaille().x != m_racine->getTailleContenant().x  )
             enfant->setTailleX( m_racine->getTailleContenant().x  );
-
         pos.y += enfant->getTaille().y;
     }
 }

@@ -56,16 +56,19 @@ CntSliders::CntSliders ()
 /////////////////////////////////////////////////
 void CntSliders::actualiserGeometrie (){
 //    std::cout << "CntSliders::actualiserGeometrie () : " << getNom() << "\n";
-    Contenant::actualiserGeometrie ();
+//    Contenant::actualiserGeometrie ();
 
+
+    m_fond->setTaille(m_taille);
+    m_affContenant->setSize( { m_taille.x , m_taille.y } );
 
 
 //   m_fond->setTaille(m_taille);
 
     sf::Vector2f deplPossibleMax = deplMaxContenu();
 
-    m_slider_H->setVisible ( deplPossibleMax.x > 0 );
-    m_slider_V->setVisible ( deplPossibleMax.y > 0 );
+    m_slider_H->setVisible ( deplPossibleMax.x > 1 );
+    m_slider_V->setVisible ( deplPossibleMax.y > 1 );
 
 
     m_posContenant = {0,0};
@@ -82,6 +85,7 @@ void CntSliders::actualiserGeometrie (){
         m_slider_H->setPosition( 0 , m_tailleContenant.y );
         float longueurCursH = m_taille.x/ float( m_groupe->boundgingB_enfants().width )* 100;
         m_slider_H->setLongueurCurseur(longueurCursH);
+//        m_slider_H->actualiserGeometrie();
         float coef                  = (  m_slider_H->getValeur() ) / 100;
         m_posX_texture              = coef * deplPossibleMax.x;
     // si le contenu est plus petit, on cache le slider
@@ -95,6 +99,7 @@ void CntSliders::actualiserGeometrie (){
         m_slider_V->setPosition ( m_tailleContenant.x , 0 );
         float longueurCursV = m_taille.y /float( m_groupe->boundgingB_enfants().height )* 100 ;
         m_slider_V->setLongueurCurseur( longueurCursV );
+//        m_slider_V->actualiserGeometrie();
         float coef                  = ( 100 - m_slider_V->getValeur()  ) / 100;
         m_posY_texture              = coef * deplPossibleMax.y;
 //        std::cout << "coef : " << coef << "     deplPossibleMax.y : " << deplPossibleMax.y << "\n";
@@ -109,11 +114,11 @@ void CntSliders::actualiserGeometrie (){
 
 
 
-    repartirEnfants ();
+//    repartirEnfants ();
 
-    actualiserContenu();
-    actualiserBounds ();
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+//    actualiserContenu();
+//    actualiserBounds ();
+//    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 
 }
 
@@ -145,10 +150,10 @@ void CntSliders::actualiserStyle (){
     m_fond->setOutlineColor                 ( m_fndLgnCouleur  ) ;
     m_fond->setOutlineThickness             ( m_fndLgnepaisseur  );
 
-    actualiserContenu();
-    actualiserBounds ();
+//    actualiserContenu();
+//    actualiserBounds ();
 
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+//    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }
 
 

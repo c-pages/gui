@@ -14,8 +14,9 @@ SupPanneau::SupPanneau ()
 : m_cote        ( Cote::Gauche )
 , m_btn_gauche  ( std::make_shared<BtnRectangle>() )
 , m_btn_droite  ( std::make_shared<BtnRectangle>() )
-, m_contenant      ( std::make_shared<CntSliders>() )
-, m_largeurBtnTaille ( 5 )
+, m_contenant   ( std::make_shared<CntSliders>() )
+, m_largeurBtnTaille ( 7 )
+, m_largeurMini     ( 150 +  m_marge.x*2 )
 {
     m_marge = { m_largeurBtnTaille , m_largeurBtnTaille };
 
@@ -61,6 +62,14 @@ SupPanneau::SupPanneau ()
     m_btn_droite->lier (Evenement::onBtnG_relacher, fct_redimStopD);
     m_btn_droite->lier (Evenement::onBtnG_relacherDehors, fct_redimStopD);
 
+    m_btn_gauche->setFillColor ( sf::Color::Transparent );
+    m_btn_gauche->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_horizontal); });
+    m_btn_gauche->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
+
+    m_btn_droite->setFillColor ( sf::Color::Transparent );
+    m_btn_droite->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_horizontal); });
+    m_btn_droite->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
+
     m_btn_gauche->setPosition ( 0,0 );
 }
 
@@ -83,18 +92,17 @@ void    SupPanneau::setCote ( Cote cote ) {
 /////////////////////////////////////////////////
 void SupPanneau::corrigerTailleMinimum ()
 {
-    if ( m_taille.x < 150 +  m_marge.x*2 )
+    if ( m_taille.x < m_largeurMini )
     {
         switch ( m_cote ) {
             case Cote::Droite:
-                m_taille.x = 150 + m_marge.x*2;
+                m_taille.x = m_largeurMini;
                 setPosition ( m_interface->getFenetre()->getSize().x - m_taille.x,  getPosition().y );
                 break;
             case Cote::Gauche:
-                m_taille.x = 150 + m_marge.x*2;
+                m_taille.x = m_largeurMini;
                 break;
         }
-
     }
 
 }
@@ -111,6 +119,10 @@ void    SupPanneau::ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i posit
         if ( gadget->getPosAbs().y  < enfant->getPosAbs().y  )
         {
             m_contenant->ajouter ( gadget , i );
+            gadget->actualiserEtatDeco ( );
+//            actualiser();
+//            gadget->actualiserEtatDeco ( );
+//            static_cast<std::shared_ptr<Fenetre>> ( gadget ) -> actualiserEtatDeco ( );
 //    m_interface->demanderActualisation();
 //            m_contenant->actualiserContenu (  );
 
@@ -121,6 +133,7 @@ void    SupPanneau::ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i posit
     }
 //    std::cout << "  ... rate, on le met a la fin.\n";
     m_contenant->ajouter ( gadget );
+    gadget->actualiserEtatDeco ( );
 
 //    m_interface->demanderActualisation();
 
@@ -176,8 +189,26 @@ void    SupPanneau::actualiserGeometrie ()
     m_btn_gauche->setTaille ( m_largeurBtnTaille , tailleTmp.y );
     m_btn_droite->setTaille ( m_largeurBtnTaille , tailleTmp.y );
 
-    m_contenant->setTaille ( { tailleTmp.x - 2*m_marge.x , tailleTmp.y - 2*m_marge.y });
+    if ( m_contenant->getTaille ().y !=  tailleTmp.y - 2*m_marge.y )
+        m_contenant->setTailleY (  tailleTmp.y - 2*m_marge.y );
+
+    if ( m_contenant->getTaille ().x !=  tailleTmp.x - 2*m_marge.x )
+        m_contenant->setTailleX (  tailleTmp.x - 2*m_marge.x );
+//
+//    m_contenant->setTaille ( { tailleTmp.x - 2*m_marge.x , tailleTmp.y - 2*m_marge.y } );
+
+
     m_contenant->setPosition ( m_marge.x , m_marge.y );
+
+//    m_contenant->repartirEnfants();
+//    m_contenant->actualiserGeometrie();
+    m_contenant->actualiserContenu ();
+
+//    m_contenant->repartirEnfants();
+//    m_contenant->replacerContenu ();
+
+
+//    m_contenant->actualiserContenu ();
 
 //    actualiserBounds();
 //    actualiserEnfants();
@@ -238,13 +269,32 @@ void SupPanneau::redimmensionner_gauche ()
     m_taille = { m_tailleOrigin.x - ( posSouris.x - m_sourisPosOrigin.x  ) , m_taille.y };
 
 //    demander_aEtre_auDessus();
-    setPosition ( m_posOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ),  getPosition().y );
     corrigerTailleMinimum ();
+//    setTailleX (m_taille.x);
+
+    setPosition ( m_posOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ),  getPosition().y );
+
+    if ( getPosition().x > m_posOrigin.x + m_tailleOrigin.x - m_largeurMini )
+        setPosition ( m_posOrigin.x + m_tailleOrigin.x - m_largeurMini , getPosition().y );
+
+
 
     actualiserGeometrie();
 
 //    actualiserEnfants();
 //    m_interface->demanderActualisation();
+
+
+//    auto posSouris = m_fenetre->getPosSouris();
+//
+//    m_tailleFenetre = { m_tailleOrigin.x - ( posSouris.x - m_sourisPosOrigin.x ), m_fenetre->getTaille().y   };
+//    corrigerTailleMinimum ();
+//    m_fenetre->setTailleX( m_tailleFenetre.x  );
+//
+//    corrigerTailleMinimum ();
+//
+//    m_fenetre->setPosition ( m_posOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ),  m_fenetre->getPosition().y );
+//
 }
 
 /////////////////////////////////////////////////
@@ -255,6 +305,8 @@ void SupPanneau::redimmensionner_droite ()
     corrigerTailleMinimum ();
 //    demander_aEtre_auDessus();
     actualiserGeometrie();
+
+ //   setTailleX (m_taille.x);
 //    actualiserEnfants();
 //    m_interface->demanderActualisation();
 }

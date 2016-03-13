@@ -8,7 +8,7 @@
 #include "decorations/FenDecoration.h"
 #include "gadgets/AffBarreTitre.h"
 #include <memory>
-#include <Groupe.h>
+#include <gadgets/Contenant.h>
 
 
 namespace gui {
@@ -73,21 +73,25 @@ public:
 //    void entreDansPanneau ();
 //
 
-    virtual void setParent (Gadget* parent );
+//    virtual void setParent (Gadget* parent );
     void ajouterDecoration ( Decorations deco  );
 
     void retirerDecoration ( Decorations deco  )
     {
         if ( m_decorations.find( deco ) != m_decorations.end())
         {
-            std::cout<<"Retirer Decoration : ok\n";
+//            std::cout<<"Retirer Decoration : ok\n";
 //            m_decoASupprimer.push_back( deco );
                 m_decorations.erase( deco  );
 
-        } else
-            std::cout<<"Retirer Decoration : pas trouvé\n";
+        }
+//         else   std::cout<<"Retirer Decoration : pas trouvé\n";
 
     };
+
+    void actualiserDecoRetaille ( );
+
+
     void viderTableaux()
     {
         if ( m_decoASupprimer.size()>0 )
@@ -103,7 +107,7 @@ protected:
 
     std::vector<Decorations>        m_decoASupprimer;
 
-    std::shared_ptr<Groupe>         m_panneau;
+    std::shared_ptr<Contenant>      m_contenant;
     std::shared_ptr<AffRectangle>   m_fond;
     std::shared_ptr<AffRectangle>   m_ombre;
     std::shared_ptr<AffBarreTitre>  m_titre;
@@ -114,12 +118,12 @@ protected:
 
 
     // les proprietés graphiques
-    sf::Color               m_panneauFndCouleur;
-    sf::Color               m_panneauFndLgnCouleur;
-    float                   m_panneauFndLgnepaisseur;
-    sf::Color               m_panneauContenantCouleur;
-    sf::Color               m_panneauContenantLgnCouleur;
-    float                   m_panneauContenantLgnepaisseur;
+    sf::Color               m_contenantFndCouleur;
+    sf::Color               m_contenantFndLgnCouleur;
+    float                   m_contenantFndLgnepaisseur;
+    sf::Color               m_contenantContenantCouleur;
+    sf::Color               m_contenantContenantLgnCouleur;
+    float                   m_contenantContenantLgnepaisseur;
 
     sf::Color               m_titreFondCouleur;
     sf::Color               m_titreFondLgnCouleur;

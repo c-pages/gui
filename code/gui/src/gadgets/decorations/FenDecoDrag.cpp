@@ -46,6 +46,7 @@ FenDecoDrag::FenDecoDrag( Fenetre* fenetre )
 
             setDrag( false );
 
+            std::cout << "fin drag\n";
 
             bool survolPanneau = false;
             for ( auto panneau : Interface::ms_calque_panneau_D->getEnfants() )
@@ -96,6 +97,7 @@ FenDecoDrag::~FenDecoDrag( )
 void FenDecoDrag::sortDuPanneau ()
 {
     m_fenetre->getOmbre()->setVisible(true);
+    m_fenetre->actualiserDecoRetaille();
 
 //    m_fenetre->retirerDecoration ( Fenetre::Decorations::RetaillePanneau );
 //    m_fenetre->ajouterDecoration ( Fenetre::Decorations::Retaille );
@@ -116,6 +118,7 @@ void FenDecoDrag::entreDansPanneau ()
 //    Interface::ms_calque_panneau_G->actualiser();
     m_fenetre->getOmbre()->setVisible(false);
 
+    m_fenetre->actualiserDecoRetaille();
     std::cout << "Entrer dans le panneau\n";
 //
 //    m_fenetre->retirerDecoration ( Fenetre::Decorations::Retaille );

@@ -3,7 +3,7 @@
 /////////////////////////////////////////////////
 #include <Interface.h>
 #include <SupBandeau.h>
-#include <GrpSliders.h>
+#include <CntSliders.h>
 
 
 

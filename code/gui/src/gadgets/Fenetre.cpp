@@ -8,15 +8,15 @@
 
 #include <Interface.h>
 
-#include <GrpSliders.h>
-#include <GrpSimple.h>
+#include <CntSliders.h>
+//#include <GrpSimple.h>
 
 
 namespace gui {
 
 /////////////////////////////////////////////////
 Fenetre::Fenetre ()
-: m_panneau         ( std::make_shared<GrpSliders>() )
+: m_contenant       ( std::make_shared<CntSliders>() )
 , m_fond            ( std::make_shared<AffRectangle>() )
 , m_ombre           ( std::make_shared<AffRectangle>() )
 , m_titre           ( std::make_shared<AffBarreTitre>() )
@@ -29,7 +29,7 @@ Fenetre::Fenetre ()
     // les composants
     ajouterComposant( m_ombre );
     ajouterComposant( m_fond );
-    ajouterComposant( m_panneau );
+    ajouterComposant( m_contenant );
     ajouterComposant( m_titre );
 
     // les decorations
@@ -39,12 +39,12 @@ Fenetre::Fenetre ()
         ajouterDecoration ( Decorations::Drag );
 
     // les couleurs
-    m_panneauFndCouleur             = sf::Color( 70,70,70, 255 );
-    m_panneauFndLgnCouleur          = sf::Color( 90,90,90 );
-    m_panneauFndLgnepaisseur        = 1;
-    m_panneauContenantCouleur       = sf::Color( 255,255,255, 255 );
-    m_panneauContenantLgnCouleur    = sf::Color( 90,90,90, 255 );
-    m_panneauContenantLgnepaisseur  = 0;
+    m_contenantFndCouleur             = sf::Color( 70,70,70, 255 );
+    m_contenantFndLgnCouleur          = sf::Color( 90,90,90 );
+    m_contenantFndLgnepaisseur        = 1;
+    m_contenantContenantCouleur       = sf::Color( 255,255,255, 255 );
+    m_contenantContenantLgnCouleur    = sf::Color( 90,90,90, 255 );
+    m_contenantContenantLgnepaisseur  = 0;
 
     m_titreFondCouleur              = sf::Color( 55,55,55);
     m_titreFondLgnCouleur           = sf::Color( 90,90,90);
@@ -70,11 +70,11 @@ void Fenetre::ajouterDecoration ( Decorations deco  )
     // si il est deja dans la liste on zappe.
     if ( m_decorations.find( deco ) != m_decorations.end() )
     {
-        std::cout<<"Ajouter Decoration : deja present\n";
+//        std::cout<<"Ajouter Decoration : deja present\n";
         return;
     }
 
-    std::cout<<"Ajouter Decoration : ok\n";
+//    std::cout<<"Ajouter Decoration : ok\n";
 
     switch ( deco )    {
         case Decorations::Drag:
@@ -127,7 +127,7 @@ void Fenetre::setDefilementActif (bool val)
 /////////////////////////////////////////////////
 void Fenetre::ajouter ( std::shared_ptr<Gadget> enfant )
 {
-    m_panneau->ajouter ( enfant );
+    m_contenant->ajouter ( enfant );
     if (m_parent != nullptr)
         m_parent->actualiserContenu();
 }
@@ -136,17 +136,18 @@ void Fenetre::ajouter ( std::shared_ptr<Gadget> enfant )
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget> Fenetre::retirer (std::shared_ptr<Gadget> enfant)
 {
-    m_panneau->retirer ( enfant );
+    m_contenant->retirer ( enfant );
 }
 
 /////////////////////////////////////////////////
-void Fenetre::setParent (Gadget* parent )
+void Fenetre::actualiserDecoRetaille ( )
 {
-    m_parent = parent;
-    if ( parent != nullptr ){
-        if ( parent->getNom() == Interface::ms_calque_fenetres->getNom() ){
+    if ( m_parent != nullptr ){
+    // si on est dans le calque fenetres on redimmenssione des 4 cotés
+        if ( m_parent->getNom() == Interface::ms_calque_fenetres->getNom() ){
             retirerDecoration ( Decorations::RetaillePanneau );
             ajouterDecoration ( Decorations::Retaille );
+    // sinon on est dans le calque panneau on redimmenssione par le bas
         } else {
             retirerDecoration ( Decorations::Retaille );
             ajouterDecoration ( Decorations::RetaillePanneau );
@@ -164,8 +165,8 @@ void Fenetre::actualiserGeometrie ()
     for(auto deco : m_decorations)
         deco.second->actualiserGeometrie ();
 
-    m_panneau->setTaille    ( { m_taille.x - 2*m_marge.x, m_taille.y - getTailleBouton().y - 2*m_marge.y } );
-    m_panneau->setPosition  ( m_marge.x , getTailleBouton().y + m_marge.y );
+    m_contenant->setTaille    ( { m_taille.x - 2*m_marge.x, m_taille.y - getTailleBouton().y - 2*m_marge.y } );
+    m_contenant->setPosition  ( m_marge.x , getTailleBouton().y + m_marge.y );
 
     m_titre->setTailleX     ( m_taille.x - 2*m_marge.x );
     m_titre->setTailleY     ( getTailleBouton().y );
@@ -187,13 +188,13 @@ void Fenetre::actualiserStyle ()
     for(auto deco : m_decorations)
         deco.second->actualiserStyle ();
 
-    m_panneau->setFillColor            ( m_panneauFndCouleur ) ;
-    m_panneau->setOutlineColor         ( m_panneauFndLgnCouleur  ) ;
-    m_panneau->setOutlineThickness     ( m_panneauFndLgnepaisseur  );
+    m_contenant->setFillColor            ( m_contenantFndCouleur ) ;
+    m_contenant->setOutlineColor         ( m_contenantFndLgnCouleur  ) ;
+    m_contenant->setOutlineThickness     ( m_contenantFndLgnepaisseur  );
 
-    m_panneau->setContenantFillColor       ( m_panneauContenantCouleur ) ;
-    m_panneau->setContenantOutlineColor    ( m_panneauContenantLgnCouleur  ) ;
-    m_panneau->setContenantOutlineThickness( m_panneauContenantLgnepaisseur  );
+    m_contenant->setContenantFillColor       ( m_contenantContenantCouleur ) ;
+    m_contenant->setContenantOutlineColor    ( m_contenantContenantLgnCouleur  ) ;
+    m_contenant->setContenantOutlineThickness( m_contenantContenantLgnepaisseur  );
 
 
     m_titre->setTexteTaille         ( m_titreTextTaille );
@@ -223,7 +224,7 @@ std::shared_ptr<Gadget>  Fenetre::testerSurvol ( sf::Vector2i position )
     {
         // si on survol un gadget composant (slider)
         auto testInterfaceLocal = testerSurvolComposants( position );
-        if ( testInterfaceLocal == m_panneau )
+        if ( testInterfaceLocal == m_contenant )
             return thisPtr();
         else if ( testInterfaceLocal != nullptr )
             // on le renvois

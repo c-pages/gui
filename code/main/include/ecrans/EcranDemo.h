@@ -88,7 +88,7 @@ private:
     void initGUI_test_Affichages ();
     void initGUI_test_Boutons ();
     void initGUI_test_Donnees ();
-    void initGUI_test_Groupex ();
+    void initGUI_test_Contenantx ();
     void initGUI_test_Fenetres ();
 
     void lierMachiner ();
@@ -136,7 +136,7 @@ private:
     std::shared_ptr<gui::AffLabel>      m_label_11;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_12;      ///< Un autre label.
     std::shared_ptr<gui::AffLabel>      m_label_13;      ///< Un autre label.
-    std::shared_ptr<gui::AffLabel>      m_textePourGroupe;      ///< Un autre label.
+    std::shared_ptr<gui::AffLabel>      m_textePourContenant;      ///< Un autre label.
 
     std::shared_ptr<gui::AffImage>      m_image;        ///< Une simple image.
     std::shared_ptr<gui::AffIcone>      m_icone;        ///< Une simple icone.

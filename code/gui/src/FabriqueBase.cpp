@@ -297,16 +297,16 @@ std::shared_ptr<BtnBarreFonctions>    FabriqueBase::barreFonctions(  )
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<GrpSimple>        FabriqueBase::groupe( )
+std::shared_ptr<Contenant>        FabriqueBase::contenant( )
 {
-    auto nouveauGadget = creerBureau<GrpSimple>( );
+    auto nouveauGadget = creerBureau<Contenant>( );
     return nouveauGadget;
 }
 
 /////////////////////////////////////////////////
-std::shared_ptr<GrpSliders>        FabriqueBase::groupeSliders( )
+std::shared_ptr<CntSliders>        FabriqueBase::groupeSliders( )
 {
-    auto nouveauGadget = creerBureau<GrpSliders>( );
+    auto nouveauGadget = creerBureau<CntSliders>( );
     return nouveauGadget;
 }
 

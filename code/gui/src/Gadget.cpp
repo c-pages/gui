@@ -5,7 +5,7 @@
 #include <sstream>
 
 #include <Gadget.h>
-#include <Skin.h>
+//#include <Skin.h>
 #include <Interface.h>
 
 
@@ -152,6 +152,9 @@ bool Gadget::estDeplacable () const
 {
     return m_deplacable;
 }
+
+
+
 
 
 /////////////////////////////////////////////////

@@ -2,7 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <BtnBarreFonctions.h>
-#include "GrpSimple.h"
+//#include "GrpSimple.h"
 #include "Interface.h"
 
 

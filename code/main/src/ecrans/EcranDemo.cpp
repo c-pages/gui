@@ -23,7 +23,7 @@ EcranDemo::EcranDemo( Application*  appli )
 //    initGUI_test_Affichages ();
 //    initGUI_test_Boutons    ();
 //    initGUI_test_Donnees    ();
-//    initGUI_test_Groupex   ();
+//    initGUI_test_Contenantx   ();
     initGUI_test_Fenetres   ();
 
     initScene   ();
@@ -306,23 +306,23 @@ EcranDemo::initGUI_test_Fenetres  ()
 //    m_fenetre->ajouter ( m_textePourFenetre );
 
 
-    auto  m_boutonPourGroupe_2 = m_interface->creer.boutonTexte( "Bouton" );
-//    m_boutonPourGroupe_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
-    m_boutonPourGroupe_2->setPosition (115,20);
-    m_fenetre->ajouter ( m_boutonPourGroupe_2 );
-    m_boutonPourGroupe_2->lier(gui::Evenement::onBtnG_relacher, [this](){
+    auto  m_boutonPourContenant_2 = m_interface->creer.boutonTexte( "Bouton" );
+//    m_boutonPourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+    m_boutonPourContenant_2->setPosition (115,20);
+    m_fenetre->ajouter ( m_boutonPourContenant_2 );
+    m_boutonPourContenant_2->lier(gui::Evenement::onBtnG_relacher, [this](){
                                std::cout << "Bouton\n";
                                });
 /*
-    auto  m_bouton2PourGroupe_2 = m_interface->creer.boutonTexte( "Bouton\nBouton\nBouton\nBouton\nBouton\nBouton\nBouton" );
-    m_bouton2PourGroupe_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
-    m_bouton2PourGroupe_2->setPosition (50,50);
-    m_fenetre->ajouter ( m_bouton2PourGroupe_2 );
+    auto  m_bouton2PourContenant_2 = m_interface->creer.boutonTexte( "Bouton\nBouton\nBouton\nBouton\nBouton\nBouton\nBouton" );
+    m_bouton2PourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+    m_bouton2PourContenant_2->setPosition (50,50);
+    m_fenetre->ajouter ( m_bouton2PourContenant_2 );
 //
-    auto  m_bouton3PourGroupe_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
-    m_bouton3PourGroupe_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
-    m_bouton3PourGroupe_2->setPosition (120,146);
-    m_fenetre->ajouter ( m_bouton3PourGroupe_2 );
+    auto  m_bouton3PourContenant_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
+    m_bouton3PourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+    m_bouton3PourContenant_2->setPosition (120,146);
+    m_fenetre->ajouter ( m_bouton3PourContenant_2 );
 */
 
 
@@ -342,24 +342,24 @@ EcranDemo::initGUI_test_Fenetres  ()
 
 /////////////////////////////////////////////////
 void
-EcranDemo::initGUI_test_Groupex  ()
+EcranDemo::initGUI_test_Contenantx  ()
 {
 
     sf::Vector2f posRoot = { 20 , 390 };
 
     std::cout << "\n---------------------------------------\n";
-    std::cout << "      Test des gadgets : Groupes";
+    std::cout << "      Test des gadgets : Contenants";
     std::cout << "\n---------------------------------------\n\n";
 
 
     /////// TITRE Label ///////
-    m_labelTitre_3 = m_interface->creer.label( "Groupes" );
+    m_labelTitre_3 = m_interface->creer.label( "Contenants" );
     m_labelTitre_3->setPosition    ( posRoot.x , posRoot.y - 40 );
     m_labelTitre_3->setTexteTaille (20);
 //    m_labelTitre_3->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 
     //// creation d'un panneau
-    auto m_panneau = m_interface->creer.groupe(  );
+    auto m_panneau = m_interface->creer.contenant(  );
     m_panneau->setPosition  ( posRoot.x , posRoot.y  );
 //    m_panneau->setStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 //    m_panneau->setTaille    ( { 600 , 100 } ); // ok
@@ -367,13 +367,13 @@ EcranDemo::initGUI_test_Groupex  ()
     m_panneau->setTaille    ( { 200 , 100 } );
 
     //// contenu du panneau
-    m_textePourGroupe = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
-//    m_textePourGroupe->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
+    m_textePourContenant = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
+//    m_textePourContenant->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
 
-    m_panneau->ajouter ( m_textePourGroupe );
+    m_panneau->ajouter ( m_textePourContenant );
 
     /////// autre Label ///////
-    m_label_13 = m_interface->creer.label( "<---  Groupe simple" );
+    m_label_13 = m_interface->creer.label( "<---  Contenant simple" );
     m_label_13->setPosition    ( 220 + posRoot.x , posRoot.y  +  35 );
 //    m_label_13->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
@@ -392,53 +392,53 @@ EcranDemo::initGUI_test_Groupex  ()
     m_panneau_2->setTaille    ( { 200 , 100 } );
 
     //// contenu du panneau
-    auto m_texteBPourGroupe = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
-//    m_texteBPourGroupe->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
-    m_panneau_2->ajouter ( m_texteBPourGroupe );
+    auto m_texteBPourContenant = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
+//    m_texteBPourContenant->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
+    m_panneau_2->ajouter ( m_texteBPourContenant );
 
     //// contenu du panneau
 //
-//    auto  m_boutonPourGroupe_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
-//    m_boutonPourGroupe_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
-//    m_boutonPourGroupe_2->setPosition (50,20);
-//    m_panneau_2->ajouter ( m_boutonPourGroupe_2 );
+//    auto  m_boutonPourContenant_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
+//    m_boutonPourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+//    m_boutonPourContenant_2->setPosition (50,20);
+//    m_panneau_2->ajouter ( m_boutonPourContenant_2 );
 ////
-//    auto  m_bouton2PourGroupe_2 = m_interface->creer.boutonTexte( "Bouton\nBouton\nBouton\nBouton\nBouton\nBouton\nBouton" );
-//    m_bouton2PourGroupe_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
-//    m_bouton2PourGroupe_2->setPosition (50,50);
-//    m_panneau_2->ajouter ( m_bouton2PourGroupe_2 );
+//    auto  m_bouton2PourContenant_2 = m_interface->creer.boutonTexte( "Bouton\nBouton\nBouton\nBouton\nBouton\nBouton\nBouton" );
+//    m_bouton2PourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+//    m_bouton2PourContenant_2->setPosition (50,50);
+//    m_panneau_2->ajouter ( m_bouton2PourContenant_2 );
 ////
-//    auto  m_bouton3PourGroupe_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
-//    m_bouton3PourGroupe_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
-//    m_bouton3PourGroupe_2->setPosition (120,146);
-//    m_panneau_2->ajouter ( m_bouton3PourGroupe_2 );
+//    auto  m_bouton3PourContenant_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
+//    m_bouton3PourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+//    m_bouton3PourContenant_2->setPosition (120,146);
+//    m_panneau_2->ajouter ( m_bouton3PourContenant_2 );
 
 /*
 
-//    auto  m_textePourGroupe_2 = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
-//    m_textePourGroupe_2->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
-//    m_panneau_2->ajouter ( m_textePourGroupe_2 );
+//    auto  m_textePourContenant_2 = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
+//    m_textePourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
+//    m_panneau_2->ajouter ( m_textePourContenant_2 );
 
 
-    auto  m_boutonPourGroupe_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
-    m_boutonPourGroupe_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
-    m_boutonPourGroupe_2->setPosition (50,20);
-    m_panneau_2->ajouter ( m_boutonPourGroupe_2 );
+    auto  m_boutonPourContenant_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
+    m_boutonPourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+    m_boutonPourContenant_2->setPosition (50,20);
+    m_panneau_2->ajouter ( m_boutonPourContenant_2 );
 //
-    auto  m_bouton2PourGroupe_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
-    m_bouton2PourGroupe_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
-    m_bouton2PourGroupe_2->setPosition (50,50);
-    m_panneau_2->ajouter ( m_bouton2PourGroupe_2 );
+    auto  m_bouton2PourContenant_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
+    m_bouton2PourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+    m_bouton2PourContenant_2->setPosition (50,50);
+    m_panneau_2->ajouter ( m_bouton2PourContenant_2 );
 //
-    auto  m_bouton3PourGroupe_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
-    m_bouton3PourGroupe_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
-    m_bouton3PourGroupe_2->setPosition (50,180);
-    m_panneau_2->ajouter ( m_bouton3PourGroupe_2 );
+    auto  m_bouton3PourContenant_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
+    m_bouton3PourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+    m_bouton3PourContenant_2->setPosition (50,180);
+    m_panneau_2->ajouter ( m_bouton3PourContenant_2 );
 */
 
 
     /////// autre Label ///////
-    m_label_13 = m_interface->creer.label( "<---  GroupeSliders \n(avec barres de défilemement)" );
+    m_label_13 = m_interface->creer.label( "<---  ContenantSliders \n(avec barres de défilemement)" );
     m_label_13->setPosition    ( 220 + posRoot.x , posRoot.y  +  155 );
 //    m_label_13->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 }

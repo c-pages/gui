@@ -2,7 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <Composite.h>
-//#include <Groupe.h>
+//#include <Contenant.h>
 
 #include <Gadget.h>
 
@@ -27,7 +27,6 @@ void Composite::ajouter (std::shared_ptr<Gadget> enfant)
     _this->actualiser();
 
 }
-
 
 /////////////////////////////////////////////////
 void Composite::actualiserContenu (){
@@ -54,7 +53,9 @@ void Composite::ajouter ( std::shared_ptr<Gadget> enfant, unsigned int index )  
     auto _this = static_cast<Gadget*>( this );
     enfant->setParent ( _this );
 
+    enfant->actualiser();
     _this->actualiser();
+
 
 //    std::cout <<"Composite::ajouter reussi\n";
 };

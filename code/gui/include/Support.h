@@ -5,7 +5,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include "Gadget.h"
-#include "Groupe.h"
+#include "gadgets/Contenant.h"
 #include "repartiteurs/Repartiteur.h"
 #include <memory>
 #include <map>
@@ -48,7 +48,7 @@ public:
 //    Repartiteur m_repartiteur;
 protected:
     std::shared_ptr<AffRectangle>      m_fond;
-//    std::shared_ptr<Groupe>            m_panneaux;
+//    std::shared_ptr<Contenant>            m_panneaux;
     bool                               m_absorbable = false;
 
     Interface *     m_interface;

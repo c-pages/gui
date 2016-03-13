@@ -22,6 +22,8 @@
 #include "gadgets\BtnMenu.h"
 #include "gadgets\BtnBarreFonctions.h"
 
+#include "gadgets\Contenant.h"
+
 // DONNEES
 #include "gadgets\DnCaseACocher.h"
 #include "gadgets\DnZoneTexte.h"
@@ -29,8 +31,8 @@
 #include "gadgets\DnZoneNum.h"
 
 // GROUPEMENT
-#include "gadgets\GrpSimple.h"
-#include "gadgets\GrpSliders.h"
+//#include "gadgets\GrpSimple.h"
+#include "gadgets\CntSliders.h"
 
 // FENTRES
 #include "gadgets\Fenetre.h"
@@ -223,14 +225,14 @@ public:
     ///
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<GrpSimple>        groupe( );
+    std::shared_ptr<Contenant>        contenant( );
 
     /////////////////////////////////////////////////
     /// \brief  Création d'un panneau
     ///
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<GrpSliders>        groupeSliders( );
+    std::shared_ptr<CntSliders>        groupeSliders( );
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

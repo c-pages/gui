@@ -3,7 +3,7 @@
 /////////////////////////////////////////////////
 #include <SupPanneau.h>
 #include <Interface.h>
-//#include <GrpSliders.h>
+//#include <CntSliders.h>
 
 
 
@@ -14,16 +14,16 @@ SupPanneau::SupPanneau ()
 : m_cote        ( Cote::Gauche )
 , m_btn_gauche  ( std::make_shared<BtnRectangle>() )
 , m_btn_droite  ( std::make_shared<BtnRectangle>() )
-, m_groupe      ( std::make_shared<GrpSliders>() )
+, m_contenant      ( std::make_shared<CntSliders>() )
 , m_largeurBtnTaille ( 5 )
 {
     m_marge = { m_largeurBtnTaille , m_largeurBtnTaille };
 
     ajouterComposant ( m_btn_gauche );
     ajouterComposant ( m_btn_droite );
-    ajouterComposant ( m_groupe );
+    ajouterComposant ( m_contenant );
 
-    m_groupe->setRepartition ( Repartitions::Verticale );
+    m_contenant->setRepartition ( Repartitions::Verticale );
 
 
     auto fct_redimStartG = [this](){
@@ -102,25 +102,25 @@ void SupPanneau::corrigerTailleMinimum ()
 /////////////////////////////////////////////////
 void    SupPanneau::ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i positionEcran )
 {
-    std::cout << "Ajouter avec position ...\n";
+//    std::cout << "Ajouter avec position ...\n";
 
    int i = 0;
-    for ( auto enfant : m_groupe->getEnfants() )
+    for ( auto enfant : m_contenant->getEnfants() )
     {
 //        std::cout << "  ... on test ...\n";
         if ( gadget->getPosAbs().y  < enfant->getPosAbs().y  )
         {
-            m_groupe->ajouter ( gadget , i );
+            m_contenant->ajouter ( gadget , i );
 //    m_interface->demanderActualisation();
-//            m_groupe->actualiserContenu (  );
+//            m_contenant->actualiserContenu (  );
 
-            std::cout << "  ... reussi.\n";
+//            std::cout << "  ... reussi.\n";
             return;
         }
         i++;
     }
-    std::cout << "  ... rate, on le met a la fin.\n";
-    m_groupe->ajouter ( gadget );
+//    std::cout << "  ... rate, on le met a la fin.\n";
+    m_contenant->ajouter ( gadget );
 
 //    m_interface->demanderActualisation();
 
@@ -130,7 +130,7 @@ void    SupPanneau::ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i posit
 
 /////////////////////////////////////////////////
 sf::Vector2i     SupPanneau::getTaille () const {
-    if ( m_groupe->getEnfants().size() == 0)
+    if ( ! m_contenant->aEnfants())
         return { 10, m_taille.y};
     else return m_taille;
 }
@@ -142,8 +142,9 @@ void    SupPanneau::actualiserGeometrie ()
 
     auto tailleTmp = m_taille;
 
-    if ( m_groupe->getEnfants().size() == 0)    {
-        tailleTmp.x = 10;
+    if ( ! m_contenant->aEnfants() )    {
+//        std::cout << "Actualiser PANNEAU : a PAS Enfants\n";
+        tailleTmp.x = 100;
         switch ( m_cote ) {
             case Cote::Droite:
                 m_btn_gauche->setVisible ( false );
@@ -155,15 +156,18 @@ void    SupPanneau::actualiserGeometrie ()
         if ( m_interface !=nullptr)
             m_interface->demanderActualisation();
     }
-   else switch ( m_cote ) {
-        case Cote::Droite:
-            m_btn_gauche->setVisible ( true );
-            m_btn_droite->setVisible ( false );
-            break;
-        case Cote::Gauche:
-            m_btn_gauche->setVisible ( false );
-            m_btn_droite->setVisible ( true );
-            break;
+   else {
+//        std::cout << "Actualiser PANNEAU : a Enfants\n";
+        switch ( m_cote ) {
+            case Cote::Droite:
+                m_btn_gauche->setVisible ( true );
+                m_btn_droite->setVisible ( false );
+                break;
+            case Cote::Gauche:
+                m_btn_gauche->setVisible ( false );
+                m_btn_droite->setVisible ( true );
+                break;
+        }
     }
 
     m_fond->setTaille ( tailleTmp );
@@ -172,8 +176,8 @@ void    SupPanneau::actualiserGeometrie ()
     m_btn_gauche->setTaille ( m_largeurBtnTaille , tailleTmp.y );
     m_btn_droite->setTaille ( m_largeurBtnTaille , tailleTmp.y );
 
-    m_groupe->setTaille ( { tailleTmp.x - 2*m_marge.x , tailleTmp.y - 2*m_marge.y });
-    m_groupe->setPosition ( m_marge.x , m_marge.y );
+    m_contenant->setTaille ( { tailleTmp.x - 2*m_marge.x , tailleTmp.y - 2*m_marge.y });
+    m_contenant->setPosition ( m_marge.x , m_marge.y );
 
 //    actualiserBounds();
 //    actualiserEnfants();
@@ -199,7 +203,7 @@ void SupPanneau::actualiserEnfants()
             pos = { m_marge.x ,  m_marge.y };
             break;
     }
-    for ( auto enfant : m_groupe->getEnfants() )
+    for ( auto enfant : m_contenant->getEnfants() )
     {
 
 //        if ( enfant->getPosition ().x !=  pos.x && enfant->getPosition().y !=  pos.y )
@@ -304,7 +308,7 @@ void SupPanneau::draw (sf::RenderTarget& target, sf::RenderStates states) const
     dessinerComposant ( target, states);
 
     // On dessine les enfants (du groupe)
-    for ( auto enfant : m_groupe->getEnfants() )
+    for ( auto enfant : m_contenant->getEnfants() )
         target.draw ( *enfant , states ) ;
 
 }

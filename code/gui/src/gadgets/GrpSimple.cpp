@@ -10,7 +10,7 @@ namespace gui {
 
 /////////////////////////////////////////////////
 GrpSimple::GrpSimple ()
-: Groupe ()
+: Contenant ()
 {
     m_taille = { 400 , 200 };
     actualiser ();

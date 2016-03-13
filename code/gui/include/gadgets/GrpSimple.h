@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "Groupe.h"
+#include "Contenant.h"
 #include "AffRectangle.h"
 
 #include "repartiteurs/Repartiteur.h"
@@ -23,7 +23,7 @@ namespace gui {
 
 
 
-class GrpSimple : public gui::Groupe {
+class GrpSimple : public gui::Contenant {
 
 
 /////////////////////////////////////////////////

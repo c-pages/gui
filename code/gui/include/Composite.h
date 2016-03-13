@@ -63,7 +63,7 @@ public:
     /////////////////////////////////////////////////
     virtual std::shared_ptr<Gadget> retirer (std::shared_ptr<Gadget> enfant);
 
-    std::vector<std::shared_ptr<Gadget>>   getEnfants(){ return  m_enfants; } ;
+    virtual std::vector<std::shared_ptr<Gadget>>   getEnfants() const { return  m_enfants; } ;
 
 
     /////////////////////////////////////////////////
@@ -115,12 +115,15 @@ public:
 
     sf::IntRect  boundgingB_enfants();
 
+    virtual bool aEnfants() { return  ( m_enfants.size()>0) ;};
 
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
 protected:
+
+
     std::vector<std::shared_ptr<Gadget>>    m_enfants;          ///< Les enfants du gadget.
     Gadget*                                 m_parent = nullptr; ///< Le gadget parent.
 

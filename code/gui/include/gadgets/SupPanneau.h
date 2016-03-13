@@ -7,7 +7,7 @@
 #include "Support.h"
 
 #include "BtnRectangle.h"
-#include "GrpSliders.h"
+#include "CntSliders.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 
@@ -19,7 +19,7 @@ namespace gui {
 
 class SupPanneau : public gui::Support {
 
-//class GrpSliders;
+//class CntSliders;
 
 
 
@@ -59,7 +59,7 @@ public:
 
     virtual void ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i positionEcran );
     virtual void ajouter ( std::shared_ptr<Gadget> gadget)
-        { m_groupe->ajouter ( gadget ); };
+        { m_contenant->ajouter ( gadget ); };
 
 private:
 
@@ -87,7 +87,7 @@ private:
 
     std::shared_ptr<BtnRectangle>   m_btn_gauche;
     std::shared_ptr<BtnRectangle>   m_btn_droite;
-    std::shared_ptr<GrpSliders>     m_groupe;
+    std::shared_ptr<CntSliders>     m_contenant;
 
 
 }; // fin class SupPanneau

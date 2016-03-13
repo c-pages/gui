@@ -30,7 +30,7 @@ public:
     bool dragEnCours( ) { return m_drag; };
 
     /////////////////////////////////////////////////
-    void setDrag (bool val ){m_drag = val;};
+    void setDrag ( bool val ){m_drag = val;};
 
     /////////////////////////////////////////////////
     void positionnerFenetre ();

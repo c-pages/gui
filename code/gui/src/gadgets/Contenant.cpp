@@ -28,9 +28,9 @@ Contenant::Contenant ()
     m_fndLgnCouleur         = sf::Color( 255,255,255, 20 );
     m_fndLgnepaisseur       = 1;
 
-    m_contenantCouleur            = sf::Color( 255,255,255, 255 );
-    m_contenantLgnCouleur         = sf::Color( 255,255,255, 20 );
-    m_contenantLgnepaisseur       = 1;
+    m_contenantCouleur      = sf::Color( 255,255,255, 255 );
+    m_contenantLgnCouleur   = sf::Color( 255,255,255, 20 );
+    m_contenantLgnepaisseur = 1;
 
     ajouterComposant( m_fond );
     ajouterComposant( m_groupe );

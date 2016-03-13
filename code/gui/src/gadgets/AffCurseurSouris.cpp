@@ -62,7 +62,7 @@ void AffCurseurSouris::setCurseur ( Curseurs    curseur   )
             m_rectangle.setPosition(-15,-15);
             break;
     }
-    std::cout << "AFFICHE CURSEUR : " << estVisible() << "\n";
+//    std::cout << "AFFICHE CURSEUR : " << estVisible() << "\n";
 }
 
 

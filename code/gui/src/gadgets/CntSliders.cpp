@@ -21,7 +21,7 @@ CntSliders::CntSliders ()
     // valeurs par defaut
     m_taille = { 400 , 200 };
     m_largeurSliders = 7;
-    m_renderTexture.create( 1200, 900 );
+    m_renderTexture.create( 4096, 4096 );
 
     m_btnBtnCouleurs.set       ( sf::Color( 0, 0, 0, 50 )     , Etat::desactive );
     m_btnBtnCouleurs.set       ( sf::Color( 255,255,255, 0 )  , Etat::repos );

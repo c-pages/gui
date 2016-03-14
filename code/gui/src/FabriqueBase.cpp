@@ -346,13 +346,31 @@ std::shared_ptr<Fenetre>        FabriqueBase::fenetre( std::string titre )
 
 
 /////////////////////////////////////////////////
+std::shared_ptr<LstSimple>    FabriqueBase::liste(  )
+{
+    auto nouveauGadget = creerBureau<LstSimple>( );
+    return nouveauGadget;
+}
+
+
+
+/////////////////////////////////////////////////
+std::shared_ptr<LstDeroulante>    FabriqueBase::listeDeroulante(  )
+{
+    auto nouveauGadget = creerBureau<LstDeroulante>( );
+    return nouveauGadget;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////
 std::shared_ptr<SupBandeau>    FabriqueBase::bandeau(  )
 {
     auto nouveauGadget = creerBandeau<SupBandeau>( );
     return nouveauGadget;
 }
-
-
 /////////////////////////////////////////////////
 std::shared_ptr<SupBandeauMenusDeroulants>    FabriqueBase::menusDeroulants(  )
 {

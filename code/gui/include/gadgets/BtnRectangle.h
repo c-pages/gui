@@ -80,11 +80,15 @@ public:
 
     // les composants de l'interface du gadget
     std::shared_ptr<AffRectangle>    m_rectangle;
+//    std::shared_ptr<AffRectangle>    m_focus;
 
     // les proprietés graphiques
-    Valeurs<sf::Color>       m_couleurFond;
-    Valeurs<sf::Color>       m_couleurLignes;
-    Valeurs<float>           m_epaisseur;
+    Valeurs<sf::Color>      m_couleurFond;
+    Valeurs<sf::Color>      m_couleurLignes;
+    Valeurs<float>          m_epaisseur;
+
+    sf::Color               m_couleurFocus;
+    float                   m_epaisseurFocus;
 
 }; // fin class BtnRectangle
 

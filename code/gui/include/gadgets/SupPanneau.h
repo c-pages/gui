@@ -59,12 +59,15 @@ public:
 
     virtual void ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i positionEcran );
     virtual void ajouter ( std::shared_ptr<Gadget> gadget)
-        { m_contenant->ajouter ( gadget ); gadget->actualiserEtatDeco ( ); };
+        { m_contenant->ajouter ( gadget ); gadget->actualiserEtatDeco ( );
+            actualiser(); };
 
 private:
 
-    void redimmensionner_gauche ();
-    void redimmensionner_droite ();
+    void redimensionner_gauche ();
+    void redimensionner_droite ();
+    void drag_gauche ();
+    void drag_droite ();
 
     /////////////////////////////////////////////////
     void corrigerTailleMinimum ();
@@ -88,6 +91,8 @@ private:
 
     std::shared_ptr<BtnRectangle>   m_btn_gauche;
     std::shared_ptr<BtnRectangle>   m_btn_droite;
+
+    std::shared_ptr<AffRectangle>   m_barreDrag;
 
     std::shared_ptr<CntSliders>     m_contenant;
 

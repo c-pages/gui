@@ -71,7 +71,7 @@ void CntSliders::actualiserGeometrie (){
     m_slider_V->setVisible ( deplPossibleMax.y > 1 );
 
 
-    m_posContenant = {0,0};
+//    m_posContenant = {0,0};
     m_tailleContenant = { m_taille.x -  m_slider_V->getTaille().x , m_taille.y -  m_slider_H->getTaille().y };
 
 
@@ -87,10 +87,10 @@ void CntSliders::actualiserGeometrie (){
         m_slider_H->setLongueurCurseur(longueurCursH);
 //        m_slider_H->actualiserGeometrie();
         float coef                  = (  m_slider_H->getValeur() ) / 100;
-        m_posX_texture              = coef * deplPossibleMax.x;
+        m_posContenant.x              = coef * deplPossibleMax.x;
     // si le contenu est plus petit, on cache le slider
     } else {
-        m_posX_texture      = 0;
+        m_posContenant.x      = 0;
     }
 
     // si contenu plus grand, on a le slider vert
@@ -101,16 +101,16 @@ void CntSliders::actualiserGeometrie (){
         m_slider_V->setLongueurCurseur( longueurCursV );
 //        m_slider_V->actualiserGeometrie();
         float coef                  = ( 100 - m_slider_V->getValeur()  ) / 100;
-        m_posY_texture              = coef * deplPossibleMax.y;
+        m_posContenant.y              = coef * deplPossibleMax.y;
 //        std::cout << "coef : " << coef << "     deplPossibleMax.y : " << deplPossibleMax.y << "\n";
     // si le contenu est plus petit, on cache le slider
     } else {
-        m_posY_texture      = 0;
+        m_posContenant.y      = 0;
     }
 
 
 
-    m_groupe->setPosition ( -m_posX_texture , -m_posY_texture );
+    m_groupe->setPosition ( -m_posContenant.x , -m_posContenant.y );
 
 
 
@@ -176,7 +176,7 @@ void CntSliders::actualiser ()
     if ( m_slider_H->estVisible() ) {
         float coef                  = (  m_slider_H->getValeur() ) / 100;
 
-        m_posX_texture              = coef * deplPossibleMax.x;
+        m_posContenant.x              = coef * deplPossibleMax.x;
 
         float longueurCursH = m_taille.x/ float( boundgingB_enfants().width )* 100 ;
         m_slider_H->setLongueurCurseur(longueurCursH);
@@ -186,13 +186,13 @@ void CntSliders::actualiser ()
 
     // si le contenu est plus petit, on cache le slider
     } else {
-        m_posX_texture      = 0;
+        m_posContenant.x      = 0;
     }
 
     // si contenu plus grand, on a le slider vert
     if (  m_slider_V->estVisible() ) {  // si contenu plus grand, on a le slider
         float coef                  = ( 100 - m_slider_V->getValeur() ) / 100;
-        m_posY_texture              = coef * deplPossibleMax.y;
+        m_posContenant.y              = coef * deplPossibleMax.y;
 
 
         float longueurCursV = m_taille.y /float( boundgingB_enfants().height )* 100 ;
@@ -203,7 +203,7 @@ void CntSliders::actualiser ()
 
     // si le contenu est plus petit, on cache le slider
     } else {
-        m_posY_texture      = 0;
+        m_posContenant.y      = 0;
     }
 
 
@@ -229,24 +229,24 @@ void CntSliders::replacerContenu () {
     // si le contenu est plus grand que le contenant
     if ( m_slider_H->estVisible() ) {
         float coef                  = (  m_slider_H->getValeur() ) / 100;
-        m_posX_texture              = coef * deplPossibleMax.x;
+        m_posContenant.x              = coef * deplPossibleMax.x;
     } else {
-        m_posX_texture      = 0;
+        m_posContenant.x      = 0;
     }
 
     // si contenu plus grand, on a le slider vert
     if (  m_slider_V->estVisible() ) {  // si contenu plus grand, on a le slider
         float coef                  = ( 100 - m_slider_V->getValeur()  ) / 100;
-        m_posY_texture              = coef * deplPossibleMax.y;
+        m_posContenant.y              = coef * deplPossibleMax.y;
     } else {
-        m_posY_texture      = 0;
+        m_posContenant.y      = 0;
     }
 
 
-    m_groupe->setPosition ( -m_posX_texture , -m_posY_texture );
+    m_groupe->setPosition ( -m_posContenant.x , -m_posContenant.y );
 
-     m_affContenant->setTextureRect(   { m_posX_texture
-                                    , m_posY_texture
+     m_affContenant->setTextureRect(   { m_posContenant.x
+                                    , m_posContenant.y
                                     , m_affContenant->getSize().x
                                     , m_affContenant->getSize().y });
 

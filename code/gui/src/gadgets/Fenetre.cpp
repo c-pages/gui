@@ -175,8 +175,8 @@ void Fenetre::actualiserGeometrie ()
     m_contenant->setTaille    ( { m_taille.x - 2*m_marge.x, m_taille.y - getTailleBouton().y - 2*m_marge.y } );
     m_contenant->setPosition  ( m_marge.x , getTailleBouton().y + m_marge.y );
 //    m_contenant->actualiser();
-
     m_titre->setTailleX     ( m_taille.x - 2*m_marge.x );
+
     m_titre->setTailleY     ( getTailleBouton().y );
     m_titre->setPosition    ( m_marge.x , m_marge.y );
 

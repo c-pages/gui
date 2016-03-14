@@ -20,11 +20,12 @@ EcranDemo::EcranDemo( Application*  appli )
     initGUI     ();
 
     // les tests
+    initGUI_tests ();
 //    initGUI_test_Affichages ();
 //    initGUI_test_Boutons    ();
 //    initGUI_test_Donnees    ();
 //    initGUI_test_Contenantx   ();
-    initGUI_test_Fenetres   ();
+//    initGUI_test_Fenetres   ();
 
     initScene   ();
 
@@ -150,6 +151,38 @@ EcranDemo::initScene  ( )
 }
 
 
+/////////////////////////////////////////////////
+void
+EcranDemo::initGUI_tests ()
+{
+    auto liste = m_interface->creer.liste();
+    liste->setPosition ( 50, 50);
+    liste->ajouterElement ( "Premier" );
+    liste->ajouterElement ( "Second" );
+    liste->ajouterElement ( "Troisieme" );
+    liste->ajouterElement ( "Quatrieme" );
+    liste->ajouterElement ( "Cinquieme" );
+    liste->ajouterElement ( "Sixieme" );
+    liste->ajouterElement ( "Septieme" );
+    liste->ajouterElement ( "Huitieme" );
+    liste->ajouterElement ( "Neuvieme" );
+    liste->ajouterElement ( "Dixieme" );
+    liste->setAjustement(true);
+
+    auto listeDeroulante = m_interface->creer.listeDeroulante();
+    listeDeroulante->setPosition ( 250, 50);
+    listeDeroulante->ajouterElement ( "Premier" );
+    listeDeroulante->ajouterElement ( "Second" );
+    listeDeroulante->ajouterElement ( "Troisieme" );
+    listeDeroulante->ajouterElement ( "Quatrieme" );
+    listeDeroulante->ajouterElement ( "Cinquieme" );
+    listeDeroulante->ajouterElement ( "Sixieme" );
+    listeDeroulante->ajouterElement ( "Septieme" );
+    listeDeroulante->ajouterElement ( "Huitieme" );
+    listeDeroulante->ajouterElement ( "Neuvieme" );
+    listeDeroulante->ajouterElement ( "Dixieme" );
+
+}
 
 /////////////////////////////////////////////////
 void
@@ -171,7 +204,7 @@ EcranDemo::initGUI ()
 
     /////// Label retour ///////
     m_labelRetour = m_interface->creer.label( "Retour :" );
-    m_labelRetour->setPosition    ( 20 , 55 );
+    m_labelRetour->setPosition    ( 5 , 5 );
 //    m_labelRetour->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 

@@ -40,7 +40,11 @@ FenDecoRedimPanneau::FenDecoRedimPanneau( Fenetre* fenetre )
             m_tailleOrigin = m_fenetre->getTaille();
             m_redimensionner = true;
         };
-    fct_redimStopB = [this](){ m_redimensionner = false; m_fenetre->actualiserBounds(); };
+    fct_redimStopB = [this](){
+            m_redimensionner = false;
+            m_fenetre->actualiserBounds();
+            Interface::setCurseur ( Curseurs::Defaut );
+        };
 
 
 
@@ -112,6 +116,7 @@ void FenDecoRedimPanneau::corrigerTailleMinimum ()
 /////////////////////////////////////////////////
 void FenDecoRedimPanneau::redimensionner ()
 {
+//    std::cout << "redimensionner\n";
     auto posSouris = m_fenetre->getPosSouris();
 
     m_tailleFenetre = { m_fenetre->getTaille().x , m_tailleOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ) };
@@ -119,8 +124,8 @@ void FenDecoRedimPanneau::redimensionner ()
     m_fenetre->setTailleY( m_tailleFenetre.y  );
 //    m_fenetre->m_contenant->actualiserGeometrie ();
 
-    m_fenetre->getParent()->actualiserGeometrie ();
-    m_fenetre->getParent()->actualiserContenu();
+//    m_fenetre->getParent()->actualiserGeometrie ();
+//    m_fenetre->getParent()->actualiserContenu();
 
 //    m_fenetre->getParent()->getParent()->actualiserContenu();
 }

@@ -89,7 +89,7 @@ void BtnMenu::ajouterElement (std::string nom, FctnAction fonction)
         bouton->setTaille           ( m_tailleMenu );
     }
 
-    bouton->lier                ( Evenement::onBtnG_relacher , fonction );
+    bouton->lier            ( Evenement::onBtnG_relacher , fonction );
     nouvelElement->bouton   = bouton;
 
     m_elements.push_back( nouvelElement );

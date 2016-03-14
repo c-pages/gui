@@ -85,6 +85,9 @@ private:
     /////////////////////////////////////////////////
     virtual     void initGUI ();
 
+    void initGUI_tests();
+
+
     void initGUI_test_Affichages ();
     void initGUI_test_Boutons ();
     void initGUI_test_Donnees ();

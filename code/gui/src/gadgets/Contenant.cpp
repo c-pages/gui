@@ -16,12 +16,14 @@ namespace gui {
 /////////////////////////////////////////////////
 Contenant::Contenant ()
 : m_affContenant ( std::make_shared<sf::RectangleShape>() )
-, m_posX_texture(0)
-, m_posY_texture(0)
+, m_posContenant ( {0,0} )
+
 , m_fond ( std::make_shared<AffRectangle>() )
 , m_groupe ( std::make_shared<Groupe>() )
 , m_repartiteur ( new RepartiteurLibre ( this ) )
 {
+    m_posContenant = {0,0};
+
     m_renderTexture.create( 1920, 1080 );
 
     m_fndCouleur            = sf::Color( 0,0,0, 50 );
@@ -46,21 +48,21 @@ void Contenant::replacerContenu () {
 //    // si le contenu est plus grand que le contenant
 //    if ( m_slider_H->estVisible() ) {
 //        float coef                  = (  m_slider_H->getValeur() ) / 100;
-//        m_posX_texture              = coef * deplPossibleMax.x;
+//        m_posContenant.x              = coef * deplPossibleMax.x;
 //    } else {
-//        m_posX_texture      = 0;
+//        m_posContenant.x      = 0;
 //    }
 //
 //    // si contenu plus grand, on a le slider vert
 //    if (  m_slider_V->estVisible() ) {  // si contenu plus grand, on a le slider
 //        float coef                  = ( 100 - m_slider_V->getValeur()  ) / 100;
-//        m_posY_texture              = coef * deplPossibleMax.y;
+//        m_posContenant.y              = coef * deplPossibleMax.y;
 //    } else {
-//        m_posY_texture      = 0;
+//        m_posContenant.y      = 0;
 //    }
 
 
-//    m_groupe->setPosition ( -m_posX_texture , -m_posY_texture );
+//    m_groupe->setPosition ( -m_posContenant.x , -m_posContenant.y );
 
      m_affContenant->setTextureRect(   { 0
                                     , 0
@@ -113,14 +115,14 @@ void Contenant::actualiserContenu ()
     for (auto enfant : m_groupe->getEnfants() )
         m_renderTexture.draw( *enfant );
 
-    m_groupe->setPosition ( -m_posX_texture , -m_posY_texture );
+    m_groupe->setPosition ( -m_posContenant.x , -m_posContenant.y );
 
     m_renderTexture.display();
-//    std::cout << " -> m_posX_texture : " << m_posX_texture << "     m_posY_texture : " << m_posY_texture << "\nm_contenant->getSize().x : " << m_contenant->getSize().x<< "   m_contenant->getSize().y : " << m_contenant->getSize().y << "\n";
+//    std::cout << " -> m_posContenant.x : " << m_posContenant.x << "     m_posContenant.y : " << m_posContenant.y << "\nm_contenant->getSize().x : " << m_contenant->getSize().x<< "   m_contenant->getSize().y : " << m_contenant->getSize().y << "\n";
     // on applique la texture
     m_affContenant->setTexture( &m_renderTexture.getTexture() );
-    m_affContenant->setTextureRect( { m_posX_texture
-                                    , m_posY_texture
+    m_affContenant->setTextureRect( { m_posContenant.x
+                                    , m_posContenant.y
                                     , m_affContenant->getSize().x
                                     , m_affContenant->getSize().y });
 
@@ -135,7 +137,6 @@ void Contenant::actualiserGeometrie ()
     m_fond->setTaille(m_taille);
     m_affContenant->setSize( { m_taille.x , m_taille.y } );
 
-    m_posContenant = {0,0};
     m_tailleContenant = m_taille;
 
     repartirEnfants ();

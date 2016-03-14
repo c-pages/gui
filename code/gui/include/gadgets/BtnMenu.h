@@ -84,7 +84,7 @@ protected:
     bool                            m_ombreActive;
 
     // les composants de l'interface du gadget
-    std::vector <ElementMenu*>      m_elements;
+    std::vector<ElementMenu*>       m_elements;
     std::shared_ptr<AffRectangle>   m_fond;
     std::shared_ptr<AffRectangle>   m_ombre;
 
@@ -93,9 +93,9 @@ protected:
     sf::Color           m_fndLignesCouleur;
     float               m_fndLignesEpaisseur;
 
-    sf::Color               m_ombreCouleur;
-    sf::Color               m_ombreLgnCouleur;
-    float                   m_ombreLgnepaisseur;
+    sf::Color           m_ombreCouleur;
+    sf::Color           m_ombreLgnCouleur;
+    float               m_ombreLgnepaisseur;
 
 
     Valeurs<sf::Color>  m_btnCouleurs;

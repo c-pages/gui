@@ -80,6 +80,7 @@
 		<Unit filename="include/Geometrie.h" />
 		<Unit filename="include/Groupe.h" />
 		<Unit filename="include/Interface.h" />
+		<Unit filename="include/Liste.h" />
 		<Unit filename="include/ResourcesMgr.h" />
 		<Unit filename="include/ResourcesMgr.inl" />
 		<Unit filename="include/Support.h" />
@@ -102,6 +103,8 @@
 		<Unit filename="include/gadgets/DnZoneNum.h" />
 		<Unit filename="include/gadgets/DnZoneTexte.h" />
 		<Unit filename="include/gadgets/Fenetre.h" />
+		<Unit filename="include/gadgets/LstDeroulante.h" />
+		<Unit filename="include/gadgets/LstSimple.h" />
 		<Unit filename="include/gadgets/SupBandeau.h" />
 		<Unit filename="include/gadgets/SupBandeauMenusDeroulants.h" />
 		<Unit filename="include/gadgets/SupPanneau.h" />
@@ -127,6 +130,7 @@
 		<Unit filename="src/Geometrie.cpp" />
 		<Unit filename="src/Groupe.cpp" />
 		<Unit filename="src/Interface.cpp" />
+		<Unit filename="src/Liste.cpp" />
 		<Unit filename="src/Support.cpp" />
 		<Unit filename="src/Valeurs.cpp" />
 		<Unit filename="src/gadgets/AffBarreTitre.cpp" />
@@ -147,6 +151,8 @@
 		<Unit filename="src/gadgets/DnZoneNum.cpp" />
 		<Unit filename="src/gadgets/DnZoneTexte.cpp" />
 		<Unit filename="src/gadgets/Fenetre.cpp" />
+		<Unit filename="src/gadgets/LstDeroulante.cpp" />
+		<Unit filename="src/gadgets/LstSimple.cpp" />
 		<Unit filename="src/gadgets/SupBandeau.cpp" />
 		<Unit filename="src/gadgets/SupBandeauMenusDeroulants.cpp" />
 		<Unit filename="src/gadgets/SupPanneau.cpp" />

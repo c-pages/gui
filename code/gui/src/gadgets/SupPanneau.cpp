@@ -15,6 +15,7 @@ SupPanneau::SupPanneau ()
 , m_btn_gauche  ( std::make_shared<BtnRectangle>() )
 , m_btn_droite  ( std::make_shared<BtnRectangle>() )
 , m_contenant   ( std::make_shared<CntSliders>() )
+, m_barreDrag   ( std::make_shared<AffRectangle>() )
 , m_largeurBtnTaille ( 7 )
 , m_largeurMini     ( 150 +  m_marge.x*2 )
 {
@@ -23,6 +24,11 @@ SupPanneau::SupPanneau ()
     ajouterComposant ( m_btn_gauche );
     ajouterComposant ( m_btn_droite );
     ajouterComposant ( m_contenant );
+    ajouterComposant ( m_barreDrag );
+
+    m_barreDrag->setFillColor ( sf::Color ( 255,255,255,50 ));
+    m_barreDrag->setOutlineThickness ( 0 );
+    m_barreDrag->setVisible (false);
 
     m_contenant->setRepartition ( Repartitions::Verticale );
 
@@ -33,12 +39,9 @@ SupPanneau::SupPanneau ()
             m_tailleOrigin = m_taille;
             m_posOrigin = getPosition();
             m_redimGauche = true;
-            m_interface->demanderActualisation();
-        };
-    auto fct_redimStopG = [this](){
-            m_redimGauche = false;
-            actualiserBounds();
-            m_interface->demanderActualisation();
+            m_barreDrag->setVisible  ( true );
+            drag_gauche ();
+//            m_interface->demanderActualisation();
         };
     auto fct_redimStartD = [this](){
 //            demander_aEtre_auDessus();
@@ -46,14 +49,32 @@ SupPanneau::SupPanneau ()
             m_tailleOrigin = m_taille;
             m_posOrigin = getPosition();
             m_redimDroite = true;
-            m_interface->demanderActualisation();
+            m_barreDrag->setVisible  ( true );
+            drag_droite ();
+//            m_interface->demanderActualisation();
+        };
+    auto fct_redimStopG = [this](){
+            if ( m_redimDroite || m_redimGauche ){
+                m_redimDroite = false;
+                m_redimGauche = false;
+                m_barreDrag->setVisible  ( false );
+                redimensionner_gauche();
+                actualiserBounds();
+                m_interface->demanderActualisation();
+                Interface::setCurseur ( Curseurs::Defaut );
+            }
         };
     auto fct_redimStopD = [this](){
-            m_redimDroite = false;
-            actualiserBounds();
-            m_interface->demanderActualisation();
+            if ( m_redimDroite || m_redimGauche ){
+                m_redimDroite = false;
+                m_redimGauche = false;
+                m_barreDrag->setVisible  ( false );
+                redimensionner_droite();
+                actualiserBounds();
+                m_interface->demanderActualisation();
+                Interface::setCurseur ( Curseurs::Defaut );
+            }
         };
-
     m_btn_gauche->lier (Evenement::onBtnG_presser , fct_redimStartG );
     m_btn_gauche->lier (Evenement::onBtnG_relacher, fct_redimStopG );
     m_btn_gauche->lier (Evenement::onBtnG_relacherDehors, fct_redimStopG );
@@ -134,6 +155,7 @@ void    SupPanneau::ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i posit
 //    std::cout << "  ... rate, on le met a la fin.\n";
     m_contenant->ajouter ( gadget );
     gadget->actualiserEtatDeco ( );
+//    actualiser();
 
 //    m_interface->demanderActualisation();
 
@@ -154,7 +176,6 @@ void    SupPanneau::actualiserGeometrie ()
 //    std::cout << "Actualiser PANNEAU\n";
 
     auto tailleTmp = m_taille;
-
     if ( ! m_contenant->aEnfants() )    {
 //        std::cout << "Actualiser PANNEAU : a PAS Enfants\n";
         tailleTmp.x = 100;
@@ -184,6 +205,8 @@ void    SupPanneau::actualiserGeometrie ()
     }
 
     m_fond->setTaille ( tailleTmp );
+
+    m_barreDrag->setTaille ( 20 , tailleTmp.y );
 
     m_btn_droite->setPosition ( tailleTmp.x - m_btn_droite->getTaille().x, 0 );
     m_btn_gauche->setTaille ( m_largeurBtnTaille , tailleTmp.y );
@@ -253,8 +276,8 @@ void SupPanneau::traiterEvenements (const sf::Event& evenement)
 {
 
 
-    if ( m_redimGauche ){ redimmensionner_gauche (); return; }
-    if ( m_redimDroite ){ redimmensionner_droite (); return; }
+    if ( m_redimGauche ){ drag_gauche (); return; }
+    if ( m_redimDroite ){ drag_droite (); return; }
 
     Support::traiterEvenements (evenement);
 
@@ -262,9 +285,13 @@ void SupPanneau::traiterEvenements (const sf::Event& evenement)
 //        positionnerFenetre ();
 
 }
+
+
 /////////////////////////////////////////////////
-void SupPanneau::redimmensionner_gauche ()
+void SupPanneau::redimensionner_gauche ()
 {
+
+
     auto posSouris = getPosSouris();
     m_taille = { m_tailleOrigin.x - ( posSouris.x - m_sourisPosOrigin.x  ) , m_taille.y };
 
@@ -281,36 +308,40 @@ void SupPanneau::redimmensionner_gauche ()
 
     actualiserGeometrie();
 
-//    actualiserEnfants();
-//    m_interface->demanderActualisation();
 
 
-//    auto posSouris = m_fenetre->getPosSouris();
-//
-//    m_tailleFenetre = { m_tailleOrigin.x - ( posSouris.x - m_sourisPosOrigin.x ), m_fenetre->getTaille().y   };
-//    corrigerTailleMinimum ();
-//    m_fenetre->setTailleX( m_tailleFenetre.x  );
-//
-//    corrigerTailleMinimum ();
-//
-//    m_fenetre->setPosition ( m_posOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ),  m_fenetre->getPosition().y );
-//
+
 }
 
 /////////////////////////////////////////////////
-void SupPanneau::redimmensionner_droite ()
+void SupPanneau::redimensionner_droite ()
 {
+
     auto posSouris = getPosSouris();
     m_taille = { m_tailleOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ) , m_taille.y };
     corrigerTailleMinimum ();
 //    demander_aEtre_auDessus();
     actualiserGeometrie();
 
- //   setTailleX (m_taille.x);
-//    actualiserEnfants();
-//    m_interface->demanderActualisation();
 }
 
+/////////////////////////////////////////////////
+void SupPanneau::drag_gauche ()
+{
+
+    auto posSouris = getPosSouris();
+    m_barreDrag->setPosAbs ( { posSouris.x , getPosition().y } );
+
+}
+
+/////////////////////////////////////////////////
+void SupPanneau::drag_droite ()
+{
+
+    auto posSouris = getPosSouris();
+    m_barreDrag->setPosAbs ( { posSouris.x - m_barreDrag->getTaille().x , getPosition().y } );
+
+}
 /*
 
 /////////////////////////////////////////////////

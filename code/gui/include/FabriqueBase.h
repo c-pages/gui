@@ -22,7 +22,6 @@
 #include "gadgets\BtnMenu.h"
 #include "gadgets\BtnBarreFonctions.h"
 
-#include "gadgets\Contenant.h"
 
 // DONNEES
 #include "gadgets\DnCaseACocher.h"
@@ -30,14 +29,17 @@
 #include "gadgets\DnSlider.h"
 #include "gadgets\DnZoneNum.h"
 
-// GROUPEMENT
-//#include "gadgets\GrpSimple.h"
+// LISTES
+#include "gadgets\LstSimple.h"
+#include "gadgets\LstDeroulante.h"
+
+
+// CONTENANT
+#include "gadgets\Contenant.h"
 #include "gadgets\CntSliders.h"
 
 // FENTRES
 #include "gadgets\Fenetre.h"
-//#include "gadgets\FenRedim.h"
-//#include "gadgets\FenPanneau.h"
 
 // SUPPORTS
 #include "gadgets\SupBandeau.h"
@@ -233,6 +235,25 @@ public:
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<CntSliders>        groupeSliders( );
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Liste
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////
+    /// \brief  Création d'une liste
+    ///
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<LstSimple>        liste( );
+
+    /////////////////////////////////////////////////
+    /// \brief  Création d'une liste deroulante
+    ///
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<LstDeroulante>   listeDeroulante( );
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

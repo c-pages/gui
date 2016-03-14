@@ -195,7 +195,7 @@ void Interface::traiterEvenements( sf::Event evenement )
             if (ms_curseurSouris->estVisible())
                 ms_curseurSouris->traiterEvenements( evenement );
 
-            // On sort si on a pas changer de bouton survolé
+            // On sort si on a pas changé de bouton survolé
             if ( m_boutonSurvole ==  boutonSurvoleBack )
                 return;
 

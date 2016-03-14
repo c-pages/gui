@@ -91,15 +91,6 @@ private:
     sf::Color               m_btnDragFndLgnCouleur;
     float                   m_btnDragFndLgnepaisseur;
 
-    // Les actions pour le fonctionnement
-    FctnAction     fct_redimStartG;
-    FctnAction     fct_redimStopG;
-    FctnAction     fct_redimStartD;
-    FctnAction     fct_redimStopD;
-    FctnAction     fct_redimStartH;
-    FctnAction     fct_redimStopH;
-    FctnAction     fct_redimStartB;
-    FctnAction     fct_redimStopB;
     protected:
     private:
 };

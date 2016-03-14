@@ -19,7 +19,7 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
 
 //, m_fenetre         ( std::make_shared<FenSimple>() )
 {
-    std::cout << "Decoration redim : creation\n";
+//    std::cout << "Decoration redim : creation\n";
     m_fenetre->setMarge( { 6 , 6 } );
 
     m_fenetre->ajouterComposant( m_btn_gauche );
@@ -67,116 +67,111 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
 
 
 
-    fct_redimStartG = [this](){
+    auto fct_redimStartG = [this](){
             m_fenetre->demander_aEtre_auDessus();
             m_sourisPosOrigin = m_fenetre->getPosSouris();
             m_tailleOrigin = m_fenetre->getTaille();
             m_posOrigin = m_fenetre->getPosition();
             m_redimGauche = true;
         };
-    fct_redimStopG = [this](){
-        m_redimGauche = false;
-        m_fenetre->actualiserBounds();
-        };
-    fct_redimStartD = [this](){
+    auto fct_redimStartD = [this](){
             m_fenetre->demander_aEtre_auDessus();
             m_sourisPosOrigin = m_fenetre->getPosSouris();
             m_tailleOrigin = m_fenetre->getTaille();
             m_posOrigin = m_fenetre->getPosition();
             m_redimDroite = true;
         };
-    fct_redimStopD = [this](){ m_redimDroite = false;
-    m_fenetre->actualiserBounds();
-    };
-    fct_redimStartH = [this](){
+    auto fct_redimStartH = [this](){
             m_fenetre->demander_aEtre_auDessus();
             m_sourisPosOrigin = m_fenetre->getPosSouris();
             m_tailleOrigin = m_fenetre->getTaille();
             m_posOrigin = m_fenetre->getPosition();
             m_redimHaut = true;
         };
-    fct_redimStopH = [this](){ m_redimHaut = false;
-    m_fenetre->actualiserBounds();
-    };
-    fct_redimStartB = [this](){
+    auto fct_redimStartB = [this](){
             m_fenetre->demander_aEtre_auDessus();
             m_sourisPosOrigin = m_fenetre->getPosSouris();
             m_tailleOrigin = m_fenetre->getTaille();
             m_posOrigin = m_fenetre->getPosition();
             m_redimBas = true;
         };
-    fct_redimStopB = [this](){ m_redimBas = false;
-    m_fenetre->actualiserBounds();
-    };
 
+    auto fct_redimStartHG = [this](){
+            m_fenetre->demander_aEtre_auDessus();
+            m_sourisPosOrigin = m_fenetre->getPosSouris();
+            m_tailleOrigin = m_fenetre->getTaille();
+            m_posOrigin = m_fenetre->getPosition();
+            m_redimHaut = true;
+            m_redimGauche = true;
+        };
+    auto fct_redimStartHD = [this](){
+            m_fenetre->demander_aEtre_auDessus();
+            m_sourisPosOrigin = m_fenetre->getPosSouris();
+            m_tailleOrigin = m_fenetre->getTaille();
+            m_posOrigin = m_fenetre->getPosition();
+            m_redimHaut = true;
+            m_redimDroite = true;
+        };
+    auto fct_redimStartBG = [this](){
+            m_fenetre->demander_aEtre_auDessus();
+            m_sourisPosOrigin = m_fenetre->getPosSouris();
+            m_tailleOrigin = m_fenetre->getTaille();
+            m_posOrigin = m_fenetre->getPosition();
+            m_redimBas = true;
+            m_redimGauche = true;
+        };
+    auto fct_redimStartBD = [this](){
+            m_fenetre->demander_aEtre_auDessus();
+            m_sourisPosOrigin = m_fenetre->getPosSouris();
+            m_tailleOrigin = m_fenetre->getTaille();
+            m_posOrigin = m_fenetre->getPosition();
+            m_redimBas = true;
+            m_redimDroite = true;
+        };
+    auto fct_redimStop = [this](){
+            m_redimHaut = false;
+            m_redimGauche = false;
+            m_redimBas = false;
+            m_redimDroite = false;
+            m_fenetre->actualiserBounds();
+            Interface::setCurseur ( Curseurs::Defaut );
+    };
 
 
     m_btn_gauche->lier (Evenement::onBtnG_presser , fct_redimStartG );
-    m_btn_gauche->lier (Evenement::onBtnG_relacher, fct_redimStopG );
-    m_btn_gauche->lier (Evenement::onBtnG_relacherDehors, fct_redimStopG );
+    m_btn_gauche->lier (Evenement::onBtnG_relacher, fct_redimStop );
+    m_btn_gauche->lier (Evenement::onBtnG_relacherDehors, fct_redimStop );
 
     m_btn_droite->lier (Evenement::onBtnG_presser , fct_redimStartD );
-    m_btn_droite->lier (Evenement::onBtnG_relacher, fct_redimStopD);
-    m_btn_droite->lier (Evenement::onBtnG_relacherDehors, fct_redimStopD);
+    m_btn_droite->lier (Evenement::onBtnG_relacher, fct_redimStop);
+    m_btn_droite->lier (Evenement::onBtnG_relacherDehors, fct_redimStop);
 
     m_btn_haut->lier (Evenement::onBtnG_presser , fct_redimStartH );
-    m_btn_haut->lier (Evenement::onBtnG_relacher, fct_redimStopH );
-    m_btn_haut->lier (Evenement::onBtnG_relacherDehors, fct_redimStopH );
+    m_btn_haut->lier (Evenement::onBtnG_relacher, fct_redimStop );
+    m_btn_haut->lier (Evenement::onBtnG_relacherDehors, fct_redimStop );
 
     m_btn_bas->lier (Evenement::onBtnG_presser , fct_redimStartB );
-    m_btn_bas->lier (Evenement::onBtnG_relacher, fct_redimStopB );
-    m_btn_bas->lier (Evenement::onBtnG_relacherDehors, fct_redimStopB );
+    m_btn_bas->lier (Evenement::onBtnG_relacher, fct_redimStop );
+    m_btn_bas->lier (Evenement::onBtnG_relacherDehors, fct_redimStop );
+
+    m_btn_hautGauche->lier (Evenement::onBtnG_presser       , fct_redimStartHG );
+    m_btn_hautGauche->lier (Evenement::onBtnG_relacher      , fct_redimStop );
+    m_btn_hautGauche->lier (Evenement::onBtnG_relacherDehors, fct_redimStop );
+
+    m_btn_hautDroite->lier (Evenement::onBtnG_presser , fct_redimStartHD);
+    m_btn_droite->lier (Evenement::onBtnG_relacher, fct_redimStop );
+    m_btn_droite->lier (Evenement::onBtnG_relacherDehors, fct_redimStop );
+
+    m_btn_basGauche->lier (Evenement::onBtnG_presser , fct_redimStartBG);
+    m_btn_basGauche->lier (Evenement::onBtnG_relacher, fct_redimStop );
+    m_btn_basGauche->lier (Evenement::onBtnG_relacherDehors, fct_redimStop );
+
+    m_btn_basDroite->lier (Evenement::onBtnG_presser , fct_redimStartBD);
+    m_btn_basDroite->lier (Evenement::onBtnG_relacher, fct_redimStop );
+    m_btn_basDroite->lier (Evenement::onBtnG_relacherDehors, fct_redimStop );
 
 
-
-
-
-    m_btn_hautGauche->lier (Evenement::onBtnG_presser , [this](){
-            m_fenetre->demander_aEtre_auDessus();
-            m_sourisPosOrigin = m_fenetre->getPosSouris();
-            m_tailleOrigin = m_fenetre->getTaille();
-            m_posOrigin = m_fenetre->getPosition();
-            m_redimHaut = true;
-            m_redimGauche = true;
-        });
-    m_btn_hautGauche->lier (Evenement::onBtnG_relacher, [this](){ m_redimGauche = false;  m_redimHaut = false; m_fenetre->actualiserBounds(); });
-    m_btn_hautGauche->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimGauche = false;   m_redimHaut = false; m_fenetre->actualiserBounds(); });
-
-    m_btn_hautDroite->lier (Evenement::onBtnG_presser , [this](){
-            m_fenetre->demander_aEtre_auDessus();
-            m_sourisPosOrigin = m_fenetre->getPosSouris();
-            m_tailleOrigin = m_fenetre->getTaille();
-            m_posOrigin = m_fenetre->getPosition();
-            m_redimHaut = true;
-            m_redimDroite = true;
-        });
-    m_btn_droite->lier (Evenement::onBtnG_relacher, [this](){ m_redimDroite = false;   m_redimHaut = false; m_fenetre->actualiserBounds(); });
-    m_btn_droite->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimDroite = false;   m_redimHaut = false; m_fenetre->actualiserBounds(); });
-
-    m_btn_basGauche->lier (Evenement::onBtnG_presser , [this](){
-            m_fenetre->demander_aEtre_auDessus();
-            m_sourisPosOrigin = m_fenetre->getPosSouris();
-            m_tailleOrigin = m_fenetre->getTaille();
-            m_posOrigin = m_fenetre->getPosition();
-            m_redimBas = true;
-            m_redimGauche = true;
-        });
-    m_btn_basGauche->lier (Evenement::onBtnG_relacher, [this](){ m_redimBas = false; m_redimGauche = false; m_fenetre->actualiserBounds(); });
-    m_btn_basGauche->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimBas = false; m_redimGauche = false; m_fenetre->actualiserBounds(); });
-
-    m_btn_basDroite->lier (Evenement::onBtnG_presser , [this](){
-            m_fenetre->demander_aEtre_auDessus();
-            m_sourisPosOrigin = m_fenetre->getPosSouris();
-            m_tailleOrigin = m_fenetre->getTaille();
-            m_posOrigin = m_fenetre->getPosition();
-            m_redimBas = true;
-            m_redimDroite = true;
-        });
-    m_btn_basDroite->lier (Evenement::onBtnG_relacher, [this](){ m_redimBas = false; m_redimDroite = false; m_fenetre->actualiserBounds(); });
-    m_btn_basDroite->lier (Evenement::onBtnG_relacherDehors, [this](){ m_redimBas = false; m_redimDroite = false; m_fenetre->actualiserBounds(); });
-
-
-
+    // le curseur souris de redimension
     m_btn_gauche->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_horizontal); });
     m_btn_gauche->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
     m_btn_droite->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_horizontal); });
@@ -215,7 +210,7 @@ FenDecoRedim::~FenDecoRedim()
     m_fenetre->retirerComposant( m_btn_basGauche );
     m_fenetre->retirerComposant( m_btn_basDroite );
 
-    std::cout << " nombre de composants restant : " << m_fenetre->getComposants().size()  << "\n";
+//    std::cout << " nombre de composants restant : " << m_fenetre->getComposants().size()  << "\n";
 }
 
 

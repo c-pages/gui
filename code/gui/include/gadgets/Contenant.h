@@ -129,8 +129,8 @@ protected:
 
     std::unique_ptr<Repartiteur>        m_repartiteur;      ///< cf; GOF Strategie
 
-    int                                 m_posX_texture;
-    int                                 m_posY_texture;
+//    int                                 m_posContenant.x;
+//    int                                 m_posContenant.y;
     sf::Texture                         m_contenu;          ///< La texture SFML qui affiche le contenu du panneau.
     sf::RenderTexture                   m_renderTexture;
     sf::Vector2f                        m_largeurSliders;

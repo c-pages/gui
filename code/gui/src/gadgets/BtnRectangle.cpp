@@ -10,7 +10,12 @@ namespace gui {
 /////////////////////////////////////////////////
 BtnRectangle::BtnRectangle ()
 : m_rectangle   ( std::make_shared<AffRectangle>())
+//, m_focus       ( std::make_shared<AffRectangle>())
 {
+
+    // creer l'interface locale
+    ajouterComposant( m_rectangle );
+//    ajouterComposant( m_focus );
 
     // valeurs par defaut
     m_couleurFond.set   ( sf::Color( 60, 60, 60 )  , Etat::desactive );
@@ -20,10 +25,16 @@ BtnRectangle::BtnRectangle ()
     m_couleurLignes.set ( sf::Color( 0,255,0, 255 ) );
     m_epaisseur.set     ( 0 );
 
-    // creer l'interface
-    ajouterComposant( m_rectangle );
+    // le focus
+//    m_focus->setVisible ( false );
+//    m_couleurFocus      = sf::Color( 200,200,200);
+//    m_epaisseurFocus    = 1;
 
+//    m_focus->setFillColor           (sf::Color::Transparent);
+//    m_focus->setOutlineColor        (m_couleurFocus);
+//    m_focus->setOutlineThickness    (m_epaisseurFocus);
     actualiser();
+
 
 }
 
@@ -44,6 +55,7 @@ void BtnRectangle::actualiserGeometrie ()
 {
 //    std::cout << "BtnRectangle::actualiserGeometrie\n";
     m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
+//    m_focus->setTaille ( {m_taille.x, m_taille.y} );
     actualiserBounds();
     // actualiser
 //    if ( m_parent != nullptr ) m_parent->actualiserContenu();
@@ -54,12 +66,14 @@ void BtnRectangle::actualiserStyle ()
 {
 //    std::cout << "BtnRectangle::actualiserStyle--------------\n";
 
+
     // on applique le style correspondant à l'état
     m_rectangle->setFillColor    ( sf::Color (
                                       m_couleurFond.get( this->etat() ).r
                                     , m_couleurFond.get( this->etat() ).g
                                     , m_couleurFond.get( this->etat() ).b
                                     , m_couleurFond.get( this->etat() ).a * m_opacite ) ) ;
+
     m_rectangle->setOutlineColor     ( sf::Color (
                                       m_couleurLignes.get( this->etat() ).r
                                     , m_couleurLignes.get( this->etat() ).g

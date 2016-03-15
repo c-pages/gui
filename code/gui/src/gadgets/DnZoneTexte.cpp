@@ -137,13 +137,13 @@ void DnZoneTexte::actualiserStyle ()
         m_curseur->setOutlineThickness ( m_curseurLgnepaisseurs.press );
     }
 
-    m_label->setTexteCouleur    ( sf::Color (   m_textCouleur.r
+    m_label->setCouleur    ( sf::Color (   m_textCouleur.r
                                             ,   m_textCouleur.g
                                             ,   m_textCouleur.b
                                             ,   m_textCouleur.a * m_opacite ) ) ;
-    m_label->setTexteTaille     ( m_textTaille ) ;
+    m_label->setTailleCharac     ( m_textTaille ) ;
     m_label->setPolice          ( m_textPolice ) ;
-    m_label->setTexteStyle      ( m_textStyle ) ;
+    m_label->setStyle      ( m_textStyle ) ;
 
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }

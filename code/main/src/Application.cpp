@@ -22,7 +22,7 @@ Application::Application()
     //   Creation de la fenêtre SFML.
     sf::ContextSettings 	contextFenetre  ( 	0,  //  depth
                                                 0,  //  stencilc
-                                                0,  //  antialiasing
+                                                4,  //  antialiasing
                                                 2,  //  major
                                                 0); //  minor
     m_fenetre->create(sf::VideoMode(1280, 720), "Appli de base" , sf::Style::Default , contextFenetre );

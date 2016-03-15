@@ -48,12 +48,12 @@ public:
 
     };*/
 
-    void chargerDepuisFichier( std::string fichier )
+    void setImage( std::string fichier )
     {
-        m_icone->chargerDepuisFichier (fichier);
+        m_icone->setImage (fichier);
     };
 
-    virtual void setImage ( sf::Texture* texture )
+    void setImage ( sf::Texture* texture )
     {
 
         m_icone->setImage( texture );

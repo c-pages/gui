@@ -39,16 +39,16 @@ public:
     void setIconeIndex (int index);
 
     ///< Definir m_texteTaille
-    void setTexteTaille( float val ){
+    void setTailleCharac( float val ){
         m_textTaille = val;
-        m_titre->setTexteTaille ( val ) ;
+        m_titre->setTailleCharac ( val ) ;
         };
 
 
     ///< Definir m_police
-    void setTexteCouleur( sf::Color couleur ){
+    void setCouleur( sf::Color couleur ){
         m_textCouleur = couleur;
-        m_titre->setTexteCouleur ( couleur );
+        m_titre->setCouleur ( couleur );
     };
 
     ///< Definir m_police
@@ -58,9 +58,9 @@ public:
     };
 
     ///< Definir m_police
-    void setTexteStyle( sf::Text::Style val ){
+    void setStyle( sf::Text::Style val ){
         m_textStyle = val;
-        m_titre->setTexteStyle    ( m_textStyle );
+        m_titre->setStyle    ( m_textStyle );
     };
     void setFillColor (sf::Color couleur) {
             m_fndCouleur = couleur ;

@@ -119,7 +119,7 @@ void BtnBarreFonctions::ajouterElement (std::string nom, std::string fichierIcon
     std::shared_ptr<BtnIcone>     bouton = std::make_shared<BtnIcone>( );
 
     bouton->setMarge            ( { 5 , 2 } );
-    bouton->chargerDepuisFichier ( fichierIcone );
+    bouton->setImage            ( fichierIcone );
     bouton->setIconeIndex       ( m_elements.size() +1 );
     bouton->setAutoAjuster      ( false );
     bouton->setTaille           ( m_tailleBouton );

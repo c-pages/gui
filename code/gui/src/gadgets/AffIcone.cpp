@@ -14,45 +14,52 @@ AffIcone::AffIcone ()
 , m_index ( 1 )
 , m_nbrIcones (0)
 {
-    creerNom( "Icone");
-//    logTitre("Creation");
+    creerNomUnique( "Icone");
+}
 
+/////////////////////////////////////////////////
+void AffIcone::setIndex( unsigned int val ){
+    m_index = val;
+    demanderActuaStyle ();
+}
+
+
+/////////////////////////////////////////////////
+unsigned int AffIcone::getIndex () const {
+    return m_index;
 }
 
 
 /////////////////////////////////////////////////
 void AffIcone::actualiserGeometrie ()
 {
-
     // Debuggage
     log ("actualiserGeometrie");
 
+    //calcul de la largeur d'un coté
     int largeur = m_texture->getSize().y;
 
+    // c'est toujours un carrée
     m_taille = { largeur , largeur };
     m_rectangle.setSize ( { largeur , largeur } );
-
-
 
 }
 
 /////////////////////////////////////////////////
 void AffIcone::actualiserStyle ()
 {
-
-
     // Debuggage
     log ("actualiserStyle");
 
-    m_rectangle.setTextureRect  ( { ( m_index-1) * m_taille.x
-                                    , 0
-                                    , m_taille.x
-                                    , m_taille.y } );
+    //calcul de la largeur d'un coté
+    int largeur = m_texture->getSize().y;
 
-    m_rectangle.setTexture      ( m_texture );
-
-    AffImage::actualiserStyle   ( );
-
+    // les style du rectangle
+    m_rectangle.setFillColor        ( m_couleurFond );
+    m_rectangle.setOutlineColor     ( m_couleurLignes );
+    m_rectangle.setOutlineThickness ( m_epaisseur );
+    m_rectangle.setTextureRect      ( { ( m_index-1) * largeur, 0, largeur, largeur } );
+    m_rectangle.setTexture          ( m_texture );
 
 }
 

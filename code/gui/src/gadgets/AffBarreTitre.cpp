@@ -45,7 +45,7 @@ void AffBarreTitre::setIconeImage ( sf::Texture* texture  )
 /////////////////////////////////////////////////
 void AffBarreTitre::setIconeImage ( std::string texture )
 {
-    m_icone->chargerDepuisFichier( texture );
+    m_icone->setImage( texture );
 }
 
 
@@ -78,10 +78,10 @@ void AffBarreTitre::actualiserGeometrie ()
 void AffBarreTitre::actualiserStyle ()
 {
 
-    m_titre->setTexteTaille     ( m_textTaille );
-    m_titre->setTexteCouleur    ( m_textCouleur );
+    m_titre->setTailleCharac     ( m_textTaille );
+    m_titre->setCouleur    ( m_textCouleur );
     m_titre->setPolice          ( m_textPolice );
-    m_titre->setTexteStyle      ( m_textStyle );
+    m_titre->setStyle      ( m_textStyle );
 
     m_fond->setFillColor        ( m_fndCouleur );
     m_fond->setOutlineColor     ( m_fndLignesCouleur );

@@ -15,9 +15,9 @@ BtnRectangle::BtnRectangle ()
 
 //    logTitre("Creation");
 
-    creerNom( "BtnRectangle" );
+    creerNomUnique( "BtnRectangle" );
 //    log ("Creation");
-
+    m_taille= {25,25};
     // creer l'interface locale
     ajouterComposant( m_rectangle );
 //    ajouterComposant( m_focus );
@@ -66,7 +66,7 @@ void BtnRectangle::actualiserGeometrie ()
     m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
 //    m_focus->setTaille ( {m_taille.x, m_taille.y} );
 
-    actualiserBounds();
+    demanderActuaBounds();
 }
 
 /////////////////////////////////////////////////

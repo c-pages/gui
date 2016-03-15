@@ -19,29 +19,16 @@ namespace gui {
 class AffIcone : public AffImage {
 
 
-
 /////////////////////////////////////////////////
 // Méthodes
 /////////////////////////////////////////////////
 
 public:
     ///< Definir m_index
-    void setIndex( unsigned int val ){
-//        std::cout << "AffIcone::nom: " << getNom() << " INDEX : " << m_index << "\n";
-        m_index = val;
-        actualiserStyle ();
-    };
+    void setIndex( unsigned int val );
 
     ///< Acceder à m_index
-    unsigned int getIndex () const { return m_index;  };
-/*
-    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous )
-    {
-        m_style = style;
-        if (etat!= Etat::tous)
-            setIndex ( int ( etat ) - 1 );
-        actualiser();
-    };*/
+    unsigned int getIndex () const;
 
 public:
     /////////////////////////////////////////////////
@@ -50,14 +37,11 @@ public:
     /////////////////////////////////////////////////
     AffIcone ();
 
-//    virtual void actualiser ();
-
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
 
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
-
 
 /////////////////////////////////////////////////
 // Membres

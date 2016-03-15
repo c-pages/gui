@@ -17,15 +17,16 @@ AffLabel::AffLabel ()
 , m_textPolice  ( Interface::ms_polices.get ( "Defaut" ) )
 {
     // Creation du nom unique du gadget
-    creerNom( "Label" );
-
+    creerNomUnique( "Label" );
 }
+
 
 /////////////////////////////////////////////////
 void AffLabel::setTexte( std::string val )
 {
     // Debuggage
-    log("setTexte \"" + val + "\"" );
+    log("setTexte");
+    log("m_texte",  val  );
 
     m_texte = val;
     m_texteSFML.setString( val );
@@ -33,38 +34,37 @@ void AffLabel::setTexte( std::string val )
 };
 
 
-
-
-
 /////////////////////////////////////////////////
-void AffLabel::setTexteTaille( float val ){
+void AffLabel::setTailleCharac( float val ){
     m_textTaille = val;
     m_texteSFML.setCharacterSize ( val ) ;
+    // la taille du texte a changé alors on doit recalculé les bounds
     demanderActuaBounds();
 };
 
+
 /////////////////////////////////////////////////
-void AffLabel::setTexteCouleur( sf::Color couleur ){
+void AffLabel::setCouleur( sf::Color couleur ){
     m_textCouleur = couleur;
     m_texteSFML.setColor ( couleur );
-//    demanderActualisation();
 };
+
 
 /////////////////////////////////////////////////
 void AffLabel::setPolice( sf::Font val ){
     m_textPolice = val;
-    demanderActuaGeom();
+    // la taille du texte a changé alors on doit recalculé les bounds
+    demanderActuaBounds();
 };
+
 
 /////////////////////////////////////////////////
-void AffLabel::setTexteStyle( sf::Text::Style val ){
+void AffLabel::setStyle( sf::Text::Style val ){
     m_textStyle = val;
     m_texteSFML.setStyle    ( m_textStyle );
-    demanderActualisation();
+    // la taille du texte a changé alors on doit recalculé les bounds
+    demanderActuaBounds();
 };
-
-
-
 
 
 /////////////////////////////////////////////////
@@ -72,8 +72,6 @@ sf::Vector2i  AffLabel::getTaille() const
 {
     return { m_texteSFML.getGlobalBounds().width , m_texteSFML.getGlobalBounds().height };
 }
-
-
 
 
 /////////////////////////////////////////////////

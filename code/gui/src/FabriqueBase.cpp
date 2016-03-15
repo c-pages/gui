@@ -134,7 +134,10 @@ std::shared_ptr<T>  FabriqueBase::creerPanneau (){
 /////////////////////////////////////////////////
 std::shared_ptr<AffRectangle>    FabriqueBase::rectangle( sf::Vector2i taille )
 {
+
+    m_interfaceParent->log ("creation rectangle" );
     auto nouveauGadget = creerBureau<AffRectangle>( );
+
     nouveauGadget->setTaille ( taille );
     //nouveauGadget->demanderActualisation();
     return nouveauGadget;
@@ -154,7 +157,10 @@ std::shared_ptr<AffRectangle>    FabriqueBase::rectangle( float x  , float y  )
 /////////////////////////////////////////////////
 std::shared_ptr<AffLabel>    FabriqueBase::label( std::string text )
 {
+
+    m_interfaceParent->log ("creation label" );
     auto nouveauGadget = creerBureau<AffLabel>( );
+
     nouveauGadget->setTexte ( text );
     //nouveauGadget->demanderActualisation();
     return nouveauGadget;
@@ -163,9 +169,14 @@ std::shared_ptr<AffLabel>    FabriqueBase::label( std::string text )
 /////////////////////////////////////////////////
 std::shared_ptr<AffImage>    FabriqueBase::image( std::string fichier )
 {
+
+    m_interfaceParent->log ("creation image" );
     auto nouveauGadget = creerBureau<AffImage>( );
-    if ( fichier != "");
-        nouveauGadget->chargerDepuisFichier ( fichier );
+
+
+    if ( fichier != "" )
+        nouveauGadget->setImage ( fichier );
+
     //nouveauGadget->demanderActualisation();
     return nouveauGadget;
 }
@@ -196,14 +207,15 @@ std::shared_ptr<AffImage>    FabriqueBase::image( int id )
 /////////////////////////////////////////////////
 std::shared_ptr<AffIcone>    FabriqueBase::icone( std::string fichier , unsigned int id )
 {
+    m_interfaceParent->log ("creation icone" );
     auto nouveauGadget = creerBureau<AffIcone>( );
-    if ( fichier != "");
-        nouveauGadget->chargerDepuisFichier ( fichier );
+
+    if ( fichier != "")
+        nouveauGadget->setImage ( fichier );
     nouveauGadget->setIndex ( id );
     //nouveauGadget->demanderActualisation();
     return nouveauGadget;
 }
-
 
 
 
@@ -213,10 +225,15 @@ std::shared_ptr<BtnRectangle>    FabriqueBase::boutonRect( float x , float y )
     return boutonRect( sf::Vector2i ( x , y ) );
 }
 
+
+
 /////////////////////////////////////////////////
 std::shared_ptr<BtnRectangle>    FabriqueBase::boutonRect( sf::Vector2i taille )
 {
+    m_interfaceParent->log ("creation boutonRect" );
     auto nouveauGadget = creerBureau<BtnRectangle>( );
+
+
     nouveauGadget->setTaille ( taille );
     //nouveauGadget->demanderActualisation();
     return nouveauGadget;
@@ -228,9 +245,10 @@ std::shared_ptr<BtnRectangle>    FabriqueBase::boutonRect( sf::Vector2i taille )
 std::shared_ptr<BtnTexte>    FabriqueBase::boutonTexte( std::string texte )
 {
     m_interfaceParent->log ("Creation: Bouton texte");
-
     auto nouveauGadget = creerBureau<BtnTexte>( );
-    nouveauGadget->setTexte ( texte );
+
+    if ( texte != "")
+        nouveauGadget->setTexte ( texte );
     //nouveauGadget->demanderActualisation();
 
     return nouveauGadget;
@@ -241,8 +259,8 @@ std::shared_ptr<BtnTexte>    FabriqueBase::boutonTexte( std::string texte )
 std::shared_ptr<BtnIcone>    FabriqueBase::boutonIcone( std::string fichier )
 {
     auto nouveauGadget = creerBureau<BtnIcone>( );
-    if ( fichier != "");
-        nouveauGadget->chargerDepuisFichier ( fichier );
+    if ( fichier != "")
+        nouveauGadget->setImage ( fichier );
     //nouveauGadget->demanderActualisation();
     return nouveauGadget;
 

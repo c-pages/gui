@@ -48,7 +48,7 @@ Interface::Interface( sf::RenderWindow* fenetre )
 {
     m_nom = "GUI";
 
-    logTitre("Creation");
+//    logTitre("Creation");
 
     // la fenetre SFML
     ms_fenetreSFML = fenetre;
@@ -62,6 +62,12 @@ Interface::Interface( sf::RenderWindow* fenetre )
     ajouter ( ms_calque_fenetres );
     ajouter ( ms_calque_menuDeroulants );
     ajouter ( ms_calque_souris );
+
+
+    // reset du nombre de gadgets
+    ms_CompteurGadgets = 0;
+
+
 
     // les tailles
 //    m_taille = { m_fenetre->getSize().x ,m_fenetre->getSize().y };
@@ -80,6 +86,9 @@ Interface::Interface( sf::RenderWindow* fenetre )
 
     // initialiser les polices
     ms_polices.load( "Defaut"  , "media/polices/consola.ttf" );
+    ms_polices.load( "arial"  , "media/polices/arial.ttf" );
+    ms_polices.load( "swisse"  , "media/polices/swisse.ttf" );
+    ms_polices.load( "syastro"  , "media/polices/syastro_.ttf" );
 
     // initialiser les icones
     ms_icones.load( "ico_fenetre"  , "media/img/icones_fenetre.png" );
@@ -87,9 +96,9 @@ Interface::Interface( sf::RenderWindow* fenetre )
 
 
     // initialiser les curseurs
-    ms_curseurSouris = std::make_shared<AffCurseurSouris>( this );
-    ms_calque_souris->ajouter(ms_curseurSouris);
-    ms_curseurs.load( "Redimensionnement"  , "media/img/curs_redimensionnement.png" );
+//    ms_curseurSouris = std::make_shared<AffCurseurSouris>( this );
+//    ms_calque_souris->ajouter(ms_curseurSouris);
+//    ms_curseurs.load( "Redimensionnement"  , "media/img/curs_redimensionnement.png" );
 
     m_parent = nullptr;
 
@@ -119,6 +128,10 @@ void Interface::actualiser ()
     //log ( "aBesoinActualisation ",  ms_aBesoinActualisation  );
 
     if ( ! ms_aBesoinActualisation ) return;
+
+
+    // debut de la frame, on saute des lignes
+    logOut (  "\n\n" );
 
     logTitre ( "Actualiser");
 
@@ -162,6 +175,8 @@ void Interface::actualiser ()
         panneau->setTailleY ( m_fenetre->getSize().y - decallage.y );
 
     }
+
+
 
 
     ms_aBesoinActualisation = false;

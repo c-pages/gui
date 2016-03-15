@@ -145,7 +145,7 @@ EcranAtelier::initGUI ()
     /////// TITRE Label ///////
     auto m_labelTitre_1 = m_interface->creer.label( "Affichages" );
     m_labelTitre_1->setPosition    ( posRoot.x +20, posRoot.y + 40 );
-    m_labelTitre_1->setTexteTaille ( 20 );
+    m_labelTitre_1->setTailleCharac ( 20 );
 
 
 

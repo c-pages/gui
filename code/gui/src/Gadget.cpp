@@ -45,25 +45,17 @@ Gadget::Gadget ()
 , m_etat        ( Etat::repos )
 {
 
-    // Si on a une racine active, on utilise son skin
-    //    if ( ms_racineCourante != nullptr )
-    //        m_skin = ms_racineCourante->getSkin();
-    //    else
-    //        m_skin = std::make_shared<Skin>() ;
-
     // Mise a jour du nombre de gadgets.
     ms_CompteurGadgets++;
 
     // Creation du nom unique du gadget
-    creerNom( "Gadget" );
-    //    std::stringstream ss;
-    //    ss << getNombreGadgets();
-    //    m_nom = "Gadget_" + ss.str();
+    creerNomUnique( "Gadget" );
+
 }
 
 
 /////////////////////////////////////////////////
-void Gadget::creerNom( std::string type  ) {
+void Gadget::creerNomUnique( std::string type  ) {
     // Creation du nom unique du gadget
     std::stringstream ss;
     ss << getNombreGadgets();
@@ -160,6 +152,12 @@ void Gadget::actualiser ()
         actualiserBounds ();
         m_aBesoinActuaBounds = false;
     }
+
+    // on envois le message aux enfants
+    actualiserEnfants();
+
+    // on envois le message aux composants
+    actualiserComposants();
 
     m_aBesoinActualisation = false;
 

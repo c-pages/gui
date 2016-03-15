@@ -32,35 +32,21 @@ public:
     /////////////////////////////////////////////////
     AffImage ();
 
-//    virtual void actualiser ();
-
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
 
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
 
-
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
-    void chargerDepuisFichier ( std::string fichier );
+    void setImage ( std::string fichier );
 
-    virtual  void setImage (  sf::Texture* texture ) {
-        m_texture = texture;
-        actualiser ();
-    };
+    void setImage (  sf::Texture* texture );
 
-    void setAjustement ( bool val ) { m_ajustement = val; };
+    void setAjustement ( bool val );
 
-//    virtual void creerNom( std::string type  = "Image" ) {Gadget::creerNom(type);};
-
-
-    virtual void setTaille( sf::Vector2i val ){
-
-//        m_taille = val;
-
-        actualiserGeometrie();
-    };
+    virtual void setTaille( sf::Vector2i val );
 
 /////////////////////////////////////////////////
 // Membres

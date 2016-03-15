@@ -14,7 +14,7 @@ BtnTexte::BtnTexte ()
 : BtnRectangle ()
 , m_label       ( std::make_shared<AffLabel>())
 {
-    creerNom ( "BtnTexte");
+    creerNomUnique ( "BtnTexte");
 
 //    logTitre("Creation");
 
@@ -65,14 +65,14 @@ void BtnTexte::actualiserStyle ()
     log ("actualiserStyle");
 
     // on actualise le label
-    m_label->setTexteCouleur    ( sf::Color (
+    m_label->setCouleur    ( sf::Color (
                                       m_textCouleur.get( this->etat() ).r
                                     , m_textCouleur.get( this->etat() ).g
                                     , m_textCouleur.get( this->etat() ).b
                                     , m_textCouleur.get( this->etat() ).a * m_opacite ) ) ;
-    m_label->setTexteTaille     ( m_textTaille.get( this->etat() ) ) ;
+    m_label->setTailleCharac     ( m_textTaille.get( this->etat() ) ) ;
     m_label->setPolice          ( m_textPolice.get( this->etat() ) ) ;
-    m_label->setTexteStyle      ( m_textStyle.get( this->etat() ) ) ;
+    m_label->setStyle      ( m_textStyle.get( this->etat() ) ) ;
 
     // le style d'un label fait changer ses dimensions donc on recalcule les bounds.
     m_label->actualiserBounds();

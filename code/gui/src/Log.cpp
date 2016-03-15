@@ -19,13 +19,13 @@ Log::Log()
 , m_afficher_bandeauMenuDeroulants  ( true )
 , m_afficher_fenetres               ( true )
 , m_afficher_menuDeroulants         ( true )
-, m_afficher_souris                 ( false )
+, m_afficher_souris                 ( true )
 , m_afficher_GUI                    ( true )
-, m_afficher_horsCalques            ( false )
+, m_afficher_horsCalques            ( true )
 {
     m_preLigne_hierarchie   = "";
     m_preLigne_courant      = "    ";
-    m_preLigne_variable     = "";
+    m_preLigne_variable     = "    ";
     m_preLigne_interface    = "";
     m_ligneInterface        = "-";
 
@@ -42,7 +42,7 @@ Log::Log()
                                 | FOREGROUND_GREEN | /*FOREGROUND_BLUE |*/ FOREGROUND_RED | FOREGROUND_INTENSITY  ;
 
         m_couleur_nomInterface  = BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_RED /*| BACKGROUND_INTENSITY */
-                                | FOREGROUND_GREEN | /**/FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY ;
+                                | FOREGROUND_GREEN | /*FOREGROUND_BLUE |*/ FOREGROUND_RED | FOREGROUND_INTENSITY ;
 
         m_couleur_titre         = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY;
         m_couleur_courant       = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED /*| FOREGROUND_INTENSITY*/;
@@ -127,9 +127,11 @@ void Log::checkGadget ( )
     int largeurMax = 77;
     int compteurCharac = 0;
 
-    int posNomCalque = 60;
-    int posNomGadget = 12;
-    int posNomInterface = 12;
+    int posNomCalque = 0;
+//    int posNomGadget = 12;
+//    int posNomInterface = 16;
+    int posNomGadget = 0;
+    int posNomInterface = 0;
 
     std::string txtManip;
     std::string txtHierarchie = getHierarchieGadget()+ getNomGadget();
@@ -145,13 +147,13 @@ void Log::checkGadget ( )
 
         // le nom du gadget
         if ( txtHierarchie == "GUI") {
-
-            logOut (  "\n\n" );
+//
+//            logOut (  "\n\n" );
 
             SetConsoleTextAttribute( m_console , m_couleur_nomInterface );
 
 //            // ligne horizontale
-//            for ( int i = 0; i< largeurMax; i++)  logOut (  "-" );
+//            for ( int i = 0; i< largeurMax; i++)  logOut (  m_ligneInterface );
 //            logOut (  "\n");
 
 
@@ -161,6 +163,22 @@ void Log::checkGadget ( )
             }
 //            logOut (  "  " );
 //            compteurCharac +=2;
+
+            // le nom
+            txtManip = " -- ";
+            compteurCharac += txtManip.size();
+            logOut ( txtManip );
+
+            // le nom
+            txtManip = getNomGadget();
+            compteurCharac += txtManip.size();
+            logOut ( txtManip );
+
+            // le nom
+            txtManip = " -- ";
+            compteurCharac += txtManip.size();
+            logOut ( txtManip );
+
         } else {
             /*
             // le decallage
@@ -168,6 +186,36 @@ void Log::checkGadget ( )
             compteurCharac += txtManip.size();
             logOut ( txtManip );
             */
+
+
+        // le calque
+        if ( getCalqueGadget() != "") {
+
+            SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+            for ( int i = compteurCharac; i< posNomCalque; i++) {
+                    logOut (  m_ligneInterface );
+                    compteurCharac ++;
+            }
+            SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+            logOut("<");
+            compteurCharac++;
+
+            // le nom du calsue
+            SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+            txtManip = m_preLigne_hierarchie + getCalqueGadget();
+            compteurCharac += txtManip.size();
+            logOut ( txtManip );
+
+
+            SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+            logOut("> ");
+            compteurCharac+=2;
+
+        }
+
+
+
+
 
             SetConsoleTextAttribute( m_console , m_couleur_calque );
             // On rejoind la pos du nom du gadget
@@ -185,42 +233,17 @@ void Log::checkGadget ( )
             logOut ( txtManip );
 
             SetConsoleTextAttribute( m_console    , m_couleur_nomGadget  );
-        }
 
-
-
-        // le nom
-
-        txtManip = getNomGadget() + " ";
-        compteurCharac += txtManip.size();
-        logOut ( txtManip );
-
-
-
-        // le calque
-        if ( getCalqueGadget() != "") {
-
-            SetConsoleTextAttribute( m_console , m_couleur_calque );
-            for ( int i = compteurCharac; i< posNomCalque; i++) {
-                    logOut (  m_ligneInterface );
-                    compteurCharac ++;
-            }
-            SetConsoleTextAttribute( m_console , m_couleur_calque );
-            logOut("< ");
-            compteurCharac+=2;
-
-            // le nom du calsue
-            SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
-            txtManip = m_preLigne_hierarchie + getCalqueGadget();
+            // le nom
+            txtManip = getNomGadget() + " ";
             compteurCharac += txtManip.size();
             logOut ( txtManip );
-
-
-            SetConsoleTextAttribute( m_console , m_couleur_calque );
-            logOut(" >");
-            compteurCharac+=2;
-
         }
+
+
+
+
+
 
 
         // la fin de la ligne (pour un fond autre que noir)
@@ -234,7 +257,7 @@ void Log::checkGadget ( )
 
 //            // ligne horizontale
 //            logOut (  "\n");
-//            for ( int i = 0; i< largeurMax; i++)  logOut (  "-" );
+//            for ( int i = 0; i< largeurMax; i++)  logOut (  m_ligneInterface );
 
         } else {
             SetConsoleTextAttribute( m_console , m_couleur_calque );
@@ -345,7 +368,7 @@ void Log::log (  std::string nomDuVariable , std::string variable )
     SetConsoleTextAttribute( m_console , m_couleur_variable );
 
     std::string  preLigne = ( getNomGadget() == "GUI" ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
-    logOut ( preLigne +  nomDuVariable + " = "  + variable + "\n" );
+    logOut ( preLigne +  nomDuVariable + " = \""  + variable + "\"\n" );
 
 }
 
@@ -387,6 +410,23 @@ void Log::log (  std::string nomDuVariable , bool &variable )
 
 }
 
+
+
+/////////////////////////////////////////////////
+void Log::log (  std::string nomDuVariable , std::shared_ptr<Gadget> gadget )
+{
+    if ( ! ms_debugLog || estUnCalque()  ) return;
+    if ( ! checkAffichage() ) return;
+
+    checkGadget ( );
+
+    std::string valVar1 = gadget->getNom();
+
+    SetConsoleTextAttribute( m_console , m_couleur_variable );
+    std::string  preLigne = ( getNomGadget() == "GUI" ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
+    logOut ( preLigne +  nomDuVariable + " = "  + valVar1 + "\n" );
+
+}
 
 
 } // fin namespace gui

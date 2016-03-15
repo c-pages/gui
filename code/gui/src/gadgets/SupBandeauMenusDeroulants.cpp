@@ -136,7 +136,7 @@ void SupBandeauMenusDeroulants::ajouterElement ( std::string nom, FctnAction fon
 //    bouton->setTexte            ( nom );
 ////    bouton->setParent           ( this );
 //    bouton->setAutoAjuster      ( true );
-//    bouton->setTexteTaille      ( 5 );
+//    bouton->setTailleCharac      ( 5 );
 //    bouton->setAutoAjuster      ( false );
 //    bouton->setTailleX          ( 20 );
 //
@@ -177,7 +177,7 @@ void SupBandeauMenusDeroulants::actualiserGeometrie()
 
         element->bouton->setPosition    ( decallage, m_marge.y );
         element->bouton->setTexte       ( element->nom );
-        element->bouton->setTexteTaille ( 10 );
+        element->bouton->setTailleCharac ( 10 );
 
         decallage += element->bouton->getTaille().x;
     }

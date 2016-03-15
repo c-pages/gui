@@ -240,7 +240,7 @@ public:
 
 
     /////////////////////////////////////////////////
-    virtual void creerNom( std::string type  = "Gadget" );
+    virtual void creerNomUnique( std::string type  = "Gadget" );
 
 
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
@@ -269,11 +269,15 @@ public:
     virtual void demanderActuaBounds();
 
 
+/////////////////////////////////////////////////
+// Membres
+/////////////////////////////////////////////////
 protected:
 
     static std::string      ms_logNomGadgetBack;
 
     sf::Vector2f                m_marge;            ///< La marge à laissé
+
 private:
     bool                        m_aBesoinActualisation ;
     bool                        m_aBesoinActuaGeom ;
@@ -281,17 +285,12 @@ private:
     bool                        m_aBesoinActuaContenu ;
     bool                        m_aBesoinActuaBounds ;
 
-/////////////////////////////////////////////////
-// Membres
-/////////////////////////////////////////////////
-public:
-//    static  Gadget*     ms_racineCourante;    ///< L'interface courante dans laquelle on créé les gadgets.(peut etre interface ou grp?...)
-private:
-    static  int         ms_CompteurGadgets;   ///< L'interface courante dans laquelle on créé les gadgets.
 
 protected:
+    static  int         ms_CompteurGadgets;   ///< L'interface courante dans laquelle on créé les gadgets.
+
     std::string         m_texte;            ///< Le texte du gadget.
-protected:
+
     std::string         m_nom;      ///< Nom unique automatique pour le gadget.
 
     bool m_visible;     ///< La visibilité du gadget ( true: visible, false: invisible )
@@ -305,17 +304,9 @@ protected:
 
     Etat m_etat; ///< l'etat du bouton
 
-protected:
-//    std::shared_ptr<Skin>   m_skin;    ///< Le skin, model pour les paramètres de rendu.
-//    std::shared_ptr<Style>  m_style;
-
     friend class FabriqueBase;
 
 
-
-
-
-//    std::string     m_type  = "Gadget" ;
 
 }; // fin class Gadget
 

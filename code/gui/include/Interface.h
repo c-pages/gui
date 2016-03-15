@@ -21,6 +21,8 @@ namespace gui {
 /////////////////////////////////////////////////
 class Interface : public Gadget{
 
+
+
 public:
     Interface( sf::RenderWindow* fenetre );
 

@@ -16,6 +16,10 @@ void Geometrie::setTaille( float x, float y ){
 
 /////////////////////////////////////////////////
 void Geometrie::setTaille( sf::Vector2i val ){
+
+    log ("setTaille" );
+    log ("m_taille" , val );
+
     if ( m_taille == val ) return;
     m_taille = val;
     static_cast<Gadget*>(this)->demanderActuaGeom();

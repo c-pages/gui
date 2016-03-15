@@ -54,16 +54,16 @@ public:
     };
 
     ///< Definir m_texteTaille
-    void setTexteTaille( float val ){
+    void setTailleCharac( float val ){
         m_textTaille = val;
-        m_label->setTexteTaille ( val ) ;
+        m_label->setTailleCharac ( val ) ;
 //        demanderActuaStyle();
     };
 
     ///< Definir m_texteTaille
-    void setTexteTaille( Valeurs<float> val ){
+    void setTailleCharac( Valeurs<float> val ){
         m_textTaille = val;
-//        m_label->setTexteTaille ( val ) ;
+//        m_label->setTailleCharac ( val ) ;
         demanderActuaStyle();
     };
 
@@ -71,17 +71,17 @@ public:
 
 
     ///< Definir m_police
-    void setTexteCouleur( sf::Color couleur ){
+    void setCouleur( sf::Color couleur ){
         m_textCouleur = couleur;
-        m_label->setTexteCouleur ( couleur );
+        m_label->setCouleur ( couleur );
 //        demanderActuaStyle();
 //        actualiser ();
     };
 
     ///< Definir m_police
-    void setTexteCouleur( Valeurs<sf::Color> couleur ){
+    void setCouleur( Valeurs<sf::Color> couleur ){
         m_textCouleur = couleur;
-//        m_label->setTexteCouleur ( couleur );
+//        m_label->setCouleur ( couleur );
         demanderActuaStyle();
     };
 
@@ -103,17 +103,17 @@ public:
         demanderActuaStyle();
     };
     ///< Definir m_police
-    void setTexteStyle( sf::Text::Style val ){
+    void setStyle( sf::Text::Style val ){
         m_textStyle = val;
-        m_label->setTexteStyle    ( val );
+        m_label->setStyle    ( val );
 //        demanderActuaStyle();
 //        actualiserGeometrie ();
     };
 
     ///< Definir m_police
-    void setTexteStyle( Valeurs<sf::Text::Style> val ){
+    void setStyle( Valeurs<sf::Text::Style> val ){
         m_textStyle = val;
-//        m_label->setTexteStyle    ( val );
+//        m_label->setStyle    ( val );
         demanderActuaStyle();
     };
 ////////////////////////////////// ///////////////

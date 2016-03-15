@@ -148,10 +148,10 @@ void BtnMenu::actualiserStyle()
         btn->setOutlineColor    ( m_btnLignesCouleurs );
         btn->setOutlineThickness( m_btnLignesEpaisseurs );
 
-        btn->setTexteTaille     ( m_textTaille );
-        btn->setTexteCouleur    ( m_textCouleur );
+        btn->setTailleCharac     ( m_textTaille );
+        btn->setCouleur    ( m_textCouleur );
         btn->setPolice          ( m_textPolice );
-        btn->setTexteStyle      ( m_textStyle );
+        btn->setStyle      ( m_textStyle );
     }
 
     m_fond->setFillColor         ( m_fndCouleur );

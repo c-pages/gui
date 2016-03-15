@@ -15,30 +15,11 @@ AffRectangle::AffRectangle ( sf::Vector2i taille )
 , m_couleurLignes   ( sf::Color(0,0,255,200) )
 , m_epaisseur       ( 1 )
 {
-    creerNom ( "Rectangle");
+    creerNomUnique ( "Rectangle");
 
-
-//    logTitre("Creation");
     m_taille = taille;
 
-    // Creation du nom unique du gadget
-//    creerNom( "Rectangle" );
-//    actualiser ();
-
-    actualiserStyle ();
-    actualiserGeometrie ();
 }
-/*
-/////////////////////////////////////////////////
-void AffRectangle::setStyle ( std::shared_ptr<Style> style , Etat etat )
-{
-    m_couleurFond       = style->fnd_couleur.get( etat );
-    m_couleurLignes     = style->lgn_couleur.get( etat );
-    m_epaisseur         = style->lgn_epaisseur.get( etat );
-
-    actualiserStyle ();
-}
-*/
 
 
 /////////////////////////////////////////////////
@@ -50,6 +31,7 @@ void AffRectangle::actualiserGeometrie ()
     m_rectangle.setSize ( { m_taille.x, m_taille.y } );
 
 }
+
 
 /////////////////////////////////////////////////
 void AffRectangle::actualiserStyle ()
@@ -65,6 +47,27 @@ void AffRectangle::actualiserStyle ()
 
 
 /////////////////////////////////////////////////
+void AffRectangle::setFillColor (sf::Color couleur) {
+    m_couleurFond = couleur ;
+    m_rectangle.setFillColor( couleur );
+};
+
+
+/////////////////////////////////////////////////
+void AffRectangle::setOutlineColor (sf::Color couleur) {
+    m_couleurLignes =  couleur;
+    m_rectangle.setOutlineColor( couleur );
+};
+
+
+/////////////////////////////////////////////////
+void AffRectangle::setOutlineThickness (float epaisseur) {
+    m_epaisseur = epaisseur;
+    m_rectangle.setOutlineThickness( epaisseur );
+};
+
+
+/////////////////////////////////////////////////
 void AffRectangle::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
     //On applique la transformation
@@ -77,6 +80,24 @@ void AffRectangle::draw (sf::RenderTarget& target, sf::RenderStates states) cons
 
 
 
-
 } // fin namespace gui
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

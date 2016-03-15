@@ -4,7 +4,7 @@ namespace gui {
 
 Calque::Calque( std::string nom )
 {
-    //creerNom( "Calque");
+    //creerNomUnique( "Calque");
     m_nom = nom;
     //ctor
 }

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <memory>
 #include <windows.h>
 #include "SFML/Graphics.hpp"
 
@@ -11,6 +12,8 @@ using namespace std;
 #define logOut( txt )  cout <<  txt ;
 
 namespace gui {
+class Gadget;
+
 
 class Log {
 
@@ -27,6 +30,7 @@ public :
     void log (  std::string nomDuVariable , sf::Vector2i    variable );
     void log (  std::string nomDuVariable , sf::Color       couleur  );
     void log (  std::string nomDuVariable , bool&           variable );
+    void log (  std::string nomDuVariable , std::shared_ptr<Gadget> gadget );
 
 private:
 

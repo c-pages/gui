@@ -45,16 +45,16 @@ public:
 
 
     ///< Definir m_texteTaille
-    void setTexteTaille( float val );
+    void setTailleCharac( float val );
 
     ///< Definir m_police
-    void setTexteCouleur( sf::Color couleur );
+    void setCouleur( sf::Color couleur );
 
     ///< Definir m_police
     void setPolice( sf::Font val );
 
     ///< Definir m_police
-    void setTexteStyle( sf::Text::Style val );
+    void setStyle( sf::Text::Style val );
 
 
 

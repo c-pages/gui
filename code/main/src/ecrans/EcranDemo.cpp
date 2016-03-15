@@ -6,6 +6,7 @@
 #include "ecrans/EcranDemo.h"
 #include <iostream>
 #include <Config.h>
+#include <Interface.h>
 
 #include<cstdlib>
 
@@ -38,6 +39,7 @@ EcranDemo::EcranDemo( Application*  appli )
     m_vueGUI.setCenter(pos);
 
 
+//    m_interface->logTitre("\n    ---->| Fin initialisation\n");
 }
 
 
@@ -156,22 +158,29 @@ EcranDemo::initScene  ( )
 void
 EcranDemo::initGUI_tests ()
 {
-//
-//    auto bouton = m_interface->creer.boutonTexte( "bouton" );
-//    bouton->setPosition ( 50, 50);
-//
-//    auto label = m_interface->creer.label( "bon alors ca marche ti?!?" );
-//    label->setPosition ( 50, 50);
 
-//    auto rectangle = m_interface->creer.rectangle( 12,400 );
-//    rectangle->setPosition ( 50, 50);
+//    auto label = m_interface->creer.label( "bon alors ca marche ti?!?" );
+//    label->setPosition ( 50, 50 );
+//    label->setStyle ( sf::Text::Italic );
+//    label->setPolice ( gui::Interface::ms_polices.get( "swisse" ));
+//
+////
+//    auto rectangle = m_interface->creer.rectangle( 400 , 12 );
+//    rectangle->setPosition ( 50, 100 );
 //    rectangle->setFillColor ( sf::Color::Yellow );
 //    rectangle->setOutlineColor ( sf::Color::Blue );
 //    rectangle->setOutlineThickness ( 12 );
+//
+//    std::shared_ptr<gui::AffImage> image = m_interface->creer.image();
+//    image->setPosition ( 50, 150 );
+//    image->setImage( "media/img/ico_fichiers.png" );
 
+    auto icone = m_interface->creer.icone("media/img/ico_fichiers.png"  );
+    icone->setPosition ( 50, 50);
+    icone->setIndex (2);
 
-    auto bouton = m_interface->creer.boutonRect( 200, 15 );
-    bouton->setPosition ( 50, 50);
+//    auto bouton = m_interface->creer.boutonRect( 200, 15 );
+//    bouton->setPosition ( 50, 50);
 
 
     /*
@@ -213,6 +222,10 @@ EcranDemo::initGUI ()
 
     // Creation de l'interface qui gère un ensemble de gadget.
     m_interface = std::make_shared<Interface>( m_appli->getFenetre() );
+
+//    m_interface->logTitre("\n    Debut initialisation |--->\n");
+
+
 //    m_skin      = std::make_shared<Skin>();
 
 
@@ -261,11 +274,11 @@ EcranDemo::initGUI ()
                                                                 //Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
         //    m_texteCPourFenetre->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
             m_texteCPourFenetre->setPosition ( 5,5);
-            m_texteCPourFenetre->setTexteTaille ( 20 );
+            m_texteCPourFenetre->setTailleCharac ( 20 );
             m_fenetre3->ajouter ( m_texteCPourFenetre );
 
             m_texteDPourFenetre->setPosition ( 5,30 );
-            m_texteDPourFenetre->setTexteTaille ( 12 );
+            m_texteDPourFenetre->setTailleCharac ( 12 );
             m_fenetre3->ajouter ( m_texteDPourFenetre );
 
         });
@@ -342,7 +355,7 @@ EcranDemo::initGUI_test_Fenetres  ()
     /////// TITRE Label ///////
     m_labelTitre_4 = m_interface->creer.label( "Fenetres" );
     m_labelTitre_4->setPosition    ( posRoot.x , posRoot.y - 40 );
-    m_labelTitre_4->setTexteTaille (20);
+    m_labelTitre_4->setTailleCharac (20);
 //    m_labelTitre_4->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 
 
@@ -410,7 +423,7 @@ EcranDemo::initGUI_test_Contenantx  ()
     /////// TITRE Label ///////
     m_labelTitre_3 = m_interface->creer.label( "Contenants" );
     m_labelTitre_3->setPosition    ( posRoot.x , posRoot.y - 40 );
-    m_labelTitre_3->setTexteTaille (20);
+    m_labelTitre_3->setTailleCharac (20);
 //    m_labelTitre_3->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 
     //// creation d'un panneau
@@ -516,7 +529,7 @@ EcranDemo::initGUI_test_Donnees  ()
     /////// TITRE Label ///////
     m_labelTitre_0 = m_interface->creer.label( "Données" );
     m_labelTitre_0->setPosition    ( posRoot.x , posRoot.y - 40 );
-    m_labelTitre_0->setTexteTaille (20);
+    m_labelTitre_0->setTailleCharac (20);
 //    m_labelTitre_0->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 
 
@@ -601,7 +614,7 @@ EcranDemo::initGUI_test_Boutons  ()
     /////// TITRE Label ///////
     m_labelTitre_1 = m_interface->creer.label( "Boutons" );
     m_labelTitre_1->setPosition    ( posRoot.x , posRoot.y - 40 );
-    m_labelTitre_1->setTexteTaille (20);
+    m_labelTitre_1->setTailleCharac (20);
 //    m_labelTitre_1->setStyle       ( m_skin->getStyle (  gui::Styles::txtTitre ) );
 
 
@@ -789,7 +802,7 @@ EcranDemo::initGUI_test_Affichages  ()
     /////// TITRE Label ///////
     m_labelTitre_1 = m_interface->creer.label( "Affichages" );
     m_labelTitre_1->setPosition    ( posRoot.x , posRoot.y - 40 );
-    m_labelTitre_1->setTexteTaille ( 20 );
+    m_labelTitre_1->setTailleCharac ( 20 );
 //    m_labelTitre_1->setStyle       ( m_skin->getStyle (  gui::Styles::txtTitre ) );
 
 
@@ -823,7 +836,7 @@ EcranDemo::initGUI_test_Affichages  ()
     /////// Un Label ///////
     m_label_3 = m_interface->creer.label( "LABEL" );
     m_label_3->setPosition    (  posRoot.x , posRoot.y + 60 );
-    m_label_3->setTexteTaille ( 20 );
+    m_label_3->setTailleCharac ( 20 );
 
     /////// autre Label ///////
     m_label_4 = m_interface->creer.label( "<---  simple label. (comme ça ici là)" );

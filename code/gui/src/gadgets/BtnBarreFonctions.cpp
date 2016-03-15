@@ -233,13 +233,13 @@ void BtnBarreFonctions::actualiserBounds ()
 /////////////////////////////////////////////////
 void BtnBarreFonctions::actualiserStyle ()
 {
-    m_fond->setFillColor (m_fndCouleur);
-    m_fond->setOutlineColor (m_fndLgnCouleur);
-    m_fond->setOutlineThickness (m_fndLgnEpaisseur);
+    m_fond->setFondCouleur (m_fndCouleur);
+    m_fond->setLigneCouleur (m_fndLgnCouleur);
+    m_fond->setLigneEpaisseur (m_fndLgnEpaisseur);
 
-    m_ombre->setFillColor (m_ombreCouleur);
-    m_ombre->setOutlineColor (m_ombreLgnCouleur);
-    m_ombre->setOutlineThickness (m_ombreLgnepaisseur);
+    m_ombre->setFondCouleur (m_ombreCouleur);
+    m_ombre->setLigneCouleur (m_ombreLgnCouleur);
+    m_ombre->setLigneEpaisseur (m_ombreLgnepaisseur);
 
 
 }

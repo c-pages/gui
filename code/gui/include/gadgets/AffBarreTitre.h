@@ -52,27 +52,27 @@ public:
     };
 
     ///< Definir m_police
-    void setPolice( sf::Font val ){
+    void setTextePolice( sf::Font val ){
         m_textPolice = val;
-        m_titre->setPolice    ( m_textPolice );/* actualiser();*/
+        m_titre->setTextePolice    ( m_textPolice );/* actualiser();*/
     };
 
     ///< Definir m_police
-    void setStyle( sf::Text::Style val ){
+    void setTexteStyle( sf::Text::Style val ){
         m_textStyle = val;
-        m_titre->setStyle    ( m_textStyle );
+        m_titre->setTexteStyle    ( m_textStyle );
     };
-    void setFillColor (sf::Color couleur) {
+    void setFondCouleur (sf::Color couleur) {
             m_fndCouleur = couleur ;
-            m_fond->setFillColor( couleur );
+            m_fond->setFondCouleur( couleur );
         };
-    void setOutlineColor (sf::Color couleur) {
+    void setLigneCouleur (sf::Color couleur) {
             m_fndLignesCouleur =  couleur;
-            m_fond->setOutlineColor( couleur );
+            m_fond->setLigneCouleur( couleur );
         };
-    void setOutlineThickness (float epaisseur) {
+    void setLigneEpaisseur (float epaisseur) {
             m_fndLignesEpaisseur = epaisseur;
-            m_fond->setOutlineThickness( epaisseur );
+            m_fond->setLigneEpaisseur( epaisseur );
         };
 
 

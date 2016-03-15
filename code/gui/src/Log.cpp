@@ -19,9 +19,14 @@ Log::Log()
 , m_afficher_bandeauMenuDeroulants  ( true )
 , m_afficher_fenetres               ( true )
 , m_afficher_menuDeroulants         ( true )
+, m_afficher_infos                  ( false )
 , m_afficher_souris                 ( true )
 , m_afficher_GUI                    ( true )
 , m_afficher_horsCalques            ( true )
+
+, m_mute                            ( false )
+
+, m_styleFondEnCouleur              ( true )
 {
     m_preLigne_hierarchie   = "";
     m_preLigne_courant      = "    ";
@@ -29,9 +34,8 @@ Log::Log()
     m_preLigne_interface    = "";
     m_ligneInterface        = "-";
 
-    bool styleFondEnCouleur = true;
 
-    if ( styleFondEnCouleur )
+    if ( m_styleFondEnCouleur )
     {
           // version fond couleur qui fait deconner la console ... //
         m_couleur_calque    = /*BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_RED | */BACKGROUND_INTENSITY /*|
@@ -47,7 +51,7 @@ Log::Log()
         m_couleur_titre         = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY;
         m_couleur_courant       = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED /*| FOREGROUND_INTENSITY*/;
         m_couleur_variable       = /*FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED|*/ FOREGROUND_INTENSITY;
-        m_ligneInterface = " ";
+
     }
 
     else
@@ -77,6 +81,11 @@ Log::Log()
 /////////////////////////////////////////////////
 bool Log::checkAffichage()
 {
+
+    if ( ! ms_debugLog || estUnCalque() ) return false;
+
+    if ( m_mute ) return false;
+
     auto nomCalque = getCalqueGadget();
 
     if      ( nomCalque == "Bureau")    return m_afficher_bureau ;
@@ -86,6 +95,7 @@ bool Log::checkAffichage()
     else if ( nomCalque == "Bandeaux")  return m_afficher_bandeaux ;
     else if ( nomCalque == "BandeauMD") return m_afficher_bandeauMenuDeroulants ;
     else if ( nomCalque == "Menus")     return m_afficher_menuDeroulants ;
+    else if ( nomCalque == "Infos")     return m_afficher_infos ;
     else if ( nomCalque == "Souris")    return m_afficher_souris ;
 
     else if ( getNomGadget()  == "GUI") return m_afficher_GUI ;
@@ -127,11 +137,33 @@ void Log::checkGadget ( )
     int largeurMax = 77;
     int compteurCharac = 0;
 
-    int posNomCalque = 0;
-//    int posNomGadget = 12;
-//    int posNomInterface = 16;
-    int posNomGadget = 0;
-    int posNomInterface = 0;
+    int posNomCalque;
+    int posNomGadget;
+    int posNomInterface;
+
+    if ( m_styleFondEnCouleur ) {
+        posNomCalque = 0;
+        posNomGadget = 0;
+        posNomInterface = 0;
+
+        m_preLigne_hierarchie   = "";
+        m_preLigne_courant      = "    ";
+        m_preLigne_variable     = "    ";
+        m_preLigne_interface    = "";
+        m_ligneInterface        = " ";
+
+    } else {
+        posNomCalque = 55;
+        posNomGadget = 0;
+        posNomInterface = 0;
+
+        m_preLigne_hierarchie   = "    ";
+        m_preLigne_courant      = "    ";
+        m_preLigne_variable     = "    ";
+        m_preLigne_interface    = "    ";
+        m_ligneInterface        = "-";
+    }
+
 
     std::string txtManip;
     std::string txtHierarchie = getHierarchieGadget()+ getNomGadget();
@@ -142,14 +174,15 @@ void Log::checkGadget ( )
         ms_hierarchieBack = txtHierarchie;
 
 
-
-//        logOut (  "\n");
+        if ( ! m_styleFondEnCouleur )
+            logOut (  "\n");
 
         // le nom du gadget
         if ( txtHierarchie == "GUI") {
 //
 //            logOut (  "\n\n" );
 
+            logOut (  "\n");
             SetConsoleTextAttribute( m_console , m_couleur_nomInterface );
 
 //            // ligne horizontale
@@ -157,17 +190,17 @@ void Log::checkGadget ( )
 //            logOut (  "\n");
 
 
-            for ( int i = compteurCharac; i< posNomInterface; i++) {
+            for ( int i = compteurCharac; i< posNomInterface-1; i++) {
                 logOut (  m_ligneInterface );
                 compteurCharac ++;
             }
-//            logOut (  "  " );
-//            compteurCharac +=2;
+            logOut (  " " );
+            compteurCharac ++;
 
-            // le nom
-            txtManip = " -- ";
-            compteurCharac += txtManip.size();
-            logOut ( txtManip );
+//            // le nom
+//            txtManip = " -- ";
+//            compteurCharac += txtManip.size();
+//            logOut ( txtManip );
 
             // le nom
             txtManip = getNomGadget();
@@ -175,9 +208,9 @@ void Log::checkGadget ( )
             logOut ( txtManip );
 
             // le nom
-            txtManip = " -- ";
-            compteurCharac += txtManip.size();
-            logOut ( txtManip );
+//            txtManip = " -- ";
+//            compteurCharac += txtManip.size();
+//            logOut ( txtManip );
 
         } else {
             /*
@@ -187,37 +220,37 @@ void Log::checkGadget ( )
             logOut ( txtManip );
             */
 
-
-        // le calque
-        if ( getCalqueGadget() != "") {
-
-            SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
-            for ( int i = compteurCharac; i< posNomCalque; i++) {
-                    logOut (  m_ligneInterface );
-                    compteurCharac ++;
-            }
-            SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
-            logOut("<");
-            compteurCharac++;
-
-            // le nom du calsue
-            SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
-            txtManip = m_preLigne_hierarchie + getCalqueGadget();
-            compteurCharac += txtManip.size();
-            logOut ( txtManip );
-
-
-            SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
-            logOut("> ");
-            compteurCharac+=2;
-
-        }
-
-
-
-
-
             SetConsoleTextAttribute( m_console , m_couleur_calque );
+
+            // le calque si on est en style fond couleur
+            if ( getCalqueGadget() != "" && m_styleFondEnCouleur ) {
+
+                SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+                for ( int i = compteurCharac; i< posNomCalque; i++) {
+                        logOut (  m_ligneInterface );
+                        compteurCharac ++;
+                }
+                SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+                logOut("<");
+                compteurCharac++;
+
+                // le nom du calsue
+                SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+                txtManip = getCalqueGadget();
+                compteurCharac += txtManip.size();
+                logOut ( txtManip );
+
+
+                SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+                logOut("> ");
+                compteurCharac+=2;
+
+            }
+
+
+
+
+
             // On rejoind la pos du nom du gadget
             for ( int i = compteurCharac; i< posNomGadget; i++) {
                 logOut (  m_ligneInterface );
@@ -259,8 +292,38 @@ void Log::checkGadget ( )
 //            logOut (  "\n");
 //            for ( int i = 0; i< largeurMax; i++)  logOut (  m_ligneInterface );
 
-        } else {
             SetConsoleTextAttribute( m_console , m_couleur_calque );
+        } else {
+
+
+                        // le calque si on est en style fond couleur
+            if ( getCalqueGadget() != "" && ! m_styleFondEnCouleur ) {
+
+                SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+                for ( int i = compteurCharac; i< posNomCalque; i++) {
+                        logOut (  m_ligneInterface );
+                        compteurCharac ++;
+                }
+                SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+                logOut("<");
+                compteurCharac++;
+
+                // le nom du calsue
+                SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+                txtManip = getCalqueGadget();
+                compteurCharac += txtManip.size();
+                logOut ( txtManip );
+
+
+                SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+                logOut("> ");
+                compteurCharac+=2;
+
+                SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+            }
+
+
+
 
             for ( int i = compteurCharac; i< largeurMax ; i++) logOut (  m_ligneInterface );
             //for ( int i = compteurCharac; i< largeurMax; i++) logOut (  "-" );
@@ -283,7 +346,6 @@ void Log::checkGadget ( )
 /////////////////////////////////////////////////
 void Log::logTitre ( std::string txt )
 {
-    if ( ! ms_debugLog || estUnCalque() ) return;
     if ( ! checkAffichage() ) return;
 
     // on regarde si on a changé de gadget
@@ -303,7 +365,6 @@ void Log::logTitre ( std::string txt )
 /////////////////////////////////////////////////
 void Log::log ( std::string txt )
 {
-    if ( ! ms_debugLog || estUnCalque() ) return;
     if ( ! checkAffichage() ) return;
 
     // on regarde si on a changé de gadget
@@ -319,7 +380,6 @@ void Log::log ( std::string txt )
 /////////////////////////////////////////////////
 void Log::log (  std::string nomDuVariable , float variable )
 {
-    if ( ! ms_debugLog || estUnCalque() ) return;
     if ( ! checkAffichage() ) return;
 
     checkGadget ( );
@@ -341,7 +401,6 @@ void Log::log (  std::string nomDuVariable , sf::Vector2f variable ){
 /////////////////////////////////////////////////
 void Log::log (  std::string nomDuVariable , sf::Vector2i variable )
 {
-    if ( ! ms_debugLog || estUnCalque() ) return;
     if ( ! checkAffichage() ) return;
 
     checkGadget ( );
@@ -360,7 +419,6 @@ void Log::log (  std::string nomDuVariable , sf::Vector2i variable )
 /////////////////////////////////////////////////
 void Log::log (  std::string nomDuVariable , std::string variable )
 {
-    if ( ! ms_debugLog || estUnCalque() ) return;
     if ( ! checkAffichage() ) return;
 
     checkGadget ( );
@@ -375,7 +433,6 @@ void Log::log (  std::string nomDuVariable , std::string variable )
 /////////////////////////////////////////////////
 void Log::log (  std::string nomDuVariable , sf::Color couleur )
 {
-    if ( ! ms_debugLog || estUnCalque()  ) return;
     if ( ! checkAffichage() ) return;
 
     checkGadget ( );
@@ -395,7 +452,6 @@ void Log::log (  std::string nomDuVariable , sf::Color couleur )
 /////////////////////////////////////////////////
 void Log::log (  std::string nomDuVariable , bool &variable )
 {
-    if ( ! ms_debugLog || estUnCalque()  ) return;
     if ( ! checkAffichage() ) return;
 
     checkGadget ( );
@@ -415,7 +471,6 @@ void Log::log (  std::string nomDuVariable , bool &variable )
 /////////////////////////////////////////////////
 void Log::log (  std::string nomDuVariable , std::shared_ptr<Gadget> gadget )
 {
-    if ( ! ms_debugLog || estUnCalque()  ) return;
     if ( ! checkAffichage() ) return;
 
     checkGadget ( );

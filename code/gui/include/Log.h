@@ -34,6 +34,9 @@ public :
 
 private:
 
+
+
+
     bool        checkAffichage();
 
     std::string getHierarchieGadget();
@@ -67,6 +70,7 @@ private:
 
 
 
+    bool m_styleFondEnCouleur ;
 
     bool m_afficher_bureau ;
     bool m_afficher_panneau_G ;
@@ -75,11 +79,15 @@ private:
     bool m_afficher_bandeauMenuDeroulants ;
     bool m_afficher_fenetres ;
     bool m_afficher_menuDeroulants ;
+    bool m_afficher_infos ;
     bool m_afficher_souris ;
 
     bool m_afficher_GUI ;
 
     bool m_afficher_horsCalques ;
+
+protected:
+    bool m_mute;
 
 
 };  // fin log

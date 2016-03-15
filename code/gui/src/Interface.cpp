@@ -24,6 +24,7 @@ std::shared_ptr<Calque>        Interface::ms_calque_panneau_G               = st
 std::shared_ptr<Calque>        Interface::ms_calque_panneau_D               = std::make_shared<Calque>("_PanneauD");
 std::shared_ptr<Calque>        Interface::ms_calque_bandeauMenuDeroulants   = std::make_shared<Calque>("_BandeauMD");
 std::shared_ptr<Calque>        Interface::ms_calque_menuDeroulants          = std::make_shared<Calque>("_Menus");
+std::shared_ptr<Calque>        Interface::ms_calque_infos                   = std::make_shared<Calque>("_Infos");
 std::shared_ptr<Calque>        Interface::ms_calque_souris                  = std::make_shared<Calque>("_Souris");
 
 std::shared_ptr<AffCurseurSouris>       Interface::ms_curseurSouris;
@@ -61,6 +62,7 @@ Interface::Interface( sf::RenderWindow* fenetre )
     ajouter ( ms_calque_bandeauMenuDeroulants );
     ajouter ( ms_calque_fenetres );
     ajouter ( ms_calque_menuDeroulants );
+    ajouter ( ms_calque_infos );
     ajouter ( ms_calque_souris );
 
 
@@ -72,14 +74,14 @@ Interface::Interface( sf::RenderWindow* fenetre )
     // les tailles
 //    m_taille = { m_fenetre->getSize().x ,m_fenetre->getSize().y };
     m_taille = { 1920 , 1080 };
-    ms_calque_bureau->setTaille    ( m_taille );
-    ms_calque_bandeaux->setTaille  ( m_taille );
-    ms_calque_panneau_G->setTaille  ( m_taille );
-    ms_calque_panneau_D->setTaille  ( m_taille );
-    ms_calque_fenetres->setTaille  ( m_taille );
-    ms_calque_menuDeroulants->setTaille  ( m_taille );
-    ms_calque_bandeauMenuDeroulants->setTaille  ( m_taille );
-    ms_calque_souris->setTaille  ( m_taille );
+//    ms_calque_bureau->setTaille    ( m_taille );
+//    ms_calque_bandeaux->setTaille  ( m_taille );
+//    ms_calque_panneau_G->setTaille  ( m_taille );
+//    ms_calque_panneau_D->setTaille  ( m_taille );
+//    ms_calque_fenetres->setTaille  ( m_taille );
+//    ms_calque_menuDeroulants->setTaille  ( m_taille );
+//    ms_calque_bandeauMenuDeroulants->setTaille  ( m_taille );
+//    ms_calque_souris->setTaille  ( m_taille );
 
 
 
@@ -107,8 +109,7 @@ Interface::Interface( sf::RenderWindow* fenetre )
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget> Interface::chercherGadgetSurvole ()
 {
-//    std::cout << "Interface : chercher Gadget Survole\n";
-
+//    log ("chercherGadgetSurvole");
     sf::Vector2i posSouris = sf::Mouse::getPosition( *m_fenetre );
 
     for (int i=m_enfants.size()-1; i>=0; i-- )    {
@@ -125,7 +126,7 @@ std::shared_ptr<Gadget> Interface::chercherGadgetSurvole ()
 void Interface::actualiser ()
 {
 
-    //log ( "aBesoinActualisation ",  ms_aBesoinActualisation  );
+//    log ( "aBesoinActualisation ",  ms_aBesoinActualisation  );
 
     if ( ! ms_aBesoinActualisation ) return;
 
@@ -136,7 +137,7 @@ void Interface::actualiser ()
     logTitre ( "Actualiser");
 
     // on actualise les enfants ( donc les calques)
-    log ( "actualiserEnfants");
+//    log ( "actualiserEnfants");
     actualiserEnfants();
 
     // on calcule la taille verticale des bandeaux ...
@@ -177,6 +178,7 @@ void Interface::actualiser ()
     }
 
 
+//    logTitre ( "fin d'Actualisastion.");
 
 
     ms_aBesoinActualisation = false;
@@ -207,23 +209,6 @@ void Interface::traiterEvenements( sf::Event evenement )
 
 
 
-//    auto posSouris = sf::Mouse::getPosition();
-//
-//    sf::FloatRect  BBFenetre = sf::FloatRect ( m_fenetre->getPosition().x , m_fenetre->getPosition().y , m_fenetre->getSize().x , m_fenetre->getSize().y );
-//        std::cout << " BBFenetre : "  <<  BBFenetre.left << ", " << BBFenetre.top << ", " << BBFenetre.width <<", " << BBFenetre.height << "\n";
-//        std::cout << " posSouris : "  <<  posSouris.x << ", " << posSouris.y << "\n";
-//
-//    if ( ! BBFenetre.contains( posSouris.x , posSouris.y ) )
-//    {
-//        std::cout << " O N S O R T D E L A F E N E T R E \n";
-//        declencherToutBoutons ( Evenement::onBtnD_relacherDehors );
-//        declencherToutBoutons ( Evenement::onBtnG_relacherDehors );
-//        return;
-//    }
-
-
-
-
     switch ( evenement.type ){
         ///////// Deplacement souris /////////////////////////////////////////
         case sf::Event::MouseMoved :
@@ -250,6 +235,8 @@ void Interface::traiterEvenements( sf::Event evenement )
                 }
                 // on gère le gadget survolé
                 if (m_boutonSurvole != nullptr) {
+
+                    log ("on survole un truc");
 //                        std::cout << "--------> m_boutonSurvole : " << m_boutonSurvole->getNom() << "\n";
                     m_boutonSurvole->setSurvol( true );
                     m_boutonSurvole->declencher ( Evenement::on_entrer );

@@ -98,13 +98,13 @@ void DnCaseACocher::actualiserStyle ()
 {
 
     if ( ! m_valeur ) {
-        m_coche->setFillColor ( m_cocheCouleurs.desactive  );
-        m_coche->setOutlineColor (  m_cocheLgnCouleurs.desactive );
-        m_coche->setOutlineThickness ( m_cocheLgnepaisseurs.desactive  );
+        m_coche->setFondCouleur ( m_cocheCouleurs.desactive  );
+        m_coche->setLigneCouleur (  m_cocheLgnCouleurs.desactive );
+        m_coche->setLigneEpaisseur ( m_cocheLgnepaisseurs.desactive  );
     } else {
-        m_coche->setFillColor ( m_cocheCouleurs.press );
-        m_coche->setOutlineColor (  m_cocheLgnCouleurs.press);
-        m_coche->setOutlineThickness ( m_cocheLgnepaisseurs.press );
+        m_coche->setFondCouleur ( m_cocheCouleurs.press );
+        m_coche->setLigneCouleur (  m_cocheLgnCouleurs.press);
+        m_coche->setLigneEpaisseur ( m_cocheLgnepaisseurs.press );
     }
 
     m_label->setCouleur    ( sf::Color (   m_textCouleur.r
@@ -112,13 +112,13 @@ void DnCaseACocher::actualiserStyle ()
                                             ,   m_textCouleur.b
                                             ,   m_textCouleur.a * m_opacite ) ) ;
     m_label->setTailleCharac     ( m_textTaille ) ;
-    m_label->setPolice          ( m_textPolice ) ;
-    m_label->setStyle      ( m_textStyle ) ;
+    m_label->setTextePolice          ( m_textPolice ) ;
+    m_label->setTexteStyle      ( m_textStyle ) ;
 
 
-    m_bouton->setFillColor (    m_btnCouleurs ) ;
-    m_bouton->setOutlineColor (    m_btnLgnCouleurs  ) ;
-    m_bouton->setOutlineThickness ( m_btnLgnepaisseurs  );
+    m_bouton->setFondCouleur (    m_btnCouleurs ) ;
+    m_bouton->setLigneCouleur (    m_btnLgnCouleurs  ) ;
+    m_bouton->setLigneEpaisseur ( m_btnLgnepaisseurs  );
 
 }
 
@@ -128,26 +128,26 @@ void DnCaseACocher::actualiserStyle ()
 void DnCaseACocher::actualiser ()
 {
     m_label->setTexte ( m_texte );
-    m_label->setStyle ( m_skin->getStyle( Styles::btnCoche ) );
+    m_label->setTexteStyle ( m_skin->getStyle( Styles::btnCoche ) );
     m_label->setPosition ( m_taille.x + 2*m_marge.x , 0 );
 
     m_bouton->setTaille  ( m_taille );
-    m_bouton->setStyle   ( m_skin->getStyle( Styles::bouton ) );
+    m_bouton->setTexteStyle   ( m_skin->getStyle( Styles::bouton ) );
 
     m_coche->setTaille   ( { m_taille.x - 2*m_marge.x , m_taille.y - 2*m_marge.y } );
     m_coche->setPosition ( m_marge.x , m_marge.y );
 
     auto style = m_skin->getStyle( Styles::btnCoche );
-    m_coche->setStyle    ( style );
+    m_coche->setTexteStyle    ( style );
 
     if ( ! m_valeur ) {
-        m_coche->setFillColor ( style->getFnd_couleur( Etat::desactive ) );
-        m_coche->setOutlineColor (  style->getLgn_couleur( Etat::desactive ));
-        m_coche->setOutlineThickness ( style->getLgn_epaisseur( Etat::desactive ) );
+        m_coche->setFondCouleur ( style->getFnd_couleur( Etat::desactive ) );
+        m_coche->setLigneCouleur (  style->getLgn_couleur( Etat::desactive ));
+        m_coche->setLigneEpaisseur ( style->getLgn_epaisseur( Etat::desactive ) );
     } else {
-        m_coche->setFillColor ( style->getFnd_couleur( Etat::press ) );
-        m_coche->setOutlineColor (  style->getLgn_couleur( Etat::press ));
-        m_coche->setOutlineThickness ( style->getLgn_epaisseur( Etat::press ) );
+        m_coche->setFondCouleur ( style->getFnd_couleur( Etat::press ) );
+        m_coche->setLigneCouleur (  style->getLgn_couleur( Etat::press ));
+        m_coche->setLigneEpaisseur ( style->getLgn_epaisseur( Etat::press ) );
     }
     actualiserBounds();
 

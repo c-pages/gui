@@ -20,7 +20,7 @@ BtnIcone::BtnIcone ()
 
     m_icone->setIndex ( 1 );
 //    actualiser ();
-//    m_icone->setStyle ( m_skin->getStyle( Styles::bouton ) , Etat::repos );
+//    m_icone->setTexteStyle ( m_skin->getStyle( Styles::bouton ) , Etat::repos );
 }
 
 
@@ -44,13 +44,13 @@ void BtnIcone::actualiserStyle ()
 {
 //    std::cout << "Actualiser un bouton icone : " << getNom() << "\n";
 
-    m_icone->setFillColor    ( sf::Color (
+    m_icone->setFondCouleur    ( sf::Color (
                                       255
                                     , 255
                                     , 255
                                     , 255 * m_opacite ) ) ;
 
-    m_icone->setOutlineThickness ( 0 ) ;
+    m_icone->setLigneEpaisseur ( 0 ) ;
 
     BtnRectangle::actualiserStyle();
 
@@ -80,10 +80,10 @@ void BtnIcone::actualiser ()
         etatBouton = Etat::survol;
 
     if ( ! m_fix ){
-        m_icone->setStyle ( style, etatBouton );
+        m_icone->setTexteStyle ( style, etatBouton );
         m_icone->setIndex ( int( etatBouton ) +1 );
     } else {
-        m_icone->setStyle ( style);
+        m_icone->setTexteStyle ( style);
     }
 
 
@@ -95,19 +95,19 @@ void BtnIcone::actualiser ()
 
 
 
-    m_rectangle->setFillColor    ( sf::Color (
+    m_rectangle->setFondCouleur    ( sf::Color (
                                       style->fnd_couleur.get(etatBouton).r
                                     , style->fnd_couleur.get(etatBouton).g
                                     , style->fnd_couleur.get(etatBouton).b
                                     , style->fnd_couleur.get(etatBouton).a * m_opacite ) ) ;
 
-    m_rectangle->setOutlineColor     ( sf::Color (
+    m_rectangle->setLigneCouleur     ( sf::Color (
                                       style->lgn_couleur.get(etatBouton).r
                                     , style->lgn_couleur.get(etatBouton).g
                                     , style->lgn_couleur.get(etatBouton).b
                                     , style->lgn_couleur.get(etatBouton).a * m_opacite ) ) ;
 
-    m_rectangle->setOutlineThickness ( style->lgn_epaisseur.get(etatBouton) ) ;
+    m_rectangle->setLigneEpaisseur ( style->lgn_epaisseur.get(etatBouton) ) ;
 
     actualiserBounds();
 

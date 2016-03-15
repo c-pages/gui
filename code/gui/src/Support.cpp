@@ -56,12 +56,12 @@ void Support::actualiserGeometrie ()
 void Support::actualiserStyle ()
 {
     if ( estAbsorbable() )
-        m_fond->setFillColor ( m_fndCouleurSurvol );
+        m_fond->setFondCouleur ( m_fndCouleurSurvol );
     else
-        m_fond->setFillColor ( m_fndCouleur );
+        m_fond->setFondCouleur ( m_fndCouleur );
 
-    m_fond->setOutlineColor ( m_fndLgnCouleur );
-    m_fond->setOutlineThickness (m_fndLgnEpaisseur);
+    m_fond->setLigneCouleur ( m_fndLgnCouleur );
+    m_fond->setLigneEpaisseur (m_fndLgnEpaisseur);
 }
 
 

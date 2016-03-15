@@ -7,7 +7,6 @@
 
 namespace gui {
 
-//std::vector<std::shared_ptr<Gadget>>     Bouton::ms_boutons = {};
 std::vector<Gadget*>     Bouton::ms_boutons = {};
 
 
@@ -16,12 +15,9 @@ Bouton::Bouton ()
 : m_autoAjust   ( false )
 {
     m_marge       = { 5 , 5 } ;
-//
-//    // on l'ajoute à la liste static des boutons
 
+    // on l'ajoute à la liste static des boutons
     ms_boutons.push_back( this );
-//
-//    std::cout << "AJouter un bouton à la liste glbal : "<< ms_boutons.size() << "\n";
 }
 
 /////////////////////////////////////////////////
@@ -44,8 +40,9 @@ Bouton::~Bouton ()
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  Bouton::testerSurvol ( sf::Vector2i position )
 {
-//    log("Tester survol");
-//    std::cout << "Bouton : Tester survol : " << Gadget::testerSurvol ( position ) << "\n";
+//    log( "Tester survol" );
+//    log( "survol" , Gadget::testerSurvol ( position ) != nullptr );
+
     return Gadget::testerSurvol ( position );
 }
 

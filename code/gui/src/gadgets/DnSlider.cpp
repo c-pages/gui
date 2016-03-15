@@ -119,7 +119,7 @@ DnSlider::DnSlider ()
     // Initialisation du slider
     m_slider->setPosition ( m_marge.x, m_marge.y );
     m_slider->setTaille ( { m_largeur - 2*m_marge.x  , m_largeur - 2*m_marge.y });
-//    m_slider->setStyle ( m_skin->getStyle( Styles::slider ) );
+//    m_slider->setTexteStyle ( m_skin->getStyle( Styles::slider ) );
 
     actualiser();
 
@@ -222,17 +222,17 @@ void DnSlider::actualiserStyle ()
 {
 
 
-    m_boutonFond->setFillColor (    m_btnCouleurs ) ;
-    m_boutonFond->setOutlineColor (    m_btnLgnCouleurs  ) ;
-    m_boutonFond->setOutlineThickness ( m_btnLgnepaisseurs  );
+    m_boutonFond->setFondCouleur (    m_btnCouleurs ) ;
+    m_boutonFond->setLigneCouleur (    m_btnLgnCouleurs  ) ;
+    m_boutonFond->setLigneEpaisseur ( m_btnLgnepaisseurs  );
 
-    m_slider->setFillColor (    m_slideCouleurs ) ;
-    m_slider->setOutlineColor (    m_slideLgnCouleurs  ) ;
-    m_slider->setOutlineThickness ( m_slideLgnepaisseurs  );
+    m_slider->setFondCouleur (    m_slideCouleurs ) ;
+    m_slider->setLigneCouleur (    m_slideLgnCouleurs  ) ;
+    m_slider->setLigneEpaisseur ( m_slideLgnepaisseurs  );
 
-    m_fond->setFillColor (    m_fndCouleur ) ;
-    m_fond->setOutlineColor (    m_fndLgnCouleur  ) ;
-    m_fond->setOutlineThickness ( m_fndLgnepaisseur  );
+    m_fond->setFondCouleur (    m_fndCouleur ) ;
+    m_fond->setLigneCouleur (    m_fndLgnCouleur  ) ;
+    m_fond->setLigneEpaisseur ( m_fndLgnepaisseur  );
 
 
 }
@@ -247,7 +247,7 @@ void DnSlider::actualiserStyle ()
 //}
 /*
 /////////////////////////////////////////////////
-void DnSlider::setStyle( std::shared_ptr<Style> style , Etat etat = Etat::tous )
+void DnSlider::setTexteStyle( std::shared_ptr<Style> style , Etat etat = Etat::tous )
 {
     m_styleFond         = skin->getStyle( Styles::fond ) ;
     m_styleBtnSlider    = skin->getStyle( Styles::slider ) ;
@@ -257,7 +257,7 @@ void DnSlider::setStyle( std::shared_ptr<Style> style , Etat etat = Etat::tous )
 */
 /*
 /////////////////////////////////////////////////
-void DnSlider::setStyle ( std::shared_ptr<Style> style , Etat etat ){
+void DnSlider::setTexteStyle ( std::shared_ptr<Style> style , Etat etat ){
 
     m_styleFond.set( style , etat);
     m_styleBtnSlider    = style->getStyle( Styles::slider ) ;

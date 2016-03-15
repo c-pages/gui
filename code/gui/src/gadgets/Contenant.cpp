@@ -155,9 +155,9 @@ void Contenant::actualiserGeometrie ()
 void Contenant::actualiserStyle ()
 {
 
-    m_fond->setFillColor            ( m_fndCouleur );
-    m_fond->setOutlineColor         ( m_fndLgnCouleur  );
-    m_fond->setOutlineThickness     ( m_fndLgnepaisseur  );
+    m_fond->setFondCouleur            ( m_fndCouleur );
+    m_fond->setLigneCouleur         ( m_fndLgnCouleur  );
+    m_fond->setLigneEpaisseur     ( m_fndLgnepaisseur  );
 
     m_affContenant->setFillColor       ( m_contenantCouleur );
     m_affContenant->setOutlineColor    ( m_contenantLgnCouleur );

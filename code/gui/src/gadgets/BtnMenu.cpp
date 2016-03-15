@@ -144,23 +144,23 @@ void BtnMenu::actualiserStyle()
 
         auto btn = element->bouton;
 
-        btn->setFillColor       ( m_btnCouleurs );
-        btn->setOutlineColor    ( m_btnLignesCouleurs );
-        btn->setOutlineThickness( m_btnLignesEpaisseurs );
+        btn->setFondCouleur       ( m_btnCouleurs );
+        btn->setLigneCouleur    ( m_btnLignesCouleurs );
+        btn->setLigneEpaisseur( m_btnLignesEpaisseurs );
 
         btn->setTailleCharac     ( m_textTaille );
-        btn->setCouleur    ( m_textCouleur );
-        btn->setPolice          ( m_textPolice );
-        btn->setStyle      ( m_textStyle );
+        btn->setTexteCouleur    ( m_textCouleur );
+        btn->setTextePolice          ( m_textPolice );
+        btn->setTexteStyle      ( m_textStyle );
     }
 
-    m_fond->setFillColor         ( m_fndCouleur );
-    m_fond->setOutlineColor      ( m_fndLignesCouleur );
-    m_fond->setOutlineThickness  ( m_fndLignesEpaisseur );
+    m_fond->setFondCouleur         ( m_fndCouleur );
+    m_fond->setLigneCouleur      ( m_fndLignesCouleur );
+    m_fond->setLigneEpaisseur  ( m_fndLignesEpaisseur );
 
-    m_ombre->setFillColor            ( m_ombreCouleur ) ;
-    m_ombre->setOutlineColor         ( m_ombreLgnCouleur  ) ;
-    m_ombre->setOutlineThickness     ( m_ombreLgnepaisseur  );
+    m_ombre->setFondCouleur            ( m_ombreCouleur ) ;
+    m_ombre->setLigneCouleur         ( m_ombreLgnCouleur  ) ;
+    m_ombre->setLigneEpaisseur     ( m_ombreLgnepaisseur  );
 
 }
 

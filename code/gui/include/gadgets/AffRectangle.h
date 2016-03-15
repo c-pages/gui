@@ -42,13 +42,13 @@ public:
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
     /////////////////////////////////////////////////
-    void setFillColor (sf::Color couleur);
+    void setFondCouleur (sf::Color couleur);
 
     /////////////////////////////////////////////////
-    void setOutlineColor (sf::Color couleur);
+    void setLigneCouleur (sf::Color couleur);
 
     /////////////////////////////////////////////////
-    void setOutlineThickness (float epaisseur);
+    void setLigneEpaisseur (float epaisseur);
 
 /////////////////////////////////////////////////
 // Membres

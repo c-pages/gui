@@ -106,7 +106,7 @@
 			<Cursor1 position="22" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\gadgets\AffIcone.cpp" open="1" top="1" tabpos="51" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\gadgets\AffIcone.cpp" open="1" top="0" tabpos="51" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="362" topLine="0" />
 		</Cursor>
@@ -136,7 +136,7 @@
 			<Cursor1 position="124" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\gadgets\AffLabel.cpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\gadgets\AffLabel.cpp" open="1" top="1" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1948" topLine="54" />
 		</Cursor>
@@ -261,7 +261,7 @@
 			<Cursor1 position="532" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\gadgets\CntSliders.cpp" open="0" top="0" tabpos="75" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\gadgets\CntSliders.cpp" open="1" top="0" tabpos="75" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="9123" topLine="201" />
 		</Cursor>
@@ -461,20 +461,10 @@
 			<Cursor1 position="1356" topLine="35" />
 		</Cursor>
 	</File>
-	<File name="src\Gadget.cpp" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Gadget.cpp" open="1" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3374" topLine="74" />
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
-		<Folding>
-			<Collapse line="45" />
-			<Collapse line="65" />
-			<Collapse line="74" />
-			<Collapse line="83" />
-			<Collapse line="90" />
-			<Collapse line="96" />
-			<Collapse line="102" />
-			<Collapse line="111" />
-		</Folding>
 	</File>
 	<File name="include\Liste.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>

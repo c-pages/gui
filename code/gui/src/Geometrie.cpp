@@ -16,6 +16,7 @@ void Geometrie::setTaille( float x, float y ){
 
 /////////////////////////////////////////////////
 void Geometrie::setTaille( sf::Vector2i val ){
+    if ( m_taille == val ) return;
 
     log ("setTaille" );
     log ("m_taille" , val );
@@ -30,6 +31,8 @@ void Geometrie::setTaille( sf::Vector2i val ){
 /////////////////////////////////////////////////
 void Geometrie::setTailleX( float val ){
     if ( m_taille.x == val ) return;
+
+    if ( m_taille.x == val ) return;
     m_taille.x = val;
     static_cast<Gadget*>(this)->demanderActuaGeom();
 };
@@ -39,14 +42,16 @@ void Geometrie::setTailleX( float val ){
 /////////////////////////////////////////////////
 void Geometrie::setTailleY( float val ){
     if ( m_taille.y == val ) return;
+
+    if ( m_taille.y == val ) return;
     m_taille.y = val;
     static_cast<Gadget*>(this)->demanderActuaGeom();
 };
 
 
 /////////////////////////////////////////////////
-void Geometrie::setPosAbs (sf::Vector2f posAbsDest )
-{
+void Geometrie::setPosAbs (sf::Vector2f posAbsDest ){
+
     sf::Vector2f posAbsParent = {0,0};
     if (m_parent != nullptr)
         posAbsParent = m_parent->getPosAbs();
@@ -65,7 +70,6 @@ sf::Vector2f Geometrie::getPosAbs () const
 
 void Geometrie::setPosition( float x , float y ){
      sf::Transformable::setPosition( int ( x )  , int ( y ) );
-
 };
 
 /////////////////////////////////////////////////

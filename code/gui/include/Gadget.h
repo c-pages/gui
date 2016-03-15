@@ -57,48 +57,23 @@ public:
     virtual void setAbsorbable ( bool val ) {};
 
     ///< Definir m_visible
-    void setVisible( bool val )
-        { log("SetVisible", val); m_visible = val;  /*actualiserEtat (); actualiser();*/ };
+    void setVisible( bool val );
 
     ///< Definir m_actif
-    void setActif( bool val )
-        { log("setActif", val);m_actif = val;  actualiserEtat (); demanderActualisation(); };
+    void setActif( bool val );
 
     ///< Definir m_focus
-    void setFocus( bool val )
-        { log("SetVisible", val);m_focus = val;  actualiserEtat (); demanderActualisation(); };
+    void setFocus( bool val );
 
     ///< Definir m_survol
-    void setSurvol( bool val )
-        {log ("setSurvol",  val);
-            m_survol = val; actualiserEtat ();  demanderActualisation();
-
-            };
+    void setSurvol( bool val );
 
     ///< Definir m_presse
-    void setPresse( bool val )
-        { log("SetVisible", val);
-            m_presse = val;
-        actualiserEtat ();
-        demanderActualisation(); };
+    void setPresse( bool val );
 
     ///< Definir m_deplacable
-    void setDeplacable( bool val )
-        { m_deplacable = val; };
-/*
-    ///< Definir m_skin
-    virtual void setSkin( std::shared_ptr<Skin> skin )
-    {
-        m_skin = skin;
-        for ( auto composant : m_composants)
-            composant->setSkin( skin );
-        actualiserStyle ();
-    };
+    void setDeplacable( bool val );
 
-    ///< Acceder à m_skin
-    std::shared_ptr<Skin> getSkin () const
-        { return m_skin; };
-*/
 
 public:
     /////////////////////////////////////////////////
@@ -224,20 +199,6 @@ public:
     sf::Vector2i getPosSouris ( );
     sf::Vector2i getLocalPosSouris ( );
     virtual void actualiserEtatDeco ( ){};
-//    static Gadget*     getRacineCourante() { return ms_racineCourante; };
-
-//    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat );
-
-/*    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous ){
-        m_style = style;
-        for ( auto composant : m_composants)
-            composant->setStyle(style, etat);
-        actualiserStyle();
-    };*/
-/*
-    virtual std::shared_ptr<Style> getStyle ( )const { return m_style; };
-*/
-
 
     /////////////////////////////////////////////////
     virtual void creerNomUnique( std::string type  = "Gadget" );
@@ -248,19 +209,20 @@ public:
 
 
 
-    virtual std::string     getNom() const { return m_nom; };
+    virtual std::string getNom() const              { return m_nom; };
+    void                setNom( std::string nom )   { m_nom = nom; };
 
 
     int getNombreGadgets () const { return ms_CompteurGadgets; };
 
 
 
-    virtual void setTexte( std::string val ){ log("setTexte \"" + val + "\"" ); m_texte = val;  demanderActuaGeom(); };
+    virtual void setTexte( std::string val )        { log("setTexte \"" + val + "\"" ); m_texte = val;  demanderActuaGeom(); };
 
     std::string getTexte( ) const { return m_texte; };
 
-    void setMarge ( sf::Vector2f marge ){ m_marge = marge; demanderActuaGeom(); };
-    sf::Vector2f getMarge() { return m_marge;};
+    void setMarge ( sf::Vector2f marge )            { m_marge = marge; demanderActuaGeom(); };
+    sf::Vector2f getMarge()                         { return m_marge;};
 
     virtual void demanderActualisation();
     virtual void demanderActuaGeom();

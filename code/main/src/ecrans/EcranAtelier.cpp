@@ -124,7 +124,7 @@ EcranAtelier::initScene  ( )
     m_fond.setPosition  ( 0,0 );
 //    m_fond.setSize      ( sf::Vector2f ( m_appli->getFenetre()->getSize() ) );
     m_fond.setSize      ( sf::Vector2f ( 1920 ,1080 ) );
-    m_fond.setFillColor ( sf::Color (70,70,70) );
+    m_fond.setFillColor( sf::Color (70,70,70) );
 
 }
 

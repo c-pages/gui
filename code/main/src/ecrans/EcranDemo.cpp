@@ -92,20 +92,20 @@ void EcranDemo::actualiser  ( float deltaT )
     ///<\todo actualiser les animations de l'interface
 //    m_interface->actualiser    ( sf::seconds( deltaT ) ) ;
 
-/*
+
     // les FPS
-    m_compteurFrameFPS++;
-    if ( m_chronoFPS.getElapsedTime().asSeconds() >= 1 )    {
-        m_FPS = m_compteurFrameFPS;
-        m_chronoFPS.restart();
-        m_compteurFrameFPS = 0;
-    }
-    std::string val=  "FPS : " + patch::to_string( m_FPS ) + "  - Survole : ";
-    if ( m_interface->m_boutonSurvole != nullptr ){
-        val +=   m_interface->m_boutonSurvole->getNom() ;
-    } else val += "nullptr";
-    m_labelRetour->setTexte ( val );
-*/
+//    m_compteurFrameFPS++;
+//    if ( m_chronoFPS.getElapsedTime().asSeconds() >= 1 )    {
+//        m_FPS = m_compteurFrameFPS;
+//        m_chronoFPS.restart();
+//        m_compteurFrameFPS = 0;
+//    }
+//    std::string val=  "FPS : " + patch::to_string( m_FPS ) + "  - Survole : ";
+//    if ( m_interface->m_boutonSurvole != nullptr ){
+//        val +=   m_interface->m_boutonSurvole->getNom() ;
+//    } else val += "nullptr";
+//    m_labelRetour->setTexte ( val );
+
 
 
 //    std::string val =  "Retour : " + m_interface->m_boutonSurvole->getNom();
@@ -161,27 +161,37 @@ EcranDemo::initGUI_tests ()
 
 //    auto label = m_interface->creer.label( "bon alors ca marche ti?!?" );
 //    label->setPosition ( 50, 50 );
-//    label->setStyle ( sf::Text::Italic );
-//    label->setPolice ( gui::Interface::ms_polices.get( "swisse" ));
+//    label->setTexteStyle ( sf::Text::Italic );
+//    label->setTextePolice ( gui::Interface::ms_polices.get( "swisse" ));
 //
 ////
 //    auto rectangle = m_interface->creer.rectangle( 400 , 12 );
 //    rectangle->setPosition ( 50, 100 );
-//    rectangle->setFillColor ( sf::Color::Yellow );
-//    rectangle->setOutlineColor ( sf::Color::Blue );
-//    rectangle->setOutlineThickness ( 12 );
+//    rectangle->setFondCouleur ( sf::Color::Yellow );
+//    rectangle->setLigneCouleur ( sf::Color::Blue );
+//    rectangle->setLigneEpaisseur ( 12 );
 //
 //    std::shared_ptr<gui::AffImage> image = m_interface->creer.image();
 //    image->setPosition ( 50, 150 );
 //    image->setImage( "media/img/ico_fichiers.png" );
 
-    auto icone = m_interface->creer.icone("media/img/ico_fichiers.png"  );
-    icone->setPosition ( 50, 50);
-    icone->setIndex (2);
+//    auto icone = m_interface->creer.icone("media/img/ico_fichiers.png"  );
+//    icone->setPosition ( 50, 50);
+//    icone->setIndex (2);
 
 //    auto bouton = m_interface->creer.boutonRect( 200, 15 );
 //    bouton->setPosition ( 50, 50);
+//    gui::Valeurs<sf::Color> couleurs;
+//    couleurs.set(sf::Color ( 255,0,0));
+//    bouton->setFondCouleur ( couleurs );
 
+    auto boutonTexte = m_interface->creer.boutonTexte( "Ceci est un bouton texte" );
+    boutonTexte->setPosition ( 50, 50);
+
+    gui::Valeurs<sf::Color> couleurs;
+    couleurs.set(sf::Color ( 255,0,0));
+    couleurs.set(sf::Color ( 0,255,0), gui::Etat::survol );
+    boutonTexte->setTexteCouleur ( couleurs );
 
     /*
     auto liste = m_interface->creer.liste();
@@ -236,10 +246,12 @@ EcranDemo::initGUI ()
 
 //    m_interface->logTitre("--- fin init -------------------------");
 
-    /////// Label retour ///////
+    ///// Label retour ///////
 //    m_labelRetour = m_interface->creer.label( "Retour :" );
+//    m_labelRetour->setNom("RetourFPS");
+//    gui::Interface::ms_calque_infos->ajouter( m_labelRetour );
 //    m_labelRetour->setPosition    ( 5 , 5 );
-//    m_labelRetour->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+//    m_labelRetour->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 /*
 
@@ -272,7 +284,7 @@ EcranDemo::initGUI ()
             auto m_texteCPourFenetre = m_interface->creer.label( "A propos ");
             auto m_texteDPourFenetre = m_interface->creer.label( "blablabla\nblablablablabla\nblablablablablablabla\nblabla");
                                                                 //Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
-        //    m_texteCPourFenetre->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
+        //    m_texteCPourFenetre->setTexteStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
             m_texteCPourFenetre->setPosition ( 5,5);
             m_texteCPourFenetre->setTailleCharac ( 20 );
             m_fenetre3->ajouter ( m_texteCPourFenetre );
@@ -356,7 +368,7 @@ EcranDemo::initGUI_test_Fenetres  ()
     m_labelTitre_4 = m_interface->creer.label( "Fenetres" );
     m_labelTitre_4->setPosition    ( posRoot.x , posRoot.y - 40 );
     m_labelTitre_4->setTailleCharac (20);
-//    m_labelTitre_4->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
+//    m_labelTitre_4->setTexteStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 
 
     //// creation d'une fenetre
@@ -365,17 +377,17 @@ EcranDemo::initGUI_test_Fenetres  ()
     m_fenetre->setTaille    ( { 300 , 100 } );
     m_fenetre->chargerIcone   ( "media/img/Icone_test x16.png" );
 
-//    m_fenetre->setStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
+//    m_fenetre->setTexteStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 
     //// contenu de la fenetre
 //    auto m_textePourFenetre = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
-//    m_textePourFenetre->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
+//    m_textePourFenetre->setTexteStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
 //
 //    m_fenetre->ajouter ( m_textePourFenetre );
 
 
     auto  m_boutonPourContenant_2 = m_interface->creer.boutonTexte( "Bouton" );
-//    m_boutonPourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+//    m_boutonPourContenant_2->setTexteStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
     m_boutonPourContenant_2->setPosition (115,20);
     m_fenetre->ajouter ( m_boutonPourContenant_2 );
     m_boutonPourContenant_2->lier(gui::Evenement::onBtnG_relacher, [this](){
@@ -383,12 +395,12 @@ EcranDemo::initGUI_test_Fenetres  ()
                                });
 /*
     auto  m_bouton2PourContenant_2 = m_interface->creer.boutonTexte( "Bouton\nBouton\nBouton\nBouton\nBouton\nBouton\nBouton" );
-    m_bouton2PourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+    m_bouton2PourContenant_2->setTexteStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
     m_bouton2PourContenant_2->setPosition (50,50);
     m_fenetre->ajouter ( m_bouton2PourContenant_2 );
 //
     auto  m_bouton3PourContenant_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
-    m_bouton3PourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+    m_bouton3PourContenant_2->setTexteStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
     m_bouton3PourContenant_2->setPosition (120,146);
     m_fenetre->ajouter ( m_bouton3PourContenant_2 );
 */
@@ -398,12 +410,12 @@ EcranDemo::initGUI_test_Fenetres  ()
     auto m_fenetre2 = m_interface->creer.fenetre(  );
     m_fenetre2->setPosition  ( m_fenetre->getPosition().x + 40 , m_fenetre->getPosition().y + 40 );
     m_fenetre2->setTaille    ( { 300 , 100 });
-//    m_fenetre2->setStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
+//    m_fenetre2->setTexteStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 //    m_panneau->setTaille    ( { 200 , 100 } );
 
     //// contenu de la fenetre
     auto m_texteCPourFenetre = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
-//    m_texteCPourFenetre->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
+//    m_texteCPourFenetre->setTexteStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
     m_texteCPourFenetre->setPosition ( 5,5);
     m_fenetre2->ajouter ( m_texteCPourFenetre );
 }
@@ -424,26 +436,26 @@ EcranDemo::initGUI_test_Contenantx  ()
     m_labelTitre_3 = m_interface->creer.label( "Contenants" );
     m_labelTitre_3->setPosition    ( posRoot.x , posRoot.y - 40 );
     m_labelTitre_3->setTailleCharac (20);
-//    m_labelTitre_3->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
+//    m_labelTitre_3->setTexteStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 
     //// creation d'un panneau
     auto m_panneau = m_interface->creer.contenant(  );
     m_panneau->setPosition  ( posRoot.x , posRoot.y  );
-//    m_panneau->setStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
+//    m_panneau->setTexteStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 //    m_panneau->setTaille    ( { 600 , 100 } ); // ok
 //    m_panneau->setTaille    ( { 300 , 200 } ); // ok
     m_panneau->setTaille    ( { 200 , 100 } );
 
     //// contenu du panneau
     m_textePourContenant = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
-//    m_textePourContenant->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
+//    m_textePourContenant->setTexteStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
 
     m_panneau->ajouter ( m_textePourContenant );
 
     /////// autre Label ///////
     m_label_13 = m_interface->creer.label( "<---  Contenant simple" );
     m_label_13->setPosition    ( 220 + posRoot.x , posRoot.y  +  35 );
-//    m_label_13->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+//    m_label_13->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
@@ -454,52 +466,52 @@ EcranDemo::initGUI_test_Contenantx  ()
     auto m_panneau_2 = m_interface->creer.groupeSliders(  );
     m_panneau_2->setPosition  ( posRoot.x , posRoot.y + 120 );
 //    m_panneau_2->setPosition  ( 0 , 0 );
-//    m_panneau_2->setStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
+//    m_panneau_2->setTexteStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 //    m_panneau->setTaille    ( { 600 , 100 } ); // ok
 //    m_panneau->setTaille    ( { 300 , 200 } ); // ok
     m_panneau_2->setTaille    ( { 200 , 100 } );
 
     //// contenu du panneau
     auto m_texteBPourContenant = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
-//    m_texteBPourContenant->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
+//    m_texteBPourContenant->setTexteStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
     m_panneau_2->ajouter ( m_texteBPourContenant );
 
     //// contenu du panneau
 //
 //    auto  m_boutonPourContenant_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
-//    m_boutonPourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+//    m_boutonPourContenant_2->setTexteStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
 //    m_boutonPourContenant_2->setPosition (50,20);
 //    m_panneau_2->ajouter ( m_boutonPourContenant_2 );
 ////
 //    auto  m_bouton2PourContenant_2 = m_interface->creer.boutonTexte( "Bouton\nBouton\nBouton\nBouton\nBouton\nBouton\nBouton" );
-//    m_bouton2PourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+//    m_bouton2PourContenant_2->setTexteStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
 //    m_bouton2PourContenant_2->setPosition (50,50);
 //    m_panneau_2->ajouter ( m_bouton2PourContenant_2 );
 ////
 //    auto  m_bouton3PourContenant_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
-//    m_bouton3PourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+//    m_bouton3PourContenant_2->setTexteStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
 //    m_bouton3PourContenant_2->setPosition (120,146);
 //    m_panneau_2->ajouter ( m_bouton3PourContenant_2 );
 
 /*
 
 //    auto  m_textePourContenant_2 = m_interface->creer.label( "Nihil est enim virtute amabilius, nihil quod magis adliciat ad diligendum, quippe\n cum propter virtutem et probitatem \netiam eos, quos numquam vidimus, quodam modo \ndiligamus. Quis est qui C. Fabrici, M'. Curi non cum caritate\n aliqua benevola memoriam usurpet, quos\n numquam viderit? quis autem est, qui \nTarquinium Superbum, qui Sp. Cassium, Sp. Maelium non \noderit? Cum duobus ducibus de imperio in Italia \nest decertatum, Pyrrho et Hannibale; ab altero propter \nprobitatem eius non nimis alienos animos habemus, alterum propter crudelitatem \nsemper haec civitas oderit." );
-//    m_textePourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
+//    m_textePourContenant_2->setTexteStyle       ( m_skin->getStyle ( gui::Styles::txtCourant ) );
 //    m_panneau_2->ajouter ( m_textePourContenant_2 );
 
 
     auto  m_boutonPourContenant_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
-    m_boutonPourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+    m_boutonPourContenant_2->setTexteStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
     m_boutonPourContenant_2->setPosition (50,20);
     m_panneau_2->ajouter ( m_boutonPourContenant_2 );
 //
     auto  m_bouton2PourContenant_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
-    m_bouton2PourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+    m_bouton2PourContenant_2->setTexteStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
     m_bouton2PourContenant_2->setPosition (50,50);
     m_panneau_2->ajouter ( m_bouton2PourContenant_2 );
 //
     auto  m_bouton3PourContenant_2 = m_interface->creer.boutonTexte( "BoutonBoutonBoutonBoutonBoutonBouton" );
-    m_bouton3PourContenant_2->setStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
+    m_bouton3PourContenant_2->setTexteStyle       ( m_skin->getStyle ( gui::Styles::bouton ) );
     m_bouton3PourContenant_2->setPosition (50,180);
     m_panneau_2->ajouter ( m_bouton3PourContenant_2 );
 */
@@ -508,7 +520,7 @@ EcranDemo::initGUI_test_Contenantx  ()
     /////// autre Label ///////
     m_label_13 = m_interface->creer.label( "<---  ContenantSliders \n(avec barres de défilemement)" );
     m_label_13->setPosition    ( 220 + posRoot.x , posRoot.y  +  155 );
-//    m_label_13->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+//    m_label_13->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 }
 
 
@@ -530,14 +542,14 @@ EcranDemo::initGUI_test_Donnees  ()
     m_labelTitre_0 = m_interface->creer.label( "Données" );
     m_labelTitre_0->setPosition    ( posRoot.x , posRoot.y - 40 );
     m_labelTitre_0->setTailleCharac (20);
-//    m_labelTitre_0->setStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
+//    m_labelTitre_0->setTexteStyle       ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 
 
 
     /////// Bouton à cocher ///////
     m_boutonCoche = m_interface->creer.btnACocher( );
     m_boutonCoche->setPosition    ( posRoot.x , posRoot.y  +  0 );
-//    m_boutonCoche->setStyle       ( m_skin->getStyle ( gui::Styles::txtLog ) );
+//    m_boutonCoche->setTexteStyle       ( m_skin->getStyle ( gui::Styles::txtLog ) );
     m_boutonCoche->setTexte       ( "'Machiner'" );
     m_boutonCoche->setValeur      ( true );
 
@@ -560,20 +572,20 @@ EcranDemo::initGUI_test_Donnees  ()
     /////// autre Label ///////
     m_label_7 = m_interface->creer.label( "<---  Bouton Booleén, interrupteur ... ('Tab')" );
     m_label_7->setPosition    ( 190 + posRoot.x , posRoot.y  +  2 );
-//    m_label_7->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+//    m_label_7->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
     /////// Zone de texte ///////
     m_zoneTexte = m_interface->creer.zoneTexte( "Zone de texte" );
     m_zoneTexte->setPosition    ( posRoot.x , posRoot.y  +  28 );
-//    m_zoneTexte->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+//    m_zoneTexte->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
     /////// autre Label ///////
     m_label_8 = m_interface->creer.label( "<---  Zone de texte (simple pour l'instant)." );
     m_label_8->setPosition    ( 190 + posRoot.x , posRoot.y  +  30 );
-//    m_label_8->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+//    m_label_8->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
@@ -581,7 +593,7 @@ EcranDemo::initGUI_test_Donnees  ()
     ///////slider ///////
     m_slider = m_interface->creer.slider( );
     m_slider->setPosition    ( posRoot.x , posRoot.y  +  68 );
-//    m_slider->setStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
+//    m_slider->setTexteStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
 //    m_slider->setLongCurseur ( 50 );
 
     //m_slider->setVertical();
@@ -594,7 +606,7 @@ EcranDemo::initGUI_test_Donnees  ()
     /////// autre Label ///////
     m_label_9 = m_interface->creer.label( "<---  Slider pour controler valeur de 0.0 à 1.0" );
     m_label_9->setPosition    ( 190 + posRoot.x , posRoot.y  +  70 );
-//    m_label_9->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+//    m_label_9->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
     auto zoneNum = m_interface->creer.zoneNum ( );
     zoneNum->setPosition    ( posRoot.x , posRoot.y  +  108 );
@@ -615,7 +627,7 @@ EcranDemo::initGUI_test_Boutons  ()
     m_labelTitre_1 = m_interface->creer.label( "Boutons" );
     m_labelTitre_1->setPosition    ( posRoot.x , posRoot.y - 40 );
     m_labelTitre_1->setTailleCharac (20);
-//    m_labelTitre_1->setStyle       ( m_skin->getStyle (  gui::Styles::txtTitre ) );
+//    m_labelTitre_1->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtTitre ) );
 
 
 
@@ -626,7 +638,7 @@ EcranDemo::initGUI_test_Boutons  ()
     m_boutonTexte = m_interface->creer.boutonTexte( "Machiner" );
     m_boutonTexte->setAutoAjuster ( true );
 //    m_boutonTexte->setSkin        ( m_skin );
-//    m_boutonTexte->setStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
+//    m_boutonTexte->setTexteStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
 
     m_boutonTexte->setPosition    ( posRoot.x , posRoot.y );
 
@@ -652,7 +664,7 @@ EcranDemo::initGUI_test_Boutons  ()
     m_label_5 = m_interface->creer.label( "<---  Simple bouton texte.\n (ACTIONs souris en console.)" );
     m_label_5->setPosition    ( 160 + posRoot.x , posRoot.y + 3 );
 //    m_label_5->setSkin        ( m_skin );
-//    m_label_5->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+//    m_label_5->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
@@ -669,7 +681,7 @@ EcranDemo::initGUI_test_Boutons  ()
     /////// autre Label ///////
     m_label_12 = m_interface->creer.label( "<---  Simple bouton icone." );
     m_label_12->setPosition    ( 160 + posRoot.x , posRoot.y + 43 );
-//    m_label_12->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+//    m_label_12->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
@@ -696,7 +708,7 @@ EcranDemo::initGUI_test_Boutons  ()
     /////// autre Label ///////
     m_label_6 = m_interface->creer.label( "<---  Menu (déroulant, contextuel, ...)." );
     m_label_6->setPosition    ( 160 + posRoot.x , posRoot.y  +  110 );
-//    m_label_6->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+//    m_label_6->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
@@ -803,7 +815,7 @@ EcranDemo::initGUI_test_Affichages  ()
     m_labelTitre_1 = m_interface->creer.label( "Affichages" );
     m_labelTitre_1->setPosition    ( posRoot.x , posRoot.y - 40 );
     m_labelTitre_1->setTailleCharac ( 20 );
-//    m_labelTitre_1->setStyle       ( m_skin->getStyle (  gui::Styles::txtTitre ) );
+//    m_labelTitre_1->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtTitre ) );
 
 
     using namespace gui;
@@ -811,13 +823,13 @@ EcranDemo::initGUI_test_Affichages  ()
     /////// Simple rectangle ///////
     m_rectangle = m_interface->creer.rectangle( {20,20} );
     m_rectangle->setPosition    ( posRoot.x , posRoot.y );
-//    m_rectangle->setStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
+//    m_rectangle->setTexteStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
 
 
     /////// Un Label ///////
     m_label = m_interface->creer.label( "<---  simple rectangle." );
     m_label->setPosition    ( 70 + posRoot.x , posRoot.y + 5 );
-//    m_label->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+//    m_label->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
     /////// Une image ///////
@@ -829,7 +841,7 @@ EcranDemo::initGUI_test_Affichages  ()
     /////// autre Label ///////
     m_label_2 = m_interface->creer.label( "<---  simple image. ('media/img/IconeVide.png')" );
     m_label_2->setPosition    (70 + posRoot.x , posRoot.y + 35 );
-//    m_label_2->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+//    m_label_2->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
@@ -841,7 +853,7 @@ EcranDemo::initGUI_test_Affichages  ()
     /////// autre Label ///////
     m_label_4 = m_interface->creer.label( "<---  simple label. (comme ça ici là)" );
     m_label_4->setPosition    ( 70 + posRoot.x , posRoot.y + 65 );
-//    m_label_4->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+//    m_label_4->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 
@@ -870,7 +882,7 @@ EcranDemo::initGUI_test_Affichages  ()
     /////// autre Label ///////
     m_label_11 = m_interface->creer.label( "<---  icone. ('1', '2', '3', '4' pour changer index de l'icone)" );
     m_label_11->setPosition    ( 70 + posRoot.x , posRoot.y + 95 );
-//    m_label_11->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+//    m_label_11->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 
 /*
@@ -878,13 +890,13 @@ EcranDemo::initGUI_test_Affichages  ()
     ///////barre de titre ///////
     auto m_barreTitre = m_interface->creer.barreTitre( "Titre" );
     m_barreTitre->setPosition    ( posRoot.x , posRoot.y  +  128 );
-    m_barreTitre->setStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
+    m_barreTitre->setTexteStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
     m_barreTitre->setIconeImage  ( "media/img/icone_titre.png" );
 
     /////// autre Label ///////
     auto m_label_14 = m_interface->creer.label( "<---  Barre de titre" );
     m_label_14->setPosition    ( 220 + posRoot.x , posRoot.y  +  132 );
-    m_label_14->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
+    m_label_14->setTexteStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
 */
 

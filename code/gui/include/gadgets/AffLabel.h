@@ -51,10 +51,10 @@ public:
     void setCouleur( sf::Color couleur );
 
     ///< Definir m_police
-    void setPolice( sf::Font val );
+    void setTextePolice( sf::Font val );
 
     ///< Definir m_police
-    void setStyle( sf::Text::Style val );
+    void setTexteStyle( sf::Text::Style val );
 
 
 

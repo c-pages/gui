@@ -47,21 +47,21 @@ void AffRectangle::actualiserStyle ()
 
 
 /////////////////////////////////////////////////
-void AffRectangle::setFillColor (sf::Color couleur) {
+void AffRectangle::setFondCouleur (sf::Color couleur) {
     m_couleurFond = couleur ;
     m_rectangle.setFillColor( couleur );
 };
 
 
 /////////////////////////////////////////////////
-void AffRectangle::setOutlineColor (sf::Color couleur) {
+void AffRectangle::setLigneCouleur (sf::Color couleur) {
     m_couleurLignes =  couleur;
     m_rectangle.setOutlineColor( couleur );
 };
 
 
 /////////////////////////////////////////////////
-void AffRectangle::setOutlineThickness (float epaisseur) {
+void AffRectangle::setLigneEpaisseur (float epaisseur) {
     m_epaisseur = epaisseur;
     m_rectangle.setOutlineThickness( epaisseur );
 };

@@ -123,18 +123,18 @@ void DnZoneTexte::actualiserGeometrie ()
 /////////////////////////////////////////////////
 void DnZoneTexte::actualiserStyle ()
 {
-    m_bouton->setFillColor (    m_btnCouleurs ) ;
-    m_bouton->setOutlineColor (    m_btnLgnCouleurs  ) ;
-    m_bouton->setOutlineThickness ( m_btnLgnepaisseurs  );
+    m_bouton->setFondCouleur (    m_btnCouleurs ) ;
+    m_bouton->setLigneCouleur (    m_btnLgnCouleurs  ) ;
+    m_bouton->setLigneEpaisseur ( m_btnLgnepaisseurs  );
 
     if ( ! m_ecritureActive ) {
-        m_curseur->setFillColor ( m_curseurCouleurs.desactive  );
-        m_curseur->setOutlineColor (  m_curseurLgnCouleurs.desactive );
-        m_curseur->setOutlineThickness ( m_curseurLgnepaisseurs.desactive  );
+        m_curseur->setFondCouleur ( m_curseurCouleurs.desactive  );
+        m_curseur->setLigneCouleur (  m_curseurLgnCouleurs.desactive );
+        m_curseur->setLigneEpaisseur ( m_curseurLgnepaisseurs.desactive  );
     } else {
-        m_curseur->setFillColor ( m_curseurCouleurs.press );
-        m_curseur->setOutlineColor (  m_curseurLgnCouleurs.press);
-        m_curseur->setOutlineThickness ( m_curseurLgnepaisseurs.press );
+        m_curseur->setFondCouleur ( m_curseurCouleurs.press );
+        m_curseur->setLigneCouleur (  m_curseurLgnCouleurs.press);
+        m_curseur->setLigneEpaisseur ( m_curseurLgnepaisseurs.press );
     }
 
     m_label->setCouleur    ( sf::Color (   m_textCouleur.r
@@ -142,8 +142,8 @@ void DnZoneTexte::actualiserStyle ()
                                             ,   m_textCouleur.b
                                             ,   m_textCouleur.a * m_opacite ) ) ;
     m_label->setTailleCharac     ( m_textTaille ) ;
-    m_label->setPolice          ( m_textPolice ) ;
-    m_label->setStyle      ( m_textStyle ) ;
+    m_label->setTextePolice          ( m_textPolice ) ;
+    m_label->setTexteStyle      ( m_textStyle ) ;
 
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }

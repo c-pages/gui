@@ -32,90 +32,39 @@ public:
     /////////////////////////////////////////////////
     BtnTexte ();
 
-//    virtual void actualiser ( );
-
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
 
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
-/*
-    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
-*/
-
-//    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
 
     ///< Definir m_texteTaille
-    virtual void setTexte( std::string val ){
-        log("setTexte \"" + val + "\"" );
-        m_texte = val;
-        m_label->setTexte ( val ) ;
-        demanderActuaGeom();
-    };
+    virtual void setTexte( std::string val );
 
     ///< Definir m_texteTaille
-    void setTailleCharac( float val ){
-        m_textTaille = val;
-        m_label->setTailleCharac ( val ) ;
-//        demanderActuaStyle();
-    };
+    void setTailleCharac( float val );
 
     ///< Definir m_texteTaille
-    void setTailleCharac( Valeurs<float> val ){
-        m_textTaille = val;
-//        m_label->setTailleCharac ( val ) ;
-        demanderActuaStyle();
-    };
-
-
-
+    void setTailleCharac( Valeurs<float> val );
 
     ///< Definir m_police
-    void setCouleur( sf::Color couleur ){
-        m_textCouleur = couleur;
-        m_label->setCouleur ( couleur );
-//        demanderActuaStyle();
-//        actualiser ();
-    };
+    void setTexteCouleur( sf::Color couleur );
 
     ///< Definir m_police
-    void setCouleur( Valeurs<sf::Color> couleur ){
-        m_textCouleur = couleur;
-//        m_label->setCouleur ( couleur );
-        demanderActuaStyle();
-    };
+    void setTexteCouleur( Valeurs<sf::Color> couleur );
 
     ///< Definir m_police
-    void setPolice( sf::Font val ){
-        m_textPolice = val;
-
-//        m_label->setPolice    ( val );
-
-
-//        demanderActuaStyle();
-//        actualiserGeometrie ();
-    };
+    void setTextePolice( sf::Font val );
 
     ///< Definir m_police
-    void setPolice( Valeurs<sf::Font> val ){
-        m_textPolice = val;
-//        m_label->setPolice    ( val );
-        demanderActuaStyle();
-    };
-    ///< Definir m_police
-    void setStyle( sf::Text::Style val ){
-        m_textStyle = val;
-        m_label->setStyle    ( val );
-//        demanderActuaStyle();
-//        actualiserGeometrie ();
-    };
+    void setTextePolice( Valeurs<sf::Font> val );
 
     ///< Definir m_police
-    void setStyle( Valeurs<sf::Text::Style> val ){
-        m_textStyle = val;
-//        m_label->setStyle    ( val );
-        demanderActuaStyle();
-    };
+    void setTexteStyle( sf::Text::Style val );
+
+    ///< Definir m_police
+    void setTexteStyle( Valeurs<sf::Text::Style> val );
+
 ////////////////////////////////// ///////////////
 // Membres
 /////////////////////////////////////////////////

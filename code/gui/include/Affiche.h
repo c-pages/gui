@@ -24,6 +24,8 @@ class Affiche : public gui::Gadget {
 // Méthodes
 /////////////////////////////////////////////////
 public:
+
+
     /////////////////////////////////////////////////
     /// \brief Redéfinie ajouter par une fonction vide( GOF4 : composite -> Feuilles)
     ///

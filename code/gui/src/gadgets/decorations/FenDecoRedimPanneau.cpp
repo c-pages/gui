@@ -48,7 +48,7 @@ FenDecoRedimPanneau::FenDecoRedimPanneau( Fenetre* fenetre )
 
 
 
-    m_btn_bas->setFillColor ( sf::Color::Transparent );
+    m_btn_bas->setFondCouleur ( sf::Color::Transparent );
     m_btn_bas->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_vertical); });
     m_btn_bas->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
 

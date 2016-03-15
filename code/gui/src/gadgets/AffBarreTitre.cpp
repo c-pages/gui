@@ -80,14 +80,14 @@ void AffBarreTitre::actualiserStyle ()
 
     m_titre->setTailleCharac     ( m_textTaille );
     m_titre->setCouleur    ( m_textCouleur );
-    m_titre->setPolice          ( m_textPolice );
-    m_titre->setStyle      ( m_textStyle );
+    m_titre->setTextePolice          ( m_textPolice );
+    m_titre->setTexteStyle      ( m_textStyle );
 
-    m_fond->setFillColor        ( m_fndCouleur );
-    m_fond->setOutlineColor     ( m_fndLignesCouleur );
-    m_fond->setOutlineThickness ( m_fndLignesEpaisseur );
+    m_fond->setFondCouleur        ( m_fndCouleur );
+    m_fond->setLigneCouleur     ( m_fndLignesCouleur );
+    m_fond->setLigneEpaisseur ( m_fndLignesEpaisseur );
 
-//    m_titre->setStyle       ( m_skin->getStyle ( Styles::fenetre ) );
+//    m_titre->setTexteStyle       ( m_skin->getStyle ( Styles::fenetre ) );
 //    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }
 /*
@@ -96,7 +96,7 @@ void AffBarreTitre::actualiser ()
 {
 
 
-    m_titre->setStyle       ( m_skin->getStyle ( Styles::fenetre ) );
+    m_titre->setTexteStyle       ( m_skin->getStyle ( Styles::fenetre ) );
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
 
 

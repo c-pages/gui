@@ -196,9 +196,9 @@ void Fenetre::actualiserStyle ()
     for(auto deco : m_decorations)
         deco.second->actualiserStyle ();
 
-    m_contenant->setFillColor            ( m_contenantFndCouleur ) ;
-    m_contenant->setOutlineColor         ( m_contenantFndLgnCouleur  ) ;
-    m_contenant->setOutlineThickness     ( m_contenantFndLgnepaisseur  );
+    m_contenant->setFondCouleur            ( m_contenantFndCouleur ) ;
+    m_contenant->setLigneCouleur         ( m_contenantFndLgnCouleur  ) ;
+    m_contenant->setLigneEpaisseur     ( m_contenantFndLgnepaisseur  );
 
     m_contenant->setContenantFillColor       ( m_contenantContenantCouleur ) ;
     m_contenant->setContenantOutlineColor    ( m_contenantContenantLgnCouleur  ) ;
@@ -207,21 +207,21 @@ void Fenetre::actualiserStyle ()
 
     m_titre->setTailleCharac         ( m_titreTextTaille );
     m_titre->setCouleur        ( m_titreTextCouleur );
-    m_titre->setPolice              ( m_titreTextPolice );
-    m_titre->setStyle          ( m_titreTextStyle );
-    m_titre->setFillColor           ( m_titreFondCouleur ) ;
-    m_titre->setOutlineColor        ( m_titreFondLgnCouleur  ) ;
-    m_titre->setOutlineThickness    ( m_titreFondLgnepaisseur  );
+    m_titre->setTextePolice              ( m_titreTextPolice );
+    m_titre->setTexteStyle          ( m_titreTextStyle );
+    m_titre->setFondCouleur           ( m_titreFondCouleur ) ;
+    m_titre->setLigneCouleur        ( m_titreFondLgnCouleur  ) ;
+    m_titre->setLigneEpaisseur    ( m_titreFondLgnepaisseur  );
 
 
 
-    m_fond->setFillColor            ( m_fondCouleur ) ;
-    m_fond->setOutlineColor         ( m_fondLgnCouleur  ) ;
-    m_fond->setOutlineThickness     ( m_fondLgnepaisseur  );
+    m_fond->setFondCouleur            ( m_fondCouleur ) ;
+    m_fond->setLigneCouleur         ( m_fondLgnCouleur  ) ;
+    m_fond->setLigneEpaisseur     ( m_fondLgnepaisseur  );
 
-    m_ombre->setFillColor            ( m_ombreCouleur ) ;
-    m_ombre->setOutlineColor         ( m_ombreLgnCouleur  ) ;
-    m_ombre->setOutlineThickness     ( m_ombreLgnepaisseur  );
+    m_ombre->setFondCouleur            ( m_ombreCouleur ) ;
+    m_ombre->setLigneCouleur         ( m_ombreLgnCouleur  ) ;
+    m_ombre->setLigneEpaisseur     ( m_ombreLgnepaisseur  );
 
 }
 /////////////////////////////////////////////////

@@ -72,36 +72,36 @@ public:
         actualiser();
     }
 
-    void setFillColor ( sf::Color couleurs  ) {
+    void setFondCouleur ( sf::Color couleurs  ) {
             m_fndCouleur = couleurs;
             actualiserStyle();
-//            m_rectangle->setFillColor( couleur );
+//            m_rectangle->setFondCouleur( couleur );
         };
-    void setOutlineColor ( sf::Color couleurs  ) {
+    void setLigneCouleur ( sf::Color couleurs  ) {
             m_fndLgnCouleur = couleurs;
             actualiserStyle();
-//            m_rectangle->setOutlineColor( couleur );
+//            m_rectangle->setLigneCouleur( couleur );
         };
-    void setOutlineThickness ( float epaisseur ) {
+    void setLigneEpaisseur ( float epaisseur ) {
             m_fndLgnepaisseur =  epaisseur;
             actualiserStyle();
-//            m_rectangle->setOutlineThickness( epaisseur );
+//            m_rectangle->setLigneEpaisseur( epaisseur );
         };
 
     void setContenantFillColor ( sf::Color couleurs  ) {
             m_contenantCouleur = couleurs;
             actualiserStyle();
-//            m_rectangle->setFillColor( couleur );
+//            m_rectangle->setFondCouleur( couleur );
         };
     void setContenantOutlineColor ( sf::Color couleurs  ) {
             m_contenantLgnCouleur = couleurs;
             actualiserStyle();
-//            m_rectangle->setOutlineColor( couleur );
+//            m_rectangle->setLigneCouleur( couleur );
         };
     void setContenantOutlineThickness ( float epaisseur ) {
             m_contenantLgnepaisseur =  epaisseur;
             actualiserStyle();
-//            m_rectangle->setOutlineThickness( epaisseur );
+//            m_rectangle->setLigneEpaisseur( epaisseur );
         };
 
     /////////////////////////////////////////////////

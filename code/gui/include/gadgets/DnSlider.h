@@ -106,19 +106,19 @@ public:
 
 //    virtual void setSkin( std::shared_ptr<Skin> skin );
 
-//    virtual void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
+//    virtual void setTexteStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
 /*
-    void setStyleBtnFond( std::shared_ptr<Style> style )
+    void setTexteStyleBtnFond( std::shared_ptr<Style> style )
         { m_styleBtnFond = style;
-          m_boutonFond->setStyle  ( m_styleBtnFond ); };
+          m_boutonFond->setTexteStyle  ( m_styleBtnFond ); };
 
-    void setStyleBtnRectangle( std::shared_ptr<Style> style )
+    void setTexteStyleBtnRectangle( std::shared_ptr<Style> style )
         { m_styleBtnSlider = style;
-          m_slider->setStyle      ( m_styleBtnSlider );};
+          m_slider->setTexteStyle      ( m_styleBtnSlider );};
 
-    void setStyleFond( std::shared_ptr<Style> style )
+    void setTexteStyleFond( std::shared_ptr<Style> style )
         { m_styleFond = style;
-          m_fond->setStyle        ( m_styleFond );};
+          m_fond->setTexteStyle        ( m_styleFond );};
 */
     // le slider
     void setSliderFillColor ( Valeurs<sf::Color> couleurs  ) {
@@ -149,15 +149,15 @@ public:
         };
 
     // le fond
-    void setFillColor ( sf::Color couleurs  ) {
+    void setFondCouleur ( sf::Color couleurs  ) {
             m_fndCouleur = couleurs;
             actualiserStyle();
         };
-    void setOutlineColor ( sf::Color couleurs  ) {
+    void setLigneCouleur ( sf::Color couleurs  ) {
             m_fndLgnCouleur = couleurs;
             actualiserStyle();
         };
-    void setOutlineThickness ( float epaisseur ) {
+    void setLigneEpaisseur ( float epaisseur ) {
             m_fndLgnepaisseur =  epaisseur;
             actualiserStyle();
         };

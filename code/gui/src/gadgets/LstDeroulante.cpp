@@ -70,7 +70,7 @@ LstDeroulante::LstDeroulante ()
                         });
     m_fleche->setImage( &Interface::ms_icones.get( "ico_fleches" )) ;
     m_fleche->setIndex ( 2 );
-    m_fleche->setFillColor (sf::Color::Black);
+    m_fleche->setFondCouleur (sf::Color::Black);
 }
 
 
@@ -124,13 +124,13 @@ void LstDeroulante::actualiserGeometrie ()
 /////////////////////////////////////////////////
 void LstDeroulante::actualiserStyle ()
 {
-    m_boutonLabel->setFillColor         ( m_btnCouleurs );
-    m_boutonLabel->setOutlineColor      ( m_btnLignesCouleurs );
-    m_boutonLabel->setOutlineThickness  ( m_btnLignesEpaisseurs );
+    m_boutonLabel->setFondCouleur         ( m_btnCouleurs );
+    m_boutonLabel->setLigneCouleur      ( m_btnLignesCouleurs );
+    m_boutonLabel->setLigneEpaisseur  ( m_btnLignesEpaisseurs );
    // bouton->setTailleCharac       ( m_textTaille.press );
-    m_boutonLabel->setCouleur      ( m_textCouleur );
-    //bouton->setPolice            ( m_textPolice.press );
-   // bouton->setStyle        ( m_textStyle.press );*/
+    m_boutonLabel->setTexteCouleur      ( m_textCouleur );
+    //bouton->setTextePolice            ( m_textPolice.press );
+   // bouton->setTexteStyle        ( m_textStyle.press );*/
 }
 
 /*

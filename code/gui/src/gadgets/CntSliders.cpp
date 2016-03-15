@@ -138,9 +138,9 @@ void CntSliders::actualiserStyle (){
     m_slider_V->setBoutonFillColor          ( m_btnBtnCouleurs  );
     m_slider_V->setBoutonOutlineColor       ( m_btnBtnLgnCouleurs );
     m_slider_V->setBoutonOutlineThickness   ( m_btnBtnLgnepaisseurs );
-    m_slider_V->setFillColor                ( m_btnFndCouleur  );
-    m_slider_V->setOutlineColor             ( m_btnFndLgnCouleur  );
-    m_slider_V->setOutlineThickness         ( m_btnFndLgnepaisseur );
+    m_slider_V->setFondCouleur                ( m_btnFndCouleur  );
+    m_slider_V->setLigneCouleur             ( m_btnFndLgnCouleur  );
+    m_slider_V->setLigneEpaisseur         ( m_btnFndLgnepaisseur );
 
     m_slider_H->setSliderFillColor          ( m_btnSlideCouleurs  );
     m_slider_H->setSliderOutlineColor       ( m_btnSlideLgnCouleurs   );
@@ -148,13 +148,13 @@ void CntSliders::actualiserStyle (){
     m_slider_H->setBoutonFillColor          ( m_btnBtnCouleurs  );
     m_slider_H->setBoutonOutlineColor       ( m_btnBtnLgnCouleurs );
     m_slider_H->setBoutonOutlineThickness   ( m_btnBtnLgnepaisseurs );
-    m_slider_H->setFillColor                ( m_btnFndCouleur  );
-    m_slider_H->setOutlineColor             ( m_btnFndLgnCouleur  );
-    m_slider_H->setOutlineThickness         ( m_btnFndLgnepaisseur );
+    m_slider_H->setFondCouleur                ( m_btnFndCouleur  );
+    m_slider_H->setLigneCouleur             ( m_btnFndLgnCouleur  );
+    m_slider_H->setLigneEpaisseur         ( m_btnFndLgnepaisseur );
 
-    m_fond->setFillColor                    ( m_fndCouleur ) ;
-    m_fond->setOutlineColor                 ( m_fndLgnCouleur  ) ;
-    m_fond->setOutlineThickness             ( m_fndLgnepaisseur  );
+    m_fond->setFondCouleur                    ( m_fndCouleur ) ;
+    m_fond->setLigneCouleur                 ( m_fndLgnCouleur  ) ;
+    m_fond->setLigneEpaisseur             ( m_fndLgnepaisseur  );
 
 //    actualiserContenu();
 //    actualiserBounds ();
@@ -188,7 +188,7 @@ void CntSliders::actualiser ()
         m_slider_H->setLongueurCurseur(longueurCursH);
         m_slider_H->setLongueur( m_taille.x -  m_slider_V->getTaille().x );
         m_slider_H->setPosition( 0 , m_taille.y - m_slider_H->getTaille().y);
-//        m_slider_H->setStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
+//        m_slider_H->setTexteStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
 
     // si le contenu est plus petit, on cache le slider
     } else {
@@ -205,7 +205,7 @@ void CntSliders::actualiser ()
         m_slider_V->setLongueurCurseur( longueurCursV );
         m_slider_V->setLongueur ( m_taille.y - m_slider_H->getTaille().y );
         m_slider_V->setPosition ( m_taille.x - m_slider_V->getTaille().x , 0 );
-//        m_slider_V->setStyle    ( m_skin->getStyle (  gui::Styles::bouton ) );
+//        m_slider_V->setTexteStyle    ( m_skin->getStyle (  gui::Styles::bouton ) );
 
     // si le contenu est plus petit, on cache le slider
     } else {
@@ -213,7 +213,7 @@ void CntSliders::actualiser ()
     }
 
 
-//    m_fond->setStyle ( m_skin->getStyle ( Styles::fond ) );
+//    m_fond->setTexteStyle ( m_skin->getStyle ( Styles::fond ) );
 
     actualiserContenu();
 

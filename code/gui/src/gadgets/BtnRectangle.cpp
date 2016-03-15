@@ -10,17 +10,14 @@ namespace gui {
 /////////////////////////////////////////////////
 BtnRectangle::BtnRectangle ()
 : m_rectangle   ( std::make_shared<AffRectangle>())
-//, m_focus       ( std::make_shared<AffRectangle>())
 {
 
-//    logTitre("Creation");
-
     creerNomUnique( "BtnRectangle" );
-//    log ("Creation");
+
     m_taille= {25,25};
+
     // creer l'interface locale
     ajouterComposant( m_rectangle );
-//    ajouterComposant( m_focus );
 
     // valeurs par defaut
     m_couleurFond.set   ( sf::Color( 60, 60, 60 )  , Etat::desactive );
@@ -30,31 +27,7 @@ BtnRectangle::BtnRectangle ()
     m_couleurLignes.set ( sf::Color( 0,255,0, 255 ) );
     m_epaisseur.set     ( 0 );
 
-    // le focus
-//    m_focus->setVisible ( false );
-//    m_couleurFocus      = sf::Color( 200,200,200);
-//    m_epaisseurFocus    = 1;
-
-//    m_focus->setFillColor           (sf::Color::Transparent);
-//    m_focus->setOutlineColor        (m_couleurFocus);
-//    m_focus->setOutlineThickness    (m_epaisseurFocus);
-//    actualiser();
-
-    actualiserStyle ();
-    actualiserGeometrie ();
-
 }
-
-///////////////////////////////////////////////////
-//void BtnRectangle::setStyle ( std::shared_ptr<Style> style , Etat etat )
-//{
-//    m_couleurFond.set   ( style->fnd_couleur   , etat );
-//    m_couleurLignes.set ( style->lgn_couleur   , etat );
-//    m_epaisseur.set     ( style->lgn_epaisseur , etat );
-//
-//    actualiserStyle ();
-//    actualiserGeometrie ();
-//}
 
 
 /////////////////////////////////////////////////
@@ -64,7 +37,6 @@ void BtnRectangle::actualiserGeometrie ()
     log ("actualiserGeometrie  ");
 
     m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
-//    m_focus->setTaille ( {m_taille.x, m_taille.y} );
 
     demanderActuaBounds();
 }
@@ -76,21 +48,62 @@ void BtnRectangle::actualiserStyle ()
     log ("ActualiserStyle");
 
     // on applique le style correspondant à l'état
-    m_rectangle->setFillColor    ( sf::Color (
-                                      m_couleurFond.get( this->etat() ).r
-                                    , m_couleurFond.get( this->etat() ).g
-                                    , m_couleurFond.get( this->etat() ).b
-                                    , m_couleurFond.get( this->etat() ).a * m_opacite ) ) ;
-
-    m_rectangle->setOutlineColor     ( sf::Color (
-                                      m_couleurLignes.get( this->etat() ).r
-                                    , m_couleurLignes.get( this->etat() ).g
-                                    , m_couleurLignes.get( this->etat() ).b
-                                    , m_couleurLignes.get( this->etat() ).a * m_opacite ) ) ;
-    m_rectangle->setOutlineThickness ( m_epaisseur.get( this->etat() ) ) ;
+    m_rectangle->setFondCouleur       ( sf::Color ( m_couleurFond.get( this->etat() ).r
+                                                , m_couleurFond.get( this->etat() ).g
+                                                , m_couleurFond.get( this->etat() ).b
+                                                , m_couleurFond.get( this->etat() ).a * m_opacite ) ) ;
+    m_rectangle->setLigneCouleur    ( sf::Color ( m_couleurLignes.get( this->etat() ).r
+                                                , m_couleurLignes.get( this->etat() ).g
+                                                , m_couleurLignes.get( this->etat() ).b
+                                                , m_couleurLignes.get( this->etat() ).a * m_opacite ) ) ;
+    m_rectangle->setLigneEpaisseur ( m_epaisseur.get( this->etat() ) ) ;
 
 }
 
+
+//setFondCouleur
+//setLigneCouleur
+//setLigneEpaisseur
+/////////////////////////////////////////////////
+void BtnRectangle::setFondCouleur (sf::Color couleur , Etat etat ) {
+    m_couleurFond.set ( couleur , etat );
+    m_rectangle->setFondCouleur( couleur );
+};
+
+
+/////////////////////////////////////////////////
+void BtnRectangle::setLigneCouleur (sf::Color couleur , Etat etat ) {
+    m_couleurLignes.set ( couleur , etat );
+    m_rectangle->setLigneCouleur( couleur );
+};
+
+
+/////////////////////////////////////////////////
+void BtnRectangle::setLigneEpaisseur (float epaisseur , Etat etat ) {
+    m_epaisseur.set ( epaisseur , etat );
+    m_rectangle->setLigneEpaisseur( epaisseur );
+};
+
+
+/////////////////////////////////////////////////
+void BtnRectangle::setFondCouleur ( Valeurs<sf::Color> couleurs  ) {
+    m_couleurFond = couleurs;
+    demanderActuaStyle();
+};
+
+
+/////////////////////////////////////////////////
+void BtnRectangle::setLigneCouleur ( Valeurs<sf::Color> couleurs  ) {
+    m_couleurLignes = couleurs;
+    demanderActuaStyle();
+};
+
+
+/////////////////////////////////////////////////
+void BtnRectangle::setLigneEpaisseur ( Valeurs<float> epaisseur ) {
+    m_epaisseur =  epaisseur;
+    demanderActuaStyle();
+};
 
 } // fin namespace gui
 

@@ -10,7 +10,8 @@ namespace gui {
 
 /////////////////////////////////////////////////
 AffLabel::AffLabel ()
-: m_texteSFML   (  )
+: Affiche ()
+, m_texteSFML   (  )
 , m_textCouleur ( sf::Color::White )
 , m_textStyle   ( sf::Text::Style::Regular )
 , m_textTaille  ( 15 )
@@ -18,6 +19,8 @@ AffLabel::AffLabel ()
 {
     // Creation du nom unique du gadget
     creerNomUnique( "Label" );
+
+    actualiserStyle();
 }
 
 
@@ -51,15 +54,16 @@ void AffLabel::setCouleur( sf::Color couleur ){
 
 
 /////////////////////////////////////////////////
-void AffLabel::setPolice( sf::Font val ){
+void AffLabel::setTextePolice( sf::Font val ){
     m_textPolice = val;
+    m_texteSFML.setString( m_texte );
     // la taille du texte a changé alors on doit recalculé les bounds
     demanderActuaBounds();
 };
 
 
 /////////////////////////////////////////////////
-void AffLabel::setStyle( sf::Text::Style val ){
+void AffLabel::setTexteStyle( sf::Text::Style val ){
     m_textStyle = val;
     m_texteSFML.setStyle    ( m_textStyle );
     // la taille du texte a changé alors on doit recalculé les bounds

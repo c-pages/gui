@@ -16,7 +16,6 @@ BtnTexte::BtnTexte ()
 {
     creerNomUnique ( "BtnTexte");
 
-//    logTitre("Creation");
 
     m_marge = { 5, 5 };
     m_autoAjust = true;
@@ -31,9 +30,6 @@ BtnTexte::BtnTexte ()
 
     ajouterComposant( m_label );
 
-//    actualiser ();
-    actualiserStyle();
-    actualiserGeometrie ();
 }
 
 /////////////////////////////////////////////////
@@ -41,12 +37,9 @@ void BtnTexte::actualiserGeometrie ()
 {
     // Debuggage
     log ( "actualiserGeometrie" );
-    log ( "m_taille" , m_taille );
-//    log ( "m_autoAjust" , m_autoAjust );
-//    log ( "m_label->getTaille()" , m_label->getTaille() );
-
 
     m_label->setTexte ( m_texte );
+    m_label->actualiserBounds();
     m_label->setPosition( int( m_marge.x ) , int ( m_marge.y/3 ) );
 
     if ( m_autoAjust ){
@@ -55,7 +48,7 @@ void BtnTexte::actualiserGeometrie ()
 
     m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
 
-    actualiserBounds();
+    demanderActuaBounds();
 }
 
 /////////////////////////////////////////////////
@@ -71,114 +64,94 @@ void BtnTexte::actualiserStyle ()
                                     , m_textCouleur.get( this->etat() ).b
                                     , m_textCouleur.get( this->etat() ).a * m_opacite ) ) ;
     m_label->setTailleCharac     ( m_textTaille.get( this->etat() ) ) ;
-    m_label->setPolice          ( m_textPolice.get( this->etat() ) ) ;
-    m_label->setStyle      ( m_textStyle.get( this->etat() ) ) ;
-
-    // le style d'un label fait changer ses dimensions donc on recalcule les bounds.
-    m_label->actualiserBounds();
-
-    // donc si on est en autoajust on doit redessiner le rectangle a la taille du texte.
-    if ( m_autoAjust ) actualiserGeometrie ();
+    m_label->setTextePolice          ( m_textPolice.get( this->etat() ) ) ;
+    m_label->setTexteStyle      ( m_textStyle.get( this->etat() ) ) ;
 
     // on actualise le rectangle
-    m_rectangle->setFillColor    ( sf::Color (
+    m_rectangle->setFondCouleur    ( sf::Color (
                                       m_couleurFond.get( this->etat() ).r
                                     , m_couleurFond.get( this->etat() ).g
                                     , m_couleurFond.get( this->etat() ).b
                                     , m_couleurFond.get( this->etat() ).a * m_opacite ) ) ;
 
-    m_rectangle->setOutlineColor     ( sf::Color (
+    m_rectangle->setLigneCouleur     ( sf::Color (
                                       m_couleurLignes.get( this->etat() ).r
                                     , m_couleurLignes.get( this->etat() ).g
                                     , m_couleurLignes.get( this->etat() ).b
                                     , m_couleurLignes.get( this->etat() ).a * m_opacite ) ) ;
-    m_rectangle->setOutlineThickness ( m_epaisseur.get( this->etat() ) ) ;
+    m_rectangle->setLigneEpaisseur ( m_epaisseur.get( this->etat() ) ) ;
 
 }
-/*
+
 
 /////////////////////////////////////////////////
-void BtnTexte::setStyle ( std::shared_ptr<Style> style , Etat etat )
-{
-    std::cout << "BtnTexte::setStyle : " << style << "\n";
-
-
-    m_textCouleur   = style->txt_couleur;
-    m_textStyle     = style->txt_style;
-    m_textTaille    = style->txt_taille;
-    m_textPolice    = style->txt_police;
-
-    BtnRectangle::setStyle ( style , etat );
-
-}
-
-*/
+void BtnTexte::setTexte( std::string val ){
+    log("setTexte \"" + val + "\"" );
+    m_texte = val;
+    m_label->setTexte ( val ) ;
+    demanderActuaGeom();
+};
 
 
 
-/*
 /////////////////////////////////////////////////
-void BtnTexte::actualiser ()
-{
-
-    // On choisie le style a appliquer (du style s'il en a un sinon du skin)
-    std::shared_ptr<Style> style;
-    if ( m_style == nullptr )
-        style = m_skin->getStyle( Styles::bouton );
-    else
-        style = m_style;
-
-    Etat etatBouton;
-    if ( ! estActif() )
-        etatBouton = Etat::desactive;
-    else if ( !estSurvole () && !estPresse() )
-        etatBouton = Etat::repos;
-    else if ( estPresse () )
-        etatBouton = Etat::press;
-    else if ( estSurvole () )
-        etatBouton = Etat::survol;
+void BtnTexte::setTailleCharac( float val ){
+    m_textTaille = val;
+    m_label->setTailleCharac ( val ) ;
+};
 
 
 
-
-    m_label->setStyle ( style, etatBouton );
-
-    m_rectangle->setFillColor    ( sf::Color (
-                                      style->fnd_couleur.get(etatBouton).r
-                                    , style->fnd_couleur.get(etatBouton).g
-                                    , style->fnd_couleur.get(etatBouton).b
-                                    , style->fnd_couleur.get(etatBouton).a * m_opacite ) ) ;
-
-    m_rectangle->setOutlineColor     ( sf::Color (
-                                      style->lgn_couleur.get(etatBouton).r
-                                    , style->lgn_couleur.get(etatBouton).g
-                                    , style->lgn_couleur.get(etatBouton).b
-                                    , style->lgn_couleur.get(etatBouton).a * m_opacite ) ) ;
-
-    m_rectangle->setOutlineThickness ( style->lgn_epaisseur.get(etatBouton) ) ;
-
-    actualiserBounds();
-
-    if ( m_parent != nullptr ) {
-//            std::cout << "parent : " << m_parent->getNom() << "\n";
-            m_parent->actualiserContenu();
-    }
-
-}
-*/
-/*
 /////////////////////////////////////////////////
-void BtnTexte::draw (sf::RenderTarget& target, sf::RenderStates states) const
-{
-    //On applique la transformation
-    states.transform *= getTransform();
+void BtnTexte::setTailleCharac( Valeurs<float> val ){
+    m_textTaille = val;
+    demanderActuaStyle();
+};
 
-    // On dessine les éléments
-    target.draw(m_rectangle, states);
-    target.draw(m_label, states);
 
-}
-*/
+/////////////////////////////////////////////////
+void BtnTexte::setTexteCouleur( sf::Color couleur ){
+    m_textCouleur = couleur;
+    m_label->setCouleur ( couleur );
+};
+
+
+
+/////////////////////////////////////////////////
+void BtnTexte::setTexteCouleur( Valeurs<sf::Color> couleur ){
+    m_textCouleur = couleur;
+    demanderActuaStyle();
+};
+
+
+
+/////////////////////////////////////////////////
+void BtnTexte::setTextePolice( sf::Font val ){
+    m_textPolice = val;
+};
+
+
+
+/////////////////////////////////////////////////
+void BtnTexte::setTextePolice( Valeurs<sf::Font> val ){
+    m_textPolice = val;
+    demanderActuaStyle();
+};
+
+
+/////////////////////////////////////////////////
+void BtnTexte::setTexteStyle( sf::Text::Style val ){
+    m_textStyle = val;
+    m_label->setTexteStyle    ( val );
+};
+
+
+
+/////////////////////////////////////////////////
+void BtnTexte::setTexteStyle( Valeurs<sf::Text::Style> val ){
+    m_textStyle = val;
+    demanderActuaStyle();
+};
 
 } // fin namespace gui
 

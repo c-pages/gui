@@ -5,23 +5,15 @@
 #include <sstream>
 
 #include <Gadget.h>
-//#include <Skin.h>
 #include <Interface.h>
 #include <../GUI.h>
 
-
-
 namespace gui {
-
-
-
-
-
 
 /////////////////////////////////////////////////
 // Initialisation des membre static
 /////////////////////////////////////////////////
-//Gadget *    Gadget::ms_racineCourante   = nullptr;
+
 int         Gadget::ms_CompteurGadgets  = 0;
 std::string Gadget::ms_logNomGadgetBack = "";
 
@@ -55,51 +47,6 @@ Gadget::Gadget ()
 
 
 /////////////////////////////////////////////////
-void Gadget::creerNomUnique( std::string type  ) {
-    // Creation du nom unique du gadget
-    std::stringstream ss;
-    ss << getNombreGadgets();
-    m_nom = type + "_" + ss.str();
-};
-
-
-/////////////////////////////////////////////////
-void Gadget::demanderActualisation() {
-    m_aBesoinActualisation = true ;
-    m_aBesoinActuaGeom = true ;
-    m_aBesoinActuaStyle = true ;
-    m_aBesoinActualisation = true ;
-    Interface::aBesoinActualisation();
-};
-
-/////////////////////////////////////////////////
-void Gadget::demanderActuaGeom() {
-    m_aBesoinActualisation = true ;
-    m_aBesoinActuaGeom = true ;
-    m_aBesoinActuaBounds = true ;
-    Interface::aBesoinActualisation();
-};
-/////////////////////////////////////////////////
-void Gadget::demanderActuaStyle() {
-    m_aBesoinActualisation = true ;
-    m_aBesoinActuaStyle = true ;
-    Interface::aBesoinActualisation();
-};
-/////////////////////////////////////////////////
-void Gadget::demanderActuaContenu() {
-    m_aBesoinActualisation = true ;
-    m_aBesoinActuaContenu = true ;
-    Interface::aBesoinActualisation();
-};
-/////////////////////////////////////////////////
-void Gadget::demanderActuaBounds() {
-    m_aBesoinActualisation = true ;
-    m_aBesoinActuaBounds = true ;
-    Interface::aBesoinActualisation();
-};
-
-
-/////////////////////////////////////////////////
 Gadget::~Gadget ()
 {
     // Mise a jour du nombre de gadgets.
@@ -107,15 +54,9 @@ Gadget::~Gadget ()
 }
 
 
-
-
-
 /////////////////////////////////////////////////
 void Gadget::actualiser ()
 {
-
-
-    log ( "aBesoinActualisation ",  m_aBesoinActualisation );
 
     // si on a pas besoin d'actualiser
     if ( ! m_aBesoinActualisation )
@@ -198,46 +139,6 @@ void Gadget::traiterEvenements (const sf::Event& evenement)
 }
 
 
-/////////////////////////////////////////////////
-bool Gadget::estActif () const
-{
-    return m_actif;
-}
-
-
-/////////////////////////////////////////////////
-bool Gadget::estVisible () const
-{
-    return m_visible;
-}
-
-
-/////////////////////////////////////////////////
-bool Gadget::aLeFocus () const
-{
-    return m_focus;
-}
-
-
-/////////////////////////////////////////////////
-bool Gadget::estSurvole () const
-{
-    return m_survol;
-}
-
-
-/////////////////////////////////////////////////
-bool Gadget::estPresse () const
-{
-    return m_presse;
-}
-
-
-/////////////////////////////////////////////////
-bool Gadget::estDeplacable () const
-{
-    return m_deplacable;
-}
 
 
 
@@ -297,5 +198,178 @@ void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
     }
 };
 
+
+
+
+
+
+
+
+/////////////////////////////////////////////////
+void Gadget::setVisible( bool val ) {
+    log("setVisible");
+    log("m_visible", val);
+    m_visible = val;
+};
+
+
+
+/////////////////////////////////////////////////
+void Gadget::setActif( bool val ){
+    if ( m_actif == val ) return;
+
+    log("setActif");
+    log("m_actif", val);
+    m_actif = val;
+    actualiserEtat ();
+    demanderActuaStyle();
+};
+
+
+
+/////////////////////////////////////////////////
+void Gadget::setFocus( bool val ) {
+    if ( m_focus == val ) return;
+    log("setFocus");
+    log("m_focus", val);
+    m_focus = val;
+    actualiserEtat ();
+    demanderActuaStyle();
+};
+
+
+
+/////////////////////////////////////////////////
+void Gadget::setSurvol( bool val ) {
+    if ( m_survol == val ) return;
+    log("setSurvol");
+    log("m_survol", val);
+    m_survol = val;
+    actualiserEtat ();
+    demanderActuaStyle();
+};
+
+
+
+/////////////////////////////////////////////////
+void Gadget::setPresse( bool val ){
+    if ( m_presse == val ) return;
+    log("SetVisible", val);
+    m_presse = val;
+    actualiserEtat ();
+    demanderActuaStyle();
+};
+
+
+
+/////////////////////////////////////////////////
+void Gadget::setDeplacable( bool val ){
+    m_deplacable = val;
+};
+
+
+/////////////////////////////////////////////////
+void Gadget::creerNomUnique( std::string type  ) {
+    // Creation du nom unique du gadget
+    std::stringstream ss;
+    ss << getNombreGadgets();
+    m_nom = type + "_" + ss.str();
+};
+
+
+/////////////////////////////////////////////////
+void Gadget::demanderActualisation() {
+    m_aBesoinActualisation = true ;
+    m_aBesoinActuaGeom = true ;
+    m_aBesoinActuaStyle = true ;
+    m_aBesoinActualisation = true ;
+    Interface::aBesoinActualisation();
+};
+
+/////////////////////////////////////////////////
+void Gadget::demanderActuaGeom() {
+    m_aBesoinActualisation = true ;
+    m_aBesoinActuaGeom = true ;
+    m_aBesoinActuaBounds = true ;
+    Interface::aBesoinActualisation();
+};
+/////////////////////////////////////////////////
+void Gadget::demanderActuaStyle() {
+    m_aBesoinActualisation = true ;
+    m_aBesoinActuaStyle = true ;
+    Interface::aBesoinActualisation();
+};
+/////////////////////////////////////////////////
+void Gadget::demanderActuaContenu() {
+    m_aBesoinActualisation = true ;
+    m_aBesoinActuaContenu = true ;
+    Interface::aBesoinActualisation();
+};
+/////////////////////////////////////////////////
+void Gadget::demanderActuaBounds() {
+    m_aBesoinActualisation = true ;
+    m_aBesoinActuaBounds = true ;
+    Interface::aBesoinActualisation();
+};
+
+
+
+/////////////////////////////////////////////////
+bool Gadget::estActif () const{
+    return m_actif;
+}
+
+
+/////////////////////////////////////////////////
+bool Gadget::estVisible () const{
+    return m_visible;
+}
+
+
+/////////////////////////////////////////////////
+bool Gadget::aLeFocus () const{
+    return m_focus;
+}
+
+
+/////////////////////////////////////////////////
+bool Gadget::estSurvole () const{
+    return m_survol;
+}
+
+
+/////////////////////////////////////////////////
+bool Gadget::estPresse () const{
+    return m_presse;
+}
+
+
+/////////////////////////////////////////////////
+bool Gadget::estDeplacable () const{
+    return m_deplacable;
+}
+
+
 } // fin namespace gui
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

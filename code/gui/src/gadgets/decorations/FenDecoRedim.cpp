@@ -34,15 +34,15 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
 
 
 
-    m_btn_gauche->setFillColor ( sf::Color::Transparent );
-    m_btn_droite->setFillColor ( sf::Color::Transparent );
-    m_btn_haut->setFillColor ( sf::Color::Transparent );
-    m_btn_bas->setFillColor ( sf::Color::Transparent );
+    m_btn_gauche->setFondCouleur ( sf::Color::Transparent );
+    m_btn_droite->setFondCouleur ( sf::Color::Transparent );
+    m_btn_haut->setFondCouleur ( sf::Color::Transparent );
+    m_btn_bas->setFondCouleur ( sf::Color::Transparent );
 
-    m_btn_hautGauche->setFillColor ( sf::Color::Transparent );
-    m_btn_hautDroite->setFillColor ( sf::Color::Transparent );
-    m_btn_basGauche->setFillColor ( sf::Color::Transparent );
-    m_btn_basDroite->setFillColor ( sf::Color::Transparent );
+    m_btn_hautGauche->setFondCouleur ( sf::Color::Transparent );
+    m_btn_hautDroite->setFondCouleur ( sf::Color::Transparent );
+    m_btn_basGauche->setFondCouleur ( sf::Color::Transparent );
+    m_btn_basDroite->setFondCouleur ( sf::Color::Transparent );
 
     m_btnDragCouleurs.set       ( sf::Color( 0, 0, 0, 50 )     , Etat::desactive );
     m_btnDragCouleurs.set       ( sf::Color( 255,255,255, 0 )  , Etat::repos );

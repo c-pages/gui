@@ -99,9 +99,9 @@ void LstSimple::actualiserGeometrie ()
 /////////////////////////////////////////////////
 void LstSimple::actualiserStyle ()
 {
-    m_fond->setFillColor         ( m_fndCouleur );
-    m_fond->setOutlineColor      ( m_fndLignesCouleur );
-    m_fond->setOutlineThickness  ( m_fndLignesEpaisseur );
+    m_fond->setFondCouleur         ( m_fndCouleur );
+    m_fond->setLigneCouleur      ( m_fndLignesCouleur );
+    m_fond->setLigneEpaisseur  ( m_fndLignesEpaisseur );
 
     int index = 0;
     for ( auto bouton : m_boutons ) {
@@ -109,22 +109,22 @@ void LstSimple::actualiserStyle ()
 //        std::cout << " --------------------- \n";
 //            bouton->setPresse(true);
 //            bouton->actualiserStyle();
-            bouton->setFillColor         ( m_btnCouleurs.press );
-            bouton->setOutlineColor      ( m_btnLignesCouleurs.press );
-            bouton->setOutlineThickness  ( m_btnLignesEpaisseurs.press );
+            bouton->setFondCouleur         ( m_btnCouleurs.press );
+            bouton->setLigneCouleur      ( m_btnLignesCouleurs.press );
+            bouton->setLigneEpaisseur  ( m_btnLignesEpaisseurs.press );
             bouton->setTailleCharac       ( m_textTaille.press );
-            bouton->setCouleur      ( m_textCouleur.press );
-            bouton->setPolice            ( m_textPolice.press );
-            bouton->setStyle        ( m_textStyle.press );
+            bouton->setTexteCouleur      ( m_textCouleur.press );
+            bouton->setTextePolice            ( m_textPolice.press );
+            bouton->setTexteStyle        ( m_textStyle.press );
         } else {
 
-            bouton->setFillColor         ( m_btnCouleurs );
-            bouton->setOutlineColor      ( m_btnLignesCouleurs );
-            bouton->setOutlineThickness  ( m_btnLignesEpaisseurs );
+            bouton->setFondCouleur         ( m_btnCouleurs );
+            bouton->setLigneCouleur      ( m_btnLignesCouleurs );
+            bouton->setLigneEpaisseur  ( m_btnLignesEpaisseurs );
             bouton->setTailleCharac       ( m_textTaille );
-            bouton->setCouleur      ( m_textCouleur );
-            bouton->setPolice            ( m_textPolice );
-            bouton->setStyle        ( m_textStyle );
+            bouton->setTexteCouleur      ( m_textCouleur );
+            bouton->setTextePolice            ( m_textPolice );
+            bouton->setTexteStyle        ( m_textStyle );
 //            bouton->setPresse(false);
 //            bouton->actualiserStyle();
         }

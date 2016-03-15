@@ -47,17 +47,17 @@ public:
     void setSliderFillColor ( Valeurs<sf::Color> couleurs  ) {
             m_btnCouleurs = couleurs;
             actualiserStyle();
-//            m_rectangle->setFillColor( couleur );
+//            m_rectangle->setFondCouleur( couleur );
         };
     void setSliderOutlineColor ( Valeurs<sf::Color> couleurs  ) {
             m_btnLgnCouleurs = couleurs;
             actualiserStyle();
-//            m_rectangle->setOutlineColor( couleur );
+//            m_rectangle->setLigneCouleur( couleur );
         };
     void setSliderOutlineThickness ( Valeurs<float> epaisseur ) {
             m_btnLgnepaisseurs =  epaisseur;
             actualiserStyle();
-//            m_rectangle->setOutlineThickness( epaisseur );
+//            m_rectangle->setLigneEpaisseur( epaisseur );
         };
 
 

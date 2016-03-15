@@ -26,8 +26,8 @@ SupPanneau::SupPanneau ()
     ajouterComposant ( m_contenant );
     ajouterComposant ( m_barreDrag );
 
-    m_barreDrag->setFillColor ( sf::Color ( 255,255,255,50 ));
-    m_barreDrag->setOutlineThickness ( 0 );
+    m_barreDrag->setFondCouleur ( sf::Color ( 255,255,255,50 ));
+    m_barreDrag->setLigneEpaisseur ( 0 );
     m_barreDrag->setVisible (false);
 
     m_contenant->setRepartition ( Repartitions::Verticale );
@@ -83,11 +83,11 @@ SupPanneau::SupPanneau ()
     m_btn_droite->lier (Evenement::onBtnG_relacher, fct_redimStopD);
     m_btn_droite->lier (Evenement::onBtnG_relacherDehors, fct_redimStopD);
 
-    m_btn_gauche->setFillColor ( sf::Color::Transparent );
+    m_btn_gauche->setFondCouleur ( sf::Color::Transparent );
     m_btn_gauche->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_horizontal); });
     m_btn_gauche->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
 
-    m_btn_droite->setFillColor ( sf::Color::Transparent );
+    m_btn_droite->setFondCouleur ( sf::Color::Transparent );
     m_btn_droite->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_horizontal); });
     m_btn_droite->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
 

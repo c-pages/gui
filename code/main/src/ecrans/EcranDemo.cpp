@@ -156,12 +156,22 @@ EcranDemo::initScene  ( )
 void
 EcranDemo::initGUI_tests ()
 {
+//
+//    auto bouton = m_interface->creer.boutonTexte( "bouton" );
+//    bouton->setPosition ( 50, 50);
+//
+//    auto label = m_interface->creer.label( "bon alors ca marche ti?!?" );
+//    label->setPosition ( 50, 50);
 
-    auto bouton = m_interface->creer.boutonTexte( "bouton" );
+//    auto rectangle = m_interface->creer.rectangle( 12,400 );
+//    rectangle->setPosition ( 50, 50);
+//    rectangle->setFillColor ( sf::Color::Yellow );
+//    rectangle->setOutlineColor ( sf::Color::Blue );
+//    rectangle->setOutlineThickness ( 12 );
+
+
+    auto bouton = m_interface->creer.boutonRect( 200, 15 );
     bouton->setPosition ( 50, 50);
-
-
-
 
 
     /*

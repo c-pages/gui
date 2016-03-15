@@ -11,6 +11,8 @@ public:
     Calque( std::string nom );
     virtual ~Calque();
 
+    /////////////////////////////////////////////////
+    void actualiser ();
 
     /////////////////////////////////////////////////
     std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );

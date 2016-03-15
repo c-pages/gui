@@ -24,6 +24,7 @@ std::shared_ptr<Calque>        Interface::ms_calque_panneau_G               = st
 std::shared_ptr<Calque>        Interface::ms_calque_panneau_D               = std::make_shared<Calque>("_PanneauD");
 std::shared_ptr<Calque>        Interface::ms_calque_bandeauMenuDeroulants   = std::make_shared<Calque>("_BandeauMD");
 std::shared_ptr<Calque>        Interface::ms_calque_menuDeroulants          = std::make_shared<Calque>("_Menus");
+std::shared_ptr<Calque>        Interface::ms_calque_souris                  = std::make_shared<Calque>("_Souris");
 
 std::shared_ptr<AffCurseurSouris>       Interface::ms_curseurSouris;
 bool                                    Interface::ms_aBesoinActualisation = false;
@@ -60,6 +61,7 @@ Interface::Interface( sf::RenderWindow* fenetre )
     ajouter ( ms_calque_bandeauMenuDeroulants );
     ajouter ( ms_calque_fenetres );
     ajouter ( ms_calque_menuDeroulants );
+    ajouter ( ms_calque_souris );
 
     // les tailles
 //    m_taille = { m_fenetre->getSize().x ,m_fenetre->getSize().y };
@@ -71,6 +73,7 @@ Interface::Interface( sf::RenderWindow* fenetre )
     ms_calque_fenetres->setTaille  ( m_taille );
     ms_calque_menuDeroulants->setTaille  ( m_taille );
     ms_calque_bandeauMenuDeroulants->setTaille  ( m_taille );
+    ms_calque_souris->setTaille  ( m_taille );
 
 
 
@@ -85,6 +88,7 @@ Interface::Interface( sf::RenderWindow* fenetre )
 
     // initialiser les curseurs
     ms_curseurSouris = std::make_shared<AffCurseurSouris>( this );
+    ms_calque_souris->ajouter(ms_curseurSouris);
     ms_curseurs.load( "Redimensionnement"  , "media/img/curs_redimensionnement.png" );
 
     m_parent = nullptr;
@@ -111,13 +115,16 @@ std::shared_ptr<Gadget> Interface::chercherGadgetSurvole ()
 /////////////////////////////////////////////////
 void Interface::actualiser ()
 {
+
+    //log ( "aBesoinActualisation ",  ms_aBesoinActualisation  );
+
     if ( ! ms_aBesoinActualisation ) return;
 
     logTitre ( "Actualiser");
 
-//    std::cout << "Interface::actualiser ()\n";
-    for ( auto enfant : m_enfants )
-        enfant->actualiser();
+    // on actualise les enfants ( donc les calques)
+    log ( "actualiserEnfants");
+    actualiserEnfants();
 
     // on calcule la taille verticale des bandeaux ...
     sf::Vector2f decallage = {0,0};
@@ -207,9 +214,9 @@ void Interface::traiterEvenements( sf::Event evenement )
         case sf::Event::MouseMoved :
 //            log ("  ... la souris bouge ...");
 
-            // On gere le cureur souris
-            if (ms_curseurSouris->estVisible())
-                ms_curseurSouris->traiterEvenements( evenement );
+//            // On gere le cureur souris
+//            if (ms_curseurSouris->estVisible())
+//                ms_curseurSouris->traiterEvenements( evenement );
 
             // On sort si on a pas changé de bouton survolé
             if ( m_boutonSurvole ==  boutonSurvoleBack )
@@ -398,9 +405,9 @@ void Interface::draw(sf::RenderTarget& target, sf::RenderStates states) const
     for (auto enfant : m_enfants )
         target.draw(*enfant, states);
 
-    // on dessine la souris (si besoin)
-    if (ms_curseurSouris->estVisible() )
-        target.draw(*ms_curseurSouris, states);
+//    // on dessine la souris (si besoin)
+//    if (ms_curseurSouris->estVisible() )
+//        target.draw(*ms_curseurSouris, states);
 
         /*
         target.draw(*m_bureau, states);

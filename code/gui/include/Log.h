@@ -21,13 +21,16 @@ public :
     void log ( std::string txt );
     void logTitre ( std::string txt );
 
-    void log (  std::string nomDuVariable , std::string variable );
-    void log (  std::string nomDuVariable , float variable );
-    void log (  std::string nomDuVariable , sf::Vector2f variable );
-    void log (  std::string nomDuVariable , sf::Vector2i variable );
-    void log (  std::string nomDuVariable , sf::Color couleur );
+    void log (  std::string nomDuVariable , std::string     variable );
+    void log (  std::string nomDuVariable , float           variable );
+    void log (  std::string nomDuVariable , sf::Vector2f    variable );
+    void log (  std::string nomDuVariable , sf::Vector2i    variable );
+    void log (  std::string nomDuVariable , sf::Color       couleur  );
+    void log (  std::string nomDuVariable , bool&           variable );
 
 private:
+
+    bool        checkAffichage();
 
     std::string getHierarchieGadget();
     std::string getNomGadget();
@@ -45,6 +48,8 @@ private:
     std::string             m_preLigne_hierarchie;
     std::string             m_preLigne_courant;
     std::string             m_preLigne_variable;
+    std::string             m_preLigne_interface;
+    std::string             m_ligneInterface;
 
     WORD                    m_couleur_calque;
     WORD                    m_couleur_hierarchie;
@@ -55,6 +60,23 @@ private:
     WORD                    m_couleur_titre;
     WORD                    m_couleur_courant;
     WORD                    m_couleur_variable;
+
+
+
+
+    bool m_afficher_bureau ;
+    bool m_afficher_panneau_G ;
+    bool m_afficher_panneau_D ;
+    bool m_afficher_bandeaux ;
+    bool m_afficher_bandeauMenuDeroulants ;
+    bool m_afficher_fenetres ;
+    bool m_afficher_menuDeroulants ;
+    bool m_afficher_souris ;
+
+    bool m_afficher_GUI ;
+
+    bool m_afficher_horsCalques ;
+
 
 };  // fin log
 

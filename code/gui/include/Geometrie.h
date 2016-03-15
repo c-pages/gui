@@ -44,26 +44,10 @@ class Geometrie : public sf::Transformable, public gui::Composite {
 
 public:
     ///< Definir m_taille
-    virtual void setTaille( float x, float y ){
-        if ( m_taille == sf::Vector2i (x,y) ) return;
-        m_taille = {x,y};
-        demanderActualisation();
-        };
-    virtual void setTaille( sf::Vector2i val ){
-        if ( m_taille == val ) return;
-        m_taille = val;
-        demanderActualisation();
-        };
-    virtual void setTailleX( float val ){
-        if ( m_taille.x == val ) return;
-        m_taille.x = val;
-        demanderActualisation();
-        };
-    virtual void setTailleY( float val ){
-        if ( m_taille.y == val ) return;
-        m_taille.y = val;
-        demanderActualisation();
-        };
+    virtual void setTaille( float x, float y );
+    virtual void setTaille( sf::Vector2i val );
+    virtual void setTailleX( float val );
+    virtual void setTailleY( float val );
 
     virtual void demanderActualisation(){};
 

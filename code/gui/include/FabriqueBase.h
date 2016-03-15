@@ -87,6 +87,7 @@ public:
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<AffRectangle>    rectangle( sf::Vector2i taille = {100,100} );
+    std::shared_ptr<AffRectangle>    rectangle( float x = 100 , float y = 100 );
 
     /////////////////////////////////////////////////
     /// \brief  Création d'un simple label
@@ -151,6 +152,7 @@ public:
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
     std::shared_ptr<BtnRectangle>    boutonRect( sf::Vector2i taille );
+    std::shared_ptr<BtnRectangle>    boutonRect( float x , float y );
 
     /////////////////////////////////////////////////
     /// \brief  Création d'un simple bouton rectangulaire

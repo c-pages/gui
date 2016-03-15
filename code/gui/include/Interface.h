@@ -54,6 +54,7 @@ public:
     static  std::shared_ptr<Calque>        ms_calque_panneau_D;
     static  std::shared_ptr<Calque>        ms_calque_bandeauMenuDeroulants;
     static  std::shared_ptr<Calque>        ms_calque_menuDeroulants;
+    static  std::shared_ptr<Calque>        ms_calque_souris;
 
 
 

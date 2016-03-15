@@ -140,6 +140,15 @@ std::shared_ptr<AffRectangle>    FabriqueBase::rectangle( sf::Vector2i taille )
     return nouveauGadget;
 }
 
+    std::shared_ptr<AffRectangle>    rectangle( float x = 100 , float y = 100 );
+
+
+/////////////////////////////////////////////////
+std::shared_ptr<AffRectangle>    FabriqueBase::rectangle( float x  , float y  )
+{
+    return rectangle( sf::Vector2i ( x , y ) );
+}
+
 
 
 /////////////////////////////////////////////////
@@ -197,6 +206,12 @@ std::shared_ptr<AffIcone>    FabriqueBase::icone( std::string fichier , unsigned
 
 
 
+
+/////////////////////////////////////////////////
+std::shared_ptr<BtnRectangle>    FabriqueBase::boutonRect( float x , float y )
+{
+    return boutonRect( sf::Vector2i ( x , y ) );
+}
 
 /////////////////////////////////////////////////
 std::shared_ptr<BtnRectangle>    FabriqueBase::boutonRect( sf::Vector2i taille )

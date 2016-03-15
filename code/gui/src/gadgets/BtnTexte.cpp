@@ -32,7 +32,8 @@ BtnTexte::BtnTexte ()
     ajouterComposant( m_label );
 
 //    actualiser ();
-
+    actualiserStyle();
+    actualiserGeometrie ();
 }
 
 /////////////////////////////////////////////////
@@ -40,19 +41,21 @@ void BtnTexte::actualiserGeometrie ()
 {
     // Debuggage
     log ( "actualiserGeometrie" );
-    log ( "m_texte" , m_texte );
-    log ( "m_autoAjust" , m_autoAjust );
-    log ( "m_label->getTaille()" , m_label->getTaille() );
+    log ( "m_taille" , m_taille );
+//    log ( "m_autoAjust" , m_autoAjust );
+//    log ( "m_label->getTaille()" , m_label->getTaille() );
 
 
     m_label->setTexte ( m_texte );
     m_label->setPosition( int( m_marge.x ) , int ( m_marge.y/3 ) );
 
-    if ( m_autoAjust )
+    if ( m_autoAjust ){
         m_taille = { m_label->getTaille().x + m_marge.x*2 , m_label->getTaille().y + m_marge.y*2 } ;
+    }
 
     m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
 
+    actualiserBounds();
 }
 
 /////////////////////////////////////////////////
@@ -71,6 +74,11 @@ void BtnTexte::actualiserStyle ()
     m_label->setPolice          ( m_textPolice.get( this->etat() ) ) ;
     m_label->setTexteStyle      ( m_textStyle.get( this->etat() ) ) ;
 
+    // le style d'un label fait changer ses dimensions donc on recalcule les bounds.
+    m_label->actualiserBounds();
+
+    // donc si on est en autoajust on doit redessiner le rectangle a la taille du texte.
+    if ( m_autoAjust ) actualiserGeometrie ();
 
     // on actualise le rectangle
     m_rectangle->setFillColor    ( sf::Color (

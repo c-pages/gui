@@ -266,6 +266,7 @@ public:
     virtual void demanderActuaGeom();
     virtual void demanderActuaStyle();
     virtual void demanderActuaContenu();
+    virtual void demanderActuaBounds();
 
 
 protected:
@@ -273,11 +274,12 @@ protected:
     static std::string      ms_logNomGadgetBack;
 
     sf::Vector2f                m_marge;            ///< La marge à laissé
-
+private:
     bool                        m_aBesoinActualisation ;
     bool                        m_aBesoinActuaGeom ;
     bool                        m_aBesoinActuaStyle ;
     bool                        m_aBesoinActuaContenu ;
+    bool                        m_aBesoinActuaBounds ;
 
 /////////////////////////////////////////////////
 // Membres

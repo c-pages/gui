@@ -66,6 +66,7 @@ void BtnRectangle::actualiserGeometrie ()
     m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
 //    m_focus->setTaille ( {m_taille.x, m_taille.y} );
 
+    actualiserBounds();
 }
 
 /////////////////////////////////////////////////

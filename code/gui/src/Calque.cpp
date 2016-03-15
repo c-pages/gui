@@ -15,6 +15,12 @@ Calque::~Calque()
 }
 
 /////////////////////////////////////////////////
+void Calque::actualiser ()
+{
+    actualiserEnfants();
+}
+
+/////////////////////////////////////////////////
 std::shared_ptr<Gadget>  Calque::testerSurvol ( sf::Vector2i position )
 {
 /*

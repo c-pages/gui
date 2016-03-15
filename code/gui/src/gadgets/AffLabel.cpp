@@ -11,72 +11,61 @@ namespace gui {
 /////////////////////////////////////////////////
 AffLabel::AffLabel ()
 : m_texteSFML   (  )
-//: m_texteSFML   ( std::make_shared<sf::Text> () )
 , m_textCouleur ( sf::Color::White )
 , m_textStyle   ( sf::Text::Style::Regular )
-, m_textTaille  ( 9 )
-, m_textPolice  ( )
+, m_textTaille  ( 15 )
+, m_textPolice  ( Interface::ms_polices.get ( "Defaut" ) )
 {
     // Creation du nom unique du gadget
     creerNom( "Label" );
 
-//    logTitre("Creation");
-
-
-    m_textPolice = Interface::ms_polices.get ( "Defaut");
-    m_texteSFML.setString(m_nom);
-
-
-    actualiserStyle ();
-    actualiserGeometrie ();
 }
-/*
-/////////////////////////////////////////////////
-void AffLabel::setStyle ( std::shared_ptr<Style> style , Etat etat ){
-
-//    std::cout << "AffLabel::setStyle " << style->txt_taille.get( etat ) << " / " <<  int(etat) << "\n";
-
-    m_textCouleur   =   style->txt_couleur.get( etat );
-    m_textStyle     =   style->txt_style.get( etat );
-    m_textTaille    =   style->txt_taille.get( etat );
-    m_textPolice    =   style->txt_police.get( etat );
-
-    actualiser ();
-
-}
-*/
 
 /////////////////////////////////////////////////
-void AffLabel::actualiserGeometrie ()
+void AffLabel::setTexte( std::string val )
 {
     // Debuggage
-    log ("actualiserGeometrie");
+    log("setTexte \"" + val + "\"" );
 
-//    std::cout << "AffLabel::actualiserGeometrie () : " << getNom() << "\n";
-//    m_texteSFML->setString  ( m_texte );
-//    m_texteSFML->setPosition ( -m_texteSFML->getGlobalBounds().left , -m_texteSFML->getGlobalBounds().top );
+    m_texte = val;
+    m_texteSFML.setString( val );
+    demanderActuaBounds();
+};
 
 
 
 
-}
 
 /////////////////////////////////////////////////
-void AffLabel::actualiserStyle ()
-{
-    // Debuggage
-    log ("actualiserStyle");
+void AffLabel::setTexteTaille( float val ){
+    m_textTaille = val;
+    m_texteSFML.setCharacterSize ( val ) ;
+    demanderActuaBounds();
+};
+
+/////////////////////////////////////////////////
+void AffLabel::setTexteCouleur( sf::Color couleur ){
+    m_textCouleur = couleur;
+    m_texteSFML.setColor ( couleur );
+//    demanderActualisation();
+};
+
+/////////////////////////////////////////////////
+void AffLabel::setPolice( sf::Font val ){
+    m_textPolice = val;
+    demanderActuaGeom();
+};
+
+/////////////////////////////////////////////////
+void AffLabel::setTexteStyle( sf::Text::Style val ){
+    m_textStyle = val;
+    m_texteSFML.setStyle    ( m_textStyle );
+    demanderActualisation();
+};
 
 
-    m_texteSFML.setFont            ( m_textPolice );
-    m_texteSFML.setColor           ( m_textCouleur );
-    m_texteSFML.setStyle           ( m_textStyle );
-    m_texteSFML.setCharacterSize   ( m_textTaille );
-//    m_texteSFML.setFont            ( m_textPolice );
 
 
-
-}
 
 /////////////////////////////////////////////////
 sf::Vector2i  AffLabel::getTaille() const
@@ -85,6 +74,32 @@ sf::Vector2i  AffLabel::getTaille() const
 }
 
 
+
+
+/////////////////////////////////////////////////
+void AffLabel::actualiserGeometrie ()
+{
+    // Debuggage
+    log ("actualiserGeometrie");
+
+    m_texteSFML.setString ( m_texte);
+
+    demanderActuaBounds();
+}
+
+/////////////////////////////////////////////////
+void AffLabel::actualiserStyle ()
+{
+    // Debuggage
+    log ("actualiserStyle");
+
+    m_texteSFML.setFont            ( m_textPolice );
+    m_texteSFML.setColor           ( m_textCouleur );
+    m_texteSFML.setStyle           ( m_textStyle );
+    m_texteSFML.setCharacterSize   ( m_textTaille );
+
+
+}
 
 
 /////////////////////////////////////////////////
@@ -98,11 +113,6 @@ void AffLabel::draw (sf::RenderTarget& target, sf::RenderStates states) const
 }
 
 
-/////////////////////////////////////////////////
-void AffLabel::setPoliceFichier (sf::Font police)
-{
-
-}
 
 
 } // fin namespace gui

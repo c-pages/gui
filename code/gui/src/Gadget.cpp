@@ -40,29 +40,25 @@ Gadget::Gadget ()
 , m_aBesoinActuaGeom        ( true )
 , m_aBesoinActuaStyle       ( true )
 , m_aBesoinActuaContenu     ( true )
+, m_aBesoinActuaBounds      ( true )
 
-//, m_skin        ( std::make_shared<Skin>() )
-//, m_skin        ( nullptr )
-//, m_style       ( std::make_shared<Style>() )
-//, m_style       ( nullptr )
-//, m_demanderActualisation ( false )
 , m_etat        ( Etat::repos )
 {
 
     // Si on a une racine active, on utilise son skin
-//    if ( ms_racineCourante != nullptr )
-//        m_skin = ms_racineCourante->getSkin();
-//    else
-//        m_skin = std::make_shared<Skin>() ;
+    //    if ( ms_racineCourante != nullptr )
+    //        m_skin = ms_racineCourante->getSkin();
+    //    else
+    //        m_skin = std::make_shared<Skin>() ;
 
     // Mise a jour du nombre de gadgets.
     ms_CompteurGadgets++;
 
     // Creation du nom unique du gadget
     creerNom( "Gadget" );
-//    std::stringstream ss;
-//    ss << getNombreGadgets();
-//    m_nom = "Gadget_" + ss.str();
+    //    std::stringstream ss;
+    //    ss << getNombreGadgets();
+    //    m_nom = "Gadget_" + ss.str();
 }
 
 
@@ -88,6 +84,7 @@ void Gadget::demanderActualisation() {
 void Gadget::demanderActuaGeom() {
     m_aBesoinActualisation = true ;
     m_aBesoinActuaGeom = true ;
+    m_aBesoinActuaBounds = true ;
     Interface::aBesoinActualisation();
 };
 /////////////////////////////////////////////////
@@ -103,50 +100,19 @@ void Gadget::demanderActuaContenu() {
     Interface::aBesoinActualisation();
 };
 /////////////////////////////////////////////////
+void Gadget::demanderActuaBounds() {
+    m_aBesoinActualisation = true ;
+    m_aBesoinActuaBounds = true ;
+    Interface::aBesoinActualisation();
+};
+
+
+/////////////////////////////////////////////////
 Gadget::~Gadget ()
 {
     // Mise a jour du nombre de gadgets.
     ms_CompteurGadgets--;
 }
-
-/*
-/////////////////////////////////////////////////
-int Gadget::log_getCurseurPosX ( )
-{
-    CONSOLE_SCREEN_BUFFER_INFO csbiInfo;
-    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbiInfo);
-    return csbiInfo.dwCursorPosition.Y;
-
-
-//
-//    COORD coord;
-//
-//    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-//    if (console == INVALID_HANDLE_VALUE)
-//    {
-//        printf("GetStdHandle failed with %d\n", GetLastError());
-//        return {0,0};
-//    }
-//    CONSOLE_SCREEN_BUFFER_INFO csbiInfo;
-//    if (  GetConsoleScreenBufferInfo(console, &csbiInfo) )
-//    {
-//        coord = csbiInfo.dwCursorPosition;
-//        int x = coord.X;
-//        return {0,0};
-////        log ("POS CURSEUR" );
-////        sf::Vector2f pos = {csbiInfo.dwCursorPosition.X , csbiInfo.dwCursorPosition.Y };
-////        log ("POS CURSEUR", pos );
-//    }
-////        log ("POS CURSEUR", sf::Vector2f( csbiInfo.dwCursorPosition.X , csbiInfo.dwCursorPosition.Y ) );
-//
-////    return { coord.X , coord.Y };
-////    log ("POS CURSEUR", pos );
-//
-
-}*/
-
-
-
 
 
 
@@ -157,6 +123,7 @@ void Gadget::actualiser ()
 {
 
 
+    log ( "aBesoinActualisation ",  m_aBesoinActualisation );
 
     // si on a pas besoin d'actualiser
     if ( ! m_aBesoinActualisation )
@@ -175,23 +142,24 @@ void Gadget::actualiser ()
         actualiserStyle ();
         m_aBesoinActuaStyle = false;
     }
+
     // on actualise les geometrie si besoin
     if ( m_aBesoinActuaGeom )   {
         actualiserGeometrie ();
         m_aBesoinActuaGeom = false;
     }
+
     // on actualise le contenu si besoin
     if ( m_aBesoinActuaContenu )  {
         actualiserContenu ();
         m_aBesoinActuaContenu = false;
     }
 
-    // on envois le message aux enfants
-    actualiserEnfants();
-    // on envois le message aux composants
-    actualiserComposants();
-
-    actualiserBounds();
+    // on actualise les bounds si besoin
+    if ( m_aBesoinActuaBounds )  {
+        actualiserBounds ();
+        m_aBesoinActuaBounds = false;
+    }
 
     m_aBesoinActualisation = false;
 
@@ -327,6 +295,7 @@ void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
 
         dessinerComposant   ( target, states );
         dessinerEnfants     ( target, states );
+
     }
 };
 

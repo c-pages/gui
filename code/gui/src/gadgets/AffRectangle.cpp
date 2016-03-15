@@ -47,10 +47,7 @@ void AffRectangle::actualiserGeometrie ()
     // Debuggage
     log ("actualiserGeometrie  ");
 
-//    std::cout << "AffRectangle::actualiserGeometrie () : " << getNom() << "\n";
     m_rectangle.setSize ( { m_taille.x, m_taille.y } );
-
-
 
 }
 

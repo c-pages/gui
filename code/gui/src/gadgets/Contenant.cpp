@@ -24,7 +24,11 @@ Contenant::Contenant ()
 {
     m_posContenant = {0,0};
 
-    m_renderTexture.create( 1920, 1080 );
+    auto tailleMax = sf::Texture::getMaximumSize();
+    if ( tailleMax < 1080 )
+        m_renderTexture.create( 300  , tailleMax );
+    else
+        m_renderTexture.create( 300  , 1080 );
 
     m_fndCouleur            = sf::Color( 0,0,0, 50 );
     m_fndLgnCouleur         = sf::Color( 255,255,255, 20 );

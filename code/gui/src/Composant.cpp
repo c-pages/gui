@@ -50,6 +50,7 @@ void Composant::mettre_composantAuDessus (std::shared_ptr<Gadget> gadget)
 /////////////////////////////////////////////////
 void Composant::actualiserComposants ()
 {
+//    static_cast<Gadget*>(this)->log ("actualiserComposants");
     for ( auto composant : m_composants )
         composant->actualiser();
 }

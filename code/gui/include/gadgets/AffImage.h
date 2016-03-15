@@ -52,6 +52,9 @@ public:
 
     void setAjustement ( bool val ) { m_ajustement = val; };
 
+//    virtual void creerNom( std::string type  = "Image" ) {Gadget::creerNom(type);};
+
+
     virtual void setTaille( sf::Vector2i val ){
 
 //        m_taille = val;

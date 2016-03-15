@@ -8,9 +8,11 @@ namespace gui {
 
 
 /////////////////////////////////////////////////
-AffCurseurSouris::AffCurseurSouris( Interface *     interface )
-: m_interface ( interface )
+AffCurseurSouris::AffCurseurSouris( Interface *     interfacePArent )
+: m_interface ( interfacePArent )
 {
+    m_nom = "CurseurSouris";
+    setVisible ( false);
     //ctor
 }
 

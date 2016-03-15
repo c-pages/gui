@@ -4,6 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
+#include "Log.h"
 #include "SFML/Graphics.hpp"
 #include <memory>
 #include <vector>
@@ -20,7 +21,7 @@ class Gadget;
 /// \brief Gestion des enfants, parent (GOF4: composite)
 ///
 /////////////////////////////////////////////////
-class Composite {
+class Composite : public Log{
 
 
 
@@ -34,6 +35,11 @@ public:
 
     ///< Acceder à m_parent
     Gadget* getParent () const { return m_parent; };
+
+    virtual std::string     getHierarchie() const;
+    std::string             getCalqueNom() ;
+
+
 
 
     virtual sf::Vector2i    getTailleContenant (){};
@@ -64,6 +70,9 @@ public:
     virtual std::shared_ptr<Gadget> retirer (std::shared_ptr<Gadget> enfant);
 
     virtual std::vector<std::shared_ptr<Gadget>>   getEnfants() const { return  m_enfants; } ;
+
+
+    bool aDesEnfants () { return ( m_enfants.size() > 0 ); };
 
 
     /////////////////////////////////////////////////

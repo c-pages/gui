@@ -2,6 +2,9 @@
 #include "Interface.h"
 
 
+
+
+
 #include <iostream>
 
 
@@ -14,17 +17,18 @@ ResourcesMgr<sf::Texture,   std::string >   Interface::ms_images = {};
 ResourcesMgr<sf::Texture,   std::string >   Interface::ms_curseurs = {};
 ResourcesMgr<sf::Texture,   std::string >   Interface::ms_icones = {};
 
+std::shared_ptr<Calque>        Interface::ms_calque_bureau                  = std::make_shared<Calque>("_Bureau");
+std::shared_ptr<Calque>        Interface::ms_calque_fenetres                = std::make_shared<Calque>("_Fenetres");
+std::shared_ptr<Calque>        Interface::ms_calque_bandeaux                = std::make_shared<Calque>("_Bandeaux");
+std::shared_ptr<Calque>        Interface::ms_calque_panneau_G               = std::make_shared<Calque>("_PanneauG");
+std::shared_ptr<Calque>        Interface::ms_calque_panneau_D               = std::make_shared<Calque>("_PanneauD");
+std::shared_ptr<Calque>        Interface::ms_calque_bandeauMenuDeroulants   = std::make_shared<Calque>("_BandeauMD");
+std::shared_ptr<Calque>        Interface::ms_calque_menuDeroulants          = std::make_shared<Calque>("_Menus");
 
-std::shared_ptr<Calque>        Interface::ms_calque_bureau          = std::make_shared<Calque>();
-std::shared_ptr<Calque>        Interface::ms_calque_fenetres        = std::make_shared<Calque>();
-std::shared_ptr<Calque>        Interface::ms_calque_bandeaux        = std::make_shared<Calque>();
-std::shared_ptr<Calque>        Interface::ms_calque_panneau_G        = std::make_shared<Calque>();
-std::shared_ptr<Calque>        Interface::ms_calque_panneau_D        = std::make_shared<Calque>();
-std::shared_ptr<Calque>        Interface::ms_calque_bandeauMenuDeroulants  = std::make_shared<Calque>();
-std::shared_ptr<Calque>        Interface::ms_calque_menuDeroulants  = std::make_shared<Calque>();
-//
 std::shared_ptr<AffCurseurSouris>       Interface::ms_curseurSouris;
+bool                                    Interface::ms_aBesoinActualisation = false;
 
+//bool                                    Interface::ms_debugLog = true;
 
 
 /////////////////////////////////////////////////
@@ -41,6 +45,10 @@ Interface::Interface( sf::RenderWindow* fenetre )
 //, ms_calque_bandeaux    ( std::make_shared<Calque>())
 //, ms_calque_fenetres    ( std::make_shared<Calque>())
 {
+    m_nom = "GUI";
+
+    logTitre("Creation");
+
     // la fenetre SFML
     ms_fenetreSFML = fenetre;
 
@@ -91,11 +99,9 @@ std::shared_ptr<Gadget> Interface::chercherGadgetSurvole ()
     sf::Vector2i posSouris = sf::Mouse::getPosition( *m_fenetre );
 
     for (int i=m_enfants.size()-1; i>=0; i-- )    {
-            auto enfant = m_enfants[i];
-//    for (auto gadget : m_enfants )    {
+        auto enfant = m_enfants[i];
         std::shared_ptr<Gadget> result = enfant->testerSurvol ( posSouris );
-        if ( result != nullptr )
-            return result;
+        if ( result != nullptr ) return result;
     }
 
     return nullptr;
@@ -105,7 +111,13 @@ std::shared_ptr<Gadget> Interface::chercherGadgetSurvole ()
 /////////////////////////////////////////////////
 void Interface::actualiser ()
 {
-    if ( ! m_aBesoinActualisation ) return;
+    if ( ! ms_aBesoinActualisation ) return;
+
+    logTitre ( "Actualiser");
+
+//    std::cout << "Interface::actualiser ()\n";
+    for ( auto enfant : m_enfants )
+        enfant->actualiser();
 
     // on calcule la taille verticale des bandeaux ...
     sf::Vector2f decallage = {0,0};
@@ -143,7 +155,9 @@ void Interface::actualiser ()
         panneau->setTailleY ( m_fenetre->getSize().y - decallage.y );
 
     }
-    m_aBesoinActualisation = false;
+
+
+    ms_aBesoinActualisation = false;
 }
 
 ///////////////////////////////////////////////////
@@ -159,6 +173,7 @@ void Interface::actualiser ()
 void Interface::traiterEvenements( sf::Event evenement )
 {
 //    std::cout << "EVENEMTN--------------\n";
+//    log ("Traiter les evenements");
 
     Gadget::traiterEvenements ( evenement);
 
@@ -190,6 +205,7 @@ void Interface::traiterEvenements( sf::Event evenement )
     switch ( evenement.type ){
         ///////// Deplacement souris /////////////////////////////////////////
         case sf::Event::MouseMoved :
+//            log ("  ... la souris bouge ...");
 
             // On gere le cureur souris
             if (ms_curseurSouris->estVisible())
@@ -198,6 +214,8 @@ void Interface::traiterEvenements( sf::Event evenement )
             // On sort si on a pas changé de bouton survolé
             if ( m_boutonSurvole ==  boutonSurvoleBack )
                 return;
+
+            log ("  ... on survol un bouton ...");
 
             if (m_boutonPresse == nullptr )
             {

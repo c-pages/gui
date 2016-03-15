@@ -11,7 +11,7 @@ class AffCurseurSouris : public AffIcone
 {
     public:
 
-        AffCurseurSouris( Interface *     interface );
+        AffCurseurSouris( Interface *     interfacePArent  );
 
         //virtual ~AffCurseurSouris();
 

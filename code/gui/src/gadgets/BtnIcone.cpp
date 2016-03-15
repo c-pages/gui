@@ -19,7 +19,7 @@ BtnIcone::BtnIcone ()
     ajouterComposant( m_icone );
 
     m_icone->setIndex ( 1 );
-    actualiser ();
+//    actualiser ();
 //    m_icone->setStyle ( m_skin->getStyle( Styles::bouton ) , Etat::repos );
 }
 
@@ -32,10 +32,10 @@ void BtnIcone::actualiserGeometrie ()
         m_taille = { m_icone->getTaille().x + m_marge.x*2 , m_icone->getTaille().y + m_marge.y*2 } ;
 
     m_icone->setPosition( m_marge.x  , m_marge.y/3 );
+    m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
 
-    BtnRectangle::actualiserGeometrie();
-//    if (m_parent!=nullptr)
-//        m_parent->actualiserContenu();
+
+
 
 }
 
@@ -53,6 +53,7 @@ void BtnIcone::actualiserStyle ()
     m_icone->setOutlineThickness ( 0 ) ;
 
     BtnRectangle::actualiserStyle();
+
 //    if (m_parent!=nullptr)
 //        m_parent->actualiserContenu();
 }

@@ -3,6 +3,7 @@
 /////////////////////////////////////////////////
 #include <Geometrie.h>
 #include <Gadget.h>
+#include <..\Patch.h>
 
 
 
@@ -29,9 +30,7 @@ sf::Vector2f Geometrie::getPosAbs () const
 
 void Geometrie::setPosition( float x , float y ){
      sf::Transformable::setPosition( int ( x )  , int ( y ) );
-     actualiserBounds();
-     for ( auto enfant : m_enfants )
-        enfant->actualiserBounds();
+
 };
 
 /////////////////////////////////////////////////
@@ -44,6 +43,10 @@ void Geometrie::Aligner ( std::shared_ptr<Gadget> cible, Alignement alignement, 
 /////////////////////////////////////////////////
 void Geometrie::actualiserBounds ()
 {
+    static_cast<Gadget*>(this)->log ( "ActualiserBounds  ");
+//    log ( "m_taille" + patch::to_string(m_taille.x) + ", " + patch::to_string(m_taille.y) );
+    static_cast<Gadget*>(this)->log (  "taille" , getTaille() );
+
     sf::Vector2f pos = getPosAbs ();
 
     m_globalBounds.left     = pos.x;

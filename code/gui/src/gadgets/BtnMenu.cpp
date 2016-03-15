@@ -18,6 +18,9 @@ BtnMenu::BtnMenu ()
 , m_ombre        (std::make_shared<AffRectangle>())
 , m_ombreActive ( false )
 {
+
+//    logTitre("Creation");
+
     m_marge.x = 0;
     m_marge.y = 0;
 
@@ -130,6 +133,8 @@ void BtnMenu::actualiserGeometrie()
     actualiserBounds ();
     m_fond->setTaille( m_taille );
     m_ombre->setTaille( m_taille );
+
+
 }
 
 /////////////////////////////////////////////////
@@ -156,6 +161,7 @@ void BtnMenu::actualiserStyle()
     m_ombre->setFillColor            ( m_ombreCouleur ) ;
     m_ombre->setOutlineColor         ( m_ombreLgnCouleur  ) ;
     m_ombre->setOutlineThickness     ( m_ombreLgnepaisseur  );
+
 }
 
 /////////////////////////////////////////////////

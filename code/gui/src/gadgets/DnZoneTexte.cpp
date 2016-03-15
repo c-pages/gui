@@ -58,7 +58,7 @@ DnZoneTexte::DnZoneTexte ()
     fn_valider = [this](){
         if ( m_ecritureActive ){
             setModeEcritureActif ( false );
-            m_texte = m_valeur = m_label->getSFTexte()->getString() ;
+            m_texte = m_valeur = m_label->getTexte() ;
             actualiser ();
             declencher( Evenement::on_valeurValide);
         }
@@ -109,7 +109,7 @@ void DnZoneTexte::actualiserGeometrie ()
     m_label->setPosition    ( m_marge.x , m_marge.y/2);
 
 //    sf::Vector2f pos = m_label->getSFTexte()->findCharacterPos 	(  m_label->getTexte().size() ) ;
-    sf::Vector2f pos = m_label->getSFTexte()->findCharacterPos 	(  m_label->getSFTexte()->getString().getSize() ) ;
+    sf::Vector2f pos = m_label->getSFTexte().findCharacterPos 	(  m_label->getTexte().size() ) ;
 
     m_curseur->setPosition ( pos.x , pos.y );
     m_curseur->move( 5 , m_marge.y/2 );

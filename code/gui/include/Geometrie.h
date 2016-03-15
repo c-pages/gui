@@ -47,24 +47,25 @@ public:
     virtual void setTaille( float x, float y ){
         if ( m_taille == sf::Vector2i (x,y) ) return;
         m_taille = {x,y};
-        actualiserGeometrie();
+        demanderActualisation();
         };
     virtual void setTaille( sf::Vector2i val ){
         if ( m_taille == val ) return;
         m_taille = val;
-        actualiserGeometrie();
+        demanderActualisation();
         };
     virtual void setTailleX( float val ){
         if ( m_taille.x == val ) return;
         m_taille.x = val;
-        actualiserGeometrie();
+        demanderActualisation();
         };
     virtual void setTailleY( float val ){
         if ( m_taille.y == val ) return;
         m_taille.y = val;
-        actualiserGeometrie();
+        demanderActualisation();
         };
 
+    virtual void demanderActualisation(){};
 
     ///< Acceder à m_taille
     virtual sf::Vector2i getTaille () const { return m_taille;  };

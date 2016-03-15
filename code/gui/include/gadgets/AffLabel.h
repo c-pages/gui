@@ -35,42 +35,58 @@ public:
 
 //    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
 
-/*
+
     ///< Definir m_texte
     virtual void setTexte( std::string val ){
+        log("setTexte \"" + val + "\"" );
         m_texte = val;
-        actualiserGeometrie();
-    };*/
+        m_texteSFML.setString( val );
+        demanderActualisation();
+//        demanderActuaStyle();
+//        demanderActuaGeom();
+//        actualiserGeometrie();
+    };
 //
 //    ///< Acceder à m_texte
-//    std::string getTexte () const { return m_texte; };
+    std::string getTexte () const { return m_texteSFML.getString( ); };
+//
+//    ///< Acceder à m_texte
+    sf::Text     getSFTexte () const { return m_texteSFML; };
 
-    ///< Acceder à m_texte
-    std::shared_ptr<sf::Text> getSFTexte () const { return m_texteSFML; };
+
+//    virtual void creerNom( std::string type  = "Label" ) {Gadget::creerNom(type);};
 
     ///< Definir m_texteTaille
     void setTexteTaille( float val ){
+//        log ("setTexteTaille" , val);
         m_textTaille = val;
-        m_texteSFML->setCharacterSize ( val ) ;
+//        m_texteSFML.setCharacterSize ( val ) ;
+        demanderActualisation();
         };
 
 
     ///< Definir m_police
     void setTexteCouleur( sf::Color couleur ){
+//        log ("setTexteCouleur" , couleur);
         m_textCouleur = couleur;
-        m_texteSFML->setColor ( couleur );
+//        m_texteSFML.setColor ( couleur );
+        demanderActualisation();
     };
 
     ///< Definir m_police
     void setPolice( sf::Font val ){
+//        log ("setPolice" , "");
         m_textPolice = val;
-        m_texteSFML->setFont    ( m_textPolice );/* actualiser();*/
+//        m_texteSFML.setFont    ( m_textPolice );/* actualiser();*/
+        demanderActualisation();
     };
 
     ///< Definir m_police
     void setTexteStyle( sf::Text::Style val ){
+//        log ("setTexteStyle" , val );
         m_textStyle = val;
-        m_texteSFML->setStyle    ( m_textStyle );
+//        m_texteSFML.setStyle    ( m_textStyle );
+        demanderActualisation();
     };
 
 
@@ -109,7 +125,7 @@ public:
 private:
 
     // les composants de l'interface du gadget
-    std::shared_ptr<sf::Text>   m_texteSFML;        ///< Le shape SFML qui affiche le texte.
+    sf::Text   m_texteSFML;        ///< Le shape SFML qui affiche le texte.
 
     // les proprietés graphiques
     sf::Color           m_textCouleur;

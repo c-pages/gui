@@ -7,7 +7,7 @@
 #include <iostream>
 #include <Config.h>
 
-
+#include<cstdlib>
 
 namespace app {
 
@@ -36,6 +36,7 @@ EcranDemo::EcranDemo( Application*  appli )
     pos *= 0.5f;
     m_vueJeu.setCenter(pos);
     m_vueGUI.setCenter(pos);
+
 
 }
 
@@ -80,13 +81,6 @@ void EcranDemo::traiter_evenements  ( const sf::Event& event )
 /////////////////////////////////////////////////
 void EcranDemo::actualiser  ( float deltaT )
 {
-    // les FPS
-    m_compteurFrameFPS++;
-    if ( m_chronoFPS.getElapsedTime().asSeconds() >= 1 )    {
-        m_FPS = m_compteurFrameFPS;
-        m_chronoFPS.restart();
-        m_compteurFrameFPS = 0;
-    }
 
     // actualiser la fenetre du jeu ...
 
@@ -96,13 +90,20 @@ void EcranDemo::actualiser  ( float deltaT )
     ///<\todo actualiser les animations de l'interface
 //    m_interface->actualiser    ( sf::seconds( deltaT ) ) ;
 
-
+/*
+    // les FPS
+    m_compteurFrameFPS++;
+    if ( m_chronoFPS.getElapsedTime().asSeconds() >= 1 )    {
+        m_FPS = m_compteurFrameFPS;
+        m_chronoFPS.restart();
+        m_compteurFrameFPS = 0;
+    }
     std::string val=  "FPS : " + patch::to_string( m_FPS ) + "  - Survole : ";
     if ( m_interface->m_boutonSurvole != nullptr ){
         val +=   m_interface->m_boutonSurvole->getNom() ;
     } else val += "nullptr";
     m_labelRetour->setTexte ( val );
-
+*/
 
 
 //    std::string val =  "Retour : " + m_interface->m_boutonSurvole->getNom();
@@ -155,6 +156,15 @@ EcranDemo::initScene  ( )
 void
 EcranDemo::initGUI_tests ()
 {
+
+    auto bouton = m_interface->creer.boutonTexte( "bouton" );
+    bouton->setPosition ( 50, 50);
+
+
+
+
+
+    /*
     auto liste = m_interface->creer.liste();
     liste->setPosition ( 50, 50);
     liste->ajouterElement ( "Premier" );
@@ -181,7 +191,7 @@ EcranDemo::initGUI_tests ()
     listeDeroulante->ajouterElement ( "Huitieme" );
     listeDeroulante->ajouterElement ( "Neuvieme" );
     listeDeroulante->ajouterElement ( "Dixieme" );
-
+*/
 }
 
 /////////////////////////////////////////////////
@@ -196,18 +206,19 @@ EcranDemo::initGUI ()
 //    m_skin      = std::make_shared<Skin>();
 
 
-    /////// Interactions clavier ///////
-//    m_interface->lier ( sf::Keyboard::Escape , [this]() {
-//            std::cout << " touche : Escape  Fermer.\n";
-//            m_appli->getFenetre()->close();
-//        } );
+    ///// Interactions clavier ///////
+    m_interface->lier ( sf::Keyboard::Escape , [this]() {
+            system("cls");
+        } );
+
+//    m_interface->logTitre("--- fin init -------------------------");
 
     /////// Label retour ///////
-    m_labelRetour = m_interface->creer.label( "Retour :" );
-    m_labelRetour->setPosition    ( 5 , 5 );
+//    m_labelRetour = m_interface->creer.label( "Retour :" );
+//    m_labelRetour->setPosition    ( 5 , 5 );
 //    m_labelRetour->setStyle       ( m_skin->getStyle (  gui::Styles::txtLog ) );
 
-
+/*
 
     /////// Bandeau ///////
 //    auto bandeau = m_interface->creer.bandeau( );
@@ -303,6 +314,7 @@ EcranDemo::initGUI ()
     auto fenetrePanneau_3 = m_interface->creer.fenetre("Test 3");
     panneau_D->ajouter ( fenetrePanneau_3 );
 //    fenetrePanneau_3->reduire();
+*/
 }
 
 

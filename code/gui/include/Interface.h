@@ -11,20 +11,6 @@
 
 namespace gui {
 
-//enum class Polices {
-//    Defaut,
-//    Police_1,
-//    Fin
-//};
-
-//enum class Icones {
-//    Fin
-//};
-
-//static  ResourcesMgr<sf::Texture,   std::string >   ms_icones;  ///< Manager des icones
-
-//enum class Images {
-//    Fin
 
 
 /////////////////////////////////////////////////
@@ -48,7 +34,7 @@ public:
     ///
     /////////////////////////////////////////////////
     virtual void actualiser ();
-//    void nouvellePolice(std::string fichier);
+
 
     /////////////////////////////////////////////////
     virtual void actualiser ( sf::Time deltaTemps ){
@@ -56,10 +42,10 @@ public:
     };
 
     //};
-    static  ResourcesMgr<sf::Font,std::string >         ms_polices; ///< Manager des polices
-    static  ResourcesMgr<sf::Texture,   std::string >   ms_images;  ///< Manager des images
-    static  ResourcesMgr<sf::Texture,   std::string >   ms_icones;  ///< Manager des icones ... a voir
-    static  ResourcesMgr<sf::Texture,   std::string >   ms_curseurs;  ///< Manager des curseurs
+    static  ResourcesMgr< sf::Font,      std::string >   ms_polices; ///< Manager des polices
+    static  ResourcesMgr< sf::Texture,   std::string >   ms_images;  ///< Manager des images
+    static  ResourcesMgr< sf::Texture,   std::string >   ms_icones;  ///< Manager des icones ... a voir
+    static  ResourcesMgr< sf::Texture,   std::string >   ms_curseurs;  ///< Manager des curseurs
 
     static  std::shared_ptr<Calque>        ms_calque_bureau;
     static  std::shared_ptr<Calque>        ms_calque_fenetres;
@@ -71,6 +57,8 @@ public:
 
 
 
+    static  void aBesoinActualisation() { ms_aBesoinActualisation = true ; };
+
     static  void setCurseur ( Curseurs    curseur   )
     {
         ms_curseurSouris->setCurseur ( curseur  );
@@ -78,6 +66,7 @@ public:
 
 private:
 
+    static  bool                                    ms_aBesoinActualisation;
     static  std::shared_ptr<AffCurseurSouris>       ms_curseurSouris;
 
 
@@ -102,15 +91,10 @@ public:
         result = sf::Mouse::getPosition( *ms_fenetreSFML );
         return result;
     };
-    void demanderActualisation() { m_aBesoinActualisation = true ; };
 
     static sf::RenderWindow*                    ms_fenetreSFML;      ///< La fenetyre SFML;
 
     sf::RenderWindow*        getFenetre()  { return m_fenetre; };
-//
-//    std::vector<std::shared_ptr<Gadget>>        m_bureau;
-//    std::vector<std::shared_ptr<Gadget>>        m_fenetres;
-//    std::vector<std::shared_ptr<Gadget>>        m_supports;
 
 
 
@@ -126,7 +110,7 @@ public:
 private:
     std::shared_ptr<Gadget>     m_boutonPresse;     ///< Le bouton pressé actuelement par la souris.
     sf::RenderWindow*           m_fenetre;          ///< La fenetyre SFML;
-    bool                        m_aBesoinActualisation = true;
+
 }; // fin class gui
 
 }; // fin namespace gui

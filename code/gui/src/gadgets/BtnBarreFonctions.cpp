@@ -207,7 +207,6 @@ void BtnBarreFonctions::actualiserGeometrie ()
         index++;
     }
 
-    actualiserBounds ();
 
 }
 /*
@@ -241,6 +240,7 @@ void BtnBarreFonctions::actualiserStyle ()
     m_ombre->setFillColor (m_ombreCouleur);
     m_ombre->setOutlineColor (m_ombreLgnCouleur);
     m_ombre->setOutlineThickness (m_ombreLgnepaisseur);
+
 
 }
 

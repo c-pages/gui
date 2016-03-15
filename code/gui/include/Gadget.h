@@ -11,9 +11,6 @@
 //#include <Skin.h>
 #include <ActionClavier.h>
 #include <Enums.h>
-//#include <Interface.h>
-/*
-#include <ActionEvenement.h>*/
 
 
 namespace gui {
@@ -61,24 +58,29 @@ public:
 
     ///< Definir m_visible
     void setVisible( bool val )
-        { m_visible = val;  /*actualiserEtat (); actualiser();*/ };
+        { log("SetVisible", val); m_visible = val;  /*actualiserEtat (); actualiser();*/ };
 
     ///< Definir m_actif
     void setActif( bool val )
-        { m_actif = val;  actualiserEtat (); actualiser(); };
+        { log("setActif", val);m_actif = val;  actualiserEtat (); demanderActualisation(); };
 
     ///< Definir m_focus
     void setFocus( bool val )
-        { m_focus = val; actualiserEtat (); actualiser(); };
+        { log("SetVisible", val);m_focus = val;  actualiserEtat (); demanderActualisation(); };
 
     ///< Definir m_survol
     void setSurvol( bool val )
-        {
-            m_survol = val; actualiserEtat ();  actualiser(); };
+        {log ("setSurvol",  val);
+            m_survol = val; actualiserEtat ();  demanderActualisation();
+
+            };
 
     ///< Definir m_presse
     void setPresse( bool val )
-        { m_presse = val; actualiserEtat (); actualiser(); };
+        { log("SetVisible", val);
+            m_presse = val;
+        actualiserEtat ();
+        demanderActualisation(); };
 
     ///< Definir m_deplacable
     void setDeplacable( bool val )
@@ -235,25 +237,47 @@ public:
 /*
     virtual std::shared_ptr<Style> getStyle ( )const { return m_style; };
 */
-    bool aDesEnfants () { return ( m_enfants.size() > 0 ); };
+
+
+    /////////////////////////////////////////////////
+    virtual void creerNom( std::string type  = "Gadget" );
+
 
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
-    std::string     getNom() const { return m_nom; };
+
+
+
+    virtual std::string     getNom() const { return m_nom; };
+
 
     int getNombreGadgets () const { return ms_CompteurGadgets; };
 
-    virtual void setTexte( std::string val ){ m_texte = val; actualiserGeometrie(); };
+
+
+    virtual void setTexte( std::string val ){ log("setTexte \"" + val + "\"" ); m_texte = val;  demanderActuaGeom(); };
 
     std::string getTexte( ) const { return m_texte; };
 
-    void setMarge ( sf::Vector2f marge ){ m_marge = marge; actualiserGeometrie(); };
+    void setMarge ( sf::Vector2f marge ){ m_marge = marge; demanderActuaGeom(); };
     sf::Vector2f getMarge() { return m_marge;};
 
+    virtual void demanderActualisation();
+    virtual void demanderActuaGeom();
+    virtual void demanderActuaStyle();
+    virtual void demanderActuaContenu();
+
+
 protected:
+
+    static std::string      ms_logNomGadgetBack;
+
     sf::Vector2f                m_marge;            ///< La marge à laissé
 
-    bool                        m_necessiteActualisation;
+    bool                        m_aBesoinActualisation ;
+    bool                        m_aBesoinActuaGeom ;
+    bool                        m_aBesoinActuaStyle ;
+    bool                        m_aBesoinActuaContenu ;
 
 /////////////////////////////////////////////////
 // Membres
@@ -285,6 +309,11 @@ protected:
 
     friend class FabriqueBase;
 
+
+
+
+
+//    std::string     m_type  = "Gadget" ;
 
 }; // fin class Gadget
 

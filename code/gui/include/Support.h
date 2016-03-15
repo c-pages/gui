@@ -5,6 +5,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include "Gadget.h"
+
 #include "gadgets/Contenant.h"
 #include "repartiteurs/Repartiteur.h"
 #include <memory>
@@ -16,7 +17,7 @@ namespace gui {
 
 
 
-class Support : public gui::Gadget {
+class Support : public Gadget {
 
 
 
@@ -25,30 +26,26 @@ class Support : public gui::Gadget {
 /////////////////////////////////////////////////
 public:
     Support(  );
-//    void ajouter ();
 
-//    virtual void ajouter (std::shared_ptr<Gadget> enfant);
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
 
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
-    virtual bool estAbsorbable(){return m_absorbable; };
+    virtual bool estAbsorbable(){ return m_absorbable; };
+
+    void setInterface ( Interface *     interfacePArent );
+
     virtual void setAbsorbable ( bool val ) {m_absorbable = val; actualiserStyle ();};
 
-    void setInterface ( Interface *     interface )    {
-        m_interface = interface;
-        actualiser();
-    }
 
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
-//public:
-//    Repartiteur m_repartiteur;
+
 protected:
     std::shared_ptr<AffRectangle>      m_fond;
-//    std::shared_ptr<Contenant>            m_panneaux;
+
     bool                               m_absorbable = false;
 
     Interface *     m_interface;

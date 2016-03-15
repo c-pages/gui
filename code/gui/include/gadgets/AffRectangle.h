@@ -45,6 +45,7 @@ public:
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
 
+//    virtual void creerNom( std::string type  = "Rectangle" ) {Gadget::creerNom(type);};
 
 
     void setFillColor (sf::Color couleur) {
@@ -77,6 +78,8 @@ protected:
     sf::Color  m_couleurFond;
     sf::Color  m_couleurLignes;
     float      m_epaisseur;
+
+//    std::string     m_type  = "Rectangle" ;
 
 }; // fin class AffRectangle
 

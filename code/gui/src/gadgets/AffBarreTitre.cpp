@@ -31,7 +31,7 @@ AffBarreTitre::AffBarreTitre ()
     m_fndLignesCouleur      = sf::Color( 0,0,255, 255 ) ;
     m_fndLignesEpaisseur    = 1;
 
-    actualiser ();
+
 
 }
 

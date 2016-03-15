@@ -7,16 +7,23 @@
 #include <Gadget.h>
 //#include <Skin.h>
 #include <Interface.h>
+#include <../GUI.h>
+
 
 
 namespace gui {
+
+
+
+
+
 
 /////////////////////////////////////////////////
 // Initialisation des membre static
 /////////////////////////////////////////////////
 //Gadget *    Gadget::ms_racineCourante   = nullptr;
 int         Gadget::ms_CompteurGadgets  = 0;
-
+std::string Gadget::ms_logNomGadgetBack = "";
 
 /////////////////////////////////////////////////
 Gadget::Gadget ()
@@ -28,13 +35,20 @@ Gadget::Gadget ()
 , m_presse      ( false )
 , m_deplacable  ( false )
 , m_redimensionnable ( false )
+
+, m_aBesoinActualisation    ( true )
+, m_aBesoinActuaGeom        ( true )
+, m_aBesoinActuaStyle       ( true )
+, m_aBesoinActuaContenu     ( true )
+
 //, m_skin        ( std::make_shared<Skin>() )
 //, m_skin        ( nullptr )
 //, m_style       ( std::make_shared<Style>() )
 //, m_style       ( nullptr )
-, m_necessiteActualisation ( false )
+//, m_demanderActualisation ( false )
 , m_etat        ( Etat::repos )
 {
+
     // Si on a une racine active, on utilise son skin
 //    if ( ms_racineCourante != nullptr )
 //        m_skin = ms_racineCourante->getSkin();
@@ -45,13 +59,49 @@ Gadget::Gadget ()
     ms_CompteurGadgets++;
 
     // Creation du nom unique du gadget
-    std::stringstream ss;
-    ss << getNombreGadgets();
-    m_nom = "Gadget_" + ss.str();
-
+    creerNom( "Gadget" );
+//    std::stringstream ss;
+//    ss << getNombreGadgets();
+//    m_nom = "Gadget_" + ss.str();
 }
 
 
+/////////////////////////////////////////////////
+void Gadget::creerNom( std::string type  ) {
+    // Creation du nom unique du gadget
+    std::stringstream ss;
+    ss << getNombreGadgets();
+    m_nom = type + "_" + ss.str();
+};
+
+
+/////////////////////////////////////////////////
+void Gadget::demanderActualisation() {
+    m_aBesoinActualisation = true ;
+    m_aBesoinActuaGeom = true ;
+    m_aBesoinActuaStyle = true ;
+    m_aBesoinActualisation = true ;
+    Interface::aBesoinActualisation();
+};
+
+/////////////////////////////////////////////////
+void Gadget::demanderActuaGeom() {
+    m_aBesoinActualisation = true ;
+    m_aBesoinActuaGeom = true ;
+    Interface::aBesoinActualisation();
+};
+/////////////////////////////////////////////////
+void Gadget::demanderActuaStyle() {
+    m_aBesoinActualisation = true ;
+    m_aBesoinActuaStyle = true ;
+    Interface::aBesoinActualisation();
+};
+/////////////////////////////////////////////////
+void Gadget::demanderActuaContenu() {
+    m_aBesoinActualisation = true ;
+    m_aBesoinActuaContenu = true ;
+    Interface::aBesoinActualisation();
+};
 /////////////////////////////////////////////////
 Gadget::~Gadget ()
 {
@@ -59,22 +109,92 @@ Gadget::~Gadget ()
     ms_CompteurGadgets--;
 }
 
+/*
+/////////////////////////////////////////////////
+int Gadget::log_getCurseurPosX ( )
+{
+    CONSOLE_SCREEN_BUFFER_INFO csbiInfo;
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbiInfo);
+    return csbiInfo.dwCursorPosition.Y;
+
+
+//
+//    COORD coord;
+//
+//    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+//    if (console == INVALID_HANDLE_VALUE)
+//    {
+//        printf("GetStdHandle failed with %d\n", GetLastError());
+//        return {0,0};
+//    }
+//    CONSOLE_SCREEN_BUFFER_INFO csbiInfo;
+//    if (  GetConsoleScreenBufferInfo(console, &csbiInfo) )
+//    {
+//        coord = csbiInfo.dwCursorPosition;
+//        int x = coord.X;
+//        return {0,0};
+////        log ("POS CURSEUR" );
+////        sf::Vector2f pos = {csbiInfo.dwCursorPosition.X , csbiInfo.dwCursorPosition.Y };
+////        log ("POS CURSEUR", pos );
+//    }
+////        log ("POS CURSEUR", sf::Vector2f( csbiInfo.dwCursorPosition.X , csbiInfo.dwCursorPosition.Y ) );
+//
+////    return { coord.X , coord.Y };
+////    log ("POS CURSEUR", pos );
+//
+
+}*/
+
+
+
+
+
+
+
 
 /////////////////////////////////////////////////
 void Gadget::actualiser ()
 {
-//    std::cout << "Gadget::actualiser\n";
 
-    actualiserStyle ();
-    actualiserGeometrie ();
+
+
+    // si on a pas besoin d'actualiser
+    if ( ! m_aBesoinActualisation )
+    {
+        // on envois le message aux enfants
+        actualiserEnfants();
+        // on envois le message aux composants
+        actualiserComposants();
+        return;
+    }
+
+    logTitre ( "Actualiser"  );
+
+    // on actualise le style si besoin
+    if ( m_aBesoinActuaStyle )  {
+        actualiserStyle ();
+        m_aBesoinActuaStyle = false;
+    }
+    // on actualise les geometrie si besoin
+    if ( m_aBesoinActuaGeom )   {
+        actualiserGeometrie ();
+        m_aBesoinActuaGeom = false;
+    }
+    // on actualise le contenu si besoin
+    if ( m_aBesoinActuaContenu )  {
+        actualiserContenu ();
+        m_aBesoinActuaContenu = false;
+    }
+
+    // on envois le message aux enfants
+    actualiserEnfants();
+    // on envois le message aux composants
+    actualiserComposants();
+
     actualiserBounds();
 
-    actualiserEnfants();
-    actualiserComposants();
-//    actualiserContenu();
+    m_aBesoinActualisation = false;
 
-    if (m_parent!=nullptr)
-        m_parent->actualiserContenu();
 }
 
 
@@ -82,7 +202,7 @@ void Gadget::actualiser ()
 void Gadget::actualiser (sf::Time deltaTemps)
 {
 
-    if ( m_necessiteActualisation )
+    if ( m_aBesoinActualisation )
     {
         actualiser();
     }
@@ -161,7 +281,7 @@ bool Gadget::estDeplacable () const
 std::shared_ptr<Gadget>  Gadget::testerSurvol ( sf::Vector2i position )
 {
     ///<\todo... a voir si on peut se passer de faire l'actualisation a chaque fois ...(pour l'instant sans ca, ca pose problème a bouton dans fenentre)
-    actualiserBounds();
+//    actualiserBounds();
 
     // Si on survol le gadget
     if ( m_globalBounds.contains( position.x, position.y ) && estActif() )

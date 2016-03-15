@@ -2,8 +2,10 @@
 
 namespace gui {
 
-Calque::Calque()
+Calque::Calque( std::string nom )
 {
+    //creerNom( "Calque");
+    m_nom = nom;
     //ctor
 }
 
@@ -40,4 +42,7 @@ std::shared_ptr<Gadget>  Calque::testerSurvol ( sf::Vector2i position )
         return nullptr;
 
 }
+
+
 }
+//

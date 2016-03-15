@@ -46,17 +46,25 @@ public:
 //    virtual     void setStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
 
     ///< Definir m_texteTaille
+    virtual void setTexte( std::string val ){
+        log("setTexte \"" + val + "\"" );
+        m_texte = val;
+        m_label->setTexte ( val ) ;
+        demanderActuaGeom();
+    };
+
+    ///< Definir m_texteTaille
     void setTexteTaille( float val ){
         m_textTaille = val;
         m_label->setTexteTaille ( val ) ;
-//        actualiserGeometrie ();
+//        demanderActuaStyle();
     };
 
     ///< Definir m_texteTaille
     void setTexteTaille( Valeurs<float> val ){
         m_textTaille = val;
 //        m_label->setTexteTaille ( val ) ;
-        actualiser ();
+        demanderActuaStyle();
     };
 
 
@@ -66,6 +74,7 @@ public:
     void setTexteCouleur( sf::Color couleur ){
         m_textCouleur = couleur;
         m_label->setTexteCouleur ( couleur );
+//        demanderActuaStyle();
 //        actualiser ();
     };
 
@@ -73,13 +82,17 @@ public:
     void setTexteCouleur( Valeurs<sf::Color> couleur ){
         m_textCouleur = couleur;
 //        m_label->setTexteCouleur ( couleur );
-        actualiser ();
+        demanderActuaStyle();
     };
 
     ///< Definir m_police
     void setPolice( sf::Font val ){
         m_textPolice = val;
-        m_label->setPolice    ( val );
+
+//        m_label->setPolice    ( val );
+
+
+//        demanderActuaStyle();
 //        actualiserGeometrie ();
     };
 
@@ -87,12 +100,13 @@ public:
     void setPolice( Valeurs<sf::Font> val ){
         m_textPolice = val;
 //        m_label->setPolice    ( val );
-        actualiserGeometrie ();
+        demanderActuaStyle();
     };
     ///< Definir m_police
     void setTexteStyle( sf::Text::Style val ){
         m_textStyle = val;
         m_label->setTexteStyle    ( val );
+//        demanderActuaStyle();
 //        actualiserGeometrie ();
     };
 
@@ -100,7 +114,7 @@ public:
     void setTexteStyle( Valeurs<sf::Text::Style> val ){
         m_textStyle = val;
 //        m_label->setTexteStyle    ( val );
-        actualiser ();
+        demanderActuaStyle();
     };
 ////////////////////////////////// ///////////////
 // Membres

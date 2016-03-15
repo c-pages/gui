@@ -7,17 +7,26 @@ namespace gui {
 
 class Calque : public Gadget
 {
-    public:
-        Calque();
-        virtual ~Calque();
+public:
+    Calque( std::string nom );
+    virtual ~Calque();
 
 
     /////////////////////////////////////////////////
     std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
+/*    virtual std::string     getHierarchie() const { return ""; };
 
-    protected:
-    private:
+    virtual std::string     getNom() const {
+        std::string nom = m_nom;
+        nom.erase(0, 1);
+        return nom ;
+    };*/
+
+protected:
+private:
+
+
 };
 
 };

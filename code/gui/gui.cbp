@@ -81,6 +81,7 @@
 		<Unit filename="include/Groupe.h" />
 		<Unit filename="include/Interface.h" />
 		<Unit filename="include/Liste.h" />
+		<Unit filename="include/Log.h" />
 		<Unit filename="include/ResourcesMgr.h" />
 		<Unit filename="include/ResourcesMgr.inl" />
 		<Unit filename="include/Support.h" />
@@ -131,6 +132,7 @@
 		<Unit filename="src/Groupe.cpp" />
 		<Unit filename="src/Interface.cpp" />
 		<Unit filename="src/Liste.cpp" />
+		<Unit filename="src/Log.cpp" />
 		<Unit filename="src/Support.cpp" />
 		<Unit filename="src/Valeurs.cpp" />
 		<Unit filename="src/gadgets/AffBarreTitre.cpp" />

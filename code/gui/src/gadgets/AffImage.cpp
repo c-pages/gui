@@ -14,6 +14,11 @@ AffImage::AffImage ()
 //, m_rectangle   ( )
 , m_ajustement  ( false )
 {
+
+    creerNom ( "Image");
+//    logTitre("Creation");
+
+
     m_texture->setRepeated  ( true );
     m_texture->setSmooth    ( true );
 
@@ -23,7 +28,7 @@ AffImage::AffImage ()
     m_epaisseur     = 0 ;
 
     m_rectangle.setTexture( m_texture );
-    actualiser();
+//    actualiser();
 }
 
 
@@ -50,18 +55,28 @@ void AffImage::chargerDepuisFichier ( std::string fichier )
 /////////////////////////////////////////////////
 void AffImage::actualiserGeometrie ()
 {
+    // Debuggage
+    log ("actualiserGeometrie");
+
     if ( m_ajustement )
         m_rectangle.setSize ( { m_taille.x , m_taille.y } );
     else
         m_rectangle.setSize ( { m_texture->getSize().x , m_texture->getSize().y } );
 
-    actualiserBounds();
+
+
 }
 /////////////////////////////////////////////////
 void AffImage::actualiserStyle ()
 {
+    // Debuggage
+    log ("actualiserStyle");
+
+
     AffRectangle::actualiserStyle();
+
     m_rectangle.setTexture( m_texture );
+
 }
 /*
 /////////////////////////////////////////////////

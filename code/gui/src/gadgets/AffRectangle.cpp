@@ -2,7 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <AffRectangle.h>
-//#include <Skin.h>
+#include <../GUI.h>
 
 
 
@@ -15,8 +15,18 @@ AffRectangle::AffRectangle ( sf::Vector2i taille )
 , m_couleurLignes   ( sf::Color(0,0,255,200) )
 , m_epaisseur       ( 1 )
 {
+    creerNom ( "Rectangle");
+
+
+//    logTitre("Creation");
     m_taille = taille;
-    actualiser ();
+
+    // Creation du nom unique du gadget
+//    creerNom( "Rectangle" );
+//    actualiser ();
+
+    actualiserStyle ();
+    actualiserGeometrie ();
 }
 /*
 /////////////////////////////////////////////////
@@ -34,15 +44,26 @@ void AffRectangle::setStyle ( std::shared_ptr<Style> style , Etat etat )
 /////////////////////////////////////////////////
 void AffRectangle::actualiserGeometrie ()
 {
+    // Debuggage
+    log ("actualiserGeometrie  ");
+
+//    std::cout << "AffRectangle::actualiserGeometrie () : " << getNom() << "\n";
     m_rectangle.setSize ( { m_taille.x, m_taille.y } );
+
+
+
 }
 
 /////////////////////////////////////////////////
 void AffRectangle::actualiserStyle ()
 {
+    // Debuggage
+    log ("actualiserStyle  ");
+
     m_rectangle.setFillColor        ( m_couleurFond );
     m_rectangle.setOutlineColor     ( m_couleurLignes );
     m_rectangle.setOutlineThickness ( m_epaisseur );
+
 }
 
 

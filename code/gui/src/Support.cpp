@@ -28,6 +28,13 @@ Support::Support ()
 }
 
 /////////////////////////////////////////////////
+void Support::setInterface ( Interface *     interfacePArent )    {
+    m_interface = interfacePArent;
+    actualiser();
+};
+
+
+/////////////////////////////////////////////////
 void Support::actualiserGeometrie ()
 {
 

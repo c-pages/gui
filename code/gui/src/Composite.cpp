@@ -23,10 +23,36 @@ void Composite::ajouter (std::shared_ptr<Gadget> enfant)
     auto _this = static_cast<Gadget*>( this );
     enfant->setParent ( _this );
 
-    enfant->actualiser();
-    _this->actualiser();
+    enfant->demanderActualisation();
+    _this->demanderActualisation();
 
 }
+
+
+/////////////////////////////////////////////////
+std::string Composite::getHierarchie() const {
+    if (m_parent!=nullptr) {
+        if ( m_parent->getNom()[0] == '_' )    {
+            return ""  ;
+        } else return m_parent->getHierarchie()  + m_parent->getNom() + "/"  ;
+    } else return "";
+};
+
+
+/////////////////////////////////////////////////
+std::string Composite::getCalqueNom()  {
+    std::string nom = static_cast<Gadget*>(this)->getNom();
+    if ( nom[0] == '_' )    {
+        nom.erase(0, 1);
+        return nom ;
+    } else if (m_parent!=nullptr)
+        return m_parent->getCalqueNom();
+    else if ( nom =="GUI" )
+        return "";
+    else return "-";
+
+};
+
 
 /////////////////////////////////////////////////
 void Composite::actualiserContenu (){
@@ -154,7 +180,6 @@ void Composite::actualiserListes ( ){
 
     static_cast<Gadget*>(this)->actualiser();
 }
-
 /////////////////////////////////////////////////
 sf::IntRect  Composite::boundgingB_enfants()
 {
@@ -189,6 +214,8 @@ sf::IntRect  Composite::boundgingB_enfants()
 /////////////////////////////////////////////////
 void Composite::actualiserEnfants ()
 {
+//    static_cast<Gadget*>(this)->log ("actualiserEnfants");
+
     for ( auto enfant : m_enfants )
         enfant->actualiser();
 }

@@ -21,7 +21,13 @@ CntSliders::CntSliders ()
     // valeurs par defaut
     m_taille = { 400 , 200 };
     m_largeurSliders = 7;
-    m_renderTexture.create( 4096, 4096 );
+
+
+    auto tailleMax = sf::Texture::getMaximumSize();
+    if ( tailleMax < 1080 )
+        m_renderTexture.create( 300  , tailleMax );
+    else
+        m_renderTexture.create( 300  , 1080 );
 
     m_btnBtnCouleurs.set       ( sf::Color( 0, 0, 0, 50 )     , Etat::desactive );
     m_btnBtnCouleurs.set       ( sf::Color( 255,255,255, 0 )  , Etat::repos );

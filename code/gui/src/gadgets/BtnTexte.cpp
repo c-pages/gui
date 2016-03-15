@@ -6,6 +6,7 @@
 
 
 
+
 namespace gui {
 
 /////////////////////////////////////////////////
@@ -13,6 +14,10 @@ BtnTexte::BtnTexte ()
 : BtnRectangle ()
 , m_label       ( std::make_shared<AffLabel>())
 {
+    creerNom ( "BtnTexte");
+
+//    logTitre("Creation");
+
     m_marge = { 5, 5 };
     m_autoAjust = true;
     m_texte = "";
@@ -26,39 +31,60 @@ BtnTexte::BtnTexte ()
 
     ajouterComposant( m_label );
 
-    actualiser ();
+//    actualiser ();
 
 }
 
 /////////////////////////////////////////////////
 void BtnTexte::actualiserGeometrie ()
 {
+    // Debuggage
+    log ( "actualiserGeometrie" );
+    log ( "m_texte" , m_texte );
+    log ( "m_autoAjust" , m_autoAjust );
+    log ( "m_label->getTaille()" , m_label->getTaille() );
+
+
     m_label->setTexte ( m_texte );
+    m_label->setPosition( int( m_marge.x ) , int ( m_marge.y/3 ) );
 
     if ( m_autoAjust )
         m_taille = { m_label->getTaille().x + m_marge.x*2 , m_label->getTaille().y + m_marge.y*2 } ;
 
-    BtnRectangle::actualiserGeometrie();
-
-    m_label->setPosition( int( m_marge.x ) , int ( m_marge.y/3 ) );
+    m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
 
 }
 
 /////////////////////////////////////////////////
 void BtnTexte::actualiserStyle ()
 {
-    BtnRectangle::actualiserStyle ();
+    // Debuggage
+    log ("actualiserStyle");
+
+    // on actualise le label
     m_label->setTexteCouleur    ( sf::Color (
                                       m_textCouleur.get( this->etat() ).r
                                     , m_textCouleur.get( this->etat() ).g
                                     , m_textCouleur.get( this->etat() ).b
                                     , m_textCouleur.get( this->etat() ).a * m_opacite ) ) ;
-
     m_label->setTexteTaille     ( m_textTaille.get( this->etat() ) ) ;
-
     m_label->setPolice          ( m_textPolice.get( this->etat() ) ) ;
-
     m_label->setTexteStyle      ( m_textStyle.get( this->etat() ) ) ;
+
+
+    // on actualise le rectangle
+    m_rectangle->setFillColor    ( sf::Color (
+                                      m_couleurFond.get( this->etat() ).r
+                                    , m_couleurFond.get( this->etat() ).g
+                                    , m_couleurFond.get( this->etat() ).b
+                                    , m_couleurFond.get( this->etat() ).a * m_opacite ) ) ;
+
+    m_rectangle->setOutlineColor     ( sf::Color (
+                                      m_couleurLignes.get( this->etat() ).r
+                                    , m_couleurLignes.get( this->etat() ).g
+                                    , m_couleurLignes.get( this->etat() ).b
+                                    , m_couleurLignes.get( this->etat() ).a * m_opacite ) ) ;
+    m_rectangle->setOutlineThickness ( m_epaisseur.get( this->etat() ) ) ;
 
 }
 /*

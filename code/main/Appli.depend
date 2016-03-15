@@ -355,7 +355,7 @@
 1457871430 r:\06 - c++\110 - gui\code\main\include\gestion_ecrans.h
 	<Ecran.h>
 
-1457879296 source:r:\06 - c++\110 - gui\code\main\src\application.cpp
+1457958754 source:r:\06 - c++\110 - gui\code\main\src\application.cpp
 	"Application.h"
 	"Config.h"
 	"ecrans/EcranDemo.h"
@@ -457,26 +457,27 @@
 	<Application.h>
 	<gui.h>
 
-1457871428 r:\06 - c++\110 - gui\code\gui\gui.h
+1458041849 r:\06 - c++\110 - gui\code\gui\gui.h
 	"Interface.h"
+	"Gadget.h"
 	"Valeurs.h"
 	"Enums.h"
 
-1457884005 r:\06 - c++\110 - gui\code\gui\include\gadget.h
+1458048813 r:\06 - c++\110 - gui\code\gui\include\gadget.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<Geometrie.h>
 	<Composant.h>
 	<ActionClavier.h>
 	<Enums.h>
-	<ActionEvenement.h>
 
-1457907900 r:\06 - c++\110 - gui\code\gui\include\geometrie.h
+1457994722 r:\06 - c++\110 - gui\code\gui\include\geometrie.h
 	"Composite.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1457889637 r:\06 - c++\110 - gui\code\gui\include\composite.h
+1458047355 r:\06 - c++\110 - gui\code\gui\include\composite.h
+	"Log.h"
 	"SFML/Graphics.hpp"
 	<memory>
 	<vector>
@@ -514,35 +515,36 @@
 	"gadgets\SupBandeauMenusDeroulants.h"
 	"gadgets\SupPanneau.h"
 
-1457871428 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
+1457968939 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
 	"Affiche.h"
 	<SFML/Graphics.hpp>
 
 1457871428 r:\06 - c++\110 - gui\code\gui\include\affiche.h
 	"Gadget.h"
 
-1457873759 source:r:\06 - c++\110 - gui\code\main\src\config.cpp
+1457958754 source:r:\06 - c++\110 - gui\code\main\src\config.cpp
 	"Config.h"
 	<iostream>
 
 1457871430 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1457918220 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1458044226 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
+	<cstdlib>
 
 1457871430 source:r:\06 - c++\110 - gui\code\main\src\gestion_ecrans.cpp
 	"Gestion_ecrans.h"
 
-1457871428 r:\06 - c++\110 - gui\code\gui\include\gadgets\afflabel.h
+1457999187 r:\06 - c++\110 - gui\code\gui\include\gadgets\afflabel.h
 	"Affiche.h"
 	<memory>
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1457871428 r:\06 - c++\110 - gui\code\gui\include\gadgets\affimage.h
+1457969051 r:\06 - c++\110 - gui\code\gui\include\gadgets\affimage.h
 	"AffRectangle.h"
 	<memory>
 	<SFML/Graphics.hpp>
@@ -608,7 +610,7 @@
 	"Donnee.h"
 	"BtnRectangle.h"
 
-1457894798 r:\06 - c++\110 - gui\code\gui\include\interface.h
+1458041646 r:\06 - c++\110 - gui\code\gui\include\interface.h
 	"SFML/Graphics.hpp"
 	"Gadget.h"
 	"Calque.h"
@@ -655,7 +657,7 @@
 1457871428 r:\06 - c++\110 - gui\code\gui\include\gadgets\afficone.h
 	"AffImage.h"
 
-1457871428 r:\06 - c++\110 - gui\code\gui\include\gadgets\btntexte.h
+1458049214 r:\06 - c++\110 - gui\code\gui\include\gadgets\btntexte.h
 	"BtnRectangle.h"
 	"gadgets\AffRectangle.h"
 	"gadgets\AffLabel.h"
@@ -765,7 +767,7 @@
 	"AffBarreTitre.h"
 	<memory>
 
-1457872925 r:\06 - c++\110 - gui\code\gui\include\support.h
+1458042123 r:\06 - c++\110 - gui\code\gui\include\support.h
 	"Gadget.h"
 	"gadgets/Contenant.h"
 	"repartiteurs/Repartiteur.h"
@@ -786,7 +788,7 @@
 	<memory>
 	<Groupe.h>
 
-1457871428 r:\06 - c++\110 - gui\code\gui\include\calque.h
+1457981991 r:\06 - c++\110 - gui\code\gui\include\calque.h
 	"Gadget.h"
 
 1457651323 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenredim.h
@@ -1230,7 +1232,7 @@
 	"gadgets/AffRectangle.h"
 	"repartiteurs/Repartiteur.h"
 
-1457894835 r:\06 - c++\110 - gui\code\gui\include\gadgets\affcurseursouris.h
+1458042131 r:\06 - c++\110 - gui\code\gui\include\gadgets\affcurseursouris.h
 	<gadgets/AffIcone.h>
 	<Enums.h>
 
@@ -1250,4 +1252,10 @@
 	"BtnTexte.h"
 	"AffIcone.h"
 	<memory>
+
+1458047850 r:\06 - c++\110 - gui\code\gui\include\log.h
+	<string>
+	<iostream>
+	<windows.h>
+	"SFML/Graphics.hpp"
 

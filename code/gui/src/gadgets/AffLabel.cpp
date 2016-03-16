@@ -23,6 +23,30 @@ AffLabel::AffLabel ()
     actualiserStyle();
 }
 
+/////////////////////////////////////////////////
+void AffLabel::actualiserGeometrie ()
+{
+    // Debuggage
+    log ("actualiserGeometrie");
+
+    m_texteSFML.setString ( m_texte);
+
+    demanderActuaBounds();
+}
+
+/////////////////////////////////////////////////
+void AffLabel::actualiserStyle ()
+{
+    // Debuggage
+    log ("actualiserStyle");
+
+    m_texteSFML.setFont            ( m_textPolice );
+    m_texteSFML.setColor           ( m_textCouleur );
+    m_texteSFML.setStyle           ( m_textStyle );
+    m_texteSFML.setCharacterSize   ( m_textTaille );
+}
+
+
 
 /////////////////////////////////////////////////
 void AffLabel::setTexte( std::string val )
@@ -72,36 +96,11 @@ void AffLabel::setTexteStyle( sf::Text::Style val ){
 
 
 /////////////////////////////////////////////////
-sf::Vector2i  AffLabel::getTaille() const
-{
+sf::Vector2i  AffLabel::getTaille() const{
     return { m_texteSFML.getGlobalBounds().width , m_texteSFML.getGlobalBounds().height };
 }
 
 
-/////////////////////////////////////////////////
-void AffLabel::actualiserGeometrie ()
-{
-    // Debuggage
-    log ("actualiserGeometrie");
-
-    m_texteSFML.setString ( m_texte);
-
-    demanderActuaBounds();
-}
-
-/////////////////////////////////////////////////
-void AffLabel::actualiserStyle ()
-{
-    // Debuggage
-    log ("actualiserStyle");
-
-    m_texteSFML.setFont            ( m_textPolice );
-    m_texteSFML.setColor           ( m_textCouleur );
-    m_texteSFML.setStyle           ( m_textStyle );
-    m_texteSFML.setCharacterSize   ( m_textTaille );
-
-
-}
 
 
 /////////////////////////////////////////////////

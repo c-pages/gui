@@ -12,7 +12,7 @@ std::vector<Gadget*>     Bouton::ms_boutons = {};
 
 /////////////////////////////////////////////////
 Bouton::Bouton ()
-: m_autoAjust   ( false )
+: m_autoAjust   ( true )
 {
     m_marge       = { 5 , 5 } ;
 

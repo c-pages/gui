@@ -27,6 +27,32 @@ AffImage::AffImage ()
     m_rectangle.setTexture( m_texture);
 }
 
+/////////////////////////////////////////////////
+void AffImage::actualiserGeometrie ()
+{
+    // Debuggage
+    log ("actualiserGeometrie");
+
+    if ( m_ajustement )
+        m_rectangle.setSize ( { m_taille.x , m_taille.y } );
+    else
+        m_rectangle.setSize ( { m_texture->getSize().x , m_texture->getSize().y } );
+
+    demanderActuaBounds();
+
+}
+/////////////////////////////////////////////////
+void AffImage::actualiserStyle ()
+{
+    // Debuggage
+    log ("actualiserStyle");
+
+    m_rectangle.setFillColor        ( m_couleurFond );
+    m_rectangle.setOutlineColor     ( m_couleurLignes );
+    m_rectangle.setOutlineThickness ( m_epaisseur );
+
+    m_rectangle.setTexture( m_texture );
+}
 
 /////////////////////////////////////////////////
 void AffImage::setImage (  sf::Texture* texture ) {
@@ -69,34 +95,6 @@ void AffImage::setImage ( std::string fichier )
     demanderActuaGeom() ;
 }
 
-/////////////////////////////////////////////////
-void AffImage::actualiserGeometrie ()
-{
-    // Debuggage
-    log ("actualiserGeometrie");
-
-    if ( m_ajustement )
-        m_rectangle.setSize ( { m_taille.x , m_taille.y } );
-    else
-        m_rectangle.setSize ( { m_texture->getSize().x , m_texture->getSize().y } );
-
-
-
-}
-/////////////////////////////////////////////////
-void AffImage::actualiserStyle ()
-{
-    // Debuggage
-    log ("actualiserStyle");
-
-
-    m_rectangle.setFillColor        ( m_couleurFond );
-    m_rectangle.setOutlineColor     ( m_couleurLignes );
-    m_rectangle.setOutlineThickness ( m_epaisseur );
-
-    m_rectangle.setTexture( m_texture );
-
-}
 
 /////////////////////////////////////////////////
 void AffImage::draw (sf::RenderTarget& target, sf::RenderStates states) const

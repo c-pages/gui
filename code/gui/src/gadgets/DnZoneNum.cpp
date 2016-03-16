@@ -22,9 +22,9 @@ DnZoneNum::DnZoneNum()
 
     m_btnPlus->setImage( &Interface::ms_icones.get( "ico_fleches" ) ) ;
     m_btnMoins->setImage( &Interface::ms_icones.get( "ico_fleches" ) ) ;
-    m_btnMoins->setIconeIndex ( 2 );
+    m_btnMoins->setIndex ( 2 );
 
-    m_zoneTexte->setNumerique (  true );
+    m_zoneTexte->setNumericOnly (  true );
 
     auto fct_plus = [this]()  {
         std::cout << " Valeur plus !!!!! : " << m_valeur << "\n";

@@ -9,40 +9,40 @@ namespace gui {
 
 /////////////////////////////////////////////////
 BtnIcone::BtnIcone ()
-: /*m_rectangle   ( std::make_shared<AffRectangle>())
-, */
-  m_icone       ( std::make_shared<AffIcone>())
-, m_fix    ( false )
+: m_icone       ( std::make_shared<AffIcone>())
+, m_fix ( false )
 {
+    creerNomUnique( "BtnIcone" );
+
     m_marge       = { 1 , 1} ;
+
 
     ajouterComposant( m_icone );
 
     m_icone->setIndex ( 1 );
-//    actualiser ();
-//    m_icone->setTexteStyle ( m_skin->getStyle( Styles::bouton ) , Etat::repos );
 }
 
 
 /////////////////////////////////////////////////
 void BtnIcone::actualiserGeometrie ()
 {
+    log ("actualiserGeometrie");
 
-    if ( m_autoAjust )
+    if ( m_autoAjust ){
+        m_icone->actualiserGeometrie();
         m_taille = { m_icone->getTaille().x + m_marge.x*2 , m_icone->getTaille().y + m_marge.y*2 } ;
+    }
 
-    m_icone->setPosition( m_marge.x  , m_marge.y/3 );
+    m_icone->setPosition( m_marge.x  , m_marge.y );
     m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
 
-
-
-
+    demanderActuaBounds();
 }
 
 /////////////////////////////////////////////////
 void BtnIcone::actualiserStyle ()
 {
-//    std::cout << "Actualiser un bouton icone : " << getNom() << "\n";
+    log ("actualiserStyle");
 
     m_icone->setFondCouleur    ( sf::Color (
                                       255
@@ -52,71 +52,78 @@ void BtnIcone::actualiserStyle ()
 
     m_icone->setLigneEpaisseur ( 0 ) ;
 
-    BtnRectangle::actualiserStyle();
-
-//    if (m_parent!=nullptr)
-//        m_parent->actualiserContenu();
-}
-/*
-/////////////////////////////////////////////////
-void BtnIcone::actualiser ()
-{
-
-    // On choisie le style a appliquer (du style s'il en a un sinon du skin)
-/*    std::shared_ptr<Style> style;
-    if ( m_style == nullptr )
-        style = m_skin->getStyle( Styles::bouton );
-    else
-        style = m_style;
-
-    Etat etatBouton;
-    if ( ! estActif() )
-        etatBouton = Etat::desactive;
-    else if ( !estSurvole () && !estPresse() )
-        etatBouton = Etat::repos;
-    else if ( estPresse () )
-        etatBouton = Etat::press;
-    else if ( estSurvole () )
-        etatBouton = Etat::survol;
-
-    if ( ! m_fix ){
-        m_icone->setTexteStyle ( style, etatBouton );
-        m_icone->setIndex ( int( etatBouton ) +1 );
-    } else {
-        m_icone->setTexteStyle ( style);
+    if ( ! m_fix )    {
+        switch ( this->etat() ){
+            case Etat::repos:       m_icone->setIndex ( 1 );    break;
+            case Etat::survol:      m_icone->setIndex ( 2 );    break;
+            case Etat::press:       m_icone->setIndex ( 3 );    break;
+            case Etat::desactive:   m_icone->setIndex ( 4 );    break;
+            default: break;
+        }
     }
 
-
-    if ( m_autoAjust )
-        m_taille = { m_icone->getTaille().x + m_marge.x*2 , m_icone->getTaille().y + m_marge.y*2 } ;
-
-    m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
-    m_icone->setPosition( m_marge.x  , m_marge.y   );
-
-
-
-    m_rectangle->setFondCouleur    ( sf::Color (
-                                      style->fnd_couleur.get(etatBouton).r
-                                    , style->fnd_couleur.get(etatBouton).g
-                                    , style->fnd_couleur.get(etatBouton).b
-                                    , style->fnd_couleur.get(etatBouton).a * m_opacite ) ) ;
-
-    m_rectangle->setLigneCouleur     ( sf::Color (
-                                      style->lgn_couleur.get(etatBouton).r
-                                    , style->lgn_couleur.get(etatBouton).g
-                                    , style->lgn_couleur.get(etatBouton).b
-                                    , style->lgn_couleur.get(etatBouton).a * m_opacite ) ) ;
-
-    m_rectangle->setLigneEpaisseur ( style->lgn_epaisseur.get(etatBouton) ) ;
-
-    actualiserBounds();
-
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+    // on applique le style correspondant à l'état au rectangle
+    m_rectangle->setFondCouleur       ( sf::Color ( m_couleurFond.get( this->etat() ).r
+                                                , m_couleurFond.get( this->etat() ).g
+                                                , m_couleurFond.get( this->etat() ).b
+                                                , m_couleurFond.get( this->etat() ).a * m_opacite ) ) ;
+    m_rectangle->setLigneCouleur    ( sf::Color ( m_couleurLignes.get( this->etat() ).r
+                                                , m_couleurLignes.get( this->etat() ).g
+                                                , m_couleurLignes.get( this->etat() ).b
+                                                , m_couleurLignes.get( this->etat() ).a * m_opacite ) ) ;
+    m_rectangle->setLigneEpaisseur ( m_epaisseur.get( this->etat() ) ) ;
 
 }
-*/
 
+
+/////////////////////////////////////////////////
+void BtnIcone::setIndex( unsigned int val )    {
+    m_icone->setIndex( val );
+    demanderActuaStyle ();
+};
+
+
+/////////////////////////////////////////////////
+void BtnIcone::setImage( std::string fichier )  {
+    m_icone->setImage (fichier);
+    demanderActuaGeom ();
+};
+
+
+/////////////////////////////////////////////////
+void BtnIcone::setImage ( sf::Texture* texture )  {
+    m_icone->setImage( texture );
+    demanderActuaGeom ();
+};
+
+
+/////////////////////////////////////////////////
+void BtnIcone::setFix (bool val) {
+    m_fix = val;
+};
 
 
 } // fin namespace gui
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

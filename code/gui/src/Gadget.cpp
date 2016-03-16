@@ -40,6 +40,9 @@ Gadget::Gadget ()
     // Mise a jour du nombre de gadgets.
     ms_CompteurGadgets++;
 
+    // l'ID unique du gadget
+    m_id = ms_CompteurGadgets;
+
     // Creation du nom unique du gadget
     creerNomUnique( "Gadget" );
 
@@ -272,7 +275,7 @@ void Gadget::setDeplacable( bool val ){
 void Gadget::creerNomUnique( std::string type  ) {
     // Creation du nom unique du gadget
     std::stringstream ss;
-    ss << getNombreGadgets();
+    ss << m_id;
     m_nom = type + "_" + ss.str();
 };
 
@@ -285,6 +288,7 @@ void Gadget::demanderActualisation() {
     m_aBesoinActualisation = true ;
     Interface::aBesoinActualisation();
 };
+
 
 /////////////////////////////////////////////////
 void Gadget::demanderActuaGeom() {

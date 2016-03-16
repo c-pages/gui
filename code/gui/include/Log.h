@@ -56,6 +56,7 @@ private:
     std::string             m_preLigne_courant;
     std::string             m_preLigne_variable;
     std::string             m_preLigne_interface;
+    std::string             m_preLigne_titre;
     std::string             m_ligneInterface;
 
     WORD                    m_couleur_calque;

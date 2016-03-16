@@ -18,7 +18,7 @@ BtnTexte::BtnTexte ()
 
 
     m_marge = { 5, 5 };
-    m_autoAjust = true;
+
     m_texte = "";
 
     // valeurs par defaut
@@ -38,11 +38,11 @@ void BtnTexte::actualiserGeometrie ()
     // Debuggage
     log ( "actualiserGeometrie" );
 
-    m_label->setTexte ( m_texte );
-    m_label->actualiserBounds();
+//    m_label->setTexte ( m_texte );
     m_label->setPosition( int( m_marge.x ) , int ( m_marge.y/3 ) );
 
     if ( m_autoAjust ){
+        m_label->actualiserBounds();
         m_taille = { m_label->getTaille().x + m_marge.x*2 , m_label->getTaille().y + m_marge.y*2 } ;
     }
 
@@ -95,8 +95,8 @@ void BtnTexte::setTexte( std::string val ){
 
 
 /////////////////////////////////////////////////
-void BtnTexte::setTailleCharac( float val ){
-    m_textTaille = val;
+void BtnTexte::setTailleCharac( float val , Etat etat ){
+    m_textTaille.set ( val , etat ) ;
     m_label->setTailleCharac ( val ) ;
 };
 
@@ -110,46 +110,45 @@ void BtnTexte::setTailleCharac( Valeurs<float> val ){
 
 
 /////////////////////////////////////////////////
-void BtnTexte::setTexteCouleur( sf::Color couleur ){
-    m_textCouleur = couleur;
+void BtnTexte::setTexteCouleur( sf::Color couleur , Etat etat){
+    m_textCouleur.set ( couleur , etat ) ;
     m_label->setCouleur ( couleur );
 };
 
 
 
 /////////////////////////////////////////////////
-void BtnTexte::setTexteCouleur( Valeurs<sf::Color> couleur ){
-    m_textCouleur = couleur;
+void BtnTexte::setTexteCouleur( Valeurs<sf::Color> couleur  ){
+    m_textCouleur = couleur ;
     demanderActuaStyle();
 };
 
 
 
 /////////////////////////////////////////////////
-void BtnTexte::setTextePolice( sf::Font val ){
-    m_textPolice = val;
+void BtnTexte::setTextePolice( sf::Font val  , Etat etat ){
+    m_textPolice.set ( val , etat ) ;
 };
 
 
 
 /////////////////////////////////////////////////
-void BtnTexte::setTextePolice( Valeurs<sf::Font> val ){
-    m_textPolice = val;
+void BtnTexte::setTextePolice( Valeurs<sf::Font> val   ){
+    m_textPolice.set ( val ) ;
     demanderActuaStyle();
 };
 
 
 /////////////////////////////////////////////////
-void BtnTexte::setTexteStyle( sf::Text::Style val ){
-    m_textStyle = val;
-    m_label->setTexteStyle    ( val );
+void BtnTexte::setTexteStyle( sf::Text::Style val   , Etat etat )  {
+    m_textStyle.set ( val  , etat ) ;
+    m_label->setTexteStyle    ( val  ) ;
 };
-
 
 
 /////////////////////////////////////////////////
 void BtnTexte::setTexteStyle( Valeurs<sf::Text::Style> val ){
-    m_textStyle = val;
+    m_textStyle.set ( val );
     demanderActuaStyle();
 };
 

@@ -61,9 +61,7 @@ void BtnRectangle::actualiserStyle ()
 }
 
 
-//setFondCouleur
-//setLigneCouleur
-//setLigneEpaisseur
+
 /////////////////////////////////////////////////
 void BtnRectangle::setFondCouleur (sf::Color couleur , Etat etat ) {
     m_couleurFond.set ( couleur , etat );

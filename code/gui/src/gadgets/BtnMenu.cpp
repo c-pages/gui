@@ -70,6 +70,51 @@ BtnMenu::BtnMenu ()
 
 
 /////////////////////////////////////////////////
+void BtnMenu::actualiserGeometrie()
+{
+    int decallage = m_marge.y ;
+    for ( auto element : m_elements ) {
+
+        element->bouton->setPosition    ( m_marge.x , decallage );
+        element->bouton->setTexte       ( element->nom );
+        decallage += element->bouton->getTaille().y + m_ecart;
+    }
+    m_taille.y = decallage + m_marge.y;
+    actualiserBounds ();
+    m_fond->setTaille( m_taille );
+    m_ombre->setTaille( m_taille );
+
+
+}
+
+/////////////////////////////////////////////////
+void BtnMenu::actualiserStyle()
+{
+    for ( auto element : m_elements ) {
+
+        auto btn = element->bouton;
+
+        btn->setFondCouleur       ( m_btnCouleurs );
+        btn->setLigneCouleur    ( m_btnLignesCouleurs );
+        btn->setLigneEpaisseur( m_btnLignesEpaisseurs );
+
+        btn->setTailleCharac     ( m_textTaille );
+        btn->setTexteCouleur    ( m_textCouleur );
+        btn->setTextePolice          ( m_textPolice );
+        btn->setTexteStyle      ( m_textStyle );
+    }
+
+    m_fond->setFondCouleur         ( m_fndCouleur );
+    m_fond->setLigneCouleur      ( m_fndLignesCouleur );
+    m_fond->setLigneEpaisseur  ( m_fndLignesEpaisseur );
+
+    m_ombre->setFondCouleur            ( m_ombreCouleur ) ;
+    m_ombre->setLigneCouleur         ( m_ombreLgnCouleur  ) ;
+    m_ombre->setLigneEpaisseur     ( m_ombreLgnepaisseur  );
+
+}
+
+/////////////////////////////////////////////////
 void BtnMenu::ajouterElement (std::string nom, FctnAction fonction)
 {
 
@@ -120,49 +165,7 @@ void BtnMenu::actualiserBounds ()
     Geometrie::actualiserBounds();
 
 }
-void BtnMenu::actualiserGeometrie()
-{
-    int decallage = m_marge.y ;
-    for ( auto element : m_elements ) {
 
-        element->bouton->setPosition    ( m_marge.x , decallage );
-        element->bouton->setTexte       ( element->nom );
-        decallage += element->bouton->getTaille().y + m_ecart;
-    }
-    m_taille.y = decallage + m_marge.y;
-    actualiserBounds ();
-    m_fond->setTaille( m_taille );
-    m_ombre->setTaille( m_taille );
-
-
-}
-
-/////////////////////////////////////////////////
-void BtnMenu::actualiserStyle()
-{
-    for ( auto element : m_elements ) {
-
-        auto btn = element->bouton;
-
-        btn->setFondCouleur       ( m_btnCouleurs );
-        btn->setLigneCouleur    ( m_btnLignesCouleurs );
-        btn->setLigneEpaisseur( m_btnLignesEpaisseurs );
-
-        btn->setTailleCharac     ( m_textTaille );
-        btn->setTexteCouleur    ( m_textCouleur );
-        btn->setTextePolice          ( m_textPolice );
-        btn->setTexteStyle      ( m_textStyle );
-    }
-
-    m_fond->setFondCouleur         ( m_fndCouleur );
-    m_fond->setLigneCouleur      ( m_fndLignesCouleur );
-    m_fond->setLigneEpaisseur  ( m_fndLignesEpaisseur );
-
-    m_ombre->setFondCouleur            ( m_ombreCouleur ) ;
-    m_ombre->setLigneCouleur         ( m_ombreLgnCouleur  ) ;
-    m_ombre->setLigneEpaisseur     ( m_ombreLgnepaisseur  );
-
-}
 
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  BtnMenu::testerSurvol ( sf::Vector2i position )

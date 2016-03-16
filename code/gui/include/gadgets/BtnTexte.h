@@ -42,28 +42,28 @@ public:
     virtual void setTexte( std::string val );
 
     ///< Definir m_texteTaille
-    void setTailleCharac( float val );
+    void setTailleCharac( float val , Etat etat = Etat::tous );
 
     ///< Definir m_texteTaille
     void setTailleCharac( Valeurs<float> val );
 
     ///< Definir m_police
-    void setTexteCouleur( sf::Color couleur );
+    void setTexteCouleur( sf::Color couleur , Etat etat = Etat::tous);
 
     ///< Definir m_police
-    void setTexteCouleur( Valeurs<sf::Color> couleur );
+    void setTexteCouleur( Valeurs<sf::Color> couleur  );
 
     ///< Definir m_police
-    void setTextePolice( sf::Font val );
+    void setTextePolice( sf::Font val , Etat etat = Etat::tous);
 
     ///< Definir m_police
-    void setTextePolice( Valeurs<sf::Font> val );
+    void setTextePolice( Valeurs<sf::Font> val  );
 
     ///< Definir m_police
-    void setTexteStyle( sf::Text::Style val );
+    void setTexteStyle( sf::Text::Style val , Etat etat = Etat::tous);
 
     ///< Definir m_police
-    void setTexteStyle( Valeurs<sf::Text::Style> val );
+    void setTexteStyle( Valeurs<sf::Text::Style> val  );
 
 ////////////////////////////////// ///////////////
 // Membres

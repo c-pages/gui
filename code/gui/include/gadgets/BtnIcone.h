@@ -32,38 +32,22 @@ public:
     /////////////////////////////////////////////////
     BtnIcone ();
 
+    /////////////////////////////////////////////////
+    void    setIndex ( unsigned int val );
 
-    void    setFix(bool val ){ m_fix = val; actualiser ();};
+    /////////////////////////////////////////////////
+    void setImage ( std::string fichier );
 
-    void    setIconeIndex( unsigned int val )
-    {
-//        std::cout << "BtnIcone::nom: " << getNom() <<  "\n";
-        m_icone->setIndex( val );
-        actualiser ();
-    };
-
-//    virtual void actualiser ( );
-/*
-    virtual void setIndex( unsigned int val ){
-
-    };*/
-
-    void setImage( std::string fichier )
-    {
-        m_icone->setImage (fichier);
-    };
-
-    void setImage ( sf::Texture* texture )
-    {
-
-        m_icone->setImage( texture );
-    };
+    /////////////////////////////////////////////////
+    void setImage ( sf::Texture* texture );
 
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
 
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
+
+    void setFix (bool val);
 
 ////////////////////////////////// ///////////////
 // Membres
@@ -82,3 +66,18 @@ public:
 } // fin namespace gui
 
 #endif // BTNRECTANGLE__H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

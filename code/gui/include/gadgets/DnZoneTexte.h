@@ -67,7 +67,7 @@ public:
     ///< Acceder à m_ecritureActive
     bool modeEcritureActif () const { return m_ecritureActive;  };
 
-    void setNumerique ( bool val ){m_numerique = val; };
+    void setNumericOnly ( bool val ){m_numerique = val; };
 
 /////////////////////////////////////////////////
 // Membres

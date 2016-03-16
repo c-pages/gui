@@ -159,39 +159,45 @@ void
 EcranDemo::initGUI_tests ()
 {
 
-//    auto label = m_interface->creer.label( "bon alors ca marche ti?!?" );
-//    label->setPosition ( 50, 50 );
-//    label->setTexteStyle ( sf::Text::Italic );
-//    label->setTextePolice ( gui::Interface::ms_polices.get( "swisse" ));
-//
-////
-//    auto rectangle = m_interface->creer.rectangle( 400 , 12 );
-//    rectangle->setPosition ( 50, 100 );
-//    rectangle->setFondCouleur ( sf::Color::Yellow );
-//    rectangle->setLigneCouleur ( sf::Color::Blue );
-//    rectangle->setLigneEpaisseur ( 12 );
-//
-//    std::shared_ptr<gui::AffImage> image = m_interface->creer.image();
-//    image->setPosition ( 50, 150 );
-//    image->setImage( "media/img/ico_fichiers.png" );
+    auto label = m_interface->creer.label( "bon" );
+    label->setPosition ( 50, 50 );
+    label->setTexteStyle ( sf::Text::Italic );
+    label->setTextePolice ( gui::Interface::ms_polices.get( "swisse" ));
 
-//    auto icone = m_interface->creer.icone("media/img/ico_fichiers.png"  );
-//    icone->setPosition ( 50, 50);
-//    icone->setIndex (2);
 
-//    auto bouton = m_interface->creer.boutonRect( 200, 15 );
-//    bouton->setPosition ( 50, 50);
-//    gui::Valeurs<sf::Color> couleurs;
-//    couleurs.set(sf::Color ( 255,0,0));
-//    bouton->setFondCouleur ( couleurs );
+    auto rectangle = m_interface->creer.rectangle( 25 , 25 );
+    rectangle->setPosition ( 50, 100 );
+    rectangle->setFondCouleur ( sf::Color::Yellow );
+    rectangle->setLigneCouleur ( sf::Color::Blue );
+    rectangle->setLigneEpaisseur ( 12 );
+
+    std::shared_ptr<gui::AffImage> image = m_interface->creer.image();
+    image->setPosition ( 50, 150 );
+    image->setImage( "media/img/ico_fichiers.png" );
+
+    auto icone = m_interface->creer.icone("media/img/ico_fichiers.png"  );
+    icone->setPosition ( 50, 200);
+    icone->setIndex (2);
+
+    auto bouton = m_interface->creer.boutonRect( 200, 15 );
+    bouton->setPosition ( 200, 50);
+    bouton->setFondCouleur ( sf::Color ( 255,0,0) );
+    bouton->setFondCouleur ( sf::Color ( 0,255,0), gui::Etat::survol );
 
     auto boutonTexte = m_interface->creer.boutonTexte( "Ceci est un bouton texte" );
-    boutonTexte->setPosition ( 50, 50);
+    boutonTexte->setPosition ( 200, 100);
+    boutonTexte->setTexteCouleur ( sf::Color ( 255,0,0) );
+    boutonTexte->setTexteCouleur ( sf::Color ( 0,255,0), gui::Etat::survol );
 
-    gui::Valeurs<sf::Color> couleurs;
-    couleurs.set(sf::Color ( 255,0,0));
-    couleurs.set(sf::Color ( 0,255,0), gui::Etat::survol );
-    boutonTexte->setTexteCouleur ( couleurs );
+    auto boutonIcone = m_interface->creer.boutonIcone( "media/img/ico_btnIcone.png" );
+    boutonIcone->setPosition ( 200, 150);
+    boutonIcone->setFix ( true );
+    boutonIcone->setIndex ( 4 );
+
+//    gui::Valeurs<sf::Color> couleurs;
+//    couleurs.set(sf::Color ( 255,0,0));
+//    couleurs.set(sf::Color ( 0,255,0), gui::Etat::survol );
+//    boutonTexte->setTexteCouleur ( couleurs );
 
     /*
     auto liste = m_interface->creer.liste();

@@ -212,6 +212,7 @@ public:
     virtual std::string getNom() const              { return m_nom; };
     void                setNom( std::string nom )   { m_nom = nom; };
 
+    unsigned int getID() const              { return m_id; };
 
     int getNombreGadgets () const { return ms_CompteurGadgets; };
 
@@ -247,6 +248,7 @@ private:
     bool                        m_aBesoinActuaContenu ;
     bool                        m_aBesoinActuaBounds ;
 
+    unsigned int                m_id;
 
 protected:
     static  int         ms_CompteurGadgets;   ///< L'interface courante dans laquelle on créé les gadgets.

@@ -27,6 +27,7 @@ Log::Log()
 , m_mute                            ( false )
 
 , m_styleFondEnCouleur              ( true )
+
 {
     m_preLigne_hierarchie   = "";
     m_preLigne_courant      = "    ";
@@ -131,8 +132,6 @@ bool    Log::estUnCalque()    {
 /////////////////////////////////////////////////
 void Log::checkGadget ( )
 {
-    if ( ! checkAffichage() ) return;
-
 
     int largeurMax = 77;
     int compteurCharac = 0;
@@ -146,6 +145,7 @@ void Log::checkGadget ( )
         posNomGadget = 0;
         posNomInterface = 0;
 
+        m_preLigne_titre        = "";
         m_preLigne_hierarchie   = "";
         m_preLigne_courant      = "    ";
         m_preLigne_variable     = "    ";
@@ -157,8 +157,9 @@ void Log::checkGadget ( )
         posNomGadget = 0;
         posNomInterface = 0;
 
+        m_preLigne_titre        = "    ";
         m_preLigne_hierarchie   = "    ";
-        m_preLigne_courant      = "    ";
+        m_preLigne_courant      = "        ";
         m_preLigne_variable     = "    ";
         m_preLigne_interface    = "    ";
         m_ligneInterface        = "-";
@@ -174,8 +175,8 @@ void Log::checkGadget ( )
         ms_hierarchieBack = txtHierarchie;
 
 
-        if ( ! m_styleFondEnCouleur )
-            logOut (  "\n");
+//        if ( ! m_styleFondEnCouleur )
+//            logOut (  "\n");
 
         // le nom du gadget
         if ( txtHierarchie == "GUI") {
@@ -234,7 +235,7 @@ void Log::checkGadget ( )
                 logOut("<");
                 compteurCharac++;
 
-                // le nom du calsue
+                // le nom du calque
                 SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
                 txtManip = getCalqueGadget();
                 compteurCharac += txtManip.size();
@@ -242,8 +243,8 @@ void Log::checkGadget ( )
 
 
                 SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
-                logOut("> ");
-                compteurCharac+=2;
+                logOut(">");
+                compteurCharac++;
 
             }
 
@@ -260,7 +261,11 @@ void Log::checkGadget ( )
 
 
             // on ecrit la hierarchie
-            SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+            if ( m_styleFondEnCouleur )
+                SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+            else
+                SetConsoleTextAttribute( m_console , FOREGROUND_INTENSITY );
+
             txtManip = getHierarchieGadget();
             compteurCharac += txtManip.size();
             logOut ( txtManip );
@@ -351,12 +356,8 @@ void Log::logTitre ( std::string txt )
     // on regarde si on a changé de gadget
     checkGadget ( );
 
-//    // decalage pour les textes du GUI
-//    if ( getNomGadget() != "GUI") logOut ( "    " );
-
-
     SetConsoleTextAttribute( m_console , m_couleur_titre );
-    std::string  preLigne = ( getNomGadget() == "GUI" ) ? m_preLigne_interface : m_preLigne_courant;
+    std::string  preLigne = ( getNomGadget() == "GUI" ) ? m_preLigne_interface : m_preLigne_titre;
     logOut ( preLigne  +  txt  + "\n" );
 
 }

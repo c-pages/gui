@@ -120,7 +120,7 @@ void BtnBarreFonctions::ajouterElement (std::string nom, std::string fichierIcon
 
     bouton->setMarge            ( { 5 , 2 } );
     bouton->setImage            ( fichierIcone );
-    bouton->setIconeIndex       ( m_elements.size() +1 );
+    bouton->setIndex            ( m_elements.size() + 1 );
     bouton->setAutoAjuster      ( false );
     bouton->setTaille           ( m_tailleBouton );
     bouton->setMarge            ({0,0});
@@ -209,25 +209,7 @@ void BtnBarreFonctions::actualiserGeometrie ()
 
 
 }
-/*
-/////////////////////////////////////////////////
-void BtnBarreFonctions::actualiserBounds ()
-{
-    sf::Vector2f pos = getPosAbs ();
 
-    m_globalBounds.left     = pos.x;
-    m_globalBounds.top      = pos.y;
-    m_globalBounds.width    = getTaille().x;
-    m_globalBounds.height   = getTaille().y;
-
-    m_localBounds.left      = getPosition().x;
-    m_localBounds.top       = getPosition().y;
-    m_localBounds.width     = getTaille().x;
-    m_localBounds.height    = getTaille().y;
-
-
-
-}*/
 
 
 /////////////////////////////////////////////////
@@ -244,12 +226,7 @@ void BtnBarreFonctions::actualiserStyle ()
 
 }
 
-/*
-/////////////////////////////////////////////////
-void BtnBarreFonctions::draw (sf::RenderTarget& target, sf::RenderStates states) const
-{
 
-}*/
 
 
 } // fin namespace gui

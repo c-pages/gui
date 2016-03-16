@@ -17,18 +17,6 @@ AffIcone::AffIcone ()
     creerNomUnique( "Icone");
 }
 
-/////////////////////////////////////////////////
-void AffIcone::setIndex( unsigned int val ){
-    m_index = val;
-    demanderActuaStyle ();
-}
-
-
-/////////////////////////////////////////////////
-unsigned int AffIcone::getIndex () const {
-    return m_index;
-}
-
 
 /////////////////////////////////////////////////
 void AffIcone::actualiserGeometrie ()
@@ -43,6 +31,7 @@ void AffIcone::actualiserGeometrie ()
     m_taille = { largeur , largeur };
     m_rectangle.setSize ( { largeur , largeur } );
 
+    demanderActuaBounds();
 }
 
 /////////////////////////////////////////////////
@@ -62,6 +51,20 @@ void AffIcone::actualiserStyle ()
     m_rectangle.setTexture          ( m_texture );
 
 }
+
+
+/////////////////////////////////////////////////
+void AffIcone::setIndex( unsigned int val ){
+    m_index = val;
+    demanderActuaStyle ();
+}
+
+
+/////////////////////////////////////////////////
+unsigned int AffIcone::getIndex () const {
+    return m_index;
+}
+
 
 } // fin namespace gui
 

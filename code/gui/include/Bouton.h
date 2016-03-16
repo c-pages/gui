@@ -17,7 +17,7 @@ namespace gui {
 /// \brief Un simple bouton
 ///
 /////////////////////////////////////////////////
-class Bouton : /* public gui::Gadget,*/ public gui::ActionEvenement {
+class Bouton : public gui::ActionEvenement {
 
 
 

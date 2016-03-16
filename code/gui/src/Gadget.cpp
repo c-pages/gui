@@ -60,7 +60,6 @@ Gadget::~Gadget ()
 /////////////////////////////////////////////////
 void Gadget::actualiser ()
 {
-
     // si on a pas besoin d'actualiser
     if ( ! m_aBesoinActualisation )
     {
@@ -103,23 +102,21 @@ void Gadget::actualiser ()
     // on envois le message aux composants
     actualiserComposants();
 
-    m_aBesoinActualisation = false;
+    // on s'occupe des trucs a supprimer des listes a vider pis tous
+    actualiserListes ( );
 
+    // on a plus besoin d'actualisation
+    m_aBesoinActualisation = false;
 }
 
 
 /////////////////////////////////////////////////
-void Gadget::actualiser (sf::Time deltaTemps)
+void Gadget::actualiser ( sf::Time deltaTemps )
 {
-
     if ( m_aBesoinActualisation )
-    {
         actualiser();
-    }
 
-    for ( auto enfant : m_enfants )
-        enfant->actualiser (deltaTemps);
-
+    actualiserEnfants ( deltaTemps );
 }
 
 
@@ -132,47 +129,46 @@ void Gadget::traiterEvenements (const sf::Event& evenement)
     // Les evenements des composants l'interface local
     traiterEvenementsComposants( evenement );
 
-    //
-    actualiserListes ( );
-
     // la meme chose pour les enfants
     for (auto enfant : m_enfants)
         enfant->traiterEvenements ( evenement );
-
 }
-
-
-
-
 
 
 
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  Gadget::testerSurvol ( sf::Vector2i position )
 {
-    ///<\todo... a voir si on peut se passer de faire l'actualisation a chaque fois ...(pour l'instant sans ca, ca pose problème a bouton dans fenentre)
-//    actualiserBounds();
+    // Si on survol pas le gadget on sort
+    if ( ! m_globalBounds.contains( position.x, position.y ) && estActif() ) return nullptr;
 
-    // Si on survol le gadget
-    if ( m_globalBounds.contains( position.x, position.y ) && estActif() )
-    {
-        // On test le survol des composants
-        auto testInterfaceLocal = testerSurvolComposants( position );
-        if ( testInterfaceLocal != nullptr )
-            return testInterfaceLocal;
-        // On test le survol des enfants
-        else
-        {
-            auto testEnfants = testerSurvolEnfants( position );
-            if ( testEnfants != nullptr )
-                return testEnfants;
-            else  return thisPtr();
-        }
-    }
-    else
-        return nullptr;
+    // On test le survol des composants
+    auto testInterfaceLocal = testerSurvolComposants( position );
+    if ( testInterfaceLocal != nullptr )
+        return testInterfaceLocal;
 
+    // On test le survol des enfants
+    auto testEnfants = testerSurvolEnfants( position );
+    if ( testEnfants != nullptr )
+        return testEnfants;
+
+    // si on a rien survolé on renvois nous-même
+    else  return thisPtr();
 }
+
+/////////////////////////////////////////////////
+void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
+{
+    if ( ! estVisible() ) return;
+
+    //On applique la transformation
+    states.transform *= getTransform();
+
+    dessinerComposant   ( target, states );
+    dessinerEnfants     ( target, states );
+};
+
+
 
 /////////////////////////////////////////////////
 sf::Vector2i Gadget::getPosSouris ( ) {
@@ -187,98 +183,14 @@ sf::Vector2i Gadget::getLocalPosSouris ( ) {
     return result;
 };
 
-/////////////////////////////////////////////////
-void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
-{
-    if ( estVisible() ) {
-
-        //On applique la transformation
-        states.transform *= getTransform();
-
-        dessinerComposant   ( target, states );
-        dessinerEnfants     ( target, states );
-
-    }
-};
-
-
-
 
 
 
 
 
 /////////////////////////////////////////////////
-void Gadget::setVisible( bool val ) {
-    log("setVisible");
-    log("m_visible", val);
-    m_visible = val;
-};
-
-
-
+// les demandes d'actualisations
 /////////////////////////////////////////////////
-void Gadget::setActif( bool val ){
-    if ( m_actif == val ) return;
-
-    log("setActif");
-    log("m_actif", val);
-    m_actif = val;
-    actualiserEtat ();
-    demanderActuaStyle();
-};
-
-
-
-/////////////////////////////////////////////////
-void Gadget::setFocus( bool val ) {
-    if ( m_focus == val ) return;
-    log("setFocus");
-    log("m_focus", val);
-    m_focus = val;
-    actualiserEtat ();
-    demanderActuaStyle();
-};
-
-
-
-/////////////////////////////////////////////////
-void Gadget::setSurvol( bool val ) {
-    if ( m_survol == val ) return;
-    log("setSurvol");
-    log("m_survol", val);
-    m_survol = val;
-    actualiserEtat ();
-    demanderActuaStyle();
-};
-
-
-
-/////////////////////////////////////////////////
-void Gadget::setPresse( bool val ){
-    if ( m_presse == val ) return;
-    log("SetVisible", val);
-    m_presse = val;
-    actualiserEtat ();
-    demanderActuaStyle();
-};
-
-
-
-/////////////////////////////////////////////////
-void Gadget::setDeplacable( bool val ){
-    m_deplacable = val;
-};
-
-
-/////////////////////////////////////////////////
-void Gadget::creerNomUnique( std::string type  ) {
-    // Creation du nom unique du gadget
-    std::stringstream ss;
-    ss << m_id;
-    m_nom = type + "_" + ss.str();
-};
-
 
 /////////////////////////////////////////////////
 void Gadget::demanderActualisation() {
@@ -297,18 +209,24 @@ void Gadget::demanderActuaGeom() {
     m_aBesoinActuaBounds = true ;
     Interface::aBesoinActualisation();
 };
+
+
 /////////////////////////////////////////////////
 void Gadget::demanderActuaStyle() {
     m_aBesoinActualisation = true ;
     m_aBesoinActuaStyle = true ;
     Interface::aBesoinActualisation();
 };
+
+
 /////////////////////////////////////////////////
 void Gadget::demanderActuaContenu() {
     m_aBesoinActualisation = true ;
     m_aBesoinActuaContenu = true ;
     Interface::aBesoinActualisation();
 };
+
+
 /////////////////////////////////////////////////
 void Gadget::demanderActuaBounds() {
     m_aBesoinActualisation = true ;
@@ -316,6 +234,79 @@ void Gadget::demanderActuaBounds() {
     Interface::aBesoinActualisation();
 };
 
+
+
+
+
+/////////////////////////////////////////////////
+// les accesseurs et mutateurs
+/////////////////////////////////////////////////
+
+/////////////////////////////////////////////////
+void Gadget::setVisible( bool val ) {
+    log("setVisible");
+    log("m_visible", val);
+    m_visible = val;
+};
+
+
+/////////////////////////////////////////////////
+void Gadget::setActif( bool val ){
+    if ( m_actif == val ) return;
+
+    log("setActif");
+    log("m_actif", val);
+    m_actif = val;
+    actualiserEtat ();
+    demanderActuaStyle();
+};
+
+
+/////////////////////////////////////////////////
+void Gadget::setFocus( bool val ) {
+    if ( m_focus == val ) return;
+    log("setFocus");
+    log("m_focus", val);
+    m_focus = val;
+    actualiserEtat ();
+    demanderActuaStyle();
+};
+
+
+/////////////////////////////////////////////////
+void Gadget::setSurvol( bool val ) {
+    if ( m_survol == val ) return;
+    log("setSurvol");
+    log("m_survol", val);
+    m_survol = val;
+    actualiserEtat ();
+    demanderActuaStyle();
+};
+
+
+/////////////////////////////////////////////////
+void Gadget::setPresse( bool val ){
+    if ( m_presse == val ) return;
+    log("SetVisible", val);
+    m_presse = val;
+    actualiserEtat ();
+    demanderActuaStyle();
+};
+
+
+/////////////////////////////////////////////////
+void Gadget::setDeplacable( bool val ){
+    m_deplacable = val;
+};
+
+
+/////////////////////////////////////////////////
+void Gadget::creerNomUnique( std::string type  ) {
+    // Creation du nom unique du gadget
+    std::stringstream ss;
+    ss << m_id;
+    m_nom = type + "_" + ss.str();
+};
 
 
 /////////////////////////////////////////////////

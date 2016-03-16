@@ -83,8 +83,9 @@ public:
 
     void demanderASupprimer (std::shared_ptr<Gadget> gadget );
 
-    virtual void actualiserEnfants();
+    virtual void actualiserEnfants( );
 
+    virtual void actualiserEnfants( sf::Time delta );
 
     virtual void actualiserContenu ();
 

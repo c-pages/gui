@@ -16,10 +16,10 @@ BtnTexte::BtnTexte ()
 {
     creerNomUnique ( "BtnTexte");
 
-
     m_marge = { 5, 5 };
+    m_texte = "Bouton";
 
-    m_texte = "";
+    ajouterComposant( m_label );
 
     // valeurs par defaut
     m_textCouleur.set( sf::Color::White );
@@ -28,7 +28,7 @@ BtnTexte::BtnTexte ()
     m_textPolice.set ( Interface::ms_polices.get( "Defaut" ) ) ;
     m_textStyle.set  ( sf::Text::Style::Regular ) ;
 
-    ajouterComposant( m_label );
+    m_label->setTexte ( m_texte );
 
 }
 
@@ -38,7 +38,6 @@ void BtnTexte::actualiserGeometrie ()
     // Debuggage
     log ( "actualiserGeometrie" );
 
-//    m_label->setTexte ( m_texte );
     m_label->setPosition( int( m_marge.x ) , int ( m_marge.y/3 ) );
 
     if ( m_autoAjust ){

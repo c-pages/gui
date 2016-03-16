@@ -11,7 +11,6 @@ namespace gui {
 BtnRectangle::BtnRectangle ()
 : m_rectangle   ( std::make_shared<AffRectangle>())
 {
-
     creerNomUnique( "BtnRectangle" );
 
     m_taille= {25,25};

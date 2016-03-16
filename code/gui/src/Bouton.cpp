@@ -23,7 +23,6 @@ Bouton::Bouton ()
 /////////////////////////////////////////////////
 Bouton::~Bouton ()
 {
-
     // on le retire de la liste static des boutons
     int i = 0;
     for ( auto bouton : ms_boutons ){
@@ -33,7 +32,6 @@ Bouton::~Bouton ()
         }
         i++;
     }
-
 }
 
 

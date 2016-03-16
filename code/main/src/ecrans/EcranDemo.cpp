@@ -164,14 +164,13 @@ EcranDemo::initGUI_tests ()
     label->setTexteStyle ( sf::Text::Italic );
     label->setTextePolice ( gui::Interface::ms_polices.get( "swisse" ));
 
-
     auto rectangle = m_interface->creer.rectangle( 25 , 25 );
     rectangle->setPosition ( 50, 100 );
     rectangle->setFondCouleur ( sf::Color::Yellow );
     rectangle->setLigneCouleur ( sf::Color::Blue );
     rectangle->setLigneEpaisseur ( 12 );
 
-    std::shared_ptr<gui::AffImage> image = m_interface->creer.image();
+    auto image = m_interface->creer.image();
     image->setPosition ( 50, 150 );
     image->setImage( "media/img/ico_fichiers.png" );
 
@@ -191,13 +190,10 @@ EcranDemo::initGUI_tests ()
 
     auto boutonIcone = m_interface->creer.boutonIcone( "media/img/ico_btnIcone.png" );
     boutonIcone->setPosition ( 200, 150);
-    boutonIcone->setFix ( true );
-    boutonIcone->setIndex ( 4 );
+//    boutonIcone->setFix ( true );
+//    boutonIcone->setIndex ( 4 );
 
-//    gui::Valeurs<sf::Color> couleurs;
-//    couleurs.set(sf::Color ( 255,0,0));
-//    couleurs.set(sf::Color ( 0,255,0), gui::Etat::survol );
-//    boutonTexte->setTexteCouleur ( couleurs );
+
 
     /*
     auto liste = m_interface->creer.liste();

@@ -476,7 +476,7 @@
 	<SFML/Graphics.hpp>
 	<iostream>
 
-1458047355 r:\06 - c++\110 - gui\code\gui\include\composite.h
+1458088897 r:\06 - c++\110 - gui\code\gui\include\composite.h
 	"Log.h"
 	"SFML/Graphics.hpp"
 	<memory>
@@ -529,7 +529,7 @@
 1457871430 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1458085284 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1458088084 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -556,7 +556,7 @@
 	"gadgets\AffLabel.h"
 	<SFML/Graphics.hpp>
 
-1458074711 r:\06 - c++\110 - gui\code\gui\include\bouton.h
+1458087837 r:\06 - c++\110 - gui\code\gui\include\bouton.h
 	"ActionEvenement.h"
 	"Gadget.h"
 
@@ -664,7 +664,7 @@
 	"gadgets\AffLabel.h"
 	<SFML/Graphics.hpp>
 
-1458085342 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnicone.h
+1458088173 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnicone.h
 	"BtnRectangle.h"
 	"gadgets\AffRectangle.h"
 	"gadgets\AffIcone.h"

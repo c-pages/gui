@@ -135,22 +135,7 @@ std::shared_ptr<Gadget> Composite::testerSurvolEnfants ( sf::Vector2i position )
 }
 /////////////////////////////////////////////////
 void Composite::demanderASupprimer (std::shared_ptr<Gadget> gadget ){
-
     m_enfantsASupprimer.push_back( gadget );
-//
-//    int i = 0;
-//    int result = 0;
-//    for ( auto enfant : m_enfants ){
-//        if ( enfant == gadget ) {
-//                result = i;
-//        break;
-////            m_enfants.erase( m_enfants.begin()+i );
-//            //return;
-//        }
-//        i++;
-//    }
-//    m_enfants.erase( m_enfants.begin()+result );
-
 }
 
 /////////////////////////////////////////////////
@@ -180,6 +165,8 @@ void Composite::actualiserListes ( ){
 
     static_cast<Gadget*>(this)->actualiser();
 }
+
+
 /////////////////////////////////////////////////
 sf::IntRect  Composite::boundgingB_enfants()
 {
@@ -212,14 +199,16 @@ sf::IntRect  Composite::boundgingB_enfants()
 }
 
 /////////////////////////////////////////////////
-void Composite::actualiserEnfants ()
-{
-//    static_cast<Gadget*>(this)->log ("actualiserEnfants");
-
+void Composite::actualiserEnfants (){
     for ( auto enfant : m_enfants )
         enfant->actualiser();
 }
 
+/////////////////////////////////////////////////
+void Composite::actualiserEnfants ( sf::Time delta ){
+    for ( auto enfant : m_enfants )
+        enfant->actualiser( delta );
+}
 
 /////////////////////////////////////////////////
 void Composite::dessinerEnfants (sf::RenderTarget& target, sf::RenderStates states) const

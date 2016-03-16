@@ -64,6 +64,7 @@ std::shared_ptr<Gadget> Composant::testerSurvolComposants (sf::Vector2i position
     for ( int i =0; i< m_composants.size(); i++ )
     {
         int index = m_composants.size() - (i+1);
+//        int index = i;
         auto  composant = m_composants[ index ];
 
         auto testComposant = composant->testerSurvol( position );

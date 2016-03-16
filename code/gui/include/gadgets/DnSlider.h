@@ -25,51 +25,6 @@ class DnSlider : public gui::Donnee<float> {
 // Méthodes
 /////////////////////////////////////////////////
 
-public:
-    ///< Definir m_valeurMax
-    void setValeurMax( float val ){ m_valeurMax = val; };
-
-    ///< Acceder à m_valeurMax
-    float getValeurMax ( ) const { return m_valeurMax; };
-
-    ///< Definir m_valeurMin
-    void setValeurMin( float val ){ m_valeurMin = val; };
-
-    ///< Acceder à m_valeurMin
-    float getValeurMin ( ) const { return m_valeurMin; };
-
-//    ///< Definir m_taille
-//    virtual void setTaille( sf::Vector2i val ){
-////        m_taille = val;
-////        m_longueur = val.x;
-////        m_largeur = val.y;
-//
-//        actualiserBounds();
-//        actualiser(); };
-    ///< Definir m_taille
-    void setLongueur( float longueur ){
-        m_longueur = longueur;
-//        actualiserBounds();
-        //actualiserGeometrie();
-    };
-
-    void setLargeur( float largeur ){
-        m_largeur = largeur;
-//        actualiserBounds();
-        //actualiserGeometrie();
-    };
-
-    void setHorizontal (  ){ m_horizontal = true;actualiserGeometrie (); };
-
-    void setVertical (  ){ m_horizontal = false; actualiserGeometrie ();}
-
-    void incrementer( float increment = 5 );
-
-    void decrementer( float increment = 5 );
-
-    bool dragEnCours( ) {return m_drag;};
-
-    void setDrag (bool val ){m_drag = val;};
 
 public:
     /////////////////////////////////////////////////
@@ -78,95 +33,68 @@ public:
     /////////////////////////////////////////////////
     DnSlider ( );
 
-
-    virtual void traiterEvenements (const sf::Event& evenement);
-
-    virtual float getValeur();
-
-    //    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
-
-
-    //    virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
-
-    //    virtual void actualiser ( );
-
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
 
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
 
-/*
-    void setLongueurCurseur( float pourcentage ) {
-        m_slider->setLongCurseur( pourcentage );
-        actualiser();
-    };*/
+    /////////////////////////////////////////////////
+    virtual void traiterEvenements (const sf::Event& evenement);
+
+    /////////////////////////////////////////////////
+    virtual float getValeur();
+
+    /////////////////////////////////////////////////
     void setLongueurCurseur( float pourcentage );
-//    void setLong    ( float pixels );
 
-//    virtual void setSkin( std::shared_ptr<Skin> skin );
-
-//    virtual void setTexteStyle ( std::shared_ptr<Style> style , Etat etat = Etat::tous );
-/*
-    void setTexteStyleBtnFond( std::shared_ptr<Style> style )
-        { m_styleBtnFond = style;
-          m_boutonFond->setTexteStyle  ( m_styleBtnFond ); };
-
-    void setTexteStyleBtnRectangle( std::shared_ptr<Style> style )
-        { m_styleBtnSlider = style;
-          m_slider->setTexteStyle      ( m_styleBtnSlider );};
-
-    void setTexteStyleFond( std::shared_ptr<Style> style )
-        { m_styleFond = style;
-          m_fond->setTexteStyle        ( m_styleFond );};
-*/
     // le slider
-    void setSliderFillColor ( Valeurs<sf::Color> couleurs  ) {
-            m_slideCouleurs = couleurs;
-            actualiserStyle();
-        };
-    void setSliderOutlineColor ( Valeurs<sf::Color> couleurs  ) {
-            m_slideLgnCouleurs = couleurs;
-            actualiserStyle();
-        };
-    void setSliderOutlineThickness ( Valeurs<float> epaisseur ) {
-            m_slideLgnepaisseurs =  epaisseur;
-            actualiserStyle();
-        };
+    void setSliderFillColor         ( Valeurs<sf::Color> couleurs  );
+    void setSliderOutlineColor      ( Valeurs<sf::Color> couleurs  );
+    void setSliderOutlineThickness  ( Valeurs<float> epaisseur );
 
     // le bouton
-    void setBoutonFillColor ( Valeurs<sf::Color> couleurs  ) {
-            m_btnCouleurs = couleurs;
-            actualiserStyle();
-        };
-    void setBoutonOutlineColor ( Valeurs<sf::Color> couleurs  ) {
-            m_btnLgnCouleurs = couleurs;
-            actualiserStyle();
-        };
-    void setBoutonOutlineThickness ( Valeurs<float> epaisseur ) {
-            m_btnLgnepaisseurs =  epaisseur;
-            actualiserStyle();
-        };
+    void setBoutonFillColor         ( Valeurs<sf::Color> couleurs  );
+    void setBoutonOutlineColor      ( Valeurs<sf::Color> couleurs  );
+    void setBoutonOutlineThickness  ( Valeurs<float> epaisseur );
 
     // le fond
-    void setFondCouleur ( sf::Color couleurs  ) {
-            m_fndCouleur = couleurs;
-            actualiserStyle();
-        };
-    void setLigneCouleur ( sf::Color couleurs  ) {
-            m_fndLgnCouleur = couleurs;
-            actualiserStyle();
-        };
-    void setLigneEpaisseur ( float epaisseur ) {
-            m_fndLgnepaisseur =  epaisseur;
-            actualiserStyle();
-        };
+    void setFondCouleur             ( sf::Color couleurs  );
+    void setLigneCouleur            ( sf::Color couleurs  );
+    void setLigneEpaisseur          ( float epaisseur );
+
+public:
+    ///< Definir m_valeurMax
+    void setValeurMax( float val );
+
+    ///< Acceder à m_valeurMax
+    float getValeurMax ( ) const ;
+
+    ///< Definir m_valeurMin
+    void setValeurMin( float val );
+
+    ///< Acceder à m_valeurMin
+    float getValeurMin ( ) const ;
+
+    ///< Definir m_taille
+    void setLongueur( float longueur );
+
+    void setLargeur( float largeur );
+
+    void setHorizontal (  );
+
+    void setVertical (  );
+
+    void incrementer( float increment = 5 );
+
+    void decrementer( float increment = 5 );
+
+    bool dragEnCours( ) ;
+
+    void setDrag (bool val );
 private:
     void positionnerCurseurSurSouris ();
     void corrigerPositionCurseur();
-
-
-
 
 /////////////////////////////////////////////////
 // Membres
@@ -174,7 +102,7 @@ private:
 private:
 
     // les proprietés fonctionnelles
-    bool                            m_horizontal;   ///< Orientation : true bouton
+    bool                            m_horizontal;   ///< l'orientation,  true: bouton horizontal, false: bouton vertical.
     float                           m_valeurMax;    ///<
     float                           m_valeurMin;    ///<
     float                           m_longueur;     ///<
@@ -187,14 +115,12 @@ private:
     std::shared_ptr<BtnRectangle>   m_slider;
     std::shared_ptr<AffRectangle>   m_fond;
 
-
     // Les actions pour le fonctionnement
     FctnAction     fct_cliqueBtnFond;
     FctnAction     fct_dragStart;
     FctnAction     fct_dragStop;
     FctnAction     fct_rouletteH;
     FctnAction     fct_rouletteB;
-
 
     Valeurs<sf::Color>      m_btnCouleurs;
     Valeurs<sf::Color>      m_btnLgnCouleurs;
@@ -209,9 +135,25 @@ private:
     float                   m_fndLgnepaisseur;
 
 
-
 }; // fin class DnSlider
 
 } // fin namespace gui
 
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

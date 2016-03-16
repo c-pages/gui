@@ -159,70 +159,48 @@ void
 EcranDemo::initGUI_tests ()
 {
 
-    auto label = m_interface->creer.label( "bon" );
-    label->setPosition ( 50, 50 );
-    label->setTexteStyle ( sf::Text::Italic );
-    label->setTextePolice ( gui::Interface::ms_polices.get( "swisse" ));
+//    auto label = m_interface->creer.label( "bon" );
+//    label->setPosition ( 50, 50 );
+//    label->setTexteStyle ( sf::Text::Italic );
+//    label->setTextePolice ( gui::Interface::ms_polices.get( "swisse" ));
+//
+//    auto rectangle = m_interface->creer.rectangle( 25 , 25 );
+//    rectangle->setPosition ( 50, 100 );
+//    rectangle->setFondCouleur ( sf::Color::Yellow );
+//    rectangle->setLigneCouleur ( sf::Color::Blue );
+//    rectangle->setLigneEpaisseur ( 12 );
+//
+//    auto image = m_interface->creer.image();
+//    image->setPosition ( 50, 150 );
+//    image->setImage( "media/img/ico_fichiers.png" );
+//
+//    auto icone = m_interface->creer.icone("media/img/ico_fichiers.png"  );
+//    icone->setPosition ( 50, 200);
+//    icone->setIndex (2);
+//
+//    auto bouton = m_interface->creer.boutonRect( 200, 15 );
+//    bouton->setPosition ( 200, 50);
+//    bouton->setFondCouleur ( sf::Color ( 255,0,0) );
+//    bouton->setFondCouleur ( sf::Color ( 0,255,0), gui::Etat::survol );
+////    bouton->setLogActif ( true );
+//
+//    auto boutonTexte = m_interface->creer.boutonTexte( "Ceci est un bouton texte" );
+//    boutonTexte->setPosition ( 200, 100);
+//    boutonTexte->setTexteCouleur ( sf::Color ( 255,0,0) );
+//    boutonTexte->setTexteCouleur ( sf::Color ( 0,255,0), gui::Etat::survol );
+//
+////    auto boutonIcone = m_interface->creer.boutonIcone( "media/img/ico_btnIcone.png" );
+//    auto boutonIcone = m_interface->creer.boutonIcone( "media/img/ico_fichiers.png" );
+//    boutonIcone->setPosition ( 200, 150);
+////    boutonIcone->setLogActif ( true );
+////    boutonIcone->setFix ( true );
+////    boutonIcone->setIndex ( 4 );
 
-    auto rectangle = m_interface->creer.rectangle( 25 , 25 );
-    rectangle->setPosition ( 50, 100 );
-    rectangle->setFondCouleur ( sf::Color::Yellow );
-    rectangle->setLigneCouleur ( sf::Color::Blue );
-    rectangle->setLigneEpaisseur ( 12 );
 
-    auto image = m_interface->creer.image();
-    image->setPosition ( 50, 150 );
-    image->setImage( "media/img/ico_fichiers.png" );
+    auto slide = m_interface->creer.slider( );
+    slide->setPosition ( 200, 200);
+    slide->setLogActif ( true , true );
 
-    auto icone = m_interface->creer.icone("media/img/ico_fichiers.png"  );
-    icone->setPosition ( 50, 200);
-    icone->setIndex (2);
-
-    auto bouton = m_interface->creer.boutonRect( 200, 15 );
-    bouton->setPosition ( 200, 50);
-    bouton->setFondCouleur ( sf::Color ( 255,0,0) );
-    bouton->setFondCouleur ( sf::Color ( 0,255,0), gui::Etat::survol );
-
-    auto boutonTexte = m_interface->creer.boutonTexte( "Ceci est un bouton texte" );
-    boutonTexte->setPosition ( 200, 100);
-    boutonTexte->setTexteCouleur ( sf::Color ( 255,0,0) );
-    boutonTexte->setTexteCouleur ( sf::Color ( 0,255,0), gui::Etat::survol );
-
-    auto boutonIcone = m_interface->creer.boutonIcone( "media/img/ico_btnIcone.png" );
-    boutonIcone->setPosition ( 200, 150);
-//    boutonIcone->setFix ( true );
-//    boutonIcone->setIndex ( 4 );
-
-
-
-    /*
-    auto liste = m_interface->creer.liste();
-    liste->setPosition ( 50, 50);
-    liste->ajouterElement ( "Premier" );
-    liste->ajouterElement ( "Second" );
-    liste->ajouterElement ( "Troisieme" );
-    liste->ajouterElement ( "Quatrieme" );
-    liste->ajouterElement ( "Cinquieme" );
-    liste->ajouterElement ( "Sixieme" );
-    liste->ajouterElement ( "Septieme" );
-    liste->ajouterElement ( "Huitieme" );
-    liste->ajouterElement ( "Neuvieme" );
-    liste->ajouterElement ( "Dixieme" );
-    liste->setAjustement(true);
-
-    auto listeDeroulante = m_interface->creer.listeDeroulante();
-    listeDeroulante->setPosition ( 250, 50);
-    listeDeroulante->ajouterElement ( "Premier" );
-    listeDeroulante->ajouterElement ( "Second" );
-    listeDeroulante->ajouterElement ( "Troisieme" );
-    listeDeroulante->ajouterElement ( "Quatrieme" );
-    listeDeroulante->ajouterElement ( "Cinquieme" );
-    listeDeroulante->ajouterElement ( "Sixieme" );
-    listeDeroulante->ajouterElement ( "Septieme" );
-    listeDeroulante->ajouterElement ( "Huitieme" );
-    listeDeroulante->ajouterElement ( "Neuvieme" );
-    listeDeroulante->ajouterElement ( "Dixieme" );
-*/
 }
 
 /////////////////////////////////////////////////
@@ -235,18 +213,11 @@ EcranDemo::initGUI ()
     // Creation de l'interface qui gère un ensemble de gadget.
     m_interface = std::make_shared<Interface>( m_appli->getFenetre() );
 
-//    m_interface->logTitre("\n    Debut initialisation |--->\n");
-
-
-//    m_skin      = std::make_shared<Skin>();
-
-
     ///// Interactions clavier ///////
     m_interface->lier ( sf::Keyboard::Escape , [this]() {
             system("cls");
+            m_interface->resetLog ();
         } );
-
-//    m_interface->logTitre("--- fin init -------------------------");
 
     ///// Label retour ///////
 //    m_labelRetour = m_interface->creer.label( "Retour :" );

@@ -48,6 +48,7 @@ Interface::Interface( sf::RenderWindow* fenetre )
 //, ms_calque_fenetres    ( std::make_shared<Calque>())
 {
     m_nom = "GUI";
+//    m_mute = false;
 
 //    logTitre("Creation");
 
@@ -132,7 +133,7 @@ void Interface::actualiser ()
 
 
     // debut de la frame, on saute des lignes
-    logOut (  "\n\n" );
+    log      (  "\n\n" );
 
     logTitre ( "Actualiser");
 
@@ -222,25 +223,33 @@ void Interface::traiterEvenements( sf::Event evenement )
             if ( m_boutonSurvole ==  boutonSurvoleBack )
                 return;
 
-            log ("  ... on survol un bouton ...");
 
             if (m_boutonPresse == nullptr )
             {
 
                 // on gère le gadget anciennement survolé
                 if (boutonSurvoleBack!=nullptr){
+
+                    logEvt ( "Sortir Bouton" , boutonSurvoleBack );
+
 //                        std::cout << "--------> boutonSurvoleBack : " << boutonSurvoleBack->getNom() << "\n";
                     boutonSurvoleBack->setSurvol( false );
                     boutonSurvoleBack->declencher ( Evenement::on_sortir );
+
                 }
+
+
                 // on gère le gadget survolé
                 if (m_boutonSurvole != nullptr) {
 
-                    log ("on survole un truc");
-//                        std::cout << "--------> m_boutonSurvole : " << m_boutonSurvole->getNom() << "\n";
+
+                    logEvt ( "Entrer Bouton" , m_boutonSurvole );
                     m_boutonSurvole->setSurvol( true );
                     m_boutonSurvole->declencher ( Evenement::on_entrer );
                 }
+
+
+
             } else {
                 // on gère le gadget survolé
                 /*if (m_boutonSurvole==nullptr){
@@ -261,8 +270,11 @@ void Interface::traiterEvenements( sf::Event evenement )
             if ( m_boutonSurvole ==  nullptr )
                 return;
 
+
             // on definie le bouton presssé
             m_boutonPresse = m_boutonSurvole;
+
+            logEvt ( "Presser Bouton" , m_boutonPresse );
 
             // On déclenche l'action en fonction du bouton de la souris
             if ( evenement.mouseButton.button == sf::Mouse::Left ) {
@@ -281,6 +293,8 @@ void Interface::traiterEvenements( sf::Event evenement )
 
             // On ne survol pas de bouton
             if ( m_boutonSurvole ==  nullptr ){
+
+
                 if ( evenement.mouseButton.button == sf::Mouse::Left )
                     declencherToutBoutons ( Evenement::onBtnG_relacherDehors  );
                 else if ( evenement.mouseButton.button == sf::Mouse::Right )
@@ -290,6 +304,9 @@ void Interface::traiterEvenements( sf::Event evenement )
 
                 // on reset le bouton pressé
                 if ( m_boutonPresse !=  nullptr ){
+
+                    logEvt ( "Relacher Bouton dehors" , m_boutonPresse );
+
                     m_boutonPresse->setSurvol( false );
                     m_boutonPresse->setPresse( false );
                     m_boutonPresse = nullptr;
@@ -302,6 +319,8 @@ void Interface::traiterEvenements( sf::Event evenement )
             // on survol un autre bouton que celui pressé.
             if ( m_boutonPresse != m_boutonSurvole )
             {
+                logEvt ( "Relacher Bouton dehors" , m_boutonPresse );
+
                 // on declenche l'action
                 if ( evenement.mouseButton.button == sf::Mouse::Left )
                     declencherToutBoutons ( Evenement::onBtnG_relacherDehors  , m_boutonSurvole );
@@ -329,6 +348,7 @@ void Interface::traiterEvenements( sf::Event evenement )
                 return;
             }
 
+            logEvt ( "Relacher Bouton" , m_boutonPresse );
 
             // On survol le bouton qu'on à pressé.
             // => On déclenche l'action 'relacher'

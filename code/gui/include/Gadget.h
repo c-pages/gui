@@ -30,6 +30,22 @@ class Gadget : public std::enable_shared_from_this<Gadget>, public sf::Drawable,
     typedef std::shared_ptr<Gadget> ptr;    ///< Pointeur vers un gadget.
 
 
+    /////////////////////////////////////////////////
+    /// \brief  Les differentes grandes familles de gadgets
+    /////////////////////////////////////////////////
+    enum class Type {
+
+        Affichage,  ///< Les gadgets sans interaction, affichant seulement une donnée (image, texte ...)
+        Bouton,     ///< Les gadgets interactifs qui declenchent une action.
+        Donnee,     ///< Gadgets interactif controlant une donnée.
+        Liste,      ///< Gadgets controlant la selection d'un element parmis une liste.
+        Fenetre,    ///< Permet de regrouper n'importe quel gadgets dans un ensemble manipulable.
+
+        Outils      ///< tout les gadgets qui ne servent qu'en composant ( pour composer un gadget ).
+    };
+
+
+
 /////////////////////////////////////////////////
 // Méthodes
 /////////////////////////////////////////////////
@@ -255,7 +271,8 @@ protected:
 
     std::string         m_texte;            ///< Le texte du gadget.
 
-    std::string         m_nom;      ///< Nom unique automatique pour le gadget.
+    std::string         m_nom;          ///< Nom unique automatique pour le gadget.
+    Type                m_type;         ///< Nom unique automatique pour le gadget.
 
     bool m_visible;     ///< La visibilité du gadget ( true: visible, false: invisible )
     bool m_actif;       ///< L'activité du gadget ( true: actif, false: inactif )

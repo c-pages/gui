@@ -32,7 +32,6 @@ BtnRectangle::BtnRectangle ()
 /////////////////////////////////////////////////
 void BtnRectangle::actualiserGeometrie ()
 {
-    // Debuggage
     log ("actualiserGeometrie  ");
 
     m_rectangle->setTaille ( {m_taille.x, m_taille.y} );

@@ -170,6 +170,8 @@ void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
 
 
 
+
+
 /////////////////////////////////////////////////
 sf::Vector2i Gadget::getPosSouris ( ) {
     return Interface::getPosSouris();

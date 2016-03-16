@@ -34,7 +34,7 @@ std::string Composite::getHierarchie() const {
     if (m_parent!=nullptr) {
         if ( m_parent->getNom()[0] == '_' )    {
             return ""  ;
-        } else return m_parent->getHierarchie()  + m_parent->getNom() + "/"  ;
+        } else return m_parent->getHierarchie()  + m_parent->getNom() + " / "  ;
     } else return "";
 };
 

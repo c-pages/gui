@@ -12,6 +12,8 @@ std::string Log::ms_hierarchieBack = "";
 
 /////////////////////////////////////////////////////
 Log::Log()
+
+// les filtres d'affichage
 : m_afficher_bureau                 ( true )
 , m_afficher_panneau_G              ( true )
 , m_afficher_panneau_D              ( true )
@@ -21,18 +23,28 @@ Log::Log()
 , m_afficher_menuDeroulants         ( true )
 , m_afficher_infos                  ( false )
 , m_afficher_souris                 ( true )
+
+, m_afficher_event                  ( true )
+
 , m_afficher_GUI                    ( true )
+
 , m_afficher_horsCalques            ( true )
 
-, m_mute                            ( false )
 
+// le style
+//, m_styleFondEnCouleur              ( false )
 , m_styleFondEnCouleur              ( true )
+
+// le mute du gadget pour savoir si on affiche les log en lien avec ce gadget
+, m_mute                            ( false )
 
 {
     m_preLigne_hierarchie   = "";
-    m_preLigne_courant      = "    ";
+    m_preLigne_courant      = "";
     m_preLigne_variable     = "    ";
     m_preLigne_interface    = "";
+    m_preLigne_event        = "            # Evenement #     ";
+
     m_ligneInterface        = "-";
 
 
@@ -42,7 +54,7 @@ Log::Log()
         m_couleur_calque    = /*BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_RED | */BACKGROUND_INTENSITY /*|
                                 FOREGROUND_GREEN | FOREGROUND_BLUE |  FOREGROUND_RED |  FOREGROUND_INTENSITY */;
         m_couleur_hierarchie    = /*BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_RED |*/ BACKGROUND_INTENSITY
-                                | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED /*| FOREGROUND_INTENSITY*/  ;
+                                | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY /**/  ;
         m_couleur_nomGadget     = /*BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_RED | */BACKGROUND_INTENSITY
                                 | FOREGROUND_GREEN | /*FOREGROUND_BLUE |*/ FOREGROUND_RED | FOREGROUND_INTENSITY  ;
 
@@ -53,6 +65,10 @@ Log::Log()
         m_couleur_courant       = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED /*| FOREGROUND_INTENSITY*/;
         m_couleur_variable       = /*FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED|*/ FOREGROUND_INTENSITY;
 
+        m_couleur_event_1    = /*BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_RED | BACKGROUND_INTENSITY|
+                                FOREGROUND_GREEN |  */ FOREGROUND_BLUE | FOREGROUND_RED/**/ | FOREGROUND_INTENSITY   ;
+        m_couleur_event_2    = /*BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_RED | BACKGROUND_INTENSITY|
+                                FOREGROUND_GREEN |  */ FOREGROUND_BLUE | FOREGROUND_RED/**/ | FOREGROUND_INTENSITY   ;
     }
 
     else
@@ -63,7 +79,7 @@ Log::Log()
                                */ /*FOREGROUND_GREEN | FOREGROUND_BLUE |  FOREGROUND_RED | */ FOREGROUND_INTENSITY ;
 
         m_couleur_hierarchie    = /*BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_RED | BACKGROUND_INTENSITY
-                                | */FOREGROUND_GREEN | FOREGROUND_BLUE |  FOREGROUND_RED /*|FOREGROUND_INTENSITY */  ;
+                                | */FOREGROUND_GREEN | FOREGROUND_BLUE |  FOREGROUND_RED |FOREGROUND_INTENSITY /**/  ;
         m_couleur_nomGadget     = /*BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_RED | BACKGROUND_INTENSITY
                                 | */FOREGROUND_GREEN | /*FOREGROUND_BLUE |  */FOREGROUND_RED | FOREGROUND_INTENSITY ;
 
@@ -73,23 +89,43 @@ Log::Log()
         m_couleur_titre         = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY;
         m_couleur_courant       = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED /*| FOREGROUND_INTENSITY*/;
         m_couleur_variable       = /*FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_RED|*/ FOREGROUND_INTENSITY;
+
+        m_couleur_event_1    = /*BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_RED | BACKGROUND_INTENSITY|
+                                FOREGROUND_GREEN |  */ FOREGROUND_BLUE | FOREGROUND_RED/**/ | FOREGROUND_INTENSITY   ;
+        m_couleur_event_2    = /*BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_RED | BACKGROUND_INTENSITY|
+                                FOREGROUND_GREEN |  */ FOREGROUND_BLUE | FOREGROUND_RED/**/ | FOREGROUND_INTENSITY   ;
     }
 
-//
 };
+
+
+/////////////////////////////////////////////////
+void  Log::setLogActif ( bool val , bool appliquerAuxComposants ){
+
+    m_mute = ! val ;
+    if ( appliquerAuxComposants )
+        for (auto composant : static_cast<Gadget*>(this)->getComposants() )
+            composant->setLogActif ( val );
+
+};
+
+/////////////////////////////////////////////////
+void  Log::resetLog ( ){
+    ms_hierarchieBack = "";
+};
+
 
 
 /////////////////////////////////////////////////
 bool Log::checkAffichage()
 {
 
+    auto nomCalque = getCalqueGadget();
     if ( ! ms_debugLog || estUnCalque() ) return false;
 
-    if ( m_mute ) return false;
 
-    auto nomCalque = getCalqueGadget();
-
-    if      ( nomCalque == "Bureau")    return m_afficher_bureau ;
+    // les calques
+    else if ( nomCalque == "Bureau")    return m_afficher_bureau ;
     else if ( nomCalque == "Fenetres")  return m_afficher_fenetres ;
     else if ( nomCalque == "PanneauG")  return m_afficher_panneau_G ;
     else if ( nomCalque == "PanneauD")  return m_afficher_panneau_D ;
@@ -99,8 +135,10 @@ bool Log::checkAffichage()
     else if ( nomCalque == "Infos")     return m_afficher_infos ;
     else if ( nomCalque == "Souris")    return m_afficher_souris ;
 
+    // l'interface
     else if ( getNomGadget()  == "GUI") return m_afficher_GUI ;
 
+    // sinon
     else return m_afficher_horsCalques;
 }
 
@@ -130,8 +168,7 @@ bool    Log::estUnCalque()    {
 
 
 /////////////////////////////////////////////////
-void Log::checkGadget ( )
-{
+void Log::checkGadget ( ){
 
     int largeurMax = 77;
     int compteurCharac = 0;
@@ -142,10 +179,10 @@ void Log::checkGadget ( )
 
     if ( m_styleFondEnCouleur ) {
         posNomCalque = 0;
-        posNomGadget = 0;
-        posNomInterface = 0;
+        posNomGadget = 12;
+        posNomInterface = 12;
 
-        m_preLigne_titre        = "";
+        m_preLigne_titre        = "    ";
         m_preLigne_hierarchie   = "";
         m_preLigne_courant      = "    ";
         m_preLigne_variable     = "    ";
@@ -153,16 +190,18 @@ void Log::checkGadget ( )
         m_ligneInterface        = " ";
 
     } else {
+
         posNomCalque = 55;
         posNomGadget = 0;
         posNomInterface = 0;
 
         m_preLigne_titre        = "    ";
         m_preLigne_hierarchie   = "    ";
-        m_preLigne_courant      = "        ";
+        m_preLigne_courant      = "    ";
         m_preLigne_variable     = "    ";
         m_preLigne_interface    = "    ";
         m_ligneInterface        = "-";
+
     }
 
 
@@ -231,19 +270,19 @@ void Log::checkGadget ( )
                         logOut (  m_ligneInterface );
                         compteurCharac ++;
                 }
-                SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+                SetConsoleTextAttribute( m_console , m_couleur_calque );
                 logOut("<");
                 compteurCharac++;
 
                 // le nom du calque
-                SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
+                SetConsoleTextAttribute( m_console , m_couleur_calque );
                 txtManip = getCalqueGadget();
                 compteurCharac += txtManip.size();
                 logOut ( txtManip );
 
 
-                SetConsoleTextAttribute( m_console , m_couleur_hierarchie );
-                logOut(">");
+                SetConsoleTextAttribute( m_console , m_couleur_calque );
+                logOut("> ");
                 compteurCharac++;
 
             }
@@ -348,10 +387,14 @@ void Log::checkGadget ( )
 
 }
 
+
+
+
+
+
 /////////////////////////////////////////////////
-void Log::logTitre ( std::string txt )
-{
-    if ( ! checkAffichage() ) return;
+void Log::logTitre ( std::string txt ){
+    if ( m_mute || ! checkAffichage() ) return;
 
     // on regarde si on a changé de gadget
     checkGadget ( );
@@ -363,10 +406,12 @@ void Log::logTitre ( std::string txt )
 }
 
 
+
+
+
 /////////////////////////////////////////////////
-void Log::log ( std::string txt )
-{
-    if ( ! checkAffichage() ) return;
+void Log::log ( std::string txt ){
+    if ( m_mute || ! checkAffichage() ) return;
 
     // on regarde si on a changé de gadget
     checkGadget ( );
@@ -377,11 +422,9 @@ void Log::log ( std::string txt )
 
 }
 
-
 /////////////////////////////////////////////////
-void Log::log (  std::string nomDuVariable , float variable )
-{
-    if ( ! checkAffichage() ) return;
+void Log::log (  std::string nomDuVariable , float variable ){
+    if ( m_mute || ! checkAffichage() ) return;
 
     checkGadget ( );
 
@@ -400,9 +443,8 @@ void Log::log (  std::string nomDuVariable , sf::Vector2f variable ){
 }
 
 /////////////////////////////////////////////////
-void Log::log (  std::string nomDuVariable , sf::Vector2i variable )
-{
-    if ( ! checkAffichage() ) return;
+void Log::log (  std::string nomDuVariable , sf::Vector2i variable ){
+    if ( m_mute || ! checkAffichage() ) return;
 
     checkGadget ( );
 
@@ -418,9 +460,8 @@ void Log::log (  std::string nomDuVariable , sf::Vector2i variable )
 }
 
 /////////////////////////////////////////////////
-void Log::log (  std::string nomDuVariable , std::string variable )
-{
-    if ( ! checkAffichage() ) return;
+void Log::log (  std::string nomDuVariable , std::string variable ){
+    if ( m_mute || ! checkAffichage() ) return;
 
     checkGadget ( );
 
@@ -432,9 +473,8 @@ void Log::log (  std::string nomDuVariable , std::string variable )
 }
 
 /////////////////////////////////////////////////
-void Log::log (  std::string nomDuVariable , sf::Color couleur )
-{
-    if ( ! checkAffichage() ) return;
+void Log::log (  std::string nomDuVariable , sf::Color couleur ){
+    if ( m_mute || ! checkAffichage() ) return;
 
     checkGadget ( );
 
@@ -451,9 +491,8 @@ void Log::log (  std::string nomDuVariable , sf::Color couleur )
 }
 
 /////////////////////////////////////////////////
-void Log::log (  std::string nomDuVariable , bool &variable )
-{
-    if ( ! checkAffichage() ) return;
+void Log::log (  std::string nomDuVariable , bool &variable ){
+    if ( m_mute || ! checkAffichage() ) return;
 
     checkGadget ( );
 
@@ -467,12 +506,9 @@ void Log::log (  std::string nomDuVariable , bool &variable )
 
 }
 
-
-
 /////////////////////////////////////////////////
-void Log::log (  std::string nomDuVariable , std::shared_ptr<Gadget> gadget )
-{
-    if ( ! checkAffichage() ) return;
+void Log::log (  std::string nomDuVariable , std::shared_ptr<Gadget> gadget ){
+    if ( m_mute || ! checkAffichage() ) return;
 
     checkGadget ( );
 
@@ -483,6 +519,180 @@ void Log::log (  std::string nomDuVariable , std::shared_ptr<Gadget> gadget )
     logOut ( preLigne +  nomDuVariable + " = "  + valVar1 + "\n" );
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////
+void Log::logEvt ( std::string txt )
+{
+    if ( ! checkAffichage() || ! m_afficher_event ) return;
+
+    // on regarde si on a changé de gadget
+    checkGadget ( );
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_1 );
+    std::string  preLigne = m_preLigne_event;
+    logOut ( preLigne  );
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_2 );
+    logOut ( txt  + "\n" );
+}
+
+
+/////////////////////////////////////////////////
+void Log::logEvt (  std::string nomDuVariable , float variable )
+{
+    if ( ! checkAffichage() || ! m_afficher_event ) return;
+
+    checkGadget ( );
+
+    std::string valVar = patch::to_string(variable);
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_1 );
+    std::string  preLigne = m_preLigne_event;
+    logOut ( preLigne  );
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_2 );
+    logOut ( nomDuVariable + " : "  );
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_2 );
+    logOut ( valVar + "\n" );
+}
+
+/////////////////////////////////////////////////
+void Log::logEvt (  std::string nomDuVariable , sf::Vector2f variable ){
+    log (  nomDuVariable , sf::Vector2i (variable) );
+}
+
+/////////////////////////////////////////////////
+void Log::logEvt (  std::string nomDuVariable , sf::Vector2i variable )
+{
+    if ( ! checkAffichage() || ! m_afficher_event ) return;
+
+    checkGadget ( );
+
+    std::string valVar1 = patch::to_string(variable.x);
+    std::string valVar2 = patch::to_string(variable.y);
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_1 );
+    std::string  preLigne = m_preLigne_event;
+    logOut ( preLigne  );
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_2 );
+    logOut ( nomDuVariable + " : " );
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_2 );
+    logOut ( "( "  + valVar1 + " , "  + valVar2 + " )\n" );
+}
+
+/////////////////////////////////////////////////
+void Log::logEvt (  std::string nomDuVariable , std::string variable )
+{
+    if ( ! checkAffichage() || ! m_afficher_event ) return;
+
+    checkGadget ( );
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_1 );
+    std::string  preLigne = m_preLigne_event;
+    logOut ( preLigne  );
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_2 );
+    logOut ( nomDuVariable + " : " );
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_2 );
+    logOut ( "\""  + variable + "\"\n" );
+}
+
+/////////////////////////////////////////////////
+void Log::logEvt (  std::string nomDuVariable , sf::Color couleur )
+{
+    if ( ! checkAffichage() || ! m_afficher_event ) return;
+
+    checkGadget ( );
+
+    std::string valVar1 = patch::to_string(couleur.r);
+    std::string valVar2 = patch::to_string(couleur.g);
+    std::string valVar3 = patch::to_string(couleur.b);
+    std::string valVar4 = patch::to_string(couleur.a);
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_1 );
+    std::string  preLigne = m_preLigne_event;
+
+    logOut ( preLigne  );
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_2 );
+    logOut ( nomDuVariable + " : "   );
+
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_2 );
+    logOut ( valVar1 + " "  + valVar2 + " "  + valVar3 + " "  + valVar4 + "\n" );
+}
+
+/////////////////////////////////////////////////
+void Log::logEvt (  std::string nomDuVariable , bool &variable )
+{
+    if ( ! checkAffichage() || ! m_afficher_event ) return;
+
+    checkGadget ( );
+
+    std::string valVar1 = variable ? "true" : "false" ;
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_1 );
+    std::string  preLigne = m_preLigne_event;
+//    logOut ( preLigne +  nomDuVariable + " : "  + valVar1 + "\n" );
+
+    logOut ( preLigne  );
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_2 );
+    logOut ( nomDuVariable + " : "   );
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_2 );
+    logOut ( valVar1 + "\n"  );
+}
+
+/////////////////////////////////////////////////
+void Log::logEvt (  std::string nomDuVariable , std::shared_ptr<Gadget> gadget )
+{
+    // si le gadget concerné est mué on zappe
+    if ( gadget != nullptr )
+        if ( gadget->m_mute )  return;
+
+    if ( ! checkAffichage() || ! m_afficher_event ) return;
+
+
+    checkGadget ( );
+    std::string valVar1 ;
+    if ( gadget != nullptr )
+        valVar1 = gadget->getNom();
+    else
+        valVar1 = " - ";
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_1 );
+    std::string  preLigne = m_preLigne_event;
+
+    logOut ( preLigne  );
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_2 );
+    logOut ( nomDuVariable   );
+
+    SetConsoleTextAttribute( m_console , m_couleur_event_2 );
+    logOut ( " : "  + valVar1 + "\n"  );
+}
+
 
 
 } // fin namespace gui

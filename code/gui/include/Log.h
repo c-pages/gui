@@ -21,16 +21,32 @@ public :
 
     Log();
 
-    void log ( std::string txt );
-    void logTitre ( std::string txt );
+    void logTitre   ( std::string txt );
 
-    void log (  std::string nomDuVariable , std::string     variable );
-    void log (  std::string nomDuVariable , float           variable );
-    void log (  std::string nomDuVariable , sf::Vector2f    variable );
-    void log (  std::string nomDuVariable , sf::Vector2i    variable );
-    void log (  std::string nomDuVariable , sf::Color       couleur  );
-    void log (  std::string nomDuVariable , bool&           variable );
-    void log (  std::string nomDuVariable , std::shared_ptr<Gadget> gadget );
+    void log ( std::string txt );
+    void log ( std::string nomDuVariable , std::string     variable );
+    void log ( std::string nomDuVariable , float           variable );
+    void log ( std::string nomDuVariable , sf::Vector2f    variable );
+    void log ( std::string nomDuVariable , sf::Vector2i    variable );
+    void log ( std::string nomDuVariable , sf::Color       couleur  );
+    void log ( std::string nomDuVariable , bool&           variable );
+    void log ( std::string nomDuVariable , std::shared_ptr<Gadget> gadget );
+
+    void logEvt ( std::string txt );
+    void logEvt ( std::string nomDuVariable , std::string     variable );
+    void logEvt ( std::string nomDuVariable , float           variable );
+    void logEvt ( std::string nomDuVariable , sf::Vector2f    variable );
+    void logEvt ( std::string nomDuVariable , sf::Vector2i    variable );
+    void logEvt ( std::string nomDuVariable , sf::Color       couleur  );
+    void logEvt ( std::string nomDuVariable , bool&           variable );
+    void logEvt ( std::string nomDuVariable , std::shared_ptr<Gadget> gadget );
+
+
+
+
+    void setLogActif     ( bool val , bool appliquerAuxComposants = false );
+
+    void resetLog   ( );
 
 private:
 
@@ -57,6 +73,9 @@ private:
     std::string             m_preLigne_variable;
     std::string             m_preLigne_interface;
     std::string             m_preLigne_titre;
+
+    std::string             m_preLigne_event;
+
     std::string             m_ligneInterface;
 
     WORD                    m_couleur_calque;
@@ -68,7 +87,8 @@ private:
     WORD                    m_couleur_titre;
     WORD                    m_couleur_courant;
     WORD                    m_couleur_variable;
-
+    WORD                    m_couleur_event_1;
+    WORD                    m_couleur_event_2;
 
 
     bool m_styleFondEnCouleur ;
@@ -82,6 +102,8 @@ private:
     bool m_afficher_menuDeroulants ;
     bool m_afficher_infos ;
     bool m_afficher_souris ;
+
+    bool m_afficher_event ;
 
     bool m_afficher_GUI ;
 

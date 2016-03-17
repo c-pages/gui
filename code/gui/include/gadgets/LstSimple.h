@@ -4,8 +4,8 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "Liste.h"
-#include "BtnMenu.h"
+#include "gadgets_interfaces/Liste.h"
+#include "gadgets_outils/BtnMenu.h"
 #include <memory>
 
 

@@ -246,8 +246,8 @@ void Gadget::demanderActuaBounds() {
 
 /////////////////////////////////////////////////
 void Gadget::setVisible( bool val ) {
-    log("setVisible");
-    log("m_visible", val);
+//    log("setVisible");
+//    log("m_visible", val);
     m_visible = val;
 };
 
@@ -256,8 +256,9 @@ void Gadget::setVisible( bool val ) {
 void Gadget::setActif( bool val ){
     if ( m_actif == val ) return;
 
-    log("setActif");
-    log("m_actif", val);
+//    log("setActif");
+//    log("m_actif", val);
+
     m_actif = val;
     actualiserEtat ();
     demanderActuaStyle();
@@ -267,8 +268,10 @@ void Gadget::setActif( bool val ){
 /////////////////////////////////////////////////
 void Gadget::setFocus( bool val ) {
     if ( m_focus == val ) return;
-    log("setFocus");
-    log("m_focus", val);
+
+//    log("setFocus");
+//    log("m_focus", val);
+
     m_focus = val;
     actualiserEtat ();
     demanderActuaStyle();
@@ -278,8 +281,10 @@ void Gadget::setFocus( bool val ) {
 /////////////////////////////////////////////////
 void Gadget::setSurvol( bool val ) {
     if ( m_survol == val ) return;
-    log("setSurvol");
-    log("m_survol", val);
+
+//    log("setSurvol");
+//    log("m_survol", val);
+
     m_survol = val;
     actualiserEtat ();
     demanderActuaStyle();
@@ -289,7 +294,8 @@ void Gadget::setSurvol( bool val ) {
 /////////////////////////////////////////////////
 void Gadget::setPresse( bool val ){
     if ( m_presse == val ) return;
-    log("SetVisible", val);
+//    log("setPresse");
+//    log("m_presse", val);
     m_presse = val;
     actualiserEtat ();
     demanderActuaStyle();
@@ -345,6 +351,60 @@ bool Gadget::estPresse () const{
 bool Gadget::estDeplacable () const{
     return m_deplacable;
 }
+
+
+/////////////////////////////////////////////////
+std::string Gadget::getNom() const {
+    return m_nom;
+}
+
+/////////////////////////////////////////////////
+void        Gadget::setNom( std::string nom ) {
+    m_nom = nom;
+}
+
+/////////////////////////////////////////////////
+unsigned int Gadget::getID() const {
+    return m_id;
+}
+
+/////////////////////////////////////////////////
+int          Gadget::getNombreGadgets () const{ return ms_CompteurGadgets; };
+
+/////////////////////////////////////////////////
+void        Gadget::setTexte( std::string val ){
+    log("setTexte \"" + val + "\"" );
+    m_texte = val;
+    demanderActuaGeom();
+};
+
+/////////////////////////////////////////////////
+std::string  Gadget::getTexte( ) const{
+    return m_texte;
+};
+
+/////////////////////////////////////////////////
+void            Gadget::setMarge ( sf::Vector2f marge ){
+    m_marge = marge;
+    demanderActuaGeom();
+};
+
+/////////////////////////////////////////////////
+void            Gadget::setMarge ( float val ){
+    m_marge = { val , val };
+    demanderActuaGeom();
+};
+
+/////////////////////////////////////////////////
+void            Gadget::setMarge ( float x , float y ){
+    m_marge = { x , y };
+    demanderActuaGeom();
+};
+/////////////////////////////////////////////////
+sf::Vector2f    Gadget::getMarge(){
+    return m_marge;
+};
+
 
 
 } // fin namespace gui

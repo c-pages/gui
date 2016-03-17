@@ -22,6 +22,7 @@ public :
     Log();
 
     void logTitre   ( std::string txt );
+    void logAlerte   ( std::string txt );
 
     void log ( std::string txt );
     void log ( std::string nomDuVariable , std::string     variable );
@@ -41,19 +42,13 @@ public :
     void logEvt ( std::string nomDuVariable , bool&           variable );
     void logEvt ( std::string nomDuVariable , std::shared_ptr<Gadget> gadget );
 
-
-
-
     void setLogActif     ( bool val , bool appliquerAuxComposants = false );
 
     void resetLog   ( );
 
 private:
-
-
-
-
     bool        checkAffichage();
+    bool        checkAffichageEvent();
 
     std::string getHierarchieGadget();
     std::string getNomGadget();
@@ -61,6 +56,7 @@ private:
 
     void        checkGadget ( );
     bool        estUnCalque();
+    bool        estInterface();
 
 private:
     static  bool            ms_debugLog;
@@ -89,6 +85,7 @@ private:
     WORD                    m_couleur_variable;
     WORD                    m_couleur_event_1;
     WORD                    m_couleur_event_2;
+    WORD                    m_couleur_alert;
 
 
     bool m_styleFondEnCouleur ;
@@ -104,6 +101,7 @@ private:
     bool m_afficher_souris ;
 
     bool m_afficher_event ;
+    bool m_afficher_eventGUI ;
 
     bool m_afficher_GUI ;
 

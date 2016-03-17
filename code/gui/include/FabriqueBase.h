@@ -13,14 +13,12 @@
 #include "gadgets\AffImage.h"
 #include "gadgets\AffIcone.h"
 
-#include "gadgets\AffBarreTitre.h"
 
 // BOUTONS
 #include "gadgets\BtnRectangle.h"
 #include "gadgets\BtnTexte.h"
 #include "gadgets\BtnIcone.h"
-#include "gadgets\BtnMenu.h"
-#include "gadgets\BtnBarreFonctions.h"
+
 
 
 // DONNEES
@@ -34,17 +32,27 @@
 #include "gadgets\LstDeroulante.h"
 
 
-// CONTENANT
-#include "gadgets\Contenant.h"
-#include "gadgets\CntSliders.h"
-
 // FENTRES
 #include "gadgets\Fenetre.h"
 
-// SUPPORTS
-#include "gadgets\SupBandeau.h"
-#include "gadgets\SupBandeauMenusDeroulants.h"
-#include "gadgets\SupPanneau.h"
+#include "gadgets\BtnBarreFonctions.h"
+
+
+
+
+// OUTILS
+// a retirer de la liste des creations
+#include "gadgets_outils\AffBarreTitre.h"
+#include "gadgets_outils\BtnMenu.h"
+
+#include "gadgets_outils\CntSliders.h"
+
+#include "gadgets_outils\SupBandeau.h"
+#include "gadgets_outils\SupBandeauMenusDeroulants.h"
+#include "gadgets_outils\SupPanneau.h"
+
+#include "gadgets_interfaces\Contenant.h"
+
 
 namespace gui{
 

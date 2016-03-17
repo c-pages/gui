@@ -6,9 +6,9 @@
 /////////////////////////////////////////////////
 #include "ActionEvenement.h"
 #include "decorations/FenDecoration.h"
-#include "gadgets/AffBarreTitre.h"
+#include "gadgets_outils/AffBarreTitre.h"
 #include <memory>
-#include <gadgets/Contenant.h>
+#include <gadgets_interfaces/Contenant.h>
 
 
 namespace gui {

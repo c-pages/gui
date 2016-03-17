@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "Bouton.h"
+#include "gadgets_interfaces/Bouton.h"
 #include "Valeurs.h"
 #include "gadgets\AffRectangle.h"
 #include "gadgets\AffLabel.h"
@@ -41,15 +41,15 @@ public:
 
     void setFondCouleur (sf::Color couleur , Etat etat = Etat::tous );
 
-    void setLigneCouleur (sf::Color couleur , Etat etat = Etat::tous );
+    void setFondLigneCouleur (sf::Color couleur , Etat etat = Etat::tous );
 
-    void setLigneEpaisseur (float epaisseur , Etat etat = Etat::tous );
+    void setFondLigneEpaisseur (float epaisseur , Etat etat = Etat::tous );
 
     void setFondCouleur ( Valeurs<sf::Color> couleurs  );
 
-    void setLigneCouleur ( Valeurs<sf::Color> couleurs  );
+    void setFondLigneCouleur ( Valeurs<sf::Color> couleurs  );
 
-    void setLigneEpaisseur ( Valeurs<float> epaisseur );
+    void setFondLigneEpaisseur ( Valeurs<float> epaisseur );
 
 ////////////////////////////////// ///////////////
 // Membres

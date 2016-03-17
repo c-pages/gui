@@ -35,6 +35,8 @@ class Gadget : public std::enable_shared_from_this<Gadget>, public sf::Drawable,
     /////////////////////////////////////////////////
     enum class Type {
 
+        Interface,  ///<
+
         Affichage,  ///< Les gadgets sans interaction, affichant seulement une donnée (image, texte ...)
         Bouton,     ///< Les gadgets interactifs qui declenchent une action.
         Donnee,     ///< Gadgets interactif controlant une donnée.
@@ -214,39 +216,37 @@ public:
 
     sf::Vector2i getPosSouris ( );
     sf::Vector2i getLocalPosSouris ( );
+
     virtual void actualiserEtatDeco ( ){};
 
     /////////////////////////////////////////////////
     virtual void creerNomUnique( std::string type  = "Gadget" );
 
-
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
+    virtual std::string getNom() const;
+    void                setNom( std::string nom );
 
+    unsigned int        getID() const;
 
+    int                 getNombreGadgets () const;
 
-    virtual std::string getNom() const              { return m_nom; };
-    void                setNom( std::string nom )   { m_nom = nom; };
+    virtual void    setTexte( std::string val );
+    std::string     getTexte( ) const;
 
-    unsigned int getID() const              { return m_id; };
+    void            setMarge ( sf::Vector2f marge );
+    void            setMarge ( float val );
+    void            setMarge ( float x , float y );
+    sf::Vector2f    getMarge();
 
-    int getNombreGadgets () const { return ms_CompteurGadgets; };
+    virtual void    demanderActualisation();
+    virtual void    demanderActuaGeom();
+    virtual void    demanderActuaStyle();
+    virtual void    demanderActuaContenu();
+    virtual void    demanderActuaBounds();
 
-
-
-    virtual void setTexte( std::string val )        { log("setTexte \"" + val + "\"" ); m_texte = val;  demanderActuaGeom(); };
-
-    std::string getTexte( ) const { return m_texte; };
-
-    void setMarge ( sf::Vector2f marge )            { m_marge = marge; demanderActuaGeom(); };
-    sf::Vector2f getMarge()                         { return m_marge;};
-
-    virtual void demanderActualisation();
-    virtual void demanderActuaGeom();
-    virtual void demanderActuaStyle();
-    virtual void demanderActuaContenu();
-    virtual void demanderActuaBounds();
-
+    virtual bool        estInterface () { return false; };
+    virtual bool        estInteractif() { return false; }; ///< \todo voir si on peut faire mieux ...
 
 /////////////////////////////////////////////////
 // Membres

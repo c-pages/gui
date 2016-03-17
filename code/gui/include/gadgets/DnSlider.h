@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "Donnee.h"
+#include "gadgets_interfaces/Donnee.h"
 #include "BtnRectangle.h"
 
 
@@ -20,11 +20,9 @@ namespace gui {
 class DnSlider : public gui::Donnee<float> {
 
 
-
 /////////////////////////////////////////////////
 // Méthodes
 /////////////////////////////////////////////////
-
 
 public:
     /////////////////////////////////////////////////
@@ -42,28 +40,26 @@ public:
     /////////////////////////////////////////////////
     virtual void traiterEvenements (const sf::Event& evenement);
 
+    // le slider
+    void setSliderCouleur           ( Valeurs<sf::Color> couleurs );
+    void setSliderLigneCouleur      ( Valeurs<sf::Color> couleurs );
+    void setSliderLigneEpaisseur    ( Valeurs<float> epaisseur );
+
+    // le bouton
+    void setBoutonCouleur           ( Valeurs<sf::Color> couleurs );
+    void setBoutonLigneCouleur      ( Valeurs<sf::Color> couleurs );
+    void setBoutonLigneEpaisseur    ( Valeurs<float> epaisseur );
+
+    // le fond
+    void setFondCouleur             ( sf::Color couleurs );
+    void setFondLigneCouleur        ( sf::Color couleurs );
+    void setFondLigneEpaisseur      ( float epaisseur );
+
+public:
+
     /////////////////////////////////////////////////
     virtual float getValeur();
 
-    /////////////////////////////////////////////////
-    void setLongueurCurseur( float pourcentage );
-
-    // le slider
-    void setSliderFillColor         ( Valeurs<sf::Color> couleurs  );
-    void setSliderOutlineColor      ( Valeurs<sf::Color> couleurs  );
-    void setSliderOutlineThickness  ( Valeurs<float> epaisseur );
-
-    // le bouton
-    void setBoutonFillColor         ( Valeurs<sf::Color> couleurs  );
-    void setBoutonOutlineColor      ( Valeurs<sf::Color> couleurs  );
-    void setBoutonOutlineThickness  ( Valeurs<float> epaisseur );
-
-    // le fond
-    void setFondCouleur             ( sf::Color couleurs  );
-    void setLigneCouleur            ( sf::Color couleurs  );
-    void setLigneEpaisseur          ( float epaisseur );
-
-public:
     ///< Definir m_valeurMax
     void setValeurMax( float val );
 
@@ -76,6 +72,9 @@ public:
     ///< Acceder à m_valeurMin
     float getValeurMin ( ) const ;
 
+    /////////////////////////////////////////////////
+    void setLongueurCurseur( float pourcentage );
+
     ///< Definir m_taille
     void setLongueur( float longueur );
 
@@ -85,16 +84,22 @@ public:
 
     void setVertical (  );
 
-    void incrementer( float increment = 5 );
+    void incrementer( float increment = 20 );
 
-    void decrementer( float increment = 5 );
+    void decrementer( float increment = 20 );
 
     bool dragEnCours( ) ;
 
     void setDrag (bool val );
+
 private:
-    void positionnerCurseurSurSouris ();
-    void corrigerPositionCurseur();
+    void deplacerSlider ();
+
+    /////////////////////////////////////////////////
+    /// \brief  Corriger la position pour la garder dans ses limites
+    ///
+    /////////////////////////////////////////////////
+    void corrigerPositionSlider();
 
 /////////////////////////////////////////////////
 // Membres

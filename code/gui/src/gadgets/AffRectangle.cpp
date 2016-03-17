@@ -54,14 +54,14 @@ void AffRectangle::setFondCouleur (sf::Color couleur) {
 
 
 /////////////////////////////////////////////////
-void AffRectangle::setLigneCouleur (sf::Color couleur) {
+void AffRectangle::setFondLigneCouleur (sf::Color couleur) {
     m_couleurLignes =  couleur;
     m_rectangle.setOutlineColor( couleur );
 };
 
 
 /////////////////////////////////////////////////
-void AffRectangle::setLigneEpaisseur (float epaisseur) {
+void AffRectangle::setFondLigneEpaisseur (float epaisseur) {
     m_epaisseur = epaisseur;
     m_rectangle.setOutlineThickness( epaisseur );
 };

@@ -1,7 +1,7 @@
 #ifndef DNZONENUM_H
 #define DNZONENUM_H
 
-#include <Donnee.h>
+#include "gadgets_interfaces/Donnee.h"
 
 namespace gui {
 class DnZoneTexte;

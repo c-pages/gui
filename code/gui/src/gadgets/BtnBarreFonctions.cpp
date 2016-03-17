@@ -2,7 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <BtnBarreFonctions.h>
-//#include "GrpSimple.h"
+//#include "CntSimple.h"
 #include "Interface.h"
 
 
@@ -216,12 +216,12 @@ void BtnBarreFonctions::actualiserGeometrie ()
 void BtnBarreFonctions::actualiserStyle ()
 {
     m_fond->setFondCouleur (m_fndCouleur);
-    m_fond->setLigneCouleur (m_fndLgnCouleur);
-    m_fond->setLigneEpaisseur (m_fndLgnEpaisseur);
+    m_fond->setFondLigneCouleur (m_fndLgnCouleur);
+    m_fond->setFondLigneEpaisseur (m_fndLgnEpaisseur);
 
     m_ombre->setFondCouleur (m_ombreCouleur);
-    m_ombre->setLigneCouleur (m_ombreLgnCouleur);
-    m_ombre->setLigneEpaisseur (m_ombreLgnepaisseur);
+    m_ombre->setFondLigneCouleur (m_ombreLgnCouleur);
+    m_ombre->setFondLigneEpaisseur (m_ombreLgnepaisseur);
 
 
 }

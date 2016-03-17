@@ -48,7 +48,6 @@ void EcranDemo::traiter_evenements  ( const sf::Event& event )
 {
     // Evenements du jeu ...
 
-
     // Evenements de l'interface
     m_interface->traiterEvenements    ( event );
 
@@ -75,7 +74,6 @@ void EcranDemo::traiter_evenements  ( const sf::Event& event )
         m_appli->getFenetre()->setView(m_vueGUI);
         m_interface->demanderActualisation();
     }
-
 }
 
 
@@ -101,15 +99,15 @@ void EcranDemo::actualiser  ( float deltaT )
 //        m_compteurFrameFPS = 0;
 //    }
 //    std::string val=  "FPS : " + patch::to_string( m_FPS ) + "  - Survole : ";
-//    if ( m_interface->m_boutonSurvole != nullptr ){
-//        val +=   m_interface->m_boutonSurvole->getNom() ;
+//    if ( m_interface->ms_boutonSurvole != nullptr ){
+//        val +=   m_interface->ms_boutonSurvole->getNom() ;
 //    } else val += "nullptr";
 //    m_labelRetour->setTexte ( val );
 
 
 
-//    std::string val =  "Retour : " + m_interface->m_boutonSurvole->getNom();
-//    if ( m_interface->m_boutonSurvole == nullptr )
+//    std::string val =  "Retour : " + m_interface->ms_boutonSurvole->getNom();
+//    if ( m_interface->ms_boutonSurvole == nullptr )
 //        val = "Retour : nullptr";
 
 //
@@ -158,7 +156,7 @@ EcranDemo::initScene  ( )
 void
 EcranDemo::initGUI_tests ()
 {
-
+//
 //    auto label = m_interface->creer.label( "bon" );
 //    label->setPosition ( 50, 50 );
 //    label->setTexteStyle ( sf::Text::Italic );
@@ -167,8 +165,8 @@ EcranDemo::initGUI_tests ()
 //    auto rectangle = m_interface->creer.rectangle( 25 , 25 );
 //    rectangle->setPosition ( 50, 100 );
 //    rectangle->setFondCouleur ( sf::Color::Yellow );
-//    rectangle->setLigneCouleur ( sf::Color::Blue );
-//    rectangle->setLigneEpaisseur ( 12 );
+//    rectangle->setFondLigneCouleur ( sf::Color::Blue );
+//    rectangle->setFondLigneEpaisseur ( 12 );
 //
 //    auto image = m_interface->creer.image();
 //    image->setPosition ( 50, 150 );
@@ -182,24 +180,22 @@ EcranDemo::initGUI_tests ()
 //    bouton->setPosition ( 200, 50);
 //    bouton->setFondCouleur ( sf::Color ( 255,0,0) );
 //    bouton->setFondCouleur ( sf::Color ( 0,255,0), gui::Etat::survol );
-////    bouton->setLogActif ( true );
+//    bouton->setLogActif ( true );
 //
 //    auto boutonTexte = m_interface->creer.boutonTexte( "Ceci est un bouton texte" );
 //    boutonTexte->setPosition ( 200, 100);
 //    boutonTexte->setTexteCouleur ( sf::Color ( 255,0,0) );
 //    boutonTexte->setTexteCouleur ( sf::Color ( 0,255,0), gui::Etat::survol );
+//    boutonTexte->setLogActif ( true );
 //
-////    auto boutonIcone = m_interface->creer.boutonIcone( "media/img/ico_btnIcone.png" );
 //    auto boutonIcone = m_interface->creer.boutonIcone( "media/img/ico_fichiers.png" );
 //    boutonIcone->setPosition ( 200, 150);
-////    boutonIcone->setLogActif ( true );
-////    boutonIcone->setFix ( true );
-////    boutonIcone->setIndex ( 4 );
-
+//    boutonIcone->setLogActif ( true );
 
     auto slide = m_interface->creer.slider( );
-    slide->setPosition ( 200, 200);
-    slide->setLogActif ( true , true );
+    slide->setPosition  ( 200, 200);
+    slide->setLogActif  ( true );
+    slide->setMarge     ( 3 , 3 );
 
 }
 
@@ -212,6 +208,7 @@ EcranDemo::initGUI ()
 
     // Creation de l'interface qui gère un ensemble de gadget.
     m_interface = std::make_shared<Interface>( m_appli->getFenetre() );
+    m_interface->setAfficherFPS ( true );
 
     ///// Interactions clavier ///////
     m_interface->lier ( sf::Keyboard::Escape , [this]() {

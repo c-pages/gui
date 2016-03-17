@@ -18,14 +18,11 @@ FenDecoDrag::FenDecoDrag( Fenetre* fenetre )
     m_btnDragLgnCouleurs    = sf::Color::Transparent;
     m_btnDragLgnepaisseurs  = 0;
 
-
-
     // Action du bouton drag
     m_fenetre->lier ( Evenement::onBtnG_presser , [this](){
         auto posSouris = m_fenetre->getPosSouris();
         m_decalageDragSouris = sf::Vector2i ( posSouris.x - m_fenetre->getPosAbs().x , posSouris.y - m_fenetre->getPosAbs().y );
         setDrag( true );
-//        positionnerFenetre ();
 
         // Si on est pas deja dans le calque fenetres on s'y met
         if ( m_fenetre->getParent()->getNom() != Interface::ms_calque_fenetres->getNom() ){
@@ -48,8 +45,6 @@ FenDecoDrag::FenDecoDrag( Fenetre* fenetre )
     auto fct_finDuDrag = [this](){
 
             setDrag( false );
-
-            std::cout << "fin drag\n";
 
             bool survolPanneau = false;
             for ( auto panneau : Interface::ms_calque_panneau_D->getEnfants() )
@@ -74,8 +69,6 @@ FenDecoDrag::FenDecoDrag( Fenetre* fenetre )
             if ( survolPanneau )
                 entreDansPanneau ();
             else sortDuPanneau ();
-
-
     };
     m_fenetre->lier ( Evenement::onBtnG_relacher , fct_finDuDrag );
     m_fenetre->lier ( Evenement::onBtnG_relacherDehors , fct_finDuDrag );
@@ -88,7 +81,6 @@ FenDecoDrag::~FenDecoDrag( )
     m_fenetre->delier ( Evenement::onBtnG_presser );
     m_fenetre->delier ( Evenement::onBtnG_relacher );
     m_fenetre->delier ( Evenement::onBtnG_relacherDehors );
-
 
 }
 

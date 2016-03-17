@@ -83,8 +83,8 @@ void EcranAtelier::actualiser  ( float deltaT )
 
 
 
-//    std::string val =  "Retour : " + m_interface->m_boutonSurvole->getNom();
-//    if ( m_interface->m_boutonSurvole == nullptr )
+//    std::string val =  "Retour : " + m_interface->ms_boutonSurvole->getNom();
+//    if ( m_interface->ms_boutonSurvole == nullptr )
 //        val = "Retour : nullptr";
 
 //

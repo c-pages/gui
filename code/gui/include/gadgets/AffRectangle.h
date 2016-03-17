@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "Affiche.h"
+#include "gadgets_interfaces/Affiche.h"
 #include <SFML/Graphics.hpp>
 
 
@@ -45,10 +45,10 @@ public:
     void setFondCouleur (sf::Color couleur);
 
     /////////////////////////////////////////////////
-    void setLigneCouleur (sf::Color couleur);
+    void setFondLigneCouleur (sf::Color couleur);
 
     /////////////////////////////////////////////////
-    void setLigneEpaisseur (float epaisseur);
+    void setFondLigneEpaisseur (float epaisseur);
 
 /////////////////////////////////////////////////
 // Membres

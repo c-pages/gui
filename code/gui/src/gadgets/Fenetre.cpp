@@ -1,15 +1,15 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <Fenetre.h>
-#include <decorations/FenDecoDrag.h>
-#include <decorations/FenDecoRedim.h>
-#include <decorations/FenDecoRedimPanneau.h>
+#include "Fenetre.h"
+#include "decorations/FenDecoDrag.h"
+#include "decorations/FenDecoRedim.h"
+#include "decorations/FenDecoRedimPanneau.h"
 
 #include <Interface.h>
 
-#include <CntSliders.h>
-//#include <GrpSimple.h>
+#include "gadgets_outils/CntSliders.h"
+//#include <CntSimple.h>
 
 
 namespace gui {
@@ -197,8 +197,8 @@ void Fenetre::actualiserStyle ()
         deco.second->actualiserStyle ();
 
     m_contenant->setFondCouleur            ( m_contenantFndCouleur ) ;
-    m_contenant->setLigneCouleur         ( m_contenantFndLgnCouleur  ) ;
-    m_contenant->setLigneEpaisseur     ( m_contenantFndLgnepaisseur  );
+    m_contenant->setFondLigneCouleur         ( m_contenantFndLgnCouleur  ) ;
+    m_contenant->setFondLigneEpaisseur     ( m_contenantFndLgnepaisseur  );
 
     m_contenant->setContenantFillColor       ( m_contenantContenantCouleur ) ;
     m_contenant->setContenantOutlineColor    ( m_contenantContenantLgnCouleur  ) ;
@@ -210,18 +210,18 @@ void Fenetre::actualiserStyle ()
     m_titre->setTextePolice              ( m_titreTextPolice );
     m_titre->setTexteStyle          ( m_titreTextStyle );
     m_titre->setFondCouleur           ( m_titreFondCouleur ) ;
-    m_titre->setLigneCouleur        ( m_titreFondLgnCouleur  ) ;
-    m_titre->setLigneEpaisseur    ( m_titreFondLgnepaisseur  );
+    m_titre->setFondLigneCouleur        ( m_titreFondLgnCouleur  ) ;
+    m_titre->setFondLigneEpaisseur    ( m_titreFondLgnepaisseur  );
 
 
 
     m_fond->setFondCouleur            ( m_fondCouleur ) ;
-    m_fond->setLigneCouleur         ( m_fondLgnCouleur  ) ;
-    m_fond->setLigneEpaisseur     ( m_fondLgnepaisseur  );
+    m_fond->setFondLigneCouleur         ( m_fondLgnCouleur  ) ;
+    m_fond->setFondLigneEpaisseur     ( m_fondLgnepaisseur  );
 
     m_ombre->setFondCouleur            ( m_ombreCouleur ) ;
-    m_ombre->setLigneCouleur         ( m_ombreLgnCouleur  ) ;
-    m_ombre->setLigneEpaisseur     ( m_ombreLgnepaisseur  );
+    m_ombre->setFondLigneCouleur         ( m_ombreLgnCouleur  ) ;
+    m_ombre->setFondLigneEpaisseur     ( m_ombreLgnepaisseur  );
 
 }
 /////////////////////////////////////////////////

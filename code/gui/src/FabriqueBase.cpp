@@ -135,7 +135,7 @@ std::shared_ptr<T>  FabriqueBase::creerPanneau (){
 std::shared_ptr<AffRectangle>    FabriqueBase::rectangle( sf::Vector2i taille )
 {
 
-    m_interfaceParent->log ("creation rectangle" );
+    m_interfaceParent->log ("Creation: rectangle" );
     auto nouveauGadget = creerBureau<AffRectangle>( );
 
     nouveauGadget->setTaille ( taille );
@@ -158,7 +158,7 @@ std::shared_ptr<AffRectangle>    FabriqueBase::rectangle( float x  , float y  )
 std::shared_ptr<AffLabel>    FabriqueBase::label( std::string text )
 {
 
-    m_interfaceParent->log ("creation label" );
+    m_interfaceParent->log ("Creation: label" );
     auto nouveauGadget = creerBureau<AffLabel>( );
 
     nouveauGadget->setTexte ( text );
@@ -170,7 +170,7 @@ std::shared_ptr<AffLabel>    FabriqueBase::label( std::string text )
 std::shared_ptr<AffImage>    FabriqueBase::image( std::string fichier )
 {
 
-    m_interfaceParent->log ("creation image" );
+    m_interfaceParent->log ("Creation: image" );
     auto nouveauGadget = creerBureau<AffImage>( );
 
 
@@ -207,7 +207,7 @@ std::shared_ptr<AffImage>    FabriqueBase::image( int id )
 /////////////////////////////////////////////////
 std::shared_ptr<AffIcone>    FabriqueBase::icone( std::string fichier , unsigned int id )
 {
-    m_interfaceParent->log ("creation icone" );
+    m_interfaceParent->log ("Creation: icone" );
     auto nouveauGadget = creerBureau<AffIcone>( );
 
     if ( fichier != "")
@@ -230,7 +230,7 @@ std::shared_ptr<BtnRectangle>    FabriqueBase::boutonRect( float x , float y )
 /////////////////////////////////////////////////
 std::shared_ptr<BtnRectangle>    FabriqueBase::boutonRect( sf::Vector2i taille )
 {
-    m_interfaceParent->log ("creation boutonRect" );
+    m_interfaceParent->log ("Creation: bouton rectangle" );
     auto nouveauGadget = creerBureau<BtnRectangle>( );
 
 
@@ -244,7 +244,7 @@ std::shared_ptr<BtnRectangle>    FabriqueBase::boutonRect( sf::Vector2i taille )
 /////////////////////////////////////////////////
 std::shared_ptr<BtnTexte>    FabriqueBase::boutonTexte( std::string texte )
 {
-    m_interfaceParent->log ("Creation: Bouton texte");
+    m_interfaceParent->log ("Creation: bouton texte");
     auto nouveauGadget = creerBureau<BtnTexte>( );
 
     if ( texte != "")
@@ -258,6 +258,7 @@ std::shared_ptr<BtnTexte>    FabriqueBase::boutonTexte( std::string texte )
 /////////////////////////////////////////////////
 std::shared_ptr<BtnIcone>    FabriqueBase::boutonIcone( std::string fichier )
 {
+    m_interfaceParent->log ("Creation: bouton icone");
     auto nouveauGadget = creerBureau<BtnIcone>( );
     if ( fichier != "")
         nouveauGadget->setImage ( fichier );
@@ -323,6 +324,7 @@ std::shared_ptr<DnZoneNum>        FabriqueBase::zoneNum( float valeurInitial ,fl
 /////////////////////////////////////////////////
 std::shared_ptr<DnSlider>        FabriqueBase::slider( )
 {
+    m_interfaceParent->log ("Creation: slider");
     auto nouveauGadget = creerBureau<DnSlider>( );
     //nouveauGadget->demanderActualisation();
     return nouveauGadget;

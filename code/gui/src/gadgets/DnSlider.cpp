@@ -56,56 +56,46 @@ DnSlider::DnSlider ()
     m_fndLgnepaisseur       = 1;
 
 
-    // Declaration des fonctions de fonctionnement de l'interface interne du gadget.
-    fct_cliqueBtnFond = [this](){
-
-        logEvt ( "CliqueFond" );
-
+    // Declaration des fonctions de l'interface interne du gadget.
+    fct_cliqueBtnFond   = [this](){
         if ( m_horizontal ) {
             if ( getLocalPosSouris().x > m_marge.x + m_slider->getTaille().x/2 + m_slider->getPosition().x ){
-                incrementer ( 20 );
+                incrementer ( );
                 if ( m_slider->getPosition().x + ( m_slider->getTaille().x/2  ) > getLocalPosSouris().x )
-                    positionnerCurseurSurSouris ();
+                    deplacerSlider ();
             } else {
-                decrementer ( 20 );
+                decrementer ( );
                 if ( m_slider->getPosition().x + ( m_slider->getTaille().x/2  ) < getLocalPosSouris().x )
-                    positionnerCurseurSurSouris ();
+                    deplacerSlider ();
             }
         } else {
             if ( getLocalPosSouris().y > m_marge.y + m_slider->getTaille().y/2 + m_slider->getPosition().y ){
                 incrementer ( 20 );
                 if ( m_slider->getPosition().y - ( m_slider->getTaille().y/2 + m_marge.y )  > getLocalPosSouris().y )
-                    positionnerCurseurSurSouris ();
+                    deplacerSlider ();
             } else {
                 decrementer ( 20 );
                 if ( m_slider->getPosition().y - ( m_slider->getTaille().y/2 + m_marge.y )  < getLocalPosSouris().y )
-                    positionnerCurseurSurSouris ();
+                    deplacerSlider ();
             }
         }
     };
-    fct_dragStart = [this](){
-        logEvt ( "Debut du drag" );
+    fct_dragStart       = [this](){
         m_decalageDragSouris = sf::Vector2i ( getLocalPosSouris().x - m_slider->getPosition().x , getLocalPosSouris().y - m_slider->getPosition().y );
         setDrag( true );
-//        actualiser ();
     };
-    fct_dragStop = [this](){
-        logEvt ( "fin du drag" );
+    fct_dragStop        = [this](){
         setDrag( false );
-//        m_slider->demanderActuaBounds();
-//        actualiser ();
     };
-    fct_rouletteH  = [this](){
+    fct_rouletteH       = [this](){
         if ( m_horizontal )
                 incrementer();
         else    decrementer();
-//        actualiser ();
     };
-    fct_rouletteB  = [this](){
+    fct_rouletteB       = [this](){
         if ( m_horizontal )
                 decrementer();
         else    incrementer();
-//        actualiser ();
     };
 
     // Actions du bouton
@@ -115,14 +105,12 @@ DnSlider::DnSlider ()
     m_boutonFond->lier ( Evenement::onBtnM_roulerHaut       , fct_rouletteH );
     m_boutonFond->lier ( Evenement::onBtnM_roulerBas        , fct_rouletteB );
 
-
     // Actions du slider
     m_slider->lier ( Evenement::onBtnG_presser          , fct_dragStart );
     m_slider->lier ( Evenement::onBtnG_relacher         , fct_dragStop );
     m_slider->lier ( Evenement::onBtnG_relacherDehors   , fct_dragStop );
     m_slider->lier ( Evenement::onBtnM_roulerHaut       , fct_rouletteH );
     m_slider->lier ( Evenement::onBtnM_roulerBas        , fct_rouletteB );
-
 
     // Initialisation du slider
     m_slider->setPosition ( m_marge.x, m_marge.y );
@@ -136,12 +124,18 @@ void DnSlider::actualiserGeometrie (){
     log ("actualiserGeometrie");
 
     if ( m_horizontal )
-        m_taille = { m_longueur,  m_largeur};
+        m_taille = { m_longueur,  m_largeur };
      else
-        m_taille = { m_largeur ,  m_longueur};
+        m_taille = { m_largeur ,  m_longueur };
 
-    m_fond->setTaille ( m_taille );
-    m_boutonFond->setTaille ( m_taille );
+    m_fond->setTaille           ( m_taille );
+    m_boutonFond->setTaille     ( { m_taille.x - 2*m_marge.x  , m_taille.y - 2*m_marge.y } );
+    m_boutonFond->setPosition   ( m_marge.x , m_marge.y );
+
+    m_slider->setTaille         ( { m_largeur - 2*m_marge.x  , m_largeur - 2*m_marge.y });
+    corrigerPositionSlider();
+
+//    m_slider->setPosition       ( m_slider->getPosition().x , m_marge.y );
 
     demanderActuaBounds();
 
@@ -153,62 +147,70 @@ void DnSlider::actualiserStyle ()
     log ("actualiserStyle");
 
     m_boutonFond->setFondCouleur (    m_btnCouleurs ) ;
-    m_boutonFond->setLigneCouleur (    m_btnLgnCouleurs  ) ;
-    m_boutonFond->setLigneEpaisseur ( m_btnLgnepaisseurs  );
+    m_boutonFond->setFondLigneCouleur (    m_btnLgnCouleurs  ) ;
+    m_boutonFond->setFondLigneEpaisseur ( m_btnLgnepaisseurs  );
 
     m_slider->setFondCouleur (    m_slideCouleurs ) ;
-    m_slider->setLigneCouleur (    m_slideLgnCouleurs  ) ;
-    m_slider->setLigneEpaisseur ( m_slideLgnepaisseurs  );
+    m_slider->setFondLigneCouleur (    m_slideLgnCouleurs  ) ;
+    m_slider->setFondLigneEpaisseur ( m_slideLgnepaisseurs  );
 
     m_fond->setFondCouleur (    m_fndCouleur ) ;
-    m_fond->setLigneCouleur (    m_fndLgnCouleur  ) ;
-    m_fond->setLigneEpaisseur ( m_fndLgnepaisseur  );
-
+    m_fond->setFondLigneCouleur (    m_fndLgnCouleur  ) ;
+    m_fond->setFondLigneEpaisseur ( m_fndLgnepaisseur  );
 
 }
 
 
 /////////////////////////////////////////////////
-void DnSlider::traiterEvenements (const sf::Event& evenement)
-{
-    if ( dragEnCours() )
-        positionnerCurseurSurSouris ();
+void DnSlider::traiterEvenements (const sf::Event& evenement){
+    if ( dragEnCours() ) deplacerSlider ();
 }
 
 
-
-
 /////////////////////////////////////////////////
-void DnSlider::incrementer( float inc )
-{
-    declencher ( Evenement::on_valeurChange );
+void DnSlider::incrementer( float inc ){
+    sf::Vector2f posBack = m_slider->getPosition();
+
     if ( m_horizontal )
         m_slider->setPosition ( m_slider->getPosition ( ).x + inc , m_slider->getPosition ( ).y );
     else
         m_slider->setPosition ( m_slider->getPosition ( ).x  , m_slider->getPosition ( ).y + inc);
+    corrigerPositionSlider();
 
-    corrigerPositionCurseur();
 
+    // si on a bouger au final on declenche des trucs
+    if ( posBack != m_slider->getPosition() ){
+        declencher ( Evenement::on_valeurChange );
+        logEvt ( "declencher" , "on_valeurChange" );
+    }
 }
 
+
+
 /////////////////////////////////////////////////
-void DnSlider::decrementer( float inc )
-{
-    declencher ( Evenement::on_valeurChange );
+void DnSlider::decrementer( float inc ){
+
+    sf::Vector2f posBack = m_slider->getPosition();
+
     if ( m_horizontal )
         m_slider->setPosition ( m_slider->getPosition ( ).x - inc , m_slider->getPosition ( ).y );
     else
         m_slider->setPosition ( m_slider->getPosition ( ).x , m_slider->getPosition ( ).y - inc );
+    corrigerPositionSlider();
 
-    corrigerPositionCurseur();
+    // si on a bouger au final on declenche des trucs
+    if ( posBack != m_slider->getPosition() ){
+        declencher ( Evenement::on_valeurChange );
+        logEvt ( "declencher" , "on_valeurChange" );
+    }
 }
 
 
 
 /////////////////////////////////////////////////
-void DnSlider::positionnerCurseurSurSouris (){
+void DnSlider::deplacerSlider (){
 
-    declencher ( Evenement::on_valeurChange );
+    sf::Vector2f posBack = m_slider->getPosition();
 
     // Definir la nouvelle position avec les coords souris
     if ( m_horizontal )
@@ -216,24 +218,33 @@ void DnSlider::positionnerCurseurSurSouris (){
     else
         m_slider->setPosition (  m_marge.x , getLocalPosSouris().y - m_marge.y  - m_decalageDragSouris.y );
 
-    // Corriger la position pour la garder dans ses limites
-    corrigerPositionCurseur();
-    m_slider->demanderActuaBounds();
+    corrigerPositionSlider();
+
+    // si on a bouger au final on declenche des trucs
+    if ( posBack != m_slider->getPosition() ) {
+        declencher ( Evenement::on_valeurChange );
+
+        logEvt ( "declencher" , "on_valeurChange" );
+
+        m_slider->demanderActuaBounds();
+    }
 }
 
+
+
 /////////////////////////////////////////////////
-void DnSlider::corrigerPositionCurseur(){
+void DnSlider::corrigerPositionSlider(){
 
     if ( m_horizontal ) {
-        if ( m_slider->getPosition ( ).x < m_marge.y )
-            m_slider->setPosition ( m_marge.y, m_slider->getPosition ( ).y );
-        if ( m_slider->getPosition ( ).x > m_taille.x - m_marge.y - m_slider->getTaille().x )
-            m_slider->setPosition ( m_taille.x - m_marge.y - m_slider->getTaille().x, m_slider->getPosition ( ).y );
+        if ( m_slider->getPosition ( ).x < m_marge.x )
+            m_slider->setPosition ( m_marge.x, m_marge.y );
+        if ( m_slider->getPosition ( ).x > m_taille.x - m_marge.x - m_slider->getTaille().x )
+            m_slider->setPosition ( m_taille.x - m_marge.x - m_slider->getTaille().x, m_marge.y );
     } else {
         if ( m_slider->getPosition ( ).y < m_marge.y )
-            m_slider->setPosition ( m_slider->getPosition ( ).x , m_marge.y  );
+            m_slider->setPosition ( m_marge.x , m_marge.y  );
         if ( m_slider->getPosition ( ).y > m_taille.y - m_marge.y - m_slider->getTaille().y )
-            m_slider->setPosition ( m_slider->getPosition ( ).x,  m_taille.y - m_marge.y - m_slider->getTaille().y );
+            m_slider->setPosition ( m_marge.x,  m_taille.y - m_marge.y - m_slider->getTaille().y );
     }
 }
 
@@ -337,37 +348,37 @@ void DnSlider::setDrag (bool val ){
 
 
 /////////////////////////////////////////////////
-void DnSlider::setSliderFillColor ( Valeurs<sf::Color> couleurs  ) {
+void DnSlider::setSliderCouleur ( Valeurs<sf::Color> couleurs  ) {
         m_slideCouleurs = couleurs;
         demanderActuaStyle();
     };
 
 /////////////////////////////////////////////////
-void DnSlider::setSliderOutlineColor ( Valeurs<sf::Color> couleurs  ) {
+void DnSlider::setSliderLigneCouleur ( Valeurs<sf::Color> couleurs  ) {
         m_slideLgnCouleurs = couleurs;
         demanderActuaStyle();
     };
 
 /////////////////////////////////////////////////
-void DnSlider::setSliderOutlineThickness ( Valeurs<float> epaisseur ) {
+void DnSlider::setSliderLigneEpaisseur ( Valeurs<float> epaisseur ) {
         m_slideLgnepaisseurs =  epaisseur;
         demanderActuaStyle();
     };
 
 /////////////////////////////////////////////////
-void DnSlider::setBoutonFillColor ( Valeurs<sf::Color> couleurs  ) {
+void DnSlider::setBoutonCouleur ( Valeurs<sf::Color> couleurs  ) {
         m_btnCouleurs = couleurs;
         demanderActuaStyle();
     };
 
 /////////////////////////////////////////////////
-void DnSlider::setBoutonOutlineColor ( Valeurs<sf::Color> couleurs  ) {
+void DnSlider::setBoutonLigneCouleur ( Valeurs<sf::Color> couleurs  ) {
         m_btnLgnCouleurs = couleurs;
         demanderActuaStyle();
     };
 
 /////////////////////////////////////////////////
-void DnSlider::setBoutonOutlineThickness ( Valeurs<float> epaisseur ) {
+void DnSlider::setBoutonLigneEpaisseur ( Valeurs<float> epaisseur ) {
         m_btnLgnepaisseurs =  epaisseur;
         demanderActuaStyle();
     };
@@ -379,13 +390,13 @@ void DnSlider::setFondCouleur ( sf::Color couleurs  ) {
     };
 
 /////////////////////////////////////////////////
-void DnSlider::setLigneCouleur ( sf::Color couleurs  ) {
+void DnSlider::setFondLigneCouleur ( sf::Color couleurs  ) {
         m_fndLgnCouleur = couleurs;
         demanderActuaStyle();
     };
 
 /////////////////////////////////////////////////
-void DnSlider::setLigneEpaisseur ( float epaisseur ) {
+void DnSlider::setFondLigneEpaisseur ( float epaisseur ) {
         m_fndLgnepaisseur =  epaisseur;
         demanderActuaStyle();
     };

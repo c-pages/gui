@@ -99,12 +99,12 @@ void DnCaseACocher::actualiserStyle ()
 
     if ( ! m_valeur ) {
         m_coche->setFondCouleur ( m_cocheCouleurs.desactive  );
-        m_coche->setLigneCouleur (  m_cocheLgnCouleurs.desactive );
-        m_coche->setLigneEpaisseur ( m_cocheLgnepaisseurs.desactive  );
+        m_coche->setFondLigneCouleur (  m_cocheLgnCouleurs.desactive );
+        m_coche->setFondLigneEpaisseur ( m_cocheLgnepaisseurs.desactive  );
     } else {
         m_coche->setFondCouleur ( m_cocheCouleurs.press );
-        m_coche->setLigneCouleur (  m_cocheLgnCouleurs.press);
-        m_coche->setLigneEpaisseur ( m_cocheLgnepaisseurs.press );
+        m_coche->setFondLigneCouleur (  m_cocheLgnCouleurs.press);
+        m_coche->setFondLigneEpaisseur ( m_cocheLgnepaisseurs.press );
     }
 
     m_label->setCouleur    ( sf::Color (   m_textCouleur.r
@@ -117,8 +117,8 @@ void DnCaseACocher::actualiserStyle ()
 
 
     m_bouton->setFondCouleur (    m_btnCouleurs ) ;
-    m_bouton->setLigneCouleur (    m_btnLgnCouleurs  ) ;
-    m_bouton->setLigneEpaisseur ( m_btnLgnepaisseurs  );
+    m_bouton->setFondLigneCouleur (    m_btnLgnCouleurs  ) ;
+    m_bouton->setFondLigneEpaisseur ( m_btnLgnepaisseurs  );
 
 }
 
@@ -142,12 +142,12 @@ void DnCaseACocher::actualiser ()
 
     if ( ! m_valeur ) {
         m_coche->setFondCouleur ( style->getFnd_couleur( Etat::desactive ) );
-        m_coche->setLigneCouleur (  style->getLgn_couleur( Etat::desactive ));
-        m_coche->setLigneEpaisseur ( style->getLgn_epaisseur( Etat::desactive ) );
+        m_coche->setFondLigneCouleur (  style->getLgn_couleur( Etat::desactive ));
+        m_coche->setFondLigneEpaisseur ( style->getLgn_epaisseur( Etat::desactive ) );
     } else {
         m_coche->setFondCouleur ( style->getFnd_couleur( Etat::press ) );
-        m_coche->setLigneCouleur (  style->getLgn_couleur( Etat::press ));
-        m_coche->setLigneEpaisseur ( style->getLgn_epaisseur( Etat::press ) );
+        m_coche->setFondLigneCouleur (  style->getLgn_couleur( Etat::press ));
+        m_coche->setFondLigneEpaisseur ( style->getLgn_epaisseur( Etat::press ) );
     }
     actualiserBounds();
 

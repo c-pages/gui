@@ -73,12 +73,12 @@ void BtnTexte::actualiserStyle ()
                                     , m_couleurFond.get( this->etat() ).b
                                     , m_couleurFond.get( this->etat() ).a * m_opacite ) ) ;
 
-    m_rectangle->setLigneCouleur     ( sf::Color (
+    m_rectangle->setFondLigneCouleur     ( sf::Color (
                                       m_couleurLignes.get( this->etat() ).r
                                     , m_couleurLignes.get( this->etat() ).g
                                     , m_couleurLignes.get( this->etat() ).b
                                     , m_couleurLignes.get( this->etat() ).a * m_opacite ) ) ;
-    m_rectangle->setLigneEpaisseur ( m_epaisseur.get( this->etat() ) ) ;
+    m_rectangle->setFondLigneEpaisseur ( m_epaisseur.get( this->etat() ) ) ;
 
 }
 

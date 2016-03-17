@@ -50,7 +50,7 @@ void BtnIcone::actualiserStyle ()
                                     , 255
                                     , 255 * m_opacite ) ) ;
 
-    m_icone->setLigneEpaisseur ( 0 ) ;
+    m_icone->setFondLigneEpaisseur ( 0 ) ;
 
     if ( ! m_fix )    {
         switch ( this->etat() ){
@@ -67,11 +67,11 @@ void BtnIcone::actualiserStyle ()
                                                 , m_couleurFond.get( this->etat() ).g
                                                 , m_couleurFond.get( this->etat() ).b
                                                 , m_couleurFond.get( this->etat() ).a * m_opacite ) ) ;
-    m_rectangle->setLigneCouleur    ( sf::Color ( m_couleurLignes.get( this->etat() ).r
+    m_rectangle->setFondLigneCouleur    ( sf::Color ( m_couleurLignes.get( this->etat() ).r
                                                 , m_couleurLignes.get( this->etat() ).g
                                                 , m_couleurLignes.get( this->etat() ).b
                                                 , m_couleurLignes.get( this->etat() ).a * m_opacite ) ) ;
-    m_rectangle->setLigneEpaisseur ( m_epaisseur.get( this->etat() ) ) ;
+    m_rectangle->setFondLigneEpaisseur ( m_epaisseur.get( this->etat() ) ) ;
 
 }
 

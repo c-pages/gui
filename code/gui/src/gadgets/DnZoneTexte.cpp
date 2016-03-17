@@ -124,17 +124,17 @@ void DnZoneTexte::actualiserGeometrie ()
 void DnZoneTexte::actualiserStyle ()
 {
     m_bouton->setFondCouleur (    m_btnCouleurs ) ;
-    m_bouton->setLigneCouleur (    m_btnLgnCouleurs  ) ;
-    m_bouton->setLigneEpaisseur ( m_btnLgnepaisseurs  );
+    m_bouton->setFondLigneCouleur (    m_btnLgnCouleurs  ) ;
+    m_bouton->setFondLigneEpaisseur ( m_btnLgnepaisseurs  );
 
     if ( ! m_ecritureActive ) {
         m_curseur->setFondCouleur ( m_curseurCouleurs.desactive  );
-        m_curseur->setLigneCouleur (  m_curseurLgnCouleurs.desactive );
-        m_curseur->setLigneEpaisseur ( m_curseurLgnepaisseurs.desactive  );
+        m_curseur->setFondLigneCouleur (  m_curseurLgnCouleurs.desactive );
+        m_curseur->setFondLigneEpaisseur ( m_curseurLgnepaisseurs.desactive  );
     } else {
         m_curseur->setFondCouleur ( m_curseurCouleurs.press );
-        m_curseur->setLigneCouleur (  m_curseurLgnCouleurs.press);
-        m_curseur->setLigneEpaisseur ( m_curseurLgnepaisseurs.press );
+        m_curseur->setFondLigneCouleur (  m_curseurLgnCouleurs.press);
+        m_curseur->setFondLigneEpaisseur ( m_curseurLgnepaisseurs.press );
     }
 
     m_label->setCouleur    ( sf::Color (   m_textCouleur.r

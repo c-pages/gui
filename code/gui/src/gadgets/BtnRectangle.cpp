@@ -50,11 +50,11 @@ void BtnRectangle::actualiserStyle ()
                                                 , m_couleurFond.get( this->etat() ).g
                                                 , m_couleurFond.get( this->etat() ).b
                                                 , m_couleurFond.get( this->etat() ).a * m_opacite ) ) ;
-    m_rectangle->setLigneCouleur    ( sf::Color ( m_couleurLignes.get( this->etat() ).r
+    m_rectangle->setFondLigneCouleur    ( sf::Color ( m_couleurLignes.get( this->etat() ).r
                                                 , m_couleurLignes.get( this->etat() ).g
                                                 , m_couleurLignes.get( this->etat() ).b
                                                 , m_couleurLignes.get( this->etat() ).a * m_opacite ) ) ;
-    m_rectangle->setLigneEpaisseur ( m_epaisseur.get( this->etat() ) ) ;
+    m_rectangle->setFondLigneEpaisseur ( m_epaisseur.get( this->etat() ) ) ;
 
 }
 
@@ -68,16 +68,16 @@ void BtnRectangle::setFondCouleur (sf::Color couleur , Etat etat ) {
 
 
 /////////////////////////////////////////////////
-void BtnRectangle::setLigneCouleur (sf::Color couleur , Etat etat ) {
+void BtnRectangle::setFondLigneCouleur (sf::Color couleur , Etat etat ) {
     m_couleurLignes.set ( couleur , etat );
-    m_rectangle->setLigneCouleur( couleur );
+    m_rectangle->setFondLigneCouleur( couleur );
 };
 
 
 /////////////////////////////////////////////////
-void BtnRectangle::setLigneEpaisseur (float epaisseur , Etat etat ) {
+void BtnRectangle::setFondLigneEpaisseur (float epaisseur , Etat etat ) {
     m_epaisseur.set ( epaisseur , etat );
-    m_rectangle->setLigneEpaisseur( epaisseur );
+    m_rectangle->setFondLigneEpaisseur( epaisseur );
 };
 
 
@@ -89,14 +89,14 @@ void BtnRectangle::setFondCouleur ( Valeurs<sf::Color> couleurs  ) {
 
 
 /////////////////////////////////////////////////
-void BtnRectangle::setLigneCouleur ( Valeurs<sf::Color> couleurs  ) {
+void BtnRectangle::setFondLigneCouleur ( Valeurs<sf::Color> couleurs  ) {
     m_couleurLignes = couleurs;
     demanderActuaStyle();
 };
 
 
 /////////////////////////////////////////////////
-void BtnRectangle::setLigneEpaisseur ( Valeurs<float> epaisseur ) {
+void BtnRectangle::setFondLigneEpaisseur ( Valeurs<float> epaisseur ) {
     m_epaisseur =  epaisseur;
     demanderActuaStyle();
 };

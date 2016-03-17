@@ -25,6 +25,7 @@ Log::Log()
 , m_afficher_souris                 ( true )
 
 , m_afficher_event                  ( true )
+, m_afficher_eventGUI               ( true )
 
 , m_afficher_GUI                    ( true )
 
@@ -36,7 +37,7 @@ Log::Log()
 , m_styleFondEnCouleur              ( true )
 
 // le mute du gadget pour savoir si on affiche les log en lien avec ce gadget
-, m_mute                            ( false )
+, m_mute                            ( true )
 
 {
     m_preLigne_hierarchie   = "";
@@ -46,6 +47,10 @@ Log::Log()
     m_preLigne_event        = "            # Evenement #     ";
 
     m_ligneInterface        = "-";
+
+
+    m_couleur_alert = /*BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_RED | BACKGROUND_INTENSITY */
+                    /*| FOREGROUND_GREEN | FOREGROUND_BLUE |*/ FOREGROUND_RED | FOREGROUND_INTENSITY ;
 
 
     if ( m_styleFondEnCouleur )
@@ -103,6 +108,7 @@ Log::Log()
 void  Log::setLogActif ( bool val , bool appliquerAuxComposants ){
 
     m_mute = ! val ;
+
     if ( appliquerAuxComposants )
         for (auto composant : static_cast<Gadget*>(this)->getComposants() )
             composant->setLogActif ( val );
@@ -114,34 +120,6 @@ void  Log::resetLog ( ){
     ms_hierarchieBack = "";
 };
 
-
-
-/////////////////////////////////////////////////
-bool Log::checkAffichage()
-{
-
-    auto nomCalque = getCalqueGadget();
-    if ( ! ms_debugLog || estUnCalque() ) return false;
-
-
-    // les calques
-    else if ( nomCalque == "Bureau")    return m_afficher_bureau ;
-    else if ( nomCalque == "Fenetres")  return m_afficher_fenetres ;
-    else if ( nomCalque == "PanneauG")  return m_afficher_panneau_G ;
-    else if ( nomCalque == "PanneauD")  return m_afficher_panneau_D ;
-    else if ( nomCalque == "Bandeaux")  return m_afficher_bandeaux ;
-    else if ( nomCalque == "BandeauMD") return m_afficher_bandeauMenuDeroulants ;
-    else if ( nomCalque == "Menus")     return m_afficher_menuDeroulants ;
-    else if ( nomCalque == "Infos")     return m_afficher_infos ;
-    else if ( nomCalque == "Souris")    return m_afficher_souris ;
-
-    // l'interface
-    else if ( getNomGadget()  == "GUI") return m_afficher_GUI ;
-
-    // sinon
-    else return m_afficher_horsCalques;
-}
-
 /////////////////////////////////////////////////
 std::string Log::getHierarchieGadget()
 {
@@ -152,7 +130,6 @@ std::string Log::getNomGadget()
 {
     return static_cast<Gadget*>(this)->getNom();
 };
-
 /////////////////////////////////////////////////
 std::string Log::getCalqueGadget()
 {
@@ -162,10 +139,51 @@ std::string Log::getCalqueGadget()
 bool    Log::estUnCalque()    {
     return ( static_cast<Gadget*>(this)->getNom()[0] == '_' );
 };
+/////////////////////////////////////////////////
+bool    Log::estInterface()    {
+    static_cast<Gadget*>(this)->estInterface();
+};
 
 
 
 
+
+/////////////////////////////////////////////////
+bool Log::checkAffichage()
+{
+
+    auto nomCalque = getCalqueGadget();
+    if ( !ms_debugLog || estUnCalque()) return false;
+    // l'interface
+    else if ( estInterface() )          return m_afficher_GUI ;
+    // les calques
+    else if ( nomCalque == "Bureau")    return m_afficher_bureau ;
+    else if ( nomCalque == "Fenetres")  return m_afficher_fenetres ;
+    else if ( nomCalque == "PanneauG")  return m_afficher_panneau_G ;
+    else if ( nomCalque == "PanneauD")  return m_afficher_panneau_D ;
+    else if ( nomCalque == "Bandeaux")  return m_afficher_bandeaux ;
+    else if ( nomCalque == "BandeauMD") return m_afficher_bandeauMenuDeroulants ;
+    else if ( nomCalque == "Menus")     return m_afficher_menuDeroulants ;
+    else if ( nomCalque == "Infos")     return m_afficher_infos ;
+    else if ( nomCalque == "Souris")    return m_afficher_souris ;
+    // sinon
+    else    return m_afficher_horsCalques;
+}
+
+
+
+/////////////////////////////////////////////////
+bool Log::checkAffichageEvent()
+{
+    if ( ! checkAffichage() || ! m_afficher_event )
+        return false;
+    if ( estInterface() )
+        return m_afficher_eventGUI;
+    if ( m_mute )
+        return false;
+
+    return true;
+}
 
 /////////////////////////////////////////////////
 void Log::checkGadget ( ){
@@ -218,7 +236,7 @@ void Log::checkGadget ( ){
 //            logOut (  "\n");
 
         // le nom du gadget
-        if ( txtHierarchie == "GUI") {
+        if ( estInterface() ) {
 //
 //            logOut (  "\n\n" );
 
@@ -324,7 +342,7 @@ void Log::checkGadget ( ){
 
 
         // la fin de la ligne (pour un fond autre que noir)
-        if ( txtHierarchie == "GUI") {
+        if ( estInterface() ) {
             SetConsoleTextAttribute( m_console , m_couleur_nomInterface );
             logOut (  " " );
             compteurCharac++;
@@ -390,6 +408,20 @@ void Log::checkGadget ( ){
 
 
 
+/////////////////////////////////////////////////
+void Log::logAlerte   ( std::string txt ){
+//    if ( m_mute || ! checkAffichage() ) return;
+
+    // on regarde si on a changé de gadget
+    checkGadget ( );
+
+    SetConsoleTextAttribute( m_console , m_couleur_alert );
+    std::string  preLigne = "        ALERT - ";
+    logOut ( preLigne  +  txt  + " - ALERT\n" );
+
+}
+
+
 
 
 /////////////////////////////////////////////////
@@ -400,7 +432,7 @@ void Log::logTitre ( std::string txt ){
     checkGadget ( );
 
     SetConsoleTextAttribute( m_console , m_couleur_titre );
-    std::string  preLigne = ( getNomGadget() == "GUI" ) ? m_preLigne_interface : m_preLigne_titre;
+    std::string  preLigne = ( estInterface() ) ? m_preLigne_interface : m_preLigne_titre;
     logOut ( preLigne  +  txt  + "\n" );
 
 }
@@ -417,7 +449,7 @@ void Log::log ( std::string txt ){
     checkGadget ( );
 
     SetConsoleTextAttribute( m_console , m_couleur_courant );
-    std::string  preLigne = ( getNomGadget() == "GUI" ) ? m_preLigne_interface : m_preLigne_courant;
+    std::string  preLigne = ( estInterface() ) ? m_preLigne_interface : m_preLigne_courant;
     logOut ( preLigne + txt  + "\n" );
 
 }
@@ -432,7 +464,7 @@ void Log::log (  std::string nomDuVariable , float variable ){
 
     SetConsoleTextAttribute( m_console , m_couleur_variable );
 
-    std::string  preLigne = ( getNomGadget() == "GUI" ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
+    std::string  preLigne = ( estInterface() ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
     logOut ( preLigne +  nomDuVariable + " = "  + valVar + "\n" );
 
 }
@@ -454,7 +486,7 @@ void Log::log (  std::string nomDuVariable , sf::Vector2i variable ){
     SetConsoleTextAttribute( m_console , m_couleur_variable );
 
 
-    std::string  preLigne = ( getNomGadget() == "GUI" ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
+    std::string  preLigne = ( estInterface() ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
     logOut ( preLigne +  nomDuVariable + " = ( "  + valVar1 + " , "  + valVar2 + " )\n" );
 
 }
@@ -467,7 +499,7 @@ void Log::log (  std::string nomDuVariable , std::string variable ){
 
     SetConsoleTextAttribute( m_console , m_couleur_variable );
 
-    std::string  preLigne = ( getNomGadget() == "GUI" ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
+    std::string  preLigne = ( estInterface() ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
     logOut ( preLigne +  nomDuVariable + " = \""  + variable + "\"\n" );
 
 }
@@ -485,7 +517,7 @@ void Log::log (  std::string nomDuVariable , sf::Color couleur ){
 
     SetConsoleTextAttribute( m_console , m_couleur_variable );
 
-    std::string  preLigne = ( getNomGadget() == "GUI" ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
+    std::string  preLigne = ( estInterface() ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
     logOut ( preLigne +  nomDuVariable + " = "  + valVar1 + " "  + valVar2 + " "  + valVar3 + " "  + valVar4 + "\n" );
 
 }
@@ -501,7 +533,7 @@ void Log::log (  std::string nomDuVariable , bool &variable ){
     SetConsoleTextAttribute( m_console , m_couleur_variable );
 
 
-    std::string  preLigne = ( getNomGadget() == "GUI" ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
+    std::string  preLigne = ( estInterface() ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
     logOut ( preLigne +  nomDuVariable + " = "  + valVar1 + "\n" );
 
 }
@@ -515,7 +547,7 @@ void Log::log (  std::string nomDuVariable , std::shared_ptr<Gadget> gadget ){
     std::string valVar1 = gadget->getNom();
 
     SetConsoleTextAttribute( m_console , m_couleur_variable );
-    std::string  preLigne = ( getNomGadget() == "GUI" ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
+    std::string  preLigne = ( estInterface() ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
     logOut ( preLigne +  nomDuVariable + " = "  + valVar1 + "\n" );
 
 }
@@ -539,7 +571,7 @@ void Log::log (  std::string nomDuVariable , std::shared_ptr<Gadget> gadget ){
 /////////////////////////////////////////////////
 void Log::logEvt ( std::string txt )
 {
-    if ( ! checkAffichage() || ! m_afficher_event ) return;
+    if ( ! checkAffichageEvent() ) return;
 
     // on regarde si on a changé de gadget
     checkGadget ( );
@@ -552,11 +584,10 @@ void Log::logEvt ( std::string txt )
     logOut ( txt  + "\n" );
 }
 
-
 /////////////////////////////////////////////////
 void Log::logEvt (  std::string nomDuVariable , float variable )
 {
-    if ( ! checkAffichage() || ! m_afficher_event ) return;
+    if ( ! checkAffichageEvent() ) return;
 
     checkGadget ( );
 
@@ -581,7 +612,7 @@ void Log::logEvt (  std::string nomDuVariable , sf::Vector2f variable ){
 /////////////////////////////////////////////////
 void Log::logEvt (  std::string nomDuVariable , sf::Vector2i variable )
 {
-    if ( ! checkAffichage() || ! m_afficher_event ) return;
+    if ( ! checkAffichageEvent() ) return;
 
     checkGadget ( );
 
@@ -602,7 +633,7 @@ void Log::logEvt (  std::string nomDuVariable , sf::Vector2i variable )
 /////////////////////////////////////////////////
 void Log::logEvt (  std::string nomDuVariable , std::string variable )
 {
-    if ( ! checkAffichage() || ! m_afficher_event ) return;
+    if ( ! checkAffichageEvent() ) return;
 
     checkGadget ( );
 
@@ -620,7 +651,7 @@ void Log::logEvt (  std::string nomDuVariable , std::string variable )
 /////////////////////////////////////////////////
 void Log::logEvt (  std::string nomDuVariable , sf::Color couleur )
 {
-    if ( ! checkAffichage() || ! m_afficher_event ) return;
+    if ( ! checkAffichageEvent() ) return;
 
     checkGadget ( );
 
@@ -645,7 +676,7 @@ void Log::logEvt (  std::string nomDuVariable , sf::Color couleur )
 /////////////////////////////////////////////////
 void Log::logEvt (  std::string nomDuVariable , bool &variable )
 {
-    if ( ! checkAffichage() || ! m_afficher_event ) return;
+    if ( ! checkAffichageEvent() ) return;
 
     checkGadget ( );
 
@@ -671,8 +702,7 @@ void Log::logEvt (  std::string nomDuVariable , std::shared_ptr<Gadget> gadget )
     if ( gadget != nullptr )
         if ( gadget->m_mute )  return;
 
-    if ( ! checkAffichage() || ! m_afficher_event ) return;
-
+    if ( ! checkAffichageEvent() ) return;
 
     checkGadget ( );
     std::string valVar1 ;

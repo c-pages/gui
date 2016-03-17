@@ -100,8 +100,8 @@ void LstSimple::actualiserGeometrie ()
 void LstSimple::actualiserStyle ()
 {
     m_fond->setFondCouleur         ( m_fndCouleur );
-    m_fond->setLigneCouleur      ( m_fndLignesCouleur );
-    m_fond->setLigneEpaisseur  ( m_fndLignesEpaisseur );
+    m_fond->setFondLigneCouleur      ( m_fndLignesCouleur );
+    m_fond->setFondLigneEpaisseur  ( m_fndLignesEpaisseur );
 
     int index = 0;
     for ( auto bouton : m_boutons ) {
@@ -110,8 +110,8 @@ void LstSimple::actualiserStyle ()
 //            bouton->setPresse(true);
 //            bouton->actualiserStyle();
             bouton->setFondCouleur         ( m_btnCouleurs.press );
-            bouton->setLigneCouleur      ( m_btnLignesCouleurs.press );
-            bouton->setLigneEpaisseur  ( m_btnLignesEpaisseurs.press );
+            bouton->setFondLigneCouleur      ( m_btnLignesCouleurs.press );
+            bouton->setFondLigneEpaisseur  ( m_btnLignesEpaisseurs.press );
             bouton->setTailleCharac       ( m_textTaille.press );
             bouton->setTexteCouleur      ( m_textCouleur.press );
             bouton->setTextePolice            ( m_textPolice.press );
@@ -119,8 +119,8 @@ void LstSimple::actualiserStyle ()
         } else {
 
             bouton->setFondCouleur         ( m_btnCouleurs );
-            bouton->setLigneCouleur      ( m_btnLignesCouleurs );
-            bouton->setLigneEpaisseur  ( m_btnLignesEpaisseurs );
+            bouton->setFondLigneCouleur      ( m_btnLignesCouleurs );
+            bouton->setFondLigneEpaisseur  ( m_btnLignesEpaisseurs );
             bouton->setTailleCharac       ( m_textTaille );
             bouton->setTexteCouleur      ( m_textCouleur );
             bouton->setTextePolice            ( m_textPolice );

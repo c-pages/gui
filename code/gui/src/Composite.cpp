@@ -47,7 +47,7 @@ std::string Composite::getCalqueNom()  {
         return nom ;
     } else if (m_parent!=nullptr)
         return m_parent->getCalqueNom();
-    else if ( nom =="GUI" )
+    else if ( static_cast<Gadget*>(this)->estInterface () )
         return "";
     else return "-";
 

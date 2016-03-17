@@ -70,6 +70,7 @@ sf::Vector2f Geometrie::getPosAbs () const
 
 void Geometrie::setPosition( float x , float y ){
      sf::Transformable::setPosition( int ( x )  , int ( y ) );
+     static_cast<Gadget*>(this)->demanderActuaBounds();
 };
 
 /////////////////////////////////////////////////

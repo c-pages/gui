@@ -37,7 +37,6 @@ public:
     /////////////////////////////////////////////////
     virtual void setDefilementActif (bool val);
 
-
     /////////////////////////////////////////////////
     virtual void ajouter (std::shared_ptr<Gadget> enfant);
 
@@ -54,7 +53,6 @@ public:
         m_titre->setTexte( titre );
     };
 
-//    void positionnerFenetre ();
     void chargerIcone   (std::string fichier );
 
     /////////////////////////////////////////////////
@@ -68,33 +66,19 @@ public:
 
     std::shared_ptr<AffRectangle> getOmbre() { return m_ombre; };
 
-//
-//    void sortDuPanneau ();
-//    void entreDansPanneau ();
-//
-
-//    virtual void setParent (Gadget* parent );
-
     void ajouterDecoration ( Decorations deco  );
 
     void retirerDecoration ( Decorations deco  )
     {
-        if ( m_decorations.find( deco ) != m_decorations.end())
-        {
-//            std::cout<<"Retirer Decoration : ok\n";
-//            m_decoASupprimer.push_back( deco );
+        if ( m_decorations.find( deco ) != m_decorations.end())        {
                 m_decorations.erase( deco  );
-
         }
-//         else   std::cout<<"Retirer Decoration : pas trouvé\n";
-
     };
 
     virtual void actualiserEtatDeco ( );
 
 
-    void viderTableaux()
-    {
+    void viderTableaux()    {
         if ( m_decoASupprimer.size()>0 )
             for ( auto deco : m_decoASupprimer )
                 m_decorations.erase( deco  );

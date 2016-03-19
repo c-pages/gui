@@ -183,7 +183,7 @@ void Contenant::ajouter ( std::shared_ptr<Gadget> enfant, unsigned int index )  
 
 /////////////////////////////////////////////////
 void Contenant::ajouter ( std::shared_ptr<Gadget> enfant )    {
-    //Composite::ajouter( enfant );
+    //Filiation::ajouter( enfant );
 
     m_groupe->ajouter ( enfant );
 
@@ -203,7 +203,7 @@ void Contenant::ajouter ( std::shared_ptr<Gadget> enfant )    {
 //    enfant->actualiser();
 ////    _this->actualiser();
 //    _this->actualiserContenu();
-//    std::cout <<"Composite::ajouter reussi\n";
+//    std::cout <<"Filiation::ajouter reussi\n";
 };
 /////////////////////////////////////////////////
 sf::Vector2f    Contenant::deplMaxContenu(){

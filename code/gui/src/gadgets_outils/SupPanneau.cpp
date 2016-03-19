@@ -159,7 +159,7 @@ void    SupPanneau::ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i posit
 
 //    m_interface->demanderActualisation();
 
-//    Composite::ajouter( gadget );
+//    Filiation::ajouter( gadget );
 };
 
 

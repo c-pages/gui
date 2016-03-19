@@ -88,11 +88,12 @@ public:
 
     void decrementer( float increment = 20 );
 
+private:
+
     bool dragEnCours( ) ;
 
     void setDrag (bool val );
 
-private:
     void deplacerSlider ();
 
     /////////////////////////////////////////////////

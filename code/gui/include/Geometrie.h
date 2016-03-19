@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "Composite.h"
+#include "Filiation.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
@@ -16,7 +16,7 @@ namespace gui {
 /// \brief Concerne la partie geometrique des gadgets, comme la taille, contient, position absolue...
 ///
 /////////////////////////////////////////////////
-class Geometrie : public sf::Transformable, public gui::Composite {
+class Geometrie : public sf::Transformable, public gui::Filiation {
 
 
 /////////////////////////////////////////////////

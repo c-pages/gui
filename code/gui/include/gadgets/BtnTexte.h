@@ -38,7 +38,7 @@ public:
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
 
-    ///< Definir m_texteTaille
+    ///< Definir m_texte
     virtual void setTexte( std::string val );
 
     ///< Definir m_texteTaille

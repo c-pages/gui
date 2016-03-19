@@ -20,7 +20,6 @@ DnCaseACocher::DnCaseACocher ()
     m_taille.y = 12;
     m_valeur = true;
 
-
     // le bouton
     m_bouton->setTexte ("");
 
@@ -89,7 +88,7 @@ void DnCaseACocher::actualiserGeometrie ()
     m_coche->setTaille   ( { m_taille.x - 2*m_marge.x , m_taille.y - 2*m_marge.y } );
     m_coche->setPosition ( m_marge.x , m_marge.y );
 
-    actualiserBounds();
+    demanderActuaBounds();
 }
 
 
@@ -123,37 +122,6 @@ void DnCaseACocher::actualiserStyle ()
 }
 
 
-/*
-/////////////////////////////////////////////////
-void DnCaseACocher::actualiser ()
-{
-    m_label->setTexte ( m_texte );
-    m_label->setTexteStyle ( m_skin->getStyle( Styles::btnCoche ) );
-    m_label->setPosition ( m_taille.x + 2*m_marge.x , 0 );
-
-    m_bouton->setTaille  ( m_taille );
-    m_bouton->setTexteStyle   ( m_skin->getStyle( Styles::bouton ) );
-
-    m_coche->setTaille   ( { m_taille.x - 2*m_marge.x , m_taille.y - 2*m_marge.y } );
-    m_coche->setPosition ( m_marge.x , m_marge.y );
-
-    auto style = m_skin->getStyle( Styles::btnCoche );
-    m_coche->setTexteStyle    ( style );
-
-    if ( ! m_valeur ) {
-        m_coche->setFondCouleur ( style->getFnd_couleur( Etat::desactive ) );
-        m_coche->setFondLigneCouleur (  style->getLgn_couleur( Etat::desactive ));
-        m_coche->setFondLigneEpaisseur ( style->getLgn_epaisseur( Etat::desactive ) );
-    } else {
-        m_coche->setFondCouleur ( style->getFnd_couleur( Etat::press ) );
-        m_coche->setFondLigneCouleur (  style->getLgn_couleur( Etat::press ));
-        m_coche->setFondLigneEpaisseur ( style->getLgn_epaisseur( Etat::press ) );
-    }
-    actualiserBounds();
-
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
-}
-*/
 
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  DnCaseACocher::testerSurvol ( sf::Vector2i position )

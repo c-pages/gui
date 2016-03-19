@@ -20,6 +20,7 @@
 					<Add directory="include" />
 					<Add directory="include/gadget" />
 					<Add directory="include/gadgets" />
+					<Add directory="include/composants" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-audio-s-d" />
@@ -42,6 +43,7 @@
 					<Add directory="include" />
 					<Add directory="include/gadget" />
 					<Add directory="include/gadgets" />
+					<Add directory="include/composants" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -68,10 +70,10 @@
 		<Unit filename="gui.cpp" />
 		<Unit filename="include/ActionClavier.h" />
 		<Unit filename="include/ActionEvenement.h" />
-		<Unit filename="include/Composant.h" />
-		<Unit filename="include/Composite.h" />
+		<Unit filename="include/Composition.h" />
 		<Unit filename="include/Enums.h" />
 		<Unit filename="include/FabriqueBase.h" />
+		<Unit filename="include/Filiation.h" />
 		<Unit filename="include/Gadget.h" />
 		<Unit filename="include/Geometrie.h" />
 		<Unit filename="include/Interface.h" />
@@ -79,6 +81,9 @@
 		<Unit filename="include/ResourcesMgr.h" />
 		<Unit filename="include/ResourcesMgr.inl" />
 		<Unit filename="include/Valeurs.h" />
+		<Unit filename="include/composants/CmpTexte.h" />
+		<Unit filename="include/composants/CompFond.h" />
+		<Unit filename="include/composants/Composant.h" />
 		<Unit filename="include/gadgets/AffIcone.h" />
 		<Unit filename="include/gadgets/AffImage.h" />
 		<Unit filename="include/gadgets/AffLabel.h" />
@@ -121,14 +126,17 @@
 		<Unit filename="include/repartiteurs/RepartiteurVerticale.h" />
 		<Unit filename="src/ActionClavier.cpp" />
 		<Unit filename="src/ActionEvenement.cpp" />
-		<Unit filename="src/Composant.cpp" />
-		<Unit filename="src/Composite.cpp" />
+		<Unit filename="src/Composition.cpp" />
 		<Unit filename="src/FabriqueBase.cpp" />
+		<Unit filename="src/Filiation.cpp" />
 		<Unit filename="src/Gadget.cpp" />
 		<Unit filename="src/Geometrie.cpp" />
 		<Unit filename="src/Interface.cpp" />
 		<Unit filename="src/Log.cpp" />
 		<Unit filename="src/Valeurs.cpp" />
+		<Unit filename="src/composants/CmpTexte.cpp" />
+		<Unit filename="src/composants/CompFond.cpp" />
+		<Unit filename="src/composants/Composant.cpp" />
 		<Unit filename="src/gadgets/AffIcone.cpp" />
 		<Unit filename="src/gadgets/AffImage.cpp" />
 		<Unit filename="src/gadgets/AffLabel.cpp" />

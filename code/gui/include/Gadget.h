@@ -7,7 +7,7 @@
 #include "SFML/Graphics.hpp"
 #include <memory>
 #include <Geometrie.h>
-#include <Composant.h>
+#include <Composition.h>
 //#include <Skin.h>
 #include <ActionClavier.h>
 #include <Enums.h>
@@ -21,7 +21,7 @@ class Interface;
 /// \brief Classe communes à tout les gadgets, gère affichage actualisation, etc...
 ///
 /////////////////////////////////////////////////
-class Gadget : public std::enable_shared_from_this<Gadget>, public sf::Drawable, public gui::Geometrie, public Composant, public ActionClavier  {
+class Gadget : public std::enable_shared_from_this<Gadget>, public sf::Drawable, public gui::Geometrie, public Composition, public ActionClavier  {
 
 
 /////////////////////////////////////////////////

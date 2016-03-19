@@ -463,16 +463,16 @@
 	"Valeurs.h"
 	"Enums.h"
 
-1458175370 r:\06 - c++\110 - gui\code\gui\include\gadget.h
+1458183627 r:\06 - c++\110 - gui\code\gui\include\gadget.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<Geometrie.h>
-	<Composant.h>
+	<Composition.h>
 	<ActionClavier.h>
 	<Enums.h>
 
-1458063737 r:\06 - c++\110 - gui\code\gui\include\geometrie.h
-	"Composite.h"
+1458183470 r:\06 - c++\110 - gui\code\gui\include\geometrie.h
+	"Filiation.h"
 	<SFML/Graphics.hpp>
 	<iostream>
 
@@ -590,7 +590,7 @@
 1457871428 r:\06 - c++\110 - gui\code\gui\include\donnee.h
 	"ActionEvenement.h"
 
-1458157766 r:\06 - c++\110 - gui\code\gui\include\gadgets\dncaseacocher.h
+1458181370 r:\06 - c++\110 - gui\code\gui\include\gadgets\dncaseacocher.h
 	"gadgets_interfaces/Donnee.h"
 	"BtnRectangle.h"
 	"AffRectangle.h"
@@ -1185,7 +1185,7 @@
 	<memory>
 	"SFML/Graphics.hpp"
 
-1458157974 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenetre.h
+1458182870 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenetre.h
 	"ActionEvenement.h"
 	"decorations/FenDecoration.h"
 	"gadgets_outils/AffBarreTitre.h"
@@ -1261,14 +1261,14 @@
 	<windows.h>
 	"SFML/Graphics.hpp"
 
-1458079281 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\affiche.h
+1458183470 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\affiche.h
 	"Gadget.h"
 
 1458175575 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\bouton.h
 	"ActionEvenement.h"
 	"Gadget.h"
 
-1458168743 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\contenant.h
+1458183170 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\contenant.h
 	"Gadget.h"
 	"gadgets_interfaces/Groupe.h"
 	"gadgets/AffRectangle.h"
@@ -1347,4 +1347,16 @@
 1458042131 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\affcurseursouris.h
 	<gadgets/AffIcone.h>
 	<Enums.h>
+
+1458183374 r:\06 - c++\110 - gui\code\gui\include\filiation.h
+	"Log.h"
+	"SFML/Graphics.hpp"
+	<memory>
+	<vector>
+	<iostream>
+
+1458183587 r:\06 - c++\110 - gui\code\gui\include\composition.h
+	<memory>
+	<vector>
+	<SFML/Graphics.hpp>
 

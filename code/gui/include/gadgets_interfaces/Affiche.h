@@ -27,14 +27,14 @@ public:
 
 
     /////////////////////////////////////////////////
-    /// \brief Redéfinie ajouter par une fonction vide( GOF4 : composite -> Feuilles)
+    /// \brief Redéfinie ajouter par une fonction vide( GOF4 : Filiation -> Feuilles)
     ///
     /// \param gadget
     /////////////////////////////////////////////////
     virtual void ajouter (std::shared_ptr<Gadget> gadget);
 
     /////////////////////////////////////////////////
-    /// \brief  Redéfinie retirer par une fonction vide( GOF4 : composite -> Feuilles)
+    /// \brief  Redéfinie retirer par une fonction vide( GOF4 : Filiation -> Feuilles)
     ///
     /// \param enfant
     /////////////////////////////////////////////////

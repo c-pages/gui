@@ -110,16 +110,13 @@ public:
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
     virtual sf::Vector2i getTailleContenant()   { return m_tailleContenant; };
-//    virtual sf::Vector2i getPosContenant()      { return m_posContenant;};
 
     /////////////////////////////////////////////////
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
-
     virtual bool aEnfants() { return m_groupe->aEnfants(); };
 
     virtual std::vector<std::shared_ptr<Gadget>> getEnfants() const { return m_groupe->getEnfants(); };
-
 
 
 /////////////////////////////////////////////////

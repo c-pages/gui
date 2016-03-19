@@ -12,9 +12,6 @@
 
 namespace gui {
 
-/*
-class BtnRectangle;
-class AffRectangle;*/
 
 /////////////////////////////////////////////////
 /// \brief Une case à cocher pour controler une valeur booléene.
@@ -33,8 +30,8 @@ public:
     /////////////////////////////////////////////////
     DnCaseACocher ();
 
-//    virtual void actualiser ();
     virtual void actualiserGeometrie ();
+
     virtual void actualiserStyle ();
 
     virtual void actualiserBounds();

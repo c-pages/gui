@@ -24,7 +24,7 @@
 // DONNEES
 #include "gadgets\DnCaseACocher.h"
 #include "gadgets\DnZoneTexte.h"
-#include "gadgets\DnSlider.h"
+#include "gadgets\DnGlissere.h"
 #include "gadgets\DnZoneNum.h"
 
 // LISTES
@@ -213,7 +213,7 @@ public:
     ///
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<DnSlider>        slider( );
+    std::shared_ptr<DnGlissere>        slider( );
 
 //    /////////////////////////////////////////////////
 //    /// \brief  Création d'une barre de defilement pour deplacer un contenu à l'interieur d'un panneau

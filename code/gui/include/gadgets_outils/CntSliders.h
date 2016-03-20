@@ -12,7 +12,7 @@
 
 #include "gadgets/AffRectangle.h"
 #include "gadgets/AffImage.h"
-#include "gadgets/DnSlider.h"
+#include "gadgets/DnGlissere.h"
 #include "gadgets_interfaces/Contenant.h"
 #include "gadgets_interfaces/Contenant.h"
 
@@ -87,8 +87,8 @@ private:
     float                   m_largeurSliders;
 
     // les composants de l'interface du gadget
-    std::shared_ptr<DnSlider>  m_slider_V;
-    std::shared_ptr<DnSlider>  m_slider_H;
+    std::shared_ptr<DnGlissere>  m_slider_V;
+    std::shared_ptr<DnGlissere>  m_slider_H;
 
     // les proprietés graphiques
     Valeurs<sf::Color>      m_btnCouleurs;

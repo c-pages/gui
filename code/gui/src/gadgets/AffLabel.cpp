@@ -29,7 +29,7 @@ void AffLabel::actualiserGeometrie ()
     // Debuggage
     log ("actualiserGeometrie");
 
-    m_texteSFML.setString ( m_texte);
+//    m_texteSFML.setString ( m_texte );
 
     demanderActuaBounds();
 }
@@ -55,14 +55,14 @@ void AffLabel::setTexte( std::string val )
     log("setTexte");
     log("m_texte",  val  );
 
-    m_texte = val;
+//    m_texte = val;
     m_texteSFML.setString( val );
     demanderActuaBounds();
 };
 
 
 /////////////////////////////////////////////////
-void AffLabel::setTailleCharac( float val ){
+void AffLabel::setTexteTaille( float val ){
     m_textTaille = val;
     m_texteSFML.setCharacterSize ( val ) ;
     // la taille du texte a changé alors on doit recalculé les bounds
@@ -71,7 +71,7 @@ void AffLabel::setTailleCharac( float val ){
 
 
 /////////////////////////////////////////////////
-void AffLabel::setCouleur( sf::Color couleur ){
+void AffLabel::setTexteCouleur( sf::Color couleur ){
     m_textCouleur = couleur;
     m_texteSFML.setColor ( couleur );
 };
@@ -79,8 +79,9 @@ void AffLabel::setCouleur( sf::Color couleur ){
 
 /////////////////////////////////////////////////
 void AffLabel::setTextePolice( sf::Font val ){
+    std::string txtTmp =  m_texteSFML.getString( );
     m_textPolice = val;
-    m_texteSFML.setString( m_texte );
+    m_texteSFML.setString( txtTmp );
     // la taille du texte a changé alors on doit recalculé les bounds
     demanderActuaBounds();
 };

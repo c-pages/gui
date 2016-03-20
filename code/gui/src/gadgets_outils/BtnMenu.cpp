@@ -98,7 +98,7 @@ void BtnMenu::actualiserStyle()
         btn->setFondLigneCouleur    ( m_btnLignesCouleurs );
         btn->setFondLigneEpaisseur( m_btnLignesEpaisseurs );
 
-        btn->setTailleCharac     ( m_textTaille );
+        btn->setTexteTaille     ( m_textTaille );
         btn->setTexteCouleur    ( m_textCouleur );
         btn->setTextePolice          ( m_textPolice );
         btn->setTexteStyle      ( m_textStyle );

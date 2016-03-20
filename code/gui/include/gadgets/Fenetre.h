@@ -48,10 +48,10 @@ public:
     /////////////////////////////////////////////////
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
-    virtual void setTexte( std::string titre ) {
-        m_texte = titre;
-        m_titre->setTexte( titre );
-    };
+//    virtual void setTexte( std::string titre ) {
+//        m_texte = titre;
+//        m_titre->setTexte( titre );
+//    };
 
     void chargerIcone   (std::string fichier );
 

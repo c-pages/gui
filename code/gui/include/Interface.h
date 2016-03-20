@@ -80,7 +80,7 @@ protected:
 // fonctions statics
 /////////////////////////////////////////////////
 public:
-    static  void aBesoinActualisation()                         { ms_aBesoinActualisation = true ; };
+    static  void necessiteActualisation()                         { ms_necessiteActualisation = true ; };
     static  void setCurseur ( Curseurs    curseur   )           { ms_curseurSouris->setCurseur ( curseur  ); };
     static  std::shared_ptr<Gadget>       getBoutonSurvol ()    { return ms_boutonSurvole; };
     static  std::shared_ptr<Gadget>       getBoutonPress ()     { return ms_boutonPresse; };
@@ -108,7 +108,7 @@ public:
 
 private:
 
-    static  bool                                    ms_aBesoinActualisation;
+    static  bool                                    ms_necessiteActualisation;
     static  std::shared_ptr<AffCurseurSouris>       ms_curseurSouris;
 
     static  std::shared_ptr<Gadget>     ms_boutonSurvole;    ///< Le bouton survolé actuelement par la souris.

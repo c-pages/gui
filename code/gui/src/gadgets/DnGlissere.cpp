@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <DnSlider.h>
+#include <DnGlissere.h>
 #include <Interface.h>
 
 
@@ -9,52 +9,20 @@
 namespace gui {
 
 /////////////////////////////////////////////////
-DnSlider::DnSlider ()
-: m_boutonFond  ( std::make_shared<BtnRectangle>() )
-, m_slider      ( std::make_shared<BtnRectangle>() )
-, m_fond        ( std::make_shared<AffRectangle>() )
-
-//, m_styleBtnFond    ( std::make_shared<Style>() )
-//, m_styleBtnSlider  ( std::make_shared<Style>() )
-//, m_styleFond       ( std::make_shared<Style>() )
-
-, m_valeurMax   ( 100 )
+DnGlissere::DnGlissere ()
+: m_valeurMax   ( 100 )
 , m_valeurMin   ( 0 )
 , m_horizontal  ( true )
 , m_drag        ( false )
-, m_longueur    ( 180 )
-, m_largeur     ( 15 )
 , m_decalageDragSouris ({0,0})
 {
-    creerNomUnique( "Slider" );
 
-    m_marge.x = 0;
-    m_marge.y = 0;
+    creerNomUnique( "Glissiere" );
 
-    // Ajouter les composant
-    ajouterComposant( m_fond );
-    ajouterComposant( m_boutonFond );
-    ajouterComposant( m_slider );
+    m_marge = {0,0};
 
-    // valeurs par defaut
-    m_btnCouleurs.set       ( sf::Color( 0, 0, 0, 50 )     , Etat::desactive );
-    m_btnCouleurs.set       ( sf::Color( 255,255,255, 0 ) , Etat::repos );
-    m_btnCouleurs.set       ( sf::Color( 255,255,255, 20 ) , Etat::survol );
-    m_btnCouleurs.set       ( sf::Color( 255,255,255, 25 ) , Etat::press );
-    m_btnLgnCouleurs.set    ( sf::Color( 255,255,255, 20 ) );
-    m_btnLgnepaisseurs.set  ( 0 );
-
-    m_slideCouleurs.set       ( sf::Color( 0, 0, 0, 50 )     , Etat::desactive );
-    m_slideCouleurs.set       ( sf::Color( 255,255,255, 40 ) , Etat::repos );
-    m_slideCouleurs.set       ( sf::Color( 255,255,255, 60 ) , Etat::survol );
-    m_slideCouleurs.set       ( sf::Color( 255,255,255, 80 ) , Etat::press );
-    m_slideLgnCouleurs.set    ( sf::Color( 255,255,255, 20 ) );
-    m_slideLgnepaisseurs.set  ( 0 );
-
-    m_fndCouleur            = sf::Color::Transparent;
-    m_fndLgnCouleur         = sf::Color( 255,255,255, 20 );
-    m_fndLgnepaisseur       = 1;
-
+    // creer l'interface locale
+    CmpGlissere::initialiserComposants ( this );
 
     // Declaration des fonctions de l'interface interne du gadget.
     fct_cliqueBtnFond   = [this](){
@@ -119,9 +87,10 @@ DnSlider::DnSlider ()
 }
 
 /////////////////////////////////////////////////
-void DnSlider::actualiserGeometrie (){
+void DnGlissere::actualiserGeometrie (){
 
     log ("actualiserGeometrie");
+    log ("m_largeur", m_largeur);
 
     if ( m_horizontal )
         m_taille = { m_longueur,  m_largeur };
@@ -135,14 +104,12 @@ void DnSlider::actualiserGeometrie (){
     m_slider->setTaille         ( { m_largeur - 2*m_marge.x  , m_largeur - 2*m_marge.y });
     corrigerPositionSlider();
 
-//    m_slider->setPosition       ( m_slider->getPosition().x , m_marge.y );
-
     demanderActuaBounds();
 
 }
 
 /////////////////////////////////////////////////
-void DnSlider::actualiserStyle ()
+void DnGlissere::actualiserStyle ()
 {
     log ("actualiserStyle");
 
@@ -162,13 +129,13 @@ void DnSlider::actualiserStyle ()
 
 
 /////////////////////////////////////////////////
-void DnSlider::traiterEvenements (const sf::Event& evenement){
+void DnGlissere::traiterEvenements (const sf::Event& evenement){
     if ( dragEnCours() ) deplacerSlider ();
 }
 
 
 /////////////////////////////////////////////////
-void DnSlider::incrementer( float inc ){
+void DnGlissere::incrementer( float inc ){
     sf::Vector2f posBack = m_slider->getPosition();
 
     if ( m_horizontal )
@@ -188,7 +155,7 @@ void DnSlider::incrementer( float inc ){
 
 
 /////////////////////////////////////////////////
-void DnSlider::decrementer( float inc ){
+void DnGlissere::decrementer( float inc ){
 
     sf::Vector2f posBack = m_slider->getPosition();
 
@@ -208,7 +175,7 @@ void DnSlider::decrementer( float inc ){
 
 
 /////////////////////////////////////////////////
-void DnSlider::deplacerSlider (){
+void DnGlissere::deplacerSlider (){
 
     sf::Vector2f posBack = m_slider->getPosition();
 
@@ -233,7 +200,7 @@ void DnSlider::deplacerSlider (){
 
 
 /////////////////////////////////////////////////
-void DnSlider::corrigerPositionSlider(){
+void DnGlissere::corrigerPositionSlider(){
 
     if ( m_horizontal ) {
         if ( m_slider->getPosition ( ).x < m_marge.x )
@@ -253,23 +220,7 @@ void DnSlider::corrigerPositionSlider(){
 
 
 /////////////////////////////////////////////////
-void DnSlider::setLongueurCurseur( float pourcentage ){
-
-    if ( pourcentage > 100 )    pourcentage = 100;
-    if ( pourcentage < 0 )      pourcentage = 0;
-
-    if ( m_horizontal ){
-        m_slider->setTailleX( m_longueur * pourcentage/100- 2*m_marge.x );
-        m_slider->setTailleY( m_largeur - 2*m_marge.y );
-
-    }else{
-        m_slider->setTailleX( m_largeur - 2*m_marge.y);
-        m_slider->setTailleY( m_longueur * pourcentage/100- 2*m_marge.x);
-    }
-}
-
-/////////////////////////////////////////////////
-float DnSlider::getValeur(){
+float DnGlissere::getValeur(){
     float result, longueurMax,coefPosition, longueurVal;
     if ( m_horizontal ) {
         longueurMax = m_taille.x - 2*m_marge.x - m_slider->getTaille().x;
@@ -290,121 +241,35 @@ float DnSlider::getValeur(){
 };
 
 /////////////////////////////////////////////////
-void DnSlider::setValeurMax( float val ){
+void DnGlissere::setValeurMax( float val ){
     m_valeurMax = val;
 };
 
 /////////////////////////////////////////////////
-float DnSlider::getValeurMax ( ) const {
+float DnGlissere::getValeurMax ( ) const {
     return m_valeurMax;
 };
 
 /////////////////////////////////////////////////
-void DnSlider::setValeurMin( float val ){
+void DnGlissere::setValeurMin( float val ){
     m_valeurMin = val;
 };
 
 /////////////////////////////////////////////////
-float DnSlider::getValeurMin ( ) const {
+float DnGlissere::getValeurMin ( ) const {
     return m_valeurMin;
 };
 
-/////////////////////////////////////////////////
-void DnSlider::setLongueur( float longueur ){
-    m_longueur = longueur;
-};
 
 /////////////////////////////////////////////////
-void DnSlider::setLargeur( float largeur ){
-    m_largeur = largeur;
-};
-
-/////////////////////////////////////////////////
-void DnSlider::setHorizontal (  ){
-    m_horizontal = true;
-    demanderActuaGeom ();
-};
-
-/////////////////////////////////////////////////
-void DnSlider::setVertical (  ){
-    m_horizontal = false;
-    demanderActuaGeom ();
-}
-
-/////////////////////////////////////////////////
-bool DnSlider::dragEnCours( ) {
+bool DnGlissere::dragEnCours( ) {
     return m_drag;
 };
 
 /////////////////////////////////////////////////
-void DnSlider::setDrag (bool val ){
+void DnGlissere::setDrag (bool val ){
     m_drag = val;
 };
-
-
-
-
-
-
-
-/////////////////////////////////////////////////
-void DnSlider::setSliderCouleur ( Valeurs<sf::Color> couleurs  ) {
-        m_slideCouleurs = couleurs;
-        demanderActuaStyle();
-    };
-
-/////////////////////////////////////////////////
-void DnSlider::setSliderLigneCouleur ( Valeurs<sf::Color> couleurs  ) {
-        m_slideLgnCouleurs = couleurs;
-        demanderActuaStyle();
-    };
-
-/////////////////////////////////////////////////
-void DnSlider::setSliderLigneEpaisseur ( Valeurs<float> epaisseur ) {
-        m_slideLgnepaisseurs =  epaisseur;
-        demanderActuaStyle();
-    };
-
-/////////////////////////////////////////////////
-void DnSlider::setBoutonCouleur ( Valeurs<sf::Color> couleurs  ) {
-        m_btnCouleurs = couleurs;
-        demanderActuaStyle();
-    };
-
-/////////////////////////////////////////////////
-void DnSlider::setBoutonLigneCouleur ( Valeurs<sf::Color> couleurs  ) {
-        m_btnLgnCouleurs = couleurs;
-        demanderActuaStyle();
-    };
-
-/////////////////////////////////////////////////
-void DnSlider::setBoutonLigneEpaisseur ( Valeurs<float> epaisseur ) {
-        m_btnLgnepaisseurs =  epaisseur;
-        demanderActuaStyle();
-    };
-
-/////////////////////////////////////////////////
-void DnSlider::setFondCouleur ( sf::Color couleurs  ) {
-        m_fndCouleur = couleurs;
-        demanderActuaStyle();
-    };
-
-/////////////////////////////////////////////////
-void DnSlider::setFondLigneCouleur ( sf::Color couleurs  ) {
-        m_fndLgnCouleur = couleurs;
-        demanderActuaStyle();
-    };
-
-/////////////////////////////////////////////////
-void DnSlider::setFondLigneEpaisseur ( float epaisseur ) {
-        m_fndLgnepaisseur =  epaisseur;
-        demanderActuaStyle();
-    };
-
-
-
-
-
 
 } // fin namespace gui
 

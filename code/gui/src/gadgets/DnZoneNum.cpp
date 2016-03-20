@@ -31,14 +31,14 @@ DnZoneNum::DnZoneNum()
         m_valeur = m_valeur + m_pas;
         std::cout << " apres : " << m_valeur << "\n";
         if ( m_valeur > m_max ) m_valeur = m_max;
-        m_zoneTexte->setTexte ( patch::to_string( m_valeur ) );
+//        m_zoneTexte->setTexte ( patch::to_string( m_valeur ) );
         std::cout << " m_pas : " << m_pas << "\n";
     };
     auto fct_moins = [this]()  {
         std::cout << " Valeur moins !!!!!\n";
         m_valeur -= m_pas;
         if ( m_valeur < m_min ) m_valeur = m_min;
-        m_zoneTexte->setTexte ( patch::to_string( m_valeur ) );
+ //       m_zoneTexte->setTexte ( patch::to_string( m_valeur ) );
     };
 
 
@@ -58,7 +58,7 @@ DnZoneNum::DnZoneNum()
         std::cout << " m_valeur : " << m_valeur << "\n";
         if ( m_valeur > m_max ) m_valeur = m_max;
         if ( m_valeur < m_min ) m_valeur = m_min;
-        m_zoneTexte->setTexte ( patch::to_string( m_valeur ) );
+//        m_zoneTexte->setTexte ( patch::to_string( m_valeur ) );
     };
 
     m_zoneTexte->lier ( Evenement::on_valeurChange , fct_valeurChange );
@@ -87,7 +87,7 @@ void DnZoneNum::actualiserGeometrie ()
     m_zoneTexte->setTaille  ( { m_taille.x - m_taille.y , m_taille.y } );
     m_zoneTexte->setPosition(  m_marge.x  , m_marge.y );
 
-    m_zoneTexte->setTexte ( patch::to_string( m_valeur ) );
+//    m_zoneTexte->setTexte ( patch::to_string( m_valeur ) );
 }
 
 /////////////////////////////////////////////////

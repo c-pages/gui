@@ -75,7 +75,7 @@ enum class Etat {
 /////////////////////////////////////////////////
 enum class Evenement {
 
-    onBtnG_dblCliquer,      ///< Double clique gauche
+    onBtnG_dblCliquer,      ///< \todo Double clique gauche
 
     onBtnG_relacher,        ///< Relache le bouton gauche de la souris.
     onBtnG_relacherDehors,  ///< Relache a coté du gadget avec le bouton gauche de la souris après avoir pressé dedans.

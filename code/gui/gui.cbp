@@ -81,9 +81,6 @@
 		<Unit filename="include/ResourcesMgr.h" />
 		<Unit filename="include/ResourcesMgr.inl" />
 		<Unit filename="include/Valeurs.h" />
-		<Unit filename="include/composants/CmpTexte.h" />
-		<Unit filename="include/composants/CompFond.h" />
-		<Unit filename="include/composants/Composant.h" />
 		<Unit filename="include/gadgets/AffIcone.h" />
 		<Unit filename="include/gadgets/AffImage.h" />
 		<Unit filename="include/gadgets/AffLabel.h" />
@@ -93,7 +90,7 @@
 		<Unit filename="include/gadgets/BtnRectangle.h" />
 		<Unit filename="include/gadgets/BtnTexte.h" />
 		<Unit filename="include/gadgets/DnCaseACocher.h" />
-		<Unit filename="include/gadgets/DnSlider.h" />
+		<Unit filename="include/gadgets/DnGlissere.h" />
 		<Unit filename="include/gadgets/DnZoneNum.h" />
 		<Unit filename="include/gadgets/DnZoneTexte.h" />
 		<Unit filename="include/gadgets/Fenetre.h" />
@@ -111,6 +108,11 @@
 		<Unit filename="include/gadgets_interfaces/Groupe.h" />
 		<Unit filename="include/gadgets_interfaces/Liste.h" />
 		<Unit filename="include/gadgets_interfaces/Support.h" />
+		<Unit filename="include/gadgets_interfaces/composants/CmpFond.h" />
+		<Unit filename="include/gadgets_interfaces/composants/CmpGlissere.h" />
+		<Unit filename="include/gadgets_interfaces/composants/CmpIcone.h" />
+		<Unit filename="include/gadgets_interfaces/composants/CmpTexte.h" />
+		<Unit filename="include/gadgets_interfaces/composants/Composant.h" />
 		<Unit filename="include/gadgets_outils/AffBarreTitre.h" />
 		<Unit filename="include/gadgets_outils/AffCurseurSouris.h" />
 		<Unit filename="include/gadgets_outils/BtnMenu.h" />
@@ -134,9 +136,6 @@
 		<Unit filename="src/Interface.cpp" />
 		<Unit filename="src/Log.cpp" />
 		<Unit filename="src/Valeurs.cpp" />
-		<Unit filename="src/composants/CmpTexte.cpp" />
-		<Unit filename="src/composants/CompFond.cpp" />
-		<Unit filename="src/composants/Composant.cpp" />
 		<Unit filename="src/gadgets/AffIcone.cpp" />
 		<Unit filename="src/gadgets/AffImage.cpp" />
 		<Unit filename="src/gadgets/AffLabel.cpp" />
@@ -146,7 +145,7 @@
 		<Unit filename="src/gadgets/BtnRectangle.cpp" />
 		<Unit filename="src/gadgets/BtnTexte.cpp" />
 		<Unit filename="src/gadgets/DnCaseACocher.cpp" />
-		<Unit filename="src/gadgets/DnSlider.cpp" />
+		<Unit filename="src/gadgets/DnGlissere.cpp" />
 		<Unit filename="src/gadgets/DnZoneNum.cpp" />
 		<Unit filename="src/gadgets/DnZoneTexte.cpp" />
 		<Unit filename="src/gadgets/Fenetre.cpp" />
@@ -164,6 +163,11 @@
 		<Unit filename="src/gadgets_interfaces/Groupe.cpp" />
 		<Unit filename="src/gadgets_interfaces/Liste.cpp" />
 		<Unit filename="src/gadgets_interfaces/Support.cpp" />
+		<Unit filename="src/gadgets_interfaces/composants/CmpFond.cpp" />
+		<Unit filename="src/gadgets_interfaces/composants/CmpGlissere.cpp" />
+		<Unit filename="src/gadgets_interfaces/composants/CmpIcone.cpp" />
+		<Unit filename="src/gadgets_interfaces/composants/CmpTexte.cpp" />
+		<Unit filename="src/gadgets_interfaces/composants/Composant.cpp" />
 		<Unit filename="src/gadgets_outils/AffBarreTitre.cpp" />
 		<Unit filename="src/gadgets_outils/AffCurseurSouris.cpp" />
 		<Unit filename="src/gadgets_outils/BtnMenu.cpp" />

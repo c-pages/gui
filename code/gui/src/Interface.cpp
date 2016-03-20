@@ -28,7 +28,7 @@ std::shared_ptr<Calque>        Interface::ms_calque_infos                   = st
 std::shared_ptr<Calque>        Interface::ms_calque_souris                  = std::make_shared<Calque>("_Souris");
 
 std::shared_ptr<AffCurseurSouris>       Interface::ms_curseurSouris;
-bool                                    Interface::ms_aBesoinActualisation = false;
+bool                                    Interface::ms_necessiteActualisation = false;
 
 std::shared_ptr<Gadget>         Interface::ms_boutonSurvole = nullptr;    ///< Le bouton survolé actuelement par la souris.
 std::shared_ptr<Gadget>         Interface::ms_boutonPresse  = nullptr;    ///< Le bouton pressé actuelement par la souris.
@@ -132,7 +132,9 @@ void Interface::actualiser ()
         majAffichage_BoutonSurvol();
 
     // si pas besoin on zappe
-    if ( ! ms_aBesoinActualisation ) return;
+    if ( ! ms_necessiteActualisation )
+        return;
+
 
 
 //    // debut de la frame, on saute des lignes
@@ -140,9 +142,6 @@ void Interface::actualiser ()
 
     logTitre ( "Actualiser");
 
-    // on actualise les enfants ( donc les calques)
-//    log ( "actualiserEnfants");
-    actualiserEnfants();
 
     // on calcule la taille verticale des bandeaux ...
     sf::Vector2f decallage = {0,0};
@@ -182,10 +181,16 @@ void Interface::actualiser ()
     }
 
 
+    ms_necessiteActualisation = false;
+
+
+    // on actualise les enfants ( donc les calques)
+//    log ( "actualiserEnfants");
+    actualiserEnfants();
+
 //    logTitre ( "fin d'Actualisastion.");
 
 
-    ms_aBesoinActualisation = false;
 }
 
 ///////////////////////////////////////////////////

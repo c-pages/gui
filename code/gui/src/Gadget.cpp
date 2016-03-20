@@ -19,8 +19,8 @@ std::string Gadget::ms_logNomGadgetBack = "";
 
 /////////////////////////////////////////////////
 Gadget::Gadget ()
-: m_texte       ( "" )
-, m_visible     ( true )
+:/* m_texte       ( "" )
+, */m_visible     ( true )
 , m_actif       ( true )
 , m_focus       ( false )
 , m_survol      ( false )
@@ -28,7 +28,7 @@ Gadget::Gadget ()
 , m_deplacable  ( false )
 , m_redimensionnable ( false )
 
-, m_aBesoinActualisation    ( true )
+, m_necessiteActualisation    ( true )
 , m_aBesoinActuaGeom        ( true )
 , m_aBesoinActuaStyle       ( true )
 , m_aBesoinActuaContenu     ( true )
@@ -61,7 +61,7 @@ Gadget::~Gadget ()
 void Gadget::actualiser ()
 {
     // si on a pas besoin d'actualiser
-    if ( ! m_aBesoinActualisation )
+    if ( ! m_necessiteActualisation )
     {
         // on envois le message aux enfants
         actualiserEnfants();
@@ -71,6 +71,10 @@ void Gadget::actualiser ()
     }
 
     logTitre ( "Actualiser"  );
+
+    // on a plus besoin d'actualisation
+    m_necessiteActualisation = false;
+
 
     // on actualise le style si besoin
     if ( m_aBesoinActuaStyle )  {
@@ -105,15 +109,13 @@ void Gadget::actualiser ()
     // on s'occupe des trucs a supprimer des listes a vider pis tous
     actualiserListes ( );
 
-    // on a plus besoin d'actualisation
-    m_aBesoinActualisation = false;
 }
 
 
 /////////////////////////////////////////////////
 void Gadget::actualiser ( sf::Time deltaTemps )
 {
-    if ( m_aBesoinActualisation )
+    if ( m_necessiteActualisation )
         actualiser();
 
     actualiserEnfants ( deltaTemps );
@@ -196,44 +198,44 @@ sf::Vector2i Gadget::getLocalPosSouris ( ) {
 
 /////////////////////////////////////////////////
 void Gadget::demanderActualisation() {
-    m_aBesoinActualisation = true ;
+    m_necessiteActualisation = true ;
     m_aBesoinActuaGeom = true ;
     m_aBesoinActuaStyle = true ;
-    m_aBesoinActualisation = true ;
-    Interface::aBesoinActualisation();
+    m_necessiteActualisation = true ;
+    Interface::necessiteActualisation();
 };
 
 
 /////////////////////////////////////////////////
 void Gadget::demanderActuaGeom() {
-    m_aBesoinActualisation = true ;
+    m_necessiteActualisation = true ;
     m_aBesoinActuaGeom = true ;
     m_aBesoinActuaBounds = true ;
-    Interface::aBesoinActualisation();
+    Interface::necessiteActualisation();
 };
 
 
 /////////////////////////////////////////////////
 void Gadget::demanderActuaStyle() {
-    m_aBesoinActualisation = true ;
+    m_necessiteActualisation = true ;
     m_aBesoinActuaStyle = true ;
-    Interface::aBesoinActualisation();
+    Interface::necessiteActualisation();
 };
 
 
 /////////////////////////////////////////////////
 void Gadget::demanderActuaContenu() {
-    m_aBesoinActualisation = true ;
+    m_necessiteActualisation = true ;
     m_aBesoinActuaContenu = true ;
-    Interface::aBesoinActualisation();
+    Interface::necessiteActualisation();
 };
 
 
 /////////////////////////////////////////////////
 void Gadget::demanderActuaBounds() {
-    m_aBesoinActualisation = true ;
+    m_necessiteActualisation = true ;
     m_aBesoinActuaBounds = true ;
-    Interface::aBesoinActualisation();
+    Interface::necessiteActualisation();
 };
 
 
@@ -249,6 +251,11 @@ void Gadget::setVisible( bool val ) {
 //    log("setVisible");
 //    log("m_visible", val);
     m_visible = val;
+};
+
+/////////////////////////////////////////////////
+bool Gadget::getVisible(  ) {
+    return m_visible;
 };
 
 
@@ -370,18 +377,18 @@ unsigned int Gadget::getID() const {
 
 /////////////////////////////////////////////////
 int          Gadget::getNombreGadgets () const{ return ms_CompteurGadgets; };
-
-/////////////////////////////////////////////////
-void        Gadget::setTexte( std::string val ){
-    log("setTexte \"" + val + "\"" );
-    m_texte = val;
-    demanderActuaGeom();
-};
-
-/////////////////////////////////////////////////
-std::string  Gadget::getTexte( ) const{
-    return m_texte;
-};
+//
+///////////////////////////////////////////////////
+//void        Gadget::setTexte( std::string val ){
+//    log("setTexte \"" + val + "\"" );
+//    m_texte = val;
+//    demanderActuaGeom();
+//};
+//
+///////////////////////////////////////////////////
+//std::string  Gadget::getTexte( ) const{
+//    return m_texte;
+//};
 
 /////////////////////////////////////////////////
 void            Gadget::setMarge ( sf::Vector2f marge ){

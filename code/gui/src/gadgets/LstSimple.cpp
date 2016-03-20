@@ -112,7 +112,7 @@ void LstSimple::actualiserStyle ()
             bouton->setFondCouleur         ( m_btnCouleurs.press );
             bouton->setFondLigneCouleur      ( m_btnLignesCouleurs.press );
             bouton->setFondLigneEpaisseur  ( m_btnLignesEpaisseurs.press );
-            bouton->setTailleCharac       ( m_textTaille.press );
+            bouton->setTexteTaille       ( m_textTaille.press );
             bouton->setTexteCouleur      ( m_textCouleur.press );
             bouton->setTextePolice            ( m_textPolice.press );
             bouton->setTexteStyle        ( m_textStyle.press );
@@ -121,7 +121,7 @@ void LstSimple::actualiserStyle ()
             bouton->setFondCouleur         ( m_btnCouleurs );
             bouton->setFondLigneCouleur      ( m_btnLignesCouleurs );
             bouton->setFondLigneEpaisseur  ( m_btnLignesEpaisseurs );
-            bouton->setTailleCharac       ( m_textTaille );
+            bouton->setTexteTaille       ( m_textTaille );
             bouton->setTexteCouleur      ( m_textCouleur );
             bouton->setTextePolice            ( m_textPolice );
             bouton->setTexteStyle        ( m_textStyle );

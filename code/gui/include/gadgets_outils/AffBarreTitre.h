@@ -41,16 +41,16 @@ public:
     void setIconeIndex (int index);
 
     ///< Definir m_texteTaille
-    void setTailleCharac( float val ){
+    void setTexteTaille( float val ){
         m_textTaille = val;
-        m_titre->setTailleCharac ( val ) ;
+        m_titre->setTexteTaille ( val ) ;
         };
 
 
     ///< Definir m_police
     void setCouleur( sf::Color couleur ){
         m_textCouleur = couleur;
-        m_titre->setCouleur ( couleur );
+        m_titre->setTexteCouleur ( couleur );
     };
 
     ///< Definir m_police

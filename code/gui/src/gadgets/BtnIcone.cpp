@@ -9,17 +9,17 @@ namespace gui {
 
 /////////////////////////////////////////////////
 BtnIcone::BtnIcone ()
-: m_icone       ( std::make_shared<AffIcone>())
-, m_fix ( false )
+: m_fix ( false )
 {
     creerNomUnique( "BtnIcone" );
-
     m_marge       = { 1 , 1} ;
 
 
-    ajouterComposant( m_icone );
+    // initialiser les composants herités
+    CmpIcone::initialiserComposants ( this );
 
     m_icone->setIndex ( 1 );
+
 }
 
 
@@ -34,7 +34,7 @@ void BtnIcone::actualiserGeometrie ()
     }
 
     m_icone->setPosition( m_marge.x  , m_marge.y );
-    m_rectangle->setTaille ( {m_taille.x, m_taille.y} );
+    m_fond->setTaille ( {m_taille.x, m_taille.y} );
 
     demanderActuaBounds();
 }
@@ -63,38 +63,18 @@ void BtnIcone::actualiserStyle ()
     }
 
     // on applique le style correspondant à l'état au rectangle
-    m_rectangle->setFondCouleur       ( sf::Color ( m_couleurFond.get( this->etat() ).r
+    m_fond->setFondCouleur       ( sf::Color ( m_couleurFond.get( this->etat() ).r
                                                 , m_couleurFond.get( this->etat() ).g
                                                 , m_couleurFond.get( this->etat() ).b
                                                 , m_couleurFond.get( this->etat() ).a * m_opacite ) ) ;
-    m_rectangle->setFondLigneCouleur    ( sf::Color ( m_couleurLignes.get( this->etat() ).r
+    m_fond->setFondLigneCouleur    ( sf::Color ( m_couleurLignes.get( this->etat() ).r
                                                 , m_couleurLignes.get( this->etat() ).g
                                                 , m_couleurLignes.get( this->etat() ).b
                                                 , m_couleurLignes.get( this->etat() ).a * m_opacite ) ) ;
-    m_rectangle->setFondLigneEpaisseur ( m_epaisseur.get( this->etat() ) ) ;
+    m_fond->setFondLigneEpaisseur ( m_epaisseur.get( this->etat() ) ) ;
 
 }
 
-
-/////////////////////////////////////////////////
-void BtnIcone::setIndex( unsigned int val )    {
-    m_icone->setIndex( val );
-    demanderActuaStyle ();
-};
-
-
-/////////////////////////////////////////////////
-void BtnIcone::setImage( std::string fichier )  {
-    m_icone->setImage (fichier);
-    demanderActuaGeom ();
-};
-
-
-/////////////////////////////////////////////////
-void BtnIcone::setImage ( sf::Texture* texture )  {
-    m_icone->setImage( texture );
-    demanderActuaGeom ();
-};
 
 
 /////////////////////////////////////////////////

@@ -5,6 +5,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include "gadgets_interfaces/Donnee.h"
+#include "gadgets_interfaces/composants/CmpTexte.h"
 
 #include "BtnRectangle.h"
 #include "AffRectangle.h"
@@ -17,7 +18,7 @@ namespace gui {
 /// \brief Une case à cocher pour controler une valeur booléene.
 ///
 /////////////////////////////////////////////////
-class DnCaseACocher : public gui::Donnee<bool> {
+class DnCaseACocher : public Donnee<bool> , public CmpTexte {
 
 /////////////////////////////////////////////////
 // Méthodes
@@ -45,10 +46,9 @@ private:
     // les composants de l'interface du gadget
     std::shared_ptr<BtnRectangle>    m_bouton;
     std::shared_ptr<AffRectangle>    m_coche;
-    std::shared_ptr<AffLabel>        m_label;
 
     // Les actions pour le fonctionnement
-    FctnAction     fn_basculerValeur;
+    FctnAction              fn_basculerValeur;
 
     Valeurs<sf::Color>      m_btnCouleurs;
     Valeurs<sf::Color>      m_btnLgnCouleurs;
@@ -57,11 +57,6 @@ private:
     Valeurs<sf::Color>      m_cocheCouleurs;
     Valeurs<sf::Color>      m_cocheLgnCouleurs;
     Valeurs<float>          m_cocheLgnepaisseurs;
-
-    sf::Color               m_textCouleur;
-    float                   m_textTaille;
-    sf::Font                m_textPolice;
-    sf::Text::Style         m_textStyle;
 
 }; // fin class DnCaseACocher
 

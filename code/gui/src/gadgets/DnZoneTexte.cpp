@@ -11,55 +11,48 @@ namespace gui {
 
 /////////////////////////////////////////////////
 DnZoneTexte::DnZoneTexte ()
-: m_bouton  ( std::make_shared<BtnRectangle>() )
-, m_curseur ( std::make_shared<AffRectangle>() )
-, m_label   ( std::make_shared<AffLabel>() )
+: m_bouton          ( std::make_shared<BtnRectangle>() )
+, m_boutonSortir    ( std::make_shared<BtnRectangle>() )
+, m_curseur         ( std::make_shared<AffRectangle>() )
+
+//, m_label   ( std::make_shared<AffLabel>() )
 , m_ecritureActive  ( false )
 , m_numerique       ( false )
+, m_clignotte       ( true )
+, m_curseurPos      ( 0 )
 {
     // initialiser
     m_taille.x = 180;
-    m_taille.y = 20;
+    m_taille.y = 15;
 
     m_marge.x = 2;
-    m_marge.y = 5;
+    m_marge.y = 0;
 
+    ajouterComposant( m_boutonSortir );
     ajouterComposant( m_bouton );
-    ajouterComposant( m_label );
     ajouterComposant( m_curseur );
+    CmpTexte::initialiserComposants( this );
 
-/*
-    m_label->setTexte   ( m_texte );
-    m_curseur->setTaille( { 2, 15 });
-    m_bouton->setTaille ( m_taille );
-
-*/
     // valeurs par defaut
-    m_btnCouleurs.set       ( sf::Color( 0, 0, 0, 50 )     , Etat::desactive );
-    m_btnCouleurs.set       ( sf::Color( 255,255,255, 0 ) , Etat::repos );
-    m_btnCouleurs.set       ( sf::Color( 255,255,255, 20 ) , Etat::survol );
-    m_btnCouleurs.set       ( sf::Color( 255,255,255, 40 ) , Etat::press );
+    m_btnCouleurs.set       ( sf::Color( 0,0,0,0 ) );
+    m_btnCouleurs.set       ( sf::Color( 255,255,255 ), Etat::press );
     m_btnLgnCouleurs.set    ( sf::Color( 255,255,255, 20 ) );
     m_btnLgnepaisseurs.set  ( 1 );
 
-    m_curseurCouleurs          = sf::Color(255,255,255,200) ;
-    m_curseurCouleurs.set      ( sf::Color( 70, 70, 70 )  , Etat::desactive );
+    m_curseurCouleurs          = sf::Color(0,0,0,200) ;
     m_curseurLgnCouleurs       = sf::Color( 255,255,0, 255 ) ;
     m_curseurLgnepaisseurs     = 0 ;
 
-    m_textCouleur = sf::Color::White ;
-    m_textTaille =  10  ;
-    m_textPolice = Interface::ms_polices.get( "Defaut" )  ;
-    m_textStyle = sf::Text::Style::Regular  ;
+    m_textCouleur.set( sf::Color::White );
+    m_textCouleur.set( sf::Color::Black, Etat::press  );
 
 
-
-    // Declaration des fonctions de fonctionnement de l'interface interne du gadget.
+    // Declaration des fonctions de l'interface interne du gadget.
     fn_valider = [this](){
         if ( m_ecritureActive ){
             setModeEcritureActif ( false );
             m_texte = m_valeur = m_label->getTexte() ;
-            actualiser ();
+            demanderActualisation();
             declencher( Evenement::on_valeurValide);
         }
     };
@@ -67,36 +60,57 @@ DnZoneTexte::DnZoneTexte ()
         if ( m_ecritureActive ){
             setModeEcritureActif ( false );
             m_label->setTexte ( m_texte );
-            actualiser ();
+            demanderActualisation();
         }
     };
     fn_cliqueTexte = [this](){
-        std::cout << "Clique zone de texte\n";
-        if ( m_ecritureActive ){}
-            // on place le curseur là où on a cliqué.(todo)
-        else {
+        sf::Vector2i    posSouris = getPosSouris();
+        posSouris.x -= getPosition().x;
+        posSouris.y -= getPosition().y;
+
+        m_curseurPos = m_label->getTexte().size()    ;
+
+        for ( int i = 0; i< m_label->getTexte().size(); i++ ){
+            sf::Vector2f posLettre = m_label->getSFTexte().findCharacterPos 	(  i ) ;
+            if ( posLettre.x>posSouris.x){
+                m_curseurPos = i-1;
+                break;
+            }
+        }
+
+        if ( ! m_ecritureActive ){
             // on active la saisie clavier
             setModeEcritureActif ( true ) ;
-            actualiser ();
+            m_clignotte = true;
+            m_clignotteChrono.restart();
+            demanderActualisation();
         }
     };
 
 
-    // Action du bouton
+    // Action des boutons
     m_bouton->lier ( Evenement::onBtnG_relacher , fn_cliqueTexte );
     m_bouton->lier ( Evenement::onBtnG_relacherDehors , fn_valider );
     m_bouton->lier ( Evenement::onBtnD_relacherDehors , fn_sortir );
 
     m_bouton->lier ( Evenement::onBtnM_roulerHaut , [this](){ declencher ( Evenement::onBtnM_roulerHaut ) ;} );
     m_bouton->lier ( Evenement::onBtnM_roulerBas , [this](){ declencher ( Evenement::onBtnM_roulerBas ) ;} );
-    actualiser ();
+
+    m_boutonSortir->lier ( Evenement::onBtnG_relacher , fn_valider );
+    m_boutonSortir->lier ( Evenement::onBtnD_relacher , fn_sortir );
+
+    // rendre le bouton du fond invisible
+    m_boutonSortir->setFondCouleur( sf::Color::Transparent );
+    m_boutonSortir->setFondLigneEpaisseur( 0 );
 
 }
 
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  DnZoneTexte::testerSurvol ( sf::Vector2i position )
 {
-    if ( m_globalBounds.contains( { position.x , position.y } ) )
+    if ( m_ecritureActive )
+        return testerSurvolComposants ( position );
+    else if ( m_globalBounds.contains( { position.x , position.y } ) )
         return m_bouton;
 
     return nullptr;
@@ -109,59 +123,91 @@ void DnZoneTexte::actualiserGeometrie ()
     m_label->setPosition    ( m_marge.x , m_marge.y/2);
 
 //    sf::Vector2f pos = m_label->getSFTexte()->findCharacterPos 	(  m_label->getTexte().size() ) ;
-    sf::Vector2f pos = m_label->getSFTexte().findCharacterPos 	(  m_label->getTexte().size() ) ;
+    sf::Vector2f pos = m_label->getSFTexte().findCharacterPos 	(  m_curseurPos ) ;
 
     m_curseur->setPosition ( pos.x , pos.y );
-    m_curseur->move( 5 , m_marge.y/2 );
-    m_curseur->setTaille( { 2, 15 });
+    m_curseur->move( 3 , m_marge.y/2 );
+    m_curseur->setTaille( { 1, 15 });
 
-    // actualiser
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+    m_boutonSortir->setPosAbs ( {0,0 });
+    m_boutonSortir->setTaille ( Interface::ms_fenetreSFML->getSize().x, Interface::ms_fenetreSFML->getSize().y );
+
+    demanderActuaBounds();
 }
 
 
 /////////////////////////////////////////////////
 void DnZoneTexte::actualiserStyle ()
 {
-    m_bouton->setFondCouleur (    m_btnCouleurs ) ;
-    m_bouton->setFondLigneCouleur (    m_btnLgnCouleurs  ) ;
-    m_bouton->setFondLigneEpaisseur ( m_btnLgnepaisseurs  );
+    if ( m_ecritureActive ) {
+        m_bouton->setFondCouleur            ( m_btnCouleurs.press ) ;
+        m_bouton->setFondLigneCouleur       ( m_btnLgnCouleurs.press  ) ;
+        m_bouton->setFondLigneEpaisseur     ( m_btnLgnepaisseurs.press  );
 
-    if ( ! m_ecritureActive ) {
-        m_curseur->setFondCouleur ( m_curseurCouleurs.desactive  );
-        m_curseur->setFondLigneCouleur (  m_curseurLgnCouleurs.desactive );
-        m_curseur->setFondLigneEpaisseur ( m_curseurLgnepaisseurs.desactive  );
+        CmpTexte::appliquerEtat( Etat::press );
+
     } else {
-        m_curseur->setFondCouleur ( m_curseurCouleurs.press );
-        m_curseur->setFondLigneCouleur (  m_curseurLgnCouleurs.press);
-        m_curseur->setFondLigneEpaisseur ( m_curseurLgnepaisseurs.press );
+        m_bouton->setFondCouleur            ( m_btnCouleurs.repos ) ;
+        m_bouton->setFondLigneCouleur       ( m_btnLgnCouleurs.repos  ) ;
+        m_bouton->setFondLigneEpaisseur     ( m_btnLgnepaisseurs.repos  );
+
+        CmpTexte::appliquerEtat( Etat::repos );
     }
 
-    m_label->setCouleur    ( sf::Color (   m_textCouleur.r
-                                            ,   m_textCouleur.g
-                                            ,   m_textCouleur.b
-                                            ,   m_textCouleur.a * m_opacite ) ) ;
-    m_label->setTailleCharac     ( m_textTaille ) ;
-    m_label->setTextePolice          ( m_textPolice ) ;
-    m_label->setTexteStyle      ( m_textStyle ) ;
+    m_curseur->setFondCouleur           ( m_curseurCouleurs.repos  );
+    m_curseur->setFondLigneCouleur      ( m_curseurLgnCouleurs.repos );
+    m_curseur->setFondLigneEpaisseur    ( m_curseurLgnepaisseurs.repos  );
 
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+
 }
 
+/////////////////////////////////////////////////
+void DnZoneTexte::actualiser ()
+{
+    Gadget::actualiser();
 
+    if ( m_ecritureActive )
+    {
+        if ( m_clignotteChrono.getElapsedTime().asSeconds() > .5 ){
+            m_clignotteChrono.restart();
+            m_clignotte = ! m_clignotte;
+        }
+        Interface::necessiteActualisation();
+    }
+}
 
 /////////////////////////////////////////////////
 void DnZoneTexte::traiterEvenements(const sf::Event& evenement ){
 
+    // gestion de la touche suppr
+    if ( m_ecritureActive &&  evenement.type == sf::Event::KeyPressed ) {
+
+        m_clignotteChrono.restart();
+        m_clignotte = true;
+
+        if ( evenement.key.code == sf::Keyboard::Delete ){
+            std::string txt = m_label->getTexte() ;
+            txt.erase ( m_curseurPos , 1);
+            m_label->setTexte( txt  );
+            declencher( Evenement::on_valeurChange );
+        } else if ( evenement.key.code == sf::Keyboard::Left ){
+            m_curseurPos--;
+            demanderActuaGeom();
+        } else if ( evenement.key.code == sf::Keyboard::Right ){
+            m_curseurPos++;
+            demanderActuaGeom();
+        }
+    }
+
+
+
+
     // gestion de la saisie de texte
-    if ( m_ecritureActive
-    and  evenement.type == sf::Event::TextEntered
-        /* and  event.text.unicode < 128*/ ) {
+    if ( m_ecritureActive &&  evenement.type == sf::Event::TextEntered ) {
 
 
-
-        std::cout << " (event.text.unicode)  : " << (evenement.text.unicode)  << "\n";
-
+//        std::cout << " (event.text.unicode)  : " << (evenement.text.unicode)  << "\n";
+        log ( "evenement.text.unicode" , evenement.text.unicode );
         // le texte avant modif dans le label
         std::string txt = m_label->getTexte() ;
 
@@ -171,25 +217,21 @@ void DnZoneTexte::traiterEvenements(const sf::Event& evenement ){
             if ( txt.size()==0 ) return;
 
             // sinon on retire une lettre et on declenche l'action
-            txt.erase ( txt.size()-1 , 1);
+            txt.erase ( m_curseurPos-1 , 1);
             m_label->setTexte( txt  );
             declencher( Evenement::on_valeurChange );
+            m_curseurPos--;
         }
 
         // touche Entrée : Valider  //////////////////////////////
         else if ( evenement.text.unicode == 13 )  {
-//            m_btn->setCoche( false);
             setModeEcritureActif ( false ) ;
-            m_texte = m_valeur = txt;
-//            m_texte = m_valeur;
-            m_label->setTexte       ( m_texte ) ;
            declencher( Evenement::on_valeurValide );
         }
 
         // touche Echappe : Annuler  //////////////////////////////
         else if ( evenement.text.unicode == 27 )  {
-//            m_label->setTexte( m_texteBack  );
-//            m_btn->setCoche( false);
+
             setModeEcritureActif ( false ) ;
             m_label->setTexte    ( m_texte ) ;
             declencher( Evenement::on_valeurChange );
@@ -203,8 +245,11 @@ void DnZoneTexte::traiterEvenements(const sf::Event& evenement ){
                     declencher( Evenement::on_valeurChange );
                 }
             } else  {
-                m_label->setTexte( txt + static_cast<char>(evenement.text.unicode)  );
+                char txtTmp = static_cast<char>( evenement.text.unicode );
+                txt.insert( m_curseurPos , &txtTmp , 1 );
+                m_label->setTexte( txt )  ;
                 declencher( Evenement::on_valeurChange );
+                m_curseurPos++;
             }
 
             // s'il ne reste plus de place pour ecrire on retourne
@@ -216,14 +261,8 @@ void DnZoneTexte::traiterEvenements(const sf::Event& evenement ){
             // on déclenche et on ecrit.
 //            declencher( onCha_ChangeValeur );
         }
-actualiser ();
-/*
-        // clock pour clignotements du curseur
-        m_timerClignot.restart();
-        m_clignot = true;
+        demanderActuaGeom();
 
-        // et on demande une mise a jour du gadget.
-        demanderActualisation();*/
     }
 
 
@@ -244,9 +283,10 @@ void DnZoneTexte::draw (sf::RenderTarget& target, sf::RenderStates states) const
     target.draw( *m_bouton, states );
     target.draw( *m_label, states );
 
-    if ( m_ecritureActive )
+    if ( m_ecritureActive && m_clignotte )
         target.draw( *m_curseur, states );
 
+//m_ClignotteChrono.restart();
 
 }
 

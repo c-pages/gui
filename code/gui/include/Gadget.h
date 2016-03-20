@@ -77,6 +77,9 @@ public:
     ///< Definir m_visible
     void setVisible( bool val );
 
+    ///< Definir m_visible
+    bool getVisible( );
+
     ///< Definir m_actif
     void setActif( bool val );
 
@@ -230,22 +233,22 @@ public:
     unsigned int        getID() const;
 
     int                 getNombreGadgets () const;
-
-    virtual void    setTexte( std::string val );
-    std::string     getTexte( ) const;
+//
+//    virtual void    setTexte( std::string val );
+//    std::string     getTexte( ) const;
 
     void            setMarge ( sf::Vector2f marge );
     void            setMarge ( float val );
     void            setMarge ( float x , float y );
     sf::Vector2f    getMarge();
 
-    virtual void    demanderActualisation();
-    virtual void    demanderActuaGeom();
-    virtual void    demanderActuaStyle();
-    virtual void    demanderActuaContenu();
-    virtual void    demanderActuaBounds();
+    void    demanderActualisation();
+    void    demanderActuaGeom();
+    void    demanderActuaStyle();
+    void    demanderActuaContenu();
+    void    demanderActuaBounds();
 
-    virtual bool        estInterface () { return false; };
+    virtual bool        estInterface () { return false; };///< \todo voir si on peut faire mieux ...
     virtual bool        estInteractif() { return false; }; ///< \todo voir si on peut faire mieux ...
 
 /////////////////////////////////////////////////
@@ -257,8 +260,7 @@ protected:
 
     sf::Vector2f                m_marge;            ///< La marge à laissé
 
-private:
-    bool                        m_aBesoinActualisation ;
+    bool                        m_necessiteActualisation ;
     bool                        m_aBesoinActuaGeom ;
     bool                        m_aBesoinActuaStyle ;
     bool                        m_aBesoinActuaContenu ;
@@ -266,10 +268,9 @@ private:
 
     unsigned int                m_id;
 
-protected:
     static  int         ms_CompteurGadgets;   ///< L'interface courante dans laquelle on créé les gadgets.
 
-    std::string         m_texte;            ///< Le texte du gadget.
+//    std::string         m_texte;            ///< Le texte du gadget.
 
     std::string         m_nom;          ///< Nom unique automatique pour le gadget.
     Type                m_type;         ///< Nom unique automatique pour le gadget.

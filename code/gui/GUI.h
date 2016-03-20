@@ -1,12 +1,9 @@
 #ifndef __GUI_H__
 #define __GUI_H__
 
-//
-//using namespace std;
-//
-//#define logOut( txt )  cout <<  txt ;
-//#define getNomVar(var) #var
 
+#include <string>
+#include <SFML/Graphics.hpp>
 
 #include "Interface.h"
 #include "Gadget.h"

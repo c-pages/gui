@@ -11,8 +11,8 @@ namespace gui {
 /////////////////////////////////////////////////
 CntSliders::CntSliders ()
 : Contenant ()
-, m_slider_V ( std::make_shared<DnSlider>() )
-, m_slider_H ( std::make_shared<DnSlider>() )
+, m_slider_V ( std::make_shared<DnGlissere>() )
+, m_slider_H ( std::make_shared<DnGlissere>() )
 {
 
     ajouterComposant( m_slider_V );

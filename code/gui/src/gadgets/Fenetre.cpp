@@ -205,7 +205,7 @@ void Fenetre::actualiserStyle ()
     m_contenant->setContenantOutlineThickness( m_contenantContenantLgnepaisseur  );
 
 
-    m_titre->setTailleCharac         ( m_titreTextTaille );
+    m_titre->setTexteTaille         ( m_titreTextTaille );
     m_titre->setCouleur        ( m_titreTextCouleur );
     m_titre->setTextePolice              ( m_titreTextPolice );
     m_titre->setTexteStyle          ( m_titreTextStyle );

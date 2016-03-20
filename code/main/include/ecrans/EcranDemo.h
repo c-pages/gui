@@ -153,7 +153,7 @@ private:
     // DONNEE
     std::shared_ptr<gui::DnCaseACocher>  m_boutonCoche;    ///< Un bouton Menu.
     std::shared_ptr<gui::DnZoneTexte>    m_zoneTexte;    ///< Un champ de texte.
-    std::shared_ptr<gui::DnSlider>          m_slider;           ///< Un slider.
+    std::shared_ptr<gui::DnGlissere>          m_slider;           ///< Un slider.
 //    std::shared_ptr<gui::DnBarreDefilement> m_barreDefil;    ///< Un slider.
 
 }; // fin EcranDemo

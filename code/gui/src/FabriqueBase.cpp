@@ -187,7 +187,7 @@ std::shared_ptr<AffImage>    FabriqueBase::image( std::string fichier )
 std::shared_ptr<AffBarreTitre>    FabriqueBase::barreTitre( std::string text )
 {
     auto nouveauGadget = creerBureau<AffBarreTitre>( );
-    nouveauGadget->setTexte ( text );
+//    nouveauGadget->setTexte ( text );
     //nouveauGadget->demanderActualisation();
     return nouveauGadget;
 }
@@ -322,10 +322,10 @@ std::shared_ptr<DnZoneNum>        FabriqueBase::zoneNum( float valeurInitial ,fl
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<DnSlider>        FabriqueBase::slider( )
+std::shared_ptr<DnGlissere>        FabriqueBase::slider( )
 {
     m_interfaceParent->log ("Creation: slider");
-    auto nouveauGadget = creerBureau<DnSlider>( );
+    auto nouveauGadget = creerBureau<DnGlissere>( );
     //nouveauGadget->demanderActualisation();
     return nouveauGadget;
 }
@@ -370,7 +370,7 @@ std::shared_ptr<CntSliders>        FabriqueBase::groupeSliders( )
 std::shared_ptr<Fenetre>        FabriqueBase::fenetre( std::string titre )
 {
     auto nouveauGadget = creerFenetre<Fenetre>( );
-    nouveauGadget->setTexte (titre);
+//    nouveauGadget->setTexte (titre);
     //nouveauGadget->demanderActualisation();
     return nouveauGadget;
 }

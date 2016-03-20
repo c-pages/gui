@@ -61,7 +61,7 @@ void AffBarreTitre::setIconeIndex ( int index )
 void AffBarreTitre::actualiserGeometrie ()
 {
 
-    m_titre->setTexte ( m_texte );
+//    m_titre->setTexte ( m_texte );
 
     m_icone->setTaille      ( { m_taille.y + m_marge.x, m_taille.y + m_marge.y } );
     m_icone->setPosition    ( m_marge.x, m_marge.y );
@@ -78,9 +78,9 @@ void AffBarreTitre::actualiserGeometrie ()
 void AffBarreTitre::actualiserStyle ()
 {
 
-    m_titre->setTailleCharac     ( m_textTaille );
-    m_titre->setCouleur    ( m_textCouleur );
-    m_titre->setTextePolice          ( m_textPolice );
+    m_titre->setTexteTaille     ( m_textTaille );
+    m_titre->setTexteCouleur    ( m_textCouleur );
+    m_titre->setTextePolice     ( m_textPolice );
     m_titre->setTexteStyle      ( m_textStyle );
 
     m_fond->setFondCouleur        ( m_fndCouleur );

@@ -32,32 +32,29 @@ public:
 
     virtual sf::Vector2i  getTaille() const;
 
-    ///< Definir m_texte
-    virtual void setTexte( std::string val );
-
-    ///< Acceder à m_texte
-    std::string getTexte () const { return m_texteSFML.getString( ); };
 
     ///< Acceder au text SFML
     sf::Text     getSFTexte () const { return m_texteSFML; };
 
 
 
+    ///< Definir m_texte
+    virtual void setTexte( std::string val );
+
+    ///< Acceder à m_texte
+    std::string getTexte () const { return m_texteSFML.getString( ); };
 
     ///< Definir m_texteTaille
-    void setTailleCharac( float val );
+    void setTexteTaille( float val );
 
     ///< Definir m_police
-    void setCouleur( sf::Color couleur );
+    void setTexteCouleur( sf::Color couleur );
 
     ///< Definir m_police
     void setTextePolice( sf::Font val );
 
     ///< Definir m_police
     void setTexteStyle( sf::Text::Style val );
-
-
-
 
     ///< Acceder à m_police
     sf::Font getPolice () const { return m_textPolice; };
@@ -85,7 +82,7 @@ public:
 private:
 
     // les composants de l'interface du gadget
-    sf::Text   m_texteSFML;        ///< Le shape SFML qui affiche le texte.
+    sf::Text            m_texteSFML;        ///< Le shape SFML qui affiche le texte.
 
     // les proprietés graphiques
     sf::Color           m_textCouleur;

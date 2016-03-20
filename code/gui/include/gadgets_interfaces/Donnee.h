@@ -37,6 +37,7 @@ public:
     virtual void setValeur( T val )
     {   m_valeur = val; };
 
+    virtual bool        estInteractif() { return true; }; ///< \todo voir si on peut faire mieux ...
 
 protected:
     T   m_valeur;   ///< La valeur.

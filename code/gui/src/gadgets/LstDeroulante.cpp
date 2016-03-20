@@ -127,7 +127,7 @@ void LstDeroulante::actualiserStyle ()
     m_boutonLabel->setFondCouleur         ( m_btnCouleurs );
     m_boutonLabel->setFondLigneCouleur      ( m_btnLignesCouleurs );
     m_boutonLabel->setFondLigneEpaisseur  ( m_btnLignesEpaisseurs );
-   // bouton->setTailleCharac       ( m_textTaille.press );
+   // bouton->setTexteTaille       ( m_textTaille.press );
     m_boutonLabel->setTexteCouleur      ( m_textCouleur );
     //bouton->setTextePolice            ( m_textPolice.press );
    // bouton->setTexteStyle        ( m_textStyle.press );*/

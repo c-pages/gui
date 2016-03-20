@@ -27,7 +27,7 @@ Log::Log()
 , m_afficher_event                  ( true )
 , m_afficher_eventGUI               ( true )
 
-, m_afficher_GUI                    ( true )
+, m_afficher_GUI                    ( false )
 
 , m_afficher_horsCalques            ( true )
 

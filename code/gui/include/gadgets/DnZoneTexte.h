@@ -5,6 +5,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include "gadgets_interfaces/Donnee.h"
+#include "gadgets_interfaces/composants/CmpTexte.h"
 #include "BtnRectangle.h"
 #include "AffLabel.h"
 
@@ -20,10 +21,10 @@ namespace gui {
 ///
 /// \todo Placer le curseur à l'endroit du clique
 /// \todo Déplacer le curseur avec les fleches
-/// \todo Séléctionner du texte
-/// \todo copier-coller
+/// \todo Séléctionner une partie du texte
+/// \todo copier-coller avec le clipboard de l'OS
 /////////////////////////////////////////////////
-class DnZoneTexte : public gui::Donnee<std::string> {
+class DnZoneTexte : public gui::Donnee<std::string> , public CmpTexte {
 
 
 
@@ -38,21 +39,14 @@ public:
     /////////////////////////////////////////////////
     DnZoneTexte ();
 
-//    virtual void actualiser ();
+    /////////////////////////////////////////////////
+    virtual void actualiser ();
+
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
 
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
-
-    virtual void setTexte( std::string val ){
-        m_valeur    = val;
-        m_texte     = val;
-        m_label->setTexte       ( m_texte ) ;
-        actualiserGeometrie();
-    };
-
-    virtual std::string getValeur ( ){ m_valeur = m_texte;  return m_valeur; }
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
@@ -77,11 +71,14 @@ private:
     // les proprietés fonctionnelles
     bool            m_ecritureActive;    ///<
     bool            m_numerique;
+    bool            m_clignotte;
+    sf::Clock       m_clignotteChrono;
+    int             m_curseurPos;
 
     // les composants de l'interface du gadget
     std::shared_ptr<BtnRectangle>   m_bouton;
+    std::shared_ptr<BtnRectangle>   m_boutonSortir;
     std::shared_ptr<AffRectangle>   m_curseur;
-    std::shared_ptr<AffLabel>       m_label;
 
     // Les actions pour le fonctionnement
     FctnAction                      fn_sortir ;
@@ -96,11 +93,6 @@ private:
     Valeurs<sf::Color>      m_curseurCouleurs;
     Valeurs<sf::Color>      m_curseurLgnCouleurs;
     Valeurs<float>          m_curseurLgnepaisseurs;
-
-    sf::Color               m_textCouleur;
-    float                   m_textTaille;
-    sf::Font                m_textPolice;
-    sf::Text::Style         m_textStyle;
 
 
 }; // fin class DnZoneTexte

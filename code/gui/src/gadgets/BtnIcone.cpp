@@ -26,15 +26,24 @@ BtnIcone::BtnIcone ()
 /////////////////////////////////////////////////
 void BtnIcone::actualiserGeometrie ()
 {
-    log ("actualiserGeometrie");
+    log ( "actualiserGeometrie" );
+    log ( "m_autoAjust", m_autoAjust );
+    log ( "m_fond", m_fond->getPosAbs() );
+
+    m_fond->setTaille ( {m_taille.x, m_taille.y} );
 
     if ( m_autoAjust ){
         m_icone->actualiserGeometrie();
         m_taille = { m_icone->getTaille().x + m_marge.x*2 , m_icone->getTaille().y + m_marge.y*2 } ;
+        m_icone->setPosition( m_marge.x  , m_marge.y );
+    } else {
+//        m_icone->actualiserGeometrie();
+//        m_fond->actualiserGeometrie();
+        log ( "aligner?" );
+//        m_icone->AlignerSur ( m_fond );
+        m_icone->AlignerSur ( m_fond , Alignement::Centre , Alignement::Centre );
     }
 
-    m_icone->setPosition( m_marge.x  , m_marge.y );
-    m_fond->setTaille ( {m_taille.x, m_taille.y} );
 
     demanderActuaBounds();
 }

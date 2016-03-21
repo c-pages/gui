@@ -213,13 +213,17 @@ EcranDemo::initGUI_tests ()
     auto boutonCoche = m_interface->creer.btnACocher( );
 //    boutonCoche->setLogActif  ( true  );
     boutonCoche->setPosition  ( 200, 250);
-    boutonCoche->setValeur    ( true );
+//    boutonCoche->setValeur    ( true );
     boutonCoche->setTexte     ( "Bouton booleen" );
 
     auto zoneTexte = m_interface->creer.zoneTexte( "Zone de texte" );
-//    zoneTexte->setLogActif  ( true  );
+    zoneTexte->setLogActif  ( true  );
     zoneTexte->setPosition  ( 200, 300 );
 
+
+    auto zoneNum = m_interface->creer.zoneNum(  );
+    zoneNum->setLogActif  ( true , true );
+    zoneNum->setPosition  ( 200, 350 );
 
 }
 

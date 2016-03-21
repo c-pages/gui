@@ -37,15 +37,8 @@ void BtnRectangle::actualiserStyle ()
     log ("ActualiserStyle");
 
     // on applique le style correspondant à l'état
-    m_fond->setFondCouleur       ( sf::Color ( m_couleurFond.get( this->etat() ).r
-                                                , m_couleurFond.get( this->etat() ).g
-                                                , m_couleurFond.get( this->etat() ).b
-                                                , m_couleurFond.get( this->etat() ).a * m_opacite ) ) ;
-    m_fond->setFondLigneCouleur    ( sf::Color ( m_couleurLignes.get( this->etat() ).r
-                                                , m_couleurLignes.get( this->etat() ).g
-                                                , m_couleurLignes.get( this->etat() ).b
-                                                , m_couleurLignes.get( this->etat() ).a * m_opacite ) ) ;
-    m_fond->setFondLigneEpaisseur ( m_epaisseur.get( this->etat() ) ) ;
+    CmpFond::appliquerEtat( this->etat() );
+
 
 }
 

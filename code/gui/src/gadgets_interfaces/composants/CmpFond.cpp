@@ -27,46 +27,66 @@ void CmpFond::initialiserComposants ( Gadget*     base ){
 };
 
 
+
+/////////////////////////////////////////////////
+void CmpFond::setFondCouleur ( sf::Color couleur ) {
+    m_couleurFond.set ( couleur );
+    m_fond->setFondCouleur( couleur );
+};
+
 /////////////////////////////////////////////////
 void CmpFond::setFondCouleur (sf::Color couleur , Etat etat ) {
     m_couleurFond.set ( couleur , etat );
-    m_fond->setFondCouleur( couleur );
-
+    m_base->demanderActuaStyle();
 };
 
+/////////////////////////////////////////////////
+void CmpFond::setFondCouleur ( Valeurs<sf::Color> couleurs  ) {
+    m_couleurFond = couleurs;
+    m_base->demanderActuaStyle();
+};
+
+
+
+/////////////////////////////////////////////////
+void CmpFond::setFondLigneCouleur (sf::Color couleur  ) {
+    m_couleurLignes.set ( couleur );
+    m_fond->setFondLigneCouleur( couleur );
+};
 
 /////////////////////////////////////////////////
 void CmpFond::setFondLigneCouleur (sf::Color couleur , Etat etat ) {
     m_couleurLignes.set ( couleur , etat );
-    m_fond->setFondLigneCouleur( couleur );
+    m_base->demanderActuaStyle();
+};
+
+/////////////////////////////////////////////////
+void CmpFond::setFondLigneCouleur ( Valeurs<sf::Color> couleurs  ) {
+    m_couleurLignes = couleurs;
+    m_base->demanderActuaStyle();
+};
+
+
+
+
+/////////////////////////////////////////////////
+void CmpFond::setFondLigneEpaisseur (float epaisseur  ) {
+    m_epaisseur.set ( epaisseur );
+    m_fond->setFondLigneEpaisseur( epaisseur );
 };
 
 
 /////////////////////////////////////////////////
 void CmpFond::setFondLigneEpaisseur (float epaisseur , Etat etat ) {
     m_epaisseur.set ( epaisseur , etat );
-    m_fond->setFondLigneEpaisseur( epaisseur );
-};
-
-
-/////////////////////////////////////////////////
-void CmpFond::setFondCouleur ( Valeurs<sf::Color> couleurs  ) {
-    m_couleurFond = couleurs;
-//    demanderActuaStyle();
-};
-
-
-/////////////////////////////////////////////////
-void CmpFond::setFondLigneCouleur ( Valeurs<sf::Color> couleurs  ) {
-    m_couleurLignes = couleurs;
-//    demanderActuaStyle();
+    m_base->demanderActuaStyle();
 };
 
 
 /////////////////////////////////////////////////
 void CmpFond::setFondLigneEpaisseur ( Valeurs<float> epaisseur ) {
     m_epaisseur =  epaisseur;
-//    demanderActuaStyle();
+    m_base->demanderActuaStyle();
 };
 
 /////////////////////////////////////////////////

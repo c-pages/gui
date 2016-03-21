@@ -111,7 +111,7 @@ void  Log::setLogActif ( bool val , bool appliquerAuxComposants ){
 
     if ( appliquerAuxComposants )
         for (auto composant : static_cast<Gadget*>(this)->getComposants() )
-            composant->setLogActif ( val );
+            composant->setLogActif ( val, true );
 
 };
 
@@ -509,16 +509,18 @@ void Log::log (  std::string nomDuVariable , sf::Color couleur ){
     if ( m_mute || ! checkAffichage() ) return;
 
     checkGadget ( );
-
-    std::string valVar1 = patch::to_string(couleur.r);
-    std::string valVar2 = patch::to_string(couleur.g);
-    std::string valVar3 = patch::to_string(couleur.b);
-    std::string valVar4 = patch::to_string(couleur.a);
+//    sf::Color couleur2 = sf::Color::White;
+//    couleur2.r = 123;
+//    std::cout << "----------> couleur2" << int(couleur2.r) << "\n";
+    std::string valVar1 = patch::to_string( int(couleur.r) );
+    std::string valVar2 = patch::to_string( int(couleur.g) );
+    std::string valVar3 = patch::to_string( int(couleur.b) );
+    std::string valVar4 = patch::to_string( int(couleur.a) );
 
     SetConsoleTextAttribute( m_console , m_couleur_variable );
 
     std::string  preLigne = ( estInterface() ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
-    logOut ( preLigne +  nomDuVariable + " = "  + valVar1 + " "  + valVar2 + " "  + valVar3 + " "  + valVar4 + "\n" );
+    logOut ( preLigne +  nomDuVariable + " = ("  + valVar1 + ","  + valVar2 + ","  + valVar3 + ","  + valVar4 + ")\n" );
 
 }
 

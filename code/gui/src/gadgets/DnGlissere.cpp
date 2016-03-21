@@ -113,17 +113,17 @@ void DnGlissere::actualiserStyle ()
 {
     log ("actualiserStyle");
 
-    m_boutonFond->setFondCouleur (    m_btnCouleurs ) ;
-    m_boutonFond->setFondLigneCouleur (    m_btnLgnCouleurs  ) ;
+    m_boutonFond->setFondCouleur        ( m_btnCouleurs ) ;
+    m_boutonFond->setFondLigneCouleur   ( m_btnLgnCouleurs  ) ;
     m_boutonFond->setFondLigneEpaisseur ( m_btnLgnepaisseurs  );
 
-    m_slider->setFondCouleur (    m_slideCouleurs ) ;
-    m_slider->setFondLigneCouleur (    m_slideLgnCouleurs  ) ;
-    m_slider->setFondLigneEpaisseur ( m_slideLgnepaisseurs  );
+    m_slider->setFondCouleur            ( m_slideCouleurs ) ;
+    m_slider->setFondLigneCouleur       ( m_slideLgnCouleurs  ) ;
+    m_slider->setFondLigneEpaisseur     ( m_slideLgnepaisseurs  );
 
-    m_fond->setFondCouleur (    m_fndCouleur ) ;
-    m_fond->setFondLigneCouleur (    m_fndLgnCouleur  ) ;
-    m_fond->setFondLigneEpaisseur ( m_fndLgnepaisseur  );
+    m_fond->setFondCouleur              ( m_fndCouleur ) ;
+    m_fond->setFondLigneCouleur         ( m_fndLgnCouleur  ) ;
+    m_fond->setFondLigneEpaisseur       ( m_fndLgnepaisseur  );
 
 }
 

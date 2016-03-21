@@ -22,6 +22,7 @@ class Geometrie : public sf::Transformable, public gui::Filiation {
 /////////////////////////////////////////////////
 // Enums & typedefs
 /////////////////////////////////////////////////
+public:
 
     /////////////////////////////////////////////////
     /// \brief les 9 endroits d'alignement entre gadgets
@@ -69,6 +70,10 @@ public:
     ///< reDefinir setPosition
     virtual     void setPosition( float x , float y );
 
+    ///< reDefinir setPosition
+    virtual     void setPosition( sf::Vector2f pos );
+
+
     /////////////////////////////////////////////////
     void setPosAbs (sf::Vector2f posAbsDest );
 
@@ -82,11 +87,11 @@ public:
     /////////////////////////////////////////////////
     /// \brief S'aligner sur un autre gadget.
     ///
-    /// \param cible		 gadget cible sur lequel s'aligner.
-    /// \param alignement		 L'endroit du gadget à aligner sur la cible.
-    /// \param alignementCible		 L'endroit de la cible sur lequel aligner le gadget.
+    /// \param cible		    gadget cible sur lequel s'aligner.
+    /// \param alignementThis   L'endroit du gadget à aligner sur la cible.
+    /// \param alignementCible	L'endroit de la cible sur lequel aligner le gadget.
     /////////////////////////////////////////////////
-    void Aligner ( std::shared_ptr<Gadget> cible, Alignement alignement, Alignement alignementCible );
+    void AlignerSur ( std::shared_ptr<Gadget> cible, Alignement alignementThis = Alignement::Centre , Alignement alignementCible = Alignement::Centre );
 
     /////////////////////////////////////////////////
     /// \brief Actualiser .

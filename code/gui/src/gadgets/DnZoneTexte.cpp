@@ -21,6 +21,8 @@ DnZoneTexte::DnZoneTexte ()
 , m_clignotte       ( true )
 , m_curseurPos      ( 0 )
 {
+    creerNomUnique ( "ZoneTexte");
+
     // initialiser
     m_taille.x = 180;
     m_taille.y = 15;
@@ -35,6 +37,7 @@ DnZoneTexte::DnZoneTexte ()
 
     // valeurs par defaut
     m_btnCouleurs.set       ( sf::Color( 0,0,0,0 ) );
+    m_btnCouleurs.set       ( sf::Color( 255,255,255 , 10 ), Etat::survol );
     m_btnCouleurs.set       ( sf::Color( 255,255,255 ), Etat::press );
     m_btnLgnCouleurs.set    ( sf::Color( 255,255,255, 20 ) );
     m_btnLgnepaisseurs.set  ( 1 );
@@ -48,29 +51,33 @@ DnZoneTexte::DnZoneTexte ()
 
 
     // Declaration des fonctions de l'interface interne du gadget.
-    fn_valider = [this](){
+    fn_valider      = [this](){
         if ( m_ecritureActive ){
             setModeEcritureActif ( false );
-            m_texte = m_valeur = m_label->getTexte() ;
+
+            if ( m_numerique )
+                m_texte = m_valeur = m_label->getTexte() ;
+            else
+                m_texte = m_valeur = patch::to_float( m_label->getTexte() ) ;
+            log ("M_VALEUR", m_valeur);
             demanderActualisation();
-            declencher( Evenement::on_valeurValide);
         }
     };
-    fn_sortir = [this](){
+    fn_sortir       = [this](){
         if ( m_ecritureActive ){
             setModeEcritureActif ( false );
             m_label->setTexte ( m_texte );
             demanderActualisation();
         }
     };
-    fn_cliqueTexte = [this](){
+    fn_cliqueTexte  = [this](){
         sf::Vector2i    posSouris = getPosSouris();
         posSouris.x -= getPosition().x;
         posSouris.y -= getPosition().y;
 
         m_curseurPos = m_label->getTexte().size()    ;
 
-        for ( int i = 0; i< m_label->getTexte().size(); i++ ){
+        for ( int i = 0; i<= m_label->getTexte().size(); i++ ){
             sf::Vector2f posLettre = m_label->getSFTexte().findCharacterPos 	(  i ) ;
             if ( posLettre.x>posSouris.x){
                 m_curseurPos = i-1;
@@ -78,23 +85,25 @@ DnZoneTexte::DnZoneTexte ()
             }
         }
 
-        if ( ! m_ecritureActive ){
-            // on active la saisie clavier
-            setModeEcritureActif ( true ) ;
-            m_clignotte = true;
-            m_clignotteChrono.restart();
-            demanderActualisation();
-        }
+        // on active la saisie clavier
+        setModeEcritureActif ( true ) ;
+
+        m_clignotte = true;
+        m_clignotteChrono.restart();
+        demanderActualisation();
     };
 
 
     // Action des boutons
-    m_bouton->lier ( Evenement::onBtnG_relacher , fn_cliqueTexte );
+    m_bouton->lier ( Evenement::onBtnG_presser , fn_cliqueTexte );
     m_bouton->lier ( Evenement::onBtnG_relacherDehors , fn_valider );
     m_bouton->lier ( Evenement::onBtnD_relacherDehors , fn_sortir );
 
     m_bouton->lier ( Evenement::onBtnM_roulerHaut , [this](){ declencher ( Evenement::onBtnM_roulerHaut ) ;} );
     m_bouton->lier ( Evenement::onBtnM_roulerBas , [this](){ declencher ( Evenement::onBtnM_roulerBas ) ;} );
+
+    m_bouton->lier ( Evenement::on_entrer , [this](){ demanderActuaStyle() ;} );
+    m_bouton->lier ( Evenement::on_sortir , [this](){ demanderActuaStyle() ;} );
 
     m_boutonSortir->lier ( Evenement::onBtnG_relacher , fn_valider );
     m_boutonSortir->lier ( Evenement::onBtnD_relacher , fn_sortir );
@@ -119,6 +128,8 @@ std::shared_ptr<Gadget>  DnZoneTexte::testerSurvol ( sf::Vector2i position )
 /////////////////////////////////////////////////
 void DnZoneTexte::actualiserGeometrie ()
 {
+    log ("actualiserGeometrie");
+
     m_bouton->setTaille ( m_taille );
     m_label->setPosition    ( m_marge.x , m_marge.y/2);
 
@@ -126,7 +137,7 @@ void DnZoneTexte::actualiserGeometrie ()
     sf::Vector2f pos = m_label->getSFTexte().findCharacterPos 	(  m_curseurPos ) ;
 
     m_curseur->setPosition ( pos.x , pos.y );
-    m_curseur->move( 3 , m_marge.y/2 );
+    m_curseur->move( 1 , m_marge.y/2 );
     m_curseur->setTaille( { 1, 15 });
 
     m_boutonSortir->setPosAbs ( {0,0 });
@@ -139,6 +150,16 @@ void DnZoneTexte::actualiserGeometrie ()
 /////////////////////////////////////////////////
 void DnZoneTexte::actualiserStyle ()
 {
+    log ("actualiserStyle");
+
+//    m_etat = m_bouton->etat();
+
+//    log ("etat()", int( etat() ));
+//    log ("m_bouton->etat()", int( m_bouton->etat() ));
+//    log ("m_btnCouleurs.get( etat())", ( m_btnCouleurs.get( etat()) ) );
+//    log ("m_btnCouleurs.repos",  m_btnCouleurs.repos  );
+//    log ("m_btnCouleurs.survol",  m_btnCouleurs.survol  );
+
     if ( m_ecritureActive ) {
         m_bouton->setFondCouleur            ( m_btnCouleurs.press ) ;
         m_bouton->setFondLigneCouleur       ( m_btnLgnCouleurs.press  ) ;
@@ -147,11 +168,11 @@ void DnZoneTexte::actualiserStyle ()
         CmpTexte::appliquerEtat( Etat::press );
 
     } else {
-        m_bouton->setFondCouleur            ( m_btnCouleurs.repos ) ;
-        m_bouton->setFondLigneCouleur       ( m_btnLgnCouleurs.repos  ) ;
-        m_bouton->setFondLigneEpaisseur     ( m_btnLgnepaisseurs.repos  );
+        m_bouton->setFondCouleur            ( m_btnCouleurs.get( m_bouton->etat() ) ) ;
+        m_bouton->setFondLigneCouleur       ( m_btnLgnCouleurs.get( m_bouton->etat() )  ) ;
+        m_bouton->setFondLigneEpaisseur     ( m_btnLgnepaisseurs.get( m_bouton->etat())  );
 
-        CmpTexte::appliquerEtat( Etat::repos );
+        CmpTexte::appliquerEtat(  m_bouton->etat() );
     }
 
     m_curseur->setFondCouleur           ( m_curseurCouleurs.repos  );
@@ -241,7 +262,10 @@ void DnZoneTexte::traiterEvenements(const sf::Event& evenement ){
         else {
             if ( m_numerique ){
                 if ( evenement.text.unicode >= 46 && evenement.text.unicode <= 57 ){
-                    m_label->setTexte( txt + static_cast<char>(evenement.text.unicode)  );
+                    char txtTmp = static_cast<char>( evenement.text.unicode );
+                    txt.insert( m_curseurPos , &txtTmp , 1 );
+                    m_label->setTexte( txt )  ;
+                    m_curseurPos++;
                     declencher( Evenement::on_valeurChange );
                 }
             } else  {

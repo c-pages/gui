@@ -213,7 +213,6 @@ void Filiation::actualiserEnfants ( sf::Time delta ){
 /////////////////////////////////////////////////
 void Filiation::dessinerEnfants (sf::RenderTarget& target, sf::RenderStates states) const
 {
-
     for ( auto enfant : m_enfants )
         target.draw( *enfant , states);
 }

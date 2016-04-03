@@ -4,17 +4,25 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "ActionEvenement.h"
-#include "decorations/FenDecoration.h"
-#include "gadgets_outils/AffBarreTitre.h"
 #include <memory>
+
+#include "ActionEvenement.h"
+
+#include "decorations/FenDecoration.h"
+
+#include "gadgets_outils/AffBarreTitre.h"
+
 #include <gadgets_interfaces/Contenant.h>
+#include <gadgets_interfaces/composants/CmpOmbre.h>
+#include <gadgets_interfaces/composants/CmpFond.h>
 
 
 namespace gui {
 
 
-class Fenetre : public ActionEvenement {
+class Fenetre   : public ActionEvenement
+                , public CmpFond
+                , public CmpOmbre {
 
 public:
     enum class Decorations{
@@ -45,13 +53,11 @@ public:
 
     virtual void traiterEvenements (const sf::Event& evenement);
 
-    /////////////////////////////////////////////////
-    virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
+//    /////////////////////////////////////////////////
+//    virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
-//    virtual void setTexte( std::string titre ) {
-//        m_texte = titre;
-//        m_titre->setTexte( titre );
-//    };
+    virtual bool        estInteractif() { return true; }; ///< \todo voir si on peut faire mieux ...
+
 
     void chargerIcone   (std::string fichier );
 
@@ -77,7 +83,6 @@ public:
 
     virtual void actualiserEtatDeco ( );
 
-
     void viderTableaux()    {
         if ( m_decoASupprimer.size()>0 )
             for ( auto deco : m_decoASupprimer )
@@ -95,8 +100,6 @@ protected:
 
     std::shared_ptr<Contenant>      m_contenant;
 
-    std::shared_ptr<AffRectangle>   m_fond;
-    std::shared_ptr<AffRectangle>   m_ombre;
     std::shared_ptr<AffBarreTitre>  m_titre;
 
     std::map<Decorations, std::shared_ptr<FenDecoration>>     m_decorations;
@@ -121,14 +124,6 @@ protected:
     sf::Text::Style         m_titreTextStyle;
     float                   m_titreTextTaille;
     sf::Font                m_titreTextPolice;
-
-    sf::Color               m_fondCouleur;
-    sf::Color               m_fondLgnCouleur;
-    float                   m_fondLgnepaisseur;
-
-    sf::Color               m_ombreCouleur;
-    sf::Color               m_ombreLgnCouleur;
-    float                   m_ombreLgnepaisseur;
 
 }; // fin class Fenetre
 

@@ -50,6 +50,7 @@ std::shared_ptr<BtnMenu> SupBandeauMenusDeroulants::ajouterMenu ( std::string no
         {
             if ( nouvelElement->menu->ms_menuOuvert != nullptr )
                 nouvelElement->menu->ms_menuOuvert->setVisible( false );
+
             ms_menuActif = false;
         } else {
             if ( nouvelElement->menu->ms_menuOuvert != nullptr )

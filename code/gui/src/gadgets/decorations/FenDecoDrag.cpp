@@ -14,9 +14,9 @@ FenDecoDrag::FenDecoDrag( Fenetre* fenetre )
 , m_decalageDragSouris ( { 0, 0 } )
 {
 
-    m_btnDragCouleurs       = sf::Color::Transparent;
-    m_btnDragLgnCouleurs    = sf::Color::Transparent;
-    m_btnDragLgnepaisseurs  = 0;
+//    m_btnDragCouleurs       = sf::Color::Transparent;
+//    m_btnDragLgnCouleurs    = sf::Color::Transparent;
+//    m_btnDragLgnepaisseurs  = 0;
 
     // Action du bouton drag
     m_fenetre->lier ( Evenement::onBtnG_presser , [this](){
@@ -33,7 +33,7 @@ FenDecoDrag::FenDecoDrag( Fenetre* fenetre )
             Interface::ms_calque_panneau_G->actualiser();
 
             m_fenetre->setPosAbs( posAbsBack );
-            m_fenetre->getOmbre()->setVisible(true);
+//            m_fenetre->getOmbre()->setVisible(true);
         }
         else
             m_fenetre->demander_aEtre_auDessus();
@@ -93,11 +93,6 @@ void FenDecoDrag::sortDuPanneau ()
 {
     m_fenetre->getOmbre()->setVisible(true);
     m_fenetre->actualiserEtatDeco();
-
-//    m_fenetre->retirerDecoration ( Fenetre::Decorations::RetaillePanneau );
-//    m_fenetre->ajouterDecoration ( Fenetre::Decorations::Retaille );
-
-    std::cout << "Sortir du panneau\n";
 }
 
 
@@ -108,16 +103,9 @@ void FenDecoDrag::sortDuPanneau ()
 /////////////////////////////////////////////////
 void FenDecoDrag::entreDansPanneau ()
 {
-//    m_fenetre->getParent()->actualiserContenu();
-//    Interface::ms_calque_panneau_D->actualiser();
-//    Interface::ms_calque_panneau_G->actualiser();
     m_fenetre->getOmbre()->setVisible(false);
 
     m_fenetre->actualiserEtatDeco();
-    std::cout << "Entrer dans le panneau\n";
-//
-//    m_fenetre->retirerDecoration ( Fenetre::Decorations::Retaille );
-//    m_fenetre->ajouterDecoration ( Fenetre::Decorations::RetaillePanneau );
 }
 
 
@@ -131,12 +119,12 @@ void FenDecoDrag::entreDansPanneau ()
 /////////////////////////////////////////////////
 void FenDecoDrag::actualiserGeometrie()
 {
-    // Si on est dans le calque 'fenetres' on affiche l'ombre, sinon on la cache
-    if ( m_fenetre->getParent() != nullptr)    {
-        if ( m_fenetre->getParent()->getNom() == Interface::ms_calque_fenetres->getNom() )
-                m_fenetre->getOmbre()->setVisible(true);
-        else    m_fenetre->getOmbre()->setVisible(false);
-    }
+//    // Si on est dans le calque 'fenetres' on affiche l'ombre, sinon on la cache
+//    if ( m_fenetre->getParent() != nullptr)    {
+//        if ( m_fenetre->getParent()->getNom() == Interface::ms_calque_fenetres->getNom() )
+//                m_fenetre->getOmbre()->setVisible(true);
+//        else    m_fenetre->getOmbre()->setVisible(false);
+//    }
 }
 
 

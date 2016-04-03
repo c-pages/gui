@@ -518,7 +518,7 @@
 	"gadgets_outils\SupPanneau.h"
 	"gadgets_interfaces\Contenant.h"
 
-1458172344 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
+1459717979 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
 	"gadgets_interfaces/Affiche.h"
 	<SFML/Graphics.hpp>
 
@@ -532,7 +532,7 @@
 1457875030 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1459699444 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1459719490 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -618,7 +618,7 @@
 	"composants/CmpGlissere.h"
 	"BtnRectangle.h"
 
-1459698899 r:\06 - c++\110 - gui\code\gui\include\interface.h
+1459701652 r:\06 - c++\110 - gui\code\gui\include\interface.h
 	"SFML/Graphics.hpp"
 	"Gadget.h"
 	"FabriqueBase.h"
@@ -1194,12 +1194,14 @@
 	<memory>
 	"SFML/Graphics.hpp"
 
-1458480822 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenetre.h
+1459720499 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenetre.h
+	<memory>
 	"ActionEvenement.h"
 	"decorations/FenDecoration.h"
 	"gadgets_outils/AffBarreTitre.h"
-	<memory>
 	<gadgets_interfaces/Contenant.h>
+	<gadgets_interfaces/composants/CmpOmbre.h>
+	<gadgets_interfaces/composants/CmpFond.h>
 
 1457724919 r:\06 - c++\110 - gui\code\gui\include\gadgets\fendecoration.h
 	<memory>
@@ -1351,10 +1353,10 @@
 	"gadgets_outils/CntSliders.h"
 	"gadgets_interfaces/Support.h"
 
-1458062114 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\calque.h
+1459702199 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\calque.h
 	"Gadget.h"
 
-1458045731 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\affcurseursouris.h
+1459702499 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\affcurseursouris.h
 	<gadgets/AffIcone.h>
 	<Enums.h>
 
@@ -1402,7 +1404,7 @@
 	"gadgets_interfaces/composants/CmpGlissere.h"
 	"BtnRectangle.h"
 
-1459693563 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmpfond.h
+1459717979 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmpfond.h
 	<SFML/Graphics.hpp>
 	"Composant.h"
 	"Valeurs.h"
@@ -1429,7 +1431,7 @@
 	"gadgets/AffRectangle.h"
 	"gadgets/BtnRectangle.h"
 
-1459693412 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmpombre.h
+1459718039 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmpombre.h
 	<SFML/Graphics.hpp>
 	"Composant.h"
 	"Valeurs.h"

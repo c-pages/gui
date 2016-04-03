@@ -225,12 +225,13 @@ EcranDemo::initGUI_tests ()
     zoneNum->setPosition  ( 200, 350 );
 */
 
-    //menu deroulant
+    ////////////////////////////////////////////////////////////////////////
+    ////// les menus deroulants  ///////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////
     auto menusDeroulants = m_interface->creer.menusDeroulants( );
-//    menusDeroulants->setLogActif ( true );
 
     // menu FICHIER
-    auto menu1 = menusDeroulants->ajouterMenu("Fichier");
+    auto menuFichier = menusDeroulants->ajouterMenu("Fichier");
 
     auto fct_nouveau = [this](){
         std::cout << "nouveau\n";
@@ -248,23 +249,29 @@ EcranDemo::initGUI_tests ()
         std::cout << "Quitter\n";
     };
 
-//    menu1->setLogActif ( true );
+    menuFichier->ajouterElement   ( "Nouveau"             , fct_nouveau );
+    menuFichier->ajouterElement   ( "Ouvrir"              , fct_ouvrir );
+    menuFichier->ajouterElement   ( "Sauvegarder"         , fct_sauvegarder );
+    menuFichier->ajouterElement   ( "Sauvegadger sous"    , fct_sauvegarderSous );
+    menuFichier->ajouterEspace    ( );
+    menuFichier->ajouterElement   ( "Quitter"             , fct_quitter );
 
-    menu1->ajouterElement   ( "Nouveau"             , fct_nouveau );
-    menu1->ajouterElement   ( "Ouvrir"              , fct_ouvrir );
-    menu1->ajouterElement   ( "Sauvegarder"         , fct_sauvegarder );
-    menu1->ajouterElement   ( "Sauvegadger sous"    , fct_sauvegarderSous );
-    menu1->ajouterEspace    ( );
-    menu1->ajouterElement   ( "Quitter"             , fct_quitter );
-
-//    menu1->setLogActif ( true , true );
 
     // Menu AFFICHAGE
-    menusDeroulants->ajouterMenu("Affichage");
+    menusDeroulants->ajouterMenu    ("Affichage");
+    menusDeroulants->ajouterElement ("Fenetre 1");
 
     // Menu AIDE
-    menusDeroulants->ajouterMenu("Aide");
+    menusDeroulants->ajouterMenu    ("Aide");
+    menusDeroulants->ajouterElement ("Aide");
+    menusDeroulants->ajouterElement ("A propos");
 
+
+    ////////////////////////////////////////////////////////////////////////
+    ////// les fenetres  ///////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////
+    auto fenetre = m_interface->creer.fenetre();
+//    fenetre->setLogActif ( true, true );
 
 }
 

@@ -7,13 +7,14 @@
 
 namespace gui{
 class BtnRectangle;
+
 class FenDecoRedim : public FenDecoration
 {
-    public:
+public:
 
-        FenDecoRedim( Fenetre* fenetre );
+    FenDecoRedim( Fenetre* fenetre );
 
-        virtual ~FenDecoRedim();
+    virtual ~FenDecoRedim();
 
    /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
@@ -21,10 +22,9 @@ class FenDecoRedim : public FenDecoration
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
 
+    /////////////////////////////////////////////////
     virtual void traiterEvenements (const sf::Event& evenement);
 
-    /////////////////////////////////////////////////
-//    void actualiser ( sf::Time delta );
 
     bool redimEnCours () {
         if ( m_redimGauche || m_redimDroite || m_redimHaut || m_redimBas )
@@ -45,8 +45,6 @@ private:
     void corrigerTailleMinimum ();
 
 
-//    void sortDuPanneau ();
-//    void entreDansPanneau ();
 
 /////////////////////////////////////////////////
 // Membres

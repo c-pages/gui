@@ -190,7 +190,18 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
     m_btn_basDroite->lier( Evenement::on_entrer , [this](){ Interface::setCurseur ( Curseurs::Redim_diag1); });
     m_btn_basDroite->lier( Evenement::on_sortir , [this](){ Interface::setCurseur ( Curseurs::Defaut ); });
 
-    m_fenetre->actualiser();
+    // le curseur souris de redimension
+    m_btn_gauche->creerNomUnique        ( "BtnRedim_G" );
+    m_btn_droite->creerNomUnique        ( "BtnRedim_G" );
+    m_btn_haut->creerNomUnique          ( "BtnRedim_H" );
+    m_btn_bas->creerNomUnique           ( "BtnRedim_B" );
+    m_btn_hautGauche->creerNomUnique    ( "BtnRedim_HG" );
+    m_btn_hautDroite->creerNomUnique    ( "BtnRedim_HD" );
+    m_btn_basGauche->creerNomUnique     ( "BtnRedim_BG" );
+    m_btn_basDroite->creerNomUnique     ( "BtnRedim_BD" );
+
+
+//    m_fenetre->actualiser();
 
 }
 
@@ -198,7 +209,6 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
 /////////////////////////////////////////////////
 FenDecoRedim::~FenDecoRedim()
 {
-
 
     m_fenetre->retirerComposant( m_btn_gauche );
     m_fenetre->retirerComposant( m_btn_droite );
@@ -210,33 +220,9 @@ FenDecoRedim::~FenDecoRedim()
     m_fenetre->retirerComposant( m_btn_basGauche );
     m_fenetre->retirerComposant( m_btn_basDroite );
 
-//    std::cout << " nombre de composants restant : " << m_fenetre->getComposants().size()  << "\n";
 }
 
 
-
-
-/*
-/////////////////////////////////////////////////
-void FenRedim::draw (sf::RenderTarget& target, sf::RenderStates states) const
-{
-
-}*/
-
-///////////////////////////////////////////////////
-//void FenDecoRedim::sortDuPanneau ()
-//{
-////    if ( m_redimensionnable )
-//
-//}
-//
-//
-//
-///////////////////////////////////////////////////
-//void FenDecoRedim::entreDansPanneau ()
-//{
-//
-//}
 
 
 
@@ -278,19 +264,12 @@ void FenDecoRedim::actualiserStyle ()
 
 }
 
-/*
-/////////////////////////////////////////////////
-void FenRedim::actualiser ()
-{
-
-}
-*/
 
 
 /////////////////////////////////////////////////
 void FenDecoRedim::corrigerTailleMinimum ()
 {
-//    std::cout << "MARGE : " << m_fenetre->getMarge().x << ", " << m_fenetre->getMarge().y << "\n";
+
     if ( m_tailleFenetre.y < m_fenetre->getTailleBouton().y + m_fenetre->getMarge().y*2 )
         m_tailleFenetre.y =  m_fenetre->getTailleBouton().y + m_fenetre->getMarge().y*2 ;
 
@@ -304,15 +283,14 @@ void FenDecoRedim::corrigerTailleMinimum ()
 void FenDecoRedim::redimmensionner_haut ()
 {
     auto posSouris = m_fenetre->getPosSouris();
-    //m_fenetre->setTailleY( m_tailleOrigin.y - ( posSouris.y - m_sourisPosOrigin.y  ) );
+
     m_tailleFenetre = { m_fenetre->getTaille().x , m_tailleOrigin.y - ( posSouris.y - m_sourisPosOrigin.y  ) };
     corrigerTailleMinimum ();
 
     m_fenetre->setTailleY( m_tailleFenetre.y  );
     m_fenetre->setPosition ( m_fenetre->getPosition().x , m_posOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ));
 
-//    m_fenetre->actualiserGeometrie();
-//    m_fenetre->actualiserBounds();
+
 }
 
 
@@ -324,10 +302,7 @@ void FenDecoRedim::redimmensionner_bas ()
     m_tailleFenetre = { m_fenetre->getTaille().x , m_tailleOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ) };
     corrigerTailleMinimum ();
     m_fenetre->setTailleY( m_tailleFenetre.y  );
-//
-//    Interface::setCurseur ( Curseurs::Redim_vertical);
-//    m_fenetre->actualiserGeometrie();
-//    m_fenetre->actualiserBounds();
+
 }
 
 
@@ -354,22 +329,11 @@ void FenDecoRedim::redimmensionner_droite ()
     m_tailleFenetre = { m_tailleOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ) , m_fenetre->getTaille().y   };
     corrigerTailleMinimum ();
     m_fenetre->setTailleX( m_tailleFenetre.x  );
-//    demander_aEtre_auDessus();
-//    m_fenetre->actualiserGeometrie();
-//    m_fenetre->actualiserBounds();
+
 }
 
 
 
-/*
-/////////////////////////////////////////////////
-void FenDecoRedim::actualiser ( sf::Time delta )
-{
-//    if ( m_redimGauche ){ redimmensionner_gauche (); }
-//    if ( m_redimDroite ){ redimmensionner_droite (); }
-//    if ( m_redimHaut )  { redimmensionner_haut (); }
-//    if ( m_redimBas )   { redimmensionner_bas (); }
-}*/
 
 
 /////////////////////////////////////////////////
@@ -383,10 +347,6 @@ void FenDecoRedim::traiterEvenements (const sf::Event& evenement)
     if ( redimEnCours () )
         m_fenetre->actualiserGeometrie();
 
-//    FenSimple::traiterEvenements (evenement);
-
-//     if ( redimEnCours () )
-//        positionnerFenetre ();
 
 }
 

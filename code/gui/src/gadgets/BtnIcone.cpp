@@ -72,15 +72,15 @@ void BtnIcone::actualiserStyle ()
     }
 
     // on applique le style correspondant à l'état au rectangle
-    m_fond->setFondCouleur       ( sf::Color ( m_couleurFond.get( this->etat() ).r
-                                                , m_couleurFond.get( this->etat() ).g
-                                                , m_couleurFond.get( this->etat() ).b
-                                                , m_couleurFond.get( this->etat() ).a * m_opacite ) ) ;
-    m_fond->setFondLigneCouleur    ( sf::Color ( m_couleurLignes.get( this->etat() ).r
-                                                , m_couleurLignes.get( this->etat() ).g
-                                                , m_couleurLignes.get( this->etat() ).b
-                                                , m_couleurLignes.get( this->etat() ).a * m_opacite ) ) ;
-    m_fond->setFondLigneEpaisseur ( m_epaisseur.get( this->etat() ) ) ;
+    m_fond->setFondCouleur       ( sf::Color ( m_fondCouleur.get( this->etat() ).r
+                                                , m_fondCouleur.get( this->etat() ).g
+                                                , m_fondCouleur.get( this->etat() ).b
+                                                , m_fondCouleur.get( this->etat() ).a * m_opacite ) ) ;
+    m_fond->setFondLigneCouleur    ( sf::Color ( m_fondLgnCouleur.get( this->etat() ).r
+                                                , m_fondLgnCouleur.get( this->etat() ).g
+                                                , m_fondLgnCouleur.get( this->etat() ).b
+                                                , m_fondLgnCouleur.get( this->etat() ).a * m_opacite ) ) ;
+    m_fond->setFondLigneEpaisseur ( m_fondLgnEpaisseur.get( this->etat() ) ) ;
 
 }
 

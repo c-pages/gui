@@ -108,6 +108,7 @@
 		<Unit filename="include/gadgets_interfaces/Groupe.h" />
 		<Unit filename="include/gadgets_interfaces/Liste.h" />
 		<Unit filename="include/gadgets_interfaces/Support.h" />
+		<Unit filename="include/gadgets_interfaces/composants/CmpBarreTitre.h" />
 		<Unit filename="include/gadgets_interfaces/composants/CmpFond.h" />
 		<Unit filename="include/gadgets_interfaces/composants/CmpGlissere.h" />
 		<Unit filename="include/gadgets_interfaces/composants/CmpIcone.h" />
@@ -164,6 +165,7 @@
 		<Unit filename="src/gadgets_interfaces/Groupe.cpp" />
 		<Unit filename="src/gadgets_interfaces/Liste.cpp" />
 		<Unit filename="src/gadgets_interfaces/Support.cpp" />
+		<Unit filename="src/gadgets_interfaces/composants/CmpBarreTitre.cpp" />
 		<Unit filename="src/gadgets_interfaces/composants/CmpFond.cpp" />
 		<Unit filename="src/gadgets_interfaces/composants/CmpGlissere.cpp" />
 		<Unit filename="src/gadgets_interfaces/composants/CmpIcone.cpp" />

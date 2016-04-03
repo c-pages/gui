@@ -10,15 +10,13 @@ namespace gui {
 
 /////////////////////////////////////////////////
 AffRectangle::AffRectangle ( sf::Vector2i taille )
-: m_rectangle       ( )
-, m_couleurFond     ( sf::Color(0,0,255,255) )
-, m_couleurLignes   ( sf::Color(0,0,255,200) )
-, m_epaisseur       ( 1 )
+: m_rectangle           ( )
+, m_fondCouleur         ( sf::Color(0,0,255,255) )
+, m_fondLgnCouleur      ( sf::Color(0,0,255,200) )
+, m_fondLgnEpaisseur    ( 1 )
 {
     creerNomUnique ( "Rectangle");
-
     m_taille = taille;
-
 }
 
 
@@ -39,30 +37,30 @@ void AffRectangle::actualiserStyle ()
     // Debuggage
     log ("actualiserStyle  ");
 
-    m_rectangle.setFillColor        ( m_couleurFond );
-    m_rectangle.setOutlineColor     ( m_couleurLignes );
-    m_rectangle.setOutlineThickness ( m_epaisseur );
+    m_rectangle.setFillColor        ( m_fondCouleur );
+    m_rectangle.setOutlineColor     ( m_fondLgnCouleur );
+    m_rectangle.setOutlineThickness ( m_fondLgnEpaisseur );
 
 }
 
 
 /////////////////////////////////////////////////
 void AffRectangle::setFondCouleur (sf::Color couleur) {
-    m_couleurFond = couleur ;
+    m_fondCouleur = couleur ;
     m_rectangle.setFillColor( couleur );
 };
 
 
 /////////////////////////////////////////////////
 void AffRectangle::setFondLigneCouleur (sf::Color couleur) {
-    m_couleurLignes =  couleur;
+    m_fondLgnCouleur =  couleur;
     m_rectangle.setOutlineColor( couleur );
 };
 
 
 /////////////////////////////////////////////////
 void AffRectangle::setFondLigneEpaisseur (float epaisseur) {
-    m_epaisseur = epaisseur;
+    m_fondLgnEpaisseur = epaisseur;
     m_rectangle.setOutlineThickness( epaisseur );
 };
 

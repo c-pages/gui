@@ -38,9 +38,9 @@ BtnMenu::BtnMenu ()
 
     m_btnLignesEpaisseurs   = 0;
 
-    m_couleurFond       = sf::Color( 255 , 255 , 255 );
-    m_couleurLignes     = sf::Color( 50 , 50 , 50);
-    m_epaisseur         = 1;
+    m_fondCouleur       = sf::Color( 255 , 255 , 255 );
+    m_fondLgnCouleur     = sf::Color( 50 , 50 , 50);
+    m_fondLgnEpaisseur         = 1;
 
     m_textCouleur           = sf::Color( 50 , 50 , 50 );
 
@@ -93,9 +93,9 @@ void BtnMenu::actualiserStyle()
         btn->setTexteStyle      ( m_textStyle );
     }
 
-    m_fond->setFondCouleur         ( m_couleurFond.repos );
-    m_fond->setFondLigneCouleur    ( m_couleurLignes.repos );
-    m_fond->setFondLigneEpaisseur  ( m_epaisseur.repos );
+    m_fond->setFondCouleur         ( m_fondCouleur.repos );
+    m_fond->setFondLigneCouleur    ( m_fondLgnCouleur.repos );
+    m_fond->setFondLigneEpaisseur  ( m_fondLgnEpaisseur.repos );
 
 }
 

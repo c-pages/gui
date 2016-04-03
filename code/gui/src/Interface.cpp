@@ -82,9 +82,9 @@ Interface::Interface( sf::RenderWindow* fenetre )
     ms_icones.load( "ico_fleches"  , "media/img/ico_fleches.png"    );
 
     // initialiser les curseurs
-//    ms_curseurSouris = std::make_shared<AffCurseurSouris>( this );
-//    ms_calque_souris->ajouter(ms_curseurSouris);
-//    ms_curseurs.load( "Redimensionnement"  , "media/img/curs_redimensionnement.png" );
+    ms_curseurSouris = std::make_shared<AffCurseurSouris>( this );
+    ms_calque_souris->ajouter(ms_curseurSouris);
+    ms_curseurs.load( "Redimensionnement"  , "media/img/curs_redimensionnement.png" );
 
 
 
@@ -94,14 +94,12 @@ Interface::Interface( sf::RenderWindow* fenetre )
     m_labelFPS.setCharacterSize     ( 9 );
     m_labelFPS.setColor             ( sf::Color::White );
     m_labelFPS.setString            ( "..." );
-//    m_labelFPS.setPosition          ( 5,22 ) ;
 
     // initialiser les trucs bouton survol
     m_labelBoutonSurvol.setFont              ( ms_polices.get    ( "swisse" ) );
     m_labelBoutonSurvol.setCharacterSize     ( 9 );
     m_labelBoutonSurvol.setColor             ( sf::Color::White );
     m_labelBoutonSurvol.setString            ( "..." );
-//    m_labelBoutonSurvol.setPosition          ( 5,32 ) ;
 
 }
 
@@ -219,11 +217,10 @@ void Interface::traiterEvenements( sf::Event evenement )
     switch ( evenement.type ){
         ///////// Deplacement souris /////////////////////////////////////////
         case sf::Event::MouseMoved :
-//            log ("  ... la souris bouge ...");
 
-//            // On gere le cureur souris
-//            if (ms_curseurSouris->estVisible())
-//                ms_curseurSouris->traiterEvenements( evenement );
+            // On gere le cureur souris
+            if (ms_curseurSouris->estVisible())
+                ms_curseurSouris->traiterEvenements( evenement );
 
             // On sort si on a pas changé de bouton survolé
             if ( ms_boutonSurvole ==  boutonSurvoleBack )
@@ -235,23 +232,16 @@ void Interface::traiterEvenements( sf::Event evenement )
 
                 // on gère le gadget anciennement survolé
                 if (boutonSurvoleBack!=nullptr){
-
-
-//                        std::cout << "--------> boutonSurvoleBack : " << boutonSurvoleBack->getNom() << "\n";
                     boutonSurvoleBack->setSurvol( false );
                     if ( boutonSurvoleBack->estInteractif() ){
                         logEvt ( "Sortir Bouton" , boutonSurvoleBack );
                         boutonSurvoleBack->declencher ( Evenement::on_sortir );
                     }
-
                 }
 
 
                 // on gère le gadget survolé
                 if (ms_boutonSurvole != nullptr) {
-
-
-
                     ms_boutonSurvole->setSurvol( true );
                     if ( ms_boutonSurvole->estInteractif() ) {
                         ms_boutonSurvole->declencher ( Evenement::on_entrer );
@@ -312,13 +302,13 @@ void Interface::traiterEvenements( sf::Event evenement )
         ///////// Relacher bouton souris /////////////////////////////////////////
         case sf::Event::MouseButtonReleased:
 
-            // on declenche l'evenement RELACHER DEHORS
-            if ( evenement.mouseButton.button == sf::Mouse::Left )
-                declencherToutBoutons  ( Evenement::onBtnG_relacherDehors , ms_boutonPresse );
-            else if ( evenement.mouseButton.button == sf::Mouse::Right )
-                declencherToutBoutons  ( Evenement::onBtnD_relacherDehors , ms_boutonPresse);
-            else if ( evenement.mouseButton.button == sf::Mouse::Middle )
-                declencherToutBoutons  ( Evenement::onBtnM_relacherDehors , ms_boutonPresse);
+//            // on declenche l'evenement RELACHER DEHORS
+//            if ( evenement.mouseButton.button == sf::Mouse::Left )
+//                declencherToutBoutons  ( Evenement::onBtnG_relacherDehors , ms_boutonPresse );
+//            else if ( evenement.mouseButton.button == sf::Mouse::Right )
+//                declencherToutBoutons  ( Evenement::onBtnD_relacherDehors , ms_boutonPresse);
+//            else if ( evenement.mouseButton.button == sf::Mouse::Middle )
+//                declencherToutBoutons  ( Evenement::onBtnM_relacherDehors , ms_boutonPresse);
 
 
             // si on a pas pressé de bouton, on passe
@@ -336,6 +326,10 @@ void Interface::traiterEvenements( sf::Event evenement )
                 else if ( evenement.mouseButton.button == sf::Mouse::Middle )
                     ms_boutonPresse->declencher  ( Evenement::onBtnM_relacher );
 
+            // sinon c'est quon relache dehors
+            } else {
+                if ( evenement.mouseButton.button == sf::Mouse::Left )
+                    ms_boutonPresse->declencher  ( Evenement::onBtnG_relacherDehors );
             }
 
 
@@ -373,13 +367,15 @@ void Interface::traiterEvenements( sf::Event evenement )
 /////////////////////////////////////////////////
 void Interface::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
-    // On dessine le gadgets de l'interface
+    // On dessine les gadgets de l'interface
     for (auto enfant : m_enfants )
         target.draw(*enfant, states);
 
+    // On dessine l'affichage FPS si besoin
     if ( m_afficherFPS )
         target.draw( m_labelFPS, states);
 
+    // On dessine le gadget survolé si beaoisn
     if ( m_afficherBoutonSurvol )
         target.draw( m_labelBoutonSurvol, states);
 
@@ -394,7 +390,7 @@ void Interface::majAffichage_BoutonSurvol(){
         txt =  ms_boutonSurvole->getHierarchie() + ms_boutonSurvole->getNom();
     else txt = "...";
     m_labelBoutonSurvol.setString ( m_textBoutonSurvol + txt );
-    m_labelBoutonSurvol.setPosition     ( m_fenetre->getSize().x - 100 , 22 ) ;
+    m_labelBoutonSurvol.setPosition     ( m_fenetre->getSize().x - 300 , 4 ) ;
 }
 
 
@@ -410,7 +406,7 @@ void Interface::calculerFPS(){
         m_labelFPS.setString ( txtAAfficher );
     }
 
-    m_labelFPS.setPosition              ( m_fenetre->getSize().x - 100 , 2 ) ;
+    m_labelFPS.setPosition              ( m_fenetre->getSize().x - 350 , 4 ) ;
 
 }
 

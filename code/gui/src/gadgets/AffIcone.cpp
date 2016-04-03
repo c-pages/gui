@@ -44,9 +44,9 @@ void AffIcone::actualiserStyle ()
     int largeur = m_texture->getSize().y;
 
     // les style du rectangle
-    m_rectangle.setFillColor        ( m_couleurFond );
-    m_rectangle.setOutlineColor     ( m_couleurLignes );
-    m_rectangle.setOutlineThickness ( m_epaisseur );
+    m_rectangle.setFillColor        ( m_fondCouleur );
+    m_rectangle.setOutlineColor     ( m_fondLgnCouleur );
+    m_rectangle.setOutlineThickness ( m_fondLgnEpaisseur );
     m_rectangle.setTextureRect      ( { ( m_index-1) * largeur, 0, largeur, largeur } );
     m_rectangle.setTexture          ( m_texture );
 

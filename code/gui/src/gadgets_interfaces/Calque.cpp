@@ -24,22 +24,11 @@ void Calque::actualiser ()
 std::shared_ptr<Gadget>  Calque::testerSurvol ( sf::Vector2i position )
 {
 
-/*
-    std::cout << "m_globalBounds : "    << m_globalBounds.left << ", "
-                                        << m_globalBounds.top << ", "
-                                        << m_globalBounds.width << ", "
-                                        << m_globalBounds.height << "\n";*/
-//    // Si on survol le gadget
-//    if ( m_globalBounds.contains( position.x, position.y ) && estActif() )
-//    {
-        // On test le survol des enfants
-        auto testEnfants = testerSurvolEnfants( position );
-        if ( testEnfants != nullptr )
-            return testEnfants;
-        else  return nullptr;
-//    }
-//    else
-//        return nullptr;
+    // On test le survol des enfants
+    auto testEnfants = testerSurvolEnfants( position );
+    if ( testEnfants != nullptr )
+        return testEnfants;
+    else  return nullptr;
 
 }
 

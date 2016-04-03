@@ -44,9 +44,9 @@ protected:
     std::shared_ptr<AffRectangle>    m_fond;
 
     // les proprietés graphiques
-    Valeurs<sf::Color>      m_couleurFond;
-    Valeurs<sf::Color>      m_couleurLignes;
-    Valeurs<float>          m_epaisseur;
+    Valeurs<sf::Color>      m_fondCouleur;
+    Valeurs<sf::Color>      m_fondLgnCouleur;
+    Valeurs<float>          m_fondLgnEpaisseur;
 
 };// fin CmpFond
 

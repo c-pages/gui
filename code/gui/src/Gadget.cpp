@@ -159,11 +159,13 @@ std::shared_ptr<Gadget>  Gadget::testerSurvol ( sf::Vector2i position )
 
     // si on a rien survolé on renvois nous-même
     else  return thisPtr();
+
 }
 
 /////////////////////////////////////////////////
 void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
+    // si non visible on dessine pas
     if ( ! estVisible() ) return;
 
     //On applique la transformation

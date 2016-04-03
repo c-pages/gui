@@ -19,9 +19,6 @@ public:
 
 public:
     virtual void setOmbreCouleur         ( sf::Color couleur  );
-//    virtual void setOmbreCouleur         ( sf::Color couleur , Etat etat );
-//    virtual void setOmbreCouleur         ( Valeurs<sf::Color> couleurs  );
-
 
     virtual void setOmbreActive ( bool val ) { m_ombreActive = val; };
 
@@ -40,7 +37,7 @@ protected:
     std::shared_ptr<AffRectangle>    m_ombre;
 
     // les proprietés graphiques
-    sf::Color      m_couleurOmbre;
+    sf::Color      m_ombreCouleur;
 
 };// fin CmpOmbre
 

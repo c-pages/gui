@@ -12,9 +12,9 @@ CmpOmbre::CmpOmbre()
 {
 
     // valeurs par defaut
-    m_couleurOmbre = sf::Color( 0, 0, 0, 50 )  ;
+    m_ombreCouleur = sf::Color( 0, 0, 0, 50 )  ;
 
-    m_ombre->setFondCouleur         ( m_couleurOmbre ) ;
+    m_ombre->setFondCouleur         ( m_ombreCouleur ) ;
     m_ombre->setFondLigneCouleur    ( sf::Color::Transparent ) ;
     m_ombre->setFondLigneEpaisseur  ( 0 ) ;
 
@@ -31,7 +31,7 @@ void CmpOmbre::initialiserComposants ( Gadget*     base ){
 
 /////////////////////////////////////////////////
 void CmpOmbre::setOmbreCouleur ( sf::Color couleur ) {
-    m_couleurOmbre= couleur ;
+    m_ombreCouleur = couleur ;
     m_ombre->setFondCouleur( couleur );
 };
 

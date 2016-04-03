@@ -13,7 +13,7 @@ AffCurseurSouris::AffCurseurSouris( Interface *     interfacePArent )
 {
     m_nom = "CurseurSouris";
     setVisible ( false);
-    //ctor
+
 }
 
 
@@ -28,6 +28,7 @@ void AffCurseurSouris::traiterEvenements( sf::Event evenement )
 /////////////////////////////////////////////////
 void AffCurseurSouris::setCurseur ( Curseurs    curseur   )
 {
+
     setPosAbs( {getPosSouris().x , getPosSouris().y} );
 
     switch ( curseur ){
@@ -64,7 +65,7 @@ void AffCurseurSouris::setCurseur ( Curseurs    curseur   )
             m_rectangle.setPosition(-15,-15);
             break;
     }
-//    std::cout << "AFFICHE CURSEUR : " << estVisible() << "\n";
+
 }
 
 

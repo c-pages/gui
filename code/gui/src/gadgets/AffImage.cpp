@@ -19,10 +19,10 @@ AffImage::AffImage ()
     m_texture->setRepeated  ( true );
     m_texture->setSmooth    ( true );
 
-    m_couleurFond   = sf::Color::White ;
-    m_couleurLignes = sf::Color::White ;
+    m_fondCouleur   = sf::Color::White ;
+    m_fondLgnCouleur = sf::Color::White ;
 
-    m_epaisseur     = 0 ;
+    m_fondLgnEpaisseur     = 0 ;
 
     m_rectangle.setTexture( m_texture);
 }
@@ -47,9 +47,9 @@ void AffImage::actualiserStyle ()
     // Debuggage
     log ("actualiserStyle");
 
-    m_rectangle.setFillColor        ( m_couleurFond );
-    m_rectangle.setOutlineColor     ( m_couleurLignes );
-    m_rectangle.setOutlineThickness ( m_epaisseur );
+    m_rectangle.setFillColor        ( m_fondCouleur );
+    m_rectangle.setOutlineColor     ( m_fondLgnCouleur );
+    m_rectangle.setOutlineThickness ( m_fondLgnEpaisseur );
 
     m_rectangle.setTexture( m_texture );
 }
@@ -99,6 +99,8 @@ void AffImage::setImage ( std::string fichier )
 /////////////////////////////////////////////////
 void AffImage::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
+    if (! estVisible() ) return;
+
     //On applique la transformation
     states.transform *= getTransform();
 

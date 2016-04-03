@@ -59,9 +59,9 @@ protected:
     sf::RectangleShape  m_rectangle;        ///< Le rectangle sfml.
 
     // les proprietés graphiques
-    sf::Color  m_couleurFond;
-    sf::Color  m_couleurLignes;
-    float      m_epaisseur;
+    sf::Color  m_fondCouleur;
+    sf::Color  m_fondLgnCouleur;
+    float      m_fondLgnEpaisseur;
 
 
 }; // fin class AffRectangle

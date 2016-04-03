@@ -11,22 +11,26 @@ namespace gui{
 class FenDecoDrag : public FenDecoration
 {
 public:
-    ///< Default constructor */
+
     FenDecoDrag( Fenetre* fenetre );
 
     ~FenDecoDrag( );
 
-    // Fonctions du templates decoration
-    /////////////////////////////////////////////////
-    virtual void traiterEvenements (const sf::Event& evenement);
 
+/////////////////////////////////////////////////
+// Fonctions du templates decoration
+/////////////////////////////////////////////////
+    virtual void traiterEvenements (const sf::Event& evenement);
 
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie();
 
 
-    // Fonctions locales
-    /////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// Fonctions locales
+/////////////////////////////////////////////////
+private:
+
     bool dragEnCours( ) { return m_drag; };
 
     /////////////////////////////////////////////////
@@ -36,13 +40,14 @@ public:
     void positionnerFenetre ();
 
 
-
     void sortDuPanneau ();
 
     void entreDansPanneau ();
 
 
-protected:
+/////////////////////////////////////////////////
+// Les membres
+/////////////////////////////////////////////////
 private:
 
     std::shared_ptr<BtnRectangle>   m_btnDrag;
@@ -51,9 +56,9 @@ private:
     bool                            m_drag;
     sf::Vector2i                    m_decalageDragSouris;
 
-    sf::Color               m_btnDragCouleurs;
-    sf::Color               m_btnDragLgnCouleurs;
-    float                   m_btnDragLgnepaisseurs;
+//    sf::Color               m_btnDragCouleurs;
+//    sf::Color               m_btnDragLgnCouleurs;
+//    float                   m_btnDragLgnepaisseurs;
 
 };
 

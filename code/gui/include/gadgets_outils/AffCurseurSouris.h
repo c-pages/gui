@@ -9,20 +9,20 @@ namespace gui {
 
 class AffCurseurSouris : public AffIcone
 {
-    public:
+public:
 
-        AffCurseurSouris( Interface *     interfacePArent  );
+    AffCurseurSouris( Interface *     interfacePArent  );
 
-        //virtual ~AffCurseurSouris();
+    //virtual ~AffCurseurSouris();
 
-        void setCurseur ( Curseurs    curseur );
+    void setCurseur ( Curseurs    curseur );
 
     /////////////////////////////////////////////////
     virtual void traiterEvenements( sf::Event evenement );
 
-    protected:
+protected:
 
-    private:
+private:
 
     Interface *     m_interface;
 

@@ -156,7 +156,7 @@ EcranDemo::initScene  ( )
 void
 EcranDemo::initGUI_tests ()
 {
-//
+/*
 
     // AFFICHAGE
     auto label = m_interface->creer.label( "bon" );
@@ -220,10 +220,51 @@ EcranDemo::initGUI_tests ()
     zoneTexte->setLogActif  ( true  );
     zoneTexte->setPosition  ( 200, 300 );
 
-
     auto zoneNum = m_interface->creer.zoneNum(  );
-    zoneNum->setLogActif  ( true , true );
+//    zoneNum->setLogActif  ( true , true );
     zoneNum->setPosition  ( 200, 350 );
+*/
+
+    //menu deroulant
+    auto menusDeroulants = m_interface->creer.menusDeroulants( );
+//    menusDeroulants->setLogActif ( true );
+
+    // menu FICHIER
+    auto menu1 = menusDeroulants->ajouterMenu("Fichier");
+
+    auto fct_nouveau = [this](){
+        std::cout << "nouveau\n";
+    };
+    auto fct_ouvrir = [this](){
+        std::cout << "Ouvrir\n";
+    };
+    auto fct_sauvegarder = [this](){
+        std::cout << "Sauvegarder\n";
+    };
+    auto fct_sauvegarderSous = [this](){
+        std::cout << "Sauvegarder sous\n";
+    };
+    auto fct_quitter = [this](){
+        std::cout << "Quitter\n";
+    };
+
+//    menu1->setLogActif ( true );
+
+    menu1->ajouterElement   ( "Nouveau"             , fct_nouveau );
+    menu1->ajouterElement   ( "Ouvrir"              , fct_ouvrir );
+    menu1->ajouterElement   ( "Sauvegarder"         , fct_sauvegarder );
+    menu1->ajouterElement   ( "Sauvegadger sous"    , fct_sauvegarderSous );
+    menu1->ajouterEspace    ( );
+    menu1->ajouterElement   ( "Quitter"             , fct_quitter );
+
+//    menu1->setLogActif ( true , true );
+
+    // Menu AFFICHAGE
+    menusDeroulants->ajouterMenu("Affichage");
+
+    // Menu AIDE
+    menusDeroulants->ajouterMenu("Aide");
+
 
 }
 

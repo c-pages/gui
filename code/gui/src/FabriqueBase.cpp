@@ -443,8 +443,6 @@ std::shared_ptr<SupBandeauMenusDeroulants>    FabriqueBase::menusDeroulants(  )
     // la reference à l'interface parent.
     nouveauGadget->setInterface( m_interfaceParent );
 
-    //nouveauGadget->demanderActualisation();
-
 
     return nouveauGadget;
 }

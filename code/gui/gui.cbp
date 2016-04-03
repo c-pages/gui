@@ -111,6 +111,7 @@
 		<Unit filename="include/gadgets_interfaces/composants/CmpFond.h" />
 		<Unit filename="include/gadgets_interfaces/composants/CmpGlissere.h" />
 		<Unit filename="include/gadgets_interfaces/composants/CmpIcone.h" />
+		<Unit filename="include/gadgets_interfaces/composants/CmpOmbre.h" />
 		<Unit filename="include/gadgets_interfaces/composants/CmpTexte.h" />
 		<Unit filename="include/gadgets_interfaces/composants/Composant.h" />
 		<Unit filename="include/gadgets_outils/AffBarreTitre.h" />
@@ -166,6 +167,7 @@
 		<Unit filename="src/gadgets_interfaces/composants/CmpFond.cpp" />
 		<Unit filename="src/gadgets_interfaces/composants/CmpGlissere.cpp" />
 		<Unit filename="src/gadgets_interfaces/composants/CmpIcone.cpp" />
+		<Unit filename="src/gadgets_interfaces/composants/CmpOmbre.cpp" />
 		<Unit filename="src/gadgets_interfaces/composants/CmpTexte.cpp" />
 		<Unit filename="src/gadgets_interfaces/composants/Composant.cpp" />
 		<Unit filename="src/gadgets_outils/AffBarreTitre.cpp" />

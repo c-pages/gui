@@ -17,27 +17,27 @@ public:
 
 
     // le slider
-    void setSliderCouleur           ( Valeurs<sf::Color> couleurs );
-    void setSliderLigneCouleur      ( Valeurs<sf::Color> couleurs );
-    void setSliderLigneEpaisseur    ( Valeurs<float> epaisseur );
+    virtual void setSliderCouleur           ( Valeurs<sf::Color> couleurs );
+    virtual void setSliderLigneCouleur      ( Valeurs<sf::Color> couleurs );
+    virtual void setSliderLigneEpaisseur    ( Valeurs<float> epaisseur );
 
     // le bouton
-    void setBoutonCouleur           ( Valeurs<sf::Color> couleurs );
-    void setBoutonLigneCouleur      ( Valeurs<sf::Color> couleurs );
-    void setBoutonLigneEpaisseur    ( Valeurs<float> epaisseur );
+    virtual void setBoutonCouleur           ( Valeurs<sf::Color> couleurs );
+    virtual void setBoutonLigneCouleur      ( Valeurs<sf::Color> couleurs );
+    virtual void setBoutonLigneEpaisseur    ( Valeurs<float> epaisseur );
 
     // le fond
-    void setFondCouleur             ( sf::Color couleurs );
-    void setFondLigneCouleur        ( sf::Color couleurs );
-    void setFondLigneEpaisseur      ( float epaisseur );
+    virtual void setFondCouleur             ( sf::Color couleurs );
+    virtual void setFondLigneCouleur        ( sf::Color couleurs );
+    virtual void setFondLigneEpaisseur      ( float epaisseur );
 
     // dimensionnement
-    void setLongueurCurseur( float pourcentage );
-    void setLongueur( float longueur );
-    void setLargeur( float largeur );
+    virtual void setLongueurCurseur( float pourcentage );
+    virtual void setLongueur( float longueur );
+    virtual void setLargeur( float largeur );
 
-    void setHorizontal (  );
-    void setVertical (  );
+    virtual void setHorizontal (  );
+    virtual void setVertical (  );
 
 protected :
     /////////////////////////////////////////////////

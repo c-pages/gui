@@ -11,6 +11,7 @@
 #include "gadgets/AffRectangle.h"
 #include "gadgets/BtnTexte.h"
 
+#include "gadgets_interfaces/composants/CmpOmbre.h"
 
 
 namespace gui {
@@ -21,7 +22,10 @@ namespace gui {
 /// \brief Un menu, permet de déclencher un action parmis d'autres.
 ///
 /////////////////////////////////////////////////
-class BtnMenu : public gui::Bouton {
+class BtnMenu   : public Bouton
+                , public CmpOmbre
+                , public CmpFond
+                , public CmpTexte {
 
 
 
@@ -32,7 +36,17 @@ struct ElementMenu {
     std::string                 nom;
     FctnAction                  fonction;
     std::shared_ptr<BtnTexte>   bouton;
+
+    virtual void    setCoche ( bool val ){};
 };
+struct ElementAction : public ElementMenu{
+};
+struct ElementCoche : public ElementMenu {
+    bool                        coche;
+    virtual void    setCoche ( bool val ){ coche = val; };
+};
+
+
 
 
 
@@ -47,7 +61,9 @@ public:
     /////////////////////////////////////////////////
     BtnMenu ();
 
-    void ajouterElement (std::string nom, FctnAction fonction);
+    void ajouterElement         (std::string nom, FctnAction fonction );
+    void ajouterEspace          ( );
+    void ajouterElementCoche    (std::string nom, FctnAction fonction, bool coche = false );
 
     /////////////////////////////////////////////////
     /// \brief
@@ -56,19 +72,21 @@ public:
     /////////////////////////////////////////////////
     void supprimerElement (unsigned int id);
 
-//    virtual void actualiser ();
-    virtual void actualiserBounds ();
+
+
+//    virtual void actualiserBounds ();
 
     /////////////////////////////////////////////////
     void actualiserGeometrie();
 
     /////////////////////////////////////////////////
     void actualiserStyle();
-    void setOmbreActive ( bool val ) { m_ombreActive = val; };
+
+
 
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
-    virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
+//    virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
 /////////////////////////////////////////////////
 // Membres
@@ -82,31 +100,14 @@ protected:
     // les proprietés fonctionnelles
     sf::Vector2i                    m_tailleMenu;   ///< La taille d'un bouton du menu
     float                           m_ecart;
-    bool                            m_ombreActive;
 
     // les composants de l'interface du gadget
     std::vector<ElementMenu*>       m_elements;
-    std::shared_ptr<AffRectangle>   m_fond;
-    std::shared_ptr<AffRectangle>   m_ombre;
 
     // les proprietés graphiques
-    sf::Color           m_fndCouleur;
-    sf::Color           m_fndLignesCouleur;
-    float               m_fndLignesEpaisseur;
-
-    sf::Color           m_ombreCouleur;
-    sf::Color           m_ombreLgnCouleur;
-    float               m_ombreLgnepaisseur;
-
-
     Valeurs<sf::Color>  m_btnCouleurs;
     Valeurs<sf::Color>  m_btnLignesCouleurs;
     Valeurs<float>      m_btnLignesEpaisseurs;
-
-    Valeurs<sf::Color>           m_textCouleur;
-    Valeurs<sf::Text::Style>     m_textStyle;
-    Valeurs<float>               m_textTaille;
-    Valeurs<sf::Font>            m_textPolice;
 
 }; // fin class BtnMenu
 

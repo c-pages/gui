@@ -15,13 +15,13 @@ public:
 
 
     /////////////////////////////////////////////////
-    void setIndex ( unsigned int val );
+    virtual void setIndex ( unsigned int val );
 
     /////////////////////////////////////////////////
-    void setImage ( std::string fichier );
+    virtual void setImage ( std::string fichier );
 
     /////////////////////////////////////////////////
-    void setImage ( sf::Texture* texture );
+    virtual void setImage ( sf::Texture* texture );
 
 protected :
     /////////////////////////////////////////////////

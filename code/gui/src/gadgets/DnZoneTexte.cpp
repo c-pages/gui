@@ -12,7 +12,7 @@ namespace gui {
 /////////////////////////////////////////////////
 DnZoneTexte::DnZoneTexte ()
 : m_bouton          ( std::make_shared<BtnRectangle>() )
-, m_boutonSortir    ( std::make_shared<BtnRectangle>() )
+//, m_boutonSortir    ( std::make_shared<BtnRectangle>() )
 , m_curseur         ( std::make_shared<AffRectangle>() )
 
 //, m_label   ( std::make_shared<AffLabel>() )
@@ -30,7 +30,7 @@ DnZoneTexte::DnZoneTexte ()
     m_marge.x = 2;
     m_marge.y = 0;
 
-    ajouterComposant( m_boutonSortir );
+//    ajouterComposant( m_boutonSortir );
     ajouterComposant( m_bouton );
     ajouterComposant( m_curseur );
     CmpTexte::initialiserComposants( this );
@@ -53,24 +53,30 @@ DnZoneTexte::DnZoneTexte ()
     // Declaration des fonctions de l'interface interne du gadget.
     fn_valider      = [this](){
         if ( m_ecritureActive ){
+            logEvt ( "valider" );
             setModeEcritureActif ( false );
 
             if ( m_numerique )
-                m_texte = m_valeur = m_label->getTexte() ;
-            else
                 m_texte = m_valeur = patch::to_float( m_label->getTexte() ) ;
-            log ("M_VALEUR", m_valeur);
+            else
+                m_texte = m_valeur = m_label->getTexte() ;
+
             demanderActualisation();
         }
     };
-    fn_sortir       = [this](){
+    fn_annuler       = [this](){
+
         if ( m_ecritureActive ){
+            logEvt ( "annuler" );
             setModeEcritureActif ( false );
             m_label->setTexte ( m_texte );
             demanderActualisation();
         }
     };
     fn_cliqueTexte  = [this](){
+
+        logEvt ( "M_texte" , m_texte );
+
         sf::Vector2i    posSouris = getPosSouris();
         posSouris.x -= getPosition().x;
         posSouris.y -= getPosition().y;
@@ -96,8 +102,8 @@ DnZoneTexte::DnZoneTexte ()
 
     // Action des boutons
     m_bouton->lier ( Evenement::onBtnG_presser , fn_cliqueTexte );
-    m_bouton->lier ( Evenement::onBtnG_relacherDehors , fn_valider );
-    m_bouton->lier ( Evenement::onBtnD_relacherDehors , fn_sortir );
+    m_bouton->lier ( Evenement::onBtnG_presserDehors , fn_valider );
+    m_bouton->lier ( Evenement::onBtnD_relacherDehors , fn_annuler );
 
     m_bouton->lier ( Evenement::onBtnM_roulerHaut , [this](){ declencher ( Evenement::onBtnM_roulerHaut ) ;} );
     m_bouton->lier ( Evenement::onBtnM_roulerBas , [this](){ declencher ( Evenement::onBtnM_roulerBas ) ;} );
@@ -105,12 +111,12 @@ DnZoneTexte::DnZoneTexte ()
     m_bouton->lier ( Evenement::on_entrer , [this](){ demanderActuaStyle() ;} );
     m_bouton->lier ( Evenement::on_sortir , [this](){ demanderActuaStyle() ;} );
 
-    m_boutonSortir->lier ( Evenement::onBtnG_relacher , fn_valider );
-    m_boutonSortir->lier ( Evenement::onBtnD_relacher , fn_sortir );
+//    m_boutonSortir->lier ( Evenement::onBtnG_relacher , fn_valider );
+//    m_boutonSortir->lier ( Evenement::onBtnD_relacher , fn_annuler );
 
     // rendre le bouton du fond invisible
-    m_boutonSortir->setFondCouleur( sf::Color::Transparent );
-    m_boutonSortir->setFondLigneEpaisseur( 0 );
+//    m_boutonSortir->setFondCouleur( sf::Color::Transparent );
+//    m_boutonSortir->setFondLigneEpaisseur( 0 );
 
 }
 
@@ -140,8 +146,8 @@ void DnZoneTexte::actualiserGeometrie ()
     m_curseur->move( 1 , m_marge.y/2 );
     m_curseur->setTaille( { 1, 15 });
 
-    m_boutonSortir->setPosAbs ( {0,0 });
-    m_boutonSortir->setTaille ( Interface::ms_fenetreSFML->getSize().x, Interface::ms_fenetreSFML->getSize().y );
+//    m_boutonSortir->setPosAbs ( { 0,0 });
+//    m_boutonSortir->setTaille ( Interface::ms_fenetreSFML->getSize().x, Interface::ms_fenetreSFML->getSize().y );
 
     demanderActuaBounds();
 }
@@ -211,28 +217,108 @@ void DnZoneTexte::traiterEvenements(const sf::Event& evenement ){
             txt.erase ( m_curseurPos , 1);
             m_label->setTexte( txt  );
             declencher( Evenement::on_valeurChange );
+            return;
         } else if ( evenement.key.code == sf::Keyboard::Left ){
             m_curseurPos--;
             demanderActuaGeom();
+            return;
         } else if ( evenement.key.code == sf::Keyboard::Right ){
             m_curseurPos++;
             demanderActuaGeom();
+            return;
         }
+
+
+
+        // la gestion du clipboard  OS:WIN7
+        // Copier
+        if ( evenement.key.control
+            && evenement.key.code == sf::Keyboard::C )
+            {
+//                logEvt ("CONTROL + C");
+                /*
+                auto glob = GlobalAlloc(GMEM_FIXED,32);
+                memcpy(glob,"it works",9);
+
+                OpenClipboard( NULL );
+                EmptyClipboard();
+                SetClipboardData(CF_TEXT,glob);
+                CloseClipboard();
+                */
+
+                return;
+            }
+
+        //  Coller
+        if ( evenement.key.control
+            && evenement.key.code == sf::Keyboard::V )
+            {
+//                logEvt ("CONTROL + V");
+
+                if (!IsClipboardFormatAvailable(CF_TEXT))
+                    return;
+
+                if (!OpenClipboard(NULL))
+                    return;
+
+
+                // Retrieve the Clipboard data (specifying that
+                // we want ANSI text (via the CF_TEXT value).
+                HANDLE hClipboardData = GetClipboardData(CF_TEXT);
+
+                // Call GlobalLock so that to retrieve a pointer
+                // to the data associated with the handle returned
+                // from GetClipboardData.
+                char * pchData = (char*)GlobalLock(hClipboardData);
+
+                if (pchData != NULL ){
+                    std::string str(pchData);
+
+                    std::string  txt = m_label->getTexte(  );
+
+                    txt.insert( m_curseurPos , str  );
+                    m_label->setTexte( txt )  ;
+                    declencher( Evenement::on_valeurChange );
+                    m_curseurPos += str.size();
+                    demanderActuaGeom();
+
+                }
+
+                // Unlock the global memory.
+                GlobalUnlock(hClipboardData);
+
+                // Finally, when finished I simply close the Clipboard
+                // which has the effect of unlocking it so that other
+                // applications can examine or modify its contents.
+                CloseClipboard();
+
+                return;
+            }
+
+
     }
 
 
 
 
+
+
+
+
+
     // gestion de la saisie de texte
-    if ( m_ecritureActive &&  evenement.type == sf::Event::TextEntered ) {
+    if ( m_ecritureActive
+        &&  evenement.type == sf::Event::TextEntered
+        &&  ! sf::Keyboard::isKeyPressed(sf::Keyboard::RControl )
+        &&  ! sf::Keyboard::isKeyPressed(sf::Keyboard::LControl ) ) {
 
 
-//        std::cout << " (event.text.unicode)  : " << (evenement.text.unicode)  << "\n";
         log ( "evenement.text.unicode" , evenement.text.unicode );
+
         // le texte avant modif dans le label
         std::string txt = m_label->getTexte() ;
 
-        // touche Retour arriere : effacer arriere  //////////////////////////////
+        // touche Retour arriere : RETOUR ARRIERE  //////////////////////////////
         if ( evenement.text.unicode == 8 )  {
             // si le champ est vide on retourne.
             if ( txt.size()==0 ) return;
@@ -244,19 +330,16 @@ void DnZoneTexte::traiterEvenements(const sf::Event& evenement ){
             m_curseurPos--;
         }
 
-        // touche Entrée : Valider  //////////////////////////////
-        else if ( evenement.text.unicode == 13 )  {
-            setModeEcritureActif ( false ) ;
-           declencher( Evenement::on_valeurValide );
-        }
+        // touche Entrée : VALIDER  //////////////////////////////
+        else if ( evenement.text.unicode == 13 )
+            fn_valider ();
 
-        // touche Echappe : Annuler  //////////////////////////////
-        else if ( evenement.text.unicode == 27 )  {
 
-            setModeEcritureActif ( false ) ;
-            m_label->setTexte    ( m_texte ) ;
-            declencher( Evenement::on_valeurChange );
-        }
+        // touche Echappe : ANNULER  //////////////////////////////
+        else if ( evenement.text.unicode == 27 )
+            fn_annuler();
+
+
 
         // les autres touches  //////////////////////////////
         else {

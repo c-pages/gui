@@ -4,14 +4,17 @@
 #include <iostream>
 #include <sstream>
 
+#include <../GUI.h>
+
 #include <Gadget.h>
 #include <Interface.h>
-#include <../GUI.h>
+
+#include <gadgets_outils/BtnMenu.h>
 
 namespace gui {
 
 /////////////////////////////////////////////////
-// Initialisation des membre static
+// Initialisation des membres statics
 /////////////////////////////////////////////////
 
 int         Gadget::ms_CompteurGadgets  = 0;
@@ -19,22 +22,23 @@ std::string Gadget::ms_logNomGadgetBack = "";
 
 /////////////////////////////////////////////////
 Gadget::Gadget ()
-:/* m_texte       ( "" )
-, */m_visible     ( true )
-, m_actif       ( true )
-, m_focus       ( false )
-, m_survol      ( false )
-, m_presse      ( false )
-, m_deplacable  ( false )
-, m_redimensionnable ( false )
+: m_visible                 ( true )
+, m_actif                   ( true )
+, m_focus                   ( false )
+, m_survol                  ( false )
+, m_presse                  ( false )
+, m_deplacable              ( false )
+, m_redimensionnable        ( false )
 
-, m_necessiteActualisation    ( true )
+, m_necessiteActualisation  ( true )
 , m_aBesoinActuaGeom        ( true )
 , m_aBesoinActuaStyle       ( true )
 , m_aBesoinActuaContenu     ( true )
 , m_aBesoinActuaBounds      ( true )
 
 , m_etat        ( Etat::repos )
+, m_menu        ( nullptr )
+
 {
 
     // Mise a jour du nombre de gadgets.
@@ -74,7 +78,6 @@ void Gadget::actualiser ()
 
     // on a plus besoin d'actualisation
     m_necessiteActualisation = false;
-
 
     // on actualise le style si besoin
     if ( m_aBesoinActuaStyle )  {
@@ -235,6 +238,8 @@ void Gadget::demanderActuaContenu() {
 void Gadget::demanderActuaBounds() {
     m_necessiteActualisation = true ;
     m_aBesoinActuaBounds = true ;
+    for ( auto composant : m_composants )
+        composant->demanderActuaBounds() ;
     Interface::necessiteActualisation();
 };
 
@@ -376,19 +381,11 @@ unsigned int Gadget::getID() const {
 }
 
 /////////////////////////////////////////////////
-int          Gadget::getNombreGadgets () const{ return ms_CompteurGadgets; };
-//
-///////////////////////////////////////////////////
-//void        Gadget::setTexte( std::string val ){
-//    log("setTexte \"" + val + "\"" );
-//    m_texte = val;
-//    demanderActuaGeom();
-//};
-//
-///////////////////////////////////////////////////
-//std::string  Gadget::getTexte( ) const{
-//    return m_texte;
-//};
+int          Gadget::getNombreGadgets () const{
+    return ms_CompteurGadgets;
+};
+
+
 
 /////////////////////////////////////////////////
 void            Gadget::setMarge ( sf::Vector2f marge ){
@@ -408,9 +405,10 @@ void            Gadget::setMarge ( float x , float y ){
     demanderActuaGeom();
 };
 /////////////////////////////////////////////////
-sf::Vector2f    Gadget::getMarge(){
+sf::Vector2f    Gadget::getMarge()const{
     return m_marge;
 };
+
 
 
 

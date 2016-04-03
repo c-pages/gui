@@ -81,7 +81,7 @@ private:
     std::shared_ptr<AffRectangle>   m_curseur;
 
     // Les actions pour le fonctionnement
-    FctnAction                      fn_sortir ;
+    FctnAction                      fn_annuler ;
     FctnAction                      fn_valider ;
     FctnAction                      fn_cliqueTexte ;
 

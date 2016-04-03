@@ -44,6 +44,7 @@ Interface::Interface( sf::RenderWindow* fenetre )
 , m_labelFPS        ( )
 , m_textFPS         ( "FPS: " )
 , m_compteurFPS     ( 0 )
+
 // btn survol
 , m_afficherBoutonSurvol    ( true )
 , m_labelBoutonSurvol       ( )
@@ -87,21 +88,20 @@ Interface::Interface( sf::RenderWindow* fenetre )
 
 
 
-
     //// RETOURS ////
     // initialiser les trucs FPS
     m_labelFPS.setFont              ( ms_polices.get    ( "swisse" ) );
     m_labelFPS.setCharacterSize     ( 9 );
     m_labelFPS.setColor             ( sf::Color::White );
     m_labelFPS.setString            ( "..." );
-    m_labelFPS.setPosition          ( 5,2 ) ;
+//    m_labelFPS.setPosition          ( 5,22 ) ;
 
     // initialiser les trucs bouton survol
     m_labelBoutonSurvol.setFont              ( ms_polices.get    ( "swisse" ) );
     m_labelBoutonSurvol.setCharacterSize     ( 9 );
     m_labelBoutonSurvol.setColor             ( sf::Color::White );
     m_labelBoutonSurvol.setString            ( "..." );
-    m_labelBoutonSurvol.setPosition          ( 5,12 ) ;
+//    m_labelBoutonSurvol.setPosition          ( 5,32 ) ;
 
 }
 
@@ -167,6 +167,7 @@ void Interface::actualiser ()
         decallage.x += panneau->getTaille().x;
 
     }
+
     // ... pour décaller le calque du bureau ... à voir si c'est pas le bordel
     ms_calque_bureau->setPosition ( decallage.x , decallage.y );
     decallage.x = 0;
@@ -185,10 +186,7 @@ void Interface::actualiser ()
 
 
     // on actualise les enfants ( donc les calques)
-//    log ( "actualiserEnfants");
     actualiserEnfants();
-
-//    logTitre ( "fin d'Actualisastion.");
 
 
 }
@@ -279,12 +277,19 @@ void Interface::traiterEvenements( sf::Event evenement )
         ///////// Presser bouton souris /////////////////////////////////////////
         case sf::Event::MouseButtonPressed:
 
+
+            // On declenche pour tout les autre boutons 'relacherDehors'
+            if ( evenement.mouseButton.button == sf::Mouse::Left )
+                declencherToutBoutons ( Evenement::onBtnG_presserDehors  , ms_boutonSurvole );
+            else if ( evenement.mouseButton.button == sf::Mouse::Right )
+                declencherToutBoutons ( Evenement::onBtnD_relacherDehors  , ms_boutonSurvole );
+
             // On sort si on a pas de bouton survolé
             if ( ms_boutonSurvole ==  nullptr )
                 return;
 
 
-            // on definie le bouton presssé
+            // on definie le bouton pressé
             ms_boutonPresse = ms_boutonSurvole;
 
 
@@ -307,107 +312,37 @@ void Interface::traiterEvenements( sf::Event evenement )
         ///////// Relacher bouton souris /////////////////////////////////////////
         case sf::Event::MouseButtonReleased:
 
-            // On ne survol pas de bouton
-            if ( ms_boutonSurvole ==  nullptr ){
+            // on declenche l'evenement RELACHER DEHORS
+            if ( evenement.mouseButton.button == sf::Mouse::Left )
+                declencherToutBoutons  ( Evenement::onBtnG_relacherDehors , ms_boutonPresse );
+            else if ( evenement.mouseButton.button == sf::Mouse::Right )
+                declencherToutBoutons  ( Evenement::onBtnD_relacherDehors , ms_boutonPresse);
+            else if ( evenement.mouseButton.button == sf::Mouse::Middle )
+                declencherToutBoutons  ( Evenement::onBtnM_relacherDehors , ms_boutonPresse);
 
-//
-//                if ( evenement.mouseButton.button == sf::Mouse::Left )
-//                    declencherToutBoutons ( Evenement::onBtnG_relacherDehors  );
-//                else if ( evenement.mouseButton.button == sf::Mouse::Right )
-//                    declencherToutBoutons ( Evenement::onBtnD_relacherDehors  );
-//                else if ( evenement.mouseButton.button == sf::Mouse::Middle )
-//                    declencherToutBoutons ( Evenement::onBtnM_relacherDehors  );
 
-                // on reset le bouton pressé
-                if ( ms_boutonPresse !=  nullptr ){
-
-                    if ( ms_boutonPresse->estInteractif() ) {
-
-                        logEvt ( "Relacher Bouton dehors" , ms_boutonPresse );
-
-                        if ( evenement.mouseButton.button == sf::Mouse::Left )
-                            ms_boutonPresse->declencher  ( Evenement::onBtnG_relacherDehors );
-                        else if ( evenement.mouseButton.button == sf::Mouse::Right )
-                            ms_boutonPresse->declencher  ( Evenement::onBtnD_relacherDehors );
-                        else if ( evenement.mouseButton.button == sf::Mouse::Middle )
-                            ms_boutonPresse->declencher  ( Evenement::onBtnM_relacherDehors );
-                    }
-                    ms_boutonPresse->setSurvol( false );
-                    ms_boutonPresse->setPresse( false );
-                    ms_boutonPresse = nullptr;
-                }
-
-                // On sort.
+            // si on a pas pressé de bouton, on passe
+            if ( ms_boutonPresse ==  nullptr )
                 return;
-            }
 
-            // on survol un autre bouton que celui pressé.
-            if ( ms_boutonPresse != ms_boutonSurvole )
-            {
+            // On survol le bouton pressé
+            if ( ms_boutonSurvole ==  ms_boutonPresse ){
 
-                // on declenche l'action
-//                if ( evenement.mouseButton.button == sf::Mouse::Left )
-//                    declencherToutBoutons ( Evenement::onBtnG_relacherDehors  , ms_boutonSurvole );
-//                else if ( evenement.mouseButton.button == sf::Mouse::Right )
-//                    declencherToutBoutons ( Evenement::onBtnD_relacherDehors   , ms_boutonSurvole );
-//                else if ( evenement.mouseButton.button == sf::Mouse::Middle )
-//                    declencherToutBoutons ( Evenement::onBtnM_relacherDehors   , ms_boutonSurvole );
-
-//
-//                if ( evenement.mouseButton.button == sf::Mouse::Left )
-//                    ms_boutonSurvole->declencher  ( Evenement::onBtnG_relacher );
-//                else if ( evenement.mouseButton.button == sf::Mouse::Right )
-//                    ms_boutonSurvole->declencher  ( Evenement::onBtnD_relacher );
-//                else if ( evenement.mouseButton.button == sf::Mouse::Middle )
-//                    ms_boutonSurvole->declencher  ( Evenement::onBtnM_relacher );
-
-                // on reset le bouton pressé
-                if ( ms_boutonPresse !=  nullptr ){
-
-                    if ( ms_boutonPresse->estInteractif() ) {
-
-                        logEvt ( "Relacher Bouton dehors" , ms_boutonPresse );
-
-                        if ( evenement.mouseButton.button == sf::Mouse::Left )
-                            ms_boutonPresse->declencher  ( Evenement::onBtnG_relacherDehors );
-                        else if ( evenement.mouseButton.button == sf::Mouse::Right )
-                            ms_boutonPresse->declencher  ( Evenement::onBtnD_relacherDehors );
-                        else if ( evenement.mouseButton.button == sf::Mouse::Middle )
-                            ms_boutonPresse->declencher  ( Evenement::onBtnM_relacherDehors );
-                    }
-
-                    ms_boutonPresse->setSurvol( false );
-                    ms_boutonPresse->setPresse( false );
-                    ms_boutonPresse = nullptr;
-                }
-                // On sort.
-                return;
-            }
-
-            if ( ms_boutonPresse->estInteractif() ) {
-                logEvt ( "Relacher Bouton" , ms_boutonPresse );
-
-                // On survol le bouton qu'on à pressé.
-                // => On déclenche l'action 'relacher'
+                // on declenche l'evenement RELACHER DEDANS
                 if ( evenement.mouseButton.button == sf::Mouse::Left )
-                    ms_boutonPresse->declencher ( Evenement::onBtnG_relacher );
+                    ms_boutonPresse->declencher  ( Evenement::onBtnG_relacher );
                 else if ( evenement.mouseButton.button == sf::Mouse::Right )
-                    ms_boutonPresse->declencher ( Evenement::onBtnD_relacher );
+                    ms_boutonPresse->declencher  ( Evenement::onBtnD_relacher );
                 else if ( evenement.mouseButton.button == sf::Mouse::Middle )
-                    ms_boutonPresse->declencher ( Evenement::onBtnM_relacher );
+                    ms_boutonPresse->declencher  ( Evenement::onBtnM_relacher );
+
             }
-//            // On declenche pour tout les autre boutons 'relacherDehors'
-//            if ( evenement.mouseButton.button == sf::Mouse::Left )
-//                declencherToutBoutons ( Evenement::onBtnG_relacherDehors  , ms_boutonSurvole );
-//            else if ( evenement.mouseButton.button == sf::Mouse::Right )
-//                declencherToutBoutons ( Evenement::onBtnD_relacherDehors  , ms_boutonSurvole );
-//            else if ( evenement.mouseButton.button == sf::Mouse::Middle )
-//                declencherToutBoutons ( Evenement::onBtnM_relacherDehors  , ms_boutonSurvole );
 
 
             // on reset m_boutonPressé
             ms_boutonPresse->setPresse( false );
             ms_boutonPresse = nullptr;
+
 
         break;
 
@@ -428,6 +363,8 @@ void Interface::traiterEvenements( sf::Event evenement )
 
         ///////// on ne traite pas les autres types d'évènements /////////////////////////////////////////
         default: break;
+
+
     }
 
 }
@@ -457,6 +394,7 @@ void Interface::majAffichage_BoutonSurvol(){
         txt =  ms_boutonSurvole->getHierarchie() + ms_boutonSurvole->getNom();
     else txt = "...";
     m_labelBoutonSurvol.setString ( m_textBoutonSurvol + txt );
+    m_labelBoutonSurvol.setPosition     ( m_fenetre->getSize().x - 100 , 22 ) ;
 }
 
 
@@ -471,6 +409,9 @@ void Interface::calculerFPS(){
         m_compteurFPS = 0;
         m_labelFPS.setString ( txtAAfficher );
     }
+
+    m_labelFPS.setPosition              ( m_fenetre->getSize().x - 100 , 2 ) ;
+
 }
 
 /////////////////////////////////////////////////

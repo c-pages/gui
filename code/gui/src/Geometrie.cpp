@@ -187,7 +187,7 @@ void Geometrie::AlignerSur ( std::shared_ptr<Gadget> cible, Alignement alignemen
 void Geometrie::actualiserBounds ()
 {
     static_cast<Gadget*>(this)->log ( "ActualiserBounds  ");
-    static_cast<Gadget*>(this)->log (  "taille" , getTaille() );
+    static_cast<Gadget*>(this)->log ( "taille" , getTaille() );
 
     sf::Vector2f pos = getPosAbs ();
 
@@ -200,6 +200,7 @@ void Geometrie::actualiserBounds ()
     m_localBounds.top       = getPosition().y;
     m_localBounds.width     = getTaille().x;
     m_localBounds.height    = getTaille().y;
+
 
 }
 

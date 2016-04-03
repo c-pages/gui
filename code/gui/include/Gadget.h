@@ -16,6 +16,7 @@
 namespace gui {
 
 class Interface;
+class BtnMenu;
 
 /////////////////////////////////////////////////
 /// \brief Classe communes à tout les gadgets, gère affichage actualisation, etc...
@@ -240,7 +241,8 @@ public:
     void            setMarge ( sf::Vector2f marge );
     void            setMarge ( float val );
     void            setMarge ( float x , float y );
-    sf::Vector2f    getMarge();
+    sf::Vector2f    getMarge() const;
+
 
     void    demanderActualisation();
     void    demanderActuaGeom();
@@ -250,6 +252,8 @@ public:
 
     virtual bool        estInterface () { return false; };///< \todo voir si on peut faire mieux ...
     virtual bool        estInteractif() { return false; }; ///< \todo voir si on peut faire mieux ...
+
+    void setMenu(std::shared_ptr<BtnMenu> menu ) { m_menu = menu; };
 
 /////////////////////////////////////////////////
 // Membres
@@ -275,20 +279,20 @@ protected:
     std::string         m_nom;          ///< Nom unique automatique pour le gadget.
     Type                m_type;         ///< Nom unique automatique pour le gadget.
 
-    bool m_visible;     ///< La visibilité du gadget ( true: visible, false: invisible )
-    bool m_actif;       ///< L'activité du gadget ( true: actif, false: inactif )
-    bool m_focus;       ///< Le focus du gadget ( true: à le focus, false: sans le focus )
-    bool m_survol;      ///< Le survol par la souris (true si le gadget est survolé par la souris).
-    bool m_presse;      ///< Le bouton gauche de la souris est pressé (true si le gadget est survolé par la souris).
+    bool m_visible;             ///< La visibilité du gadget ( true: visible, false: invisible )
+    bool m_actif;               ///< L'activité du gadget ( true: actif, false: inactif )
+    bool m_focus;               ///< Le focus du gadget ( true: à le focus, false: sans le focus )
+    bool m_survol;              ///< Le survol par la souris (true si le gadget est survolé par la souris).
+    bool m_presse;              ///< Le bouton gauche de la souris est pressé (true si le gadget est survolé par la souris).
 
-    bool m_deplacable;  ///< Si le gadget est déplacable (clique and drag)
-    bool m_redimensionnable;  ///< Si le gadget est redimensionnable (clique and drag)
+    bool m_deplacable;          ///< Si le gadget est déplacable (clique and drag)
+    bool m_redimensionnable;    ///< Si le gadget est redimensionnable (clique and drag)
 
-    Etat m_etat; ///< l'etat du bouton
+    Etat m_etat;                ///< l'etat du bouton
 
-    friend class FabriqueBase;
+    friend class            FabriqueBase;
 
-
+    shared_ptr<BtnMenu>     m_menu;     ///< le menu déroulant au clqiue droit sur le gadget
 
 }; // fin class Gadget
 

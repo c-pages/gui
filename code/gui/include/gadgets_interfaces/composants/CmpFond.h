@@ -18,17 +18,17 @@ public:
 
 
 public:
-    void setFondCouleur         ( sf::Color couleur  );
-    void setFondCouleur         ( sf::Color couleur , Etat etat );
-    void setFondCouleur         ( Valeurs<sf::Color> couleurs  );
+    virtual void setFondCouleur         ( sf::Color couleur  );
+    virtual void setFondCouleur         ( sf::Color couleur , Etat etat );
+    virtual void setFondCouleur         ( Valeurs<sf::Color> couleurs  );
 
-    void setFondLigneCouleur    ( sf::Color couleur  );
-    void setFondLigneCouleur    ( sf::Color couleur , Etat etat );
-    void setFondLigneCouleur    ( Valeurs<sf::Color> couleurs );
+    virtual void setFondLigneCouleur    ( sf::Color couleur  );
+    virtual void setFondLigneCouleur    ( sf::Color couleur , Etat etat );
+    virtual void setFondLigneCouleur    ( Valeurs<sf::Color> couleurs );
 
-    void setFondLigneEpaisseur  ( float epaisseur );
-    void setFondLigneEpaisseur  ( float epaisseur , Etat etat );
-    void setFondLigneEpaisseur  ( Valeurs<float> epaisseur );
+    virtual void setFondLigneEpaisseur  ( float epaisseur );
+    virtual void setFondLigneEpaisseur  ( float epaisseur , Etat etat );
+    virtual void setFondLigneEpaisseur  ( Valeurs<float> epaisseur );
 
     virtual void appliquerEtat( Etat etat );
 protected :

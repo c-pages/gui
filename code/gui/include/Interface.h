@@ -80,7 +80,7 @@ protected:
 // fonctions statics
 /////////////////////////////////////////////////
 public:
-    static  void necessiteActualisation()                         { ms_necessiteActualisation = true ; };
+    static  void necessiteActualisation()                       { ms_necessiteActualisation = true ; };
     static  void setCurseur ( Curseurs    curseur   )           { ms_curseurSouris->setCurseur ( curseur  ); };
     static  std::shared_ptr<Gadget>       getBoutonSurvol ()    { return ms_boutonSurvole; };
     static  std::shared_ptr<Gadget>       getBoutonPress ()     { return ms_boutonPresse; };

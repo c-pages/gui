@@ -17,19 +17,20 @@ namespace gui {
 class BtnMenu;
 class Interface;
 
+/////////////////////////////////////////////////
+/// \brief
+///
+/// \param
+/// \param
+/// \return
+///
+/////////////////////////////////////////////////
 class SupBandeauMenusDeroulants : public gui::SupBandeau {
 
 
 /////////////////////////////////////////////////
-// struct
+// structs internes
 /////////////////////////////////////////////////
-
-//struct ElementSousMenu {
-//    std::string                 nom;
-//    FctnAction                  fonction;
-//    std::shared_ptr<BtnTexte>   bouton;
-//};
-
 struct ElementMenu {
     std::string                 nom;
     std::shared_ptr<BtnTexte>   bouton;
@@ -47,10 +48,10 @@ public:
     /////////////////////////////////////////////////
     SupBandeauMenusDeroulants ();
 
-    void ajouterMenu (std::string nom);
+    std::shared_ptr<BtnMenu> ajouterMenu    (std::string nom);
+    void supprimerMenu  (std::string nom);
 
-//    void ajouterElement (std::string nom, FctnAction fonction);
-    void ajouterElement ( std::string nom, FctnAction fonction = [](){} , std::string menu = ms_menuBack );
+    void ajouterElement ( std::string nom, FctnAction fonction = [](){} , std::string dansMenu = ms_menuBack );
 
     /////////////////////////////////////////////////
     /// \brief
@@ -59,16 +60,10 @@ public:
     /////////////////////////////////////////////////
     void supprimerElement (unsigned int id);
 
-//    virtual void actualiser ();
-    virtual void actualiserBounds ();
 
     /////////////////////////////////////////////////
     void actualiserGeometrie();
 
-    /////////////////////////////////////////////////
-    void actualiserStyle();
-//    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
-//    virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
 private:
     static   std::string            ms_menuBack;

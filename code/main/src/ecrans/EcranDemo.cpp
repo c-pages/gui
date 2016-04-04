@@ -224,7 +224,7 @@ EcranDemo::initGUI_tests ()
 //    zoneNum->setLogActif  ( true , true );
     zoneNum->setPosition  ( 200, 350 );
 */
-
+/*
     ////////////////////////////////////////////////////////////////////////
     ////// les menus deroulants  ///////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
@@ -265,14 +265,14 @@ EcranDemo::initGUI_tests ()
     menusDeroulants->ajouterMenu    ("Aide");
     menusDeroulants->ajouterElement ("Aide");
     menusDeroulants->ajouterElement ("A propos");
-
+*/
 
     ////////////////////////////////////////////////////////////////////////
     ////// les fenetres  ///////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
-    auto fenetre = m_interface->creer.fenetre();
-//    fenetre->setLogActif ( true, true );
-
+    auto fenetre = m_interface->creer.fenetre("Fenetre Démo");
+    fenetre->setTitreIcone ( &gui::Interface::ms_icones.get("ico_fenetreDefaut"));
+    fenetre->setPosition ( 300,300);
 }
 
 /////////////////////////////////////////////////
@@ -421,7 +421,7 @@ EcranDemo::initGUI_test_Fenetres  ()
     auto m_fenetre = m_interface->creer.fenetre(  );
     m_fenetre->setPosition  ( posRoot.x , posRoot.y  );
     m_fenetre->setTaille    ( { 300 , 100 } );
-    m_fenetre->chargerIcone   ( "media/img/Icone_test x16.png" );
+//    m_fenetre->chargerIcone   ( "media/img/Icone_test x16.png" );
 
 //    m_fenetre->setTexteStyle     ( m_skin->getStyle ( gui::Styles::txtTitre ) );
 

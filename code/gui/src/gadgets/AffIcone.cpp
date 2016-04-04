@@ -10,11 +10,12 @@ namespace gui {
 
 /////////////////////////////////////////////////
 AffIcone::AffIcone ()
-: AffImage ()
-, m_index ( 1 )
-, m_nbrIcones (0)
+: AffImage      ()
+, m_index       ( 1 )
+, m_nbrIcones   (0)
 {
     creerNomUnique( "Icone");
+//    m_mute = false;
 }
 
 

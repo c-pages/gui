@@ -79,6 +79,7 @@ Interface::Interface( sf::RenderWindow* fenetre )
 
     // initialiser les icones
     ms_icones.load( "ico_fenetre"  , "media/img/icones_fenetre.png" );
+    ms_icones.load( "ico_fenetreDefaut"  , "media/img/ico_fenetre.png" );
     ms_icones.load( "ico_fleches"  , "media/img/ico_fleches.png"    );
 
     // initialiser les curseurs

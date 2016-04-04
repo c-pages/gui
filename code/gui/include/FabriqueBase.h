@@ -42,7 +42,7 @@
 
 // OUTILS
 // a retirer de la liste des creations
-#include "gadgets_outils\AffBarreTitre.h"
+//#include "gadgets_outils\AffBarreTitre.h"
 #include "gadgets_outils\BtnMenu.h"
 
 #include "gadgets_outils\CntSliders.h"
@@ -135,7 +135,7 @@ public:
     /// \param fichier
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<AffBarreTitre>    barreTitre( std::string fichier = ""  );
+//    std::shared_ptr<AffBarreTitre>    barreTitre( std::string fichier = ""  );
 
 
 

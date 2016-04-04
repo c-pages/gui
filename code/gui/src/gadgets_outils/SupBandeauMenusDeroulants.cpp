@@ -36,6 +36,7 @@ std::shared_ptr<BtnMenu> SupBandeauMenusDeroulants::ajouterMenu ( std::string no
     bouton->setAutoAjuster      ( true );
     bouton->setFondCouleur      ( sf::Color::Transparent);
     bouton->setFondCouleur      ( sf::Color( 255,255,255,50) , Etat::survol);
+    bouton->setTexteTaille      ( 10 );
 
     nouvelElement->menu = std::make_shared<BtnMenu>( );
     nouvelElement->menu->setVisible(false);
@@ -142,7 +143,6 @@ void SupBandeauMenusDeroulants::actualiserGeometrie()
 
         element->bouton->setPosition    ( decallage, m_marge.y );
         element->bouton->setTexte       ( element->nom );
-        element->bouton->setTexteTaille ( 10 );
 
         decallage += element->bouton->getTaille().x;
     }

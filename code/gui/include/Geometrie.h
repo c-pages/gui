@@ -7,6 +7,7 @@
 #include "Filiation.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Enums.h"
 
 
 
@@ -23,21 +24,6 @@ class Geometrie : public sf::Transformable, public gui::Filiation {
 // Enums & typedefs
 /////////////////////////////////////////////////
 public:
-
-    /////////////////////////////////////////////////
-    /// \brief les 9 endroits d'alignement entre gadgets
-    /////////////////////////////////////////////////
-    enum class Alignement {
-        Centre,
-        Gauche,
-        Droite,
-        Haut,
-        Bas,
-        GaucheHaut,
-        GaucheBas,
-        DroiteHaut,
-        DroiteBas
-    };
 
 /////////////////////////////////////////////////
 // Méthodes

@@ -9,6 +9,7 @@
 #include "Valeurs.h"
 
 #include "gadgets/AffLabel.h"
+#include "gadgets/BtnIcone.h"
 
 namespace gui {
 
@@ -20,44 +21,56 @@ public:
 
 public:
 
-    virtual void            setTexte    ( std::string val );                                ///< Definir m_texte
-    virtual std::string     getTexte    ( ) const;
+    virtual void            setTitre    ( std::string val );                                ///< Definir m_texte
+    virtual std::string     getTitre    ( ) const;
 
-    virtual void setTexteTaille         ( float val , Etat etat = Etat::tous );             ///< Definir m_texteTaille
-    virtual void setTexteTaille         ( Valeurs<float> val );                             ///< Definir m_texteTaille
+    virtual void setTitreTxtTaille      ( float val );             ///< Definir m_texteTaille
+    virtual void setTitreTxtCouleur     ( sf::Color couleur );     ///< Definir m_police
+    virtual void setTitreTxtPolice      ( sf::Font val);           ///< Definir m_police//
+    virtual void setTitreTxtStyle       ( sf::Text::Style val );   ///< Definir
+    virtual void setTitreIcone          ( std::string fichier );
+    virtual void setTitreIcone          ( sf::Texture* texture );
 
-    virtual void setTexteCouleur        ( sf::Color couleur , Etat etat = Etat::tous);      ///< Definir m_police
-    virtual void setTexteCouleur        ( Valeurs<sf::Color> couleur  );                    ///< Definir m_police
-
-    virtual void setTextePolice         ( sf::Font val , Etat etat = Etat::tous);           ///< Definir m_police
-    virtual void setTextePolice         ( Valeurs<sf::Font> val  );                         ///< Definir
-
-    virtual void setTexteStyle          ( sf::Text::Style val , Etat etat = Etat::tous);    ///< Definir
-    virtual void setTexteStyle          ( Valeurs<sf::Text::Style> val  );                  ///< Definir
-
-    virtual void appliquerEtat( Etat etat );
 
 protected :
 
     /////////////////////////////////////////////////
     virtual void initialiserComposants ( Gadget*     base );
 
+    void actualiserGeometrie ();
+    void actualiserStyle ();
 
 /////////////////////////////////////////////////
 // les membres
 /////////////////////////////////////////////////
 protected:
 
-    std::shared_ptr<AffLabel>       m_label;
+    // valeurs par defaut
+    sf::Vector2i        m_titreTaille;
+    sf::Vector2i        m_titreMarge;
+    sf::Vector2i        m_taillebouton;
 
-    std::string                     m_texte;
+
+    // les composants de l'interface du gadget
+    std::shared_ptr<AffRectangle>   m_titreFond;
+    std::shared_ptr<AffLabel>       m_titreLabel;
+    std::shared_ptr<AffIcone>       m_titreIcone;
+    std::shared_ptr<BtnIcone>       m_btnFermer;
+    std::shared_ptr<BtnIcone>       m_btnReduire;
 
     // les proprietés graphiques
-    Valeurs<sf::Color>              m_textCouleur;
-    Valeurs<sf::Text::Style>        m_textStyle;
-    Valeurs<float>                  m_textTaille;
-    Valeurs<sf::Font>               m_textPolice;
+    sf::Color               m_titreFondCouleur;
+    sf::Color               m_titreFondLgnCouleur;
+    float                   m_titreFondLgnepaisseur;
 
+    sf::Color               m_titreTextCouleur;
+    sf::Text::Style         m_titreTextStyle;
+    float                   m_titreTextTaille;
+    sf::Font                m_titreTextPolice;
+
+    Valeurs<sf::Color>               m_titreBtnCouleur;
+    Valeurs<sf::Color>               m_titreBtnLgnCouleur;
+    Valeurs<float>                   m_titreBtnLgnepaisseur;
 };
 
 };

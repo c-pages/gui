@@ -85,8 +85,9 @@ void Geometrie::AlignerSur ( std::shared_ptr<Gadget> cible, Alignement alignemen
 {
     if ( cible == nullptr ) return;
 
-//    actualiserBounds();
-//    cible->actualiserBounds();
+    // Actualiser les geometries pour etre sûr
+    actualiserGeometrie();
+    cible->actualiserGeometrie();
 
     log ("aligner sur", cible);
 
@@ -106,11 +107,11 @@ void Geometrie::AlignerSur ( std::shared_ptr<Gadget> cible, Alignement alignemen
     else if ( alignementThis == Alignement::Haut
          ||   alignementThis == Alignement::Centre
          ||   alignementThis == Alignement::Bas )
-        pt_origine.x = getPosAbs().x + m_taille.x/2;
+        pt_origine.x = getPosAbs().x + getTaille().x/2;
 
     // la ligne vert. de droite du gadget a bouger
     else
-        pt_origine.x = getPosAbs().x  + m_taille.x;
+        pt_origine.x = getPosAbs().x  + getTaille().x;
 
 
     // la ligne horiz. du haut du gadget a bouger
@@ -123,11 +124,11 @@ void Geometrie::AlignerSur ( std::shared_ptr<Gadget> cible, Alignement alignemen
     else if ( alignementThis == Alignement::Gauche
          ||   alignementThis == Alignement::Centre
          ||   alignementThis == Alignement::Droite )
-        pt_origine.y = getPosAbs().y + m_taille.y/2;
+        pt_origine.y = getPosAbs().y + getTaille().y/2;
 
     // la ligne horiz. du bas du gadget a bouger
     else
-        pt_origine.y = getPosAbs().y + m_taille.y;
+        pt_origine.y = getPosAbs().y + getTaille().y;
 
 
 
@@ -136,15 +137,15 @@ void Geometrie::AlignerSur ( std::shared_ptr<Gadget> cible, Alignement alignemen
     // la destination //////
 
     // la ligne vert. de gauche du gadget a bouger
-    if ( alignementThis == Alignement::GaucheHaut
-    ||   alignementThis == Alignement::Gauche
-    ||   alignementThis == Alignement::GaucheBas )
+    if ( alignementCible == Alignement::GaucheHaut
+    ||   alignementCible == Alignement::Gauche
+    ||   alignementCible == Alignement::GaucheBas )
         pt_cible.x = cible->getPosAbs().x ;
 
     // la ligne vert. du milieu du gadget a bouger
-    else if ( alignementThis == Alignement::Haut
-         ||   alignementThis == Alignement::Centre
-         ||   alignementThis == Alignement::Bas )
+    else if ( alignementCible == Alignement::Haut
+         ||   alignementCible == Alignement::Centre
+         ||   alignementCible == Alignement::Bas )
         pt_cible.x = cible->getPosAbs().x + cible->getTaille().x/2;
 
     // la ligne vert. de droite du gadget a bouger
@@ -153,15 +154,15 @@ void Geometrie::AlignerSur ( std::shared_ptr<Gadget> cible, Alignement alignemen
 
 
     // la ligne horiz. du haut du gadget a bouger
-    if ( alignementThis == Alignement::GaucheHaut
-    ||   alignementThis == Alignement::Haut
-    ||   alignementThis == Alignement::DroiteHaut )
+    if ( alignementCible == Alignement::GaucheHaut
+    ||   alignementCible == Alignement::Haut
+    ||   alignementCible == Alignement::DroiteHaut )
         pt_cible.y = cible->getPosAbs().y;
 
     // la ligne horiz. du milieu du gadget a bouger
-    else if ( alignementThis == Alignement::Gauche
-         ||   alignementThis == Alignement::Centre
-         ||   alignementThis == Alignement::Droite )
+    else if ( alignementCible == Alignement::Gauche
+         ||   alignementCible == Alignement::Centre
+         ||   alignementCible == Alignement::Droite )
         pt_cible.y = cible->getPosAbs().y + cible->getTaille().y/2;
 
     // la ligne horiz. du bas du gadget a bouger
@@ -174,6 +175,8 @@ void Geometrie::AlignerSur ( std::shared_ptr<Gadget> cible, Alignement alignemen
 
     log ("getPosAbs()" , getPosAbs());
     log ("cible->getPosAbs()" , cible->getPosAbs());
+    log ("cible->getTaille()" , cible->getTaille());
+    log ("getTaille()" , getTaille());
     log ("pt_cible" , pt_cible);
     log ("pt_origine" , pt_origine);
     log ("pt_destination" , pt_destination);

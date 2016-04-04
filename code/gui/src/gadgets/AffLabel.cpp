@@ -19,7 +19,7 @@ AffLabel::AffLabel ()
 {
     // Creation du nom unique du gadget
     creerNomUnique( "Label" );
-
+    m_mute = false;
     actualiserStyle();
 }
 
@@ -54,6 +54,7 @@ void AffLabel::setTexte( std::string val )
     // Debuggage
     log("setTexte");
     log("m_texte",  val  );
+    m_mute = false;
 
 //    m_texte = val;
     m_texteSFML.setString( val );

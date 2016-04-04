@@ -17,23 +17,23 @@ namespace gui {
 /////////////////////////////////////////////////
 Fenetre::Fenetre ()
 : m_contenant       ( std::make_shared<CntSliders>() )
-, m_titre           ( std::make_shared<AffBarreTitre>() )
+//, m_titre           ( std::make_shared<AffBarreTitre>() )
 , m_tailleBoutons   ( { 18 , 18 } )
 {
     creerNomUnique ( "Fenetre");
 
+
     // initialiser les composants herités
     CmpOmbre::initialiserComposants ( this );
     CmpFond::initialiserComposants ( this );
-//    CmpTexte::initialiserComposants ( this );
+    CmpBarreTitre::initialiserComposants ( this );
+
+    // les composants
+    ajouterComposant( m_contenant );
 
     m_taille = { 350 , 200 };
     m_redimensionnable = true;
     m_deplacable = true;
-
-    // les composants
-    ajouterComposant( m_contenant );
-    ajouterComposant( m_titre );
 
     // les decorations
     if ( m_redimensionnable )
@@ -48,21 +48,21 @@ Fenetre::Fenetre ()
     m_contenantContenantCouleur       = sf::Color( 255,255,255, 255 );
     m_contenantContenantLgnCouleur    = sf::Color( 90,90,90, 255 );
     m_contenantContenantLgnepaisseur  = 0;
-
-    m_titreFondCouleur              = sf::Color( 55,55,55);
-    m_titreFondLgnCouleur           = sf::Color( 90,90,90);
-    m_titreFondLgnepaisseur         = 1;
-
-    m_titreTextCouleur              = sf::Color( 200,200,200);
-    m_titreTextStyle                = sf::Text::Style::Regular;
-    m_titreTextTaille               = 10;
-    m_titreTextPolice               = Interface::ms_polices.get( "Defaut" );
-
-    m_fondCouleur                   = sf::Color( 55,55,55, 255 );
+//
+//    m_titreFondCouleur              = sf::Color( 55,55,55);
+//    m_titreFondLgnCouleur           = sf::Color( 90,90,90);
+//    m_titreFondLgnepaisseur         = 1;
+//
+//    m_titreTextCouleur              = sf::Color( 255,255,255);
+//    m_titreTextStyle                = sf::Text::Style::Regular;
+//    m_titreTextTaille               = 10;
+//    m_titreTextPolice               = Interface::ms_polices.get( "Defaut" );
+//
+    m_fondCouleur                   = sf::Color( 60,60,60, 255 );
     m_fondLgnCouleur                = sf::Color( 90,90,90, 255 );
     m_fondLgnEpaisseur              = 1;
-
-    m_ombreCouleur                  = sf::Color( 0,0,0, 100 );
+//
+//    m_ombreCouleur                  = sf::Color( 0,0,0, 100 );
 
 }
 
@@ -93,11 +93,11 @@ void Fenetre::ajouterDecoration ( Decorations deco  )
     demanderActualisation();
 };
 
-/////////////////////////////////////////////////
-void Fenetre::chargerIcone   (std::string fichier )
-{
-    m_titre->setIconeImage( fichier );
-}
+///////////////////////////////////////////////////
+//void Fenetre::chargerIcone   (std::string fichier )
+//{
+////    m_titre->setIconeImage( fichier );
+//}
 
 
 
@@ -161,13 +161,13 @@ void Fenetre::actualiserGeometrie ()
     for(auto deco : m_decorations)
         deco.second->actualiserGeometrie ();
 
-    m_contenant->setTaille    ( { m_taille.x - 2*m_marge.x, m_taille.y - getTailleBouton().y - 2*m_marge.y } );
-    m_contenant->setPosition  ( m_marge.x , getTailleBouton().y + m_marge.y );
+    // on actualise le titre
+    CmpBarreTitre::actualiserGeometrie();
 
-    m_titre->setTailleX     ( m_taille.x - 2*m_marge.x );
 
-    m_titre->setTailleY     ( getTailleBouton().y );
-    m_titre->setPosition    ( m_marge.x , m_marge.y );
+    m_contenant->setTaille    ( { m_taille.x - 2*m_marge.x, m_taille.y - m_titreFond->getTaille().y - 2*m_marge.y } );
+    m_contenant->setPosition  ( m_marge.x , m_titreFond->getTaille().y + m_marge.y );
+
 
     m_fond->setTaille       ( m_taille );
     m_fond->setPosition     ( 0 , 0 );
@@ -193,14 +193,8 @@ void Fenetre::actualiserStyle ()
     m_contenant->setContenantOutlineThickness( m_contenantContenantLgnepaisseur  );
 
 
-    m_titre->setTexteTaille         ( m_titreTextTaille );
-    m_titre->setCouleur             ( m_titreTextCouleur );
-    m_titre->setTextePolice         ( m_titreTextPolice );
-    m_titre->setTexteStyle          ( m_titreTextStyle );
-    m_titre->setFondCouleur         ( m_titreFondCouleur ) ;
-    m_titre->setFondLigneCouleur    ( m_titreFondLgnCouleur  ) ;
-    m_titre->setFondLigneEpaisseur  ( m_titreFondLgnepaisseur  );
-
+    // on actualise le titre
+    CmpBarreTitre::actualiserStyle();
 
     // on actualise le fond
     m_fond->setFondCouleur          ( m_fondCouleur.repos );

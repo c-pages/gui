@@ -5,6 +5,21 @@
 namespace gui {
 
 
+/////////////////////////////////////////////////
+/// \brief les 9 endroits d'alignement entre gadgets
+/////////////////////////////////////////////////
+enum class Alignement {
+    Centre,
+    Gauche,
+    Droite,
+    Haut,
+    Bas,
+    GaucheHaut,
+    GaucheBas,
+    DroiteHaut,
+    DroiteBas
+};
+
 
 /////////////////////////////////////////////////
 /// \brief

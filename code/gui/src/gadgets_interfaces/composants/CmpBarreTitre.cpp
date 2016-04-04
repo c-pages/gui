@@ -1,114 +1,168 @@
 #include "gadgets_interfaces/composants/CmpBarreTitre.h"
 #include "Interface.h"
+#include "Enums.h"
 namespace gui {
 
 
+
 CmpBarreTitre::CmpBarreTitre()
-: m_label   ( std::make_shared<AffLabel>())
+: m_titreFond   ( std::make_shared<AffRectangle>() )
+, m_titreLabel  ( std::make_shared<AffLabel>() )
+, m_titreIcone  ( std::make_shared<AffIcone>() )
+, m_btnFermer   ( std::make_shared<BtnIcone>() )
+, m_btnReduire  ( std::make_shared<BtnIcone>() )
 {
 
     // valeurs par defaut
-    m_textCouleur.set( sf::Color::White );
-    m_textCouleur.set( sf::Color( 100,100,100 ) , Etat::desactive );
-    m_textTaille.set ( 12 ) ;
-    m_textPolice.set ( Interface::ms_polices.get( "Defaut" ) ) ;
-    m_textStyle.set  ( sf::Text::Style::Regular ) ;
+    m_titreTaille    = { 200 , 20 };
+    m_titreMarge     = { 2 , 2 };
+    m_taillebouton   = { m_titreTaille.y, m_titreTaille.y };
+
+    m_titreTextCouleur         = sf::Color( 255,255,255 ) ;
+    m_titreTextStyle           = sf::Text::Style::Regular;
+    m_titreTextTaille          = 10;
+    m_titreTextPolice          = Interface::ms_polices.get ( "Defaut" );
+
+//    m_titreFondCouleur         = sf::Color( 55,55,55 ) ;
+    m_titreFondCouleur         = sf::Color::Transparent ;
+    m_titreFondLgnCouleur      = sf::Color( 90,90,90 ) ;
+    m_titreFondLgnepaisseur    = 1;
+
+    m_titreBtnCouleur           = sf::Color::Transparent ;
+    m_titreBtnCouleur.survol    = sf::Color( 255 ,255,255,30 ) ;
+    m_titreBtnCouleur.press     = sf::Color( 255 ,255,255,70 ) ;
+    m_titreBtnLgnCouleur        = sf::Color::Transparent ;
+    m_titreBtnLgnepaisseur      = 0;
 }
 
 
 /////////////////////////////////////////////////
 void CmpBarreTitre::initialiserComposants ( Gadget*     base ){
     m_base = base ;
-    m_base->ajouterComposant ( m_label );
+    m_base->ajouterComposant    ( m_titreFond );
+    m_base->ajouterComposant    ( m_titreLabel );
+    m_base->ajouterComposant    ( m_titreIcone );
+    m_base->ajouterComposant    ( m_btnReduire );
+    m_base->ajouterComposant    ( m_btnFermer );
+
+    m_btnReduire->setAutoAjuster (false );
+    m_btnFermer->setAutoAjuster (false );
+
+    m_titreFond->creerNomUnique("Fond");
+    m_titreLabel->creerNomUnique("Label");
+    m_titreIcone->creerNomUnique("Icone");
+    m_btnReduire->creerNomUnique("btnReduire");
+    m_btnFermer->creerNomUnique("btnFermer");
 };
 
 /////////////////////////////////////////////////
-void CmpBarreTitre::setTexte( std::string val ){
-    m_base->log("setTexte ", val  );
-    m_texte = val;
-    m_label->setTexte ( val ) ;
+void CmpBarreTitre::actualiserGeometrie(){
+
+    m_titreTaille = { m_base->getTaille().x - 2* m_base->getMarge().x , m_titreTaille.y };
+
+    m_titreFond->setTaille      ( m_titreTaille  );
+    m_titreFond->setPosition    ( m_base->getMarge() );
+
+    m_titreIcone->AlignerSur ( m_titreFond , Alignement::Gauche , Alignement::Gauche );
+    m_titreIcone->move( m_titreMarge.x , 0 );
+
+    m_titreLabel->AlignerSur ( m_titreIcone , Alignement::Gauche , Alignement::Droite );
+    m_titreLabel->move( m_titreMarge.x , -3 );
+
+    m_btnFermer->setTaille      ( m_taillebouton );
+    m_btnFermer->AlignerSur ( m_titreFond , Alignement::Droite , Alignement::Droite );
+
+    m_btnReduire->setTaille     ( m_taillebouton );
+    m_btnReduire->AlignerSur ( m_btnFermer , Alignement::Droite , Alignement::Gauche );
+
+
+}
+
+/////////////////////////////////////////////////
+void CmpBarreTitre::actualiserStyle(){
+
+    m_titreLabel->setTexteTaille     ( m_titreTextTaille );
+    m_titreLabel->setTexteCouleur    ( m_titreTextCouleur );
+    m_titreLabel->setTextePolice     ( m_titreTextPolice );
+    m_titreLabel->setTexteStyle      ( m_titreTextStyle );
+
+    m_titreFond->setFondCouleur        ( m_titreFondCouleur );
+    m_titreFond->setFondLigneCouleur   ( m_titreFondLgnCouleur );
+    m_titreFond->setFondLigneEpaisseur ( m_titreFondLgnepaisseur );
+
+    m_btnReduire->setFondCouleur        ( m_titreBtnCouleur );
+    m_btnReduire->setFondLigneCouleur        ( m_titreBtnLgnCouleur );
+    m_btnReduire->setFondLigneEpaisseur        ( m_titreBtnLgnepaisseur );
+
+    m_btnReduire->setImage  ( &Interface::ms_icones.get("ico_fenetre"));
+    m_btnReduire->setIndex  ( 2 );
+    m_btnReduire->setFix    ( true );
+
+    m_btnFermer->setFondCouleur        ( m_titreBtnCouleur );
+    m_btnFermer->setFondLigneCouleur        ( m_titreBtnLgnCouleur );
+    m_btnFermer->setFondLigneEpaisseur        ( m_titreBtnLgnepaisseur );
+
+    m_btnFermer->setImage  ( &Interface::ms_icones.get("ico_fenetre"));
+    m_btnFermer->setIndex  ( 1 );
+    m_btnFermer->setFix    ( true );
+
+}
+
+/////////////////////////////////////////////////
+void CmpBarreTitre::setTitre( std::string val ){
+    m_base->log("setTitre ", val  );
+//    m_texte = val;
+    m_titreLabel->setTexte ( val ) ;
     m_base->demanderActuaGeom();
 };
 
 /////////////////////////////////////////////////
-std::string  CmpBarreTitre::getTexte( ) const{
-    return m_texte;
+std::string  CmpBarreTitre::getTitre( ) const{
+    return m_titreLabel->getTexte();
 };
 
 
 /////////////////////////////////////////////////
-void CmpBarreTitre::setTexteTaille( float val , Etat etat ){
-    m_textTaille.set ( val , etat ) ;
-    m_base->demanderActuaStyle();
-};
-
-
-
-/////////////////////////////////////////////////
-void CmpBarreTitre::setTexteTaille( Valeurs<float> val ){
-    m_textTaille = val;
-    m_base->demanderActuaStyle();
-};
-
-
-/////////////////////////////////////////////////
-void CmpBarreTitre::setTexteCouleur( sf::Color couleur , Etat etat){
-    m_textCouleur.set ( couleur , etat ) ;
+void CmpBarreTitre::setTitreTxtTaille( float val  ){
+    m_titreLabel->setTexteTaille ( val ) ;
     m_base->demanderActuaStyle();
 };
 
 
 
 /////////////////////////////////////////////////
-void CmpBarreTitre::setTexteCouleur( Valeurs<sf::Color> couleur  ){
-    m_textCouleur = couleur ;
+void CmpBarreTitre::setTitreTxtCouleur( sf::Color couleur){
+    m_titreTextCouleur = couleur  ;
+    m_base->demanderActuaStyle();
+};
+
+
+
+/////////////////////////////////////////////////
+void CmpBarreTitre::setTitreTxtPolice( sf::Font val  ){
+    m_titreTextPolice = val  ;
     m_base->demanderActuaStyle();
 }
 
 
+
 /////////////////////////////////////////////////
-void CmpBarreTitre::setTextePolice( sf::Font val  , Etat etat ){
-    m_textPolice.set ( val , etat ) ;
-    m_base->demanderActuaStyle();
+void CmpBarreTitre::setTitreTxtStyle( sf::Text::Style val   )  {
+    m_titreTextStyle =  val   ;
+    m_titreLabel->setTexteStyle    ( val  ) ;
 }
 
 
-/////////////////////////////////////////////////
-void CmpBarreTitre::setTextePolice( Valeurs<sf::Font> val   ){
-    m_textPolice.set ( val ) ;
-    m_base->demanderActuaStyle();
-}
-
 
 /////////////////////////////////////////////////
-void CmpBarreTitre::setTexteStyle( sf::Text::Style val   , Etat etat )  {
-    m_textStyle.set ( val  , etat ) ;
-    m_label->setTexteStyle    ( val  ) ;
+void CmpBarreTitre::setTitreIcone   (std::string fichier ){
+    m_titreIcone->setImage( fichier );
 }
-
 
 /////////////////////////////////////////////////
-void CmpBarreTitre::setTexteStyle( Valeurs<sf::Text::Style> val ){
-    m_textStyle.set ( val );
-    m_base->demanderActuaStyle();
+void CmpBarreTitre::setTitreIcone   (sf::Texture* texture ){
+    m_titreIcone->setImage( texture );
 }
-
-
-/////////////////////////////////////////////////
-void CmpBarreTitre::appliquerEtat( Etat etat ){
-
-    m_label->setTexteCouleur    ( sf::Color (
-                                      m_textCouleur.get( etat ).r
-                                    , m_textCouleur.get( etat ).g
-                                    , m_textCouleur.get( etat ).b
-                                    , m_textCouleur.get( etat ).a * m_base->getOpacite() ) ) ;
-    m_label->setTexteTaille     ( m_textTaille.get( etat ) ) ;
-    m_label->setTextePolice     ( m_textPolice.get( etat ) ) ;
-    m_label->setTexteStyle      ( m_textStyle.get( etat ) ) ;
-
-    m_base->demanderActuaStyle();
-}
-
 
 
 }

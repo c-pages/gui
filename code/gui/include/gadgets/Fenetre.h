@@ -10,11 +10,12 @@
 
 #include "decorations/FenDecoration.h"
 
-#include "gadgets_outils/AffBarreTitre.h"
+//#include "gadgets_outils/AffBarreTitre.h"
 
 #include <gadgets_interfaces/Contenant.h>
 #include <gadgets_interfaces/composants/CmpOmbre.h>
 #include <gadgets_interfaces/composants/CmpFond.h>
+#include <gadgets_interfaces/composants/CmpBarreTitre.h>
 
 
 namespace gui {
@@ -22,7 +23,9 @@ namespace gui {
 
 class Fenetre   : public ActionEvenement
                 , public CmpFond
-                , public CmpOmbre {
+                , public CmpOmbre
+                , public CmpBarreTitre
+{
 
 public:
     enum class Decorations{
@@ -51,15 +54,14 @@ public:
     /////////////////////////////////////////////////
     virtual std::shared_ptr<Gadget> retirer (std::shared_ptr<Gadget> enfant);
 
+
     virtual void traiterEvenements (const sf::Event& evenement);
 
-//    /////////////////////////////////////////////////
-//    virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
     virtual bool        estInteractif() { return true; }; ///< \todo voir si on peut faire mieux ...
 
-
-    void chargerIcone   (std::string fichier );
+//
+//    void chargerIcone   (std::string fichier );
 
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
@@ -98,15 +100,11 @@ protected:
 
     std::vector<Decorations>        m_decoASupprimer;
 
-    std::shared_ptr<Contenant>      m_contenant;
-
-    std::shared_ptr<AffBarreTitre>  m_titre;
+    std::shared_ptr<Contenant>      m_contenant;//
 
     std::map<Decorations, std::shared_ptr<FenDecoration>>     m_decorations;
 
     sf::Vector2i            m_tailleBoutons;
-
-
 
     // les proprietés graphiques
     sf::Color               m_contenantFndCouleur;
@@ -116,14 +114,6 @@ protected:
     sf::Color               m_contenantContenantLgnCouleur;
     float                   m_contenantContenantLgnepaisseur;
 
-    sf::Color               m_titreFondCouleur;
-    sf::Color               m_titreFondLgnCouleur;
-    float                   m_titreFondLgnepaisseur;
-    sf::Color               m_titreTextCouleur;
-
-    sf::Text::Style         m_titreTextStyle;
-    float                   m_titreTextTaille;
-    sf::Font                m_titreTextPolice;
 
 }; // fin class Fenetre
 

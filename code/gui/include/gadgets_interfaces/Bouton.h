@@ -34,7 +34,7 @@ public:
 
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
-    void setAutoAjuster (bool val ){ m_autoAjust = val; actualiser ();};
+    void setAutoAjuster (bool val ){ m_autoAjust = val; demanderActualisation();};
 
     static  std::vector<Gadget*>  GetBoutons(){ return ms_boutons ; };
 

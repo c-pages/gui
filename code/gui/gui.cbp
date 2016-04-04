@@ -115,7 +115,6 @@
 		<Unit filename="include/gadgets_interfaces/composants/CmpOmbre.h" />
 		<Unit filename="include/gadgets_interfaces/composants/CmpTexte.h" />
 		<Unit filename="include/gadgets_interfaces/composants/Composant.h" />
-		<Unit filename="include/gadgets_outils/AffBarreTitre.h" />
 		<Unit filename="include/gadgets_outils/AffCurseurSouris.h" />
 		<Unit filename="include/gadgets_outils/BtnMenu.h" />
 		<Unit filename="include/gadgets_outils/CntSimple.h" />
@@ -172,7 +171,6 @@
 		<Unit filename="src/gadgets_interfaces/composants/CmpOmbre.cpp" />
 		<Unit filename="src/gadgets_interfaces/composants/CmpTexte.cpp" />
 		<Unit filename="src/gadgets_interfaces/composants/Composant.cpp" />
-		<Unit filename="src/gadgets_outils/AffBarreTitre.cpp" />
 		<Unit filename="src/gadgets_outils/AffCurseurSouris.cpp" />
 		<Unit filename="src/gadgets_outils/BtnMenu.cpp" />
 		<Unit filename="src/gadgets_outils/CntSimple.cpp" />

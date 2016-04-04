@@ -183,14 +183,14 @@ std::shared_ptr<AffImage>    FabriqueBase::image( std::string fichier )
 
 
 
-/////////////////////////////////////////////////
-std::shared_ptr<AffBarreTitre>    FabriqueBase::barreTitre( std::string text )
-{
-    auto nouveauGadget = creerBureau<AffBarreTitre>( );
-//    nouveauGadget->setTexte ( text );
-    //nouveauGadget->demanderActualisation();
-    return nouveauGadget;
-}
+///////////////////////////////////////////////////
+//std::shared_ptr<AffBarreTitre>    FabriqueBase::barreTitre( std::string text )
+//{
+//    auto nouveauGadget = creerBureau<AffBarreTitre>( );
+////    nouveauGadget->setTexte ( text );
+//    //nouveauGadget->demanderActualisation();
+//    return nouveauGadget;
+//}
 
 /*
 /////////////////////////////////////////////////
@@ -370,8 +370,7 @@ std::shared_ptr<CntSliders>        FabriqueBase::groupeSliders( )
 std::shared_ptr<Fenetre>        FabriqueBase::fenetre( std::string titre )
 {
     auto nouveauGadget = creerFenetre<Fenetre>( );
-//    nouveauGadget->setTexte (titre);
-    //nouveauGadget->demanderActualisation();
+    nouveauGadget->setTitre (titre);
     return nouveauGadget;
 }
 

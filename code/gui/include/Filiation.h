@@ -21,7 +21,7 @@ class Gadget;
 /// \brief Gestion des enfants, parent (GOF4: Filiation)
 ///
 /////////////////////////////////////////////////
-class Filiation : public Log{
+class Filiation : public Log {
 
 
 

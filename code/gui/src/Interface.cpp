@@ -336,6 +336,7 @@ void Interface::traiterEvenements( sf::Event evenement )
 
             // on reset m_boutonPressé
             ms_boutonPresse->setPresse( false );
+            ms_boutonPresse->setSurvol( false );
             ms_boutonPresse = nullptr;
 
 

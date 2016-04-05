@@ -32,9 +32,10 @@ void Geometrie::setTaille( sf::Vector2i val ){
 void Geometrie::setTailleX( float val ){
     if ( m_taille.x == val ) return;
 
-    if ( m_taille.x == val ) return;
     m_taille.x = val;
-    static_cast<Gadget*>(this)->demanderActuaGeom();
+    static_cast<Gadget*>(this)->log("setTailleX");
+    static_cast<Gadget*>(this)->actualiserGeometrie();
+//    static_cast<Gadget*>(this)->demanderActuaGeom();
 };
 
 
@@ -43,9 +44,10 @@ void Geometrie::setTailleX( float val ){
 void Geometrie::setTailleY( float val ){
     if ( m_taille.y == val ) return;
 
-    if ( m_taille.y == val ) return;
     m_taille.y = val;
-    static_cast<Gadget*>(this)->demanderActuaGeom();
+    static_cast<Gadget*>(this)->log("setTailleY");
+    static_cast<Gadget*>(this)->actualiserGeometrie();
+//    static_cast<Gadget*>(this)->demanderActuaGeom();
 };
 
 
@@ -56,6 +58,7 @@ void Geometrie::setPosAbs (sf::Vector2f posAbsDest ){
     if (m_parent != nullptr)
         posAbsParent = m_parent->getPosAbs();
     setPosition( posAbsDest.x -  posAbsParent.x , posAbsDest.y -  posAbsParent.y  ) ;
+
 }
 
 /////////////////////////////////////////////////
@@ -70,14 +73,20 @@ sf::Vector2f Geometrie::getPosAbs () const
 
 /////////////////////////////////////////////////
 void Geometrie::setPosition( float x , float y ){
+    static_cast<Gadget*>(this)->log("setPosition");
+//    m_position = {int ( x )  , int ( y )};
      sf::Transformable::setPosition( int ( x )  , int ( y ) );
      static_cast<Gadget*>(this)->demanderActuaBounds();
+//     static_cast<Gadget*>(this)->actualiserBounds();
 };
 
 /////////////////////////////////////////////////
 void Geometrie::setPosition( sf::Vector2f pos  ){
+    static_cast<Gadget*>(this)->log("setPosition");
+//    m_position = {int ( pos.x )  , int ( pos.y )};
      sf::Transformable::setPosition( int ( pos.x )  , int ( pos.y ) );
      static_cast<Gadget*>(this)->demanderActuaBounds();
+//     static_cast<Gadget*>(this)->actualiserBounds();
 };
 
 /////////////////////////////////////////////////

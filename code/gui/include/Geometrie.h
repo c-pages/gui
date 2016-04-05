@@ -101,6 +101,7 @@ public:
 // Membres
 /////////////////////////////////////////////////
 protected:
+//    sf::Vector2i    m_position;           ///< la taille permet d'organiser la disposition des éléments graphiques du gadget.
     sf::Vector2i    m_taille;           ///< la taille permet d'organiser la disposition des éléments graphiques du gadget.
     sf::FloatRect   m_localBounds;      ///< la rectangle englobant du gadget en coordonnés locales.
     sf::FloatRect   m_globalBounds;     ///< la rectangle englobant du gadget en coordonnés globales.

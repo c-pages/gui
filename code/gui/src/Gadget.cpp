@@ -79,6 +79,12 @@ void Gadget::actualiser ()
     // on a plus besoin d'actualisation
     m_necessiteActualisation = false;
 
+
+//    // si on a bougé
+//    sf::Vector2f pos = getPosition();
+//    if ( m_position.x !=  pos.x &&  m_position.y !=  pos.y )
+//        sf::Transformable::setPosition( m_position.x , m_position.y );
+
     // on actualise le style si besoin
     if ( m_aBesoinActuaStyle )  {
         actualiserStyle ();

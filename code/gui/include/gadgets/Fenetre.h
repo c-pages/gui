@@ -41,6 +41,7 @@ public:
 public:
     Fenetre();
     virtual ~Fenetre(){};
+
     /////////////////////////////////////////////////
     /// \brief Bascule entre un panneau simple (false) et un panneau slider (true).
     ///
@@ -54,14 +55,11 @@ public:
     /////////////////////////////////////////////////
     virtual std::shared_ptr<Gadget> retirer (std::shared_ptr<Gadget> enfant);
 
-
+    /////////////////////////////////////////////////
     virtual void traiterEvenements (const sf::Event& evenement);
 
-
+    /////////////////////////////////////////////////
     virtual bool        estInteractif() { return true; }; ///< \todo voir si on peut faire mieux ...
-
-//
-//    void chargerIcone   (std::string fichier );
 
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
@@ -70,9 +68,13 @@ public:
     virtual void actualiserStyle ();
 
     /////////////////////////////////////////////////
-    virtual sf::Vector2i getTailleBouton (){ return m_tailleBoutons; };
+//    virtual sf::Vector2i getTailleBouton (){ return m_tailleBoutons; };
+    sf::Vector2i    getTailleMini();
 
     std::shared_ptr<AffRectangle> getOmbre() { return m_ombre; };
+
+
+
 
     void ajouterDecoration ( Decorations deco  );
 
@@ -96,15 +98,11 @@ public:
 /////////////////////////////////////////////////
 protected:
 
-//friend class FenDecoRedimPanneau;
+    std::vector<Decorations>                                m_decoASupprimer;
+    std::map<Decorations, std::shared_ptr<FenDecoration>>   m_decorations;
 
-    std::vector<Decorations>        m_decoASupprimer;
+    std::shared_ptr<Contenant>                              m_contenant;    ///<
 
-    std::shared_ptr<Contenant>      m_contenant;//
-
-    std::map<Decorations, std::shared_ptr<FenDecoration>>     m_decorations;
-
-    sf::Vector2i            m_tailleBoutons;
 
     // les proprietés graphiques
     sf::Color               m_contenantFndCouleur;

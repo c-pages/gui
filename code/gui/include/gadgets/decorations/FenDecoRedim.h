@@ -44,7 +44,7 @@ private:
 
     void corrigerTailleMinimum ();
 
-
+    void initDrag();
 
 /////////////////////////////////////////////////
 // Membres
@@ -58,13 +58,12 @@ private:
     bool    m_redimBas          = false;
     bool    m_redimmensionner   = false;
 
-    sf::Vector2i     m_sourisPosOrigin;
-    sf::Vector2i     m_tailleOrigin;
-    sf::Vector2f     m_posOrigin;
-
-    sf::Vector2i     m_tailleFenetre;
-    sf::Vector2i     m_posFenetre;
-
+    sf::Vector2i    m_sourisPosOrigin;
+    sf::Vector2i    m_tailleOrigin;
+    sf::Vector2i    m_posOrigin;
+    sf::Vector2i    m_tailleFenetre;
+    sf::Vector2i    m_posFenetre;
+    sf::Vector2i    m_posMin;
 
     // les composants de l'interface du gadget
     std::shared_ptr<BtnRectangle>   m_btn_gauche;

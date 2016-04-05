@@ -20,7 +20,7 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
 //, m_fenetre         ( std::make_shared<FenSimple>() )
 {
 //    std::cout << "Decoration redim : creation\n";
-    m_fenetre->setMarge( { 6 , 6 } );
+    m_fenetre->setMarge( { 5 , 5 } );
 
     m_fenetre->ajouterComposant( m_btn_gauche );
     m_fenetre->ajouterComposant( m_btn_droite );
@@ -66,65 +66,40 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
 
 
 
-
     auto fct_redimStartG = [this](){
-            m_fenetre->demander_aEtre_auDessus();
-            m_sourisPosOrigin = m_fenetre->getPosSouris();
-            m_tailleOrigin = m_fenetre->getTaille();
-            m_posOrigin = m_fenetre->getPosition();
+            initDrag();
             m_redimGauche = true;
         };
     auto fct_redimStartD = [this](){
-            m_fenetre->demander_aEtre_auDessus();
-            m_sourisPosOrigin = m_fenetre->getPosSouris();
-            m_tailleOrigin = m_fenetre->getTaille();
-            m_posOrigin = m_fenetre->getPosition();
+            initDrag();
             m_redimDroite = true;
         };
     auto fct_redimStartH = [this](){
-            m_fenetre->demander_aEtre_auDessus();
-            m_sourisPosOrigin = m_fenetre->getPosSouris();
-            m_tailleOrigin = m_fenetre->getTaille();
-            m_posOrigin = m_fenetre->getPosition();
+            initDrag();
             m_redimHaut = true;
         };
     auto fct_redimStartB = [this](){
-            m_fenetre->demander_aEtre_auDessus();
-            m_sourisPosOrigin = m_fenetre->getPosSouris();
-            m_tailleOrigin = m_fenetre->getTaille();
-            m_posOrigin = m_fenetre->getPosition();
+            initDrag();
             m_redimBas = true;
         };
 
     auto fct_redimStartHG = [this](){
-            m_fenetre->demander_aEtre_auDessus();
-            m_sourisPosOrigin = m_fenetre->getPosSouris();
-            m_tailleOrigin = m_fenetre->getTaille();
-            m_posOrigin = m_fenetre->getPosition();
+            initDrag();
             m_redimHaut = true;
             m_redimGauche = true;
         };
     auto fct_redimStartHD = [this](){
-            m_fenetre->demander_aEtre_auDessus();
-            m_sourisPosOrigin = m_fenetre->getPosSouris();
-            m_tailleOrigin = m_fenetre->getTaille();
-            m_posOrigin = m_fenetre->getPosition();
+            initDrag();
             m_redimHaut = true;
             m_redimDroite = true;
         };
     auto fct_redimStartBG = [this](){
-            m_fenetre->demander_aEtre_auDessus();
-            m_sourisPosOrigin = m_fenetre->getPosSouris();
-            m_tailleOrigin = m_fenetre->getTaille();
-            m_posOrigin = m_fenetre->getPosition();
+            initDrag();
             m_redimBas = true;
             m_redimGauche = true;
         };
     auto fct_redimStartBD = [this](){
-            m_fenetre->demander_aEtre_auDessus();
-            m_sourisPosOrigin = m_fenetre->getPosSouris();
-            m_tailleOrigin = m_fenetre->getTaille();
-            m_posOrigin = m_fenetre->getPosition();
+            initDrag();
             m_redimBas = true;
             m_redimDroite = true;
         };
@@ -205,6 +180,19 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
 
 }
 
+/////////////////////////////////////////////////
+void FenDecoRedim::initDrag()
+{
+    // la fenetre au dessus
+    m_fenetre->demander_aEtre_auDessus();
+
+    // init des valeurs pour le drag
+    m_sourisPosOrigin   = m_fenetre->getPosSouris();
+    m_tailleOrigin      = m_fenetre->getTaille();
+    m_posOrigin         = sf::Vector2i( m_fenetre->getPosition() );
+    m_posMin            =   { m_fenetre->getPosition().x + m_fenetre->getTaille().x - m_fenetre->getTailleMini().x
+                            , m_fenetre->getPosition().y + m_fenetre->getTaille().y - m_fenetre->getTailleMini().y };
+}
 
 /////////////////////////////////////////////////
 FenDecoRedim::~FenDecoRedim()
@@ -270,26 +258,33 @@ void FenDecoRedim::actualiserStyle ()
 void FenDecoRedim::corrigerTailleMinimum ()
 {
 
-    if ( m_tailleFenetre.y < m_fenetre->getTailleBouton().y + m_fenetre->getMarge().y*2 )
-        m_tailleFenetre.y =  m_fenetre->getTailleBouton().y + m_fenetre->getMarge().y*2 ;
+    if ( m_tailleFenetre.y < m_fenetre->getTailleMini().y  )
+        m_tailleFenetre.y =  m_fenetre->getTailleMini().y  ;
 
-    if ( m_tailleFenetre.x < 150 + m_fenetre->getMarge().x*2 )
-        m_tailleFenetre.x =  150 + m_fenetre->getMarge().x*2;
+    if ( m_tailleFenetre.x <  m_fenetre->getTailleMini().x  )
+        m_tailleFenetre.x =   m_fenetre->getTailleMini().x;
+
 }
-
-
 
 /////////////////////////////////////////////////
 void FenDecoRedim::redimmensionner_haut ()
 {
+    m_fenetre->log ("redim haut");
+
     auto posSouris = m_fenetre->getPosSouris();
+    auto decalage =  posSouris.y - m_sourisPosOrigin.y ;
 
-    m_tailleFenetre = { m_fenetre->getTaille().x , m_tailleOrigin.y - ( posSouris.y - m_sourisPosOrigin.y  ) };
+    // la taille
+    m_tailleFenetre = { m_fenetre->getTaille().x , m_tailleOrigin.y - decalage };
     corrigerTailleMinimum ();
+    m_fenetre->setTailleY   ( m_tailleFenetre.y  );
+    m_fenetre->actualiser();
 
-    m_fenetre->setTailleY( m_tailleFenetre.y  );
-    m_fenetre->setPosition ( m_fenetre->getPosition().x , m_posOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ));
-
+    // la position
+    auto posDest = m_posOrigin.y + decalage;
+    if ( posDest > m_posMin.y )
+        posDest = m_posMin.y;
+    m_fenetre->setPosition  ( m_fenetre->getPosition().x , posDest );
 
 }
 
@@ -314,11 +309,21 @@ void FenDecoRedim::redimmensionner_gauche ()
     m_tailleFenetre = { m_tailleOrigin.x - ( posSouris.x - m_sourisPosOrigin.x ), m_fenetre->getTaille().y   };
     corrigerTailleMinimum ();
     m_fenetre->setTailleX( m_tailleFenetre.x  );
+    m_fenetre->actualiser();
 
-    corrigerTailleMinimum ();
 
-    m_fenetre->setPosition ( m_posOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ),  m_fenetre->getPosition().y );
+    auto posDest = m_posOrigin.x + posSouris.x - m_sourisPosOrigin.x;
 
+    if ( posDest > m_posMin.x )
+        posDest = m_posMin.x;
+
+//    if ( m_tailleFenetre.x !=  m_fenetre->getTailleMini().x  )
+        m_fenetre->setPosition ( posDest,  m_fenetre->getPosition().y );
+
+//    auto posDest = m_posOrigin.y + decalage;
+//    if ( posDest > m_posMin.y )
+//        posDest = m_posMin.y;
+//    m_fenetre->setPosition  ( m_fenetre->getPosition().x , posDest );
 }
 
 /////////////////////////////////////////////////
@@ -344,9 +349,8 @@ void FenDecoRedim::traiterEvenements (const sf::Event& evenement)
     if ( m_redimHaut )  { redimmensionner_haut (); }
     if ( m_redimBas )   { redimmensionner_bas (); }
 
-    if ( redimEnCours () )
-        m_fenetre->actualiserGeometrie();
-
+//    if ( redimEnCours () )
+//        m_fenetre->demanderActuaGeom();
 
 }
 

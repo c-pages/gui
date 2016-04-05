@@ -107,8 +107,8 @@ void FenRedim::actualiser ()
 void FenDecoRedimPanneau::corrigerTailleMinimum ()
 {
 //    std::cout << "MARGE : " << m_fenetre->getMarge().x << ", " << m_fenetre->getMarge().y << "\n";
-    if ( m_tailleFenetre.y < m_fenetre->getTailleBouton().y + m_fenetre->getMarge().y*2 )
-        m_tailleFenetre.y =  m_fenetre->getTailleBouton().y + m_fenetre->getMarge().y*2 ;
+    if ( m_tailleFenetre.y < m_fenetre->getTailleMini().y  )
+        m_tailleFenetre.y =  m_fenetre->getTailleMini().y  ;
 }
 
 
@@ -138,11 +138,6 @@ void FenDecoRedimPanneau::traiterEvenements (const sf::Event& evenement)
 {
 
     if ( redimEnCours() )   redimensionner ();
-
-//    FenSimple::traiterEvenements (evenement);
-
-//     if ( redimEnCours () )
-//        positionnerFenetre ();
 
 }
 

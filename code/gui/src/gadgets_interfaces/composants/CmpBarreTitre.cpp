@@ -26,7 +26,7 @@ CmpBarreTitre::CmpBarreTitre()
 //    m_titreFondCouleur         = sf::Color( 55,55,55 ) ;
     m_titreFondCouleur         = sf::Color::Transparent ;
     m_titreFondLgnCouleur      = sf::Color( 90,90,90 ) ;
-    m_titreFondLgnepaisseur    = 1;
+    m_titreFondLgnepaisseur    = 0;
 
     m_titreBtnCouleur           = sf::Color::Transparent ;
     m_titreBtnCouleur.survol    = sf::Color( 255 ,255,255,30 ) ;

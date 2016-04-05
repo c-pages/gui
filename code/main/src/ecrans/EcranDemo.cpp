@@ -224,7 +224,7 @@ EcranDemo::initGUI_tests ()
 //    zoneNum->setLogActif  ( true , true );
     zoneNum->setPosition  ( 200, 350 );
 */
-/*
+
     ////////////////////////////////////////////////////////////////////////
     ////// les menus deroulants  ///////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
@@ -265,7 +265,7 @@ EcranDemo::initGUI_tests ()
     menusDeroulants->ajouterMenu    ("Aide");
     menusDeroulants->ajouterElement ("Aide");
     menusDeroulants->ajouterElement ("A propos");
-*/
+
 
     ////////////////////////////////////////////////////////////////////////
     ////// les fenetres  ///////////////////////////////////////////////////
@@ -273,6 +273,7 @@ EcranDemo::initGUI_tests ()
     auto fenetre = m_interface->creer.fenetre("Fenetre Démo");
     fenetre->setTitreIcone ( &gui::Interface::ms_icones.get("ico_fenetreDefaut"));
     fenetre->setPosition ( 300,300);
+    fenetre->setLogActif (true);
 }
 
 /////////////////////////////////////////////////

@@ -17,8 +17,6 @@ namespace gui {
 /////////////////////////////////////////////////
 Fenetre::Fenetre ()
 : m_contenant       ( std::make_shared<CntSliders>() )
-//, m_titre           ( std::make_shared<AffBarreTitre>() )
-, m_tailleBoutons   ( { 18 , 18 } )
 {
     creerNomUnique ( "Fenetre");
 
@@ -32,6 +30,7 @@ Fenetre::Fenetre ()
     ajouterComposant( m_contenant );
 
     m_taille = { 350 , 200 };
+//    m_marge = {20,20};
     m_redimensionnable = true;
     m_deplacable = true;
 
@@ -44,25 +43,16 @@ Fenetre::Fenetre ()
     // les couleurs
     m_contenantFndCouleur             = sf::Color( 70,70,70, 255 );
     m_contenantFndLgnCouleur          = sf::Color( 90,90,90 );
-    m_contenantFndLgnepaisseur        = 1;
+    m_contenantFndLgnepaisseur        = 0;
+
     m_contenantContenantCouleur       = sf::Color( 255,255,255, 255 );
     m_contenantContenantLgnCouleur    = sf::Color( 90,90,90, 255 );
     m_contenantContenantLgnepaisseur  = 0;
-//
-//    m_titreFondCouleur              = sf::Color( 55,55,55);
-//    m_titreFondLgnCouleur           = sf::Color( 90,90,90);
-//    m_titreFondLgnepaisseur         = 1;
-//
-//    m_titreTextCouleur              = sf::Color( 255,255,255);
-//    m_titreTextStyle                = sf::Text::Style::Regular;
-//    m_titreTextTaille               = 10;
-//    m_titreTextPolice               = Interface::ms_polices.get( "Defaut" );
-//
+
     m_fondCouleur                   = sf::Color( 60,60,60, 255 );
     m_fondLgnCouleur                = sf::Color( 90,90,90, 255 );
     m_fondLgnEpaisseur              = 1;
-//
-//    m_ombreCouleur                  = sf::Color( 0,0,0, 100 );
+
 
 }
 
@@ -71,12 +61,7 @@ void Fenetre::ajouterDecoration ( Decorations deco  )
 {
     // si il est deja dans la liste on zappe.
     if ( m_decorations.find( deco ) != m_decorations.end() )
-    {
-//        std::cout<<"Ajouter Decoration : deja present\n";
         return;
-    }
-
-//    std::cout<<"Ajouter Decoration : ok\n";
 
     switch ( deco )    {
         case Decorations::Drag:
@@ -93,13 +78,6 @@ void Fenetre::ajouterDecoration ( Decorations deco  )
     demanderActualisation();
 };
 
-///////////////////////////////////////////////////
-//void Fenetre::chargerIcone   (std::string fichier )
-//{
-////    m_titre->setIconeImage( fichier );
-//}
-
-
 
 /////////////////////////////////////////////////
 void Fenetre::traiterEvenements (const sf::Event& evenement)
@@ -113,6 +91,14 @@ void Fenetre::traiterEvenements (const sf::Event& evenement)
     for ( auto composant : m_composants )
         composant->traiterEvenements ( evenement);
 
+}
+
+
+/////////////////////////////////////////////////
+ sf::Vector2i  Fenetre::getTailleMini ()
+{
+    return  { m_titreIcone->getTaille().x + m_titreLabel->getTaille().x + 2 * m_btnFermer->getTaille().x + 3*m_titreMarge.x + 2*m_marge.x
+            , m_titreFond->getTaille().y + 2*m_marge.y };
 }
 
 
@@ -157,13 +143,12 @@ void Fenetre::actualiserEtatDeco ( )
 /////////////////////////////////////////////////
 void Fenetre::actualiserGeometrie ()
 {
-
+//    log ("ActualiserGEom");
     for(auto deco : m_decorations)
         deco.second->actualiserGeometrie ();
 
     // on actualise le titre
     CmpBarreTitre::actualiserGeometrie();
-
 
     m_contenant->setTaille    ( { m_taille.x - 2*m_marge.x, m_taille.y - m_titreFond->getTaille().y - 2*m_marge.y } );
     m_contenant->setPosition  ( m_marge.x , m_titreFond->getTaille().y + m_marge.y );
@@ -203,25 +188,6 @@ void Fenetre::actualiserStyle ()
 
 }
 
-/*
-/////////////////////////////////////////////////
-std::shared_ptr<Gadget>  Fenetre::testerSurvol ( sf::Vector2i position )
-{
-    // si on est dans le panneau
-    if ( m_globalBounds.contains( position.x, position.y ) && estActif() )
-    {
-        // si on survol un gadget composant (slider)
-        auto testInterfaceLocal = testerSurvolComposants( position );
-        if ( testInterfaceLocal == m_contenant )
-            return thisPtr();
-        else if ( testInterfaceLocal != nullptr )
-            // on le renvois
-            return testInterfaceLocal;
-        else return thisPtr();
-    }
-    else return nullptr;
-}
-*/
 
 
 } // fin namespace gui

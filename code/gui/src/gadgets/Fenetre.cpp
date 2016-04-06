@@ -140,6 +140,9 @@ void Fenetre::actualiserEtatDeco ( )
         }
     }
 }
+
+
+
 /////////////////////////////////////////////////
 void Fenetre::actualiserGeometrie ()
 {
@@ -169,9 +172,9 @@ void Fenetre::actualiserStyle ()
     for(auto deco : m_decorations)
         deco.second->actualiserStyle ();
 
-    m_contenant->setFondCouleur            ( m_contenantFndCouleur ) ;
-    m_contenant->setFondLigneCouleur         ( m_contenantFndLgnCouleur  ) ;
-    m_contenant->setFondLigneEpaisseur     ( m_contenantFndLgnepaisseur  );
+//    m_contenant->setFondCouleur            ( m_contenantFndCouleur ) ;
+//    m_contenant->setFondLigneCouleur       ( m_contenantFndLgnCouleur  ) ;
+//    m_contenant->setFondLigneEpaisseur     ( m_contenantFndLgnepaisseur  );
 
     m_contenant->setContenantFillColor       ( m_contenantContenantCouleur ) ;
     m_contenant->setContenantOutlineColor    ( m_contenantContenantLgnCouleur  ) ;

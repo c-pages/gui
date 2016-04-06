@@ -18,27 +18,30 @@ Contenant::Contenant ()
 : m_affContenant ( std::make_shared<sf::RectangleShape>() )
 , m_posContenant ( {0,0} )
 
-, m_fond ( std::make_shared<AffRectangle>() )
+//, m_fond ( std::make_shared<AffRectangle>() )
 , m_groupe ( std::make_shared<Groupe>() )
 , m_repartiteur ( new RepartiteurLibre ( this ) )
 {
-    m_posContenant = {0,0};
+
+    creerNomUnique("contenant");
+
+    //debug
+    m_mute = false;
 
     auto tailleMax = sf::Texture::getMaximumSize();
-    if ( tailleMax < 1080 )
-        m_renderTexture.create( 300  , tailleMax );
-    else
-        m_renderTexture.create( 300  , 1080 );
+    log ("getMaximumSize" , tailleMax );
 
-    m_fndCouleur            = sf::Color( 0,0,0, 50 );
-    m_fndLgnCouleur         = sf::Color( 255,255,255, 20 );
-    m_fndLgnepaisseur       = 1;
+//    if ( tailleMax < 1080 )
+//        m_renderTexture.create( tailleMax  , tailleMax );
+//    else
+        m_renderTexture.create( 1080  , 1080 );
 
     m_contenantCouleur      = sf::Color( 255,255,255, 255 );
     m_contenantLgnCouleur   = sf::Color( 255,255,255, 20 );
     m_contenantLgnepaisseur = 1;
 
-    ajouterComposant( m_fond );
+    m_fndCouleur            = sf::Color( 80,80,80 );
+
     ajouterComposant( m_groupe );
 }
 
@@ -46,7 +49,9 @@ Contenant::Contenant ()
 /////////////////////////////////////////////////
 void Contenant::replacerContenu () {
 
-     m_affContenant->setTextureRect(   { 0
+//    m_affContenant->setSize( { m_taille.x , m_taille.y } );
+
+    m_affContenant->setTextureRect(   { 0
                                     , 0
                                     , m_affContenant->getSize().x
                                     , m_affContenant->getSize().y });
@@ -89,22 +94,21 @@ void Contenant::actualiserContenu ()
     repartirEnfants();
 
     // Render to texture des enfants
-    m_renderTexture.clear( sf::Color::Transparent );
-//    m_renderTexture.clear( sf::Color::Red );
+    m_renderTexture.clear( m_fndCouleur );
     for (auto enfant : m_groupe->getEnfants() )
         m_renderTexture.draw( *enfant );
-
     m_groupe->setPosition ( -m_posContenant.x , -m_posContenant.y );
-
     m_renderTexture.display();
-//    std::cout << " -> m_posContenant.x : " << m_posContenant.x << "     m_posContenant.y : " << m_posContenant.y << "\nm_contenant->getSize().x : " << m_contenant->getSize().x<< "   m_contenant->getSize().y : " << m_contenant->getSize().y << "\n";
-    // on applique la texture
+
+
+     // on applique la texture
     m_affContenant->setTexture( &m_renderTexture.getTexture() );
     m_affContenant->setTextureRect( { m_posContenant.x
                                     , m_posContenant.y
                                     , m_affContenant->getSize().x
                                     , m_affContenant->getSize().y });
 
+    // on gère la maj des parents
     if ( m_parent != nullptr ) m_parent->actualiserContenu();
 
 };
@@ -112,13 +116,17 @@ void Contenant::actualiserContenu ()
 /////////////////////////////////////////////////
 void Contenant::actualiserGeometrie ()
 {
-//    std::cout << " Contenant::actualiserGeometrie \n";
-    m_fond->setTaille(m_taille);
+    std::cout << " CONTENANT::ACTUALISERGEOMETRIE \n";
+    log ("TAILLE", m_taille);
+    logAlerte ("par la");
+
     m_affContenant->setSize( { m_taille.x , m_taille.y } );
 
     m_tailleContenant = m_taille;
 
     repartirEnfants ();
+
+    demanderActuaBounds();
 
 }
 
@@ -126,9 +134,9 @@ void Contenant::actualiserGeometrie ()
 void Contenant::actualiserStyle ()
 {
 
-    m_fond->setFondCouleur            ( m_fndCouleur );
-    m_fond->setFondLigneCouleur         ( m_fndLgnCouleur  );
-    m_fond->setFondLigneEpaisseur     ( m_fndLgnepaisseur  );
+//    m_fond->setFondCouleur            ( m_fndCouleur );
+//    m_fond->setFondLigneCouleur         ( m_fndLgnCouleur  );
+//    m_fond->setFondLigneEpaisseur     ( m_fndLgnepaisseur  );
 
     m_affContenant->setFillColor       ( m_contenantCouleur );
     m_affContenant->setOutlineColor    ( m_contenantLgnCouleur );
@@ -238,7 +246,7 @@ void Contenant::draw (sf::RenderTarget& target, sf::RenderStates states) const
         //On applique la transformation
         states.transform *= getTransform();
 
-        target.draw( *m_fond , states );
+//        target.draw( *m_fond , states );
         target.draw( *m_affContenant , states );
 
     }

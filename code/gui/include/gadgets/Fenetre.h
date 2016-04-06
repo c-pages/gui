@@ -98,11 +98,12 @@ public:
 /////////////////////////////////////////////////
 protected:
 
+    // les decorations
     std::vector<Decorations>                                m_decoASupprimer;
     std::map<Decorations, std::shared_ptr<FenDecoration>>   m_decorations;
 
+    // composants
     std::shared_ptr<Contenant>                              m_contenant;    ///<
-
 
     // les proprietés graphiques
     sf::Color               m_contenantFndCouleur;

@@ -278,6 +278,8 @@ void FenDecoRedim::redimmensionner_haut ()
     m_tailleFenetre = { m_fenetre->getTaille().x , m_tailleOrigin.y - decalage };
     corrigerTailleMinimum ();
     m_fenetre->setTailleY   ( m_tailleFenetre.y  );
+
+    ///< \todo voir si on peut faire mieux que cette actualisation
     m_fenetre->actualiser();
 
     // la position
@@ -294,6 +296,7 @@ void FenDecoRedim::redimmensionner_bas ()
 {
     auto posSouris = m_fenetre->getPosSouris();
 
+    // la taille
     m_tailleFenetre = { m_fenetre->getTaille().x , m_tailleOrigin.y + ( posSouris.y - m_sourisPosOrigin.y  ) };
     corrigerTailleMinimum ();
     m_fenetre->setTailleY( m_tailleFenetre.y  );
@@ -306,31 +309,27 @@ void FenDecoRedim::redimmensionner_gauche ()
 {
     auto posSouris = m_fenetre->getPosSouris();
 
+    // la taille
     m_tailleFenetre = { m_tailleOrigin.x - ( posSouris.x - m_sourisPosOrigin.x ), m_fenetre->getTaille().y   };
     corrigerTailleMinimum ();
     m_fenetre->setTailleX( m_tailleFenetre.x  );
+
+    ///< \todo voir si on peut faire mieux que cette actualisation
     m_fenetre->actualiser();
 
 
+    // la position
     auto posDest = m_posOrigin.x + posSouris.x - m_sourisPosOrigin.x;
-
     if ( posDest > m_posMin.x )
         posDest = m_posMin.x;
-
-//    if ( m_tailleFenetre.x !=  m_fenetre->getTailleMini().x  )
-        m_fenetre->setPosition ( posDest,  m_fenetre->getPosition().y );
-
-//    auto posDest = m_posOrigin.y + decalage;
-//    if ( posDest > m_posMin.y )
-//        posDest = m_posMin.y;
-//    m_fenetre->setPosition  ( m_fenetre->getPosition().x , posDest );
+    m_fenetre->setPosition ( posDest,  m_fenetre->getPosition().y );
 }
 
 /////////////////////////////////////////////////
 void FenDecoRedim::redimmensionner_droite ()
 {
+    // la taille
     auto posSouris = m_fenetre->getPosSouris();
-//    m_fenetre->setTailleX( m_tailleOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ) );
     m_tailleFenetre = { m_tailleOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ) , m_fenetre->getTaille().y   };
     corrigerTailleMinimum ();
     m_fenetre->setTailleX( m_tailleFenetre.x  );
@@ -349,9 +348,7 @@ void FenDecoRedim::traiterEvenements (const sf::Event& evenement)
     if ( m_redimHaut )  { redimmensionner_haut (); }
     if ( m_redimBas )   { redimmensionner_bas (); }
 
-//    if ( redimEnCours () )
-//        m_fenetre->demanderActuaGeom();
-
+    if ( m_redimmensionner ) m_fenetre->demanderActuaGeom();
 }
 
 }; // fin namesapce gui

@@ -65,7 +65,7 @@ void CntSliders::actualiserGeometrie (){
 //    Contenant::actualiserGeometrie ();
 
 
-    m_fond->setTaille(m_taille);
+//    m_fond->setTaille(m_taille);
     m_affContenant->setSize( { m_taille.x , m_taille.y } );
 
 
@@ -82,7 +82,7 @@ void CntSliders::actualiserGeometrie (){
 
 
     m_affContenant->setSize( { m_tailleContenant.x, m_tailleContenant.y } );
-    m_fond->setTaille(m_taille);
+//    m_fond->setTaille(m_taille);
 
 
     // si le contenu est plus grand que le contenant
@@ -152,9 +152,9 @@ void CntSliders::actualiserStyle (){
     m_slider_H->setFondLigneCouleur             ( m_btnFndLgnCouleur  );
     m_slider_H->setFondLigneEpaisseur         ( m_btnFndLgnepaisseur );
 
-    m_fond->setFondCouleur                    ( m_fndCouleur ) ;
-    m_fond->setFondLigneCouleur                 ( m_fndLgnCouleur  ) ;
-    m_fond->setFondLigneEpaisseur             ( m_fndLgnepaisseur  );
+//    m_fond->setFondCouleur                    ( m_fndCouleur ) ;
+//    m_fond->setFondLigneCouleur                 ( m_fndLgnCouleur  ) ;
+//    m_fond->setFondLigneEpaisseur             ( m_fndLgnepaisseur  );
 
 //    actualiserContenu();
 //    actualiserBounds ();
@@ -271,7 +271,7 @@ void CntSliders::draw (sf::RenderTarget& target, sf::RenderStates states) const
         //On applique la transformation
         states.transform *= getTransform();
 
-        target.draw( *m_fond , states );
+//        target.draw( *m_fond , states );
         target.draw( *m_affContenant , states );
         target.draw( *m_slider_V , states );
         target.draw( *m_slider_H , states );

@@ -68,39 +68,24 @@ public:
     /////////////////////////////////////////////////
     virtual void setTaille(sf::Vector2i taille){
         m_taille = taille;
-        m_fond->setTaille(taille);
-        actualiser();
+        m_affContenant->setSize( { m_taille.x , m_taille.y } );
+        replacerContenu () ;
     }
 
-    void setFondCouleur ( sf::Color couleurs  ) {
-            m_fndCouleur = couleurs;
-            actualiserStyle();
-//            m_rectangle->setFondCouleur( couleur );
-        };
-    void setFondLigneCouleur ( sf::Color couleurs  ) {
-            m_fndLgnCouleur = couleurs;
-            actualiserStyle();
-//            m_rectangle->setFondLigneCouleur( couleur );
-        };
-    void setFondLigneEpaisseur ( float epaisseur ) {
-            m_fndLgnepaisseur =  epaisseur;
-            actualiserStyle();
-//            m_rectangle->setFondLigneEpaisseur( epaisseur );
-        };
 
     void setContenantFillColor ( sf::Color couleurs  ) {
             m_contenantCouleur = couleurs;
-            actualiserStyle();
+            demanderActuaStyle();
 //            m_rectangle->setFondCouleur( couleur );
         };
     void setContenantOutlineColor ( sf::Color couleurs  ) {
             m_contenantLgnCouleur = couleurs;
-            actualiserStyle();
+            demanderActuaStyle();
 //            m_rectangle->setFondLigneCouleur( couleur );
         };
     void setContenantOutlineThickness ( float epaisseur ) {
             m_contenantLgnepaisseur =  epaisseur;
-            actualiserStyle();
+            demanderActuaStyle();
 //            m_rectangle->setFondLigneEpaisseur( epaisseur );
         };
 
@@ -126,8 +111,7 @@ protected:
 
     std::unique_ptr<Repartiteur>        m_repartiteur;      ///< cf; GOF Strategie
 
-//    int                                 m_posContenant.x;
-//    int                                 m_posContenant.y;
+
     sf::Texture                         m_contenu;          ///< La texture SFML qui affiche le contenu du panneau.
     sf::RenderTexture                   m_renderTexture;
     sf::Vector2f                        m_largeurSliders;
@@ -136,14 +120,13 @@ protected:
     sf::Vector2i                        m_posContenant;
 
     // les composants de l'interface du gadget
-    std::shared_ptr<AffRectangle>       m_fond;
+
     std::shared_ptr<sf::RectangleShape> m_affContenant;
     std::shared_ptr<Groupe>             m_groupe;
 
     // les proprietés graphiques
     sf::Color               m_fndCouleur;
-    sf::Color               m_fndLgnCouleur;
-    float                   m_fndLgnepaisseur;
+
 
     sf::Color               m_contenantCouleur;
     sf::Color               m_contenantLgnCouleur;

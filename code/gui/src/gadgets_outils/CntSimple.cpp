@@ -62,7 +62,7 @@ void CntSimple::draw (sf::RenderTarget& target, sf::RenderStates states) const
         //On applique la transformation
         states.transform *= getTransform();
 
-        target.draw( *m_fond , states );
+//        target.draw( *m_fond , states );
         target.draw( *m_affContenant , states );
 
     }

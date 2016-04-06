@@ -273,7 +273,15 @@ EcranDemo::initGUI_tests ()
     auto fenetre = m_interface->creer.fenetre("Fenetre Démo");
     fenetre->setTitreIcone ( &gui::Interface::ms_icones.get("ico_fenetreDefaut"));
     fenetre->setPosition ( 300,300);
-    fenetre->setLogActif (true);
+//    fenetre->setLogActif (true);
+
+    std::shared_ptr<gui::AffLabel> labelTmp = m_interface->creer.label("Ceci est un label Ceci est un label Ceci est un label Ceci est un label Ceci est un label Ceci est un label Ceci est un label Ceci est un label Ceci est un label ");
+    labelTmp->setTexteCouleur( sf::Color::Black);
+    fenetre->ajouter ( labelTmp );
+    fenetre->setTaille( 800 , 500);
+
+
+
 }
 
 /////////////////////////////////////////////////

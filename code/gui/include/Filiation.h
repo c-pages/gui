@@ -81,7 +81,7 @@ public:
     /////////////////////////////////////////////////
     virtual void demander_aEtre_supprimer ();
 
-    void demanderASupprimer (std::shared_ptr<Gadget> gadget );
+    void demanderASupprimer ( std::shared_ptr<Gadget> gadget );
 
     virtual void actualiserEnfants( );
 

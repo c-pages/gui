@@ -93,6 +93,12 @@ public:
                 m_decorations.erase( deco  );
     };
 
+
+
+
+    virtual void fermer();
+    virtual void reduire();
+
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////

@@ -19,7 +19,7 @@
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
-					<Add library="..\gui\bin\Debug\libgui.a" />
+					<Add library="../gui/bin/Debug/libgui.a" />
 					<Add library="sfml-audio-s-d" />
 					<Add library="sfml-graphics-s-d" />
 					<Add library="sfml-window-s-d" />
@@ -40,7 +40,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="..\gui\bin\Release\libgui.a" />
+					<Add library="../gui/bin/Release/libgui.a" />
 					<Add library="sfml-audio-s" />
 					<Add library="sfml-graphics-s" />
 					<Add library="sfml-window-s" />
@@ -86,6 +86,8 @@
 		<Unit filename="media/polices/consolaz.ttf" />
 		<Unit filename="media/polices/webdings.ttf" />
 		<Unit filename="media/polices/wingding.ttf" />
+		<Unit filename="media/shaders/clippingMask.frag" />
+		<Unit filename="media/shaders/flou.frag" />
 		<Unit filename="src/Application.cpp" />
 		<Unit filename="src/Config.cpp" />
 		<Unit filename="src/Ecran.cpp" />

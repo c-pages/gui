@@ -119,7 +119,9 @@ enum class Evenement {
     on_sortir,              ///< Quitte le survol.
 
     onFen_fermer,           ///< Quand on ferme une fenetre.
-    onFen_ouvrir,           ///< Quand on ferme une fenetre.
+    onFen_ouvrir,           ///< Quand on ouvre une fenetre.( a voir , un peu le bordel .... )
+    onFen_bouge,            ///< Quand on bouge une fenetre.
+    onFen_redim,            ///< Quand on redimenssionne une fenetre.
 };
 
 

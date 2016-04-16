@@ -55,6 +55,17 @@ void Composition::actualiserComposants ()
         composant->actualiser();
 }
 
+///////////////////////////////////////////////////
+//void Composition::demanderActuaBoundsComposants ()
+//{
+////    static_cast<Gadget*>(this)->log ("actualiserComposants");
+//    for ( auto composant : m_composants ){
+//        composant->demanderActuaBounds();
+//        //actualiser les composants des composants ...
+//        composant->demanderActuaBoundsComposants ();
+//    }
+//}
+
 
 
 /////////////////////////////////////////////////

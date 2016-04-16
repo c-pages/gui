@@ -115,45 +115,10 @@ private:
 //    std::shared_ptr<gui::Skin>          m_skin;         ///< Un skin.
 
     // AFFICHAGE
-    std::shared_ptr<gui::AffRectangle>  m_rectangle;    ///< Un simple rectangle.
+    std::shared_ptr<gui::Fenetre>  m_fenetre1;    ///< Un simple rectangle.
+    sf::Vector2f                   m_posFenetre1;
+    sf::Vector2i                   m_tailleFenetre1;
 
-    std::shared_ptr<gui::AffLabel>      m_labelRetour;        ///< Un simple label.
-
-    std::shared_ptr<gui::AffLabel>      m_labelTitre_0;        ///< Un simple label.
-    std::shared_ptr<gui::AffLabel>      m_labelTitre_1;        ///< Un simple label.
-    std::shared_ptr<gui::AffLabel>      m_labelTitre_2;        ///< Un simple label.
-    std::shared_ptr<gui::AffLabel>      m_labelTitre_3;        ///< Un simple label.
-    std::shared_ptr<gui::AffLabel>      m_labelTitre_4;        ///< Un simple label.
-
-    std::shared_ptr<gui::AffLabel>      m_label;        ///< Un simple label.
-    std::shared_ptr<gui::AffLabel>      m_label_2;      ///< Un autre label.
-    std::shared_ptr<gui::AffLabel>      m_label_3;      ///< Un autre label.
-    std::shared_ptr<gui::AffLabel>      m_label_4;      ///< Un autre label.
-    std::shared_ptr<gui::AffLabel>      m_label_5;      ///< Un autre label.
-    std::shared_ptr<gui::AffLabel>      m_label_6;      ///< Un autre label.
-    std::shared_ptr<gui::AffLabel>      m_label_7;      ///< Un autre label.
-    std::shared_ptr<gui::AffLabel>      m_label_8;      ///< Un autre label.
-    std::shared_ptr<gui::AffLabel>      m_label_9;      ///< Un autre label.
-    std::shared_ptr<gui::AffLabel>      m_label_10;      ///< Un autre label.
-    std::shared_ptr<gui::AffLabel>      m_label_11;      ///< Un autre label.
-    std::shared_ptr<gui::AffLabel>      m_label_12;      ///< Un autre label.
-    std::shared_ptr<gui::AffLabel>      m_label_13;      ///< Un autre label.
-    std::shared_ptr<gui::AffLabel>      m_textePourContenant;      ///< Un autre label.
-
-    std::shared_ptr<gui::AffImage>      m_image;        ///< Une simple image.
-    std::shared_ptr<gui::AffIcone>      m_icone;        ///< Une simple icone.
-
-    // BOUTON
-    std::shared_ptr<gui::BtnIcone>      m_boutonIcone;    ///< Un simple bouton rectangulaire.
-    std::shared_ptr<gui::BtnTexte>      m_boutonTexte;    ///< Un simple bouton rectangulaire.
-    std::shared_ptr<gui::BtnRectangle>  m_boutonRect;    ///< Un simple bouton rectangulaire.
-    std::shared_ptr<gui::BtnMenu>       m_boutonMenu;    ///< Un bouton Menu.
-
-    // DONNEE
-    std::shared_ptr<gui::DnCaseACocher>  m_boutonCoche;    ///< Un bouton Menu.
-    std::shared_ptr<gui::DnZoneTexte>    m_zoneTexte;    ///< Un champ de texte.
-    std::shared_ptr<gui::DnGlissere>          m_slider;           ///< Un slider.
-//    std::shared_ptr<gui::DnBarreDefilement> m_barreDefil;    ///< Un slider.
 
 }; // fin EcranDemo
 }; // fin app

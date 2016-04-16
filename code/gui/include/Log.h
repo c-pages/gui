@@ -32,6 +32,7 @@ public :
     void log ( std::string nomDuVariable , sf::Color       couleur  );
     void log ( std::string nomDuVariable , bool&           variable );
     void log ( std::string nomDuVariable , std::shared_ptr<Gadget> gadget );
+    void log ( std::string nomDuVariable , Gadget*          gadget );
 
     void logEvt ( std::string txt );
     void logEvt ( std::string nomDuVariable , std::string     variable );
@@ -41,6 +42,7 @@ public :
     void logEvt ( std::string nomDuVariable , sf::Color       couleur  );
     void logEvt ( std::string nomDuVariable , bool&           variable );
     void logEvt ( std::string nomDuVariable , std::shared_ptr<Gadget> gadget );
+    void logEvt ( std::string nomDuVariable , Gadget*          gadget );
 
     void setLogActif     ( bool val , bool appliquerAuxComposants = false );
 

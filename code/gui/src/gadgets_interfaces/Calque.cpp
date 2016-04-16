@@ -7,6 +7,7 @@ Calque::Calque( std::string nom )
     //creerNomUnique( "Calque");
     m_nom = nom;
     //ctor
+    m_mute=false;
 }
 
 Calque::~Calque()
@@ -18,6 +19,9 @@ Calque::~Calque()
 void Calque::actualiser ()
 {
     actualiserEnfants();
+
+    if (m_enfantsASupprimer.size()> 0)
+        actualiserListes();
 }
 
 /////////////////////////////////////////////////

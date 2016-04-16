@@ -57,6 +57,9 @@ public:
     virtual void actualiserContenu ();
 
     /////////////////////////////////////////////////
+    virtual void actualiserBounds ();
+
+    /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
 
     /////////////////////////////////////////////////
@@ -131,6 +134,8 @@ protected:
     sf::Color               m_contenantCouleur;
     sf::Color               m_contenantLgnCouleur;
     float                   m_contenantLgnepaisseur;
+
+    sf::Shader              m_clipShader;
 
 }; // fin class Contenant
 

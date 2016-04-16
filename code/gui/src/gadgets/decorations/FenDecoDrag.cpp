@@ -129,8 +129,7 @@ void FenDecoDrag::actualiserGeometrie()
 
 
 /////////////////////////////////////////////////
-void FenDecoDrag::traiterEvenements (const sf::Event& evenement)
-{
+void FenDecoDrag::traiterEvenements (const sf::Event& evenement){
      if ( dragEnCours() )
         positionnerFenetre ();
 }
@@ -142,7 +141,11 @@ void FenDecoDrag::traiterEvenements (const sf::Event& evenement)
 
 /////////////////////////////////////////////////
 void FenDecoDrag::positionnerFenetre (){
+
+    // on positionne la fenetre
     m_fenetre->setPosAbs ( { m_fenetre->getPosSouris().x - m_decalageDragSouris.x  , m_fenetre->getPosSouris().y - m_decalageDragSouris.y } );
+
+    m_fenetre->declencher (Evenement::onFen_bouge);
 
     // on regarde si on survol un panneau dans lequel s'incruster
     for ( auto panneau : Interface::ms_calque_panneau_D->getEnfants() )

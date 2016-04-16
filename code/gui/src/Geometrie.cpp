@@ -59,11 +59,11 @@ void Geometrie::setPosAbs (sf::Vector2f posAbsDest ){
         posAbsParent = m_parent->getPosAbs();
     setPosition( posAbsDest.x -  posAbsParent.x , posAbsDest.y -  posAbsParent.y  ) ;
 
+//    for (auto )
 }
 
 /////////////////////////////////////////////////
-sf::Vector2f Geometrie::getPosAbs () const
-{
+sf::Vector2f Geometrie::getPosAbs () const {
     if ( m_parent != nullptr)
         return getPosition() + m_parent->getPosAbs();
     else
@@ -77,6 +77,8 @@ void Geometrie::setPosition( float x , float y ){
 //    m_position = {int ( x )  , int ( y )};
      sf::Transformable::setPosition( int ( x )  , int ( y ) );
      static_cast<Gadget*>(this)->demanderActuaBounds();
+//     static_cast<Gadget*>(this)->demanderActuaBoundsComposants();
+
 //     static_cast<Gadget*>(this)->actualiserBounds();
 };
 
@@ -201,6 +203,7 @@ void Geometrie::actualiserBounds ()
     static_cast<Gadget*>(this)->log ( "ActualiserBounds  ");
     static_cast<Gadget*>(this)->log ( "taille" , getTaille() );
 
+
     sf::Vector2f pos = getPosAbs ();
 
     m_globalBounds.left     = pos.x;
@@ -213,6 +216,8 @@ void Geometrie::actualiserBounds ()
     m_localBounds.width     = getTaille().x;
     m_localBounds.height    = getTaille().y;
 
+    for (auto gadg : getEnfants() )
+        gadg->actualiserBounds();
 
 }
 

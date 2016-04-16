@@ -33,6 +33,23 @@ CmpBarreTitre::CmpBarreTitre()
     m_titreBtnCouleur.press     = sf::Color( 255 ,255,255,70 ) ;
     m_titreBtnLgnCouleur        = sf::Color::Transparent ;
     m_titreBtnLgnepaisseur      = 0;
+
+
+    auto fctFermer = [this](){
+        m_base->fermer();
+    };
+
+
+    auto fctReduire = [this](){
+        m_base->reduire();
+    };
+
+    // les boutons
+    m_btnFermer->lier ( Evenement::onBtnG_relacher , fctFermer );
+    m_btnReduire->lier ( Evenement::onBtnG_relacher , fctReduire );
+
+
+
 }
 
 

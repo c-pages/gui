@@ -62,6 +62,7 @@ public:
 
 
     void actualiserComposants ();
+//    void demanderActuaBoundsComposants ();
 
     std::vector<std::shared_ptr<Gadget>> getComposants() { return m_composants; } ;
 

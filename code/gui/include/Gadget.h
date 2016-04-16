@@ -22,7 +22,7 @@ class BtnMenu;
 /// \brief Classe communes à tout les gadgets, gère affichage actualisation, etc...
 ///
 /////////////////////////////////////////////////
-class Gadget : public std::enable_shared_from_this<Gadget>, public sf::Drawable, public gui::Geometrie, public Composition, public ActionClavier  {
+class Gadget : public std::enable_shared_from_this<Gadget>, public sf::Drawable, public gui::Geometrie, public gui::Composition, public gui::ActionClavier  {
 
 
 /////////////////////////////////////////////////
@@ -254,6 +254,9 @@ public:
     virtual bool        estInteractif() { return false; }; ///< \todo voir si on peut faire mieux ...
 
     void setMenu(std::shared_ptr<BtnMenu> menu ) { m_menu = menu; };
+
+    virtual void fermer(){};
+    virtual void reduire(){};
 
 /////////////////////////////////////////////////
 // Membres

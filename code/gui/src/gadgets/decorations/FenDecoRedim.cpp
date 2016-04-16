@@ -288,6 +288,8 @@ void FenDecoRedim::redimmensionner_haut ()
         posDest = m_posMin.y;
     m_fenetre->setPosition  ( m_fenetre->getPosition().x , posDest );
 
+    // declencher evenement
+    m_fenetre->declencher ( Evenement::onFen_redim );
 }
 
 
@@ -301,6 +303,8 @@ void FenDecoRedim::redimmensionner_bas ()
     corrigerTailleMinimum ();
     m_fenetre->setTailleY( m_tailleFenetre.y  );
 
+    // declencher evenement
+    m_fenetre->declencher ( Evenement::onFen_redim );
 }
 
 
@@ -323,6 +327,9 @@ void FenDecoRedim::redimmensionner_gauche ()
     if ( posDest > m_posMin.x )
         posDest = m_posMin.x;
     m_fenetre->setPosition ( posDest,  m_fenetre->getPosition().y );
+
+    // declencher evenement
+    m_fenetre->declencher ( Evenement::onFen_redim );
 }
 
 /////////////////////////////////////////////////
@@ -333,6 +340,9 @@ void FenDecoRedim::redimmensionner_droite ()
     m_tailleFenetre = { m_tailleOrigin.x + ( posSouris.x - m_sourisPosOrigin.x  ) , m_fenetre->getTaille().y   };
     corrigerTailleMinimum ();
     m_fenetre->setTailleX( m_tailleFenetre.x  );
+
+    // declencher evenement
+    m_fenetre->declencher ( Evenement::onFen_redim );
 
 }
 
@@ -348,7 +358,9 @@ void FenDecoRedim::traiterEvenements (const sf::Event& evenement)
     if ( m_redimHaut )  { redimmensionner_haut (); }
     if ( m_redimBas )   { redimmensionner_bas (); }
 
-    if ( m_redimmensionner ) m_fenetre->demanderActuaGeom();
+    if ( m_redimmensionner ) {
+        m_fenetre->demanderActuaGeom();
+    }
 }
 
 }; // fin namesapce gui

@@ -8,6 +8,7 @@
 #include "repartiteurs/RepartiteurLibre.h"
 
 
+#include "Interface.h"
 
 
 
@@ -17,8 +18,6 @@ namespace gui {
 Contenant::Contenant ()
 : m_affContenant ( std::make_shared<sf::RectangleShape>() )
 , m_posContenant ( {0,0} )
-
-//, m_fond ( std::make_shared<AffRectangle>() )
 , m_groupe ( std::make_shared<Groupe>() )
 , m_repartiteur ( new RepartiteurLibre ( this ) )
 {
@@ -26,35 +25,52 @@ Contenant::Contenant ()
     creerNomUnique("contenant");
 
     //debug
-    m_mute = false;
+//    m_mute = false;
 
-    auto tailleMax = sf::Texture::getMaximumSize();
-    log ("getMaximumSize" , tailleMax );
+    auto tailleMaxCarteVideo = sf::Texture::getMaximumSize();
+    int tailleMax = 1080;
 
-//    if ( tailleMax < 1080 )
-//        m_renderTexture.create( tailleMax  , tailleMax );
-//    else
-        m_renderTexture.create( 1080  , 1080 );
+    log ("getMaximumSize" , tailleMaxCarteVideo );
 
-    m_contenantCouleur      = sf::Color( 255,255,255, 255 );
+    if ( tailleMaxCarteVideo < 1080 )
+        m_renderTexture.create ( tailleMaxCarteVideo  , tailleMaxCarteVideo );
+    else
+        m_renderTexture.create ( tailleMax  , tailleMax );
+
+
+    m_contenantCouleur      = sf::Color( 50,50,50, 255 );
     m_contenantLgnCouleur   = sf::Color( 255,255,255, 20 );
     m_contenantLgnepaisseur = 1;
 
     m_fndCouleur            = sf::Color( 80,80,80 );
 
+    // Load the shader
+//    if (!m_clipShader.loadFromFile("media/shaders/clippingMask.frag", sf::Shader::Fragment))
+//        logAlerte("ERREUR Chargement shader");
+
+//    m_clipShader.setParameter("texture", sf::Shader::CurrentTexture);
+
     ajouterComposant( m_groupe );
+
+
+    m_affContenant->setTexture( &m_renderTexture.getTexture() );
 }
 
 
 /////////////////////////////////////////////////
 void Contenant::replacerContenu () {
 
-//    m_affContenant->setSize( { m_taille.x , m_taille.y } );
+    m_affContenant->setSize( { m_taille.x , m_taille.y } );
 
-    m_affContenant->setTextureRect(   { 0
+    m_affContenant->setTextureRect( { 0
                                     , 0
                                     , m_affContenant->getSize().x
                                     , m_affContenant->getSize().y });
+
+
+//    m_clipShader.setParameter("texture", sf::Shader::CurrentTexture);
+//    m_clipShader.setParameter("clipPos", {getPosAbs().x , Interface::ms_fenetreSFML->getSize().y - getPosAbs().y });
+//    m_clipShader.setParameter("clipTaille", {getTaille().x ,getTaille().y});
 
     if (m_parent != nullptr)
         m_parent->actualiserContenu();
@@ -86,7 +102,12 @@ void Contenant::setRepartition ( Repartitions repartition )
     }
 }
 
-
+/////////////////////////////////////////////////
+void Contenant::actualiserBounds ()
+{
+    replacerContenu ();
+    Geometrie::actualiserBounds ();
+}
 /////////////////////////////////////////////////
 void Contenant::actualiserContenu ()
 {
@@ -116,9 +137,9 @@ void Contenant::actualiserContenu ()
 /////////////////////////////////////////////////
 void Contenant::actualiserGeometrie ()
 {
-    std::cout << " CONTENANT::ACTUALISERGEOMETRIE \n";
-    log ("TAILLE", m_taille);
-    logAlerte ("par la");
+//    std::cout << " CONTENANT::ACTUALISERGEOMETRIE \n";
+//    log ("TAILLE", m_taille);
+//    logAlerte ("par la");
 
     m_affContenant->setSize( { m_taille.x , m_taille.y } );
 
@@ -149,6 +170,9 @@ void Contenant::actualiserStyle ()
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  Contenant::testerSurvol ( sf::Vector2i position )
 {
+    //Gadget::testerSurvol (  position );
+
+
     // si on est dans le panneau
     if ( m_globalBounds.contains( position.x, position.y ) && estActif() )
     {
@@ -161,8 +185,8 @@ std::shared_ptr<Gadget>  Contenant::testerSurvol ( sf::Vector2i position )
             // sinon on regarde si on survol un enfant
             auto testEnfants = m_groupe->testerSurvolEnfants(  position);
             if ( testEnfants != nullptr )
-                return testEnfants;
-           else return thisPtr();
+                 return testEnfants;
+            else return nullptr;
         }
     }
     else return nullptr;
@@ -245,9 +269,10 @@ void Contenant::draw (sf::RenderTarget& target, sf::RenderStates states) const
 
         //On applique la transformation
         states.transform *= getTransform();
-
-//        target.draw( *m_fond , states );
+//        states.shader    =  &m_clipShader;
         target.draw( *m_affContenant , states );
+
+//        target.draw( *m_groupe , states );
 
     }
 

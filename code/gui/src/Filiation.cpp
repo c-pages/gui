@@ -5,7 +5,7 @@
 //#include <Contenant.h>
 
 #include <Gadget.h>
-
+#include <Interface.h>
 
 namespace gui {
 
@@ -41,7 +41,9 @@ std::string Filiation::getHierarchie() const {
 
 /////////////////////////////////////////////////
 std::string Filiation::getCalqueNom()  {
+
     std::string nom = static_cast<Gadget*>(this)->getNom();
+
     if ( nom[0] == '_' )    {
         nom.erase(0, 1);
         return nom ;
@@ -112,6 +114,9 @@ std::shared_ptr<Gadget> Filiation::retirer ( std::shared_ptr<Gadget> gadget )
 
 /////////////////////////////////////////////////
 void Filiation::demander_aEtre_supprimer (){
+    log ("demander_aEtre_supprimer");
+    log ("m_parent", m_parent );
+
     m_parent->demanderASupprimer ( thisPtr() );
 }
 
@@ -135,7 +140,13 @@ std::shared_ptr<Gadget> Filiation::testerSurvolEnfants ( sf::Vector2i position )
 }
 /////////////////////////////////////////////////
 void Filiation::demanderASupprimer (std::shared_ptr<Gadget> gadget ){
+
+    log("demanderASupprimer");
+
     m_enfantsASupprimer.push_back( gadget );
+
+
+    static_cast<Gadget*>(this)->demanderActualisation();
 }
 
 /////////////////////////////////////////////////
@@ -150,20 +161,31 @@ void Filiation::supprimer (std::shared_ptr<Gadget> gadget ){
         }
         i++;
     }
+    log ( "supprimer : " + gadget->getNom() );
+    Interface::vider_msBoutons () ;
+
     m_enfants.erase( m_enfants.begin()+result );
+
+
+
+//    Interface::ms_boutonSurvole != nullptr ;
+    //Interface::ms_boutonSurvole != nullptr
 
 }
 
 /////////////////////////////////////////////////
 void Filiation::actualiserListes ( ){
 
+    log("actualiserListes");
     if ( m_enfantsASupprimer.empty() ) return ;
 
     for ( auto enfant : m_enfantsASupprimer )
         supprimer ( enfant );
+
     m_enfantsASupprimer.clear();
 
-    static_cast<Gadget*>(this)->actualiser();
+    static_cast<Gadget*>(this)->demanderActualisation();
+//    static_cast<Gadget*>(this)->actualiser();
 }
 
 

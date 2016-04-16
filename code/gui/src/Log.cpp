@@ -137,7 +137,17 @@ std::string Log::getCalqueGadget()
 };
 /////////////////////////////////////////////////
 bool    Log::estUnCalque()    {
+
+    // debug
+//    return false;
+
+
+
+
     return ( static_cast<Gadget*>(this)->getNom()[0] == '_' );
+
+
+
 };
 /////////////////////////////////////////////////
 bool    Log::estInterface()    {
@@ -558,6 +568,22 @@ void Log::log (  std::string nomDuVariable , std::shared_ptr<Gadget> gadget ){
 
 
 
+/////////////////////////////////////////////////
+void Log::log (  std::string nomDuVariable , Gadget* gadget ){
+    if ( m_mute || ! checkAffichage() ) return;
+
+    checkGadget ( );
+
+    std::string valVar1 = gadget->getNom();
+
+    SetConsoleTextAttribute( m_console , m_couleur_variable );
+    std::string  preLigne = ( estInterface() ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
+    logOut ( preLigne +  nomDuVariable + " = "  + valVar1 + "\n" );
+
+}
+
+
+
 
 
 
@@ -726,6 +752,20 @@ void Log::logEvt (  std::string nomDuVariable , std::shared_ptr<Gadget> gadget )
 }
 
 
+
+/////////////////////////////////////////////////
+void Log::logEvt (  std::string nomDuVariable , Gadget* gadget ){
+    if ( m_mute || ! checkAffichage() ) return;
+
+    checkGadget ( );
+
+    std::string valVar1 = gadget->getNom();
+
+    SetConsoleTextAttribute( m_console , m_couleur_variable );
+    std::string  preLigne = ( estInterface() ) ? m_preLigne_interface + m_preLigne_variable : m_preLigne_courant + m_preLigne_variable;
+    logOut ( preLigne +  nomDuVariable + " = "  + valVar1 + "\n" );
+
+}
 
 } // fin namespace gui
 

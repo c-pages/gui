@@ -64,7 +64,7 @@ public:
     /////////////////////////////////////////////////
     void actualiserGeometrie();
 
-
+    static void fermerMenu();
 private:
     static   std::string            ms_menuBack;
     static   bool                   ms_menuActif;

@@ -176,6 +176,7 @@ void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
 
     //On applique la transformation
     states.transform *= getTransform();
+//    states.shader    =  nullptr;
 
     dessinerComposant   ( target, states );
     dessinerEnfants     ( target, states );
@@ -282,6 +283,7 @@ void Gadget::setActif( bool val ){
     m_actif = val;
     actualiserEtat ();
     demanderActuaStyle();
+
 };
 
 
@@ -302,23 +304,25 @@ void Gadget::setFocus( bool val ) {
 void Gadget::setSurvol( bool val ) {
     if ( m_survol == val ) return;
 
-//    log("setSurvol");
+    log("setSurvol");
 //    log("m_survol", val);
 
     m_survol = val;
     actualiserEtat ();
     demanderActuaStyle();
+    demanderActuaContenu();
 };
 
 
 /////////////////////////////////////////////////
 void Gadget::setPresse( bool val ){
     if ( m_presse == val ) return;
-//    log("setPresse");
+    log("setPresse");
 //    log("m_presse", val);
     m_presse = val;
     actualiserEtat ();
     demanderActuaStyle();
+    demanderActuaContenu();
 };
 
 

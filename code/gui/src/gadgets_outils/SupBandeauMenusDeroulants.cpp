@@ -21,6 +21,17 @@ SupBandeauMenusDeroulants::SupBandeauMenusDeroulants ()
 
 }
 
+void SupBandeauMenusDeroulants::fermerMenu()
+{
+
+    if ( BtnMenu::ms_menuOuvert != nullptr )
+        BtnMenu::ms_menuOuvert->setVisible( false );
+
+    ms_menuActif = false;
+}
+
+
+
 std::shared_ptr<BtnMenu> SupBandeauMenusDeroulants::ajouterMenu ( std::string nom )
 {
 
@@ -46,13 +57,10 @@ std::shared_ptr<BtnMenu> SupBandeauMenusDeroulants::ajouterMenu ( std::string no
 
     ajouter (bouton);
 
-    bouton->lier                ( Evenement::onBtnG_presser , [nouvelElement](){
+    bouton->lier                ( Evenement::onBtnG_presser , [this, nouvelElement](){
         if ( ms_menuActif )
         {
-            if ( nouvelElement->menu->ms_menuOuvert != nullptr )
-                nouvelElement->menu->ms_menuOuvert->setVisible( false );
-
-            ms_menuActif = false;
+            fermerMenu();
         } else {
             if ( nouvelElement->menu->ms_menuOuvert != nullptr )
                 nouvelElement->menu->ms_menuOuvert->setVisible( false );
@@ -118,6 +126,7 @@ void SupBandeauMenusDeroulants::supprimerMenu  (std::string nom)
 
 void SupBandeauMenusDeroulants::ajouterElement ( std::string nom, FctnAction fonction, std::string menu  )
 {
+
 
     for ( auto element : m_elements )
         if ( element->nom == menu ) {

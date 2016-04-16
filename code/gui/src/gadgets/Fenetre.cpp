@@ -16,10 +16,13 @@ namespace gui {
 
 /////////////////////////////////////////////////
 Fenetre::Fenetre ()
-: m_contenant       ( std::make_shared<CntSliders>() )
+: m_contenant       ( std::make_shared<Contenant>() )
+//: m_contenant       ( std::make_shared<CntSliders>() )
 {
     creerNomUnique ( "Fenetre");
 
+    // debug
+//    m_mute = false;
 
     // initialiser les composants herités
     CmpOmbre::initialiserComposants ( this );
@@ -53,8 +56,29 @@ Fenetre::Fenetre ()
     m_fondLgnCouleur                = sf::Color( 90,90,90, 255 );
     m_fondLgnEpaisseur              = 1;
 
+    // les boutons
+
+
 
 }
+
+
+
+
+
+/////////////////////////////////////////////////
+void Fenetre::fermer(){
+    log("fermer");
+    demander_aEtre_supprimer ();
+    declencher ( Evenement::onFen_fermer );
+}
+
+/////////////////////////////////////////////////
+void Fenetre::reduire(){
+    log("reduire");
+}
+
+
 
 /////////////////////////////////////////////////
 void Fenetre::ajouterDecoration ( Decorations deco  )

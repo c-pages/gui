@@ -52,7 +52,6 @@ public:
     /////////////////////////////////////////////////
     void delier (Evenement evenement);
 
-protected:
     /////////////////////////////////////////////////
     /// \brief Déclencher un évenement souris (les évenement claviers sont gérer.
     ///
@@ -60,6 +59,7 @@ protected:
     /////////////////////////////////////////////////
     virtual void declencher (Evenement evenement);
 
+protected:
     bool    existe ( Evenement evenement );
 
 /////////////////////////////////////////////////

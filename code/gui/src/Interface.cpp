@@ -383,7 +383,6 @@ void Interface::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
 }
 
-
 /////////////////////////////////////////////////
 void Interface::majAffichage_BoutonSurvol(){
     std::string      txt;
@@ -391,6 +390,8 @@ void Interface::majAffichage_BoutonSurvol(){
     if ( ms_boutonSurvole != nullptr )
         txt =  ms_boutonSurvole->getHierarchie() + ms_boutonSurvole->getNom();
     else txt = "...";
+
+
     m_labelBoutonSurvol.setString ( m_textBoutonSurvol + txt );
     m_labelBoutonSurvol.setPosition     ( m_fenetre->getSize().x - 300 , 4 ) ;
 }

@@ -3,6 +3,7 @@
 /////////////////////////////////////////////////
 #include "gadgets_outils/BtnMenu.h"
 #include "Interface.h"
+#include "gadgets_outils/SupBandeauMenusDeroulants.h"
 
 
 
@@ -142,7 +143,15 @@ void BtnMenu::ajouterElement ( std::string nom, FctnAction fonction )
 
     ajouterComposant ( bouton );
 
-    bouton->lier            ( Evenement::onBtnG_relacher , fonction );
+
+    auto fctInterne = [this, fonction](  ){
+
+        fonction();
+        SupBandeauMenusDeroulants::fermerMenu();
+    };
+
+
+    bouton->lier            ( Evenement::onBtnG_relacher , fctInterne );
     nouvelElement->bouton   = bouton;
 
     m_elements.push_back( nouvelElement );

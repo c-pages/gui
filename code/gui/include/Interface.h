@@ -84,7 +84,7 @@ public:
     static  void setCurseur ( Curseurs    curseur   )           { ms_curseurSouris->setCurseur ( curseur  );  };
     static  std::shared_ptr<Gadget>       getBoutonSurvol ()    { return ms_boutonSurvole; };
     static  std::shared_ptr<Gadget>       getBoutonPress ()     { return ms_boutonPresse; };
-
+    static  void                          vider_msBoutons ()    { ms_boutonSurvole = nullptr; ms_boutonPresse = nullptr; }
 /////////////////////////////////////////////////
 // membres statics
 /////////////////////////////////////////////////

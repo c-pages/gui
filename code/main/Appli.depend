@@ -532,11 +532,11 @@
 1460903132 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1460903132 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1460905380 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
-	<Interface.h>
+	<gui.h>
 	<cstdlib>
 
 1460903132 source:r:\06 - c++\110 - gui\code\main\src\gestion_ecrans.cpp
@@ -1915,7 +1915,7 @@
 	"interfaces/gadgets/Support.h"
 	"gadgets/AffRectangle.h"
 
-1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\outils\supbandeaumenusderoulants.h
+1460905928 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\outils\supbandeaumenusderoulants.h
 	"SupBandeau.h"
 	"gadgets/BtnTexte.h"
 	<SFML/Graphics.hpp>
@@ -1931,4 +1931,18 @@
 1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\outils\affcurseursouris.h
 	<gadgets/AffIcone.h>
 	<Enums.h>
+
+1460905418 r:\06 - c++\110 - gui\code\gui\include\gui\gui.h
+	<string>
+	<SFML/Graphics.hpp>
+	"Valeurs.h"
+	"Enums.h"
+	"FabriqueBase.h"
+	"ResourcesMgr.h"
+	"interfaces/Gadget.h"
+	"interfaces/gadgets/Calque.h"
+	"gadgets/outils/AffCurseurSouris.h"
+
+1460903130 r:\06 - c++\110 - gui\code\gui\include\gui\patch.h
+	<sstream>
 

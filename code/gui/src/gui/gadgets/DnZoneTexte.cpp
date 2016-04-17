@@ -2,7 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <gadgets/DnZoneTexte.h>
-#include <Interface.h>
+#include <gui.h>
 
 
 #include <string>

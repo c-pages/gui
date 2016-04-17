@@ -2,7 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <gadgets/AffLabel.h>
-#include <Interface.h>
+#include <gui.h>
 
 
 

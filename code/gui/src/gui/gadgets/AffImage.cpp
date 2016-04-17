@@ -2,7 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <gadgets/AffImage.h>
-#include <Interface.h>
+#include <gui.h>
 
 #include <iostream>
 

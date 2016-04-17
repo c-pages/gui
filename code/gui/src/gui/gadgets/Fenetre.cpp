@@ -6,7 +6,7 @@
 #include "gadgets/decorations/FenDecoRedim.h"
 #include "gadgets/decorations/FenDecoRedimPanneau.h"
 
-#include <Interface.h>
+#include <gui.h>
 
 #include "gadgets/outils/CntSliders.h"
 //#include <CntSimple.h>

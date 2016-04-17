@@ -7,7 +7,7 @@
 #include <gui.h>
 
 #include <interfaces/Gadget.h>
-#include <Interface.h>
+#include <gui.h>
 
 #include <gadgets/outils/BtnMenu.h>
 

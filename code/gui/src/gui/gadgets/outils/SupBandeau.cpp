@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "Interface.h"
+#include "gui.h"
 #include "gadgets/outils/SupBandeau.h"
 #include "gadgets/outils/CntSliders.h"
 

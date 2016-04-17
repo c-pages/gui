@@ -3,7 +3,7 @@
 /////////////////////////////////////////////////
 #include <gadgets/outils/SupBandeauMenusDeroulants.h>
 #include <gadgets/outils/BtnMenu.h>
-#include <Interface.h>
+#include <gui.h>
 
 
 namespace gui {

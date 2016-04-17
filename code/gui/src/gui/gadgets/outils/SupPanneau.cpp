@@ -2,7 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <gadgets/outils/SupPanneau.h>
-#include <Interface.h>
+#include <gui.h>
 //#include <CntSliders.h>
 
 

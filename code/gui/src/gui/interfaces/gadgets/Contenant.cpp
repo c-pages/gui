@@ -8,7 +8,7 @@
 #include "repartiteurs/RepartiteurLibre.h"
 
 
-#include "Interface.h"
+#include "gui.h"
 
 
 

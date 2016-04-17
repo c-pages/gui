@@ -2,7 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include "gadgets/outils/BtnMenu.h"
-#include "Interface.h"
+#include "gui.h"
 #include "gadgets/outils/SupBandeauMenusDeroulants.h"
 
 

@@ -2,7 +2,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include <gadgets/BtnTexte.h>
-#include <Interface.h>
+#include <gui.h>
 
 
 

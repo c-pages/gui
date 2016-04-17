@@ -1,7 +1,7 @@
 #include "gadgets/decorations/FenDecoRedim.h"
 #include "gadgets/Fenetre.h"
 #include "gadgets/BtnRectangle.h"
-#include "Interface.h"
+#include "gui.h"
 
 namespace gui{
 

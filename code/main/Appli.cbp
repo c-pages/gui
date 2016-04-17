@@ -14,7 +14,6 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
-					<Add directory="include/gadgets" />
 					<Add directory="utilitaires/include" />
 					<Add directory="include" />
 				</Compiler>
@@ -34,7 +33,6 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++11" />
-					<Add directory="include/gadgets" />
 					<Add directory="utilitaires/include" />
 					<Add directory="include" />
 				</Compiler>
@@ -53,10 +51,8 @@
 			<Add option="-std=c++11" />
 			<Add option="-fexceptions" />
 			<Add option="-DSFML_STATIC" />
-			<Add directory="../gui/include" />
 			<Add directory="F:/Bibliotheques CPP/SFML-2.1/include" />
 			<Add directory="include" />
-			<Add directory="../gui" />
 			<Add directory="../gui/include/gui" />
 		</Compiler>
 		<Linker>

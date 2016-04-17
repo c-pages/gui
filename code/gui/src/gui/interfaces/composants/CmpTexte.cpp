@@ -1,5 +1,5 @@
 #include "interfaces/composants/CmpTexte.h"
-#include "Interface.h"
+#include "gui.h"
 namespace gui {
 
 

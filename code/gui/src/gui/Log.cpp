@@ -1,5 +1,5 @@
 #include "Log.h"
-#include "Gadget.h"
+#include "interfaces/Gadget.h"
 #include "Patch.h"
 
 

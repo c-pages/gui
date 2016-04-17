@@ -2,7 +2,7 @@
 #include "gadgets/DnZoneTexte.h"
 #include "gadgets/BtnIcone.h"
 
-#include "Interface.h"
+#include "gui.h"
 
 namespace gui {
 

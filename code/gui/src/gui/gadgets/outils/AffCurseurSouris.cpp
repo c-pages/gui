@@ -1,5 +1,5 @@
 #include "gadgets/outils/AffCurseurSouris.h"
-#include "Interface.h"
+#include "gui.h"
 
 
 

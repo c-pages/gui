@@ -6,9 +6,9 @@
 #include "ecrans/EcranDemo.h"
 #include <iostream>
 #include <Config.h>
-#include <Interface.h>
+#include <gui.h>
 
-#include<cstdlib>
+#include <cstdlib>
 
 namespace app {
 

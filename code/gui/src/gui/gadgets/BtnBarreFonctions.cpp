@@ -3,7 +3,7 @@
 /////////////////////////////////////////////////
 #include <gadgets/BtnBarreFonctions.h>
 //#include "CntSimple.h"
-#include "Interface.h"
+#include "gui.h"
 
 
 

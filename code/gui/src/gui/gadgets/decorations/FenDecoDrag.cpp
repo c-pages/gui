@@ -1,5 +1,5 @@
 #include "gadgets/decorations/FenDecoDrag.h"
-#include "Interface.h"
+#include "gui.h"
 #include "gadgets/Fenetre.h"
 
 

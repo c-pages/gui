@@ -50,21 +50,17 @@
 			<Add option="-std=c++11" />
 			<Add directory="F:/Bibliotheques CPP/SFML-2.1/include" />
 			<Add directory="R:/06 - C++/110 - GUI/code/gui/include/gui" />
-			<Add directory="R:/06 - C++/110 - GUI/code/gui" />
 		</Compiler>
 		<Linker>
 			<Add directory="F:/Bibliotheques CPP/SFML-2.1/lib" />
 			<Add directory="R:/06 - C++/110 - GUI/code/gui/src/gui" />
-			<Add directory="src/gadgets" />
 		</Linker>
-		<Unit filename="GUI.h" />
-		<Unit filename="Patch.h" />
-		<Unit filename="gui.cpp" />
 		<Unit filename="include/gui/Enums.h" />
 		<Unit filename="include/gui/FabriqueBase.h" />
-		<Unit filename="include/gui/Interface.h" />
 		<Unit filename="include/gui/Log.h" />
+		<Unit filename="include/gui/Patch.h" />
 		<Unit filename="include/gui/ResourcesMgr.h" />
+		<Unit filename="include/gui/ResourcesMgr.inl" />
 		<Unit filename="include/gui/Valeurs.h" />
 		<Unit filename="include/gui/gadgets/AffIcone.h" />
 		<Unit filename="include/gui/gadgets/AffImage.h" />
@@ -85,13 +81,14 @@
 		<Unit filename="include/gui/gadgets/decorations/FenDecoRedim.h" />
 		<Unit filename="include/gui/gadgets/decorations/FenDecoRedimPanneau.h" />
 		<Unit filename="include/gui/gadgets/decorations/FenDecoration.h" />
-		<Unit filename="include/gui/gadgets_outils/AffCurseurSouris.h" />
-		<Unit filename="include/gui/gadgets_outils/BtnMenu.h" />
-		<Unit filename="include/gui/gadgets_outils/CntSimple.h" />
-		<Unit filename="include/gui/gadgets_outils/CntSliders.h" />
-		<Unit filename="include/gui/gadgets_outils/SupBandeau.h" />
-		<Unit filename="include/gui/gadgets_outils/SupBandeauMenusDeroulants.h" />
-		<Unit filename="include/gui/gadgets_outils/SupPanneau.h" />
+		<Unit filename="include/gui/gadgets/outils/AffCurseurSouris.h" />
+		<Unit filename="include/gui/gadgets/outils/BtnMenu.h" />
+		<Unit filename="include/gui/gadgets/outils/CntSimple.h" />
+		<Unit filename="include/gui/gadgets/outils/CntSliders.h" />
+		<Unit filename="include/gui/gadgets/outils/SupBandeau.h" />
+		<Unit filename="include/gui/gadgets/outils/SupBandeauMenusDeroulants.h" />
+		<Unit filename="include/gui/gadgets/outils/SupPanneau.h" />
+		<Unit filename="include/gui/gui.h" />
 		<Unit filename="include/gui/interfaces/ActionClavier.h" />
 		<Unit filename="include/gui/interfaces/ActionEvenement.h" />
 		<Unit filename="include/gui/interfaces/Composition.h" />
@@ -119,7 +116,6 @@
 		<Unit filename="include/gui/repartiteurs/RepartiteurLibre.h" />
 		<Unit filename="include/gui/repartiteurs/RepartiteurVerticale.h" />
 		<Unit filename="src/gui/FabriqueBase.cpp" />
-		<Unit filename="src/gui/Interface.cpp" />
 		<Unit filename="src/gui/Log.cpp" />
 		<Unit filename="src/gui/Valeurs.cpp" />
 		<Unit filename="src/gui/gadgets/AffIcone.cpp" />
@@ -141,13 +137,14 @@
 		<Unit filename="src/gui/gadgets/decorations/FenDecoRedim.cpp" />
 		<Unit filename="src/gui/gadgets/decorations/FenDecoRedimPanneau.cpp" />
 		<Unit filename="src/gui/gadgets/decorations/FenDecoration.cpp" />
-		<Unit filename="src/gui/gadgets_outils/AffCurseurSouris.cpp" />
-		<Unit filename="src/gui/gadgets_outils/BtnMenu.cpp" />
-		<Unit filename="src/gui/gadgets_outils/CntSimple.cpp" />
-		<Unit filename="src/gui/gadgets_outils/CntSliders.cpp" />
-		<Unit filename="src/gui/gadgets_outils/SupBandeau.cpp" />
-		<Unit filename="src/gui/gadgets_outils/SupBandeauMenusDeroulants.cpp" />
-		<Unit filename="src/gui/gadgets_outils/SupPanneau.cpp" />
+		<Unit filename="src/gui/gadgets/outils/AffCurseurSouris.cpp" />
+		<Unit filename="src/gui/gadgets/outils/BtnMenu.cpp" />
+		<Unit filename="src/gui/gadgets/outils/CntSimple.cpp" />
+		<Unit filename="src/gui/gadgets/outils/CntSliders.cpp" />
+		<Unit filename="src/gui/gadgets/outils/SupBandeau.cpp" />
+		<Unit filename="src/gui/gadgets/outils/SupBandeauMenusDeroulants.cpp" />
+		<Unit filename="src/gui/gadgets/outils/SupPanneau.cpp" />
+		<Unit filename="src/gui/gui.cpp" />
 		<Unit filename="src/gui/interfaces/ActionClavier.cpp" />
 		<Unit filename="src/gui/interfaces/ActionEvenement.cpp" />
 		<Unit filename="src/gui/interfaces/Composition.cpp" />

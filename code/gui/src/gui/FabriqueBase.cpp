@@ -1,6 +1,6 @@
 
 #include "FabriqueBase.h"
-#include "Interface.h"
+#include "gui.h"
 
 
 #include <iostream>

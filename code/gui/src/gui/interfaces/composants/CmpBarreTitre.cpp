@@ -1,5 +1,5 @@
 #include "interfaces/composants/CmpBarreTitre.h"
-#include "Interface.h"
+#include "gui.h"
 #include "Enums.h"
 namespace gui {
 

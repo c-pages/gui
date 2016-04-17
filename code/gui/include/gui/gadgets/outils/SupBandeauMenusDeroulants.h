@@ -6,7 +6,7 @@
 /////////////////////////////////////////////////
 #include "SupBandeau.h"
 #include "gadgets/BtnTexte.h"
-//#include "Interface.h"
+//#include "gui.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 

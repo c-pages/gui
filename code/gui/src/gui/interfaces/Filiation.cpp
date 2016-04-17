@@ -5,7 +5,7 @@
 //#include <Contenant.h>
 
 #include <interfaces/Gadget.h>
-#include <Interface.h>
+#include <gui.h>
 
 namespace gui {
 

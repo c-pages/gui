@@ -212,9 +212,13 @@ void Geometrie::actualiserBounds ()
     m_localBounds.width     = getTaille().x;
     m_localBounds.height    = getTaille().y;
 
+    // les bounds des enfants
     for (auto gadg : getEnfants() )
         gadg->actualiserBounds();
 
+    // les bounds des composants
+    for (auto comp : static_cast<Gadget*>(this)->getComposants() )
+        comp->actualiserBounds();
 }
 
 

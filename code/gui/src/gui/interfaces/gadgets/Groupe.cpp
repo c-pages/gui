@@ -4,6 +4,7 @@ namespace gui {
 
 Groupe::Groupe()
 {
+    creerNomUnique( "Groupe");
     //ctor
 }
 
@@ -30,4 +31,24 @@ sf::Vector2i Groupe::getTaille () const{
     return { posXmax - posXmin, posYmax - posYmin };
 }
 
+/////////////////////////////////////////////////
+std::shared_ptr<Gadget>  Groupe::testerSurvol ( sf::Vector2i position )
+{
+    // On test le survol des enfants
+    auto testEnfants = testerSurvolEnfants( position );
+    if ( testEnfants != nullptr )
+        return testEnfants;
+    else  return nullptr;
+
 }
+
+
+
+
+
+
+
+
+
+
+} // namespace gui

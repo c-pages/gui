@@ -32,8 +32,8 @@ DnZoneTexte::DnZoneTexte ()
 
 //    ajouterComposant( m_boutonSortir );
     ajouterComposant( m_bouton );
-    ajouterComposant( m_curseur );
     CmpTexte::initialiserComposants( this );
+    ajouterComposant( m_curseur );
 
     // valeurs par defaut
     m_btnCouleurs.set       ( sf::Color( 0,0,0,0 ) );
@@ -45,6 +45,7 @@ DnZoneTexte::DnZoneTexte ()
     m_curseurCouleurs          = sf::Color(0,0,0,200) ;
     m_curseurLgnCouleurs       = sf::Color( 255,255,0, 255 ) ;
     m_curseurLgnepaisseurs     = 0 ;
+
 
     m_textCouleur.set( sf::Color::White );
     m_textCouleur.set( sf::Color::Black, Etat::press  );
@@ -61,8 +62,10 @@ DnZoneTexte::DnZoneTexte ()
             else
                 m_texte = m_valeur = m_label->getTexte() ;
 
-            demanderActualisation();
+            m_curseur->setVisible ( false );
+
         }
+        demanderActualisation();
     };
     fn_annuler       = [this](){
 
@@ -70,16 +73,17 @@ DnZoneTexte::DnZoneTexte ()
             logEvt ( "annuler" );
             setModeEcritureActif ( false );
             m_label->setTexte ( m_texte );
-            demanderActualisation();
+            m_curseur->setVisible ( false );
         }
+        demanderActualisation();
     };
     fn_cliqueTexte  = [this](){
 
         logEvt ( "M_texte" , m_texte );
 
         sf::Vector2i    posSouris = getPosSouris();
-        posSouris.x -= getPosition().x;
-        posSouris.y -= getPosition().y;
+        posSouris.x -= getPosAbs().x;
+        posSouris.y -= getPosAbs().y;
 
         m_curseurPos = m_label->getTexte().size()    ;
 
@@ -111,25 +115,11 @@ DnZoneTexte::DnZoneTexte ()
     m_bouton->lier ( Evenement::on_entrer , [this](){ demanderActuaStyle() ;} );
     m_bouton->lier ( Evenement::on_sortir , [this](){ demanderActuaStyle() ;} );
 
-//    m_boutonSortir->lier ( Evenement::onBtnG_relacher , fn_valider );
-//    m_boutonSortir->lier ( Evenement::onBtnD_relacher , fn_annuler );
-
-    // rendre le bouton du fond invisible
-//    m_boutonSortir->setFondCouleur( sf::Color::Transparent );
-//    m_boutonSortir->setFondLigneEpaisseur( 0 );
+    m_curseur->setVisible ( false );
 
 }
 
-/////////////////////////////////////////////////
-std::shared_ptr<Gadget>  DnZoneTexte::testerSurvol ( sf::Vector2i position )
-{
-    if ( m_ecritureActive )
-        return testerSurvolComposants ( position );
-    else if ( m_globalBounds.contains( { position.x , position.y } ) )
-        return m_bouton;
 
-    return nullptr;
-}
 
 /////////////////////////////////////////////////
 void DnZoneTexte::actualiserGeometrie ()
@@ -199,8 +189,13 @@ void DnZoneTexte::actualiser ()
             m_clignotteChrono.restart();
             m_clignotte = ! m_clignotte;
         }
+        //            m_curseur->setVisible ( m_clignotte );
+
         Interface::necessiteActualisation();
+        m_curseur->setVisible ( m_clignotte );
+        demanderActuaContenu();
     }
+    //else m_curseur->setVisible ( false );
 }
 
 /////////////////////////////////////////////////
@@ -378,7 +373,7 @@ void DnZoneTexte::traiterEvenements(const sf::Event& evenement ){
 
 
 
-
+/*
 
 /////////////////////////////////////////////////
 void DnZoneTexte::draw (sf::RenderTarget& target, sf::RenderStates states) const
@@ -396,7 +391,7 @@ void DnZoneTexte::draw (sf::RenderTarget& target, sf::RenderStates states) const
 //m_ClignotteChrono.restart();
 
 }
-
+*/
 
 } // fin namespace gui
 

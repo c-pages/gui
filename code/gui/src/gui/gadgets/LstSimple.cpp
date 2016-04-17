@@ -15,6 +15,8 @@ LstSimple::LstSimple ()
 {
     m_ajustement = true;
 
+    creerNomUnique( "ListeSimple");
+
     ajouterComposant ( m_fond );
 
     m_selection = 0;

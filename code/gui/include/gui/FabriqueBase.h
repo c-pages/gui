@@ -170,6 +170,13 @@ public:
     /////////////////////////////////////////////////
     std::shared_ptr<BtnIcone>    boutonIcone( std::string texte = "" );
 
+    /////////////////////////////////////////////////
+    /// \brief  Création d'un simple bouton rectangulaire
+    ///
+    /// \param taille
+    /// \return Un pointeur vers le nouveau gadget.
+    /////////////////////////////////////////////////
+    std::shared_ptr<BtnIcone>    boutonIcone ( sf::Texture* texture );
 
     /////////////////////////////////////////////////
     /// \brief  Création d'un Menu
@@ -188,7 +195,7 @@ public:
     /// \param val
     /// \return Un pointeur vers le nouveau gadget.
     /////////////////////////////////////////////////
-    std::shared_ptr<DnCaseACocher>        btnACocher( bool val = true );
+    std::shared_ptr<DnCaseACocher>        btnACocher( std::string texte = "", bool val = true );
 
     /////////////////////////////////////////////////
     /// \brief  Création d'une zone de texte

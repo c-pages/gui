@@ -35,7 +35,7 @@ public:
     ///
     /////////////////////////////////////////////////
     virtual void setValeur( T val )
-    {   m_valeur = val; };
+    {   m_valeur = val; demanderActualisation(); };
 
     virtual bool        estInteractif() { return true; }; ///< \todo voir si on peut faire mieux ...
 

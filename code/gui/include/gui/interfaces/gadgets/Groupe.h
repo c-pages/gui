@@ -24,9 +24,10 @@ class Groupe : public Gadget
 
     /////////////////////////////////////////////////
     virtual sf::Vector2i getTaille () const;
-//    /////////////////////////////////////////////////
-//    virtual void actualiserStyle ()
-//    {};
+
+    /////////////////////////////////////////////////
+    virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
+
 
     protected:
     private:

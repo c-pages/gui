@@ -54,12 +54,13 @@ LstDeroulante::LstDeroulante ()
     m_liste->lier (Evenement::on_valeurChange , [this](){
                    std::cout <<" ListeChange selection: " << m_liste->getSelection() << "\n";
                    m_deroule = false;
-                                demanderActuaGeom();
+                   demanderActuaGeom();
                    });
     m_liste->setVisible ( false );
 
     m_boutonLabel->setAutoAjuster ( false );
     m_boutonLabel->lier ( Evenement::onBtnG_presser, [this](){
+                         printf("ca devrait s'ouvrir là\n");
                             m_deroule = !m_deroule;
                             demanderActuaGeom();
                         });
@@ -69,6 +70,8 @@ LstDeroulante::LstDeroulante ()
                                 demanderActuaGeom();
                             }
                         });
+    m_boutonLabel->setTaille    ( { m_taille.x , 16 });
+
     m_fleche->setImage( &Interface::ms_icones.get( "ico_fleches" )) ;
     m_fleche->setIndex ( 2 );
     m_fleche->setFondCouleur (sf::Color::Black);
@@ -84,7 +87,7 @@ void LstDeroulante::ajouterElement ( std::string nouvelElement )
     m_elements.push_back( nouvelElement );
 
     m_liste->ajouterElement ( nouvelElement );
-    actualiserGeometrie();
+    demanderActualisation();
 
 };
 
@@ -92,22 +95,26 @@ void LstDeroulante::ajouterElement ( std::string nouvelElement )
 /////////////////////////////////////////////////
 void LstDeroulante::actualiserGeometrie ()
 {
-    if (m_deroule)
-        m_liste->setVisible ( true );
-    else
-        m_liste->setVisible ( false );
 
 
-    m_boutonLabel->setTaille    ( { m_taille.x , 16 });
     m_fleche->setPosition       ( m_taille.x - m_marge.x - m_fleche->getTaille().x , m_marge.y);
     m_fleche->alignerSur        ( m_boutonLabel , Alignement::Droite, Alignement::Droite );
 
+    if (m_deroule) {
+        m_liste->setVisible ( true );
+        m_taille = { m_boutonLabel->getTaille().x, m_boutonLabel->getTaille().y + m_liste->getTaille().y };
+    }
+    else {
+        m_liste->setVisible ( false );
+        m_taille = m_boutonLabel->getTaille();
+    }
 
     m_liste->setPosition ( 0 , m_boutonLabel->getTaille ().y );
     if ( m_elements.size() > 0 )
         m_boutonLabel->setTexte ( m_elements[m_liste->getSelection()] );
     else m_boutonLabel->setTexte ( "...");
 
+    demanderActuaBounds();
 }
 
 

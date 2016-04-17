@@ -76,9 +76,10 @@ Interface::Interface( sf::RenderWindow* fenetre )
     ms_polices.load( "syastro"  , "media/polices/syastro_.ttf"  );
 
     // initialiser les icones
-    ms_icones.load( "ico_fenetre"  , "media/img/icones_fenetre.png" );
-    ms_icones.load( "ico_fenetreDefaut"  , "media/img/ico_fenetre.png" );
-    ms_icones.load( "ico_fleches"  , "media/img/ico_fleches.png"    );
+    ms_icones.load( "ico_fenetre"           , "media/img/icones_fenetre.png" );
+    ms_icones.load( "ico_fenetreDefaut"     , "media/img/ico_fenetre.png" );
+    ms_icones.load( "ico_fleches"           , "media/img/ico_fleches.png"    );
+    ms_icones.load( "ico_fichiers"           , "media/img/ico_fichiers.png"    );
 
     // initialiser les curseurs
     ms_curseurSouris = std::make_shared<AffCurseurSouris>( this );
@@ -391,7 +392,7 @@ void Interface::majAffichage_BoutonSurvol(){
 
 
     m_labelBoutonSurvol.setString ( m_textBoutonSurvol + txt );
-    m_labelBoutonSurvol.setPosition     ( m_fenetre->getSize().x - 300 , 4 ) ;
+    m_labelBoutonSurvol.setPosition     ( m_fenetre->getSize().x - 400 , 4 ) ;
 }
 
 
@@ -407,7 +408,7 @@ void Interface::calculerFPS(){
         m_labelFPS.setString ( txtAAfficher );
     }
 
-    m_labelFPS.setPosition              ( m_fenetre->getSize().x - 350 , 4 ) ;
+    m_labelFPS.setPosition              ( m_fenetre->getSize().x - 450 , 4 ) ;
 
 }
 

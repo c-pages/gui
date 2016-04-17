@@ -48,9 +48,7 @@ public:
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
 
-    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
-
-    virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
+//    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
     virtual void traiterEvenements(const sf::Event& evenement );
 

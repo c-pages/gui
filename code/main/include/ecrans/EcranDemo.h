@@ -116,7 +116,13 @@ private:
 //    std::shared_ptr<gui::Skin>          m_skin;         ///< Un skin.
 
     // AFFICHAGE
-    std::shared_ptr<gui::Fenetre>  m_fenetre1;    ///< Un simple rectangle.
+//    std::shared_ptr<gui::Fenetre>  m_fenetre1;    ///< Un simple rectangle.
+
+
+    std::shared_ptr<gui::Fenetre>   m_fenetreAffichage;
+    std::shared_ptr<gui::Fenetre>   m_fenetreDonnees;
+    std::shared_ptr<gui::Fenetre>   m_fenetreBoutons;
+
     sf::Vector2f                   m_posFenetre1;
     sf::Vector2i                   m_tailleFenetre1;
 

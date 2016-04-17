@@ -217,7 +217,8 @@ void Gadget::demanderActualisation() {
     m_necessiteActualisation = true ;
     m_aBesoinActuaGeom = true ;
     m_aBesoinActuaStyle = true ;
-    m_necessiteActualisation = true ;
+    m_aBesoinActuaContenu = true ;
+
     Interface::necessiteActualisation();
 };
 
@@ -227,6 +228,7 @@ void Gadget::demanderActuaGeom() {
     m_necessiteActualisation = true ;
     m_aBesoinActuaGeom = true ;
     m_aBesoinActuaBounds = true ;
+    m_aBesoinActuaContenu = true ;
     Interface::necessiteActualisation();
 };
 
@@ -271,10 +273,13 @@ void Gadget::setVisible( bool val ) {
     m_visible = val;
 };
 
-/////////////////////////////////////////////////
-bool Gadget::getVisible(  ) {
-    return m_visible;
-};
+///////////////////////////////////////////////////
+//bool Gadget::getVisible(  ) {
+//    if ( m_visible )
+//        return m_parent->getVisible();
+//    else return false;
+////    return m_visible;
+//};
 
 
 /////////////////////////////////////////////////

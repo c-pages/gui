@@ -69,7 +69,14 @@ Fenetre::Fenetre ()
 /////////////////////////////////////////////////
 void Fenetre::fermer(){
     log("fermer");
-    demander_aEtre_supprimer ();
+
+    // soit juste on le cache
+    setVisible( false);
+
+    // soit on le supprime carrement ... avoir
+    // demander_aEtre_supprimer ();
+
+    // declencher evenement
     declencher ( Evenement::onFen_fermer );
 }
 

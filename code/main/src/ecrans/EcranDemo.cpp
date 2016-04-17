@@ -20,10 +20,14 @@ EcranDemo::EcranDemo( Application*  appli )
     // Initialisation de l'interface graphique.
     initGUI     ();
 
+    initGUI_tests ();
+
     // les tests
-//    initGUI_tests ();
-//    initGUI_test_Affichages();
+    initGUI_test_Affichages();
+    initGUI_test_Boutons ();
     initGUI_test_Donnees();
+
+
     initScene   ();
 
     // definition des positions et tailles des vues jeu et gui
@@ -199,31 +203,17 @@ EcranDemo::initGUI_tests ()
 
 
 
-    auto fct_toggleFenetre1 = [this](){
-
-        printf ("fct_ouvrirFenetre1\n");
-
-        if ( m_fenetre1 == nullptr ) {
-
-            m_fenetre1 = m_interface->creer.fenetre("Fenetre Démo");
-            m_fenetre1->setTitreIcone ( &gui::Interface::ms_icones.get("ico_fenetreDefaut"));
-            m_fenetre1->setPosition ( m_posFenetre1.x, m_posFenetre1.y  );
-            m_fenetre1->setTaille( 512 , 512 );
-            m_fenetre1->setTaille( m_tailleFenetre1 );
-            m_fenetre1->lier ( gui::Evenement::onFen_fermer,[this](){ m_fenetre1=nullptr; });
-            m_fenetre1->lier ( gui::Evenement::onFen_bouge, [this](){ m_posFenetre1 = m_fenetre1->getPosition(); });
-            m_fenetre1->lier ( gui::Evenement::onFen_redim, [this](){ m_posFenetre1 = m_fenetre1->getPosition(); m_tailleFenetre1 = m_fenetre1->getTaille(); });
-
-            auto bouton = m_interface->creer.boutonTexte( "BOUTON TEST" );
-            bouton->setPosition ( 0,0 );
-            bouton->lier (gui::Evenement::onBtnG_relacher, [this](){ printf("popo\n");});
-
-            m_fenetre1->ajouter ( bouton );
-
-        } else m_fenetre1->fermer();
-
+    auto fct_toggleFenetreAff = [this](){
+        m_fenetreAffichage->setVisible( ! m_fenetreAffichage->estVisible() ) ;
     };
 
+    auto fct_toggleFenetreBtn = [this](){
+        m_fenetreBoutons->setVisible( ! m_fenetreBoutons->estVisible() ) ;
+    };
+
+    auto fct_toggleFenetreDonnee = [this](){
+        m_fenetreDonnees->setVisible( ! m_fenetreDonnees->estVisible() ) ;
+    };
 
 
 
@@ -236,8 +226,10 @@ EcranDemo::initGUI_tests ()
 
 
     // Menu AFFICHAGE
-    menusDeroulants->ajouterMenu    ("Affichage");
-    menusDeroulants->ajouterElement ("Fenetre Démo", fct_toggleFenetre1 );
+    menusDeroulants->ajouterMenu    ("Fenêtre");
+    menusDeroulants->ajouterElement ("Affichages", fct_toggleFenetreAff );
+    menusDeroulants->ajouterElement ("Boutons simples", fct_toggleFenetreBtn );
+    menusDeroulants->ajouterElement ("Boutons données", fct_toggleFenetreDonnee );
 
     // Menu AIDE
     menusDeroulants->ajouterMenu    ("Aide");
@@ -246,7 +238,7 @@ EcranDemo::initGUI_tests ()
 
     m_tailleFenetre1 = {200,200};
     m_posFenetre1 = {150,150};
-    fct_toggleFenetre1();
+
 
 //    // les panneaux lateraux
 //    auto panneauD = m_interface->creer.supportPanneaux();
@@ -258,7 +250,7 @@ EcranDemo::initGUI_tests ()
 //    listeDeroul->ajouterElement("popo 1");
 //    listeDeroul->ajouterElement("popo 2");
 
-    auto label = m_interface->creer.label( "bon bah on a un label.");
+//    auto label = m_interface->creer.label( "bon bah on a un label.");
 }
 
 /////////////////////////////////////////////////
@@ -286,27 +278,127 @@ void
 EcranDemo::initGUI_test_Affichages ()
 {
 
+    sf::Vector2i pos = { 0,0 };
+
+    // la fenetre
+    m_fenetreAffichage = m_interface->creer.fenetre("Les gadgets d'affichage de base.");
+    m_fenetreAffichage->setPosition ( {100,100} );
+
+
+    // Label
+    auto label = m_interface->creer.label("là on a un label");
+    label->setPosition(pos.x + 20, pos.y + 20);
+    label->setTexteCouleur ( sf::Color::Yellow );
+
+    // simple rectangle
+    auto rectangle = m_interface->creer.rectangle( 20,20);
+    rectangle->setPosition(pos.x + 20, pos.y + 50);
+    rectangle->setFondCouleur(sf::Color::Green);
+    rectangle->setFondLigneCouleur(sf::Color::Red);
+    rectangle->setFondLigneEpaisseur( 10);
+
+    // Image
+    auto image = m_interface->creer.image("media/img/senseidoigt.gif");
+    image->setPosition(pos.x + 20, pos.y + 90);
+
+    // Icone
+    auto icone = m_interface->creer.icone("media/img/ico_fenetre.png");
+    icone->setPosition(pos.x + 100, pos.y + 40);
+
+
+
+
+    m_fenetreAffichage->ajouter ( label );
+    m_fenetreAffichage->ajouter ( rectangle );
+    m_fenetreAffichage->ajouter ( image );
+    m_fenetreAffichage->ajouter ( icone );
+
+}
+
+/////////////////////////////////////////////////
+void
+EcranDemo::initGUI_test_Boutons  ()
+{
+    sf::Vector2i pos = { 0,0 };
+
+    // la fenetre
+    m_fenetreBoutons = m_interface->creer.fenetre("Les boutons simples.");
+    m_fenetreBoutons->setPosition ( {150,150} );
+
+
+
+    // Bouton simple rectangulaire
+    auto btnRect = m_interface->creer.boutonRect( 50, 50 );
+    btnRect->setPosition (pos.x + 20,  pos.y + 20);
+    btnRect->lier (gui::Evenement::onBtnG_relacher, [](){ printf ("Clique sur bouton rectangulaire.\n");});
+
+    // Bouton texte
+    auto btnTexte = m_interface->creer.boutonTexte( "Bouton texte" );
+    btnTexte->setPosition (pos.x + 80,  pos.y + 20);
+    btnTexte->lier (gui::Evenement::onBtnG_relacher, [](){ printf ("Clique sur bouton texte.\n");});
+
+    // Bouton icone
+    auto btnIcone = m_interface->creer.boutonIcone( &gui::Interface::ms_icones.get( "ico_fichiers" ) );
+    btnIcone->setIndex (1);
+    btnIcone->setFix   ( );
+    btnIcone->setPosition (pos.x + 200,  pos.y + 20);
+    btnIcone->lier (gui::Evenement::onBtnG_relacher, [](){ printf ("Clique sur bouton icone.\n");});
+
+
+    m_fenetreBoutons->ajouter ( btnRect );
+    m_fenetreBoutons->ajouter ( btnTexte );
+    m_fenetreBoutons->ajouter ( btnIcone );
 }
 
 /////////////////////////////////////////////////
 void
 EcranDemo::initGUI_test_Donnees ()
 {
+    sf::Vector2i pos = { 0,0 };
+
+    // la fenetre
+    m_fenetreDonnees= m_interface->creer.fenetre("Les gadgets gérant des données.");
+    m_fenetreDonnees->setPosition ( {200,200} );
+
+
+
+    // bouton boolean
+    auto btnBool = m_interface->creer.btnACocher( "Bouton à cocher" );
+    btnBool->setPosition ( pos.x + 20, pos.y + 10);
 
     // liste
     auto liste = m_interface->creer.liste();
-    liste->ajouterElement("element 1");
-    liste->ajouterElement("element 2");
-    liste->ajouterElement("element 3");
-    liste->setPosition (50, 50);
+    liste->ajouterElement("Machin");
+    liste->ajouterElement("Truc");
+    liste->ajouterElement( "Bidule" );
+    liste->setPosition ( pos.x + 20, pos.y + 67 );
 
-    // liste
+    // liste deroulante
     auto listeDeroul = m_interface->creer.listeDeroulante();
     listeDeroul->ajouterElement("element 1");
     listeDeroul->ajouterElement("element 2");
     listeDeroul->ajouterElement("element 3");
     listeDeroul->ajouterElement("element 4");
-    listeDeroul->setPosition (250, 50);
+    listeDeroul->setPosition (pos.x + 20, pos.y + 30 );
+
+    // zone de texte
+    auto zoneTexte = m_interface->creer.zoneTexte( "zone de texte" );
+    zoneTexte->setPosition ( pos.x + 20, pos.y + 120 );
+
+    // zone de nombre
+    auto zoneNum = m_interface->creer.zoneNum( 1234 );
+    zoneNum->setPosition ( pos.x + 20, pos.y + 150 );
+
+
+
+
+
+    m_fenetreDonnees->ajouter ( btnBool );
+    m_fenetreDonnees->ajouter ( liste );
+    m_fenetreDonnees->ajouter ( listeDeroul );
+    m_fenetreDonnees->ajouter ( zoneTexte );
+    m_fenetreDonnees->ajouter ( zoneNum );
+
 }
 
 

@@ -78,8 +78,8 @@ public:
     ///< Definir m_visible
     void setVisible( bool val );
 
-    ///< Definir m_visible
-    bool getVisible( );
+//    ///< Definir m_visible
+//    bool getVisible( );
 
     ///< Definir m_actif
     void setActif( bool val );

@@ -269,6 +269,20 @@ std::shared_ptr<BtnIcone>    FabriqueBase::boutonIcone( std::string fichier )
 
 
 
+/////////////////////////////////////////////////
+std::shared_ptr<BtnIcone>    FabriqueBase::boutonIcone( sf::Texture* texture  )
+{
+    m_interfaceParent->log ("Creation: bouton icone");
+    auto nouveauGadget = creerBureau<BtnIcone>( );
+
+    nouveauGadget->setImage ( texture );
+    //nouveauGadget->demanderActualisation();
+    return nouveauGadget;
+
+}
+
+
+
 
 /*
 /////////////////////////////////////////////////
@@ -289,10 +303,12 @@ std::shared_ptr<BtnMenu>   FabriqueBase::menu( )
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<DnCaseACocher>        FabriqueBase::btnACocher( bool val )
+std::shared_ptr<DnCaseACocher>        FabriqueBase::btnACocher( std::string texte, bool val )
 {
     auto nouveauGadget = creerBureau<DnCaseACocher>( );
     nouveauGadget->setValeur ( val );
+    nouveauGadget->setTexte ( texte );
+
     //nouveauGadget->demanderActualisation();
     return nouveauGadget;
 }

@@ -43,7 +43,7 @@ public:
     virtual void actualiserStyle ();
 
     /////////////////////////////////////////////////
-    void setFix (bool val);
+    void setFix (bool val = true );
 
 /////////////////////////////////////////////////
 // Membres

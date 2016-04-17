@@ -12,7 +12,7 @@ CmpOmbre::CmpOmbre()
 {
 
     // valeurs par defaut
-    m_ombreCouleur = sf::Color( 0, 0, 0, 50 )  ;
+    m_ombreCouleur = sf::Color( 0, 0, 0, 120 )  ;
 
     m_ombre->setFondCouleur         ( m_ombreCouleur ) ;
     m_ombre->setFondLigneCouleur    ( sf::Color::Transparent ) ;

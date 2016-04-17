@@ -48,12 +48,17 @@ Interface::Interface( sf::RenderWindow* fenetre )
 , m_labelBoutonSurvol       ( )
 , m_textBoutonSurvol        ( "Gadget : ")
 
+//// infoBulle
+//, m_infoBulle      ( std::make_shared<AffInfoBulle>() )
+
 {
     m_mute          = false;
     m_nom           = "GUI";
     m_taille        = { 1920 , 1080 };
     ms_fenetreSFML  = fenetre;
     m_parent        = nullptr;
+
+
 
     // reset du nombre de gadgets
     ms_CompteurGadgets = 0;
@@ -86,6 +91,11 @@ Interface::Interface( sf::RenderWindow* fenetre )
     ms_calque_souris->ajouter(ms_curseurSouris);
     ms_curseurs.load( "Redimensionnement"  , "media/img/curs_redimensionnement.png" );
 
+    // InfoBulle
+    m_infoBulle     = std::make_shared<AffInfoBulle>() ;
+    ms_calque_infos->ajouter( m_infoBulle );
+    m_chronoDeclenchementInfo.restart();
+
 
 
     //// RETOURS ////
@@ -100,6 +110,8 @@ Interface::Interface( sf::RenderWindow* fenetre )
     m_labelBoutonSurvol.setCharacterSize     ( 9 );
     m_labelBoutonSurvol.setColor             ( sf::Color::White );
     m_labelBoutonSurvol.setString            ( "..." );
+
+
 
 }
 
@@ -126,8 +138,27 @@ void Interface::actualiser ()
     if ( m_afficherFPS )
         calculerFPS();
 
+    // retour infos gadget survol
     if ( m_afficherBoutonSurvol )
         majAffichage_BoutonSurvol();
+
+    // infobulle
+    if ( m_chronoDeclenchementInfo.getElapsedTime().asSeconds() > 1
+    &&   ms_boutonSurvole != nullptr ) {
+        if ( ms_boutonSurvole->getInfo() != "" ) {
+            m_infoBulle->setVisible ();
+            m_infoBulle->setPosition ( getPosSouris().x, getPosSouris().y + 20 );
+            m_infoBulle->setTexte  ( ms_boutonSurvole->getInfo() );
+        }
+    }
+
+
+
+
+
+
+
+
 
     // si pas besoin on zappe
     if ( ! ms_necessiteActualisation )
@@ -222,6 +253,13 @@ void Interface::traiterEvenements( sf::Event evenement )
             if (ms_curseurSouris->estVisible())
                 ms_curseurSouris->traiterEvenements( evenement );
 
+            // Info bulle, on relance le chrono
+            if ( m_sourisPosBack != getPosSouris() ){
+                m_chronoDeclenchementInfo.restart();
+                m_infoBulle->setVisible ( false );
+            }
+            m_sourisPosBack = getPosSouris();
+
             // On sort si on a pas changé de bouton survolé
             if ( ms_boutonSurvole ==  boutonSurvoleBack )
                 return;
@@ -249,19 +287,12 @@ void Interface::traiterEvenements( sf::Event evenement )
                     }
                 }
 
-
-
-            } else {
-                // on gère le gadget survolé
-                /*if (ms_boutonSurvole==nullptr){
-                    boutonSurvoleBack->setSurvol( false );
-                    boutonSurvoleBack->declencher ( Evenement::on_sortir );
-                }*/
-                /*if (ms_boutonSurvole != ms_boutonPresse ) {
-                }*/
-                // on gère le gadget anciennement survolé*/
-
             }
+
+
+
+
+
         break;
 
         ///////// Presser bouton souris /////////////////////////////////////////
@@ -392,7 +423,7 @@ void Interface::majAffichage_BoutonSurvol(){
 
 
     m_labelBoutonSurvol.setString ( m_textBoutonSurvol + txt );
-    m_labelBoutonSurvol.setPosition     ( m_fenetre->getSize().x - 400 , 4 ) ;
+    m_labelBoutonSurvol.setPosition     ( m_fenetre->getSize().x - 600 , 4 ) ;
 }
 
 
@@ -408,7 +439,7 @@ void Interface::calculerFPS(){
         m_labelFPS.setString ( txtAAfficher );
     }
 
-    m_labelFPS.setPosition              ( m_fenetre->getSize().x - 450 , 4 ) ;
+    m_labelFPS.setPosition              ( m_fenetre->getSize().x - 650 , 4 ) ;
 
 }
 

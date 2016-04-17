@@ -39,6 +39,7 @@ Gadget::Gadget ()
 , m_etat        ( Etat::repos )
 , m_menu        ( nullptr )
 
+, m_info        ("")
 {
 
     // Mise a jour du nombre de gadgets.
@@ -431,7 +432,21 @@ sf::Vector2f    Gadget::getMarge()const{
 };
 
 
-
+/////////////////////////////////////////////////
+std::string     Gadget::getInfo(){
+//    std::string info ="";
+//    for ( auto comp : m_composants )
+//        if
+    if ( m_info == "" ) {
+        if ( m_parent != nullptr )
+            return m_parent->getInfo();
+        else return m_info;
+    } else return m_info;
+};
+/////////////////////////////////////////////////
+void     Gadget::setInfo( std::string info ){
+    m_info = info;
+}
 
 } // fin namespace gui
 

@@ -532,7 +532,7 @@
 1460903132 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1460916149 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1460932119 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
@@ -1849,7 +1849,7 @@
 1460904554 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\gadgets\calque.h
 	"interfaces/Gadget.h"
 
-1460911051 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\gadget.h
+1460930676 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\gadget.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<interfaces/Geometrie.h>
@@ -1932,7 +1932,7 @@
 	<gadgets/AffIcone.h>
 	<Enums.h>
 
-1460906176 r:\06 - c++\110 - gui\code\gui\include\gui\gui.h
+1460931303 r:\06 - c++\110 - gui\code\gui\include\gui\gui.h
 	<string>
 	<SFML/Graphics.hpp>
 	"Valeurs.h"
@@ -1942,7 +1942,17 @@
 	"interfaces/Gadget.h"
 	"interfaces/gadgets/Calque.h"
 	"gadgets/outils/AffCurseurSouris.h"
+	"gadgets/outils/AffInfoBulle.h"
 
 1460903130 r:\06 - c++\110 - gui\code\gui\include\gui\patch.h
 	<sstream>
+
+1460930416 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\outils\affinfobulle.h
+	"interfaces/gadgets/Affiche.h"
+	<memory>
+	<iostream>
+	<SFML/Graphics.hpp>
+	"interfaces/composants/CmpTexte.h"
+	"interfaces/composants/CmpFond.h"
+	"interfaces/composants/CmpOmbre.h"
 

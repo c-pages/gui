@@ -82,6 +82,7 @@
 		<Unit filename="include/gui/gadgets/decorations/FenDecoRedimPanneau.h" />
 		<Unit filename="include/gui/gadgets/decorations/FenDecoration.h" />
 		<Unit filename="include/gui/gadgets/outils/AffCurseurSouris.h" />
+		<Unit filename="include/gui/gadgets/outils/AffInfoBulle.h" />
 		<Unit filename="include/gui/gadgets/outils/BtnMenu.h" />
 		<Unit filename="include/gui/gadgets/outils/CntSimple.h" />
 		<Unit filename="include/gui/gadgets/outils/CntSliders.h" />
@@ -138,6 +139,7 @@
 		<Unit filename="src/gui/gadgets/decorations/FenDecoRedimPanneau.cpp" />
 		<Unit filename="src/gui/gadgets/decorations/FenDecoration.cpp" />
 		<Unit filename="src/gui/gadgets/outils/AffCurseurSouris.cpp" />
+		<Unit filename="src/gui/gadgets/outils/AffInfoBulle.cpp" />
 		<Unit filename="src/gui/gadgets/outils/BtnMenu.cpp" />
 		<Unit filename="src/gui/gadgets/outils/CntSimple.cpp" />
 		<Unit filename="src/gui/gadgets/outils/CntSliders.cpp" />

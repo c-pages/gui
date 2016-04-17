@@ -324,6 +324,7 @@ EcranDemo::initGUI_test_Boutons  ()
     // la fenetre
     m_fenetreBoutons = m_interface->creer.fenetre("Les boutons simples.");
     m_fenetreBoutons->setPosition ( {150,150} );
+    m_fenetreBoutons->setInfo ("gui::Fenetre()\ngui::Interface::creer.fenetre( string titre )");
 
 
 
@@ -331,11 +332,13 @@ EcranDemo::initGUI_test_Boutons  ()
     auto btnRect = m_interface->creer.boutonRect( 50, 50 );
     btnRect->setPosition (pos.x + 20,  pos.y + 20);
     btnRect->lier (gui::Evenement::onBtnG_relacher, [](){ printf ("Clique sur bouton rectangulaire.\n");});
+    btnRect->setInfo ("gui::BtnRectangle()\ngui::Interface::creer.boutonRect( float largeur, float hauteur )\ngui::Interface::creer.boutonRect( sf::Vector2i rectangle )");
 
     // Bouton texte
     auto btnTexte = m_interface->creer.boutonTexte( "Bouton texte" );
     btnTexte->setPosition (pos.x + 80,  pos.y + 20);
     btnTexte->lier (gui::Evenement::onBtnG_relacher, [](){ printf ("Clique sur bouton texte.\n");});
+    btnTexte->setInfo ("gui::BtnTexte()\ngui::Interface::creer.boutonTexte( string texte )");
 
     // Bouton icone
     auto btnIcone = m_interface->creer.boutonIcone( &gui::Interface::ms_icones.get( "ico_fichiers" ) );
@@ -343,6 +346,7 @@ EcranDemo::initGUI_test_Boutons  ()
     btnIcone->setFix   ( );
     btnIcone->setPosition (pos.x + 200,  pos.y + 20);
     btnIcone->lier (gui::Evenement::onBtnG_relacher, [](){ printf ("Clique sur bouton icone.\n");});
+    btnIcone->setInfo ("gui::BtnIcone()\ngui::Interface::creer.boutonIcone( ssf::Texture texture )\ngui::Interface::creer.boutonIcone( string cheminImage )");
 
 
     m_fenetreBoutons->ajouter ( btnRect );
@@ -359,12 +363,13 @@ EcranDemo::initGUI_test_Donnees ()
     // la fenetre
     m_fenetreDonnees= m_interface->creer.fenetre("Les gadgets gérant des données.");
     m_fenetreDonnees->setPosition ( {200,200} );
-
+    m_fenetreDonnees->setInfo ("gui::Fenetre()\ngui::Interface::creer.fenetre( string titre )");
 
 
     // bouton boolean
     auto btnBool = m_interface->creer.btnACocher( "Bouton à cocher" );
     btnBool->setPosition ( pos.x + 20, pos.y + 10);
+    btnBool->setInfo ("gui::BtnCoche()\ngui::Interface::creer.btnACocher( string texte, bool coche = true )");
 
     // liste
     auto liste = m_interface->creer.liste();
@@ -372,6 +377,8 @@ EcranDemo::initGUI_test_Donnees ()
     liste->ajouterElement("Truc");
     liste->ajouterElement( "Bidule" );
     liste->setPosition ( pos.x + 20, pos.y + 67 );
+    liste->setInfo ("gui::LstSimple()\ngui::Interface::creer.liste(  )");
+
 
     // liste deroulante
     auto listeDeroul = m_interface->creer.listeDeroulante();
@@ -380,6 +387,7 @@ EcranDemo::initGUI_test_Donnees ()
     listeDeroul->ajouterElement("element 3");
     listeDeroul->ajouterElement("element 4");
     listeDeroul->setPosition (pos.x + 20, pos.y + 30 );
+    listeDeroul->setInfo ("gui::LstDeroulante()\ngui::Interface::creer.listeDeroulante( )");
 
     // zone de texte
     auto zoneTexte = m_interface->creer.zoneTexte( "zone de texte" );

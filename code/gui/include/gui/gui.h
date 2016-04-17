@@ -17,6 +17,7 @@
 #include "interfaces/gadgets/Calque.h"
 
 #include "gadgets/outils/AffCurseurSouris.h"
+#include "gadgets/outils/AffInfoBulle.h"
 
 
 /////////////////////////////////////////////////
@@ -57,9 +58,6 @@ public:
 
     sf::RenderWindow*        getFenetre()  { return m_fenetre; };
 
-    static sf::Vector2i getPosSouris() {
-        return sf::Mouse::getPosition( *ms_fenetreSFML );
-    };
 
 private:
 
@@ -98,11 +96,18 @@ protected:
 // fonctions statics
 /////////////////////////////////////////////////
 public:
+
+    static sf::Vector2i getPosSouris() {
+        return sf::Mouse::getPosition( *ms_fenetreSFML );
+    };
+
     static  void necessiteActualisation()                       { ms_necessiteActualisation = true ; };
     static  void setCurseur ( Curseurs    curseur   )           { ms_curseurSouris->setCurseur ( curseur  );  };
     static  std::shared_ptr<Gadget>       getBoutonSurvol ()    { return ms_boutonSurvole; };
     static  std::shared_ptr<Gadget>       getBoutonPress ()     { return ms_boutonPresse; };
     static  void                          vider_msBoutons ()    { ms_boutonSurvole = nullptr; ms_boutonPresse = nullptr; }
+
+
 /////////////////////////////////////////////////
 // membres statics
 /////////////////////////////////////////////////
@@ -132,6 +137,8 @@ private:
     static  std::shared_ptr<Gadget>     ms_boutonSurvole;    ///< Le bouton survolé actuelement par la souris.
     static  std::shared_ptr<Gadget>     ms_boutonPresse;     ///< Le bouton pressé actuelement par la souris.
 
+
+
 /////////////////////////////////////////////////
 // membres
 /////////////////////////////////////////////////
@@ -139,11 +146,12 @@ public:
     FabriqueBase    creer;                              ///< La fabrique de gadget de base (GOF: Fabrique)
 
 private:
+
     sf::RenderWindow*           m_fenetre;          ///< La fenetyre SFML;
 
-    /////// retours ///////
-
-    // FPS
+    /////////////////////////////////////////////////
+    // FPS et infos survol
+    /////////////////////////////////////////////////
     bool            m_afficherFPS;
     sf::Text        m_labelFPS;
     std::string     m_textFPS;
@@ -155,7 +163,12 @@ private:
     sf::Text                m_labelBoutonSurvol;
     std::string             m_textBoutonSurvol;
 
-
+    /////////////////////////////////////////////////
+    // Infobulle
+    /////////////////////////////////////////////////
+    std::shared_ptr<AffInfoBulle>   m_infoBulle;
+    sf::Clock                       m_chronoDeclenchementInfo;      ///< Le chrono pour le déclenchement de l'info bulle
+    sf::Vector2i                    m_sourisPosBack;
 
 }; // fin class gui
 

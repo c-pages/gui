@@ -76,25 +76,25 @@ public:
     virtual void setAbsorbable ( bool val ) {};
 
     ///< Definir m_visible
-    void setVisible( bool val );
+    void setVisible( bool val = true );
 
 //    ///< Definir m_visible
 //    bool getVisible( );
 
     ///< Definir m_actif
-    void setActif( bool val );
+    void setActif( bool val  = true );
 
     ///< Definir m_focus
-    void setFocus( bool val );
+    void setFocus( bool val   = true );
 
     ///< Definir m_survol
-    void setSurvol( bool val );
+    void setSurvol( bool val  = true );
 
     ///< Definir m_presse
-    void setPresse( bool val );
+    void setPresse( bool val  = true );
 
     ///< Definir m_deplacable
-    void setDeplacable( bool val );
+    void setDeplacable( bool val  = true );
 
 
 public:
@@ -255,8 +255,14 @@ public:
 
     void setMenu(std::shared_ptr<BtnMenu> menu ) { m_menu = menu; };
 
-    virtual void fermer(){};
-    virtual void reduire(){};
+
+    virtual void fermer(){};    ///< \todo pour les fenetre, à voir si no a pas mieux
+    virtual void reduire(){};   ///< \todo pour les fenetre, à voir si no a pas mieux
+
+    void     setInfo( std::string info );
+    std::string     getInfo();
+
+
 
 /////////////////////////////////////////////////
 // Membres
@@ -296,6 +302,8 @@ protected:
     friend class            FabriqueBase;
 
     shared_ptr<BtnMenu>     m_menu;     ///< le menu déroulant au clqiue droit sur le gadget
+
+    std::string         m_info;          ///< le texte de l'info bulle.
 
 }; // fin class Gadget
 

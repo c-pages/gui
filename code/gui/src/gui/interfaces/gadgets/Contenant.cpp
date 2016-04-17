@@ -28,11 +28,11 @@ Contenant::Contenant ()
 //    m_mute = false;
 
     auto tailleMaxCarteVideo = sf::Texture::getMaximumSize();
-    int tailleMax = 1080;
+    int tailleMax = TAILLE_MASK;
 
     log ("getMaximumSize" , tailleMaxCarteVideo );
 
-    if ( tailleMaxCarteVideo < 1080 )
+    if ( tailleMaxCarteVideo < TAILLE_MASK )
         m_renderTexture.create ( tailleMaxCarteVideo  , tailleMaxCarteVideo );
     else
         m_renderTexture.create ( tailleMax  , tailleMax );

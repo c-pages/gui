@@ -257,13 +257,19 @@ void FenDecoRedim::actualiserStyle ()
 /////////////////////////////////////////////////
 void FenDecoRedim::corrigerTailleMinimum ()
 {
+    // taille minimum
+    if ( m_tailleFenetre.x <  m_fenetre->getTailleMini().x  )
+        m_tailleFenetre.x =   m_fenetre->getTailleMini().x;
 
     if ( m_tailleFenetre.y < m_fenetre->getTailleMini().y  )
         m_tailleFenetre.y =  m_fenetre->getTailleMini().y  ;
 
-    if ( m_tailleFenetre.x <  m_fenetre->getTailleMini().x  )
-        m_tailleFenetre.x =   m_fenetre->getTailleMini().x;
+    // taille maximum
+    if ( m_tailleFenetre.x >  TAILLE_MASK  )
+        m_tailleFenetre.x =   TAILLE_MASK;
 
+    if ( m_tailleFenetre.y > TAILLE_MASK  )
+        m_tailleFenetre.y =  TAILLE_MASK  ;
 }
 
 /////////////////////////////////////////////////

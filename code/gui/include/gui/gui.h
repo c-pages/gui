@@ -2,12 +2,14 @@
 #define __GUI_H__
 
 
+/////////////////////////////////////////////////
+// Headers
+/////////////////////////////////////////////////
 #include <string>
 #include <SFML/Graphics.hpp>
 
 #include "Valeurs.h"
 #include "Enums.h"
-
 #include "FabriqueBase.h"
 #include "ResourcesMgr.h"
 
@@ -15,6 +17,13 @@
 #include "interfaces/gadgets/Calque.h"
 
 #include "gadgets/outils/AffCurseurSouris.h"
+
+
+/////////////////////////////////////////////////
+// Definitions
+/////////////////////////////////////////////////
+#define  TAILLE_MASK 1080
+
 
 namespace gui {
 

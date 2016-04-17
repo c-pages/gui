@@ -16,6 +16,7 @@ LstDeroulante::LstDeroulante ()
 {
 
 
+    creerNomUnique( "ListeDeroulante");
 
     m_selection = 0;
 
@@ -53,20 +54,20 @@ LstDeroulante::LstDeroulante ()
     m_liste->lier (Evenement::on_valeurChange , [this](){
                    std::cout <<" ListeChange selection: " << m_liste->getSelection() << "\n";
                    m_deroule = false;
-                   actualiser();
+                                demanderActuaGeom();
                    });
     m_liste->setVisible ( false );
 
     m_boutonLabel->setAutoAjuster ( false );
     m_boutonLabel->lier ( Evenement::onBtnG_presser, [this](){
-                         m_deroule = !m_deroule;
-                         actualiser();
+                            m_deroule = !m_deroule;
+                            demanderActuaGeom();
                         });
     m_boutonLabel->lier ( Evenement::onBtnG_relacherDehors, [this](){
-                         if (m_deroule) {
-                             m_deroule = false;
-                             actualiser();
-                         }
+                            if (m_deroule) {
+                                m_deroule = false;
+                                demanderActuaGeom();
+                            }
                         });
     m_fleche->setImage( &Interface::ms_icones.get( "ico_fleches" )) ;
     m_fleche->setIndex ( 2 );
@@ -97,27 +98,16 @@ void LstDeroulante::actualiserGeometrie ()
         m_liste->setVisible ( false );
 
 
-    m_boutonLabel->setTaille ( { m_taille.x , 16 });
-    m_fleche->setPosition ( m_taille.x - m_marge.x - m_fleche->getTaille().x , m_marge.y);
+    m_boutonLabel->setTaille    ( { m_taille.x , 16 });
+    m_fleche->setPosition       ( m_taille.x - m_marge.x - m_fleche->getTaille().x , m_marge.y);
+    m_fleche->alignerSur        ( m_boutonLabel , Alignement::Droite, Alignement::Droite );
+
+
     m_liste->setPosition ( 0 , m_boutonLabel->getTaille ().y );
     if ( m_elements.size() > 0 )
         m_boutonLabel->setTexte ( m_elements[m_liste->getSelection()] );
     else m_boutonLabel->setTexte ( "...");
 
-
-//
-//    float decallageY = m_marge.y;
-//    for ( auto bouton : m_boutons ) {
-//        bouton->setPosition    ( m_marge.x , decallageY );
-//        decallageY += bouton->getTaille().y;
-//    }
-//
-//    actualiserBounds ();
-//
-//    if ( m_ajustement )
-//        m_fond->setTaille ( { m_taille.x, decallageY + m_marge.y } );
-//    else
-//        m_fond->setTaille ( m_taille );
 }
 
 

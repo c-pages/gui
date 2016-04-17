@@ -26,6 +26,7 @@ enum class Decorations{
 /////////////////////////////////////////////////
 // Méthodes
 /////////////////////////////////////////////////
+
 public:
     /////////////////////////////////////////////////
     /// \brief Constructeur par défaut.
@@ -39,7 +40,6 @@ public:
     void setRepartiteur( std::unique_ptr<Repartiteur> val ){ m_repartiteur = std::move(val); };
 
     void repartirEnfants () {
-//        std::cout << " BAH ca c queque chose\n";
         m_repartiteur->repartir( m_groupe->getEnfants() );
     };
 

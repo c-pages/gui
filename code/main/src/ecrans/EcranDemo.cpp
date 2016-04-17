@@ -21,13 +21,9 @@ EcranDemo::EcranDemo( Application*  appli )
     initGUI     ();
 
     // les tests
-    initGUI_tests ();
-//    initGUI_test_Affichages ();
-//    initGUI_test_Boutons    ();
-//    initGUI_test_Donnees    ();
-//    initGUI_test_Contenantx   ();
-//    initGUI_test_Fenetres   ();
-
+//    initGUI_tests ();
+//    initGUI_test_Affichages();
+    initGUI_test_Donnees();
     initScene   ();
 
     // definition des positions et tailles des vues jeu et gui
@@ -39,7 +35,6 @@ EcranDemo::EcranDemo( Application*  appli )
     m_vueGUI.setCenter(pos);
 
 
-//    m_interface->logTitre("\n    ---->| Fin initialisation\n");
 }
 
 
@@ -67,11 +62,8 @@ void EcranDemo::traiter_evenements  ( const sf::Event& event )
         m_vueJeu.setCenter(pos);
         m_vueGUI.setCenter(pos);
 
-//        m_fond.setSize      ( pos );
-//        m_vueJeu.setSize    (event.size.width, event.size.height);
-//        m_vueGUI.setSize    (event.size.width, event.size.height);
-
         m_appli->getFenetre()->setView(m_vueGUI);
+
         m_interface->demanderActualisation();
     }
 }
@@ -88,29 +80,6 @@ void EcranDemo::actualiser  ( float deltaT )
     m_interface->actualiser    ( );
 
     ///<\todo actualiser les animations de l'interface
-//    m_interface->actualiser    ( sf::seconds( deltaT ) ) ;
-
-
-    // les FPS
-//    m_compteurFrameFPS++;
-//    if ( m_chronoFPS.getElapsedTime().asSeconds() >= 1 )    {
-//        m_FPS = m_compteurFrameFPS;
-//        m_chronoFPS.restart();
-//        m_compteurFrameFPS = 0;
-//    }
-//    std::string val=  "FPS : " + patch::to_string( m_FPS ) + "  - Survole : ";
-//    if ( m_interface->ms_boutonSurvole != nullptr ){
-//        val +=   m_interface->ms_boutonSurvole->getNom() ;
-//    } else val += "nullptr";
-//    m_labelRetour->setTexte ( val );
-
-
-
-//    std::string val =  "Retour : " + m_interface->ms_boutonSurvole->getNom();
-//    if ( m_interface->ms_boutonSurvole == nullptr )
-//        val = "Retour : nullptr";
-
-//
 
 }
 
@@ -279,15 +248,17 @@ EcranDemo::initGUI_tests ()
     m_posFenetre1 = {150,150};
     fct_toggleFenetre1();
 
+//    // les panneaux lateraux
+//    auto panneauD = m_interface->creer.supportPanneaux();
+//    panneauD->setCote ( gui::Cote::Droite );
+//    auto panneauG = m_interface->creer.supportPanneaux();
 
-    auto panneauD = m_interface->creer.supportPanneaux();
-    panneauD->setCote ( gui::Cote::Droite );
+//    // liste
+//    auto listeDeroul = m_interface->creer.liste();
+//    listeDeroul->ajouterElement("popo 1");
+//    listeDeroul->ajouterElement("popo 2");
 
-    auto panneauG = m_interface->creer.supportPanneaux();
-
-
-
-
+    auto label = m_interface->creer.label( "bon bah on a un label.");
 }
 
 /////////////////////////////////////////////////
@@ -310,6 +281,33 @@ EcranDemo::initGUI ()
 }
 
 
+/////////////////////////////////////////////////
+void
+EcranDemo::initGUI_test_Affichages ()
+{
+
+}
+
+/////////////////////////////////////////////////
+void
+EcranDemo::initGUI_test_Donnees ()
+{
+
+    // liste
+    auto liste = m_interface->creer.liste();
+    liste->ajouterElement("element 1");
+    liste->ajouterElement("element 2");
+    liste->ajouterElement("element 3");
+    liste->setPosition (50, 50);
+
+    // liste
+    auto listeDeroul = m_interface->creer.listeDeroulante();
+    listeDeroul->ajouterElement("element 1");
+    listeDeroul->ajouterElement("element 2");
+    listeDeroul->ajouterElement("element 3");
+    listeDeroul->ajouterElement("element 4");
+    listeDeroul->setPosition (250, 50);
+}
 
 
 }   // fin namespace app

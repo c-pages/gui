@@ -302,13 +302,13 @@ void Interface::traiterEvenements( sf::Event evenement )
         ///////// Relacher bouton souris /////////////////////////////////////////
         case sf::Event::MouseButtonReleased:
 
-//            // on declenche l'evenement RELACHER DEHORS
-//            if ( evenement.mouseButton.button == sf::Mouse::Left )
-//                declencherToutBoutons  ( Evenement::onBtnG_relacherDehors , ms_boutonPresse );
-//            else if ( evenement.mouseButton.button == sf::Mouse::Right )
-//                declencherToutBoutons  ( Evenement::onBtnD_relacherDehors , ms_boutonPresse);
-//            else if ( evenement.mouseButton.button == sf::Mouse::Middle )
-//                declencherToutBoutons  ( Evenement::onBtnM_relacherDehors , ms_boutonPresse);
+            // on declenche l'evenement RELACHER DEHORS
+            if ( evenement.mouseButton.button == sf::Mouse::Left )
+                declencherToutBoutons  ( Evenement::onBtnG_relacherDehors , ms_boutonPresse );
+            else if ( evenement.mouseButton.button == sf::Mouse::Right )
+                declencherToutBoutons  ( Evenement::onBtnD_relacherDehors , ms_boutonPresse);
+            else if ( evenement.mouseButton.button == sf::Mouse::Middle )
+                declencherToutBoutons  ( Evenement::onBtnM_relacherDehors , ms_boutonPresse);
 
 
             // si on a pas pressé de bouton, on passe

@@ -52,24 +52,23 @@ LstDeroulante::LstDeroulante ()
 
     m_liste->setAjustement( true );
     m_liste->lier (Evenement::on_valeurChange , [this](){
-                   std::cout <<" ListeChange selection: " << m_liste->getSelection() << "\n";
-                   m_deroule = false;
-                   demanderActuaGeom();
+                       std::cout <<" ListeChange selection: " << m_liste->getSelection() << "\n";
+                       m_deroule = false;
+                       demanderActuaGeom();
                    });
     m_liste->setVisible ( false );
 
     m_boutonLabel->setAutoAjuster ( false );
     m_boutonLabel->lier ( Evenement::onBtnG_presser, [this](){
-                         printf("ca devrait s'ouvrir là\n");
-                            m_deroule = !m_deroule;
-                            demanderActuaGeom();
-                        });
+                        m_deroule = !m_deroule;
+                        demanderActuaGeom();
+                    });
     m_boutonLabel->lier ( Evenement::onBtnG_relacherDehors, [this](){
-                            if (m_deroule) {
-                                m_deroule = false;
-                                demanderActuaGeom();
-                            }
-                        });
+                        if (m_deroule) {
+                            m_deroule = false;
+                            demanderActuaGeom();
+                        }
+                    });
     m_boutonLabel->setTaille    ( { m_taille.x , 16 });
 
     m_fleche->setImage( &Interface::ms_icones.get( "ico_fleches" )) ;

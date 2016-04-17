@@ -7,7 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 
-#include "Gadget.h"
+#include "interfaces/Gadget.h"
 
 
 namespace gui {

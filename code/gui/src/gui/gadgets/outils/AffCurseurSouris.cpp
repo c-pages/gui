@@ -1,4 +1,4 @@
-#include "gadgets_outils/AffCurseurSouris.h"
+#include "gadgets/outils/AffCurseurSouris.h"
 #include "Interface.h"
 
 

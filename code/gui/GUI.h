@@ -6,7 +6,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Interface.h"
-#include "Gadget.h"
+#include "interfaces/Gadget.h"
 #include "Valeurs.h"
 #include "Enums.h"
 

@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <Filiation.h>
+#include <interfaces/Filiation.h>
 //#include <Contenant.h>
 
-#include <Gadget.h>
+#include <interfaces/Gadget.h>
 #include <Interface.h>
 
 namespace gui {

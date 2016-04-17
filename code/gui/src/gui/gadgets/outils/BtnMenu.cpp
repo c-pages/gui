@@ -1,9 +1,9 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "gadgets_outils/BtnMenu.h"
+#include "gadgets/outils/BtnMenu.h"
 #include "Interface.h"
-#include "gadgets_outils/SupBandeauMenusDeroulants.h"
+#include "gadgets/outils/SupBandeauMenusDeroulants.h"
 
 
 

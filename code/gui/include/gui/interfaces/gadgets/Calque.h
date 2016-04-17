@@ -1,7 +1,7 @@
 #ifndef CALQUE_H
 #define CALQUE_H
 
-#include "Gadget.h"
+#include "interfaces/Gadget.h"
 
 namespace gui {
 

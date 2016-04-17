@@ -8,7 +8,7 @@
 #include <memory>
 
 #include "gadgets/BtnRectangle.h"
-#include "gadgets_outils/CntSliders.h"
+#include "gadgets/outils/CntSliders.h"
 #include "interfaces/gadgets/Support.h"
 
 

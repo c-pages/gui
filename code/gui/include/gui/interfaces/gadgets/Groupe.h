@@ -1,7 +1,7 @@
 #ifndef GROUPE_H
 #define GROUPE_H
 
-#include <Gadget.h>
+#include <interfaces/Gadget.h>
 
 namespace gui {
 

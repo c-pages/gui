@@ -1,5 +1,5 @@
 #include "interfaces/composants/Composant.h"
-#include "Gadget.h"
+#include "interfaces/Gadget.h"
 
 namespace gui {
 

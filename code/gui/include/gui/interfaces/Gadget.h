@@ -6,10 +6,10 @@
 /////////////////////////////////////////////////
 #include "SFML/Graphics.hpp"
 #include <memory>
-#include <Geometrie.h>
-#include <Composition.h>
+#include <interfaces/Geometrie.h>
+#include <interfaces/Composition.h>
 //#include <Skin.h>
-#include <ActionClavier.h>
+#include <interfaces/ActionClavier.h>
 #include <Enums.h>
 
 

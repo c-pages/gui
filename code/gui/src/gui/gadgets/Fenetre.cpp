@@ -8,7 +8,7 @@
 
 #include <Interface.h>
 
-#include "gadgets_outils/CntSliders.h"
+#include "gadgets/outils/CntSliders.h"
 //#include <CntSimple.h>
 
 

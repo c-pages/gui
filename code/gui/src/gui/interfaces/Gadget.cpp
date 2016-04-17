@@ -6,10 +6,10 @@
 
 #include <gui.h>
 
-#include <Gadget.h>
+#include <interfaces/Gadget.h>
 #include <Interface.h>
 
-#include <gadgets_outils/BtnMenu.h>
+#include <gadgets/outils/BtnMenu.h>
 
 namespace gui {
 

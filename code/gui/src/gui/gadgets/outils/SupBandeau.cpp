@@ -2,8 +2,8 @@
 // Headers
 /////////////////////////////////////////////////
 #include "Interface.h"
-#include "gadgets_outils/SupBandeau.h"
-#include "gadgets_outils/CntSliders.h"
+#include "gadgets/outils/SupBandeau.h"
+#include "gadgets/outils/CntSliders.h"
 
 
 

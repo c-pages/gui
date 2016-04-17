@@ -5,7 +5,7 @@
 #include "memory"
 
 
-#include "Gadget.h"
+#include "interfaces/Gadget.h"
 
 // AFFICHAGES
 #include "gadgets\AffRectangle.h"
@@ -42,14 +42,14 @@
 
 // OUTILS
 // a retirer de la liste des creations
-//#include "gadgets_outils\AffBarreTitre.h"
-#include "gadgets_outils\BtnMenu.h"
+//#include "gadgets/outils\AffBarreTitre.h"
+#include "gadgets/outils\BtnMenu.h"
 
-#include "gadgets_outils\CntSliders.h"
+#include "gadgets/outils\CntSliders.h"
 
-#include "gadgets_outils\SupBandeau.h"
-#include "gadgets_outils\SupBandeauMenusDeroulants.h"
-#include "gadgets_outils\SupPanneau.h"
+#include "gadgets/outils\SupBandeau.h"
+#include "gadgets/outils\SupBandeauMenusDeroulants.h"
+#include "gadgets/outils\SupPanneau.h"
 
 #include "interfaces\gadgets/Contenant.h"
 

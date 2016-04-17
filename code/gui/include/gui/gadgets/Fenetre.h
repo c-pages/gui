@@ -6,11 +6,11 @@
 /////////////////////////////////////////////////
 #include <memory>
 
-#include "ActionEvenement.h"
+#include "interfaces/ActionEvenement.h"
 
 #include "decorations/FenDecoration.h"
 
-//#include "gadgets_outils/AffBarreTitre.h"
+//#include "gadgets/outils/AffBarreTitre.h"
 
 #include <interfaces/gadgets/Contenant.h>
 #include <interfaces/composants/CmpOmbre.h>

@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <gadgets_outils/SupPanneau.h>
+#include <gadgets/outils/SupPanneau.h>
 #include <Interface.h>
 //#include <CntSliders.h>
 

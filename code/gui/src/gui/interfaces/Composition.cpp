@@ -1,8 +1,8 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <Composition.h>
-#include <Gadget.h>
+#include <interfaces/Composition.h>
+#include <interfaces/Gadget.h>
 
 
 

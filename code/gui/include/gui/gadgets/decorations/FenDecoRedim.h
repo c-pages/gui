@@ -3,7 +3,7 @@
 
 #include <gadgets/decorations/FenDecoration.h>
 #include <Valeurs.h>
-#include <ActionEvenement.h>
+#include <interfaces/ActionEvenement.h>
 
 namespace gui{
 class BtnRectangle;

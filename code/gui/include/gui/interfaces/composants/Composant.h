@@ -4,7 +4,7 @@
 
 //#include "../../GUI.h"
 
-#include "Gadget.h"
+#include "interfaces/Gadget.h"
 
 namespace gui {
 

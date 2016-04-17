@@ -4,8 +4,8 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "ActionEvenement.h"
-#include "Gadget.h"
+#include "interfaces/ActionEvenement.h"
+#include "interfaces/Gadget.h"
 
 
 

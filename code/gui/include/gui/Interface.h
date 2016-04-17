@@ -4,11 +4,11 @@
 
 #include "SFML/Graphics.hpp"
 
-#include "Gadget.h"
+#include "interfaces/Gadget.h"
 #include "FabriqueBase.h"
 #include "ResourcesMgr.h"
 #include "interfaces/gadgets/Calque.h"
-#include "gadgets_outils/AffCurseurSouris.h"
+#include "gadgets/outils/AffCurseurSouris.h"
 
 namespace gui {
 

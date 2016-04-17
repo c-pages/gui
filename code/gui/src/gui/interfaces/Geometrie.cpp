@@ -1,8 +1,8 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include <Geometrie.h>
-#include <Gadget.h>
+#include <interfaces/Geometrie.h>
+#include <interfaces/Gadget.h>
 #include <Patch.h>
 
 

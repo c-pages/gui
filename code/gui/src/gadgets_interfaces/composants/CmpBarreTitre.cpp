@@ -80,17 +80,17 @@ void CmpBarreTitre::actualiserGeometrie(){
     m_titreFond->setTaille      ( m_titreTaille  );
     m_titreFond->setPosition    ( m_base->getMarge() );
 
-    m_titreIcone->AlignerSur ( m_titreFond , Alignement::Gauche , Alignement::Gauche );
+    m_titreIcone->alignerSur ( m_titreFond , Alignement::Gauche , Alignement::Gauche );
     m_titreIcone->move( m_titreMarge.x , 0 );
 
-    m_titreLabel->AlignerSur ( m_titreIcone , Alignement::Gauche , Alignement::Droite );
+    m_titreLabel->alignerSur ( m_titreIcone , Alignement::Gauche , Alignement::Droite );
     m_titreLabel->move( m_titreMarge.x , -3 );
 
     m_btnFermer->setTaille      ( m_taillebouton );
-    m_btnFermer->AlignerSur ( m_titreFond , Alignement::Droite , Alignement::Droite );
+    m_btnFermer->alignerSur ( m_titreFond , Alignement::Droite , Alignement::Droite );
 
     m_btnReduire->setTaille     ( m_taillebouton );
-    m_btnReduire->AlignerSur ( m_btnFermer , Alignement::Droite , Alignement::Gauche );
+    m_btnReduire->alignerSur ( m_btnFermer , Alignement::Droite , Alignement::Gauche );
 
 
 }

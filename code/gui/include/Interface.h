@@ -37,6 +37,9 @@ public:
     /////////////////////////////////////////////////
     virtual void actualiser ( sf::Time deltaTemps ) { Gadget::actualiser( deltaTemps ); };
 
+
+    virtual sf::Vector2i getTaille() const;
+
     sf::RenderWindow*        getFenetre()  { return m_fenetre; };
 
     static sf::Vector2i getPosSouris() {

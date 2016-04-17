@@ -77,7 +77,7 @@ public:
     /// \param alignementThis   L'endroit du gadget à aligner sur la cible.
     /// \param alignementCible	L'endroit de la cible sur lequel aligner le gadget.
     /////////////////////////////////////////////////
-    void AlignerSur ( std::shared_ptr<Gadget> cible, Alignement alignementThis = Alignement::Centre , Alignement alignementCible = Alignement::Centre );
+    void alignerSur ( std::shared_ptr<Gadget> cible, Alignement alignementThis = Alignement::Centre , Alignement alignementCible = Alignement::Centre );
 
     /////////////////////////////////////////////////
     /// \brief Actualiser .

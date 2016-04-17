@@ -43,8 +43,8 @@ void BtnIcone::actualiserGeometrie ()
         m_icone->actualiserGeometrie();
 //        log ( "aligner?" );
 //
-        m_icone->AlignerSur ( m_fond , Alignement::Centre , Alignement::Centre );
-//        m_icone->AlignerSur ( m_fond , Alignement::Haut , Alignement::Haut );
+        m_icone->alignerSur ( m_fond , Alignement::Centre , Alignement::Centre );
+//        m_icone->alignerSur ( m_fond , Alignement::Haut , Alignement::Haut );
     }
 
 

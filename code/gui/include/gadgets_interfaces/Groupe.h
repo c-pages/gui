@@ -22,6 +22,8 @@ class Groupe : public Gadget
         getParent()->actualiserGeometrie();
     };
 
+    /////////////////////////////////////////////////
+    virtual sf::Vector2i getTaille () const;
 //    /////////////////////////////////////////////////
 //    virtual void actualiserStyle ()
 //    {};

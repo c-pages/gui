@@ -102,7 +102,7 @@ private:
     // Les membres
     /////////////////////////////////////////////////
 
-    sf::Clock                m_chronoFPS;
+    sf::Clock          m_chronoFPS;
     int                m_compteurFrameFPS = 0;
     int                m_FPS = 0;
 
@@ -110,6 +110,7 @@ private:
 
     // l'Interface
     std::shared_ptr<gui::Interface>     m_interface;    ///< Le groupe de GUI du menu principal.
+    std::shared_ptr<gui::BtnRectangle>     m_cache;
 
     // un skin permettant de gérer le rendu
 //    std::shared_ptr<gui::Skin>          m_skin;         ///< Un skin.

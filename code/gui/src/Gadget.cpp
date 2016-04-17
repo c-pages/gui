@@ -150,6 +150,10 @@ void Gadget::traiterEvenements (const sf::Event& evenement)
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  Gadget::testerSurvol ( sf::Vector2i position )
 {
+    if ( !estVisible() || !estActif() )
+        return nullptr;
+
+
     // Si on survol pas le gadget on sort
     if ( ! m_globalBounds.contains( position.x, position.y ) && estActif() ) return nullptr;
 

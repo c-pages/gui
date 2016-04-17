@@ -156,74 +156,7 @@ EcranDemo::initScene  ( )
 void
 EcranDemo::initGUI_tests ()
 {
-/*
 
-    // AFFICHAGE
-    auto label = m_interface->creer.label( "bon" );
-    label->setPosition ( 50, 50 );
-    label->setTexteStyle ( sf::Text::Italic );
-    label->setTextePolice ( gui::Interface::ms_polices.get( "swisse" ));
-
-    auto rectangle = m_interface->creer.rectangle( 25 , 25 );
-    rectangle->setPosition ( 50, 100 );
-    rectangle->setFondCouleur ( sf::Color::Yellow );
-    rectangle->setFondLigneCouleur ( sf::Color::Blue );
-    rectangle->setFondLigneEpaisseur ( 2 );
-
-    auto image = m_interface->creer.image();
-    image->setPosition ( 50, 150 );
-    image->setImage( "media/img/ico_fichiers.png" );
-
-    auto icone = m_interface->creer.icone("media/img/ico_fichiers.png"  );
-    icone->setPosition ( 50, 200);
-    icone->setIndex (2);
-
-
-//     BOUTONS
-
-    auto bouton = m_interface->creer.boutonRect( 200, 15 );
-//    bouton->setLogActif ( true );
-    bouton->setPosition ( 200, 50);
-//    bouton->setFondCouleur ( sf::Color ( 255,0,0) );
-//    bouton->setFondCouleur ( sf::Color ( 0,255,0), gui::Etat::survol );
-
-    auto boutonTexte = m_interface->creer.boutonTexte( "Ceci est un bouton texte" );
-//    boutonTexte->setLogActif ( true );
-    boutonTexte->setPosition ( 200, 100);
-//    boutonTexte->setTexteCouleur ( sf::Color ( 255,0,0) );
-//    boutonTexte->setTexteCouleur ( sf::Color ( 0,255, 0), gui::Etat::survol );
-//    boutonTexte->setTexteCouleur ( sf::Color ( 0,0,255 ), gui::Etat::press );
-
-    auto boutonIcone = m_interface->creer.boutonIcone( "media/img/ico_fichiers.png" );
-    boutonIcone->setPosition ( 200, 150);
-//    boutonIcone->setLogActif ( true );
-    boutonIcone->setFix ( true );
-    boutonIcone->setIndex ( 3 );
-
-
-
-    // DONNEES
-
-    auto slide = m_interface->creer.slider( );
-    slide->setPosition  ( 200, 200);
-//    slide->setLogActif  ( true );
-//    slide->setLargeur   ( 60 );
-    slide->setMarge     ( 3 , 3 );
-
-    auto boutonCoche = m_interface->creer.btnACocher( );
-//    boutonCoche->setLogActif  ( true  );
-    boutonCoche->setPosition  ( 200, 250);
-//    boutonCoche->setValeur    ( true );
-    boutonCoche->setTexte     ( "Bouton booleen" );
-
-    auto zoneTexte = m_interface->creer.zoneTexte( "Zone de texte" );
-    zoneTexte->setLogActif  ( true  );
-    zoneTexte->setPosition  ( 200, 300 );
-
-    auto zoneNum = m_interface->creer.zoneNum(  );
-//    zoneNum->setLogActif  ( true , true );
-    zoneNum->setPosition  ( 200, 350 );
-*/
 
     ////////////////////////////////////////////////////////////////////////
     ////// les menus deroulants  ///////////////////////////////////////////
@@ -245,31 +178,57 @@ EcranDemo::initGUI_tests ()
     auto fct_sauvegarderSous = [this](){
         std::cout << "Sauvegarder sous\n";
     };
-    auto fct_quitter = [this](){
-        std::cout << "Quitter\n";
 
+
+    auto fct_quitter = [this](){
+
+        //////////////////////////////////////////////////////////////////////
+        ////    Fenetre de confirmation de fermeture
+        //////////////////////////////////////////////////////////////////////
+
+        // le bouton au fond qui occulte le reste de l'interface
+        m_cache = m_interface->creer.boutonRect( m_appli->getFenetre()->getSize().x, m_appli->getFenetre()->getSize().y );
+        gui::Interface::ms_calque_fenetres->ajouter (m_cache);
+        m_cache->setFondCouleur (sf::Color(0,0,0,100));
+
+        // la fenetre
         auto fenetreQuitter = m_interface->creer.fenetre("Quitter ?");
         fenetreQuitter->setTitreIcone ( &gui::Interface::ms_icones.get("ico_fenetreDefaut"));
-        fenetreQuitter->setPosition ( 350, 250  );
-        fenetreQuitter->setTaille( 225 , 75);
+        fenetreQuitter->alignerSur ( m_interface, gui::Alignement::Centre, gui::Alignement::Centre );
+        fenetreQuitter->lier (gui::Evenement::onFen_fermer, [this](){ m_cache->demander_aEtre_supprimer(); });
+        fenetreQuitter->setTaille( 275 , 95 );
 
+        // le label
         auto label =  m_interface->creer.label("Etes-vous sûr de vouloir quitter ?");
         label->setPosition ( 5,2 );
         label->setTexteTaille(11);
 
+        // boutons
         auto boutonOui = m_interface->creer.boutonTexte("Oui");
-        boutonOui->setPosition ( 20,20 );
-        boutonOui->lier (gui::Evenement::onBtnG_relacher, [this, fenetreQuitter ](){ m_appli->getFenetre()->close(); fenetreQuitter->fermer();});
-
+        boutonOui->setPosition ( 00,00 );
+        boutonOui->lier (gui::Evenement::onBtnG_relacher, [this](){ m_appli->getFenetre()->close(); });
         auto boutonNon = m_interface->creer.boutonTexte("Non");
-        boutonNon->setPosition ( 150,20 );
-        boutonNon->lier (gui::Evenement::onBtnG_relacher, [this, fenetreQuitter ](){ fenetreQuitter->fermer();});
+        boutonNon->setPosition ( 120,00 );
+        boutonNon->lier (gui::Evenement::onBtnG_relacher, [this, fenetreQuitter ](){ fenetreQuitter->fermer(); });
 
+        // le groupe des boutons pour les aligner
+        std::shared_ptr<gui::Groupe> grpTmp = std::make_shared<gui::Groupe>();
+        grpTmp->ajouter ( boutonOui );
+        grpTmp->ajouter ( boutonNon );
+
+        // on ajoute tout ça à la fenetre
         fenetreQuitter->ajouter (label);
-        fenetreQuitter->ajouter (boutonOui);
-        fenetreQuitter->ajouter (boutonNon);
+        fenetreQuitter->ajouter (grpTmp);
+
+        // et on place tout bien à l'interieur de la fenetre
+        label->alignerSur  ( fenetreQuitter, gui::Alignement::Centre, gui::Alignement::Centre );
+        label->move(0,-5);
+        grpTmp->alignerSur ( fenetreQuitter, gui::Alignement::Centre, gui::Alignement::Centre );
+        grpTmp->move(0,20);
 
     };
+
+
 
     auto fct_toggleFenetre1 = [this](){
 
@@ -286,10 +245,9 @@ EcranDemo::initGUI_tests ()
             m_fenetre1->lier ( gui::Evenement::onFen_bouge, [this](){ m_posFenetre1 = m_fenetre1->getPosition(); });
             m_fenetre1->lier ( gui::Evenement::onFen_redim, [this](){ m_posFenetre1 = m_fenetre1->getPosition(); m_tailleFenetre1 = m_fenetre1->getTaille(); });
 
-            auto bouton = m_interface->creer.boutonTexte("BOUTON TEST");
+            auto bouton = m_interface->creer.boutonTexte( "BOUTON TEST" );
             bouton->setPosition ( 0,0 );
             bouton->lier (gui::Evenement::onBtnG_relacher, [this](){ printf("popo\n");});
-
 
             m_fenetre1->ajouter ( bouton );
 
@@ -310,7 +268,7 @@ EcranDemo::initGUI_tests ()
 
     // Menu AFFICHAGE
     menusDeroulants->ajouterMenu    ("Affichage");
-    menusDeroulants->ajouterElement ("Fenetre 1", fct_toggleFenetre1 );
+    menusDeroulants->ajouterElement ("Fenetre Démo", fct_toggleFenetre1 );
 
     // Menu AIDE
     menusDeroulants->ajouterMenu    ("Aide");
@@ -322,35 +280,13 @@ EcranDemo::initGUI_tests ()
     fct_toggleFenetre1();
 
 
-    auto boutonpopo = m_interface->creer.boutonTexte("BOUTON TEST");
-    boutonpopo->setPosition ( 50,50);
+    auto panneauD = m_interface->creer.supportPanneaux();
+    panneauD->setCote ( gui::Cote::Droite );
 
-boutonpopo->lier (gui::Evenement::onBtnG_relacher, [this](){ printf("popo\n");});
-/*
-    ////////////////////////////////////////////////////////////////////////
-    ////// les fenetres  ///////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////
-    m_fenetre1 = m_interface->creer.fenetre("Fenetre Démo");
-    m_fenetre1->setTitreIcone ( &gui::Interface::ms_icones.get("ico_fenetreDefaut"));
-//    fenetre->setPosition ( 300,300);
-//    fenetre->setLogActif (true);
-
-//    std::shared_ptr<gui::AffRectangle> rect = m_interface->creer.rectangle(300 , 300);
-//    rect->setFondCouleur( sf::Color::Yellow );
-//    fenetre->ajouter ( rect );
+    auto panneauG = m_interface->creer.supportPanneaux();
 
 
-    std::shared_ptr<gui::AffLabel> labelTmp = m_interface->creer.label("Ceci est un label Ceci est un label Ceci est un label Ceci est un label Ceci est un label Ceci est un label Ceci est un label Ceci est un label Ceci est un label ");
-    labelTmp->setTexteCouleur( sf::Color::Black );
-    m_fenetre1->ajouter ( labelTmp );
-    m_fenetre1->setTaille( 512 , 512);
 
-
-    auto bouton = m_interface->creer.boutonTexte("BOUTON TEST");
-    bouton->setPosition ( 50,50);
-    m_fenetre1->ajouter ( bouton );
-
-*/
 
 }
 

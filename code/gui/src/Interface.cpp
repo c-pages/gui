@@ -425,7 +425,10 @@ void Interface::declencherToutBoutons ( Evenement evenement , std::shared_ptr<Ga
 
 }
 
-
+/////////////////////////////////////////////////
+sf::Vector2i Interface::getTaille() const {
+    return { ms_fenetreSFML->getSize().x, ms_fenetreSFML->getSize().y };
+}
 
 } // fin namespace
 

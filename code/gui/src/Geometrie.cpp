@@ -92,7 +92,7 @@ void Geometrie::setPosition( sf::Vector2f pos  ){
 };
 
 /////////////////////////////////////////////////
-void Geometrie::AlignerSur ( std::shared_ptr<Gadget> cible, Alignement alignementThis, Alignement alignementCible)
+void Geometrie::alignerSur ( std::shared_ptr<Gadget> cible, Alignement alignementThis, Alignement alignementCible)
 {
     if ( cible == nullptr ) return;
 
@@ -183,16 +183,12 @@ void Geometrie::AlignerSur ( std::shared_ptr<Gadget> cible, Alignement alignemen
 
     // et on deplace le gadget sur le point de destination
     pt_destination = { pt_cible.x - pt_origine.x ,  pt_cible.y - pt_origine.y };
-
-    log ("getPosAbs()" , getPosAbs());
-    log ("cible->getPosAbs()" , cible->getPosAbs());
-    log ("cible->getTaille()" , cible->getTaille());
-    log ("getTaille()" , getTaille());
-    log ("pt_cible" , pt_cible);
-    log ("pt_origine" , pt_origine);
-    log ("pt_destination" , pt_destination);
-
     move ( pt_destination );
+
+
+    // actualisation de la geometrie
+    static_cast<Gadget*>(this)->demanderActuaGeom();
+    static_cast<Gadget*>(this)->demanderActuaContenu();
 
 }
 

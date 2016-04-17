@@ -1,22 +1,22 @@
 # depslib dependency file v1.0
-1457875030 source:r:\06 - c++\110 - gui\code\utilitaires\src\utilitaires.cpp
+1460903132 source:r:\06 - c++\110 - gui\code\utilitaires\src\utilitaires.cpp
 	"../include/Utilitaires.h"
 	<sstream>
 
-1457875030 r:\06 - c++\110 - gui\code\utilitaires\include\utilitaires.h
+1460903132 r:\06 - c++\110 - gui\code\utilitaires\include\utilitaires.h
 	<sstream>
 
-1458490528 source:r:\06 - c++\110 - gui\code\main\main.cpp
+1460903131 source:r:\06 - c++\110 - gui\code\main\main.cpp
 	<Application.h>
 	<windows.h>
 
-1457875030 r:\06 - c++\110 - gui\code\main\include\application.h
+1460903131 r:\06 - c++\110 - gui\code\main\include\application.h
 	<Ecran.h>
 	<Gestion_ecrans.h>
 	<SFML/Graphics.hpp>
 	<vector>
 
-1457875030 r:\06 - c++\110 - gui\code\main\include\ecran.h
+1460903131 r:\06 - c++\110 - gui\code\main\include\ecran.h
 	<SFML/Graphics.hpp>
 
 1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics.hpp
@@ -353,17 +353,17 @@
 	<string>
 	<vector>
 
-1457875030 r:\06 - c++\110 - gui\code\main\include\gestion_ecrans.h
+1460903131 r:\06 - c++\110 - gui\code\main\include\gestion_ecrans.h
 	<Ecran.h>
 
-1458486326 source:r:\06 - c++\110 - gui\code\main\src\application.cpp
+1460903132 source:r:\06 - c++\110 - gui\code\main\src\application.cpp
 	"Application.h"
 	"Config.h"
 	"ecrans/EcranDemo.h"
 	"ecrans/EcranAtelier.h"
 	<SFML/System.hpp>
 
-1457877353 r:\06 - c++\110 - gui\code\main\include\config.h
+1460903131 r:\06 - c++\110 - gui\code\main\include\config.h
 	<SFML/Graphics.hpp>
 	<map>
 	<memory>
@@ -451,14 +451,14 @@
 	"Enums.h"
 	<memory>
 
-1460851451 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
+1460903131 r:\06 - c++\110 - gui\code\main\include\ecrans\ecrandemo.h
 	<SFML/Graphics.hpp>
 	<memory>
 	<Ecran.h>
 	<Application.h>
 	<gui.h>
 
-1458476428 r:\06 - c++\110 - gui\code\gui\gui.h
+1460903130 r:\06 - c++\110 - gui\code\gui\gui.h
 	<string>
 	<SFML/Graphics.hpp>
 	"Interface.h"
@@ -466,7 +466,7 @@
 	"Valeurs.h"
 	"Enums.h"
 
-1460848526 r:\06 - c++\110 - gui\code\gui\include\gadget.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadget.h
 	"SFML/Graphics.hpp"
 	<memory>
 	<Geometrie.h>
@@ -474,7 +474,7 @@
 	<ActionClavier.h>
 	<Enums.h>
 
-1460849344 r:\06 - c++\110 - gui\code\gui\include\geometrie.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\geometrie.h
 	"Filiation.h"
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -487,12 +487,12 @@
 	<vector>
 	<iostream>
 
-1457875028 r:\06 - c++\110 - gui\code\gui\include\actionclavier.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\actionclavier.h
 	<map>
 	<SFML/Graphics.hpp>
 	<functional>
 
-1459723797 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\fabriquebase.h
 	"SFML/Graphics.hpp"
 	"memory"
 	"Gadget.h"
@@ -518,37 +518,37 @@
 	"gadgets_outils\SupPanneau.h"
 	"gadgets_interfaces\Contenant.h"
 
-1459717979 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\affrectangle.h
 	"gadgets_interfaces/Affiche.h"
 	<SFML/Graphics.hpp>
 
 1458079281 r:\06 - c++\110 - gui\code\gui\include\affiche.h
 	"Gadget.h"
 
-1458486308 source:r:\06 - c++\110 - gui\code\main\src\config.cpp
+1460903132 source:r:\06 - c++\110 - gui\code\main\src\config.cpp
 	"Config.h"
 	<iostream>
 
-1457875030 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
+1460903132 source:r:\06 - c++\110 - gui\code\main\src\ecran.cpp
 	"Ecran.h"
 
-1460852647 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1460903132 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>
 	<Interface.h>
 	<cstdlib>
 
-1457875030 source:r:\06 - c++\110 - gui\code\main\src\gestion_ecrans.cpp
+1460903132 source:r:\06 - c++\110 - gui\code\main\src\gestion_ecrans.cpp
 	"Gestion_ecrans.h"
 
-1458491916 r:\06 - c++\110 - gui\code\gui\include\gadgets\afflabel.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\afflabel.h
 	"gadgets_interfaces/Affiche.h"
 	<memory>
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1458072823 r:\06 - c++\110 - gui\code\gui\include\gadgets\affimage.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\affimage.h
 	"AffRectangle.h"
 	<memory>
 	<SFML/Graphics.hpp>
@@ -569,9 +569,9 @@
 	"Gadget.h"
 	<Enums.h>
 
-1460848526 r:\06 - c++\110 - gui\code\gui\include\enums.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\enums.h
 
-1458490314 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnrectangle.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnrectangle.h
 	"gadgets_interfaces/Bouton.h"
 	"gadgets_interfaces/composants/CmpFond.h"
 	"Valeurs.h"
@@ -594,19 +594,19 @@
 1457871428 r:\06 - c++\110 - gui\code\gui\include\donnee.h
 	"ActionEvenement.h"
 
-1458490872 r:\06 - c++\110 - gui\code\gui\include\gadgets\dncaseacocher.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\dncaseacocher.h
 	"gadgets_interfaces/Donnee.h"
 	"gadgets_interfaces/composants/CmpTexte.h"
 	"BtnRectangle.h"
 	"AffRectangle.h"
 
-1460848526 r:\06 - c++\110 - gui\code\gui\include\actionevenement.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\actionevenement.h
 	<map>
 	<functional>
 	"Gadget.h"
 	<Enums.h>
 
-1459517873 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnzonetexte.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnzonetexte.h
 	"gadgets_interfaces/Donnee.h"
 	"gadgets_interfaces/composants/CmpTexte.h"
 	"BtnRectangle.h"
@@ -618,7 +618,7 @@
 	"composants/CmpGlissere.h"
 	"BtnRectangle.h"
 
-1460850108 r:\06 - c++\110 - gui\code\gui\include\interface.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\interface.h
 	"SFML/Graphics.hpp"
 	"Gadget.h"
 	"FabriqueBase.h"
@@ -648,7 +648,7 @@
 1456616325 r:\06 - c++\110 - gui\code\gui\include\resourcemgr.inl
 	"ResourceMgr.h"
 
-1457875028 r:\06 - c++\110 - gui\code\gui\include\resourcesmgr.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\resourcesmgr.h
 	<unordered_map>
 	<memory>
 	<..\Patch.h>
@@ -659,20 +659,20 @@
 	<sstream>
 	<ResourcesMgr.inl>
 
-1457875028 r:\06 - c++\110 - gui\code\gui\include\resourcesmgr.inl
+1460903131 r:\06 - c++\110 - gui\code\gui\include\resourcesmgr.inl
 	"ResourcesMgr.h"
 
-1458076035 r:\06 - c++\110 - gui\code\gui\include\gadgets\afficone.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\afficone.h
 	"AffImage.h"
 
-1458490318 r:\06 - c++\110 - gui\code\gui\include\gadgets\btntexte.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\btntexte.h
 	"BtnRectangle.h"
 	"gadgets_interfaces/composants/CmpTexte.h"
 	"gadgets\AffRectangle.h"
 	"gadgets\AffLabel.h"
 	<SFML/Graphics.hpp>
 
-1458490323 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnicone.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnicone.h
 	<SFML/Graphics.hpp>
 	"BtnRectangle.h"
 	"gadgets_interfaces/composants/CmpIcone.h"
@@ -699,21 +699,21 @@
 	"gadgets/AffRectangle.h"
 	"repartiteurs/Repartiteur.h"
 
-1457875028 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteur.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteur.h
 	<SFML/Graphics.hpp>
 	<memory>
 	"Gadget.h"
 
-1457875028 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurgrille.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurgrille.h
 	"Repartiteur.h"
 
-1457875028 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurhorizontal.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurhorizontal.h
 	"Repartiteur.h"
 
-1457875028 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurlibre.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurlibre.h
 	"Repartiteur.h"
 
-1457875028 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurverticale.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\repartiteurs\repartiteurverticale.h
 	"Repartiteur.h"
 
 1456843536 r:\06 - c++\110 - gui\code\gui\include\gadgets\grppanneausliders.h
@@ -1107,15 +1107,15 @@
 1456916800 source:c:\users\kris\desktop\gui-master\code\main\src\gestion_ecrans.cpp
 	"Gestion_ecrans.h"
 
-1457875028 r:\06 - c++\110 - gui\code\gui\include\valeurs.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\valeurs.h
 	"Enums.h"
 
-1458491916 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecranatelier.cpp
+1460903132 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecranatelier.cpp
 	"ecrans/EcranAtelier.h"
 	<iostream>
 	<Config.h>
 
-1457875030 r:\06 - c++\110 - gui\code\main\include\ecrans\ecranatelier.h
+1460903131 r:\06 - c++\110 - gui\code\main\include\ecrans\ecranatelier.h
 	<SFML/Graphics.hpp>
 	<memory>
 	<Ecran.h>
@@ -1185,7 +1185,7 @@
 1457664801 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenpanneau.h
 	<gadgets/FenSimple.h>
 
-1458161571 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnbarrefonctions.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\btnbarrefonctions.h
 	"gadgets_interfaces/Bouton.h"
 	"BtnIcone.h"
 	"gadgets_interfaces/Contenant.h"
@@ -1194,7 +1194,7 @@
 	<memory>
 	"SFML/Graphics.hpp"
 
-1460848526 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenetre.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\fenetre.h
 	<memory>
 	"ActionEvenement.h"
 	"decorations/FenDecoration.h"
@@ -1207,14 +1207,14 @@
 	<memory>
 	"SFML/Graphics.hpp"
 
-1457875028 r:\06 - c++\110 - gui\code\gui\include\gadgets\decorations\fendecoration.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\decorations\fendecoration.h
 	<memory>
 	"SFML/Graphics.hpp"
 
-1458521737 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnzonenum.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnzonenum.h
 	"gadgets_interfaces/Donnee.h"
 
-1457875028 r:\06 - c++\110 - gui\code\gui\patch.h
+1460903130 r:\06 - c++\110 - gui\code\gui\patch.h
 	<sstream>
 
 1457872557 r:\06 - c++\110 - gui\code\gui\include\contenant.h
@@ -1248,7 +1248,7 @@
 	<gadgets/AffIcone.h>
 	<Enums.h>
 
-1458161391 r:\06 - c++\110 - gui\code\gui\include\gadgets\lstsimple.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\lstsimple.h
 	"gadgets_interfaces/Liste.h"
 	"gadgets_outils/BtnMenu.h"
 	<memory>
@@ -1258,45 +1258,45 @@
 	"Valeurs.h"
 	<vector>
 
-1458161399 r:\06 - c++\110 - gui\code\gui\include\gadgets\lstderoulante.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\lstderoulante.h
 	"gadgets_interfaces/Liste.h"
 	"LstSimple.h"
 	"BtnTexte.h"
 	"AffIcone.h"
 	<memory>
 
-1460848526 r:\06 - c++\110 - gui\code\gui\include\log.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\log.h
 	<string>
 	<iostream>
 	<memory>
 	<windows.h>
 	"SFML/Graphics.hpp"
 
-1458187070 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\affiche.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\affiche.h
 	"Gadget.h"
 
-1459725516 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\bouton.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\bouton.h
 	"ActionEvenement.h"
 	"Gadget.h"
 
-1460848526 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\contenant.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\contenant.h
 	"Gadget.h"
 	"gadgets_interfaces/Groupe.h"
 	"gadgets/AffRectangle.h"
 	"repartiteurs/Repartiteur.h"
 
-1460851835 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\groupe.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\groupe.h
 	<Gadget.h>
 
-1458494809 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\donnee.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\donnee.h
 	"ActionEvenement.h"
 
-1457924009 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\liste.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\liste.h
 	"ActionEvenement.h"
 	"Valeurs.h"
 	<vector>
 
-1459698899 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\btnmenu.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\btnmenu.h
 	<vector>
 	<memory>
 	"gadgets_interfaces/Bouton.h"
@@ -1311,7 +1311,7 @@
 	"gadgets/AffIcone.h"
 	"gadgets_interfaces/Affiche.h"
 
-1458488776 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\cntsliders.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\cntsliders.h
 	<memory>
 	<SFML/Graphics.hpp>
 	"Enums.h"
@@ -1327,47 +1327,47 @@
 	"repartiteurs/RepartiteurLibre.h"
 	"repartiteurs/RepartiteurVerticale.h"
 
-1458162723 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\supbandeau.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\supbandeau.h
 	<SFML/Graphics.hpp>
 	<memory>
 	"gadgets_interfaces/Support.h"
 	"gadgets/AffRectangle.h"
 
-1458161637 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\support.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\support.h
 	"Gadget.h"
 	"gadgets_interfaces/Contenant.h"
 	"repartiteurs/Repartiteur.h"
 	<memory>
 	<map>
 
-1460848526 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\supbandeaumenusderoulants.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\supbandeaumenusderoulants.h
 	"SupBandeau.h"
 	"gadgets/BtnTexte.h"
 	<SFML/Graphics.hpp>
 	<memory>
 
-1458163111 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\suppanneau.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\suppanneau.h
 	<SFML/Graphics.hpp>
 	<memory>
 	"gadgets/BtnRectangle.h"
 	"gadgets_outils/CntSliders.h"
 	"gadgets_interfaces/Support.h"
 
-1459702199 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\calque.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\calque.h
 	"Gadget.h"
 
-1459702499 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\affcurseursouris.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_outils\affcurseursouris.h
 	<gadgets/AffIcone.h>
 	<Enums.h>
 
-1460848526 r:\06 - c++\110 - gui\code\gui\include\filiation.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\filiation.h
 	"Log.h"
 	"SFML/Graphics.hpp"
 	<memory>
 	<vector>
 	<iostream>
 
-1460848526 r:\06 - c++\110 - gui\code\gui\include\composition.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\composition.h
 	<memory>
 	<vector>
 	<SFML/Graphics.hpp>
@@ -1399,21 +1399,21 @@
 	"gadgets/AffRectangle.h"
 	"gadgets/BtnRectangle.h"
 
-1458507742 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnglissere.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets\dnglissere.h
 	"gadgets_interfaces/Donnee.h"
 	"gadgets_interfaces/composants/CmpGlissere.h"
 	"BtnRectangle.h"
 
-1459717979 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmpfond.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmpfond.h
 	<SFML/Graphics.hpp>
 	"Composant.h"
 	"Valeurs.h"
 	"gadgets/AffRectangle.h"
 
-1458493141 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\composant.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\composant.h
 	"Gadget.h"
 
-1459693284 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmptexte.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmptexte.h
 	<string>
 	<SFML/Graphics.hpp>
 	"Composant.h"
@@ -1421,23 +1421,23 @@
 	"Valeurs.h"
 	"gadgets/AffLabel.h"
 
-1459693136 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmpicone.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmpicone.h
 	"Composant.h"
 	"gadgets/AffIcone.h"
 
-1459693136 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmpglissere.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmpglissere.h
 	"Composant.h"
 	"Valeurs.h"
 	"gadgets/AffRectangle.h"
 	"gadgets/BtnRectangle.h"
 
-1459718039 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmpombre.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmpombre.h
 	<SFML/Graphics.hpp>
 	"Composant.h"
 	"Valeurs.h"
 	"gadgets/AffRectangle.h"
 
-1459726621 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmpbarretitre.h
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gadgets_interfaces\composants\cmpbarretitre.h
 	<string>
 	<SFML/Graphics.hpp>
 	"Composant.h"
@@ -1445,4 +1445,332 @@
 	"Valeurs.h"
 	"gadgets/AffLabel.h"
 	"gadgets/BtnIcone.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interface.h
+	"SFML/Graphics.hpp"
+	"Gadget.h"
+	"FabriqueBase.h"
+	"ResourcesMgr.h"
+	"gadgets_interfaces/Calque.h"
+	"gadgets_outils/AffCurseurSouris.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadget.h
+	"SFML/Graphics.hpp"
+	<memory>
+	<Geometrie.h>
+	<Composition.h>
+	<ActionClavier.h>
+	<Enums.h>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\geometrie.h
+	"Filiation.h"
+	<SFML/Graphics.hpp>
+	<iostream>
+	"Enums.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\filiation.h
+	"Log.h"
+	"SFML/Graphics.hpp"
+	<memory>
+	<vector>
+	<iostream>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\log.h
+	<string>
+	<iostream>
+	<memory>
+	<windows.h>
+	"SFML/Graphics.hpp"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\enums.h
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\composition.h
+	<memory>
+	<vector>
+	<SFML/Graphics.hpp>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\actionclavier.h
+	<map>
+	<SFML/Graphics.hpp>
+	<functional>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\fabriquebase.h
+	"SFML/Graphics.hpp"
+	"memory"
+	"Gadget.h"
+	"gadgets\AffRectangle.h"
+	"gadgets\AffLabel.h"
+	"gadgets\AffImage.h"
+	"gadgets\AffIcone.h"
+	"gadgets\BtnRectangle.h"
+	"gadgets\BtnTexte.h"
+	"gadgets\BtnIcone.h"
+	"gadgets\DnCaseACocher.h"
+	"gadgets\DnZoneTexte.h"
+	"gadgets\DnGlissere.h"
+	"gadgets\DnZoneNum.h"
+	"gadgets\LstSimple.h"
+	"gadgets\LstDeroulante.h"
+	"gadgets\Fenetre.h"
+	"gadgets\BtnBarreFonctions.h"
+	"gadgets_outils\BtnMenu.h"
+	"gadgets_outils\CntSliders.h"
+	"gadgets_outils\SupBandeau.h"
+	"gadgets_outils\SupBandeauMenusDeroulants.h"
+	"gadgets_outils\SupPanneau.h"
+	"gadgets_interfaces\Contenant.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\affrectangle.h
+	"gadgets_interfaces/Affiche.h"
+	<SFML/Graphics.hpp>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\affiche.h
+	"Gadget.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\afflabel.h
+	"gadgets_interfaces/Affiche.h"
+	<memory>
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\affimage.h
+	"AffRectangle.h"
+	<memory>
+	<SFML/Graphics.hpp>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\afficone.h
+	"AffImage.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\btnrectangle.h
+	"gadgets_interfaces/Bouton.h"
+	"gadgets_interfaces/composants/CmpFond.h"
+	"Valeurs.h"
+	"gadgets\AffRectangle.h"
+	"gadgets\AffLabel.h"
+	<SFML/Graphics.hpp>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\bouton.h
+	"ActionEvenement.h"
+	"Gadget.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\actionevenement.h
+	<map>
+	<functional>
+	"Gadget.h"
+	<Enums.h>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\composants\cmpfond.h
+	<SFML/Graphics.hpp>
+	"Composant.h"
+	"Valeurs.h"
+	"gadgets/AffRectangle.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\composants\composant.h
+	"Gadget.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\valeurs.h
+	"Enums.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\btntexte.h
+	"BtnRectangle.h"
+	"gadgets_interfaces/composants/CmpTexte.h"
+	"gadgets\AffRectangle.h"
+	"gadgets\AffLabel.h"
+	<SFML/Graphics.hpp>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\composants\cmptexte.h
+	<string>
+	<SFML/Graphics.hpp>
+	"Composant.h"
+	"Enums.h"
+	"Valeurs.h"
+	"gadgets/AffLabel.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\btnicone.h
+	<SFML/Graphics.hpp>
+	"BtnRectangle.h"
+	"gadgets_interfaces/composants/CmpIcone.h"
+	"gadgets\AffRectangle.h"
+	"gadgets\AffIcone.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\composants\cmpicone.h
+	"Composant.h"
+	"gadgets/AffIcone.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\dncaseacocher.h
+	"gadgets_interfaces/Donnee.h"
+	"gadgets_interfaces/composants/CmpTexte.h"
+	"BtnRectangle.h"
+	"AffRectangle.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\donnee.h
+	"ActionEvenement.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\dnzonetexte.h
+	"gadgets_interfaces/Donnee.h"
+	"gadgets_interfaces/composants/CmpTexte.h"
+	"BtnRectangle.h"
+	"AffLabel.h"
+	<memory>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\dnglissere.h
+	"gadgets_interfaces/Donnee.h"
+	"gadgets_interfaces/composants/CmpGlissere.h"
+	"BtnRectangle.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\composants\cmpglissere.h
+	"Composant.h"
+	"Valeurs.h"
+	"gadgets/AffRectangle.h"
+	"gadgets/BtnRectangle.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\dnzonenum.h
+	"gadgets_interfaces/Donnee.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\lstsimple.h
+	"gadgets_interfaces/Liste.h"
+	"gadgets_outils/BtnMenu.h"
+	<memory>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\liste.h
+	"ActionEvenement.h"
+	"Valeurs.h"
+	<vector>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_outils\btnmenu.h
+	<vector>
+	<memory>
+	"gadgets_interfaces/Bouton.h"
+	"gadgets/AffRectangle.h"
+	"gadgets/BtnTexte.h"
+	"gadgets_interfaces/composants/CmpOmbre.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\composants\cmpombre.h
+	<SFML/Graphics.hpp>
+	"Composant.h"
+	"Valeurs.h"
+	"gadgets/AffRectangle.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\lstderoulante.h
+	"gadgets_interfaces/Liste.h"
+	"LstSimple.h"
+	"BtnTexte.h"
+	"AffIcone.h"
+	<memory>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\fenetre.h
+	<memory>
+	"ActionEvenement.h"
+	"decorations/FenDecoration.h"
+	<gadgets_interfaces/Contenant.h>
+	<gadgets_interfaces/composants/CmpOmbre.h>
+	<gadgets_interfaces/composants/CmpFond.h>
+	<gadgets_interfaces/composants/CmpBarreTitre.h>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\decorations\fendecoration.h
+	<memory>
+	"SFML/Graphics.hpp"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\contenant.h
+	"Gadget.h"
+	"gadgets_interfaces/Groupe.h"
+	"gadgets/AffRectangle.h"
+	"repartiteurs/Repartiteur.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\groupe.h
+	<Gadget.h>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\repartiteurs\repartiteur.h
+	<SFML/Graphics.hpp>
+	<memory>
+	"Gadget.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\composants\cmpbarretitre.h
+	<string>
+	<SFML/Graphics.hpp>
+	"Composant.h"
+	"Enums.h"
+	"Valeurs.h"
+	"gadgets/AffLabel.h"
+	"gadgets/BtnIcone.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\btnbarrefonctions.h
+	"gadgets_interfaces/Bouton.h"
+	"BtnIcone.h"
+	"gadgets_interfaces/Contenant.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_outils\cntsliders.h
+	<memory>
+	<SFML/Graphics.hpp>
+	"Enums.h"
+	"Valeurs.h"
+	"gadgets/AffRectangle.h"
+	"gadgets/AffImage.h"
+	"gadgets/DnGlissere.h"
+	"gadgets_interfaces/Contenant.h"
+	"gadgets_interfaces/Contenant.h"
+	"repartiteurs/Repartiteur.h"
+	"repartiteurs/RepartiteurGrille.h"
+	"repartiteurs/RepartiteurHorizontal.h"
+	"repartiteurs/RepartiteurLibre.h"
+	"repartiteurs/RepartiteurVerticale.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\repartiteurs\repartiteurgrille.h
+	"Repartiteur.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\repartiteurs\repartiteurhorizontal.h
+	"Repartiteur.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\repartiteurs\repartiteurlibre.h
+	"Repartiteur.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\repartiteurs\repartiteurverticale.h
+	"Repartiteur.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_outils\supbandeau.h
+	<SFML/Graphics.hpp>
+	<memory>
+	"gadgets_interfaces/Support.h"
+	"gadgets/AffRectangle.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\support.h
+	"Gadget.h"
+	"gadgets_interfaces/Contenant.h"
+	"repartiteurs/Repartiteur.h"
+	<memory>
+	<map>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_outils\supbandeaumenusderoulants.h
+	"SupBandeau.h"
+	"gadgets/BtnTexte.h"
+	<SFML/Graphics.hpp>
+	<memory>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_outils\suppanneau.h
+	<SFML/Graphics.hpp>
+	<memory>
+	"gadgets/BtnRectangle.h"
+	"gadgets_outils/CntSliders.h"
+	"gadgets_interfaces/Support.h"
+
+1460903623 r:\06 - c++\110 - gui\code\gui\include\gui\resourcesmgr.h
+	<unordered_map>
+	<memory>
+	<Patch.h>
+	<stdexcept>
+	<SFML/Graphics.hpp>
+	<SFML/audio.hpp>
+	<string>
+	<sstream>
+	<ResourcesMgr.inl>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\resourcesmgr.inl
+	"ResourcesMgr.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_interfaces\calque.h
+	"Gadget.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_outils\affcurseursouris.h
+	<gadgets/AffIcone.h>
+	<Enums.h>
 

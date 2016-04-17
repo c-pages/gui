@@ -49,14 +49,15 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-std=c++11" />
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
 			<Add option="-fexceptions" />
 			<Add option="-DSFML_STATIC" />
 			<Add directory="../gui/include" />
 			<Add directory="F:/Bibliotheques CPP/SFML-2.1/include" />
 			<Add directory="include" />
 			<Add directory="../gui" />
+			<Add directory="../gui/include/gui" />
 		</Compiler>
 		<Linker>
 			<Add directory="C:/SFML-2.1/lib" />

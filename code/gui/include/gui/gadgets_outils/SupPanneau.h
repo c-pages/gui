@@ -9,7 +9,7 @@
 
 #include "gadgets/BtnRectangle.h"
 #include "gadgets_outils/CntSliders.h"
-#include "gadgets_interfaces/Support.h"
+#include "interfaces/gadgets/Support.h"
 
 
 

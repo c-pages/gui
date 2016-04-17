@@ -51,7 +51,7 @@
 #include "gadgets_outils\SupBandeauMenusDeroulants.h"
 #include "gadgets_outils\SupPanneau.h"
 
-#include "gadgets_interfaces\Contenant.h"
+#include "interfaces\gadgets/Contenant.h"
 
 
 namespace gui{

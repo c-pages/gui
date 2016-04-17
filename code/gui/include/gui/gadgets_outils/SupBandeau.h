@@ -7,7 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 
-#include "gadgets_interfaces/Support.h"
+#include "interfaces/gadgets/Support.h"
 #include "gadgets/AffRectangle.h"
 
 

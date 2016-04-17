@@ -5,7 +5,7 @@
 // Headers
 /////////////////////////////////////////////////
 #include "Gadget.h"
-#include "gadgets_interfaces/Groupe.h"
+#include "interfaces/gadgets/Groupe.h"
 #include "gadgets/AffRectangle.h"
 #include "repartiteurs/Repartiteur.h"
 

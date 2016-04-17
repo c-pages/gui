@@ -1,4 +1,4 @@
-#include "gadgets_interfaces/composants/CmpGlissere.h"
+#include "interfaces/composants/CmpGlissere.h"
 
 namespace gui {
 /////////////////////////////////////////////////

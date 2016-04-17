@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "gadgets_interfaces/Liste.h"
+#include "interfaces/gadgets/Liste.h"
 #include "LstSimple.h"
 #include "BtnTexte.h"
 #include "AffIcone.h"

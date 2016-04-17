@@ -7,7 +7,7 @@
 #include "Gadget.h"
 #include "FabriqueBase.h"
 #include "ResourcesMgr.h"
-#include "gadgets_interfaces/Calque.h"
+#include "interfaces/gadgets/Calque.h"
 #include "gadgets_outils/AffCurseurSouris.h"
 
 namespace gui {

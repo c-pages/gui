@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "gadgets_interfaces/Contenant.h"
+#include "interfaces/gadgets/Contenant.h"
 #include "gadgets/AffRectangle.h"
 
 #include "repartiteurs/Repartiteur.h"

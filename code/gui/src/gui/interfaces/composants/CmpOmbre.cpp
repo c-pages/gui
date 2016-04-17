@@ -1,4 +1,4 @@
-#include "gadgets_interfaces/composants/CmpOmbre.h"
+#include "interfaces/composants/CmpOmbre.h"
 
 
 

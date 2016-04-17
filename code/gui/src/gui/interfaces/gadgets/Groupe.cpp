@@ -1,4 +1,4 @@
-#include "gadgets_interfaces/Groupe.h"
+#include "interfaces/gadgets/Groupe.h"
 
 namespace gui {
 

@@ -1,4 +1,4 @@
-#include "gadgets_interfaces/composants/CmpBarreTitre.h"
+#include "interfaces/composants/CmpBarreTitre.h"
 #include "Interface.h"
 #include "Enums.h"
 namespace gui {

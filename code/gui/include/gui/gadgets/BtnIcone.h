@@ -7,7 +7,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "BtnRectangle.h"
-#include "gadgets_interfaces/composants/CmpIcone.h"
+#include "interfaces/composants/CmpIcone.h"
 
 #include "gadgets\AffRectangle.h"
 #include "gadgets\AffIcone.h"

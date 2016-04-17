@@ -1,4 +1,4 @@
-#include "gadgets_interfaces/composants/CmpTexte.h"
+#include "interfaces/composants/CmpTexte.h"
 #include "Interface.h"
 namespace gui {
 

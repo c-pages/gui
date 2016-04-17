@@ -13,8 +13,7 @@
 #include "gadgets/AffRectangle.h"
 #include "gadgets/AffImage.h"
 #include "gadgets/DnGlissere.h"
-#include "gadgets_interfaces/Contenant.h"
-#include "gadgets_interfaces/Contenant.h"
+#include "interfaces/gadgets/Contenant.h"
 
 #include "repartiteurs/Repartiteur.h"
 #include "repartiteurs/RepartiteurGrille.h"

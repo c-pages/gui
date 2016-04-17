@@ -1,4 +1,4 @@
-#include "gadgets_interfaces/Calque.h"
+#include "interfaces/gadgets/Calque.h"
 
 namespace gui {
 

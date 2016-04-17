@@ -4,8 +4,8 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "gadgets_interfaces/Donnee.h"
-#include "gadgets_interfaces/composants/CmpTexte.h"
+#include "interfaces/gadgets/Donnee.h"
+#include "interfaces/composants/CmpTexte.h"
 #include "BtnRectangle.h"
 #include "AffLabel.h"
 

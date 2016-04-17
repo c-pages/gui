@@ -1,4 +1,4 @@
-#include "gadgets_interfaces/composants/CmpIcone.h"
+#include "interfaces/composants/CmpIcone.h"
 
 namespace gui {
 

@@ -1,1 +1,996 @@
 # depslib dependency file v1.0
+1460903131 source:r:\06 - c++\110 - gui\code\gui\gui.cpp
+	"gui.h"
+
+1460903130 r:\06 - c++\110 - gui\code\gui\gui.h
+	<string>
+	<SFML/Graphics.hpp>
+	"Interface.h"
+	"Gadget.h"
+	"Valeurs.h"
+	"Enums.h"
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics.hpp
+	<SFML/Window.hpp>
+	<SFML/Graphics/BlendMode.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Graphics/Font.hpp>
+	<SFML/Graphics/Glyph.hpp>
+	<SFML/Graphics/Image.hpp>
+	<SFML/Graphics/RenderStates.hpp>
+	<SFML/Graphics/RenderTexture.hpp>
+	<SFML/Graphics/RenderWindow.hpp>
+	<SFML/Graphics/Shader.hpp>
+	<SFML/Graphics/Shape.hpp>
+	<SFML/Graphics/CircleShape.hpp>
+	<SFML/Graphics/RectangleShape.hpp>
+	<SFML/Graphics/ConvexShape.hpp>
+	<SFML/Graphics/Sprite.hpp>
+	<SFML/Graphics/Text.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/Graphics/VertexArray.hpp>
+	<SFML/Graphics/View.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\window.hpp
+	<SFML/System.hpp>
+	<SFML/Window/Context.hpp>
+	<SFML/Window/ContextSettings.hpp>
+	<SFML/Window/Event.hpp>
+	<SFML/Window/Joystick.hpp>
+	<SFML/Window/Keyboard.hpp>
+	<SFML/Window/Mouse.hpp>
+	<SFML/Window/VideoMode.hpp>
+	<SFML/Window/Window.hpp>
+	<SFML/Window/WindowStyle.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system.hpp
+	<SFML/Config.hpp>
+	<SFML/System/Clock.hpp>
+	<SFML/System/Err.hpp>
+	<SFML/System/InputStream.hpp>
+	<SFML/System/Lock.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Sleep.hpp>
+	<SFML/System/String.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/ThreadLocal.hpp>
+	<SFML/System/ThreadLocalPtr.hpp>
+	<SFML/System/Utf.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/System/Vector3.hpp>
+
+1374390132 f:\bibliotheques cpp\sfml-2.1\include\sfml\config.hpp
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\clock.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/Time.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\export.hpp
+	<SFML/Config.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\time.hpp
+	<SFML/System/Export.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\err.hpp
+	<SFML/System/Export.hpp>
+	<ostream>
+
+1368099372 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\inputstream.hpp
+	<SFML/Config.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\lock.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\noncopyable.hpp
+	<SFML/System/Export.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\mutex.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\sleep.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/Time.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\string.hpp
+	<SFML/System/Export.hpp>
+	<locale>
+	<string>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\thread.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<cstdlib>
+	<SFML/System/Thread.inl>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\thread.inl
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\threadlocal.hpp
+	<SFML/System/Export.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<cstdlib>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\threadlocalptr.hpp
+	<SFML/System/ThreadLocal.hpp>
+	<SFML/System/ThreadLocalPtr.inl>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\threadlocalptr.inl
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\utf.hpp
+	<SFML/Config.hpp>
+	<algorithm>
+	<locale>
+	<string>
+	<cstdlib>
+	<SFML/System/Utf.inl>
+
+1372053422 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\utf.inl
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\vector2.hpp
+	<SFML/System/Vector2.inl>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\vector2.inl
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\vector3.hpp
+	<SFML/System/Vector3.inl>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\system\vector3.inl
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\window\context.hpp
+	<SFML/Window/Export.hpp>
+	<SFML/Window/GlResource.hpp>
+	<SFML/Window/ContextSettings.hpp>
+	<SFML/System/NonCopyable.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\window\export.hpp
+	<SFML/Config.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\window\glresource.hpp
+	<SFML/Window/Export.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\window\contextsettings.hpp
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\window\event.hpp
+	<SFML/Config.hpp>
+	<SFML/Window/Joystick.hpp>
+	<SFML/Window/Keyboard.hpp>
+	<SFML/Window/Mouse.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\window\joystick.hpp
+	<SFML/Window/Export.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\window\keyboard.hpp
+	<SFML/Window/Export.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\window\mouse.hpp
+	<SFML/Window/Export.hpp>
+	<SFML/System/Vector2.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\window\videomode.hpp
+	<SFML/Window/Export.hpp>
+	<vector>
+
+1371061192 f:\bibliotheques cpp\sfml-2.1\include\sfml\window\window.hpp
+	<SFML/Window/Export.hpp>
+	<SFML/Window/ContextSettings.hpp>
+	<SFML/Window/VideoMode.hpp>
+	<SFML/Window/WindowHandle.hpp>
+	<SFML/Window/WindowStyle.hpp>
+	<SFML/Window/GlResource.hpp>
+	<SFML/System/Clock.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/String.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\window\windowhandle.hpp
+	<SFML/Config.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\window\windowstyle.hpp
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\blendmode.hpp
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\color.hpp
+	<SFML/Graphics/Export.hpp>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\export.hpp
+	<SFML/Config.hpp>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\font.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Glyph.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/System/String.hpp>
+	<map>
+	<string>
+	<vector>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\glyph.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Rect.hpp>
+
+1367997279 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\rect.hpp
+	<SFML/System/Vector2.hpp>
+	<algorithm>
+	<SFML/Graphics/Rect.inl>
+
+1368305601 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\rect.inl
+
+1367997280 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\texture.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Image.hpp>
+	<SFML/Window/GlResource.hpp>
+
+1368172116 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\image.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<string>
+	<vector>
+
+1367997279 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\renderstates.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/BlendMode.hpp>
+	<SFML/Graphics/Transform.hpp>
+
+1367997280 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\transform.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/System/Vector2.hpp>
+
+1367997279 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\rendertexture.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Texture.hpp>
+	<SFML/Graphics/RenderTarget.hpp>
+
+1367997279 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\rendertarget.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/View.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/Graphics/BlendMode.hpp>
+	<SFML/Graphics/RenderStates.hpp>
+	<SFML/Graphics/PrimitiveType.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/System/NonCopyable.hpp>
+
+1367997281 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\view.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/System/Vector2.hpp>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\primitivetype.hpp
+
+1367997280 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\vertex.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/System/Vector2.hpp>
+
+1367997279 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\renderwindow.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/RenderTarget.hpp>
+	<SFML/Graphics/Image.hpp>
+	<SFML/Window/Window.hpp>
+	<string>
+
+1371547273 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\shader.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Transform.hpp>
+	<SFML/Graphics/Color.hpp>
+	<SFML/Window/GlResource.hpp>
+	<SFML/System/NonCopyable.hpp>
+	<SFML/System/Vector2.hpp>
+	<SFML/System/Vector3.hpp>
+	<map>
+	<string>
+
+1367997279 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\shape.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/VertexArray.hpp>
+	<SFML/System/Vector2.hpp>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\drawable.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/RenderStates.hpp>
+
+1368255064 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\transformable.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Transform.hpp>
+
+1367997280 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\vertexarray.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/Graphics/PrimitiveType.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<vector>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\circleshape.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Shape.hpp>
+
+1367997279 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\rectangleshape.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Shape.hpp>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\convexshape.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Shape.hpp>
+	<vector>
+
+1367997279 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\sprite.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/Vertex.hpp>
+	<SFML/Graphics/Rect.hpp>
+
+1367997280 f:\bibliotheques cpp\sfml-2.1\include\sfml\graphics\text.hpp
+	<SFML/Graphics/Export.hpp>
+	<SFML/Graphics/Drawable.hpp>
+	<SFML/Graphics/Transformable.hpp>
+	<SFML/Graphics/Font.hpp>
+	<SFML/Graphics/Rect.hpp>
+	<SFML/Graphics/VertexArray.hpp>
+	<SFML/System/String.hpp>
+	<string>
+	<vector>
+
+1460904270 r:\06 - c++\110 - gui\code\gui\include\gui\interface.h
+	"SFML/Graphics.hpp"
+	"Gadget.h"
+	"FabriqueBase.h"
+	"ResourcesMgr.h"
+	"interfaces/gadgets/Calque.h"
+	"gadgets_outils/AffCurseurSouris.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadget.h
+	"SFML/Graphics.hpp"
+	<memory>
+	<Geometrie.h>
+	<Composition.h>
+	<ActionClavier.h>
+	<Enums.h>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\geometrie.h
+	"Filiation.h"
+	<SFML/Graphics.hpp>
+	<iostream>
+	"Enums.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\filiation.h
+	"Log.h"
+	"SFML/Graphics.hpp"
+	<memory>
+	<vector>
+	<iostream>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\log.h
+	<string>
+	<iostream>
+	<memory>
+	<windows.h>
+	"SFML/Graphics.hpp"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\enums.h
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\composition.h
+	<memory>
+	<vector>
+	<SFML/Graphics.hpp>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\actionclavier.h
+	<map>
+	<SFML/Graphics.hpp>
+	<functional>
+
+1460904267 r:\06 - c++\110 - gui\code\gui\include\gui\fabriquebase.h
+	"SFML/Graphics.hpp"
+	"memory"
+	"Gadget.h"
+	"gadgets\AffRectangle.h"
+	"gadgets\AffLabel.h"
+	"gadgets\AffImage.h"
+	"gadgets\AffIcone.h"
+	"gadgets\BtnRectangle.h"
+	"gadgets\BtnTexte.h"
+	"gadgets\BtnIcone.h"
+	"gadgets\DnCaseACocher.h"
+	"gadgets\DnZoneTexte.h"
+	"gadgets\DnGlissere.h"
+	"gadgets\DnZoneNum.h"
+	"gadgets\LstSimple.h"
+	"gadgets\LstDeroulante.h"
+	"gadgets\Fenetre.h"
+	"gadgets\BtnBarreFonctions.h"
+	"gadgets_outils\BtnMenu.h"
+	"gadgets_outils\CntSliders.h"
+	"gadgets_outils\SupBandeau.h"
+	"gadgets_outils\SupBandeauMenusDeroulants.h"
+	"gadgets_outils\SupPanneau.h"
+	"interfaces\gadgets/Contenant.h"
+
+1460904218 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\affrectangle.h
+	"interfaces/gadgets/Affiche.h"
+	<SFML/Graphics.hpp>
+
+1460904221 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\afflabel.h
+	"interfaces/gadgets/Affiche.h"
+	<memory>
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\affimage.h
+	"AffRectangle.h"
+	<memory>
+	<SFML/Graphics.hpp>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\afficone.h
+	"AffImage.h"
+
+1460904223 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\btnrectangle.h
+	"interfaces/gadgets/Bouton.h"
+	"interfaces/composants/CmpFond.h"
+	"Valeurs.h"
+	"gadgets\AffRectangle.h"
+	"gadgets\AffLabel.h"
+	<SFML/Graphics.hpp>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\valeurs.h
+	"Enums.h"
+
+1460904210 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\btntexte.h
+	"BtnRectangle.h"
+	"interfaces/composants/CmpTexte.h"
+	"gadgets\AffRectangle.h"
+	"gadgets\AffLabel.h"
+	<SFML/Graphics.hpp>
+
+1460904210 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\btnicone.h
+	<SFML/Graphics.hpp>
+	"BtnRectangle.h"
+	"interfaces/composants/CmpIcone.h"
+	"gadgets\AffRectangle.h"
+	"gadgets\AffIcone.h"
+
+1460904225 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\dncaseacocher.h
+	"interfaces/gadgets/Donnee.h"
+	"interfaces/composants/CmpTexte.h"
+	"BtnRectangle.h"
+	"AffRectangle.h"
+
+1460904228 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\dnzonetexte.h
+	"interfaces/gadgets/Donnee.h"
+	"interfaces/composants/CmpTexte.h"
+	"BtnRectangle.h"
+	"AffLabel.h"
+	<memory>
+
+1460904231 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\dnglissere.h
+	"interfaces/gadgets/Donnee.h"
+	"interfaces/composants/CmpGlissere.h"
+	"BtnRectangle.h"
+
+1460904233 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\dnzonenum.h
+	"interfaces/gadgets/Donnee.h"
+
+1460904235 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\lstsimple.h
+	"interfaces/gadgets/Liste.h"
+	"gadgets_outils/BtnMenu.h"
+	<memory>
+
+1460904237 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_outils\btnmenu.h
+	<vector>
+	<memory>
+	"interfaces/gadgets/Bouton.h"
+	"gadgets/AffRectangle.h"
+	"gadgets/BtnTexte.h"
+	"interfaces/composants/CmpOmbre.h"
+
+1460904239 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\lstderoulante.h
+	"interfaces/gadgets/Liste.h"
+	"LstSimple.h"
+	"BtnTexte.h"
+	"AffIcone.h"
+	<memory>
+
+1460904242 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\fenetre.h
+	<memory>
+	"ActionEvenement.h"
+	"decorations/FenDecoration.h"
+	<interfaces/gadgets/Contenant.h>
+	<interfaces/composants/CmpOmbre.h>
+	<interfaces/composants/CmpFond.h>
+	<interfaces/composants/CmpBarreTitre.h>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\actionevenement.h
+	<map>
+	<functional>
+	"Gadget.h"
+	<Enums.h>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\decorations\fendecoration.h
+	<memory>
+	"SFML/Graphics.hpp"
+
+1460904250 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\btnbarrefonctions.h
+	"interfaces/gadgets/Bouton.h"
+	"BtnIcone.h"
+	"interfaces/gadgets/Contenant.h"
+
+1460904256 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_outils\cntsliders.h
+	<memory>
+	<SFML/Graphics.hpp>
+	"Enums.h"
+	"Valeurs.h"
+	"gadgets/AffRectangle.h"
+	"gadgets/AffImage.h"
+	"gadgets/DnGlissere.h"
+	"interfaces/gadgets/Contenant.h"
+	"repartiteurs/Repartiteur.h"
+	"repartiteurs/RepartiteurGrille.h"
+	"repartiteurs/RepartiteurHorizontal.h"
+	"repartiteurs/RepartiteurLibre.h"
+	"repartiteurs/RepartiteurVerticale.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\repartiteurs\repartiteur.h
+	<SFML/Graphics.hpp>
+	<memory>
+	"Gadget.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\repartiteurs\repartiteurgrille.h
+	"Repartiteur.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\repartiteurs\repartiteurhorizontal.h
+	"Repartiteur.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\repartiteurs\repartiteurlibre.h
+	"Repartiteur.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\repartiteurs\repartiteurverticale.h
+	"Repartiteur.h"
+
+1460904259 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_outils\supbandeau.h
+	<SFML/Graphics.hpp>
+	<memory>
+	"interfaces/gadgets/Support.h"
+	"gadgets/AffRectangle.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_outils\supbandeaumenusderoulants.h
+	"SupBandeau.h"
+	"gadgets/BtnTexte.h"
+	<SFML/Graphics.hpp>
+	<memory>
+
+1460904264 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_outils\suppanneau.h
+	<SFML/Graphics.hpp>
+	<memory>
+	"gadgets/BtnRectangle.h"
+	"gadgets_outils/CntSliders.h"
+	"interfaces/gadgets/Support.h"
+
+1460903623 r:\06 - c++\110 - gui\code\gui\include\gui\resourcesmgr.h
+	<unordered_map>
+	<memory>
+	<Patch.h>
+	<stdexcept>
+	<SFML/Graphics.hpp>
+	<SFML/audio.hpp>
+	<string>
+	<sstream>
+	<ResourcesMgr.inl>
+
+1460903130 r:\06 - c++\110 - gui\code\gui\patch.h
+	<sstream>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\audio.hpp
+	<SFML/System.hpp>
+	<SFML/Audio/Listener.hpp>
+	<SFML/Audio/Music.hpp>
+	<SFML/Audio/Sound.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundBufferRecorder.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<SFML/Audio/SoundStream.hpp>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\audio\listener.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\audio\export.hpp
+	<SFML/Config.hpp>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\audio\music.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundStream.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\audio\soundstream.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\audio\soundsource.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\audio\sound.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\audio\soundbuffer.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+	<set>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\audio\soundbufferrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<vector>
+
+1367997278 f:\bibliotheques cpp\sfml-2.1\include\sfml\audio\soundrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Thread.hpp>
+	<vector>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\resourcesmgr.inl
+	"ResourcesMgr.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_outils\affcurseursouris.h
+	<gadgets/AffIcone.h>
+	<Enums.h>
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\actionclavier.cpp
+	<ActionClavier.h>
+	<iostream>
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\actionevenement.cpp
+	<ActionEvenement.h>
+	<iostream>
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\composition.cpp
+	<Composition.h>
+	<Gadget.h>
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\fabriquebase.cpp
+	"FabriqueBase.h"
+	"Interface.h"
+	<iostream>
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\filiation.cpp
+	<Filiation.h>
+	<Gadget.h>
+	<Interface.h>
+
+1460903702 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadget.cpp
+	<iostream>
+	<sstream>
+	<gui.h>
+	<Gadget.h>
+	<Interface.h>
+	<gadgets_outils/BtnMenu.h>
+
+1460903373 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\afficone.cpp
+	<gadgets/AffIcone.h>
+	<cmath>
+
+1460903376 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\affimage.cpp
+	<gadgets/AffImage.h>
+	<Interface.h>
+	<iostream>
+
+1460903380 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\afflabel.cpp
+	<gadgets/AffLabel.h>
+	<Interface.h>
+
+1460903712 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\affrectangle.cpp
+	<gadgets/AffRectangle.h>
+	<gui.h>
+
+1460903385 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\btnbarrefonctions.cpp
+	<gadgets/BtnBarreFonctions.h>
+	"Interface.h"
+
+1460903388 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\btnicone.cpp
+	<gadgets/BtnIcone.h>
+
+1460903392 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\btnrectangle.cpp
+	<gadgets/BtnRectangle.h>
+
+1460903395 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\btntexte.cpp
+	<gadgets/BtnTexte.h>
+	<Interface.h>
+
+1460903419 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\decorations\fendecodrag.cpp
+	"gadgets/decorations/FenDecoDrag.h"
+	"Interface.h"
+	"gadgets/Fenetre.h"
+
+1460903416 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\decorations\fendecodrag.h
+	<gadgets/decorations/FenDecoration.h>
+	<gadgets/Fenetre.h>
+	<gadgets/BtnRectangle.h>
+
+1460903422 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\decorations\fendecoration.cpp
+	"gadgets/decorations/FenDecoration.h"
+
+1460903426 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\decorations\fendecoredim.cpp
+	"gadgets/decorations/FenDecoRedim.h"
+	"gadgets/Fenetre.h"
+	"gadgets/BtnRectangle.h"
+	"Interface.h"
+
+1460903429 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\decorations\fendecoredim.h
+	<gadgets/decorations/FenDecoration.h>
+	<Valeurs.h>
+	<ActionEvenement.h>
+
+1460903440 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\decorations\fendecoredimpanneau.cpp
+	"gadgets/decorations/FenDecoRedimPanneau.h"
+	"gadgets/Fenetre.h"
+	"gadgets/BtnRectangle.h"
+	"Interface.h"
+
+1460903436 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\decorations\fendecoredimpanneau.h
+	<gadgets/decorations/FenDecoration.h>
+	<Valeurs.h>
+	<ActionEvenement.h>
+
+1460903443 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\dncaseacocher.cpp
+	<gadgets/DnCaseACocher.h>
+	<Interface.h>
+
+1460903446 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\dnglissere.cpp
+	<gadgets/DnGlissere.h>
+	<Interface.h>
+
+1460903451 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\dnzonenum.cpp
+	"gadgets/DnZoneNum.h"
+	"gadgets/DnZoneTexte.h"
+	"gadgets/BtnIcone.h"
+	"Interface.h"
+
+1460903454 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\dnzonetexte.cpp
+	<gadgets/DnZoneTexte.h>
+	<Interface.h>
+	<string>
+
+1460903460 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\fenetre.cpp
+	"gadgets/Fenetre.h"
+	"gadgets/decorations/FenDecoDrag.h"
+	"gadgets/decorations/FenDecoRedim.h"
+	"gadgets/decorations/FenDecoRedimPanneau.h"
+	<Interface.h>
+	"gadgets_outils/CntSliders.h"
+
+1460903464 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\lstderoulante.cpp
+	<gadgets/LstDeroulante.h>
+	<Interface.h>
+
+1460903467 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets\lstsimple.cpp
+	<gadgets/LstSimple.h>
+	<Interface.h>
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets_outils\affcurseursouris.cpp
+	"gadgets_outils/AffCurseurSouris.h"
+	"Interface.h"
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets_outils\btnmenu.cpp
+	"gadgets_outils/BtnMenu.h"
+	"Interface.h"
+	"gadgets_outils/SupBandeauMenusDeroulants.h"
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets_outils\cntsimple.cpp
+	"gadgets_outils/CntSimple.h"
+	"Enums.h"
+
+1460904311 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets_outils\cntsimple.h
+	"interfaces/gadgets/Contenant.h"
+	"gadgets/AffRectangle.h"
+	"repartiteurs/Repartiteur.h"
+	"repartiteurs/RepartiteurGrille.h"
+	"repartiteurs/RepartiteurHorizontal.h"
+	"repartiteurs/RepartiteurLibre.h"
+	"repartiteurs/RepartiteurVerticale.h"
+	"Enums.h"
+	<memory>
+	<SFML/Graphics.hpp>
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets_outils\cntsliders.cpp
+	"gadgets_outils/CntSliders.h"
+	"Enums.h"
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets_outils\supbandeau.cpp
+	"Interface.h"
+	"gadgets_outils/SupBandeau.h"
+	"gadgets_outils/CntSliders.h"
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets_outils\supbandeaumenusderoulants.cpp
+	<gadgets_outils/SupBandeauMenusDeroulants.h>
+	<gadgets_outils/BtnMenu.h>
+	<Interface.h>
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\gadgets_outils\suppanneau.cpp
+	<gadgets_outils/SupPanneau.h>
+	<Interface.h>
+
+1460903766 source:r:\06 - c++\110 - gui\code\gui\src\gui\geometrie.cpp
+	<Geometrie.h>
+	<Gadget.h>
+	<Patch.h>
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\interface.cpp
+	"Interface.h"
+	"Interface.h"
+	<iostream>
+
+1460903775 source:r:\06 - c++\110 - gui\code\gui\src\gui\log.cpp
+	"Log.h"
+	"Gadget.h"
+	"Patch.h"
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\repartiteurs\repartiteur.cpp
+	<Repartiteurs/Repartiteur.h>
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\repartiteurs\repartiteurgrille.cpp
+	<repartiteurs/RepartiteurGrille.h>
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\repartiteurs\repartiteurhorizontal.cpp
+	<repartiteurs/RepartiteurHorizontal.h>
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\repartiteurs\repartiteurlibre.cpp
+	<repartiteurs/RepartiteurLibre.h>
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\repartiteurs\repartiteurverticale.cpp
+	<repartiteurs/RepartiteurVerticale.h>
+
+1460903131 source:r:\06 - c++\110 - gui\code\gui\src\gui\valeurs.cpp
+	"Valeurs.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\composants\cmpfond.h
+	<SFML/Graphics.hpp>
+	"Composant.h"
+	"Valeurs.h"
+	"gadgets/AffRectangle.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\composants\composant.h
+	"Gadget.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\composants\cmptexte.h
+	<string>
+	<SFML/Graphics.hpp>
+	"Composant.h"
+	"Enums.h"
+	"Valeurs.h"
+	"gadgets/AffLabel.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\composants\cmpicone.h
+	"Composant.h"
+	"gadgets/AffIcone.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\composants\cmpglissere.h
+	"Composant.h"
+	"Valeurs.h"
+	"gadgets/AffRectangle.h"
+	"gadgets/BtnRectangle.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\composants\cmpombre.h
+	<SFML/Graphics.hpp>
+	"Composant.h"
+	"Valeurs.h"
+	"gadgets/AffRectangle.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\composants\cmpbarretitre.h
+	<string>
+	<SFML/Graphics.hpp>
+	"Composant.h"
+	"Enums.h"
+	"Valeurs.h"
+	"gadgets/AffLabel.h"
+	"gadgets/BtnIcone.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\gadgets\affiche.h
+	"Gadget.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\gadgets\bouton.h
+	"ActionEvenement.h"
+	"Gadget.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\gadgets\donnee.h
+	"ActionEvenement.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\gadgets\liste.h
+	"ActionEvenement.h"
+	"Valeurs.h"
+	<vector>
+
+1460904245 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\gadgets\contenant.h
+	"Gadget.h"
+	"interfaces/gadgets/Groupe.h"
+	"gadgets/AffRectangle.h"
+	"repartiteurs/Repartiteur.h"
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\gadgets\groupe.h
+	<Gadget.h>
+
+1460904261 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\gadgets\support.h
+	"Gadget.h"
+	"interfaces/gadgets/Contenant.h"
+	"repartiteurs/Repartiteur.h"
+	<memory>
+	<map>
+
+1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\gadgets\calque.h
+	"Gadget.h"
+
+1460904210 source:r:\06 - c++\110 - gui\code\gui\src\gui\interfaces\composants\cmpbarretitre.cpp
+	"interfaces/composants/CmpBarreTitre.h"
+	"Interface.h"
+	"Enums.h"
+
+1460904210 source:r:\06 - c++\110 - gui\code\gui\src\gui\interfaces\composants\cmpfond.cpp
+	"interfaces/composants/CmpFond.h"
+
+1460904210 source:r:\06 - c++\110 - gui\code\gui\src\gui\interfaces\composants\cmpglissere.cpp
+	"interfaces/composants/CmpGlissere.h"
+
+1460904210 source:r:\06 - c++\110 - gui\code\gui\src\gui\interfaces\composants\cmpicone.cpp
+	"interfaces/composants/CmpIcone.h"
+
+1460904210 source:r:\06 - c++\110 - gui\code\gui\src\gui\interfaces\composants\cmpombre.cpp
+	"interfaces/composants/CmpOmbre.h"
+
+1460904210 source:r:\06 - c++\110 - gui\code\gui\src\gui\interfaces\composants\cmptexte.cpp
+	"interfaces/composants/CmpTexte.h"
+	"Interface.h"
+
+1460904210 source:r:\06 - c++\110 - gui\code\gui\src\gui\interfaces\composants\composant.cpp
+	"interfaces/composants/Composant.h"
+	"Gadget.h"
+
+1460904331 source:r:\06 - c++\110 - gui\code\gui\src\gui\interfaces\gadgets\affiche.cpp
+	"interfaces/gadgets/Affiche.h"
+	<iostream>
+
+1460904335 source:r:\06 - c++\110 - gui\code\gui\src\gui\interfaces\gadgets\bouton.cpp
+	"interfaces/gadgets/Bouton.h"
+
+1460904338 source:r:\06 - c++\110 - gui\code\gui\src\gui\interfaces\gadgets\calque.cpp
+	"interfaces/gadgets/Calque.h"
+
+1460904341 source:r:\06 - c++\110 - gui\code\gui\src\gui\interfaces\gadgets\contenant.cpp
+	"interfaces/gadgets/Contenant.h"
+	"repartiteurs/RepartiteurGrille.h"
+	"repartiteurs/RepartiteurHorizontal.h"
+	"repartiteurs/RepartiteurVerticale.h"
+	"repartiteurs/RepartiteurLibre.h"
+	"Interface.h"
+
+1460904345 source:r:\06 - c++\110 - gui\code\gui\src\gui\interfaces\gadgets\donnee.cpp
+	"interfaces/gadgets/Donnee.h"
+
+1460904347 source:r:\06 - c++\110 - gui\code\gui\src\gui\interfaces\gadgets\groupe.cpp
+	"interfaces/gadgets/Groupe.h"
+
+1460904350 source:r:\06 - c++\110 - gui\code\gui\src\gui\interfaces\gadgets\liste.cpp
+	"Interface.h"
+	"interfaces/gadgets/Liste.h"
+

@@ -7,11 +7,11 @@
 #include <vector>
 #include <memory>
 
-#include "gadgets_interfaces/Bouton.h"
+#include "interfaces/gadgets/Bouton.h"
 #include "gadgets/AffRectangle.h"
 #include "gadgets/BtnTexte.h"
 
-#include "gadgets_interfaces/composants/CmpOmbre.h"
+#include "interfaces/composants/CmpOmbre.h"
 
 
 namespace gui {

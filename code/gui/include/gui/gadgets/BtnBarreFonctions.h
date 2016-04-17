@@ -5,9 +5,9 @@
 // Headers
 /////////////////////////////////////////////////
 //#include "Donnee.h"
-#include "gadgets_interfaces/Bouton.h"
+#include "interfaces/gadgets/Bouton.h"
 #include "BtnIcone.h"
-#include "gadgets_interfaces/Contenant.h"
+#include "interfaces/gadgets/Contenant.h"
 
 
 

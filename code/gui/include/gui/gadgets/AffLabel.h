@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "gadgets_interfaces/Affiche.h"
+#include "interfaces/gadgets/Affiche.h"
 //#include "Style.h"
 #include <memory>
 #include <iostream>

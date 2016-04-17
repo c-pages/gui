@@ -6,7 +6,7 @@
 /////////////////////////////////////////////////
 #include "Gadget.h"
 
-#include "gadgets_interfaces/Contenant.h"
+#include "interfaces/gadgets/Contenant.h"
 #include "repartiteurs/Repartiteur.h"
 #include <memory>
 #include <map>

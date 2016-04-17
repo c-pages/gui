@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "gadgets_interfaces/Contenant.h"
+#include "interfaces/gadgets/Contenant.h"
 #include "repartiteurs/RepartiteurGrille.h"
 #include "repartiteurs/RepartiteurHorizontal.h"
 #include "repartiteurs/RepartiteurVerticale.h"

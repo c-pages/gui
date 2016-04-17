@@ -5,8 +5,8 @@
 // Headers
 /////////////////////////////////////////////////
 
-#include "gadgets_interfaces/Bouton.h"
-#include "gadgets_interfaces/composants/CmpFond.h"
+#include "interfaces/gadgets/Bouton.h"
+#include "interfaces/composants/CmpFond.h"
 
 #include "Valeurs.h"
 #include "gadgets\AffRectangle.h"

@@ -12,10 +12,10 @@
 
 //#include "gadgets_outils/AffBarreTitre.h"
 
-#include <gadgets_interfaces/Contenant.h>
-#include <gadgets_interfaces/composants/CmpOmbre.h>
-#include <gadgets_interfaces/composants/CmpFond.h>
-#include <gadgets_interfaces/composants/CmpBarreTitre.h>
+#include <interfaces/gadgets/Contenant.h>
+#include <interfaces/composants/CmpOmbre.h>
+#include <interfaces/composants/CmpFond.h>
+#include <interfaces/composants/CmpBarreTitre.h>
 
 
 namespace gui {

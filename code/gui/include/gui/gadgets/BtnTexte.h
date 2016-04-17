@@ -6,7 +6,7 @@
 /////////////////////////////////////////////////
 #include "BtnRectangle.h"
 
-#include "gadgets_interfaces/composants/CmpTexte.h"
+#include "interfaces/composants/CmpTexte.h"
 
 #include "gadgets\AffRectangle.h"
 #include "gadgets\AffLabel.h"

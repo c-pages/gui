@@ -4,8 +4,8 @@
 /////////////////////////////////////////////////
 // Headers
 /////////////////////////////////////////////////
-#include "gadgets_interfaces/Donnee.h"
-#include "gadgets_interfaces/composants/CmpGlissere.h"
+#include "interfaces/gadgets/Donnee.h"
+#include "interfaces/composants/CmpGlissere.h"
 #include "BtnRectangle.h"
 
 

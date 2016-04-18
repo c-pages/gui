@@ -25,6 +25,7 @@ class Affiche : public gui::Gadget {
 /////////////////////////////////////////////////
 public:
 
+    Affiche();
 
     /////////////////////////////////////////////////
     /// \brief Redéfinie ajouter par une fonction vide( GOF4 : Filiation -> Feuilles)

@@ -40,6 +40,8 @@ Gadget::Gadget ()
 , m_menu        ( nullptr )
 
 , m_info        ("")
+, m_masqueActif ( false )
+//, m_masqueRect ( {0,0,1920,1080} )
 {
 
     // Mise a jour du nombre de gadgets.
@@ -51,6 +53,9 @@ Gadget::Gadget ()
     // Creation du nom unique du gadget
     creerNomUnique( "Gadget" );
 
+    // le shader gerant le masque
+    if (!m_masqueShader.loadFromFile("media/shaders/clippingMask.frag", sf::Shader::Fragment ))
+        logAlerte("ERREUR Chargement shader");
 }
 
 
@@ -72,6 +77,7 @@ void Gadget::actualiser ()
         actualiserEnfants();
         // on envois le message aux composants
         actualiserComposants();
+        //on se casse
         return;
     }
 
@@ -79,12 +85,6 @@ void Gadget::actualiser ()
 
     // on a plus besoin d'actualisation
     m_necessiteActualisation = false;
-
-
-//    // si on a bougé
-//    sf::Vector2f pos = getPosition();
-//    if ( m_position.x !=  pos.x &&  m_position.y !=  pos.y )
-//        sf::Transformable::setPosition( m_position.x , m_position.y );
 
     // on actualise le style si besoin
     if ( m_aBesoinActuaStyle )  {
@@ -98,11 +98,11 @@ void Gadget::actualiser ()
         m_aBesoinActuaGeom = false;
     }
 
-    // on actualise le contenu si besoin
-    if ( m_aBesoinActuaContenu )  {
-        actualiserContenu ();
-        m_aBesoinActuaContenu = false;
-    }
+//    // on actualise le contenu si besoin
+//    if ( m_aBesoinActuaContenu )  {
+//        actualiserContenu ();
+//        m_aBesoinActuaContenu = false;
+//    }
 
     // on actualise les bounds si besoin
     if ( m_aBesoinActuaBounds )  {
@@ -181,10 +181,15 @@ void Gadget::draw (sf::RenderTarget& target, sf::RenderStates states) const
 
     //On applique la transformation
     states.transform *= getTransform();
-//    states.shader    =  nullptr;
 
+    // on applique le shader masque
+    if ( estMasque() )
+        states.shader = &m_masqueShader;
+
+    // et on dessine
     dessinerComposant   ( target, states );
     dessinerEnfants     ( target, states );
+
 };
 
 
@@ -443,11 +448,61 @@ std::string     Gadget::getInfo(){
         else return m_info;
     } else return m_info;
 };
+
 /////////////////////////////////////////////////
 void     Gadget::setInfo( std::string info ){
     m_info = info;
 }
 
+
+
+/////////////////////////////////////////////////
+void     Gadget::setMasqueRect ( float posX, float posY, float tailleX, float tailleY ){
+
+//
+//    if ( posX > m_masqueRect.left )
+//        m_masqueRect.left = posX;
+//
+//    if ( posY> m_masqueRect.top )
+//        m_masqueRect.top = posY;
+//
+//    if ( tailleX< m_masqueRect.width )
+//        m_masqueRect.width = tailleX;
+//
+//    if ( tailleY< m_masqueRect.height )
+//        m_masqueRect.height = tailleY;
+//
+//
+//    m_masqueShader.setParameter( "rectMasque"      ,  m_masqueRect.left, m_masqueRect.top, m_masqueRect.width, m_masqueRect.height  );
+//
+//    for ( auto enfant : m_enfants )
+//        enfant->setMasqueRect( m_masqueRect.left, m_masqueRect.top, m_masqueRect.width, m_masqueRect.height );
+//
+//    for ( auto compo : m_composants )
+//        compo->setMasqueRect( m_masqueRect.left, m_masqueRect.top, m_masqueRect.width, m_masqueRect.height );
+
+
+    m_masqueShader.setParameter( "rectMasque"      ,  posX, posY, tailleX, tailleY  );
+
+    for ( auto enfant : m_enfants )
+        enfant->setMasqueRect( posX, posY, tailleX, tailleY );
+
+    for ( auto compo : m_composants )
+        compo->setMasqueRect( posX, posY, tailleX, tailleY );
+}
+
+void Gadget::setMasqueActif ( bool val )
+{
+//    printf("setMasqueRect\n");
+    m_masqueActif = val;
+
+    for ( auto compo : m_composants )
+        compo->setMasqueActif ( val );
+}
+
+bool Gadget::estMasque ( ) const {
+    return m_masqueActif;
+}
 } // fin namespace gui
 
 

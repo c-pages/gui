@@ -18,8 +18,8 @@ void Geometrie::setTaille( float x, float y ){
 void Geometrie::setTaille( sf::Vector2i val ){
     if ( m_taille == val ) return;
 
-    log ("setTaille" );
-    log ("m_taille" , val );
+    log ("setTaille" , val);
+
 
     if ( m_taille == val ) return;
     m_taille = val;

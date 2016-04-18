@@ -259,11 +259,13 @@ public:
     virtual void fermer(){};    ///< \todo pour les fenetre, à voir si no a pas mieux
     virtual void reduire(){};   ///< \todo pour les fenetre, à voir si no a pas mieux
 
-    void     setInfo( std::string info );
+    void            setInfo( std::string info );
     std::string     getInfo();
 
-
-
+//    virtual void setShaderMasque( sf::Shader shader );
+    virtual void setMasqueRect  ( float posX, float posY, float tailleX, float tailleY );
+    void setMasqueActif ( bool val = true );
+    bool estMasque      () const;
 /////////////////////////////////////////////////
 // Membres
 /////////////////////////////////////////////////
@@ -271,22 +273,22 @@ protected:
 
     static std::string      ms_logNomGadgetBack;
 
-    sf::Vector2f                m_marge;            ///< La marge à laissé
+    sf::Vector2f            m_marge;            ///< La marge à laissé
 
-    bool                        m_necessiteActualisation ;
-    bool                        m_aBesoinActuaGeom ;
-    bool                        m_aBesoinActuaStyle ;
-    bool                        m_aBesoinActuaContenu ;
-    bool                        m_aBesoinActuaBounds ;
+    bool                    m_necessiteActualisation ;
+    bool                    m_aBesoinActuaGeom ;
+    bool                    m_aBesoinActuaStyle ;
+    bool                    m_aBesoinActuaContenu ;
+    bool                    m_aBesoinActuaBounds ;
 
-    unsigned int                m_id;
+    unsigned int            m_id;
 
-    static  int         ms_CompteurGadgets;   ///< L'interface courante dans laquelle on créé les gadgets.
+    static  int             ms_CompteurGadgets;   ///< L'interface courante dans laquelle on créé les gadgets.
 
 //    std::string         m_texte;            ///< Le texte du gadget.
 
-    std::string         m_nom;          ///< Nom unique automatique pour le gadget.
-    Type                m_type;         ///< Nom unique automatique pour le gadget.
+    std::string             m_nom;          ///< Nom unique automatique pour le gadget.
+    Type                    m_type;         ///< Nom unique automatique pour le gadget.
 
     bool m_visible;             ///< La visibilité du gadget ( true: visible, false: invisible )
     bool m_actif;               ///< L'activité du gadget ( true: actif, false: inactif )
@@ -303,10 +305,43 @@ protected:
 
     shared_ptr<BtnMenu>     m_menu;     ///< le menu déroulant au clqiue droit sur le gadget
 
-    std::string         m_info;          ///< le texte de l'info bulle.
+    std::string             m_info;          ///< le texte de l'info bulle.
+
+//
+    sf::Shader              m_masqueShader;     ///< le shader qui s'occupe de masquer les bouts qui dépassent des fenêtres. (nullptr si non utilisé
+    bool                    m_masqueActif;      ///<
+//    sf::FloatRect           m_masqueRect;       ///<
 
 }; // fin class Gadget
 
 } // fin namespace gui
 
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

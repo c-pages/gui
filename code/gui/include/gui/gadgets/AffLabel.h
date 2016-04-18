@@ -61,6 +61,9 @@ public:
     ///< Acceder à m_police
     sf::Font getPolice () const { return m_textPolice; };
 
+    ///< Rendre le texet dans une texture pour l'utilisation du shader de mask...
+    void rendreTexte ();
+
 public:
     /////////////////////////////////////////////////
     /// \brief Constructeur par défaut.
@@ -74,7 +77,7 @@ public:
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
 
-
+    /////////////////////////////////////////////////
     virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
 
@@ -91,6 +94,14 @@ private:
     sf::Text::Style     m_textStyle;
     float               m_textTaille;
     sf::Font            m_textPolice;
+
+
+
+    // proprietes pour rendu texture
+    sf::Texture                         m_contenu;          ///< La texture SFML qui affiche le contenu du panneau.
+    sf::RenderTexture                   m_renderTexture;
+    std::shared_ptr<sf::Sprite>         m_affContenant;
+    int                                 m_aliasTexture;
 
 }; // fin class AffLabel
 

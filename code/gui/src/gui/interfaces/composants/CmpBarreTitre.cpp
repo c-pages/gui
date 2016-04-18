@@ -47,7 +47,8 @@ CmpBarreTitre::CmpBarreTitre()
     // les boutons
     m_btnFermer->lier ( Evenement::onBtnG_relacher , fctFermer );
     m_btnReduire->lier ( Evenement::onBtnG_relacher , fctReduire );
-
+    m_btnFermer->setInfo ("Fermer");
+    m_btnReduire->setInfo ("Réduire");
 
 
 }

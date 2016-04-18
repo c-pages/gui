@@ -167,7 +167,7 @@ FenDecoRedim::FenDecoRedim( Fenetre* fenetre )
 
     // le curseur souris de redimension
     m_btn_gauche->creerNomUnique        ( "BtnRedim_G" );
-    m_btn_droite->creerNomUnique        ( "BtnRedim_G" );
+    m_btn_droite->creerNomUnique        ( "BtnRedim_D" );
     m_btn_haut->creerNomUnique          ( "BtnRedim_H" );
     m_btn_bas->creerNomUnique           ( "BtnRedim_B" );
     m_btn_hautGauche->creerNomUnique    ( "BtnRedim_HG" );
@@ -265,11 +265,11 @@ void FenDecoRedim::corrigerTailleMinimum ()
         m_tailleFenetre.y =  m_fenetre->getTailleMini().y  ;
 
     // taille maximum
-    if ( m_tailleFenetre.x >  TAILLE_MASK  )
-        m_tailleFenetre.x =   TAILLE_MASK;
-
-    if ( m_tailleFenetre.y > TAILLE_MASK  )
-        m_tailleFenetre.y =  TAILLE_MASK  ;
+//    if ( m_tailleFenetre.x >  TAILLE_MASK  )
+//        m_tailleFenetre.x =   TAILLE_MASK;
+//
+//    if ( m_tailleFenetre.y > TAILLE_MASK  )
+//        m_tailleFenetre.y =  TAILLE_MASK  ;
 }
 
 /////////////////////////////////////////////////
@@ -286,7 +286,7 @@ void FenDecoRedim::redimmensionner_haut ()
     m_fenetre->setTailleY   ( m_tailleFenetre.y  );
 
     ///< \todo voir si on peut faire mieux que cette actualisation
-    m_fenetre->actualiser();
+//    m_fenetre->actualiser();
 
     // la position
     auto posDest = m_posOrigin.y + decalage;
@@ -324,8 +324,8 @@ void FenDecoRedim::redimmensionner_gauche ()
     corrigerTailleMinimum ();
     m_fenetre->setTailleX( m_tailleFenetre.x  );
 
-    ///< \todo voir si on peut faire mieux que cette actualisation
-    m_fenetre->actualiser();
+    ///< \todo voir si on peut faire mieux que cette actualisation brutale
+//    m_fenetre->actualiser();
 
 
     // la position
@@ -336,6 +336,7 @@ void FenDecoRedim::redimmensionner_gauche ()
 
     // declencher evenement
     m_fenetre->declencher ( Evenement::onFen_redim );
+
 }
 
 /////////////////////////////////////////////////
@@ -364,9 +365,9 @@ void FenDecoRedim::traiterEvenements (const sf::Event& evenement)
     if ( m_redimHaut )  { redimmensionner_haut (); }
     if ( m_redimBas )   { redimmensionner_bas (); }
 
-    if ( m_redimmensionner ) {
-        m_fenetre->demanderActuaGeom();
-    }
+//    if ( m_redimmensionner )
+//        m_fenetre->demanderActuaGeom();
+
 }
 
 }; // fin namesapce gui

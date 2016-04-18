@@ -89,7 +89,7 @@ public:
 
     virtual void actualiserContenu ();
 
-    void    replacerContenu ();
+    void    actualiserMasque ();
 
     void actualiserListes ( );
 

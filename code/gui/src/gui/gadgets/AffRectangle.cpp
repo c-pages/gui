@@ -10,13 +10,16 @@ namespace gui {
 
 /////////////////////////////////////////////////
 AffRectangle::AffRectangle ( sf::Vector2i taille )
-: m_rectangle           ( )
+: Affiche()
+, m_rectangle           ( )
 , m_fondCouleur         ( sf::Color(0,0,255,255) )
 , m_fondLgnCouleur      ( sf::Color(0,0,255,200) )
 , m_fondLgnEpaisseur    ( 1 )
 {
     creerNomUnique ( "Rectangle");
     m_taille = taille;
+
+    m_masqueShader.setParameter( "aTexture"     ,  false  );
 }
 
 
@@ -65,11 +68,25 @@ void AffRectangle::setFondLigneEpaisseur (float epaisseur) {
 };
 
 
+//
+///////////////////////////////////////////////////
+//void     AffRectangle::setMasqueRect ( float posX, float posY, float tailleX, float tailleY ){
+//    printf ("SETMASQUE\n");
+//    m_masqueShader.setParameter( "aTexture"     ,  false  );
+//    m_masqueShader.setParameter( "rectMasque"   ,  posX, posY, tailleX, tailleY  );
+//
+//}
+
 /////////////////////////////////////////////////
 void AffRectangle::draw (sf::RenderTarget& target, sf::RenderStates states) const
 {
     //On applique la transformation
     states.transform *= getTransform();
+
+//    if ( m_masqueShader != nullptr )
+//        states->shader = m_masqueShader;
+    if ( estMasque() )
+        states.shader = &m_masqueShader;
 
     // On dessine le rectangle
     if (estVisible())

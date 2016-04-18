@@ -28,7 +28,6 @@ Log::Log()
 , m_afficher_eventGUI               ( true )
 
 , m_afficher_GUI                    ( false )
-
 , m_afficher_horsCalques            ( true )
 
 
@@ -111,7 +110,7 @@ void  Log::setLogActif ( bool val , bool appliquerAuxComposants ){
 
     if ( appliquerAuxComposants )
         for (auto composant : static_cast<Gadget*>(this)->getComposants() )
-            composant->setLogActif ( val, true );
+            composant->setLogActif ( val );
 
 };
 

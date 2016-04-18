@@ -63,10 +63,10 @@ void Filiation::actualiserContenu (){
 };
 
 /////////////////////////////////////////////////
-void Filiation::replacerContenu () {
+void Filiation::actualiserMasque () {
 
     // on demande juste au parent d'actualiser son contenu ...
-    if ( m_parent != nullptr ) m_parent->replacerContenu();
+    if ( m_parent != nullptr ) m_parent->actualiserMasque();
 }
 
 /////////////////////////////////////////////////

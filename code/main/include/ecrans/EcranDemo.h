@@ -87,6 +87,7 @@ private:
 
     void initGUI_tests();
 
+    void initGUI_MenuPanneaux ();
     void initGUI_test_Affichages ();
     void initGUI_test_Boutons ();
     void initGUI_test_Donnees ();

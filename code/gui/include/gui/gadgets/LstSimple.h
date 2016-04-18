@@ -34,7 +34,7 @@ public:
 
 
 
-    void setAjustement ( bool val ) { m_ajustement = val; actualiser(); };
+    void setAjustement ( bool val ) { m_ajustement = val; demanderActualisation(); };
 
 /////////////////////////////////////////////////
 // Membres

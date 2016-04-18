@@ -8,7 +8,12 @@
 namespace gui {
 
 
+/////////////////////////////////////////////////
+Affiche::Affiche()
+: Gadget ()
+{
 
+}
 
 /////////////////////////////////////////////////
 void Affiche::ajouter (std::shared_ptr<Gadget> gadget){

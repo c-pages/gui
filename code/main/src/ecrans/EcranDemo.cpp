@@ -20,9 +20,11 @@ EcranDemo::EcranDemo( Application*  appli )
     // Initialisation de l'interface graphique.
     initGUI     ();
 
-    initGUI_tests ();
+//    initGUI_tests ();
 
     // les tests
+
+    initGUI_MenuPanneaux ();
     initGUI_test_Affichages();
     initGUI_test_Boutons ();
     initGUI_test_Donnees();
@@ -124,10 +126,9 @@ EcranDemo::initScene  ( )
 
 }
 
-
 /////////////////////////////////////////////////
 void
-EcranDemo::initGUI_tests ()
+EcranDemo::initGUI_MenuPanneaux ()
 {
 
 
@@ -253,6 +254,33 @@ EcranDemo::initGUI_tests ()
 //    auto label = m_interface->creer.label( "bon bah on a un label.");
 }
 
+
+
+
+
+
+/////////////////////////////////////////////////
+void
+EcranDemo::initGUI_tests ()
+{
+
+    sf::Vector2i pos = { 0,0 };
+
+
+    // Label
+    auto label = m_interface->creer.label("là on a un label");
+    label->setPosition(pos.x + 20, pos.y + 20);
+    label->setTexteCouleur ( sf::Color::Yellow );
+    label->setLogActif( true );
+
+
+
+}
+
+
+
+
+
 /////////////////////////////////////////////////
 void
 EcranDemo::initGUI ()
@@ -282,13 +310,16 @@ EcranDemo::initGUI_test_Affichages ()
 
     // la fenetre
     m_fenetreAffichage = m_interface->creer.fenetre("Les gadgets d'affichage de base.");
+//    m_fenetreAffichage->setLogActif ( true , true );
     m_fenetreAffichage->setPosition ( {100,100} );
 
 
     // Label
-    auto label = m_interface->creer.label("là on a un label");
+    auto label = m_interface->creer.label("là on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un labellà on a un label");
     label->setPosition(pos.x + 20, pos.y + 20);
     label->setTexteCouleur ( sf::Color::Yellow );
+//    label->setLogActif( true );
+    m_fenetreAffichage->ajouter ( label );
 
     // simple rectangle
     auto rectangle = m_interface->creer.rectangle( 20,20);
@@ -298,7 +329,7 @@ EcranDemo::initGUI_test_Affichages ()
     rectangle->setFondLigneEpaisseur( 10);
 
     // Image
-    auto image = m_interface->creer.image("media/img/senseidoigt.gif");
+    auto image = m_interface->creer.image("media/img/senseidoigt.png");
     image->setPosition(pos.x + 20, pos.y + 90);
 
     // Icone
@@ -308,7 +339,6 @@ EcranDemo::initGUI_test_Affichages ()
 
 
 
-    m_fenetreAffichage->ajouter ( label );
     m_fenetreAffichage->ajouter ( rectangle );
     m_fenetreAffichage->ajouter ( image );
     m_fenetreAffichage->ajouter ( icone );
@@ -352,6 +382,10 @@ EcranDemo::initGUI_test_Boutons  ()
     m_fenetreBoutons->ajouter ( btnRect );
     m_fenetreBoutons->ajouter ( btnTexte );
     m_fenetreBoutons->ajouter ( btnIcone );
+
+//
+//    m_fenetreBoutons->ajouter ( m_fenetreAffichage );
+
 }
 
 /////////////////////////////////////////////////
@@ -406,6 +440,9 @@ EcranDemo::initGUI_test_Donnees ()
     m_fenetreDonnees->ajouter ( listeDeroul );
     m_fenetreDonnees->ajouter ( zoneTexte );
     m_fenetreDonnees->ajouter ( zoneNum );
+
+
+//    m_fenetreDonnees->ajouter ( m_fenetreBoutons );
 
 }
 

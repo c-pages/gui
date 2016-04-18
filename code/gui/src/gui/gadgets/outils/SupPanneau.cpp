@@ -228,7 +228,7 @@ void    SupPanneau::actualiserGeometrie ()
     m_contenant->actualiserContenu ();
 
 //    m_contenant->repartirEnfants();
-//    m_contenant->replacerContenu ();
+//    m_contenant->actualiserMasque ();
 
 
 //    m_contenant->actualiserContenu ();

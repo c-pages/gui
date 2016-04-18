@@ -25,6 +25,8 @@ AffImage::AffImage ()
     m_fondLgnEpaisseur     = 0 ;
 
     m_rectangle.setTexture( m_texture);
+
+    m_masqueShader.setParameter( "aTexture"     ,  true  );
 }
 
 /////////////////////////////////////////////////
@@ -95,18 +97,18 @@ void AffImage::setImage ( std::string fichier )
     demanderActuaGeom() ;
 }
 
-
-/////////////////////////////////////////////////
-void AffImage::draw (sf::RenderTarget& target, sf::RenderStates states) const
-{
-    if (! estVisible() ) return;
-
-    //On applique la transformation
-    states.transform *= getTransform();
-
-    // On dessine l'image
-    target.draw( m_rectangle, states);
-}
+//
+///////////////////////////////////////////////////
+//void AffImage::draw (sf::RenderTarget& target, sf::RenderStates states) const
+//{
+//    if (! estVisible() ) return;
+//
+//    //On applique la transformation
+//    states.transform *= getTransform();
+//
+//    // On dessine l'image
+//    target.draw( m_rectangle, states);
+//}
 
 
 } // fin namespace gui

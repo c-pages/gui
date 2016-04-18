@@ -50,7 +50,7 @@ public:
     void setRepartition ( Repartitions repartition );
 
     /////////////////////////////////////////////////
-    virtual void replacerContenu ();
+    virtual void actualiserMasque ();
 
 
     /////////////////////////////////////////////////
@@ -72,7 +72,7 @@ public:
     virtual void setTaille(sf::Vector2i taille){
         m_taille = taille;
         m_affContenant->setSize( { m_taille.x , m_taille.y } );
-        replacerContenu () ;
+        actualiserMasque () ;
     }
 
 
@@ -134,8 +134,8 @@ protected:
     sf::Color               m_contenantCouleur;
     sf::Color               m_contenantLgnCouleur;
     float                   m_contenantLgnepaisseur;
-
-    sf::Shader              m_clipShader;
+//
+//    sf::Shader             m_masqueShader; ///< le shader qui s'occupe de masquer les bouts qui dépassent des fenêtres. (nullptr si non utilisé
 
 }; // fin class Contenant
 

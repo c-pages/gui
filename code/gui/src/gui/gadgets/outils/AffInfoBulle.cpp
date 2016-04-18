@@ -39,13 +39,14 @@ AffInfoBulle::AffInfoBulle ()
 
 }
 
+
 /////////////////////////////////////////////////
 void AffInfoBulle::actualiserGeometrie ()
 {
     // Debuggage
     log ("actualiserGeometrie");
 
-    m_label->setPosition( int( m_marge.x ) , int ( m_marge.y/3 ) );
+    m_label->setPosition( int( m_marge.x ) , int ( m_marge.y/2 ) );
     m_label->actualiserBounds();
 
     m_taille = { m_label->getTaille().x + m_marge.x*2 , m_label->getTaille().y + m_marge.y*2 } ;

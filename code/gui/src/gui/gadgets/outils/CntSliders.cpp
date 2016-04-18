@@ -53,8 +53,8 @@ CntSliders::CntSliders ()
     m_slider_V->setMarge({ 0 , 0});
     m_slider_H->setMarge({ 0 , 0});
 
-    m_slider_V->lier ( Evenement::on_valeurChange , [this](){ replacerContenu (); });
-    m_slider_H->lier ( Evenement::on_valeurChange , [this](){ replacerContenu (); });
+    m_slider_V->lier ( Evenement::on_valeurChange , [this](){ actualiserMasque (); });
+    m_slider_H->lier ( Evenement::on_valeurChange , [this](){ actualiserMasque (); });
 
     actualiser ();
 }
@@ -227,7 +227,7 @@ void CntSliders::actualiser ()
 
 
 /////////////////////////////////////////////////
-void CntSliders::replacerContenu () {
+void CntSliders::actualiserMasque () {
 
     sf::Vector2f deplPossibleMax = deplMaxContenu();
 

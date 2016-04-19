@@ -8,6 +8,7 @@ CmpGlissere::CmpGlissere()
 , m_fond        ( std::make_shared<AffRectangle>() )
 , m_longueur    ( 180 )
 , m_largeur     ( 15 )
+, m_horizontal  ( true )
 {
 
     // valeurs par defaut
@@ -109,11 +110,14 @@ void CmpGlissere::setLongueurCurseur( float pourcentage ){
         m_slider->setTailleX( m_largeur - 2*m_base->getMarge().y);
         m_slider->setTailleY( m_longueur * pourcentage/100- 2*m_base->getMarge().x);
     }
+
+
 }
 /////////////////////////////////////////////////
 void CmpGlissere::setLongueur( float longueur ){
     m_longueur = longueur;
-    m_base->demanderActuaGeom ();
+//    m_base->demanderActuaGeom ();
+    m_base->actualiserGeometrie();
 }
 
 /////////////////////////////////////////////////
@@ -122,7 +126,8 @@ void CmpGlissere::setLargeur( float largeur ){
     m_base->log ("setLargeur");
     m_largeur = largeur;
     m_base->log ("m_largeur", m_largeur);
-    m_base->demanderActuaGeom ();
+//    m_base->demanderActuaGeom ();
+    m_base->actualiserGeometrie();
 }
 
 /////////////////////////////////////////////////
@@ -133,6 +138,7 @@ void CmpGlissere::setHorizontal (  ){
 
 /////////////////////////////////////////////////
 void CmpGlissere::setVertical (  ){
+
     m_horizontal = false;
     m_base->demanderActuaGeom ();
 }

@@ -81,9 +81,16 @@ public:
     void retirerDecoration ( Decorations deco  )
     {
         if ( m_decorations.find( deco ) != m_decorations.end())        {
-                m_decorations.erase( deco  );
+            m_decorations.erase( deco  );
+            demanderActualisation();
         }
     };
+
+
+
+    virtual void setDeplacable( bool val  = true );
+
+    virtual void setRedimensionnable( bool val  = true );
 
     virtual void actualiserEtatDeco ( );
 

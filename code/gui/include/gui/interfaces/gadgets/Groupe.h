@@ -12,15 +12,16 @@ namespace gui {
 /////////////////////////////////////////////////
 class Groupe : public Gadget
 {
-    public:
-        /** Default constructor */
-        Groupe();
-        /** Default destructor */
-        virtual ~Groupe();
-    /////////////////////////////////////////////////
-    virtual void actualiserGeometrie ()    {
-        getParent()->actualiserGeometrie();
-    };
+public:
+    /** Default constructor */
+    Groupe();
+    /** Default destructor */
+    virtual ~Groupe();
+
+//    /////////////////////////////////////////////////
+//    virtual void actualiserGeometrie ()    {
+//        getParent()->actualiserGeometrie();
+//    };
 
     /////////////////////////////////////////////////
     virtual sf::Vector2i getTaille () const;

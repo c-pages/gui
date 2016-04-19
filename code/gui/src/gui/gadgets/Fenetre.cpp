@@ -16,7 +16,7 @@ namespace gui {
 
 /////////////////////////////////////////////////
 Fenetre::Fenetre ()
-: m_contenant       ( std::make_shared<Contenant>() )
+: m_contenant       ( std::make_shared<CntSliders>() )
 //: m_contenant       ( std::make_shared<CntSliders>() )
 {
     creerNomUnique ( "Fenetre");
@@ -40,6 +40,7 @@ Fenetre::Fenetre ()
     // les decorations
     if ( m_redimensionnable )
         ajouterDecoration ( Decorations::Retaille );
+
     if ( m_deplacable )
         ajouterDecoration ( Decorations::Drag );
 
@@ -70,14 +71,16 @@ Fenetre::Fenetre ()
 void Fenetre::fermer(){
     log("fermer");
 
+
+    // declencher evenement
+    declencher ( Evenement::onFen_fermer );
+
     // soit juste on le cache
     setVisible( false);
 
     // soit on le supprime carrement ... avoir
     // demander_aEtre_supprimer ();
 
-    // declencher evenement
-    declencher ( Evenement::onFen_fermer );
 }
 
 /////////////////////////////////////////////////
@@ -108,6 +111,27 @@ void Fenetre::ajouterDecoration ( Decorations deco  )
     }
     demanderActualisation();
 };
+
+/////////////////////////////////////////////////
+void Fenetre::setDeplacable( bool val  ){
+    if ( val )
+        ajouterDecoration ( Decorations::Drag );
+    else
+        retirerDecoration( Decorations::Drag );
+
+    demanderActualisation();
+}
+
+/////////////////////////////////////////////////
+void Fenetre::setRedimensionnable( bool val ){
+    if ( val )
+        ajouterDecoration ( Decorations::Retaille );
+    else
+        retirerDecoration( Decorations::Retaille );
+
+    demanderActualisation();
+};
+
 
 
 /////////////////////////////////////////////////
@@ -177,6 +201,8 @@ void Fenetre::actualiserEtatDeco ( )
 /////////////////////////////////////////////////
 void Fenetre::actualiserGeometrie ()
 {
+//    std::cout << " Fenetre    ::ACTUALISERGEOMETRIE \n";
+
 //    log ("ActualiserGEom");
     for(auto deco : m_decorations)
         deco.second->actualiserGeometrie ();
@@ -203,14 +229,14 @@ void Fenetre::actualiserStyle ()
     for(auto deco : m_decorations)
         deco.second->actualiserStyle ();
 
-//    m_contenant->setFondCouleur            ( m_contenantFndCouleur ) ;
-//    m_contenant->setFondLigneCouleur       ( m_contenantFndLgnCouleur  ) ;
-//    m_contenant->setFondLigneEpaisseur     ( m_contenantFndLgnepaisseur  );
-
+    m_contenant->setFondCouleur            ( m_contenantFndCouleur ) ;
+    m_contenant->setFondLigneCouleur       ( m_contenantFndLgnCouleur  ) ;
+    m_contenant->setFondLigneEpaisseur     ( m_contenantFndLgnepaisseur  );
+/*
     m_contenant->setContenantFillColor       ( m_contenantContenantCouleur ) ;
     m_contenant->setContenantOutlineColor    ( m_contenantContenantLgnCouleur  ) ;
     m_contenant->setContenantOutlineThickness( m_contenantContenantLgnepaisseur  );
-
+*/
 
     // on actualise le titre
     CmpBarreTitre::actualiserStyle();

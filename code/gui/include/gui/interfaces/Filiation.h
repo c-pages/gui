@@ -87,9 +87,9 @@ public:
 
     virtual void actualiserEnfants( sf::Time delta );
 
-    virtual void actualiserContenu ();
-
-    void    actualiserMasque ();
+//    virtual void actualiserContenu ();
+//
+//    void    actualiserMasque ();
 
     void actualiserListes ( );
 

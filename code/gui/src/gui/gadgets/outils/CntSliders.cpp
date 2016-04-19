@@ -19,7 +19,7 @@ CntSliders::CntSliders ()
     ajouterComposant( m_slider_H );
 
     // valeurs par defaut
-    m_taille = { 400 , 200 };
+    m_taille = { 900 , 900 };
     m_largeurSliders = 7;
 
 
@@ -53,78 +53,72 @@ CntSliders::CntSliders ()
     m_slider_V->setMarge({ 0 , 0});
     m_slider_H->setMarge({ 0 , 0});
 
-    m_slider_V->lier ( Evenement::on_valeurChange , [this](){ actualiserMasque (); });
-    m_slider_H->lier ( Evenement::on_valeurChange , [this](){ actualiserMasque (); });
+    m_slider_V->lier ( Evenement::on_valeurChange , [this](){ demanderActuaGeom (); });
+    m_slider_H->lier ( Evenement::on_valeurChange , [this](){ demanderActuaGeom (); });
 
-    actualiser ();
+
 }
 
 /////////////////////////////////////////////////
 void CntSliders::actualiserGeometrie (){
-//    std::cout << "CntSliders::actualiserGeometrie () : " << getNom() << "\n";
-//    Contenant::actualiserGeometrie ();
 
 
-//    m_fond->setTaille(m_taille);
-    m_affContenant->setSize( { m_taille.x , m_taille.y } );
 
-
-//   m_fond->setTaille(m_taille);
 
     sf::Vector2f deplPossibleMax = deplMaxContenu();
 
     m_slider_H->setVisible ( deplPossibleMax.x > 1 );
     m_slider_V->setVisible ( deplPossibleMax.y > 1 );
 
-
-//    m_posContenant = {0,0};
     m_tailleContenant = { m_taille.x -  m_slider_V->getTaille().x , m_taille.y -  m_slider_H->getTaille().y };
 
-
-    m_affContenant->setSize( { m_tailleContenant.x, m_tailleContenant.y } );
-//    m_fond->setTaille(m_taille);
-
+//    m_tailleContenant = { m_taille.x  , m_taille.y  };
 
     // si le contenu est plus grand que le contenant
     if ( m_slider_H->estVisible() ) {
+//            printf ("horiz visible\n");
         m_slider_H->setLongueur( m_tailleContenant.x );
         m_slider_H->setPosition( 0 , m_tailleContenant.y );
-        float longueurCursH = m_taille.x/ float( m_groupe->boundgingB_enfants().width )* 100;
+        float longueurCursH = m_taille.x/ float( m_groupe->getTaille().x )* 100;
         m_slider_H->setLongueurCurseur(longueurCursH);
-//        m_slider_H->actualiserGeometrie();
-        float coef                  = (  m_slider_H->getValeur() ) / 100;
-        m_posContenant.x              = coef * deplPossibleMax.x;
-    // si le contenu est plus petit, on cache le slider
+
+        float coef          = ( m_slider_H->getValeur() ) / 100;
+        m_posContenant.x    = coef * deplPossibleMax.x;
+
+        m_largeurRedimH     = m_slider_H->getTaille().y;
+
     } else {
-        m_posContenant.x      = 0;
+        m_posContenant.x    = 0;
+        m_largeurRedimH     = 0;
     }
 
     // si contenu plus grand, on a le slider vert
     if (  m_slider_V->estVisible() ) {  // si contenu plus grand, on a le slider
+//    m_slider_V->setVertical();
+//            printf ("verti visible\n");
         m_slider_V->setLongueur ( m_tailleContenant.y );
         m_slider_V->setPosition ( m_tailleContenant.x , 0 );
-        float longueurCursV = m_taille.y /float( m_groupe->boundgingB_enfants().height )* 100 ;
+        float longueurCursV = m_taille.y /float( m_groupe->getTaille().y )* 100 ;
+
         m_slider_V->setLongueurCurseur( longueurCursV );
 //        m_slider_V->actualiserGeometrie();
         float coef                  = ( 100 - m_slider_V->getValeur()  ) / 100;
         m_posContenant.y              = coef * deplPossibleMax.y;
 //        std::cout << "coef : " << coef << "     deplPossibleMax.y : " << deplPossibleMax.y << "\n";
     // si le contenu est plus petit, on cache le slider
+
+        m_largeurRedimV = m_slider_V->getTaille().x;
     } else {
         m_posContenant.y      = 0;
+        m_largeurRedimV = 0;
     }
 
 
 
     m_groupe->setPosition ( -m_posContenant.x , -m_posContenant.y );
 
+    Contenant::actualiserGeometrie ();
 
-
-//    repartirEnfants ();
-
-//    actualiserContenu();
-//    actualiserBounds ();
-//    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 
 }
 
@@ -152,133 +146,9 @@ void CntSliders::actualiserStyle (){
     m_slider_H->setFondLigneCouleur             ( m_btnFndLgnCouleur  );
     m_slider_H->setFondLigneEpaisseur         ( m_btnFndLgnepaisseur );
 
-//    m_fond->setFondCouleur                    ( m_fndCouleur ) ;
-//    m_fond->setFondLigneCouleur                 ( m_fndLgnCouleur  ) ;
-//    m_fond->setFondLigneEpaisseur             ( m_fndLgnepaisseur  );
-
-//    actualiserContenu();
-//    actualiserBounds ();
-
-//    if ( m_parent != nullptr ) m_parent->actualiserContenu();
 }
 
 
-
-/*
-/////////////////////////////////////////////////
-void CntSliders::actualiser ()
-{
-
-    m_fond->setTaille(m_taille);
-
-    sf::Vector2f deplPossibleMax = deplMaxContenu();
-
-    m_slider_H->setVisible ( deplPossibleMax.x > 0 );
-    m_slider_V->setVisible ( deplPossibleMax.y > 0 );
-
-    m_contenant->setSize({ m_taille.x -  m_slider_V->getTaille().x , m_taille.y -  m_slider_H->getTaille().y});
-
-    // si le contenu est plus grand que le contenant
-    if ( m_slider_H->estVisible() ) {
-        float coef                  = (  m_slider_H->getValeur() ) / 100;
-
-        m_posContenant.x              = coef * deplPossibleMax.x;
-
-        float longueurCursH = m_taille.x/ float( boundgingB_enfants().width )* 100 ;
-        m_slider_H->setLongueurCurseur(longueurCursH);
-        m_slider_H->setLongueur( m_taille.x -  m_slider_V->getTaille().x );
-        m_slider_H->setPosition( 0 , m_taille.y - m_slider_H->getTaille().y);
-//        m_slider_H->setTexteStyle       ( m_skin->getStyle (  gui::Styles::bouton ) );
-
-    // si le contenu est plus petit, on cache le slider
-    } else {
-        m_posContenant.x      = 0;
-    }
-
-    // si contenu plus grand, on a le slider vert
-    if (  m_slider_V->estVisible() ) {  // si contenu plus grand, on a le slider
-        float coef                  = ( 100 - m_slider_V->getValeur() ) / 100;
-        m_posContenant.y              = coef * deplPossibleMax.y;
-
-
-        float longueurCursV = m_taille.y /float( boundgingB_enfants().height )* 100 ;
-        m_slider_V->setLongueurCurseur( longueurCursV );
-        m_slider_V->setLongueur ( m_taille.y - m_slider_H->getTaille().y );
-        m_slider_V->setPosition ( m_taille.x - m_slider_V->getTaille().x , 0 );
-//        m_slider_V->setTexteStyle    ( m_skin->getStyle (  gui::Styles::bouton ) );
-
-    // si le contenu est plus petit, on cache le slider
-    } else {
-        m_posContenant.y      = 0;
-    }
-
-
-//    m_fond->setTexteStyle ( m_skin->getStyle ( Styles::fond ) );
-
-    actualiserContenu();
-
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
-
-    actualiserBounds ();
-
-}
-*/
-
-
-
-/////////////////////////////////////////////////
-void CntSliders::actualiserMasque () {
-
-    sf::Vector2f deplPossibleMax = deplMaxContenu();
-
-
-    // si le contenu est plus grand que le contenant
-    if ( m_slider_H->estVisible() ) {
-        float coef                  = (  m_slider_H->getValeur() ) / 100;
-        m_posContenant.x              = coef * deplPossibleMax.x;
-    } else {
-        m_posContenant.x      = 0;
-    }
-
-    // si contenu plus grand, on a le slider vert
-    if (  m_slider_V->estVisible() ) {  // si contenu plus grand, on a le slider
-        float coef                  = ( 100 - m_slider_V->getValeur()  ) / 100;
-        m_posContenant.y              = coef * deplPossibleMax.y;
-    } else {
-        m_posContenant.y      = 0;
-    }
-
-
-    m_groupe->setPosition ( -m_posContenant.x , -m_posContenant.y );
-
-     m_affContenant->setTextureRect(   { m_posContenant.x
-                                    , m_posContenant.y
-                                    , m_affContenant->getSize().x
-                                    , m_affContenant->getSize().y });
-
-    if (m_parent != nullptr)
-        m_parent->actualiserContenu();
-
-}
-
-
-/////////////////////////////////////////////////
-void CntSliders::draw (sf::RenderTarget& target, sf::RenderStates states) const
-{
-
-    if ( estVisible() ) {
-
-        //On applique la transformation
-        states.transform *= getTransform();
-
-//        target.draw( *m_fond , states );
-        target.draw( *m_affContenant , states );
-        target.draw( *m_slider_V , states );
-        target.draw( *m_slider_H , states );
-
-    }
-
-}
 
 
 } // fin namespace gui

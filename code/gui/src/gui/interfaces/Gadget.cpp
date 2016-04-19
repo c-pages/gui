@@ -33,7 +33,7 @@ Gadget::Gadget ()
 , m_necessiteActualisation  ( true )
 , m_aBesoinActuaGeom        ( true )
 , m_aBesoinActuaStyle       ( true )
-, m_aBesoinActuaContenu     ( true )
+//, m_aBesoinActuaContenu     ( true )
 , m_aBesoinActuaBounds      ( true )
 
 , m_etat        ( Etat::repos )
@@ -223,7 +223,7 @@ void Gadget::demanderActualisation() {
     m_necessiteActualisation = true ;
     m_aBesoinActuaGeom = true ;
     m_aBesoinActuaStyle = true ;
-    m_aBesoinActuaContenu = true ;
+//    m_aBesoinActuaContenu = true ;
 
     Interface::necessiteActualisation();
 };
@@ -234,7 +234,7 @@ void Gadget::demanderActuaGeom() {
     m_necessiteActualisation = true ;
     m_aBesoinActuaGeom = true ;
     m_aBesoinActuaBounds = true ;
-    m_aBesoinActuaContenu = true ;
+//    m_aBesoinActuaContenu = true ;
     Interface::necessiteActualisation();
 };
 
@@ -250,7 +250,7 @@ void Gadget::demanderActuaStyle() {
 /////////////////////////////////////////////////
 void Gadget::demanderActuaContenu() {
     m_necessiteActualisation = true ;
-    m_aBesoinActuaContenu = true ;
+//    m_aBesoinActuaContenu = true ;
     Interface::necessiteActualisation();
 };
 
@@ -346,6 +346,12 @@ void Gadget::setDeplacable( bool val ){
     m_deplacable = val;
 };
 
+
+
+/////////////////////////////////////////////////
+void Gadget::setRedimensionnable( bool val ){
+    m_redimensionnable = val;
+};
 
 /////////////////////////////////////////////////
 void Gadget::creerNomUnique( std::string type  ) {

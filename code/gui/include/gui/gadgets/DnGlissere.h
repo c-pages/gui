@@ -82,7 +82,7 @@ private:
 private:
 
     // les proprietés fonctionnelles
-    bool                            m_horizontal;   ///< l'orientation,  true: bouton horizontal, false: bouton vertical.
+//    bool                            m_horizontal;   ///< l'orientation,  true: bouton horizontal, false: bouton vertical.
     float                           m_valeurMax;    ///<
     float                           m_valeurMin;    ///<
     bool                            m_drag;

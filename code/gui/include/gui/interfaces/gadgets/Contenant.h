@@ -9,14 +9,14 @@
 #include "gadgets/AffRectangle.h"
 #include "repartiteurs/Repartiteur.h"
 
-
+#include "interfaces/composants/CmpFond.h"
 
 namespace gui {
 
 
 
 
-class Contenant : public Gadget {
+class Contenant : public Gadget, public CmpFond {
 
 
 enum class Decorations{
@@ -49,12 +49,12 @@ public:
 
     void setRepartition ( Repartitions repartition );
 
-    /////////////////////////////////////////////////
-    virtual void actualiserMasque ();
+//    /////////////////////////////////////////////////
+//    virtual void actualiserMasque ();
 
 
     /////////////////////////////////////////////////
-    virtual void actualiserContenu ();
+//    virtual void actualiserContenu ();
 
     /////////////////////////////////////////////////
     virtual void actualiserBounds ();
@@ -72,9 +72,10 @@ public:
     virtual void setTaille(sf::Vector2i taille){
         m_taille = taille;
         m_affContenant->setSize( { m_taille.x , m_taille.y } );
-        actualiserMasque () ;
+        demanderActuaGeom();
+//        actualiserMasque () ;
     }
-
+/*
 
     void setContenantFillColor ( sf::Color couleurs  ) {
             m_contenantCouleur = couleurs;
@@ -91,7 +92,7 @@ public:
             demanderActuaStyle();
 //            m_rectangle->setFondLigneEpaisseur( epaisseur );
         };
-
+*/
     /////////////////////////////////////////////////
     sf::Vector2f    deplMaxContenu();
 
@@ -128,12 +129,16 @@ protected:
     std::shared_ptr<Groupe>             m_groupe;
 
     // les proprietés graphiques
-    sf::Color               m_fndCouleur;
+//    sf::Color               m_fndCouleur;
 
 
     sf::Color               m_contenantCouleur;
     sf::Color               m_contenantLgnCouleur;
     float                   m_contenantLgnepaisseur;
+
+    int                     m_largeurRedimH;
+    int                     m_largeurRedimV;
+
 //
 //    sf::Shader             m_masqueShader; ///< le shader qui s'occupe de masquer les bouts qui dépassent des fenêtres. (nullptr si non utilisé
 

@@ -169,8 +169,14 @@ EcranDemo::initGUI_MenuPanneaux ()
         auto fenetreQuitter = m_interface->creer.fenetre("Quitter ?");
         fenetreQuitter->setTitreIcone ( &gui::Interface::ms_icones.get("ico_fenetreDefaut"));
         fenetreQuitter->alignerSur ( m_interface, gui::Alignement::Centre, gui::Alignement::Centre );
-        fenetreQuitter->lier (gui::Evenement::onFen_fermer, [this](){ m_cache->demander_aEtre_supprimer(); });
+        fenetreQuitter->lier ( gui::Evenement::onFen_fermer, [this, fenetreQuitter](){
+                                m_cache->demander_aEtre_supprimer();
+                                fenetreQuitter->demander_aEtre_supprimer();
+                            });
         fenetreQuitter->setTaille( 275 , 95 );
+        fenetreQuitter->setDeplacable(false);
+        fenetreQuitter->setRedimensionnable(false);
+
 
         // le label
         auto label =  m_interface->creer.label("Etes-vous sûr de vouloir quitter ?");
@@ -241,17 +247,14 @@ EcranDemo::initGUI_MenuPanneaux ()
     m_posFenetre1 = {150,150};
 
 
-//    // les panneaux lateraux
-//    auto panneauD = m_interface->creer.supportPanneaux();
-//    panneauD->setCote ( gui::Cote::Droite );
-//    auto panneauG = m_interface->creer.supportPanneaux();
+    // les panneaux lateraux
+    auto panneauD = m_interface->creer.supportPanneaux();
+    panneauD->setCote ( gui::Cote::Droite );
+    auto panneauG = m_interface->creer.supportPanneaux();
 
-//    // liste
-//    auto listeDeroul = m_interface->creer.liste();
-//    listeDeroul->ajouterElement("popo 1");
-//    listeDeroul->ajouterElement("popo 2");
 
-//    auto label = m_interface->creer.label( "bon bah on a un label.");
+
+
 }
 
 

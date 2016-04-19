@@ -12,7 +12,7 @@ namespace gui {
 DnGlissere::DnGlissere ()
 : m_valeurMax   ( 100 )
 , m_valeurMin   ( 0 )
-, m_horizontal  ( true )
+//, m_horizontal  ( true )
 , m_drag        ( false )
 , m_decalageDragSouris ({0,0})
 {
@@ -89,7 +89,8 @@ DnGlissere::DnGlissere ()
 /////////////////////////////////////////////////
 void DnGlissere::actualiserGeometrie (){
 
-    log ("actualiserGeometrie");
+//    printf ("DnGlissere::actualiserGeometrie\n");
+//    printf ("m_horizontal : %d\n" , m_horizontal );
     log ("m_largeur", m_largeur);
 
     if ( m_horizontal )
@@ -101,7 +102,7 @@ void DnGlissere::actualiserGeometrie (){
     m_boutonFond->setTaille     ( { m_taille.x - 2*m_marge.x  , m_taille.y - 2*m_marge.y } );
     m_boutonFond->setPosition   ( m_marge.x , m_marge.y );
 
-    m_slider->setTaille         ( { m_largeur - 2*m_marge.x  , m_largeur - 2*m_marge.y });
+//    m_slider->setTaille         ( { m_largeur - 2*m_marge.x  , m_largeur - 2*m_marge.y });
     corrigerPositionSlider();
 
     demanderActuaBounds();

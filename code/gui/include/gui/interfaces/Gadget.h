@@ -94,7 +94,10 @@ public:
     void setPresse( bool val  = true );
 
     ///< Definir m_deplacable
-    void setDeplacable( bool val  = true );
+    virtual void setDeplacable( bool val  = true );
+
+    ///< Definir m_redimensionnable
+    virtual void setRedimensionnable( bool val  = true );
 
 
 public:
@@ -278,7 +281,7 @@ protected:
     bool                    m_necessiteActualisation ;
     bool                    m_aBesoinActuaGeom ;
     bool                    m_aBesoinActuaStyle ;
-    bool                    m_aBesoinActuaContenu ;
+//    bool                    m_aBesoinActuaContenu ;
     bool                    m_aBesoinActuaBounds ;
 
     unsigned int            m_id;

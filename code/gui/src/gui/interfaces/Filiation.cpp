@@ -55,19 +55,19 @@ std::string Filiation::getCalqueNom()  {
 
 };
 
+//
+///////////////////////////////////////////////////
+//void Filiation::actualiserContenu (){
+//    // on demande juste au parent d'actualiser son contenu ...
+//    if ( m_parent != nullptr ) m_parent->actualiserContenu();
+//};
 
-/////////////////////////////////////////////////
-void Filiation::actualiserContenu (){
-    // on demande juste au parent d'actualiser son contenu ...
-    if ( m_parent != nullptr ) m_parent->actualiserContenu();
-};
-
-/////////////////////////////////////////////////
-void Filiation::actualiserMasque () {
-
-    // on demande juste au parent d'actualiser son contenu ...
-    if ( m_parent != nullptr ) m_parent->actualiserMasque();
-}
+///////////////////////////////////////////////////
+//void Filiation::actualiserMasque () {
+//
+//    // on demande juste au parent d'actualiser son contenu ...
+//    if ( m_parent != nullptr ) m_parent->actualiserMasque();
+//}
 
 /////////////////////////////////////////////////
 void Filiation::ajouter ( std::shared_ptr<Gadget> enfant, unsigned int index )    {
@@ -81,6 +81,8 @@ void Filiation::ajouter ( std::shared_ptr<Gadget> enfant, unsigned int index )  
 
     auto _this = static_cast<Gadget*>( this );
     enfant->setParent ( _this );
+
+    _this->demanderActualisation();
 
     enfant->actualiser();
     _this->actualiser();

@@ -20,6 +20,8 @@ Contenant::Contenant ()
 , m_posContenant ( {0,0} )
 , m_groupe ( std::make_shared<Groupe>() )
 , m_repartiteur ( new RepartiteurLibre ( this ) )
+, m_largeurRedimV ( 0 )
+, m_largeurRedimH ( 0 )
 {
 
     creerNomUnique("contenant");
@@ -36,13 +38,13 @@ Contenant::Contenant ()
         m_renderTexture.create ( tailleMaxCarteVideo  , tailleMaxCarteVideo );
     else
         m_renderTexture.create ( tailleMax  , tailleMax );
-
+/*
 
     m_contenantCouleur      = sf::Color( 50,50,50, 255 );
     m_contenantLgnCouleur   = sf::Color( 255,255,255, 20 );
     m_contenantLgnepaisseur = 1;
 
-    m_fndCouleur            = sf::Color( 80,80,80 );
+    m_fndCouleur            = sf::Color( 80,80,80 );*/
 
     // Load the shader
 //    if (!m_masqueShader.loadFromFile("media/shaders/clippingMask.vert" , sf::Shader::Vertex ))
@@ -53,6 +55,8 @@ Contenant::Contenant ()
 //    printf(" -------- : %i\n" ,  m_masqueShader.isAvailable() );
 //
 
+    // initialiser les composants herités
+    CmpFond::initialiserComposants ( this );
 
     ajouterComposant( m_groupe );
 
@@ -63,18 +67,18 @@ Contenant::Contenant ()
 }
 
 
-/////////////////////////////////////////////////
-void Contenant::actualiserMasque ( ) {
-
-//    m_masqueShader.setParameter( "texture"      , sf::Shader::CurrentTexture );
-//    m_masqueShader.setParameter( "aTexture"     , true );
-//    m_masqueShader.setParameter( "clipPos"      , {getPosAbs().x , Interface::ms_fenetreSFML->getSize().y - getPosAbs().y });
-//    m_masqueShader.setParameter( "clipTaille"   , {getTaille().x ,getTaille().y});
-
-//    for ( auto enfant : m_enfants )
-//        enfant->setShaderMasque ( m_masqueShader );
-
-}
+///////////////////////////////////////////////////
+//void Contenant::actualiserMasque ( ) {
+//
+////    m_masqueShader.setParameter( "texture"      , sf::Shader::CurrentTexture );
+////    m_masqueShader.setParameter( "aTexture"     , true );
+////    m_masqueShader.setParameter( "clipPos"      , {getPosAbs().x , Interface::ms_fenetreSFML->getSize().y - getPosAbs().y });
+////    m_masqueShader.setParameter( "clipTaille"   , {getTaille().x ,getTaille().y});
+//
+////    for ( auto enfant : m_enfants )
+////        enfant->setShaderMasque ( m_masqueShader );
+//
+//}
 
 /////////////////////////////////////////////////
 void Contenant::setRepartition ( Repartitions repartition )
@@ -107,36 +111,19 @@ void Contenant::actualiserBounds ()
 
     setMasqueRect   ( getPosAbs().x
                     , Interface::ms_fenetreSFML->getSize().y - getPosAbs().y
-                    , getTaille().x
-                    , getTaille().y );
+                    , getTaille().x - m_largeurRedimV
+                    , getTaille().y - m_largeurRedimH );
 
     Geometrie::actualiserBounds ();
 }
-/////////////////////////////////////////////////
-void Contenant::actualiserContenu ()
-{
-
-    repartirEnfants();
-
-//    // Render to texture des enfants
-//    m_renderTexture.clear( m_fndCouleur );
-//    for (auto enfant : m_groupe->getEnfants() )
-//        m_renderTexture.draw( *enfant );
-//    m_groupe->setPosition ( -m_posContenant.x , -m_posContenant.y );
-//    m_renderTexture.display();
+///////////////////////////////////////////////////
+//void Contenant::actualiserContenu ()
+//{
+//
+//    repartirEnfants();
 //
 //
-//     // on applique la texture
-//    m_affContenant->setTexture( &m_renderTexture.getTexture() );
-//    m_affContenant->setTextureRect( { m_posContenant.x
-//                                    , m_posContenant.y
-//                                    , m_affContenant->getSize().x
-//                                    , m_affContenant->getSize().y });
-
-    // on gère la maj des parents
-//    if ( m_parent != nullptr ) m_parent->actualiserContenu();
-
-};
+//};*/
 
 /////////////////////////////////////////////////
 void Contenant::actualiserGeometrie ()
@@ -146,7 +133,10 @@ void Contenant::actualiserGeometrie ()
 //    logAlerte ("par la");
 
 //    m_affContenant->setSize( { m_taille.x , m_taille.y } );
+    m_fond->setTaille( m_taille );
 
+    for (auto compo : m_composants )
+        compo->actualiserGeometrie ();
 
     repartirEnfants ();
 
@@ -209,6 +199,9 @@ void Contenant::ajouter ( std::shared_ptr<Gadget> enfant, unsigned int index )  
 
     demanderActualisation();
 
+//    for ( auto compo : m_composants)
+//        compo->demanderActualisation();
+
 };
 
 /////////////////////////////////////////////////
@@ -219,6 +212,9 @@ void Contenant::ajouter ( std::shared_ptr<Gadget> enfant )    {
     enfant->setMasqueActif();
 
     demanderActualisation();
+
+//    for ( auto compo : m_composants )
+//        compo->demanderActualisation();
 
 };
 /////////////////////////////////////////////////
@@ -254,12 +250,14 @@ void Contenant::draw (sf::RenderTarget& target, sf::RenderStates states) const
         //On applique la transformation
         states.transform *= getTransform();
 
+        dessinerComposant( target, states );
 //        m_masqueShader.setParameter( "aTexture", false );
         //
         states.shader    =  &m_masqueShader;
 //        target.draw( *m_affContenant , states );
 
         target.draw( *m_groupe , states );
+
 
     }
 

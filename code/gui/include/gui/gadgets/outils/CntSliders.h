@@ -63,8 +63,8 @@ public:
         };
 
 
-    /////////////////////////////////////////////////
-    virtual void actualiserMasque ();
+//    /////////////////////////////////////////////////
+//    virtual void actualiserMasque ();
 
     /////////////////////////////////////////////////
     virtual void actualiserGeometrie ();
@@ -72,7 +72,7 @@ public:
     /////////////////////////////////////////////////
     virtual void actualiserStyle ();
 
-    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
+//    virtual void draw (sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
 

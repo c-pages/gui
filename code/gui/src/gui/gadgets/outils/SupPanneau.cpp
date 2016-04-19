@@ -158,7 +158,8 @@ void    SupPanneau::ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i posit
 //    actualiser();
 
 //    m_interface->demanderActualisation();
-
+    demanderActualisation();
+//            actualiser();
 //    Filiation::ajouter( gadget );
 };
 
@@ -178,7 +179,7 @@ void    SupPanneau::actualiserGeometrie ()
     auto tailleTmp = m_taille;
     if ( ! m_contenant->aEnfants() )    {
 //        std::cout << "Actualiser PANNEAU : a PAS Enfants\n";
-        tailleTmp.x = 100;
+        tailleTmp.x = 10;
         switch ( m_cote ) {
             case Cote::Droite:
                 m_btn_gauche->setVisible ( false );
@@ -217,30 +218,10 @@ void    SupPanneau::actualiserGeometrie ()
 
     if ( m_contenant->getTaille ().x !=  tailleTmp.x - 2*m_marge.x )
         m_contenant->setTailleX (  tailleTmp.x - 2*m_marge.x );
-//
-//    m_contenant->setTaille ( { tailleTmp.x - 2*m_marge.x , tailleTmp.y - 2*m_marge.y } );
-
 
     m_contenant->setPosition ( m_marge.x , m_marge.y );
 
-//    m_contenant->repartirEnfants();
-//    m_contenant->actualiserGeometrie();
-//    m_contenant->actualiserContenu ();
 
-//    m_contenant->repartirEnfants();
-//    m_contenant->actualiserMasque ();
-
-
-//    m_contenant->actualiserContenu ();
-
-//    actualiserBounds();
-//    actualiserEnfants();
-//    if (m_interface != nullptr)
-//    {
-//        auto tailleFenetre = m_interface->getFenetre()->getSize();
-//        m_taille = {tailleFenetre.x , m_taille.y};
-//    }
-//    m_fond->setTaille ( m_taille );
 }
 
 

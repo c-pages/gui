@@ -25,9 +25,9 @@ EcranDemo::EcranDemo( Application*  appli )
     // les tests
 
     initGUI_MenuPanneaux ();
-    initGUI_test_Affichages();
-    initGUI_test_Boutons ();
-    initGUI_test_Donnees();
+//    initGUI_test_Affichages();
+//    initGUI_test_Boutons ();
+//    initGUI_test_Donnees();
 
 
     initScene   ();
@@ -247,13 +247,50 @@ EcranDemo::initGUI_MenuPanneaux ()
     m_posFenetre1 = {150,150};
 
 
-    // les panneaux lateraux
-    auto panneauD = m_interface->creer.supportPanneaux();
-    panneauD->setCote ( gui::Cote::Droite );
-    auto panneauG = m_interface->creer.supportPanneaux();
 
 
+    ////////////////////////////////////////////////////////////////////////
+    ////// les panneaux lateraux  //////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////
+//
+//    auto panneauD = m_interface->creer.supportPanneaux();
+//    panneauD->setCote ( gui::Cote::Droite );
+//    auto panneauG = m_interface->creer.supportPanneaux();
 
+
+    ////////////////////////////////////////////////////////////////////////
+    ////// le bandeau  /////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////
+    auto bandeau = m_interface->creer.bandeau();
+
+    // barre fonction fichier
+    auto barreFonction = m_interface->creer.barreFonctions();
+//    barreFonction->setPosition (50,50);
+
+    auto    btn1 = barreFonction->ajouterElement ( "Nouveau", "media/img/ico_fichiers.png" , [](){printf("Nouveau\n");});
+    btn1->setInfo("Nouveau");
+    auto    btn2 = barreFonction->ajouterElement ( "Ouvrir", "media/img/ico_fichiers.png" , [](){printf("Ouvrir\n");});
+    btn2->setInfo("Ouvrir");
+    auto    btn3 = barreFonction->ajouterElement ( "Sauvegarder", "media/img/ico_fichiers.png" , [](){printf("Sauvegarder\n");});
+    btn3->setInfo("Sauvegarder");
+    auto    btn4 = barreFonction->ajouterElement ( "Sauvegarder sous", "media/img/ico_fichiers.png" , [](){printf("Sauvegarder sous\n");});
+    btn4->setInfo("Sauvegarder sous");
+
+    bandeau->ajouter ( barreFonction );
+
+    // barre fonction fichier
+    auto barreFonctionHist = m_interface->creer.barreFonctions();
+//    barreFonctionHist->setPosition (50,50);
+
+    auto    btnHist1 = barreFonctionHist->ajouterElement ( "Annuler", "media/img/ico_Historique.png" , [](){printf("Annuler\n");});
+    btnHist1->setInfo("Annuler");
+    auto    btnHist2 = barreFonctionHist->ajouterElement ( "Refaire", "media/img/ico_Historique.png" , [](){printf("Refaire\n");});
+    btnHist2->setInfo("Refaire");
+
+    bandeau->ajouter ( barreFonctionHist );
+
+
+//    bandeau->ajouter ( barreFonction );
 
 }
 

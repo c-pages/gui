@@ -9,6 +9,7 @@ namespace gui {
 
 /////////////////////////////////////////////////
 BtnRectangle::BtnRectangle ()
+: Bouton ()
 {
     creerNomUnique( "BtnRectangle" );
 

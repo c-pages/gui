@@ -34,6 +34,9 @@ void CmpIcone::setImage( std::string fichier )  {
 
 /////////////////////////////////////////////////
 void CmpIcone::setImage ( sf::Texture* texture )  {
+
+
+//    printf ("SET IMAGE ICI\n");
     m_icone->setImage( texture );
     m_base->demanderActuaGeom ();
 }

@@ -9,7 +9,8 @@ namespace gui {
 
 /////////////////////////////////////////////////
 BtnIcone::BtnIcone ()
-: m_fix ( false )
+: BtnRectangle ()
+, m_fix ( false )
 {
     creerNomUnique( "BtnIcone" );
     m_marge       = { 1 , 1} ;
@@ -35,18 +36,14 @@ void BtnIcone::actualiserGeometrie ()
 
     m_fond->setTaille ( {m_taille.x, m_taille.y} );
 
+    m_icone->actualiserGeometrie();
+
     if ( m_autoAjust ){
-        m_icone->actualiserGeometrie();
         m_taille = { m_icone->getTaille().x + m_marge.x*2 , m_icone->getTaille().y + m_marge.y*2 } ;
         m_icone->setPosition( m_marge.x  , m_marge.y );
     } else {
-        m_icone->actualiserGeometrie();
-//        log ( "aligner?" );
-//
         m_icone->alignerSur ( m_fond , Alignement::Centre , Alignement::Centre );
-//        m_icone->alignerSur ( m_fond , Alignement::Haut , Alignement::Haut );
     }
-
 
     demanderActuaBounds();
 }

@@ -8,7 +8,8 @@
 #include "interfaces/gadgets/Bouton.h"
 #include "BtnIcone.h"
 #include "interfaces/gadgets/Contenant.h"
-
+#include    "interfaces/composants/CmpFond.h"
+#include    "interfaces/composants/CmpOmbre.h"
 
 
 namespace gui {
@@ -20,7 +21,9 @@ namespace gui {
 ///
 /////////////////////////////////////////////////
 //class BtnBarreFonctions : public Donnee<std::vector<int>> {
-class BtnBarreFonctions : public Bouton {
+class BtnBarreFonctions : public Bouton
+                        , public CmpFond
+                        , public CmpOmbre {
 
 
 /////////////////////////////////////////////////
@@ -44,7 +47,9 @@ public:
     /////////////////////////////////////////////////
     BtnBarreFonctions ();
 
-    void ajouterElement (std::string nom, std::string fichierIcone, FctnAction action);
+    std::shared_ptr<BtnIcone> ajouterElement (std::string nom, std::string fichierIcone, FctnAction action);
+
+    std::shared_ptr<BtnIcone> ajouterElement (std::string nom, sf::Texture icone, FctnAction action);
 
     void supprimerElement (unsigned int id);
 
@@ -68,10 +73,6 @@ public:
 // Membres
 /////////////////////////////////////////////////
 private:
-//    std::shared_ptr<Contenant>        m_panneau;
-    std::shared_ptr<AffRectangle>   m_fond;
-    std::shared_ptr<AffRectangle>   m_ombre;
-
 
 
     sf::Vector2i                    m_tailleBouton;   ///< La taille d'un bouton du menu
@@ -81,13 +82,6 @@ private:
     sf::Vector2i                    m_decalageDragSouris;
     bool                            m_modeFenetre;
 
-    sf::Color   m_fndCouleur;
-    sf::Color   m_fndLgnCouleur;
-    float       m_fndLgnEpaisseur;
-
-    sf::Color               m_ombreCouleur;
-    sf::Color               m_ombreLgnCouleur;
-    float                   m_ombreLgnepaisseur;
 
 
 }; // fin class BtnBarreFonctions

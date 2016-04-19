@@ -167,6 +167,7 @@ private:
     // Infobulle
     /////////////////////////////////////////////////
     std::shared_ptr<AffInfoBulle>   m_infoBulle;
+    bool                            m_infoActif;
     sf::Clock                       m_chronoDeclenchementInfo;      ///< Le chrono pour le déclenchement de l'info bulle
     sf::Vector2i                    m_sourisPosBack;
 

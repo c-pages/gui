@@ -50,7 +50,7 @@ Interface::Interface( sf::RenderWindow* fenetre )
 
 //// infoBulle
 //, m_infoBulle      ( std::make_shared<AffInfoBulle>() )
-
+, m_infoActif ( false )
 {
     m_mute          = false;
     m_nom           = "GUI";
@@ -84,7 +84,8 @@ Interface::Interface( sf::RenderWindow* fenetre )
     ms_icones.load( "ico_fenetre"           , "media/img/icones_fenetre.png" );
     ms_icones.load( "ico_fenetreDefaut"     , "media/img/ico_fenetre.png" );
     ms_icones.load( "ico_fleches"           , "media/img/ico_fleches.png"    );
-    ms_icones.load( "ico_fichiers"           , "media/img/ico_fichiers.png"    );
+    ms_icones.load( "ico_fichiers"          , "media/img/ico_fichiers.png"    );
+    ms_icones.load( "ico_historique"        , "media/img/ico_Historique.png"    );
 
     // initialiser les curseurs
     ms_curseurSouris = std::make_shared<AffCurseurSouris>( this );
@@ -144,9 +145,11 @@ void Interface::actualiser ()
 
     // infobulle
     if ( m_chronoDeclenchementInfo.getElapsedTime().asSeconds() > 1
-    &&   ms_boutonSurvole != nullptr ) {
+    &&   ms_boutonSurvole != nullptr
+    &&  !m_infoActif ) {
         if ( ms_boutonSurvole->getInfo() != "" ) {
             m_infoBulle->setVisible ();
+            m_infoActif = true;
             m_infoBulle->setPosition ( getPosSouris().x, getPosSouris().y + 20 );
             m_infoBulle->setTexte  ( ms_boutonSurvole->getInfo() );
         }
@@ -257,6 +260,7 @@ void Interface::traiterEvenements( sf::Event evenement )
             if ( m_sourisPosBack != getPosSouris() ){
                 m_chronoDeclenchementInfo.restart();
                 m_infoBulle->setVisible ( false );
+                m_infoActif = false;
             }
             m_sourisPosBack = getPosSouris();
 

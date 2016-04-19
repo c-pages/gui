@@ -59,8 +59,11 @@ public:
 
     virtual void ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i positionEcran );
     virtual void ajouter ( std::shared_ptr<Gadget> gadget)
-        { m_contenant->ajouter ( gadget ); gadget->actualiserEtatDeco ( );
-            demanderActualisation(); };
+        { m_contenant->ajouter ( gadget );
+        gadget->actualiserEtatDeco ( );
+            demanderActualisation();
+//            actualiser();
+            };
 
 private:
 

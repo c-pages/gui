@@ -28,6 +28,11 @@ void CmpOmbre::initialiserComposants ( Gadget*     base ){
 };
 
 
+/////////////////////////////////////////////////
+void CmpOmbre::setOmbreActive ( bool val ) {
+    m_ombreActive = val;
+    m_ombre->setVisible (m_ombreActive);
+};
 
 /////////////////////////////////////////////////
 void CmpOmbre::setOmbreCouleur ( sf::Color couleur ) {

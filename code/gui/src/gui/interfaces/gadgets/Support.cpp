@@ -17,7 +17,7 @@ Support::Support ()
     ajouterComposant ( m_fond );
 //    ajouterComposant ( m_panneaux );
 
-    m_taille = { 250 , 280 };
+    m_taille = { 800 , 280 };
 
     m_fndCouleur        = sf::Color( 60, 60, 60 );
     m_fndCouleurSurvol  = sf::Color( 80, 80, 80 );

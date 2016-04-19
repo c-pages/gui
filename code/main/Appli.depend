@@ -369,7 +369,7 @@
 	<memory>
 	<GUI.h>
 
-1460931303 r:\06 - c++\110 - gui\code\gui\include\gui\gui.h
+1461078070 r:\06 - c++\110 - gui\code\gui\include\gui\gui.h
 	<string>
 	<SFML/Graphics.hpp>
 	"Valeurs.h"
@@ -572,7 +572,7 @@
 	"gadgets/BtnTexte.h"
 	"interfaces/composants/CmpOmbre.h"
 
-1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\composants\cmpombre.h
+1461079318 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\composants\cmpombre.h
 	<SFML/Graphics.hpp>
 	"Composant.h"
 	"Valeurs.h"
@@ -622,10 +622,12 @@
 	"gadgets/AffLabel.h"
 	"gadgets/BtnIcone.h"
 
-1460904250 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\btnbarrefonctions.h
+1461074467 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\btnbarrefonctions.h
 	"interfaces/gadgets/Bouton.h"
 	"BtnIcone.h"
 	"interfaces/gadgets/Contenant.h"
+	"interfaces/composants/CmpFond.h"
+	"interfaces/composants/CmpOmbre.h"
 
 1461060155 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\outils\cntsliders.h
 	<memory>
@@ -673,7 +675,7 @@
 	<SFML/Graphics.hpp>
 	<memory>
 
-1460975334 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\outils\suppanneau.h
+1461080656 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\outils\suppanneau.h
 	<SFML/Graphics.hpp>
 	<memory>
 	"gadgets/BtnRectangle.h"
@@ -799,7 +801,7 @@
 	<iostream>
 	<Config.h>
 
-1461067783 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1461080408 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>

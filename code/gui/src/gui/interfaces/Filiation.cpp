@@ -23,9 +23,15 @@ void Filiation::ajouter (std::shared_ptr<Gadget> enfant)
     auto _this = static_cast<Gadget*>( this );
     enfant->setParent ( _this );
 
-    enfant->demanderActualisation();
-    _this->demanderActualisation();
 
+    log ("AJOUTER ENFANT" );
+
+    enfant->demanderActualisation();
+    enfant->actualiserGeometrie();
+//    _this->actualiser();
+
+    _this->demanderActualisation();
+    _this->actualiserGeometrie();
 }
 
 
@@ -82,11 +88,13 @@ void Filiation::ajouter ( std::shared_ptr<Gadget> enfant, unsigned int index )  
     auto _this = static_cast<Gadget*>( this );
     enfant->setParent ( _this );
 
+
+    enfant->demanderActualisation();
+    enfant->actualiserGeometrie();
+//    _this->actualiser();
+
     _this->demanderActualisation();
-
-    enfant->actualiser();
-    _this->actualiser();
-
+    _this->actualiserGeometrie();
 
 //    std::cout <<"Filiation::ajouter reussi\n";
 };

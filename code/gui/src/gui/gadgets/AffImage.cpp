@@ -47,7 +47,7 @@ void AffImage::actualiserGeometrie ()
 void AffImage::actualiserStyle ()
 {
     // Debuggage
-    log ("actualiserStyle");
+    log ("actualiserStyle !!!");
 
     m_rectangle.setFillColor        ( m_fondCouleur );
     m_rectangle.setOutlineColor     ( m_fondLgnCouleur );
@@ -56,11 +56,6 @@ void AffImage::actualiserStyle ()
     m_rectangle.setTexture( m_texture );
 }
 
-/////////////////////////////////////////////////
-void AffImage::setImage (  sf::Texture* texture ) {
-    m_texture = texture;
-    demanderActualisation() ;
-};
 
 
 /////////////////////////////////////////////////
@@ -76,10 +71,35 @@ void AffImage::setTaille( sf::Vector2i val ){
 
 
 /////////////////////////////////////////////////
+void AffImage::setImage (  sf::Texture* texture ) {
+    log ( "Set image,texture" );
+    // DEBU8G
+//    printf ("AffImage::SET IMAGE texture\n");
+//    m_rectangle.setFillColor( sf::Color(255,220,50,100));
+
+    m_texture = texture;
+
+    m_rectangle.setTexture( m_texture );
+
+    m_rectangle.setTextureRect ( { 0
+                                 , 0
+                                 , m_texture->getSize().x
+                                 , m_texture->getSize().y });
+
+//    // debug
+//    m_fondCouleur = sf::Color(255,220,50,100);
+
+    demanderActuaGeom() ;
+};
+
+
+/////////////////////////////////////////////////
 void AffImage::setImage ( std::string fichier )
 {
-    log ( "setImage"  );
+    log ( "Set image,fichier" );
     log ( "fichier" , fichier );
+
+//    printf ("AffImage::SET IMAGE fichier\n");
 
     std::string nomUniqueImage = Interface::ms_images.nomDefautSuivant();
 
@@ -93,6 +113,9 @@ void AffImage::setImage ( std::string fichier )
                                  , 0
                                  , m_texture->getSize().x
                                  , m_texture->getSize().y });
+
+    // DEBU8G
+//    m_rectangle.setFillColor( sf::Color(255,220,50,100));
 
     demanderActuaGeom() ;
 }

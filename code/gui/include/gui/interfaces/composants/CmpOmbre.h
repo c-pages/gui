@@ -20,7 +20,7 @@ public:
 public:
     virtual void setOmbreCouleur         ( sf::Color couleur  );
 
-    virtual void setOmbreActive ( bool val ) { m_ombreActive = val; };
+    virtual void setOmbreActive ( bool val = true );
 
 protected :
     /////////////////////////////////////////////////

@@ -15,7 +15,10 @@ AffIcone::AffIcone ()
 , m_nbrIcones   (0)
 {
     creerNomUnique( "Icone");
+
+
 //    m_mute = false;
+
 }
 
 
@@ -39,10 +42,19 @@ void AffIcone::actualiserGeometrie ()
 void AffIcone::actualiserStyle ()
 {
     // Debuggage
-    log ("actualiserStyle");
+    log ("actualiserStyle  <-----", sf::Vector2i( m_texture->getSize() ) );
 
     //calcul de la largeur d'un coté
     int largeur = m_texture->getSize().y;
+
+    // debug {
+//    auto image = sf::Image ( m_texture->copyToImage() );
+//    image.saveToFile( "POPOPOPO.jpg");
+
+//    m_fondCouleur = sf::Color(255,220,50, 200);
+    // }debug
+
+
 
     // les style du rectangle
     m_rectangle.setFillColor        ( m_fondCouleur );

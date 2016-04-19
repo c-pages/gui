@@ -69,8 +69,8 @@ Fenetre::Fenetre ()
 
 /////////////////////////////////////////////////
 void Fenetre::fermer(){
-    log("fermer");
 
+    log("fermer");
 
     // declencher evenement
     declencher ( Evenement::onFen_fermer );

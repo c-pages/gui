@@ -445,15 +445,14 @@ sf::Vector2f    Gadget::getMarge()const{
 
 /////////////////////////////////////////////////
 std::string     Gadget::getInfo(){
-//    std::string info ="";
-//    for ( auto comp : m_composants )
-//        if
+
     if ( m_info == "" ) {
         if ( m_parent != nullptr )
             return m_parent->getInfo();
         else return m_info;
     } else return m_info;
 };
+
 
 /////////////////////////////////////////////////
 void     Gadget::setInfo( std::string info ){
@@ -465,29 +464,6 @@ void     Gadget::setInfo( std::string info ){
 /////////////////////////////////////////////////
 void     Gadget::setMasqueRect ( float posX, float posY, float tailleX, float tailleY ){
 
-//
-//    if ( posX > m_masqueRect.left )
-//        m_masqueRect.left = posX;
-//
-//    if ( posY> m_masqueRect.top )
-//        m_masqueRect.top = posY;
-//
-//    if ( tailleX< m_masqueRect.width )
-//        m_masqueRect.width = tailleX;
-//
-//    if ( tailleY< m_masqueRect.height )
-//        m_masqueRect.height = tailleY;
-//
-//
-//    m_masqueShader.setParameter( "rectMasque"      ,  m_masqueRect.left, m_masqueRect.top, m_masqueRect.width, m_masqueRect.height  );
-//
-//    for ( auto enfant : m_enfants )
-//        enfant->setMasqueRect( m_masqueRect.left, m_masqueRect.top, m_masqueRect.width, m_masqueRect.height );
-//
-//    for ( auto compo : m_composants )
-//        compo->setMasqueRect( m_masqueRect.left, m_masqueRect.top, m_masqueRect.width, m_masqueRect.height );
-
-
     m_masqueShader.setParameter( "rectMasque"      ,  posX, posY, tailleX, tailleY  );
 
     for ( auto enfant : m_enfants )
@@ -495,11 +471,11 @@ void     Gadget::setMasqueRect ( float posX, float posY, float tailleX, float ta
 
     for ( auto compo : m_composants )
         compo->setMasqueRect( posX, posY, tailleX, tailleY );
+
 }
 
 void Gadget::setMasqueActif ( bool val )
 {
-//    printf("setMasqueRect\n");
     m_masqueActif = val;
 
     for ( auto compo : m_composants )
@@ -509,6 +485,8 @@ void Gadget::setMasqueActif ( bool val )
 bool Gadget::estMasque ( ) const {
     return m_masqueActif;
 }
+
+
 } // fin namespace gui
 
 

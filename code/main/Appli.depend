@@ -623,7 +623,7 @@
 	"gadgets/AffLabel.h"
 	"gadgets/BtnIcone.h"
 
-1461146719 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\btnbarrefonctions.h
+1461151960 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\btnbarrefonctions.h
 	"interfaces/gadgets/Bouton.h"
 	"BtnIcone.h"
 	"interfaces/gadgets/Contenant.h"
@@ -802,7 +802,7 @@
 	<iostream>
 	<Config.h>
 
-1461144611 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1461152573 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>

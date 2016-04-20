@@ -131,36 +131,24 @@ void SupPanneau::corrigerTailleMinimum ()
 /////////////////////////////////////////////////
 void    SupPanneau::ajouter ( std::shared_ptr<Gadget> gadget, sf::Vector2i positionEcran )
 {
-//    std::cout << "Ajouter avec position ...\n";
 
    int i = 0;
     for ( auto enfant : m_contenant->getEnfants() )
     {
-//        std::cout << "  ... on test ...\n";
         if ( gadget->getPosAbs().y  < enfant->getPosAbs().y  )
         {
             m_contenant->ajouter ( gadget , i );
             gadget->actualiserEtatDeco ( );
-//            actualiser();
-//            gadget->actualiserEtatDeco ( );
-//            static_cast<std::shared_ptr<Fenetre>> ( gadget ) -> actualiserEtatDeco ( );
-//    m_interface->demanderActualisation();
-//            m_contenant->actualiserContenu (  );
-
-//            std::cout << "  ... reussi.\n";
             return;
         }
         i++;
     }
-//    std::cout << "  ... rate, on le met a la fin.\n";
+
     m_contenant->ajouter ( gadget );
     gadget->actualiserEtatDeco ( );
-//    actualiser();
 
-//    m_interface->demanderActualisation();
     demanderActualisation();
-//            actualiser();
-//    Filiation::ajouter( gadget );
+
 };
 
 

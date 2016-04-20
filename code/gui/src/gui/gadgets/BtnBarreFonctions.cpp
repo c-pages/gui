@@ -173,23 +173,33 @@ std::shared_ptr<BtnIcone>     BtnBarreFonctions::ajouterElement (std::string nom
 /////////////////////////////////////////////////
 void BtnBarreFonctions::select ( int id )
 {
+//    declencher (Evenement::on_valeurChange);
+
     // si on clique sur celui deja actif, on desactive et on se casse
     if ( id == m_outilActif ) {
         deselect ( );
+        declencher (Evenement::on_valeurChange);
         return;
     }
     // sinon on change d'outils
     deselect ( );
-    printf ("Select outils %i\n", id );
+
     m_outilActif = id;
     m_elements[id]->bouton->setFocus();
 
+    declencher (Evenement::on_valeurChange);
+
 }
+
+
 /////////////////////////////////////////////////
 void BtnBarreFonctions::deselect ( ){
     if ( m_outilActif!= -1 )
         m_elements[m_outilActif]->bouton->setFocus( false );
+    m_outilActif = -1;
 }
+
+
 /////////////////////////////////////////////////
 void BtnBarreFonctions::positionnerFenetre ()
 {
@@ -199,12 +209,16 @@ void BtnBarreFonctions::positionnerFenetre ()
 
     for ( auto bandeau : Interface::ms_calque_bandeaux->getEnfants() )
         if ( bandeau->testerSurvol( getPosSouris() ) != nullptr) {
-                bandeau->setAbsorbable( true );
+            bandeau->setAbsorbable( true );
         } else
-                bandeau->setAbsorbable( false );
+            bandeau->setAbsorbable( false );
 
 }
 
+/////////////////////////////////////////////////
+int BtnBarreFonctions::getSelect ( ){
+    return m_outilActif;
+}
 
 /////////////////////////////////////////////////
 std::shared_ptr<Gadget>  BtnBarreFonctions::testerSurvol ( sf::Vector2i position )
@@ -228,7 +242,7 @@ void BtnBarreFonctions::supprimerElement (unsigned int id)
 /////////////////////////////////////////////////
 void BtnBarreFonctions::actualiserGeometrie ()
 {
-    std::cout << "Actualiser la barre d'outils\n";
+//    std::cout << "Actualiser la barre d'outils\n";
 
     // si on est dans un calque (nom commence par '_'), on est libre, alors on ombre
     if (m_parent->getNom()[0] == '_')

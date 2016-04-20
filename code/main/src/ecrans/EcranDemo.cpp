@@ -25,9 +25,9 @@ EcranDemo::EcranDemo( Application*  appli )
     // les tests
 
     initGUI_MenuPanneaux ();
-//    initGUI_test_Affichages();
-//    initGUI_test_Boutons ();
-//    initGUI_test_Donnees();
+    initGUI_test_Affichages();
+    initGUI_test_Boutons ();
+    initGUI_test_Donnees();
 
 
     initScene   ();
@@ -258,9 +258,9 @@ EcranDemo::initGUI_MenuPanneaux ()
     ////// les panneaux lateraux  //////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
 //
-//    auto panneauD = m_interface->creer.supportPanneaux();
-//    panneauD->setCote ( gui::Cote::Droite );
-//    auto panneauG = m_interface->creer.supportPanneaux();
+    auto panneauD = m_interface->creer.supportPanneaux();
+    panneauD->setCote ( gui::Cote::Droite );
+    auto panneauG = m_interface->creer.supportPanneaux();
 
 
     ////////////////////////////////////////////////////////////////////////
@@ -296,9 +296,8 @@ EcranDemo::initGUI_MenuPanneaux ()
 
 
     // barre outils pinceaux
-//    auto barrePinceaux = m_interface->creer.barreFonctions();
     auto barrePinceaux = m_interface->creer.barreOutils();
-    barrePinceaux->ajouterElement ( "1", "media/img/icones_cercles.png", [](){printf("->Pinceau 1\n");} )->setInfo("Pinceau taille: 1");
+    barrePinceaux->ajouterElement ( "1", "media/img/icones_cercles.png" )->setInfo("Pinceau taille: 1");
     barrePinceaux->ajouterElement ( "2", "media/img/icones_cercles.png" )->setInfo("Pinceau taille: 2");
     barrePinceaux->ajouterElement ( "3", "media/img/icones_cercles.png" )->setInfo("Pinceau taille: 3");
     barrePinceaux->ajouterElement ( "4", "media/img/icones_cercles.png" )->setInfo("Pinceau taille: 4");
@@ -306,7 +305,10 @@ EcranDemo::initGUI_MenuPanneaux ()
     barrePinceaux->ajouterElement ( "6", "media/img/icones_cercles.png" )->setInfo("Pinceau taille: 6");
     barrePinceaux->ajouterElement ( "7", "media/img/icones_cercles.png" )->setInfo("Pinceau taille: 7");
 
-//barrePinceaux[6]->lier (gui::Evenement::onBtnG_relacher, [](){printf("POPOPOPO\n");});
+    barrePinceaux->lier (gui::Evenement::on_valeurChange, [barrePinceaux](){
+
+        printf("POPOPOPO %i\n", barrePinceaux->getSelect());
+    });
 
     bandeau->ajouter ( barrePinceaux );
 

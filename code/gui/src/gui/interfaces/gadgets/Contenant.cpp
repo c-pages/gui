@@ -38,22 +38,6 @@ Contenant::Contenant ()
         m_renderTexture.create ( tailleMaxCarteVideo  , tailleMaxCarteVideo );
     else
         m_renderTexture.create ( tailleMax  , tailleMax );
-/*
-
-    m_contenantCouleur      = sf::Color( 50,50,50, 255 );
-    m_contenantLgnCouleur   = sf::Color( 255,255,255, 20 );
-    m_contenantLgnepaisseur = 1;
-
-    m_fndCouleur            = sf::Color( 80,80,80 );*/
-
-    // Load the shader
-//    if (!m_masqueShader.loadFromFile("media/shaders/clippingMask.vert" , sf::Shader::Vertex ))
-////    if (!m_masqueShader.loadFromFile("media/shaders/clippingMask.vert" , "media/shaders/clippingMask.frag" ))
-//    if (!m_masqueShader.loadFromFile("media/shaders/clippingMask.frag", sf::Shader::Fragment ))
-////    if (!m_masqueShader.loadFromFile("media/shaders/flou.frag", sf::Shader::Fragment ))
-//        logAlerte("ERREUR Chargement shader");
-//    printf(" -------- : %i\n" ,  m_masqueShader.isAvailable() );
-//
 
     // initialiser les composants herités
     CmpFond::initialiserComposants ( this );
@@ -63,22 +47,9 @@ Contenant::Contenant ()
     // on active le Masque
     setMasqueActif();
 
-//    m_affContenant->setTexture( &m_renderTexture.getTexture() );
 }
 
 
-///////////////////////////////////////////////////
-//void Contenant::actualiserMasque ( ) {
-//
-////    m_masqueShader.setParameter( "texture"      , sf::Shader::CurrentTexture );
-////    m_masqueShader.setParameter( "aTexture"     , true );
-////    m_masqueShader.setParameter( "clipPos"      , {getPosAbs().x , Interface::ms_fenetreSFML->getSize().y - getPosAbs().y });
-////    m_masqueShader.setParameter( "clipTaille"   , {getTaille().x ,getTaille().y});
-//
-////    for ( auto enfant : m_enfants )
-////        enfant->setShaderMasque ( m_masqueShader );
-//
-//}
 
 /////////////////////////////////////////////////
 void Contenant::setRepartition ( Repartitions repartition )
@@ -116,23 +87,11 @@ void Contenant::actualiserBounds ()
 
     Geometrie::actualiserBounds ();
 }
-///////////////////////////////////////////////////
-//void Contenant::actualiserContenu ()
-//{
-//
-//    repartirEnfants();
-//
-//
-//};*/
 
 /////////////////////////////////////////////////
 void Contenant::actualiserGeometrie ()
 {
-//    std::cout << " CONTENANT::ACTUALISERGEOMETRIE \n";
-//    log ("TAILLE", m_taille);
-//    logAlerte ("par la");
 
-//    m_affContenant->setSize( { m_taille.x , m_taille.y } );
     m_fond->setTaille( m_taille );
 
     for (auto compo : m_composants )
@@ -199,8 +158,6 @@ void Contenant::ajouter ( std::shared_ptr<Gadget> enfant, unsigned int index )  
 
     demanderActualisation();
 
-//    for ( auto compo : m_composants)
-//        compo->demanderActualisation();
 
 };
 
@@ -213,8 +170,6 @@ void Contenant::ajouter ( std::shared_ptr<Gadget> enfant )    {
 
     demanderActualisation();
 
-//    for ( auto compo : m_composants )
-//        compo->demanderActualisation();
 
 };
 /////////////////////////////////////////////////
@@ -225,16 +180,14 @@ sf::Vector2f    Contenant::deplMaxContenu(){
     float longueurContenu       = float( m_groupe->boundgingB_enfants().left + m_groupe->boundgingB_enfants().width ) + 0;  //+  m_slider_V->getTaille().x;
     float longueurContenant     = m_taille.x;
     float longueurDeplacement   = longueurContenu - longueurContenant;
-//    std::cout << " longueurContenu : " << longueurContenu << " longueurContenant : " << longueurContenant << "\n";
+
     result.x =  longueurDeplacement;
 
     longueurContenu       = float( m_groupe->boundgingB_enfants().top + m_groupe->boundgingB_enfants().height ) + 0; // m_slider_H->getTaille().y;
     longueurContenant     = m_taille.y;
     longueurDeplacement   = longueurContenu - longueurContenant;
-//    std::cout << " longueurContenu : " << longueurContenu << " longueurContenant : " << longueurContenant << "\n";
 
     result.y =  longueurDeplacement;
-//    std::cout << " result : " << result.x << ", " << result.y << "\n";
 
     return result;
 

@@ -28,6 +28,13 @@ void BtnRectangle::actualiserGeometrie ()
 
     m_fond->setTaille ( {m_taille.x, m_taille.y} );
 
+    // Focus
+    if ( aLeFocus () ){
+        m_focusRect->setVisible();
+        m_focusRect->setTaille ( m_taille );
+    } else
+        m_focusRect ->setVisible( false );
+
     demanderActuaBounds();
 }
 

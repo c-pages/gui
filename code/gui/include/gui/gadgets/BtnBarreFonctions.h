@@ -47,9 +47,11 @@ public:
     /////////////////////////////////////////////////
     BtnBarreFonctions ();
 
-    std::shared_ptr<BtnIcone> ajouterElement (std::string nom, std::string fichierIcone, FctnAction action);
+    std::shared_ptr<BtnIcone> operator[](int i);
 
-    std::shared_ptr<BtnIcone> ajouterElement (std::string nom, sf::Texture icone, FctnAction action);
+    std::shared_ptr<BtnIcone> ajouterElement (std::string nom, std::string fichierIcone, FctnAction action = [](){});
+
+    std::shared_ptr<BtnIcone> ajouterElement (std::string nom, sf::Texture* icone, FctnAction action= [](){});
 
     void supprimerElement (unsigned int id);
 
@@ -64,6 +66,10 @@ public:
     void positionnerFenetre ();
     virtual std::shared_ptr<Gadget>  testerSurvol ( sf::Vector2i position );
 
+    void setModeOutils ( bool val = true );
+
+    void select ( int id);
+
 //    virtual void actualiserContenu ();
 //    virtual void actualiserBounds ();
 
@@ -73,7 +79,8 @@ public:
 // Membres
 /////////////////////////////////////////////////
 private:
-
+    bool                            m_modeOutils;       ///< si on l'utilise comme une barre d'outils (un seul bouton a le focus à la fois)
+    int                             m_outilActif;   ///< l'index de l'outil actif, -1: pas d'outils actif
 
     sf::Vector2i                    m_tailleBouton;   ///< La taille d'un bouton du menu
     std::vector< ElementOutil*>     m_elements;

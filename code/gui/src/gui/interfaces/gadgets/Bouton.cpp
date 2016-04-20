@@ -13,11 +13,19 @@ std::vector<Gadget*>     Bouton::ms_boutons = {};
 /////////////////////////////////////////////////
 Bouton::Bouton ()
 : m_autoAjust   ( true )
+, m_focusRect ( std::make_shared<AffRectangle>())
 {
     m_marge       = { 5 , 5 } ;
 
     // on l'ajoute à la liste static des boutons
     ms_boutons.push_back( this );
+
+    ajouter( m_focusRect ) ;
+    m_focusRect->setVisible (false);
+
+    m_focusRect->setFondCouleur( sf::Color::Transparent );
+    m_focusRect->setFondLigneCouleur( sf::Color(200,200,200) );
+    m_focusRect->setFondLigneEpaisseur( 1 );
 }
 
 /////////////////////////////////////////////////

@@ -386,7 +386,7 @@
 
 1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\enums.h
 
-1460910495 r:\06 - c++\110 - gui\code\gui\include\gui\fabriquebase.h
+1461081771 r:\06 - c++\110 - gui\code\gui\include\gui\fabriquebase.h
 	"SFML/Graphics.hpp"
 	"memory"
 	"interfaces/Gadget.h"
@@ -463,7 +463,7 @@
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1461013933 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\affimage.h
+1461143514 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\affimage.h
 	"AffRectangle.h"
 	<memory>
 	<SFML/Graphics.hpp>
@@ -479,9 +479,10 @@
 	"gadgets\AffLabel.h"
 	<SFML/Graphics.hpp>
 
-1460904533 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\gadgets\bouton.h
+1461145956 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\gadgets\bouton.h
 	"interfaces/ActionEvenement.h"
 	"interfaces/Gadget.h"
+	"gadgets/AffRectangle.h"
 
 1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\actionevenement.h
 	<map>
@@ -622,7 +623,7 @@
 	"gadgets/AffLabel.h"
 	"gadgets/BtnIcone.h"
 
-1461074467 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\btnbarrefonctions.h
+1461144833 r:\06 - c++\110 - gui\code\gui\include\gui\gadgets\btnbarrefonctions.h
 	"interfaces/gadgets/Bouton.h"
 	"BtnIcone.h"
 	"interfaces/gadgets/Contenant.h"
@@ -756,7 +757,7 @@
 	<SFML/System/Thread.hpp>
 	<vector>
 
-1460903131 r:\06 - c++\110 - gui\code\gui\include\gui\resourcesmgr.inl
+1461143872 r:\06 - c++\110 - gui\code\gui\include\gui\resourcesmgr.inl
 	"ResourcesMgr.h"
 
 1460904554 r:\06 - c++\110 - gui\code\gui\include\gui\interfaces\gadgets\calque.h
@@ -801,7 +802,7 @@
 	<iostream>
 	<Config.h>
 
-1461080408 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
+1461144611 source:r:\06 - c++\110 - gui\code\main\src\ecrans\ecrandemo.cpp
 	"ecrans/EcranDemo.h"
 	<iostream>
 	<Config.h>

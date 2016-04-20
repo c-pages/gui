@@ -45,6 +45,13 @@ void BtnIcone::actualiserGeometrie ()
         m_icone->alignerSur ( m_fond , Alignement::Centre , Alignement::Centre );
     }
 
+    // Focus
+    if ( aLeFocus () ){
+        m_focusRect->setVisible();
+        m_focusRect->setTaille ( m_taille );
+    } else
+        m_focusRect ->setVisible( false );
+
     demanderActuaBounds();
 }
 

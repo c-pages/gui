@@ -363,6 +363,16 @@ std::shared_ptr<BtnBarreFonctions>    FabriqueBase::barreFonctions(  )
 }
 
 
+/////////////////////////////////////////////////
+std::shared_ptr<BtnBarreFonctions>    FabriqueBase::barreOutils(  )
+{
+    auto nouveauGadget = creerGadget<BtnBarreFonctions>( );
+    //nouveauGadget->demanderActualisation();
+    nouveauGadget->setModeOutils();
+    return nouveauGadget;
+}
+
+
 
 
 /////////////////////////////////////////////////

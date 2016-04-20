@@ -232,10 +232,15 @@ EcranDemo::initGUI_MenuPanneaux ()
     menuFichier->ajouterElement   ( "Quitter"             , fct_quitter );
 
 
+    // Menu edition
+    menusDeroulants->ajouterMenu    ("Edition");
+    menusDeroulants->ajouterElement ("Annuler", [](){} );
+    menusDeroulants->ajouterElement ("Refaire", [](){}  );
+
     // Menu AFFICHAGE
-    menusDeroulants->ajouterMenu    ("Fenêtre");
-    menusDeroulants->ajouterElement ("Affichages", fct_toggleFenetreAff );
-    menusDeroulants->ajouterElement ("Boutons simples", fct_toggleFenetreBtn );
+    menusDeroulants->ajouterMenu    ("Affichage");
+    menusDeroulants->ajouterElement ("Gadgets simples", fct_toggleFenetreAff );
+    menusDeroulants->ajouterElement ("Boutons", fct_toggleFenetreBtn );
     menusDeroulants->ajouterElement ("Boutons données", fct_toggleFenetreDonnee );
 
     // Menu AIDE
@@ -265,23 +270,22 @@ EcranDemo::initGUI_MenuPanneaux ()
 
     // barre fonction fichier
     auto barreFonction = m_interface->creer.barreFonctions();
-//    barreFonction->setPosition (50,50);
+    // les icones fichiers
+    auto iconesFichiers = &gui::Interface::ms_icones.get("ico_fichiers" );
 
-    auto    btn1 = barreFonction->ajouterElement ( "Nouveau", "media/img/ico_fichiers.png" , [](){printf("Nouveau\n");});
+    auto    btn1 = barreFonction->ajouterElement ( "Nouveau", iconesFichiers , [](){printf("Nouveau\n");});
     btn1->setInfo("Nouveau");
-    auto    btn2 = barreFonction->ajouterElement ( "Ouvrir", "media/img/ico_fichiers.png" , [](){printf("Ouvrir\n");});
+    auto    btn2 = barreFonction->ajouterElement ( "Ouvrir", iconesFichiers , [](){printf("Ouvrir\n");});
     btn2->setInfo("Ouvrir");
-    auto    btn3 = barreFonction->ajouterElement ( "Sauvegarder", "media/img/ico_fichiers.png" , [](){printf("Sauvegarder\n");});
+    auto    btn3 = barreFonction->ajouterElement ( "Sauvegarder", iconesFichiers , [](){printf("Sauvegarder\n");});
     btn3->setInfo("Sauvegarder");
-    auto    btn4 = barreFonction->ajouterElement ( "Sauvegarder sous", "media/img/ico_fichiers.png" , [](){printf("Sauvegarder sous\n");});
+    auto    btn4 = barreFonction->ajouterElement ( "Sauvegarder sous", iconesFichiers , [](){printf("Sauvegarder sous\n");});
     btn4->setInfo("Sauvegarder sous");
 
     bandeau->ajouter ( barreFonction );
 
     // barre fonction fichier
     auto barreFonctionHist = m_interface->creer.barreFonctions();
-//    barreFonctionHist->setPosition (50,50);
-
     auto    btnHist1 = barreFonctionHist->ajouterElement ( "Annuler", "media/img/ico_Historique.png" , [](){printf("Annuler\n");});
     btnHist1->setInfo("Annuler");
     auto    btnHist2 = barreFonctionHist->ajouterElement ( "Refaire", "media/img/ico_Historique.png" , [](){printf("Refaire\n");});
@@ -289,6 +293,22 @@ EcranDemo::initGUI_MenuPanneaux ()
 
     bandeau->ajouter ( barreFonctionHist );
 
+
+
+    // barre outils pinceaux
+//    auto barrePinceaux = m_interface->creer.barreFonctions();
+    auto barrePinceaux = m_interface->creer.barreOutils();
+    barrePinceaux->ajouterElement ( "1", "media/img/icones_cercles.png", [](){printf("->Pinceau 1\n");} )->setInfo("Pinceau taille: 1");
+    barrePinceaux->ajouterElement ( "2", "media/img/icones_cercles.png" )->setInfo("Pinceau taille: 2");
+    barrePinceaux->ajouterElement ( "3", "media/img/icones_cercles.png" )->setInfo("Pinceau taille: 3");
+    barrePinceaux->ajouterElement ( "4", "media/img/icones_cercles.png" )->setInfo("Pinceau taille: 4");
+    barrePinceaux->ajouterElement ( "5", "media/img/icones_cercles.png" )->setInfo("Pinceau taille: 5");
+    barrePinceaux->ajouterElement ( "6", "media/img/icones_cercles.png" )->setInfo("Pinceau taille: 6");
+    barrePinceaux->ajouterElement ( "7", "media/img/icones_cercles.png" )->setInfo("Pinceau taille: 7");
+
+//barrePinceaux[6]->lier (gui::Evenement::onBtnG_relacher, [](){printf("POPOPOPO\n");});
+
+    bandeau->ajouter ( barrePinceaux );
 
 //    bandeau->ajouter ( barreFonction );
 

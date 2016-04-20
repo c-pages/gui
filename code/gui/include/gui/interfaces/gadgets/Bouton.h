@@ -6,7 +6,7 @@
 /////////////////////////////////////////////////
 #include "interfaces/ActionEvenement.h"
 #include "interfaces/Gadget.h"
-
+#include "gadgets/AffRectangle.h"
 
 
 namespace gui {
@@ -50,8 +50,8 @@ private:
     static  std::vector<Gadget*>      ms_boutons;
 
 protected:
-    bool                    m_autoAjust;        ///< Ajuste automatiquement la taille du bouton au texte (en tenant compte de la marge).
-
+    bool                        m_autoAjust;        ///< Ajuste automatiquement la taille du bouton au texte (en tenant compte de la marge).
+    std::shared_ptr<AffRectangle>    m_focusRect;        ///< le cadre marquant le focus
 }; // fin class Bouton
 
 } // fin namespace gui

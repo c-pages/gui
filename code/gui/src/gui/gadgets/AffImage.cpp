@@ -72,10 +72,8 @@ void AffImage::setTaille( sf::Vector2i val ){
 
 /////////////////////////////////////////////////
 void AffImage::setImage (  sf::Texture* texture ) {
+
     log ( "Set image,texture" );
-    // DEBU8G
-//    printf ("AffImage::SET IMAGE texture\n");
-//    m_rectangle.setFillColor( sf::Color(255,220,50,100));
 
     m_texture = texture;
 
@@ -86,9 +84,6 @@ void AffImage::setImage (  sf::Texture* texture ) {
                                  , m_texture->getSize().x
                                  , m_texture->getSize().y });
 
-//    // debug
-//    m_fondCouleur = sf::Color(255,220,50,100);
-
     demanderActuaGeom() ;
 };
 
@@ -96,10 +91,7 @@ void AffImage::setImage (  sf::Texture* texture ) {
 /////////////////////////////////////////////////
 void AffImage::setImage ( std::string fichier )
 {
-    log ( "Set image,fichier" );
-    log ( "fichier" , fichier );
-
-//    printf ("AffImage::SET IMAGE fichier\n");
+    log ( "Set image" , fichier );
 
     std::string nomUniqueImage = Interface::ms_images.nomDefautSuivant();
 
@@ -114,25 +106,8 @@ void AffImage::setImage ( std::string fichier )
                                  , m_texture->getSize().x
                                  , m_texture->getSize().y });
 
-    // DEBU8G
-//    m_rectangle.setFillColor( sf::Color(255,220,50,100));
-
     demanderActuaGeom() ;
 }
-
-//
-///////////////////////////////////////////////////
-//void AffImage::draw (sf::RenderTarget& target, sf::RenderStates states) const
-//{
-//    if (! estVisible() ) return;
-//
-//    //On applique la transformation
-//    states.transform *= getTransform();
-//
-//    // On dessine l'image
-//    target.draw( m_rectangle, states);
-//}
-
 
 } // fin namespace gui
 

@@ -57,19 +57,10 @@ template<typename ... Args>
 void ResourcesMgr<RESOURCE,IDENTIFIANT>::load(const IDENTIFIANT& id , Args&& ... args)
 {
 
-//        throw std::runtime_error("Image: Nom unique existe deja : " + id );
-
-//    std::cout << "ResourcesMgr : load '" << id << "'\n";
-
-//    if ( mPlan.at(id) != mPlan.end() )
-
-
-
     std::unique_ptr<RESOURCE> ptr ( new RESOURCE );
     if(not ptr->loadFromFile(std::forward<Args>(args)...))
         throw std::runtime_error("Impossible de charger le fichier");
     mPlan.emplace(id,std::move(ptr));
-
 
 }
 
@@ -78,6 +69,7 @@ void ResourcesMgr<RESOURCE,IDENTIFIANT>::load(const IDENTIFIANT& id , Args&& ...
 template<typename RESOURCE,typename IDENTIFIANT>
 RESOURCE& ResourcesMgr<RESOURCE,IDENTIFIANT>::get(const IDENTIFIANT& id)const
 {
+
 //    std::cout << "ResourcesMgr : get " << id << " : " << mPlan.size() <<"\n";
     return *mPlan.at(id);
 }
@@ -90,7 +82,6 @@ bool ResourcesMgr<RESOURCE,IDENTIFIANT>::existe(const IDENTIFIANT& id)const
          return false;
     else return true;
 }
-
 
 template<typename RESOURCE,typename IDENTIFIANT>
 std::string ResourcesMgr<RESOURCE,IDENTIFIANT>::nomDefautSuivant()
@@ -105,4 +96,17 @@ std::string ResourcesMgr<RESOURCE,IDENTIFIANT>::nomDefautSuivant()
         ind++;
     }
 };
+
+
+
 } // fin app
+
+
+
+
+
+
+
+
+
+

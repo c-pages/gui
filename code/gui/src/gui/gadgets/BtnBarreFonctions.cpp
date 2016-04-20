@@ -11,7 +11,9 @@ namespace gui {
 
 /////////////////////////////////////////////////
 BtnBarreFonctions::BtnBarreFonctions ( )
-: m_modeFenetre(false)
+: m_modeFenetre ( false )
+, m_modeOutils  ( false )
+, m_outilActif  ( -1 )
 {
     creerNomUnique ("BarreFonctions");
 
@@ -20,33 +22,16 @@ BtnBarreFonctions::BtnBarreFonctions ( )
 
     // initialiser les composants herités
     CmpOmbre::initialiserComposants ( this );
-    CmpFond::initialiserComposants ( this );
+    CmpFond::initialiserComposants  ( this );
 
     m_taille  = { 10, 26 };
     m_marge  = { 2,2 };
     m_tailleBouton = { m_taille.y - 2*m_marge.y , m_taille.y - 2*m_marge.y };
     m_largeurDrag = 5 ;
 
-//    ajouterComposant( m_ombre );
-//    ajouterComposant( m_fond );
-
-//    m_ombre->setVisible ( false );
-//    m_ombre->setPosition ( 5,5);
-//    ajouterComposant( m_panneau );
-
-
-
     m_fondCouleur        = sf::Color( 60, 60, 60 );
     m_fondLgnCouleur     = sf::Color( 90,90,90 );
     m_fondLgnEpaisseur   = 1 ;
-//
-//    m_ombreCouleur      = sf::Color( 0,0,0, 100 );
-//    m_ombreLgnCouleur   = sf::Color( 255,255,255, 255 );
-//    m_ombreLgnepaisseur = 0;
-
-
-
-
 
 
     lier ( Evenement::onBtnG_presser , [this](){
@@ -102,10 +87,18 @@ BtnBarreFonctions::BtnBarreFonctions ( )
 }
 
 /////////////////////////////////////////////////
+std::shared_ptr<BtnIcone> BtnBarreFonctions::operator[](int i)
+{
+    return m_elements[i]->bouton;
+}
+
+
+
+/////////////////////////////////////////////////
 void BtnBarreFonctions::traiterEvenements (const sf::Event& evenement)
 {
-//   std::cout << " evt\n";
-     if ( dragEnCours() )
+
+    if ( dragEnCours() )
         positionnerFenetre ();
 
     for ( auto enfant : m_enfants )
@@ -120,41 +113,20 @@ void BtnBarreFonctions::traiterEvenements (const sf::Event& evenement)
 /////////////////////////////////////////////////
 std::shared_ptr<BtnIcone>  BtnBarreFonctions::ajouterElement (std::string nom, std::string fichierIcone, FctnAction action )
 {
+    std::string nomUniqueImage = Interface::ms_images.nomDefautSuivant();
 
-    ElementOutil *    nouvelElement = new ElementOutil ();
+    Interface::ms_images.load ( nomUniqueImage , fichierIcone );
 
+    sf::Texture* icone = &Interface::ms_images.get ( nomUniqueImage );
 
-    std::shared_ptr<BtnIcone>     bouton = std::make_shared<BtnIcone>( );
+    return   ajouterElement ( nom, icone, action);
 
-    bouton->setMarge            ( { 5 , 2 } );
-    bouton->setImage            ( fichierIcone );
-    bouton->setFix();
-    bouton->setIndex            ( m_elements.size() + 1 );
-    bouton->setAutoAjuster      ( false );
-    bouton->setTaille           ( m_tailleBouton );
-    bouton->setMarge            ({0,0});
-
-    bouton->lier                ( Evenement::onBtnG_relacher , action );
-
-    ajouter           ( bouton );
-//    m_panneau->ajouter( bouton );
-
-    nouvelElement->nom      = nom;
-    nouvelElement->fonction = action;
-    nouvelElement->bouton   = bouton;
-
-    m_elements.push_back( nouvelElement );
-
-    demanderActualisation();
-//    actualiser ();
-
-    return bouton;
 }
 
 
 
 /////////////////////////////////////////////////
-std::shared_ptr<BtnIcone>     BtnBarreFonctions::ajouterElement (std::string nom, sf::Texture icone, FctnAction action)
+std::shared_ptr<BtnIcone>     BtnBarreFonctions::ajouterElement (std::string nom, sf::Texture* icone, FctnAction action)
 {
 
     ElementOutil *    nouvelElement = new ElementOutil ();
@@ -163,20 +135,31 @@ std::shared_ptr<BtnIcone>     BtnBarreFonctions::ajouterElement (std::string nom
     std::shared_ptr<BtnIcone>   bouton = std::make_shared<BtnIcone>( );
 
     bouton->setMarge            ( { 5 , 2 } );
-    bouton->setImage            ( &icone );
+    bouton->setImage            ( icone );
     bouton->setFix();
     bouton->setIndex            ( m_elements.size() + 1 );
     bouton->setAutoAjuster      ( false );
     bouton->setTaille           ( m_tailleBouton );
     bouton->setMarge            ({0,0});
 
-    bouton->lier                ( Evenement::onBtnG_relacher , action );
 
-    ajouter           ( bouton );
+    FctnAction fonction;
+    if ( m_modeOutils ){
+        int id = m_elements.size();
+        fonction = [this, action, id](){
+            select (id);
+            action ();
+        };
+    } else fonction = action;
+
+
+    bouton->lier    ( Evenement::onBtnG_relacher , fonction );
+
+    ajouter         ( bouton );
 //    m_panneau->ajouter( bouton );
 
     nouvelElement->nom      = nom;
-    nouvelElement->fonction = action;
+    nouvelElement->fonction = fonction;
     nouvelElement->bouton   = bouton;
 
     m_elements.push_back( nouvelElement );
@@ -187,6 +170,17 @@ std::shared_ptr<BtnIcone>     BtnBarreFonctions::ajouterElement (std::string nom
     return bouton;
 }
 
+/////////////////////////////////////////////////
+void BtnBarreFonctions::select ( int id)
+{
+    if ( m_outilActif!= -1)
+        m_elements[m_outilActif]->bouton->setFocus( false );
+
+    printf ("Select outils %i\n", id );
+    m_outilActif = id;
+    m_elements[id]->bouton->setFocus();
+//    m_elements[id]->bouton->demanderActuaGeom();
+}
 
 /////////////////////////////////////////////////
 void BtnBarreFonctions::positionnerFenetre ()
@@ -200,11 +194,6 @@ void BtnBarreFonctions::positionnerFenetre ()
                 bandeau->setAbsorbable( true );
         } else
                 bandeau->setAbsorbable( false );
-
-//    Interface::ms_calque_bandeaux->actualiser();
-//    for ( auto bandeau : Interface::ms_calque_bandeaux->getEnfants() )
-//        if ( bandeau->testerSurvol( getPosSouris() ) != nullptr)
-//            bandeau->
 
 }
 
@@ -227,14 +216,6 @@ void BtnBarreFonctions::supprimerElement (unsigned int id)
 {
 
 }
-/*
-/////////////////////////////////////////////////
-void BtnBarreFonctions::actualiserContenu ()
-{
-    m_panneau->actualiserContenu ();
-
-
-};*/
 
 /////////////////////////////////////////////////
 void BtnBarreFonctions::actualiserGeometrie ()
@@ -242,22 +223,14 @@ void BtnBarreFonctions::actualiserGeometrie ()
     std::cout << "Actualiser la barre d'outils\n";
 
     // si on est dans un calque (nom commence par '_'), on est libre, alors on ombre
-    if (m_parent->getNom()[0] == '_') {
-    std::cout << "Dans Calque\n";
+    if (m_parent->getNom()[0] == '_')
         setOmbreActive();
-    }
-    else {
-    std::cout << " PAS Dans Calque\n";
-            setOmbreActive ( false );
-
-    }
-
+    else
+        setOmbreActive ( false );
 
     m_taille.x =  m_largeurDrag + m_tailleBouton.x * m_elements.size() + 2*m_marge.x;
     m_fond->setTaille ( m_taille );
     m_ombre->setTaille ( m_taille );
-//    m_panneau->setTaille ( { m_taille.x - 2*m_marge.x, m_taille.y - 2*m_marge.y } );
-//    m_panneau->setPosition ( m_marge.x, m_marge.y  );
 
     int index = 0;
     for ( auto element : m_elements ) {
@@ -273,15 +246,16 @@ void BtnBarreFonctions::actualiserGeometrie ()
 
 
 /////////////////////////////////////////////////
-void BtnBarreFonctions::actualiserStyle ()
-{
+void BtnBarreFonctions::actualiserStyle (){
     // on applique le style correspondant à l'état
     CmpFond::appliquerEtat( this->etat() );
-
 }
 
 
-
+/////////////////////////////////////////////////
+void BtnBarreFonctions::setModeOutils ( bool val ){
+    m_modeOutils = val;
+}
 
 } // fin namespace gui
 

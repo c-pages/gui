@@ -311,7 +311,7 @@ void Gadget::setFocus( bool val ) {
 
     m_focus = val;
     actualiserEtat ();
-    demanderActuaStyle();
+    demanderActuaGeom();
 };
 
 

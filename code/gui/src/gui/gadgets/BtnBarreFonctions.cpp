@@ -171,17 +171,25 @@ std::shared_ptr<BtnIcone>     BtnBarreFonctions::ajouterElement (std::string nom
 }
 
 /////////////////////////////////////////////////
-void BtnBarreFonctions::select ( int id)
+void BtnBarreFonctions::select ( int id )
 {
-    if ( m_outilActif!= -1)
-        m_elements[m_outilActif]->bouton->setFocus( false );
-
+    // si on clique sur celui deja actif, on desactive et on se casse
+    if ( id == m_outilActif ) {
+        deselect ( );
+        return;
+    }
+    // sinon on change d'outils
+    deselect ( );
     printf ("Select outils %i\n", id );
     m_outilActif = id;
     m_elements[id]->bouton->setFocus();
-//    m_elements[id]->bouton->demanderActuaGeom();
-}
 
+}
+/////////////////////////////////////////////////
+void BtnBarreFonctions::deselect ( ){
+    if ( m_outilActif!= -1 )
+        m_elements[m_outilActif]->bouton->setFocus( false );
+}
 /////////////////////////////////////////////////
 void BtnBarreFonctions::positionnerFenetre ()
 {

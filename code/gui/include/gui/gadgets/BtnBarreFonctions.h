@@ -69,6 +69,7 @@ public:
     void setModeOutils ( bool val = true );
 
     void select ( int id);
+    void deselect ( );
 
 //    virtual void actualiserContenu ();
 //    virtual void actualiserBounds ();
